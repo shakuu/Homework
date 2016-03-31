@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace FormattingNumbers
 {
-    class Program
+    class FormattingNumbers
     {
         static void Main(string[] args)
         {
@@ -14,7 +14,7 @@ namespace FormattingNumbers
             double numB = double.Parse(Console.ReadLine());
             double numC = double.Parse(Console.ReadLine());
 
-            Console.WriteLine("{0,-10:x}|{1, 10:D10}|{2,10:F2}|{3,-10:F3}",
+            Console.WriteLine("{0,-10:x}|{1, 10:D10}|{2,10:F2}|{3,-10:F3}|",
                 numA, Convert.ToUInt64( Convert.ToString(numA, 2)), numB, numC);
         }
     }
