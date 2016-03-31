@@ -18,12 +18,12 @@ namespace Age
                 Math.Round((
                 DateTime.Now.Subtract(birthDate).TotalDays -
                 DateTime.Now.Subtract(birthDate).TotalDays % 365.25)
-                / 365),
+                / 365.25),
                 //Age in 10 years
                 Math.Round((
                 DateTime.Now.Subtract(birthDate).TotalDays -
                 DateTime.Now.Subtract(birthDate).TotalDays % 365.25)
-                / 365) + 10
+                / 365.25) + 10
                 );
         }
     }
