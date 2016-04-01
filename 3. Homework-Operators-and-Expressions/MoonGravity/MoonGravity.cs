@@ -10,7 +10,7 @@ namespace MoonGravity
     {
         static void Main(string[] args)
         {
-            float W = float.Parse(Console.ReadLine());
+            double W = double.Parse(Console.ReadLine());
             Console.WriteLine((W * 0.17).ToString("0.000"));
         }
     }

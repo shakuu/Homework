@@ -30,10 +30,10 @@ namespace PointCircleRectangle
            else { Console.Write("inside circle "); }
 
            //CHECK RECTANGLE
-           if ( (pointX >= rectangleLeft 
-                && pointX<= rectangleLeft + rectangleWidth) 
-                || (pointY<= rectangleTop
-                && pointY >= rectangleTop-rectangleHeight) )
+           if ( pointX >= rectangleLeft 
+                && pointX<= rectangleLeft + rectangleWidth 
+                && pointY<= rectangleTop
+                && pointY >= rectangleTop-rectangleHeight )
             { Console.Write("inside rectangle"); }
            else { Console.Write("outside rectangle"); }
         }

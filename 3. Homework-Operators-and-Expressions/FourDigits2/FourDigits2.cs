@@ -35,8 +35,8 @@ namespace FourDigits
 
         static void PrintString(string toPrint)
         {
-            if (toPrint.ElementAt(0).ToString() == "0") {
-                toPrint = toPrint.Remove(0, 1);}
+            //if (toPrint.ElementAt(0).ToString() == "0") {
+               // toPrint = toPrint.Remove(0, 1);}
             Console.WriteLine(toPrint);
         }
     }

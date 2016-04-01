@@ -10,7 +10,7 @@ namespace PrintASCIITable
     {
         static void Main(string[] args)
         {
-            Console.OutputEncoding = System.Text.Encoding.ASCII;
+           // Console.OutputEncoding = System.Text.Encoding.ASCII;
             for(byte asciiIndex = 33; asciiIndex<127; asciiIndex++ )
             { 
             Console.Write((char)asciiIndex);

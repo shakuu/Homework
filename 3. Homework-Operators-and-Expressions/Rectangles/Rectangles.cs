@@ -11,11 +11,11 @@ namespace Rectangles
         static void Main(string[] args)
         {
             // INPUT width, height
-            float width = float.Parse(Console.ReadLine());
-            float height = float.Parse(Console.ReadLine());
+            double width = double.Parse(Console.ReadLine());
+            double height = double.Parse(Console.ReadLine());
             //OUTPUT
-            Console.WriteLine((2 * width + 2 * height).ToString("0.00") + " " +
-                (width*height).ToString("0.00"));
+            Console.WriteLine((width * height).ToString("0.00") + " " 
+                + (2 * width + 2 * height).ToString("0.00"));
         }
     }
 }

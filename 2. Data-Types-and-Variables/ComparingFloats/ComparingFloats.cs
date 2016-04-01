@@ -15,8 +15,8 @@ namespace ComparingFloats
             double a = double.Parse(Console.ReadLine());
             double d = double.Parse(Console.ReadLine());
 
-            if( Math.Abs(a-d)>eps) { Console.WriteLine("False"); }
-            else { Console.WriteLine("True"); }
+            if( Math.Abs(a-d)>eps) { Console.WriteLine("false"); }
+            else { Console.WriteLine("true"); }
         }
     }
 }
