@@ -21,7 +21,7 @@ namespace FallingRocksv2
             Console.BackgroundColor = ConsoleColor.DarkMagenta;
             
             //VARIABLES
-            string[] gameArea = new string[18];
+            string[] gameArea = new string[10];
             string playerRow = "";
             string playerCharacter = "(0)";
 
@@ -85,7 +85,7 @@ namespace FallingRocksv2
                     Console.WriteLine("------------------------------------------");
                     Console.WriteLine(" SCORE: {0, 4:D4}", playerScore);
 
-                    Thread.Sleep(175);
+                    Thread.Sleep(150);
                 }
 
                 playerInput = Console.ReadKey(true);
