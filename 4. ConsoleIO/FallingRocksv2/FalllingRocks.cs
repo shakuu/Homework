@@ -14,13 +14,19 @@ namespace FallingRocksv2
     {
         static void Main()
         {
+            //CONSOLE
+            Console.SetWindowSize(42, 22);
+            Console.SetBufferSize(42, 22);
+            Console.Title = "Falling Rocks";
+            Console.BackgroundColor = ConsoleColor.DarkMagenta;
+            
             //VARIABLES
-            string[] gameArea = new string[15];
+            string[] gameArea = new string[20];
             string playerRow = "";
             string playerCharacter = "(0)";
 
-            int gameAreaWidth = 15;
-            int playerPosition = 7;
+            int gameAreaWidth = 40;
+            int playerPosition = (gameAreaWidth / 2);
             bool playerCollision = false;
 
             ConsoleKeyInfo playerInput = new ConsoleKeyInfo();
@@ -28,39 +34,51 @@ namespace FallingRocksv2
             //Generate PlayerRow
             playerRow = GeneratePlayerRow(playerPosition, gameAreaWidth, playerCharacter);
             //and GameArea
-            for ( int i = 0; i< gameArea.Length; i++)
-            { gameArea[i] = ""; }
+            for (int i = 0; i < gameArea.Length; i++)
+            {
+                for (int p = 0; p < gameAreaWidth; p++)
+                { gameArea[i] += " "; }
+            }
 
             // Main Body
-            do 
+            do
             {
                 while (Console.KeyAvailable == false)
                 {
-                   //Handle Input
-                   switch ( playerInput.Key)
+                    //Handle Input
+                    switch (playerInput.Key)
                     {
                         case ConsoleKey.LeftArrow:
                             {
-                                if ( playerPosition>1)
+                                if (playerPosition > 0)
                                 { playerPosition--; }
-                                playerInput= new ConsoleKeyInfo();
+                                playerInput = new ConsoleKeyInfo();
                                 break;
                             }
                         case ConsoleKey.RightArrow:
                             {
-                                if (playerPosition < gameAreaWidth-playerCharacter.Length)
+                                if (playerPosition < gameAreaWidth - playerCharacter.Length)
                                 { playerPosition++; }
                                 playerInput = new ConsoleKeyInfo();
                                 break;
                             }
-                        default: break;}
+                        default: break;
+                    }
                     //END INPUT
 
                     //UPDATE PLAYER ROW
                     playerRow = GeneratePlayerRow(playerPosition, gameAreaWidth, playerCharacter);
+                    //CheckCollision
+                    playerCollision = CheckCollision(playerPosition, gameArea[gameArea.Length - 1]);
+                    //Shift Game Area down
+                    gameArea = ShiftGameArea(gameArea);
+                    //GenerateNewTopRow
+                    gameArea[0] = GenerateNewGameRow(gameAreaWidth);
 
                     //TEST
                     Console.Clear();
+                    for (int i = 0; i < gameArea.Length; i++)
+                    { Console.WriteLine(gameArea[i]); }
                     Console.WriteLine(playerRow);
 
                     Thread.Sleep(150);
@@ -85,6 +103,67 @@ namespace FallingRocksv2
             }
 
             return currentRow;
+        }
+
+        static bool CheckCollision(int playerPos, string gameBottomRow)
+        {
+            bool collision = false;
+
+            for (int i = playerPos; i < playerPos + 2; i++)
+            {
+                if (gameBottomRow.ElementAt(i).ToString() != " ")
+                {
+                    collision = true;
+                    FallingRocksv2.FalllingRocks.Main();
+                }
+            }
+
+            return collision;
+        }
+
+        static string[] ShiftGameArea(string[] CurrentGameArea)
+        {
+
+            for (int i = CurrentGameArea.Length - 1; i > 0; i--)
+            {
+                CurrentGameArea[i] = CurrentGameArea[i - 1];
+            }
+
+            return CurrentGameArea;
+        }
+
+        static string GenerateNewGameRow(int AreaWidth)
+        {
+            Random randomRock = new Random();
+
+            string possibleRocks = "^@*&+%$#!.;-";
+            string newRow = "";
+            //generate rock positions
+            int[] posRocks = new int[randomRock.Next(0, 3)];
+            for (int i = 0; i < posRocks.Length; i++)
+            { posRocks[i] = randomRock.Next(1, AreaWidth); }
+
+
+            bool rockPrint = false;
+            for (int i = 0; i < AreaWidth+1; i++)
+            {
+                for (int p = 0; p < posRocks.Length; p++)
+                {
+                    if (posRocks[p] == i)
+                    {
+                        rockPrint = true;
+                        newRow = newRow + possibleRocks.ElementAt
+                            (randomRock.Next(1, possibleRocks.Length)).ToString();
+                    }
+                 }
+                if (rockPrint!=true)
+                {
+                    newRow = newRow + " ";
+                }
+                rockPrint = false;
+            }
+
+            return newRow;
         }
     }
 }
