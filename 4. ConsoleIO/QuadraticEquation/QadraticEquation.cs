@@ -10,10 +10,11 @@ namespace QuadraticEquation
     {
         static void Main(string[] args)
         {
+            //INPUT
             double numA = double.Parse(Console.ReadLine());
             double numB = double.Parse(Console.ReadLine());
             double numC = double.Parse(Console.ReadLine());
-
+            //SOURCE:http://mathworld.wolfram.com/QuadraticEquation.html
             double X1 = ((-numB) - (Math.Sqrt(Math.Pow(numB, 2) - (4 * numA * numC)))) / ( 2*numA);
             double X2 = ((-numB) + (Math.Sqrt(Math.Pow(numB, 2) - (4 * numA * numC)))) / (2 * numA);
 
