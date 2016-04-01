@@ -30,9 +30,6 @@ namespace QuadraticEquation
             { Console.WriteLine(X1); }
             else
             { Console.WriteLine("{0:F2}\n{1:F2}", Math.Min(X1, X2), Math.Max(X1, X2)); }
-
-            //Console.WriteLine(X1);
-            //Console.WriteLine(X2);
         }
     }
 }
