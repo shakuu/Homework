@@ -14,9 +14,6 @@ namespace QuadraticEquation
             double numB = double.Parse(Console.ReadLine());
             double numC = double.Parse(Console.ReadLine());
 
-            //double X1 = (-numB + (Math.Sqrt(Math.Pow(numB, 2) - (4 * numA * numC)))) / (2* numA);
-            //double X2 = (-numB - (Math.Sqrt(Math.Pow(numB, 2) - (4 * numA * numC)))) / (2 * numA);
-
             double X1 = ((-numB) - (Math.Sqrt(Math.Pow(numB, 2) - (4 * numA * numC)))) / ( 2*numA);
             double X2 = ((-numB) + (Math.Sqrt(Math.Pow(numB, 2) - (4 * numA * numC)))) / (2 * numA);
 
