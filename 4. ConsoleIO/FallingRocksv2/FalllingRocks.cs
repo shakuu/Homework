@@ -15,18 +15,19 @@ namespace FallingRocksv2
         static void Main()
         {
             //CONSOLE
-            Console.SetWindowSize(42, 22);
-            Console.SetBufferSize(42, 22);
+            Console.SetWindowSize(42, 24);
+            Console.SetBufferSize(42, 24);
             Console.Title = "Falling Rocks";
             Console.BackgroundColor = ConsoleColor.DarkMagenta;
             
             //VARIABLES
-            string[] gameArea = new string[20];
+            string[] gameArea = new string[18];
             string playerRow = "";
             string playerCharacter = "(0)";
 
-            int gameAreaWidth = 40;
+            int gameAreaWidth = 42;
             int playerPosition = (gameAreaWidth / 2);
+            int playerScore = 0;
             bool playerCollision = false;
 
             ConsoleKeyInfo playerInput = new ConsoleKeyInfo();
@@ -74,17 +75,26 @@ namespace FallingRocksv2
                     gameArea = ShiftGameArea(gameArea);
                     //GenerateNewTopRow
                     gameArea[0] = GenerateNewGameRow(gameAreaWidth);
+                    playerScore++;
 
                     //TEST
                     Console.Clear();
                     for (int i = 0; i < gameArea.Length; i++)
                     { Console.WriteLine(gameArea[i]); }
                     Console.WriteLine(playerRow);
+                    Console.WriteLine("------------------------------------------");
+                    Console.WriteLine(" SCORE: {0, 4:D4}", playerScore);
 
-                    Thread.Sleep(150);
+                    Thread.Sleep(175);
                 }
 
                 playerInput = Console.ReadKey(true);
+                //Pause Button
+                if ( playerInput.Key == ConsoleKey.Spacebar)
+                {
+                    Console.WriteLine("         Press ENTER to continue");
+                    Console.ReadLine();
+                }
             } while (playerInput.Key != ConsoleKey.X);
 
 
@@ -114,7 +124,20 @@ namespace FallingRocksv2
                 if (gameBottomRow.ElementAt(i).ToString() != " ")
                 {
                     collision = true;
-                    FallingRocksv2.FalllingRocks.Main();
+                    Console.WriteLine("   Press ENTER to try again! ESC to Exit");
+                    ConsoleKeyInfo continueKey = Console.ReadKey(true);
+                    switch (continueKey.Key)
+                    {
+                        case ConsoleKey.Enter:
+                            FallingRocksv2.FalllingRocks.Main();
+                            break;
+                        case ConsoleKey.Escape:
+                            Environment.Exit(0);
+                            break;
+                        default:
+                            FallingRocksv2.FalllingRocks.Main();
+                            break;}
+                    
                 }
             }
 
