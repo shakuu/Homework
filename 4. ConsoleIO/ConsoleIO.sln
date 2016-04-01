@@ -25,6 +25,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FiboncciNumbers", "Fiboncci
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Interval", "Interval\Interval.csproj", "{973293C1-49CC-4F68-8DBA-4BC037AC189C}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FallingRocks", "FallingRocks\FallingRocks.csproj", "{56A8714A-EEE7-4343-B2CF-CEEC6921020C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FallingRocksv2", "FallingRocksv2\FallingRocksv2.csproj", "{D51CA0EB-4BBE-4A7A-8927-78ADB2E256A6}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -75,6 +79,14 @@ Global
 		{973293C1-49CC-4F68-8DBA-4BC037AC189C}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{973293C1-49CC-4F68-8DBA-4BC037AC189C}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{973293C1-49CC-4F68-8DBA-4BC037AC189C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{56A8714A-EEE7-4343-B2CF-CEEC6921020C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{56A8714A-EEE7-4343-B2CF-CEEC6921020C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{56A8714A-EEE7-4343-B2CF-CEEC6921020C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{56A8714A-EEE7-4343-B2CF-CEEC6921020C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D51CA0EB-4BBE-4A7A-8927-78ADB2E256A6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D51CA0EB-4BBE-4A7A-8927-78ADB2E256A6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D51CA0EB-4BBE-4A7A-8927-78ADB2E256A6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D51CA0EB-4BBE-4A7A-8927-78ADB2E256A6}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
