@@ -4,11 +4,11 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{4A03FD3B-D08C-4FAC-87A0-22DC06CDE1B6}</ProjectGuid>
+    <ProjectGuid>{314481C0-B39C-479C-95D3-FE5213248B26}</ProjectGuid>
     <OutputType>Exe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>SpiralMatrix</RootNamespace>
-    <AssemblyName>SpiralMatrix</AssemblyName>
+    <RootNamespace>MMSA</RootNamespace>
+    <AssemblyName>MMSA</AssemblyName>
     <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
@@ -43,7 +43,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="SpiralMatrix.cs" />
+    <Compile Include="MMSA.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
