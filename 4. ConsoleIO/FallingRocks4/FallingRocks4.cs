@@ -18,6 +18,7 @@ namespace FallingRocks4
             public bool isAlive;
             public ConsoleKeyInfo input;
             public int Score;
+            public int Speed;
 
             public Player(int X, int Y, string Str, ConsoleColor Col, bool Alive)
             {
@@ -28,6 +29,7 @@ namespace FallingRocks4
                 this.isAlive = Alive;
                 this.input = new ConsoleKeyInfo();
                 this.Score = 0;
+                this.Speed = 0;
             }
         }
 
@@ -37,7 +39,6 @@ namespace FallingRocks4
             public int posY;
             public string toPrint;
             public ConsoleColor color;
-            //public string possibleString = "^@*&+%$#!.;-";
 
             public Rock(int X, int Y, string Str, ConsoleColor Col)
             {
@@ -73,28 +74,34 @@ namespace FallingRocks4
             while (appIsRunning)
             {
                 appSpeed = 150;
+                player1.Speed = 0;
 
-                //Read Input
-                if (Console.KeyAvailable) { player1.input = Console.ReadKey(); }
+                //Read Input 
+                while (Console.KeyAvailable)
+                {
+                    player1.input = Console.ReadKey(true);
+                }
+
                 if (player1.input.Key == ConsoleKey.LeftArrow && player1.posX > 0)
                 {
-                    player1.posX--;
+                    player1.Speed--;
                     player1.input = new ConsoleKeyInfo();
                 }
                 if (player1.input.Key == ConsoleKey.RightArrow && player1.posX < Console.BufferWidth - 3)
                 {
-                    player1.posX++;
+                    player1.Speed++;
                     player1.input = new ConsoleKeyInfo();
                 }
 
+                player1.posX += player1.Speed;
                 //Move Existing Rocks down
                 foreach (Rock element in Rocks)
                 { element.posY++; }
-                
+
                 //Add More Rocks
                 for (int i = 0; i < mainRandom.Next(0, 4); i++)
                 { Rocks.Add(GenerateNewRock()); Thread.Sleep(5); appSpeed -= 5; }
-               
+
                 //Remove Old Rocks
                 for (int i = 0; i < Rocks.Count; i++)
                 {
