@@ -178,8 +178,8 @@ namespace FallingRocks4
 
             if (isAlive == true)
             {
-                Console.SetCursorPosition((Console.WindowWidth - Alive.Length - 4) / 2, Console.WindowHeight - 2);
-                Console.Write("{0}{1,4:D4}", Alive, Score);
+                Console.SetCursorPosition((Console.WindowWidth - Alive.Length - 6) / 2, Console.WindowHeight - 2);
+                Console.Write("{0}{1,4:D6}", Alive, Score);
             }
             else
             {
