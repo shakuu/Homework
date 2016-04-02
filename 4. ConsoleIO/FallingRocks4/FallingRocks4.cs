@@ -51,7 +51,7 @@ namespace FallingRocks4
 
         static void Main()
         {
-            Console.BufferHeight = Console.WindowHeight = 24;
+            Console.BufferHeight = Console.WindowHeight = 20;
             Console.BufferWidth = Console.WindowWidth = 40;
             Console.CursorVisible = false;
             Console.BackgroundColor = ConsoleColor.DarkGray;
@@ -63,7 +63,7 @@ namespace FallingRocks4
             bool appIsRunning = true;
             int appSpeed = 150;
 
-            Player player1 = new Player(Console.WindowWidth / 2 - 1, 20, "(0)", ConsoleColor.White, true);
+            Player player1 = new Player(Console.WindowWidth / 2 - 1, Console.WindowHeight-4, "(0)", ConsoleColor.White, true);
 
             List<Rock> Rocks = new List<Rock>();
             Rock newRock = new Rock(10, 10, "!", ConsoleColor.Cyan);
