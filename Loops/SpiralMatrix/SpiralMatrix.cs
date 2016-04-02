@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace SpiralMatrix
 {
-    class Program
+    class SpiralMatrix
     {
         static void Main()
         {
