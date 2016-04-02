@@ -13,6 +13,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MultiplicationSign", "Multi
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BIggestOf3", "BIggestOf3\BIggestOf3.csproj", "{74FD1FE8-2C52-435E-85F7-3DF0E0A7BAD1}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BiggestOf5", "BiggestOf5\BiggestOf5.csproj", "{2553A76F-20D7-4BE6-9220-500D15873911}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -39,6 +41,10 @@ Global
 		{74FD1FE8-2C52-435E-85F7-3DF0E0A7BAD1}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{74FD1FE8-2C52-435E-85F7-3DF0E0A7BAD1}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{74FD1FE8-2C52-435E-85F7-3DF0E0A7BAD1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2553A76F-20D7-4BE6-9220-500D15873911}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2553A76F-20D7-4BE6-9220-500D15873911}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2553A76F-20D7-4BE6-9220-500D15873911}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2553A76F-20D7-4BE6-9220-500D15873911}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

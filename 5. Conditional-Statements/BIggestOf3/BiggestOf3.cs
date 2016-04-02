@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace BIggestOf3
 {
-    class Program
+    class BiggestOf3
     {
         static void Main()
         {
