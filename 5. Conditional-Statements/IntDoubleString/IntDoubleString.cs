@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace IntDoubleString
 {
-    class Program
+    class IntDoubleString
     {
         static void Main()
         {
