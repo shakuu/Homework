@@ -1,0 +1,34 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 14
+VisualStudioVersion = 14.0.24720.0
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ExchangeNumbers", "ExchangeNumbers\ExchangeNumbers.csproj", "{7A7929FB-9E63-4CDF-B1AC-9BA3CE8B20A7}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BonusScore", "BonusScore\BonusScore.csproj", "{1D861D87-6577-464C-88C2-38F57EF442E7}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PlayCard", "PlayCard\PlayCard.csproj", "{688A9F4C-1971-41A1-A3A4-F737E84E5A38}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{7A7929FB-9E63-4CDF-B1AC-9BA3CE8B20A7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7A7929FB-9E63-4CDF-B1AC-9BA3CE8B20A7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7A7929FB-9E63-4CDF-B1AC-9BA3CE8B20A7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7A7929FB-9E63-4CDF-B1AC-9BA3CE8B20A7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1D861D87-6577-464C-88C2-38F57EF442E7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1D861D87-6577-464C-88C2-38F57EF442E7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1D861D87-6577-464C-88C2-38F57EF442E7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1D861D87-6577-464C-88C2-38F57EF442E7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{688A9F4C-1971-41A1-A3A4-F737E84E5A38}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{688A9F4C-1971-41A1-A3A4-F737E84E5A38}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{688A9F4C-1971-41A1-A3A4-F737E84E5A38}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{688A9F4C-1971-41A1-A3A4-F737E84E5A38}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
