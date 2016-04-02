@@ -53,9 +53,11 @@ namespace FallingRocks4
             Console.BufferHeight = Console.WindowHeight = 24;
             Console.BufferWidth = Console.WindowWidth = 40;
             Console.CursorVisible = false;
-            Console.BackgroundColor = ConsoleColor.DarkMagenta;
+            Console.BackgroundColor = ConsoleColor.DarkGray;
             Console.Title = "Falling Rocks";
             Console.Clear();
+
+            Random mainRandom = new Random();
 
             bool appIsRunning = true;
             int appSpeed = 150;
@@ -65,12 +67,13 @@ namespace FallingRocks4
             List<Rock> Rocks = new List<Rock>();
             Rock newRock = new Rock(10, 10, "!", ConsoleColor.Cyan);
             //1st Row of Rocks
-            Rocks.Add(GenerateNewRock()); Thread.Sleep(2);
-            Rocks.Add(GenerateNewRock()); Thread.Sleep(2);
-            Rocks.Add(GenerateNewRock()); Thread.Sleep(2);
+            for (int i = 0; i < mainRandom.Next(0, 4); i++)
+            { Rocks.Add(GenerateNewRock()); Thread.Sleep(5); }
 
             while (appIsRunning)
             {
+                appSpeed = 150;
+
                 //Read Input
                 if (Console.KeyAvailable) { player1.input = Console.ReadKey(); }
                 if (player1.input.Key == ConsoleKey.LeftArrow && player1.posX > 0)
@@ -87,10 +90,11 @@ namespace FallingRocks4
                 //Move Existing Rocks down
                 foreach (Rock element in Rocks)
                 { element.posY++; }
+                
                 //Add More Rocks
-                Rocks.Add(GenerateNewRock()); Thread.Sleep(2);
-                Rocks.Add(GenerateNewRock()); Thread.Sleep(2);
-                Rocks.Add(GenerateNewRock()); Thread.Sleep(2);
+                for (int i = 0; i < mainRandom.Next(0, 4); i++)
+                { Rocks.Add(GenerateNewRock()); Thread.Sleep(5); appSpeed -= 5; }
+               
                 //Remove Old Rocks
                 for (int i = 0; i < Rocks.Count; i++)
                 {
@@ -132,10 +136,18 @@ namespace FallingRocks4
         static Rock GenerateNewRock()
         {
             Random posX = new Random();
+            string rockChars = "^@*&+%$#!.;-";
+
+            List<ConsoleColor> color = new List<ConsoleColor>();
+            color.Add(ConsoleColor.Cyan);
+            color.Add(ConsoleColor.Magenta);
+            color.Add(ConsoleColor.Yellow);
+            color.Add(ConsoleColor.Green);
+
+            for (int i = 0; i < 100; i++) { posX.Next(0, Console.BufferWidth); } //MOAR RNG
 
             Rock newRock = new Rock(posX.Next(0, Console.BufferWidth), 0,
-               "!", ConsoleColor.Black);
-
+               rockChars.ElementAt(posX.Next(0, rockChars.Length)).ToString(), color[posX.Next(0, color.Count)]);
             return newRock;
         }
 
@@ -167,7 +179,7 @@ namespace FallingRocks4
                 Console.SetCursorPosition((Console.WindowWidth - notAlive.Length) / 2, Console.WindowHeight - 2);
                 Console.Write(notAlive);
 
-                ConsoleKeyInfo continueKey = Console.ReadKey();
+                ConsoleKeyInfo continueKey = new ConsoleKeyInfo();
                 do
                 {
                     continueKey = Console.ReadKey();
@@ -175,7 +187,7 @@ namespace FallingRocks4
                     {
                         FallingRocks4.FallingRocks.Main();
                     }
-                    else if ( continueKey.Key == ConsoleKey.Escape)
+                    else if (continueKey.Key == ConsoleKey.Escape)
                     {
                         Environment.Exit(0);
                     }
