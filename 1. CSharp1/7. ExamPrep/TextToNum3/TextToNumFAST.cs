@@ -1,6 +1,5 @@
 ﻿using System;
 
-
 class TextToNum3
 {
     static void Main()
@@ -29,17 +28,11 @@ class TextToNum3
                 RESULT *= (text[currIndex] - 48);
                 goto nexti;
             }
-            //else if (text[currIndex] > 64 && // letter
-            //    text[currIndex] < 91)
-            //{
-            //    RESULT += (text[currIndex] - 65);
-            //    goto nexti;
-            //}
             else
             {
                 RESULT = RESULT % Module;
             }
-        nexti:;
+        nexti:; //skip extra IFs
             currIndex++;
         }
     }
