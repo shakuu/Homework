@@ -10,6 +10,15 @@ namespace CatalanNumbers
     {
         static void Main(string[] args)
         {
+            double numN = double.Parse(Console.ReadLine());
+            double result = 1;
+
+            for (double i = numN + (double)1; i < (2 * numN) + 1; i++)
+            {
+                result *= i / ((i - numN) + 1);
+            }
+
+            Console.WriteLine(result);
         }
     }
 }
