@@ -146,6 +146,15 @@ namespace Cube
                 Console.WriteLine("5");
             }
 
+            //try
+            //{
+            //    Console.Clear();
+            //}
+            //catch (System.IO.IOException)
+            //{
+            //    Console.WriteLine("7");
+                
+            //}
 
             try
             {
@@ -165,7 +174,6 @@ namespace Cube
             catch (System.IO.IOException)
             {
                 Console.WriteLine("6");
-                
             }
            
             //Console.ReadLine();
