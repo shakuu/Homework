@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.IO;
+using System.Numerics;
 
 namespace SaddyKopper
 {
@@ -10,46 +12,42 @@ namespace SaddyKopper
     {
         static void Main()
         {
+            Console.SetIn(new StreamReader(Console.OpenStandardInput(8192)));
             string INPUT = Console.ReadLine();
             char[] number = INPUT.ToCharArray();
 
 
-            long evenSum;
-            long product;
+            int evenSum;
+            BigInteger product = 1;
 
 
             for (int i = 0; i < 10; i++)
             {
-                product = new long();
+                evenSum = new int();
+                product = 1;
+                int index = 0;
                 //Get EVEN sum, multiply each sum.
-                for (int k = 0; k < number.Length - 1; k++)
+                foreach(var digit in INPUT)
                 {
-                    evenSum = new int();
-                    for (int p = 0; p < number.Length - k - 1; p++)
-                    {
-                        if (p % 2 == 0)
+                    
+                        if (index % 2 == 0)
                         {
-                            if (p == 0)
+                            if (index == 0)
                             {
-                                evenSum = (number[p] - 48);
+                                evenSum = (digit- 48);
                             }
                             else
                             {
-                                evenSum += (number[p] - 48);
+                                evenSum +=  (digit - 48);
                             }
                         }
-                    }
 
-                    if (k == 0)
-                    {
-                        product = evenSum;
-                    }
-                    else
-                    {
+                    index++;
                         product *= evenSum;
-                    }
                 }
                 //
+
+                product /= evenSum;
 
                 if (i != 9)
                 {
