@@ -19,6 +19,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TryCube", "TryCube\TryCube.
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SaddyKopper", "SaddyKopper\SaddyKopper.csproj", "{6FE5FB14-68B7-46DB-868A-61D9043428E8}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BitToBit", "BitToBit\BitToBit.csproj", "{D2420174-6D28-4245-AD13-55495EE3EAD8}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -57,6 +59,10 @@ Global
 		{6FE5FB14-68B7-46DB-868A-61D9043428E8}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{6FE5FB14-68B7-46DB-868A-61D9043428E8}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{6FE5FB14-68B7-46DB-868A-61D9043428E8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D2420174-6D28-4245-AD13-55495EE3EAD8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D2420174-6D28-4245-AD13-55495EE3EAD8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D2420174-6D28-4245-AD13-55495EE3EAD8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D2420174-6D28-4245-AD13-55495EE3EAD8}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
