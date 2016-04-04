@@ -1,9 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.IO;
 
 namespace Cube
 {
@@ -12,12 +7,14 @@ namespace Cube
         static void Main()
         {
 
-            long cube1 = long.Parse(Console.ReadLine());
+
+            double cube1 = double.Parse(Console.ReadLine());
             int cube = Convert.ToInt32(cube1);
             int cubeSize = cube * 2 - 1;
 
-            string[,] cubeArray = new string[cube * 2 - 1, cube * 2 - 1];
+            string[,] cubeArray = new string[Math.Abs( cube) * 2 - 1, Math.Abs(cube) * 2 - 1];
 
+            Console.Clear();
      
             //PRINT FACE
             for (int row = cube - 1; row < 2 * cube - 1; row++)
@@ -25,7 +22,6 @@ namespace Cube
                 //TOP-BOT ROW
                 if (row == cube - 1 || row == 2 * cube - 2)
                 {
-                    Console.SetCursorPosition(0, row);
                     for (int col = 0; col < cube; col++)
                     {
                         cubeArray[col, row] = ":";
@@ -114,7 +110,7 @@ namespace Cube
                     }
                     Console.Write(cubeArray[y, x]);
                 }
-                Console.WriteLine();
+                Console.Write("\n");
             }
         }
     }
