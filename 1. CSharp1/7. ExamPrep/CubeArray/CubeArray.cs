@@ -112,6 +112,7 @@ namespace Cube
                 }
                 Console.Write("\n");
             }
+            Console.ReadLine();
         }
     }
 }
