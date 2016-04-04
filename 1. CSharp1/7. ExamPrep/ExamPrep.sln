@@ -11,6 +11,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TextToNumbers2", "TextToNum
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TextToNum3", "TextToNum3\TextToNum3.csproj", "{5BC46910-6662-4B2B-A001-ED63EF87C2AA}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Cube", "Cube\Cube.csproj", "{6524E512-73E6-4860-8A2A-BA9DF118994E}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -33,6 +35,10 @@ Global
 		{5BC46910-6662-4B2B-A001-ED63EF87C2AA}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{5BC46910-6662-4B2B-A001-ED63EF87C2AA}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{5BC46910-6662-4B2B-A001-ED63EF87C2AA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6524E512-73E6-4860-8A2A-BA9DF118994E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6524E512-73E6-4860-8A2A-BA9DF118994E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6524E512-73E6-4860-8A2A-BA9DF118994E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6524E512-73E6-4860-8A2A-BA9DF118994E}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
