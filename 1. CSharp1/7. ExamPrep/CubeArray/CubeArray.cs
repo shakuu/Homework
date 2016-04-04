@@ -7,22 +7,20 @@ namespace Cube
         static void Main()
         {
 
+            var cube1 = Console.ReadLine();
+            int cubeName = Convert.ToInt32(cube1);
 
-            double cube1 = double.Parse(Console.ReadLine());
-            int cube = Convert.ToInt32(cube1);
-            int cubeSize = cube * 2 - 1;
+            int cubeArrSize = (2 * cubeName) - 1;
 
-            string[,] cubeArray = new string[Math.Abs( cube) * 2 - 1, Math.Abs(cube) * 2 - 1];
+            string[,] cubeArray = new string[cubeArrSize, cubeArrSize];
 
-            Console.Clear();
-     
             //PRINT FACE
-            for (int row = cube - 1; row < 2 * cube - 1; row++)
+            for (int row = cubeName - 1; row < 2 * cubeName - 1; row++)
             {
                 //TOP-BOT ROW
-                if (row == cube - 1 || row == 2 * cube - 2)
+                if (row == cubeName - 1 || row == 2 * cubeName - 2)
                 {
-                    for (int col = 0; col < cube; col++)
+                    for (int col = 0; col < cubeName; col++)
                     {
                         cubeArray[col, row] = ":";
                     }
@@ -30,79 +28,78 @@ namespace Cube
                 else//FILLER
                 {
                     cubeArray[0, row] = ":";
-                    for (int col = 1; col < cube - 1; col++)
+                    for (int col = 1; col < cubeName - 1; col++)
                     {
                         cubeArray[col, row] = " ";
                     }
-                    cubeArray[cube - 1, row] = ":";
+                    cubeArray[cubeName - 1, row] = ":";
                 }
             }//END FACE
 
             ////PRINT TOP
-            for (int row = 0; row < cube - 1; row++)
+            for (int row = 0; row < cubeName - 1; row++)
             {
                 //TOP
                 if (row == 0)
                 {
-                    for (int col = cube-1; col < cube*2 - 1; col++)
+                    for (int col = cubeName-1; col < cubeName*2 - 1; col++)
                     {
                         cubeArray[ col, row] = ":";
                     }
                 }//END TOP
                 else //FILLER
                 {
-                    cubeArray[(2 * cube - 2) - row, row ] = ":"; 
-                    for (int col = (2 * cube - 1) - row - 2; col > cube - row - 1; col--)
+                    cubeArray[(2 * cubeName - 2) - row, row ] = ":"; 
+                    for (int col = (2 * cubeName - 1) - row - 2; col > cubeName - row - 1; col--)
                     {
                         cubeArray[col, row] = "/";
                     }
-                    cubeArray[ (2 * cube - 1) - row - cube , row] = ":";
+                    cubeArray[ (2 * cubeName - 1) - row - cubeName , row] = ":";
                 }
             }//END TOP
 
             ////PRINT SIDE - TOP
-            for (int row = 1; row < cube; row++)
+            for (int row = 1; row < cubeName; row++)
             {
                 if (row == 1)
                 {
-                    cubeArray[2 * cube - 2, row] = ":";
+                    cubeArray[2 * cubeName - 2, row] = ":";
                 }
                 else
                 {
-                    cubeArray[2 * cube - 2, row] = ":";
+                    cubeArray[2 * cubeName - 2, row] = ":";
     
                     for (int col = 1; col < row; col++)
                     {
-                        cubeArray[2 * cube - 2 - col, row] = "X";
+                        cubeArray[2 * cubeName - 2 - col, row] = "X";
                     }
                 }
             }//END SIDE TOP
 
             ////PRINT SIDE BOT
             int modifier = 2;
-            for (int row = cube; row < 2 * cube - 2; row++)
+            for (int row = cubeName; row < 2 * cubeName - 2; row++)
             {
-                if (row != 2 * cube - 3)
+                if (row != 2 * cubeName - 3)
                 {
 
-                    
-                    for (int col = cube; col < 2 * cube - 1 - modifier; col++)
+                    for (int col = cubeName; col < 2 * cubeName - 1 - modifier; col++)
                     {
                         cubeArray[col, row] = "X";
                     }
-                    cubeArray[2 * cube - 1 - modifier, row] = ":";
+                    cubeArray[2 * cubeName - 1 - modifier, row] = ":";
                 }
                 else
                 {
-                    cubeArray[cube, row] = ":";
+                    cubeArray[cubeName, row] = ":";
                 }
                 modifier++;
             }
 
 
-            for ( int x = 0; x< cube*2-1; x++)
+            for ( int x = 0; x< cubeName*2-1; x++)
             {
-                for(int y = 0; y < cube*2-1; y++)
+                for(int y = 0; y < cubeName*2-1; y++)
                 {
                     if (cubeArray[y, x] == null)
                     {

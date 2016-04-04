@@ -17,6 +17,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CubeArray", "CubeArray\Cube
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Cube5", "Cube5\Cube5.csproj", "{A0A09D92-A8EC-4F7B-ADD5-7E8E187B8FDB}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TryCube", "TryCube\TryCube.csproj", "{D2E38D3D-CB94-43E0-941A-D733C3B2DD81}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -51,6 +53,10 @@ Global
 		{A0A09D92-A8EC-4F7B-ADD5-7E8E187B8FDB}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A0A09D92-A8EC-4F7B-ADD5-7E8E187B8FDB}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{A0A09D92-A8EC-4F7B-ADD5-7E8E187B8FDB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D2E38D3D-CB94-43E0-941A-D733C3B2DD81}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D2E38D3D-CB94-43E0-941A-D733C3B2DD81}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D2E38D3D-CB94-43E0-941A-D733C3B2DD81}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D2E38D3D-CB94-43E0-941A-D733C3B2DD81}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

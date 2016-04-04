@@ -4,11 +4,11 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{A0A09D92-A8EC-4F7B-ADD5-7E8E187B8FDB}</ProjectGuid>
+    <ProjectGuid>{D2E38D3D-CB94-43E0-941A-D733C3B2DD81}</ProjectGuid>
     <OutputType>Exe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Cube5</RootNamespace>
-    <AssemblyName>Cube5</AssemblyName>
+    <RootNamespace>TryCube</RootNamespace>
+    <AssemblyName>TryCube</AssemblyName>
     <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
