@@ -3,8 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using System.IO;
 using System.Numerics;
+using System.IO;
 
 namespace SaddyKopper
 {
@@ -13,59 +13,44 @@ namespace SaddyKopper
         static void Main()
         {
             Console.SetIn(new StreamReader(Console.OpenStandardInput(8192)));
-            string INPUT = Console.ReadLine();
-            char[] number = INPUT.ToCharArray();
 
-
-            int evenSum;
+            string input = Console.ReadLine();
+            int evenSum = 0;
             BigInteger product = 1;
-
-
-            for (int i = 0; i < 10; i++)
+            for ( int transform = 0; transform < 10; transform ++) //10 max 10 parses
             {
-                evenSum = new int();
+                evenSum = 0;
                 product = 1;
                 int index = 0;
-                //Get EVEN sum, multiply each sum.
-                foreach(var digit in INPUT)
+
+                for (int check = 1; check < input.Length; check++)
                 {
-                    
-                        if (index % 2 == 0)
-                        {
-                            if (index == 0)
-                            {
-                                evenSum = (digit- 48);
-                            }
-                            else
-                            {
-                                evenSum +=  (digit - 48);
-                            }
-                        }
-
-                    index++;
-                        product *= evenSum;
-                }
-                //
-
-                product /= evenSum;
-
-                if (i != 9)
-                {
-                    number = product.ToString().ToCharArray();
-                    if (number.Length == 1 && i < 9)
+                    index = 0;
+                    evenSum = 0;
+                    foreach (var digit in input)
                     {
-                        Console.WriteLine(i + 1);
-                        Console.WriteLine(Convert.ToInt32(number[0] - 48));
-                        return;
+                        if (index % 2 == 0 && index < input.Length- check)
+                        {
+                            evenSum += (digit - 48);
+                        }
+                        index++;
                     }
+                    product *= evenSum;
                 }
-                else if (i == 9)
+                input = product.ToString();
+
+                if ( input.Length==1)
                 {
-                    Console.WriteLine(product);
+                    Console.WriteLine(transform + 1);
+                    Console.WriteLine(input);
+                    return;
+                }
+                else if ( transform== 9 )
+                {
+                    Console.WriteLine(input);
                     return;
                 }
             }
-
         }
     }
 }
