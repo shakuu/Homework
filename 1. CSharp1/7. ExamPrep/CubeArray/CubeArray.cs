@@ -94,9 +94,9 @@ namespace Cube
                     cubeArray[cubeName, row] = ":";
                 }
                 modifier++;
-            }
+            }//
 
-
+            //Print
             for ( int x = 0; x< cubeName*2-1; x++)
             {
                 for(int y = 0; y < cubeName*2-1; y++)
