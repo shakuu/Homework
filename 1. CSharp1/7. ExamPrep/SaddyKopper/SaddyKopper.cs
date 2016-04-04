@@ -6,43 +6,68 @@ using System.Threading.Tasks;
 
 namespace SaddyKopper
 {
-    class Program
+    class SaddyKopper
     {
         static void Main()
         {
             string INPUT = Console.ReadLine();
             char[] number = INPUT.ToCharArray();
 
-            
-            int evenSum = 0;
-            long product = 1;
-           
 
-            for ( int i = 0; i < 10; i++)
+            long evenSum;
+            long product;
+
+
+            for (int i = 0; i < 10; i++)
             {
-                product = 1;
+                product = new long();
                 //Get EVEN sum, multiply each sum.
-                for (int k = 0; k < number.Length-1; k++)
+                for (int k = 0; k < number.Length - 1; k++)
                 {
-                    evenSum = 0;
-                    for (int p = 0; p < number.Length - k-1; p += 2)
+                    evenSum = new int();
+                    for (int p = 0; p < number.Length - k - 1; p++)
                     {
-                        evenSum +=(number[p] - 48);
+                        if (p % 2 == 0)
+                        {
+                            if (p == 0)
+                            {
+                                evenSum = (number[p] - 48);
+                            }
+                            else
+                            {
+                                evenSum += (number[p] - 48);
+                            }
+                        }
                     }
-                    product *= evenSum;
+
+                    if (k == 0)
+                    {
+                        product = evenSum;
+                    }
+                    else
+                    {
+                        product *= evenSum;
+                    }
                 }
                 //
 
-                number = product.ToString().ToCharArray();
-
-                if (number.Length == 1)
+                if (i != 9)
                 {
-                    Console.Write("{0}\n{1}", i + 1, number[0].ToString());
+                    number = product.ToString().ToCharArray();
+                    if (number.Length == 1 && i < 9)
+                    {
+                        Console.WriteLine(i + 1);
+                        Console.WriteLine(Convert.ToInt32(number[0] - 48));
+                        return;
+                    }
+                }
+                else if (i == 9)
+                {
+                    Console.WriteLine(product);
                     return;
                 }
-                
             }
-            Console.WriteLine(product);
+
         }
     }
 }
