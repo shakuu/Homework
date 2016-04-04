@@ -10,13 +10,11 @@ namespace Cube
     {
         static void Main()
         {
-
-            Console.WindowWidth = 50;
-            Console.WindowHeight = 30;
+            
             int cube = int.Parse(Console.ReadLine());
 
             Console.BufferHeight =  cube * cube;
-            Console.BufferWidth =  cube * cube;
+            Console.BufferWidth = cube * cube;
             
 
             //PRINT FACE
