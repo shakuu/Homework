@@ -16,7 +16,7 @@ namespace Cube
             int cube = Convert.ToInt32(cube1);
             int cubeSize = cube * 2 - 1;
 
-            string[,] cubeArray = new string[cubeSize, cubeSize];
+            string[,] cubeArray = new string[cube * 2 - 1, cube * 2 - 1];
 
      
             //PRINT FACE
