@@ -16,6 +16,7 @@ namespace ConsoleApp3
             
             int counter = 0; //first 10 elements or less
             bool isRunning = true;
+
             while (isRunning)
             {
                 if (counter % 2 == 0)
@@ -23,8 +24,11 @@ namespace ConsoleApp3
                     foreach (char digit in Console.ReadLine().ToUpper())
                     {
                         if (digit == 'E') { isRunning=false; break; }
-                        if (counter < 10) { unchecked { resultFirstTen *= (digit - '0'); } }
-                        else { unchecked { resultOthers *= (digit - '0'); } }
+                        else if (digit != '0')
+                        {
+                            if (counter < 10) { unchecked { resultFirstTen *= (digit - '0'); } }
+                            else { unchecked { resultOthers *= (digit - '0'); } }
+                        }
                     }
                 }
                 else
