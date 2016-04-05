@@ -17,7 +17,7 @@ namespace SaddyKopper
             string input = Console.ReadLine();
             int evenSum = 0;
             BigInteger product = 1;
-            for ( int transform = 0; transform < 10; transform ++) //10 max 10 parses
+            for ( int transform = 0; transform < 10; transform ++) //max 10 parses
             {
                 evenSum = 0;
                 product = 1;
