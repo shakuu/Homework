@@ -1,0 +1,29 @@
+input[type=button] {
+	background-color: white;
+	height: 60px;
+	width: 60px;
+	padding: 0px;
+	margin: 0px;
+	border-color: burlywood;
+	border-style: groove;
+	border-width: 2px; 
+	border-right-style: hidden;
+    border-top-style: hidden;
+    
+    font-family: sans-serif;
+    font-size: 32px;
+    color: burlywood
+}
+
+input[type=text]{
+	border-style: groove;
+	border-color: burlywood;
+	border-width: 2px;
+	border-bottom-style: groove;
+    text-align: right;
+    padding-right: 10px;
+    padding-left: 10px;
+    font-family: sans-serif;
+    font-size: 36px;
+    color: darkolivegreen;
+}
