@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 14
-VisualStudioVersion = 14.0.24720.0
+VisualStudioVersion = 14.0.25123.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OddOrEven", "OddOrEven\OddOrEven.csproj", "{EA037166-4E00-47EC-86C6-F0F09B0D2072}"
 EndProject
@@ -40,6 +40,8 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NthBitBITWISE", "NthBitBITWISE\NthBitBITWISE.csproj", "{12F1C120-8FE0-4B57-95BA-1CFEDC45F71D}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ModifyBitBITWISE", "ModifyBitBITWISE\ModifyBitBITWISE.csproj", "{A3B68B2B-4CDC-45D8-A464-BAE1A813C978}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ModifyBitv3", "ModifyBitv3\ModifyBitv3.csproj", "{8301F50A-086A-489F-82A1-3625DF2DC13C}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -123,6 +125,10 @@ Global
 		{A3B68B2B-4CDC-45D8-A464-BAE1A813C978}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A3B68B2B-4CDC-45D8-A464-BAE1A813C978}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{A3B68B2B-4CDC-45D8-A464-BAE1A813C978}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8301F50A-086A-489F-82A1-3625DF2DC13C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8301F50A-086A-489F-82A1-3625DF2DC13C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8301F50A-086A-489F-82A1-3625DF2DC13C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8301F50A-086A-489F-82A1-3625DF2DC13C}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
