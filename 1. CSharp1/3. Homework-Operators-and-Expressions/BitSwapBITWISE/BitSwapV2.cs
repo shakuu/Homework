@@ -13,9 +13,9 @@ namespace BitSwapV2
             public int Value;
             public int Position;
 
-            public Bits(int cvalue, int cPos)
+            public Bits(int cValue, int cPos)
             {
-                this.Value = cvalue;
+                this.Value = cValue;
                 this.Position = cPos;
             }
         }
@@ -39,7 +39,6 @@ namespace BitSwapV2
                 for (int b = startPos[i]; b < startPos[i] + modK; b++)
                 {
                     Bits bit1 = new Bits(0, b);
-                    
                     toSwap[i].Add(bit1);
                 }
             }
@@ -76,13 +75,13 @@ namespace BitSwapV2
         static uint SwapBits(uint Number, int newValue, int toPosition)
         {
             long newNumber;
-            long mask = 1 << toPosition;
-            long bitValue = Number & mask;
+            long theMask = 1 << toPosition;
+            long bitValue = Number & theMask;
             bitValue >>= toPosition;
 
             if (bitValue != newValue)
             {
-                newNumber = Number ^ mask;
+                newNumber = Number ^ theMask;
                 return (uint)newNumber;
             }
             else
