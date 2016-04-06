@@ -35,10 +35,11 @@ namespace BitSwapV2
             List<Bits>[] toSwap = new List<Bits>[startPos.Count];
             for (int i = 0; i < toSwap.Length; i++)
             {
+                toSwap[i] = new List<Bits>();
                 for (int b = startPos[i]; b < startPos[i] + modK; b++)
                 {
                     Bits bit1 = new Bits(0, b);
-                    toSwap[i] = new List<Bits>();
+                    
                     toSwap[i].Add(bit1);
                 }
             }
