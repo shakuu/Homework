@@ -38,8 +38,8 @@ namespace BitSwapV2
                 toSwap[i] = new List<Bits>();
                 for (int b = startPos[i]; b < startPos[i] + modK; b++)
                 {
-                    Bits bit1 = new Bits(0, b);
-                    toSwap[i].Add(bit1);
+                    Bits bit = new Bits(0, b);
+                    toSwap[i].Add(bit);
                 }
             }
             //Assign Value to all bits
