@@ -1,0 +1,24 @@
+table {
+	border-spacing: 0px;
+	border-collapse: collapse;
+	border-width: thin;
+}
+
+thead {
+	text-align: center;
+	font-weight: 600;
+	border-width: thin;
+}
+
+td {
+	padding: 5px;
+	border-width: 2px;
+	border-style: groove;
+	border-collapse: collapse;
+	border-color: black;
+}
+
+.totalstyle {
+	text-align: center;
+	font-weight: 600;
+}
