@@ -1,0 +1,44 @@
+.wrapper{
+  border: 1px;
+border-style: solid;
+border-radius: 10px;
+border-spacing: 0px;
+border-width: thin;
+padding:0px;
+tex
+}
+
+th {
+border-bottom: 1px;
+border-bottom-style: solid;
+  padding: 10px;
+  font-size: 24px;
+  font-family: sans-serif;
+  border-color: black;
+}
+
+.notebooks{
+  border-style: solid;
+border-width: 1px;
+border-spacing: 10px;
+}
+
+.notebookad{
+  text-align: center;
+  vertical-align: bottom;
+  border-radius: 0px;
+  padding: 5px;
+}
+.add{
+  padding: 12px;
+}
+.sliders{
+  align-items: left;
+  text-align: left;
+  padding: 10px;
+  padding-right: 15px;
+}
+
+.alignright{
+  text-align: right;
+}

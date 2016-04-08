@@ -47,6 +47,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BitExchangeV2", "BitExchang
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BitSwapBITWISE", "BitSwapBITWISE\BitSwapBITWISE.csproj", "{84DB586D-0C33-465E-A388-86C1925B817C}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BitswapKirilPc", "BitswapKirilPc\BitswapKirilPc.csproj", "{A8471327-527C-4116-BD6D-1573801F905E}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -141,6 +143,10 @@ Global
 		{84DB586D-0C33-465E-A388-86C1925B817C}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{84DB586D-0C33-465E-A388-86C1925B817C}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{84DB586D-0C33-465E-A388-86C1925B817C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A8471327-527C-4116-BD6D-1573801F905E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A8471327-527C-4116-BD6D-1573801F905E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A8471327-527C-4116-BD6D-1573801F905E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A8471327-527C-4116-BD6D-1573801F905E}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
