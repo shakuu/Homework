@@ -1,5 +1,7 @@
 * {
     box-sizing: border-box;
+    font-size: 12px;
+    font-family: sans-serif;
 }
 .grid-container {
     width: 100%;
@@ -17,25 +19,29 @@
     float: left;
     min-height: 1px;
     width: 16.66%;
-    padding: 10px;
+    padding-top: 3px;
+    padding-bottom: 5px;
+    padding-left: 5px;
+
+    text-align: left;
 }
 .col-1 {
-    width: 16.66%;
+    width: 8%;
 }
 .col-2 {
-    width: 33.33%;
+    width: 12%;
 }
 .col-3 {
-    width: 50%;
+    width: 18%;
 }
 .col-4 {
-    width: 66.664%;
+    width: 24%;
 }
 .col-5 {
-    width: 83.33%;
+    width: 30%;
 }
 .col-6 {
-    width: 100%;
+    width: 36%;
 }
 
 /* TODO:  * applies to all children tags */
@@ -47,6 +53,29 @@
 
 /* TODO: styles text  */
 
-[class*='col-'] > p {
-    text-align: center;
+[class*='col-'] > span {
+    text-align: left;
+}
+
+.topHeader{
+  border: 1px solid #bfbfbf;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+}
+
+.Header *, .Body * {
+  border: 1px solid #bfbfbf;
+  border-top-style: none;
+  border-right-style:none;
+}
+.Header [class*='col-']:last-child,
+.Body [class*='col-']:last-child{
+border-right: 1px solid #bfbfbf;
+}
+.topHeader, .Header{
+  background-color: #e6e6e6;
+}
+
+#text1{
+  width: 30px;
 }
