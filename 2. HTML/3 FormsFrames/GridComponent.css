@@ -1,0 +1,52 @@
+* {
+    box-sizing: border-box;
+}
+.grid-container {
+    width: 100%;
+    max-width: 1000px;
+}
+.row:before, .row:after {
+    content: "";
+    display: table;
+    clear: both;
+}
+
+/* applies to all classes with col- in the name */
+
+[class*='col-'] {
+    float: left;
+    min-height: 1px;
+    width: 16.66%;
+    padding: 10px;
+}
+.col-1 {
+    width: 16.66%;
+}
+.col-2 {
+    width: 33.33%;
+}
+.col-3 {
+    width: 50%;
+}
+.col-4 {
+    width: 66.664%;
+}
+.col-5 {
+    width: 83.33%;
+}
+.col-6 {
+    width: 100%;
+}
+
+/* TODO:  * applies to all children tags */
+
+.outline, .outline * {
+    outline: 1px solid #F6A1A1;
+    border-radius: 10px;
+}
+
+/* TODO: styles text  */
+
+[class*='col-'] > p {
+    text-align: center;
+}
