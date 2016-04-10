@@ -79,8 +79,16 @@ border-right: 1px solid #bfbfbf;
   width: 30px;
 }
 
-.InputRow div, .Body div{
-  padding-top: 6px;
+.InputRow div{
+  padding-top: 5px;
+  padding-bottom: 6px;
+  height: 30px;
+  vertical-align: middle;
+}
+
+.Body div{
+  padding-top: 3px;
+  padding-bottom: 6px;
   height: 25px;
 }
 
@@ -89,5 +97,52 @@ border-right: 1px solid #bfbfbf;
   border-top-style: none;
   border-bottom-left-radius: 10px;
   border-bottom-right-radius: 10px;
+  background-color: #e6e6e6;
+  padding-left: 10px;
+  vertical-align: center;
+}
+
+input[type="text"]{
+    width: 60%;
+    border: 1px solid #bfbfbf;
+    vertical-align: middle;
+}
+
+input[type="image"] {
+    width: 16px;
+    height: 16px;
+    border: 1px solid #bfbfbf;
+    border-radius: 3px;
+    padding: 2px;
+    vertical-align: middle;
+}
+
+input[type="checkbox"] { 
+    vertical-align: middle;
+}
+
+.Footer input[type="button"]{
+    border: 0px none black;
+    vertical-align: center;
     background-color: #e6e6e6;
+    width: 20px;
+    height: 20px;
+    border-radius: 3px;
+}
+
+.Footer input[type="image"]{
+    border: 1px solid #bfbfbf;
+    vertical-align: center;
+    width: 20px;
+    height: 20px;
+     border-radius: 3px;
+}
+
+.Footer input[name="but1"]{
+    border: 1px solid red;
+
+}
+
+.Footer select{
+    width: 50px;
 }
