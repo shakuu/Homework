@@ -1,0 +1,9 @@
+// Place your settings in this file to overwrite default and user settings.
+{
+    // Controls the font size.
+	"editor.fontSize": 12,
+    // Controls the font family.
+	"editor.fontFamily": "verdana",
+    // Controls the indentation of wrapped lines. Can be one of 'none', 'same' or 'indent'.
+	"editor.wrappingIndent": "indent"
+}

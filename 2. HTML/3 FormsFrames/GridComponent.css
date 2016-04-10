@@ -1,7 +1,7 @@
 * {
     box-sizing: border-box;
-    font-size: 12px;
-    font-family: sans-serif;
+    font-size: 11px;
+    font-family: "'Segoe UI', Tahoma, Geneva, Verdana, sans-serif";
 }
 .grid-container {
     width: 100%;
@@ -22,7 +22,6 @@
     padding-top: 3px;
     padding-bottom: 5px;
     padding-left: 5px;
-
     text-align: left;
 }
 .col-1 {
