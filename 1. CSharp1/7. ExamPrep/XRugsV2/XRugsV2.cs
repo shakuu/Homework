@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace XRugsV2
 {
-    class Program
+    class XRugsV2
     {
         static void Main()
         {
@@ -58,6 +58,17 @@ namespace XRugsV2
 
             }
 
+            //ADD X
+            try
+            {
+                Rug[inputSizeRug, inputSizeRug - (((sizeX - 1) / 2) + 1)] = "X";
+                Rug[inputSizeRug, inputSizeRug + (((sizeX - 1) / 2) + 1)] = "X";
+                Rug[inputSizeRug - (((sizeX - 1) / 2) + 1), inputSizeRug] = "X";
+                Rug[inputSizeRug + (((sizeX - 1) / 2) + 1), inputSizeRug] = "X";
+            }
+            catch(System.IndexOutOfRangeException)
+            { }
+            finally { }
             //Print Rug
             for (int x = 0; x < sizeRug; x++)
             {
