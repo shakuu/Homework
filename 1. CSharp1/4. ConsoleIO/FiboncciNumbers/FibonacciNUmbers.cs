@@ -10,10 +10,10 @@ namespace FiboncciNumbers
     {
         static void Main(string[] args)
         {
-            int numberN = int.Parse(Console.ReadLine());
+            long numberN = long.Parse(Console.ReadLine());
 
-            int prevNumb1 = 0;
-            int prevNumb2 = 1;
+            long prevNumb1 = 0;
+            long prevNumb2 = 1;
             for (int i = 1; i < numberN + 1; i++)
             {
                 if (i == 1)
@@ -26,7 +26,7 @@ namespace FiboncciNumbers
                     prevNumb2 = i-1;}
                 else
                 {
-                    int currFibonacci = prevNumb1 + prevNumb2;
+                    long currFibonacci = prevNumb1 + prevNumb2;
                     Console.Write(", {0}", currFibonacci);
                     prevNumb1 = prevNumb2;
                     prevNumb2 = currFibonacci;}
