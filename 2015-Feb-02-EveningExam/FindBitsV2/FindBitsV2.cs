@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace FindBitsV2
 {
-    class Program
+    class FindBitsV2
     {
         static void Main()
         {
