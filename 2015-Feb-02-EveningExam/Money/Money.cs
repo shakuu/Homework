@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Money
 {
-    class Program
+    class Money
     {
         static void Main()
         {
