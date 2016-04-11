@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 14
-VisualStudioVersion = 14.0.25123.0
+VisualStudioVersion = 14.0.24720.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Printing", "Printing\Printing.csproj", "{EFA720FF-B8A6-44B1-BBAF-295B7C72CEDC}"
 EndProject
@@ -32,6 +32,8 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "XRugsV2", "XRugsV2\XRugsV2.csproj", "{3BD97AA0-B7CF-4960-9858-45C0501EA508}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ConsoleApp4", "ConsoleApp4\ConsoleApp4.csproj", "{B0FA7BE0-F3A8-4A81-9D76-D3D356A12B94}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CApp5", "CApp5\CApp5.csproj", "{7C1E4584-2067-497A-B871-2BCE0260039E}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -99,6 +101,10 @@ Global
 		{B0FA7BE0-F3A8-4A81-9D76-D3D356A12B94}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{B0FA7BE0-F3A8-4A81-9D76-D3D356A12B94}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{B0FA7BE0-F3A8-4A81-9D76-D3D356A12B94}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7C1E4584-2067-497A-B871-2BCE0260039E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7C1E4584-2067-497A-B871-2BCE0260039E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7C1E4584-2067-497A-B871-2BCE0260039E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7C1E4584-2067-497A-B871-2BCE0260039E}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
