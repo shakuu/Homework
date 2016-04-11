@@ -13,30 +13,44 @@ namespace FindBitsV2
             string toFind = Convert.ToString(int.Parse( Console.ReadLine()), 2).PadLeft(5, '0');
             int numbers = int.Parse(Console.ReadLine());
 
-            List<int> toSearch = new List<int>();
+            List<long> toSearch = new List<long>();
             for ( int i = 0; i<numbers;i++)
             {
-                toSearch.Add(int.Parse(Console.ReadLine()));
+                toSearch.Add(long.Parse(Console.ReadLine()));
             }
 
+            while(toFind.Length>5)
+            {
+                toFind = toFind.Remove(0, 1);
+            }
+
+            int bits = 1;
             int counter = 0;
+            string currString = "";
             for ( int i = 0; i< toSearch.Count;i++)
             {
-                string currString = "00000";
-                while(toSearch[i] > 0)
+                bits = 0;
+                currString = "";
+                while( bits < 29)
                 {
                     currString = (toSearch[i] % 2).ToString() + currString;
-                    currString = currString.Remove(currString.Length-1, 1);
-
+                    if (currString.Length > 5)
+                    {
+                        currString = currString.Remove(currString.Length - 1, 1);
+                    }
                     if (currString==toFind)
                     {
                         counter++;
                     }
 
                     toSearch[i] >>= 1;
+                    bits++;
                 }
+              
+               
             }
 
+            Console.WriteLine(counter);
         }
     }
 }
