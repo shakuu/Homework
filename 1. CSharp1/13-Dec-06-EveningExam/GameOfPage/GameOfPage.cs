@@ -11,7 +11,7 @@ using System.Threading.Tasks;
 
 namespace GameOfPage
 {
-    class Program
+    class GameOfPage
     {
         static void Main()
         {
