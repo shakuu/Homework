@@ -18,8 +18,11 @@ namespace CodeStreet
             {
                 if (index%2 !=0)
                 {
-                    counter++;
-                    sum += digit - '0';
+                    if (digit >= '0' && digit <= '9')
+                    {
+                        counter++;
+                        sum += digit - '0';
+                    }
                 }
                 index++;
             }

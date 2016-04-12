@@ -40,22 +40,6 @@ namespace Enigmatation
                     (currStringIndex, currStringLength);
                 inputString = inputString.Insert
                     (currStringIndex, currResult);
-
-                //resolve +-
-                if (inputString.Contains("+-"))
-                {
-                    inputString = inputString.Remove
-                        (inputString.IndexOf("+-"), 1);
-                }
-                //resolve --
-                if (inputString.Contains("--"))
-                {
-                    inputString = inputString.Insert
-                        (inputString.IndexOf("--"), "+");
-                    inputString = inputString.Remove
-                        (inputString.IndexOf("--"), 2);
-                }
-
             }
 
             currResult = Solve(inputString);
@@ -96,8 +80,14 @@ namespace Enigmatation
                     case "+":
                         result += double.Parse(Numbers[i]);
                         break;
+                    case "+-":
+                        result -= double.Parse(Numbers[i]);
+                        break;
                     case "-":
                         result -= double.Parse(Numbers[i]);
+                        break;
+                    case "--":
+                        result += double.Parse(Numbers[i]);
                         break;
                     case "%":
                         result %= double.Parse(Numbers[i]);
