@@ -12,56 +12,66 @@ namespace Enigmatation
     {
         static void Main()
         {
-            string inputString = Console.ReadLine();
+            string input = Console.ReadLine();
 
             string currResult = "";
             int currStringIndex = 0;
             int currStringLength = 0;
 
             //remove =
-            if (inputString.Contains("="))
+            List<string> InputStrings = new List<string>();
+            while (input.Contains("="))
             {
-                inputString = inputString.Substring(0, 
-                    inputString.IndexOf("="));
-            }
-            while (inputString.Contains("(") 
-                && inputString.Contains(")"))
-            {
-                currResult = "";
-
-                currStringIndex = inputString.IndexOf("(");
-                currStringLength = inputString.IndexOf(")")
-                     - inputString.IndexOf("(") + 1;
-
-                currResult = Solve(inputString.Substring(
-                    currStringIndex, currStringLength));
-
-                inputString = inputString.Remove
-                    (currStringIndex, currStringLength);
-                inputString = inputString.Insert
-                    (currStringIndex, currResult);
-
-                //resolve +-
-                if (inputString.Contains("+-"))
-                {
-                    inputString = inputString.Remove
-                        (inputString.IndexOf("+-"), 1);
-                }
-                //resolve --
-                if (inputString.Contains("--"))
-                {
-                    inputString = inputString.Insert
-                        (inputString.IndexOf("--"), "+");
-                    inputString = inputString.Remove
-                        (inputString.IndexOf("--"), 2);
-                }
-
+                InputStrings.Add(input.Substring(0,
+                    input.IndexOf("=")));
+                input = input.Remove(0, input.IndexOf("=")+1);
             }
 
-            currResult = Solve(inputString);
+            string currString;
+            string overallResult = "0";
+            foreach (string inputString in InputStrings)
+            {
+                currString = inputString;
+                while (currString.Contains("(")
+                    && currString.Contains(")"))
+                {
+                    currResult = "";
+
+                    currStringIndex = inputString.IndexOf("(");
+                    currStringLength = inputString.IndexOf(")")
+                         - inputString.IndexOf("(") + 1;
+
+                    currResult = Solve(currString.Substring(
+                        currStringIndex, currStringLength));
+
+                    currString = currString.Remove
+                        (currStringIndex, currStringLength);
+                    currString = currString.Insert
+                        (currStringIndex, currResult);
+
+                    //resolve +-
+                    if (currString.Contains("+-"))
+                    {
+                        currString = currString.Remove
+                            (currString.IndexOf("+-"), 1);
+                    }
+                    //resolve --
+                    if (currString.Contains("--"))
+                    {
+                        currString = currString.Insert
+                            (currString.IndexOf("--"), "+");
+                        currString = inputString.Remove
+                            (currString.IndexOf("--"), 2);
+                    }
+
+                }
+
+                overallResult = (Convert.ToDouble( Solve(currString)) 
+                    + Convert.ToDouble(overallResult)).ToString();
+            }
             //test
-            Console.WriteLine("{0,0:F3}", double.Parse(currResult));
- 
+            Console.WriteLine("{0,0:F3}", double.Parse(overallResult));
+
         }
 
         public static string Solve(string currString)
@@ -74,11 +84,11 @@ namespace Enigmatation
             }
 
             double result = 0;
-            string[] splitSeparators = new string[] 
+            string[] splitSeparators = new string[]
             { "+", "-", "%", "*", "(", ")" };
             string[] Numbers = currString.Split(splitSeparators,
                 StringSplitOptions.RemoveEmptyEntries);
-            string[] Operators = currString.Split(Numbers, 
+            string[] Operators = currString.Split(Numbers,
                 StringSplitOptions.RemoveEmptyEntries);
 
             int operatorMod = 1;
@@ -89,9 +99,9 @@ namespace Enigmatation
                 operatorMod = 0;
             }
 
-            for(int i = 1; i< Numbers.Length;i++)
+            for (int i = 1; i < Numbers.Length; i++)
             {
-                switch(Operators[i-operatorMod])
+                switch (Operators[i - operatorMod])
                 {
                     case "+":
                         result += double.Parse(Numbers[i]);
@@ -110,6 +120,7 @@ namespace Enigmatation
                         break;
                     case "%-":
                         result %= -(double.Parse(Numbers[i]));
+                        if (result < 0) { result = Math.Abs(result); }
                         break;
                 }
 
