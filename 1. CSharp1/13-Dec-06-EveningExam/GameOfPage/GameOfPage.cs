@@ -8,6 +8,8 @@ using System.Threading.Tasks;
 //111  010 010
 //111  000 100
 //cookie - crumb - broken cookie
+//mid NEEDS to be 1
+//total to pay 2 decimals 
 
 namespace GameOfPage
 {
@@ -16,7 +18,7 @@ namespace GameOfPage
         static void Main()
         {
             //declare vars
-            float pricePerCookie = 1.79f; //$1.79  
+            double pricePerCookie = 1.79D; //$1.79  
             int iBoughtCookies = 0;
             string PageSays;
             int PageSaysRow;
@@ -41,7 +43,7 @@ namespace GameOfPage
                 //end if Page says paypal
                 if (PageSays == "paypal")
                 {
-                    Console.WriteLine("{0}", (float)iBoughtCookies * pricePerCookie);
+                    Console.WriteLine("{0, 0:F2}", (double)iBoughtCookies * pricePerCookie);
                     return;
                 }
                 PageSaysRow = int.Parse(Console.ReadLine());
@@ -68,7 +70,8 @@ namespace GameOfPage
                     {
                         Console.WriteLine("smile");
                     }
-                    else if ( myReply != "cookie")
+                    else if ( myReply == "cookie crumb" 
+                        || myReply=="broken cookie")
                     {
                         Console.WriteLine("page");
                     }
@@ -104,7 +107,7 @@ namespace GameOfPage
             {
                 currReply = "cookie crumb";
             }
-            else if ( crumbCounter>0)
+            else if ( crumbCounter> 1 && theTray[currRow][currCol] == '1')
             {
                 currReply = "broken cookie";
             }
