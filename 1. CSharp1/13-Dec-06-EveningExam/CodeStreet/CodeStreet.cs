@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace CodeStreet
 {
-    class Program
+    class CodeStreet
     {
         static void Main()
         {

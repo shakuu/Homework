@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace KaspichaniaBoats
 {
-    class Program
+    class KBoats
     {
         static void Main()
         {

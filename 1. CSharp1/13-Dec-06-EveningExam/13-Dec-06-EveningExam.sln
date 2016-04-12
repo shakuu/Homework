@@ -11,6 +11,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Enigmatation", "Enigmatatio
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "KaspichaniaBoats", "KaspichaniaBoats\KaspichaniaBoats.csproj", "{DA0756D1-BC0E-49B7-8B27-D451104A39E9}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GameOfPage", "GameOfPage\GameOfPage.csproj", "{11A3B1C8-BA55-47A5-90C4-3FB4291E8F6B}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -33,6 +35,10 @@ Global
 		{DA0756D1-BC0E-49B7-8B27-D451104A39E9}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{DA0756D1-BC0E-49B7-8B27-D451104A39E9}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{DA0756D1-BC0E-49B7-8B27-D451104A39E9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{11A3B1C8-BA55-47A5-90C4-3FB4291E8F6B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{11A3B1C8-BA55-47A5-90C4-3FB4291E8F6B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{11A3B1C8-BA55-47A5-90C4-3FB4291E8F6B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{11A3B1C8-BA55-47A5-90C4-3FB4291E8F6B}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
