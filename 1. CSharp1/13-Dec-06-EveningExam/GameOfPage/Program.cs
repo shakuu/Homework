@@ -38,47 +38,96 @@ namespace GameOfPage
 
                 //get input
                 PageSays = Console.ReadLine().ToLower();
+                //end if Page says paypal
+                if (PageSays == "paypal")
+                {
+                    Console.WriteLine("{0}", (float)iBoughtCookies * pricePerCookie);
+                    return;
+                }
                 PageSaysRow = int.Parse(Console.ReadLine());
                 PageSaysCol = int.Parse(Console.ReadLine());
+                
+                //check the tray
+                myReply = CheckTheTray(PageSaysRow, PageSaysCol, cookieTray);
 
-                switch (PageSays)
+                if (PageSays == "what is")
                 {
-                    case "paypal":
-                        Console.WriteLine("${0}", iBoughtCookies * pricePerCookie);
-                        return;
-                    case "what is":
-                        myReply = WhatIsInTheTray(PageSaysRow, PageSaysCol);
-                        break;
-                    case "buy":
-                        myReply = BuyACookie(PageSaysRow, PageSaysCol);
-                        break;
-                    default:
-                        myReply = "";
-                        break;
+                    if (myReply == "nothing")
+                    {
+                        Console.WriteLine("smile");
+                    }
+                    else
+                    {
+                        Console.WriteLine(myReply);
+                    }
                 }
-                Console.WriteLine(myReply);
+
+                if (PageSays=="buy")
+                {
+                    if (myReply=="nothing")
+                    {
+                        Console.WriteLine("smile");
+                    }
+                    else if ( myReply != "cookie")
+                    {
+                        Console.WriteLine("page");
+                    }
+                    else if ( myReply== "cookie")
+                    {
+                        iBoughtCookies++;
+                        cookieTray = TakeACookie(PageSaysRow, PageSaysCol, cookieTray); // take the cookie out of the tray
+                    }
+                }
             }
         }
 
-        public static string CheckTheTray(int currRow, int currCol, bool toBuy )
+        public static string CheckTheTray(int currRow, int currCol, List<char[]> theTray)
         {
             string currReply = "";
+            int crumbCounter = 0;
+
+            for ( int row = Math.Max(0, currRow-1); 
+                row< Math.Min(currRow+2, 16); row++)
+            {
+                for (int col = Math.Max(currCol-1, 0);
+                    col < Math.Min(currCol+2, 16); col ++)
+                {
+                    crumbCounter += theTray[row][col] - '0';
+                }
+            }
+
+            if ( crumbCounter==9)
+            {
+                currReply = "cookie";
+            }
+            else if ( crumbCounter == 1 && theTray[currRow][currCol] == '1')
+            {
+                currReply = "cookie crumb";
+            }
+            else if ( crumbCounter>0)
+            {
+                currReply = "broken cookie";
+            }
+            else
+            {
+                currReply = "nothing";
+            }
 
             return currReply;
         }
 
-        public static string WhatIsInTheTray(int currRow, int currCol)
+       public static List<char[]> TakeACookie(int takeFromRow, int takeFromCol, List<char[]> Tray)
         {
-            string currReply = "";
+            //guaranteed to be a full cookie
+            for ( int row = takeFromRow-1; row<= takeFromRow +1; row ++ )
+            {
+                for (int col = takeFromCol-1; col <= takeFromCol+1; col++)
+                {
+                    Tray[row][col] = '0';
+                }
+            }
 
-            return currReply;
-        }
-
-        public static string BuyACookie (int currRow, int currCol)
-        {
-            string currReply = "";
-
-            return currReply;
+            return Tray;
         }
     }
 }
