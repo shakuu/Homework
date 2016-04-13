@@ -1,22 +1,24 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace BiggestOf5IF
 {
-    class Program
+    class BiggestIFs
     {
         static void Main()
         {
-            double temp;
-            double MAX = double.MinValue;
-            for (int i = 0; i < 5; i++)
-            {
-                MAX =( temp = double.Parse(Console.ReadLine())) > MAX ?
-                    temp : MAX;
-            }
+            double temp2;
+            double temp1;
+            double MAX = ((temp1 = double.Parse(Console.ReadLine())))
+                > (temp2 = double.Parse(Console.ReadLine())) ?
+                temp1 : temp2;
+
+            MAX = (temp1 = double.Parse(Console.ReadLine())) > MAX ?
+                temp1 : MAX;
+            MAX = (temp1 = double.Parse(Console.ReadLine())) > MAX ?
+                    temp1 : MAX;
+            Console.WriteLine((temp1 = double.Parse(Console.ReadLine())) > MAX ?
+                    temp1 : MAX);
+
         }
     }
 }
