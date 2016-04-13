@@ -4,11 +4,11 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{6CF11EE8-A353-4B1D-8E3A-74755F4F0AA4}</ProjectGuid>
+    <ProjectGuid>{B1610452-EE95-4806-AB47-1C7556EECB08}</ProjectGuid>
     <OutputType>Exe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>CoffeeMachine1</RootNamespace>
-    <AssemblyName>CoffeeMachine1</AssemblyName>
+    <RootNamespace>DrunkenNumbers</RootNamespace>
+    <AssemblyName>DrunkenNumbers</AssemblyName>
     <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
@@ -43,7 +43,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="CoffeeMachine.cs" />
+    <Compile Include="DrunkenNumbers.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

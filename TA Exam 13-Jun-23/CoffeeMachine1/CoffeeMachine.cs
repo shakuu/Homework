@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 namespace CoffeeMachine1
 {
 
-    class Program
+    class CoffeeMachine
     {
         static void Main()
         {
