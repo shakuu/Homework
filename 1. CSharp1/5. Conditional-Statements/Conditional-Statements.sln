@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 14
-VisualStudioVersion = 14.0.24720.0
+VisualStudioVersion = 14.0.25123.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ExchangeNumbers", "ExchangeNumbers\ExchangeNumbers.csproj", "{7A7929FB-9E63-4CDF-B1AC-9BA3CE8B20A7}"
 EndProject
@@ -20,6 +20,8 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DigitAsWord", "DigitAsWord\DigitAsWord.csproj", "{D7331A86-CB77-4FFA-960B-AFADD8F1CC7E}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IntDoubleString", "IntDoubleString\IntDoubleString.csproj", "{71F80EA0-8472-46E8-AEE7-DBC4BB97CDC5}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BiggestOf5IF", "BiggestOf5IF\BiggestOf5IF.csproj", "{D1B7BB84-850E-49B0-80B6-7CDE85C3F1B8}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -63,6 +65,10 @@ Global
 		{71F80EA0-8472-46E8-AEE7-DBC4BB97CDC5}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{71F80EA0-8472-46E8-AEE7-DBC4BB97CDC5}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{71F80EA0-8472-46E8-AEE7-DBC4BB97CDC5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D1B7BB84-850E-49B0-80B6-7CDE85C3F1B8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D1B7BB84-850E-49B0-80B6-7CDE85C3F1B8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D1B7BB84-850E-49B0-80B6-7CDE85C3F1B8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D1B7BB84-850E-49B0-80B6-7CDE85C3F1B8}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

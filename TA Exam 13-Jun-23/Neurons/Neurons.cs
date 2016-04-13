@@ -35,7 +35,6 @@ namespace Neurons
                     }
                 }
                 // Console.WriteLine(Strings[i]);
-                
                 Console.WriteLine(Convert.ToInt64(Strings[i], 2));
             }
         }
