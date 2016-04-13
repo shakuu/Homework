@@ -6,32 +6,11 @@ using System.Threading.Tasks;
 
 namespace CoffeeMachine1
 {
-    class Coins
-    {
-        public double Value;
-        public int Available;
-
-        public Coins(double val, int amount)
-        {
-            this.Value = val;
-            this.Available = amount;
-        }
-    }
 
     class Program
     {
         static void Main()
         {
-
-            //Get Coins
-            //Coins[] machineWallet = new Coins[5];
-
-            //machineWallet[0] = new Coins(0.05, int.Parse(Console.ReadLine()));
-            //machineWallet[1] = new Coins(0.10, int.Parse(Console.ReadLine()));
-            //machineWallet[2] = new Coins(0.20, int.Parse(Console.ReadLine()));
-            //machineWallet[3] = new Coins(0.50, int.Parse(Console.ReadLine()));
-            //machineWallet[4] = new Coins(1.00, int.Parse(Console.ReadLine()));
-
             double machineWallet = 0;
             int amount = 0;
             for ( int i = 0; i< 5; i++)
@@ -63,9 +42,9 @@ namespace CoffeeMachine1
             double toPay = double.Parse(Console.ReadLine());
 
 
-            if ( devPayment> toPay )
+            if ( devPayment>= toPay )
             {
-                if ( machineWallet> (devPayment-toPay))
+                if ( machineWallet>= (devPayment-toPay))
                 {
                     Console.WriteLine("Yes {0:F2}",machineWallet-(  devPayment-toPay));
                 }
