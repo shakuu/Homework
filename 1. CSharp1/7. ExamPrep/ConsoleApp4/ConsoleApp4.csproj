@@ -4,11 +4,11 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{AC96988A-0206-41FC-83A4-D553B81DC0CB}</ProjectGuid>
+    <ProjectGuid>{B0FA7BE0-F3A8-4A81-9D76-D3D356A12B94}</ProjectGuid>
     <OutputType>Exe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>CubeArray</RootNamespace>
-    <AssemblyName>CubeArray</AssemblyName>
+    <RootNamespace>ConsoleApp4</RootNamespace>
+    <AssemblyName>ConsoleApp4</AssemblyName>
     <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
@@ -44,7 +44,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="CubeArray.cs" />
+    <Compile Include="ConsoleApp4.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

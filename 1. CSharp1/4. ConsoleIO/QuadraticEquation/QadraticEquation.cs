@@ -21,11 +21,11 @@ namespace QuadraticEquation
             if ( double.IsNaN(X1) && double.IsNaN(X2))
             { Console.WriteLine("no real roots"); }
             else if (!double.IsNaN(X1) && double.IsNaN(X2))
-            { Console.WriteLine(X1);  }
+            { Console.WriteLine(X1.ToString("0.00"));  }
             else if (double.IsNaN(X1) && !double.IsNaN(X2))
-            { Console.WriteLine(X2); }
+            { Console.WriteLine(X2.ToString("0.00")); }
             else if (!double.IsNaN(X1) && !double.IsNaN(X2) &&X1==X2)
-            { Console.WriteLine(X1); }
+            { Console.WriteLine(X1.ToString("0.00")); }
             else
             { Console.WriteLine("{0:F2}\n{1:F2}", Math.Min(X1, X2), Math.Max(X1, X2)); }
         }

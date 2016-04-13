@@ -49,8 +49,9 @@ namespace BitToBit
 
                 prevBit = currBit;
             }
-            Console.WriteLine(maxZeros);
+            
             Console.WriteLine(maxOnes);
+            Console.WriteLine(maxZeros);
         }
     }
 }
