@@ -15,13 +15,18 @@ namespace BullsCows
             int inputBulls = int.Parse(Console.ReadLine());
             int inputCows = int.Parse(Console.ReadLine());
 
+            if (inputBulls + inputCows > 4) { Console.WriteLine("No"); }
+            if (inputBulls == 4 && inputCows == 0) { Console.WriteLine(inputSecretNumber); }
+
             //vars
             int currBulls = 0;
             int currCows = 0;
             string counter = "1111";
             string currNumber = counter;
             string SecretNumber;
-            while ( counter != "9999")
+            int successfulPrints = 0;
+
+            while ( counter != "11111")
             {
                 SecretNumber = inputSecretNumber;
                 currNumber = counter;
@@ -44,19 +49,28 @@ namespace BullsCows
                 //test for Cows 
                 for (int i = 0+currBulls; i<4; i++)
                 {
-                    for (int p = 0+currBulls; p<4; p++)
+                    for (int p = 0+currBulls + currCows; p<4; p++)
                     {
-                        if (currNumber.Substring(i, 1) == SecretNumber.Substring(p, 1)
-                            && i!=p)
+                        if (currNumber.Substring(i, 1) == SecretNumber.Substring(p, 1) )
                         {
+                           
+                            SecretNumber = SecretNumber.Insert
+                                (currBulls + currCows, SecretNumber.Substring(p, 1));
+                            SecretNumber = SecretNumber.Remove(p + 1, 1);
                             currCows++;
+                            break;
                         }
                     }
                 }
 
                 if ( currBulls==inputBulls && currCows==inputCows)
                 {
-                    Console.Write(counter + " ");
+                    if (successfulPrints == 0)
+                    { Console.Write(counter); }
+                    else
+                    { Console.Write(" " + counter); }
+
+                    successfulPrints++;
                 }
 
                 //increment the number
@@ -68,6 +82,9 @@ namespace BullsCows
                     counter = counter.Remove(counter.IndexOf("0"), 1);
                 }
             }
+
+            if (successfulPrints==0)
+            { Console.WriteLine("No"); }
         }
     }
 }
