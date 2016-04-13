@@ -56,11 +56,17 @@ namespace BullsCows
 
                 if ( currBulls==inputBulls && currCows==inputCows)
                 {
-                    Console.Write(currNumber + " ");
+                    Console.Write(counter + " ");
                 }
 
                 //increment the number
-                currNumber =( int.Parse(currNumber) + 1).ToString();
+                counter =( int.Parse(counter) + 1).ToString();
+                //get rid of 0s
+                while(counter.Contains("0"))
+                {
+                    counter =counter.Insert(counter.IndexOf("0"), "1");
+                    counter = counter.Remove(counter.IndexOf("0"), 1);
+                }
             }
         }
     }
