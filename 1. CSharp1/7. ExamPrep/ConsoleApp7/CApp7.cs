@@ -24,7 +24,7 @@ namespace ConsoleApp7
                 }
                 else
                 {
-                    for ( int c = 0; c < currNumber.Length; c++)
+                    for (int c = 0; c < currNumber.Length; c++)
                     {
                         switch (currNumber[c])
                         {
@@ -48,10 +48,10 @@ namespace ConsoleApp7
                                 digits1[3]++; //[3] ->7s
                                 break;
                             case '8':
-                                digits1[0]+=3;
+                                digits1[0] += 3;
                                 break;
                             case '9':
-                                digits1[1]+=2;
+                                digits1[1] += 2;
                                 break;
                         }
                     }
@@ -83,7 +83,7 @@ namespace ConsoleApp7
                 }
                 else
                 {
-                    for(int c = 0; c < currNumber.Length; c++)
+                    for (int c = 0; c < currNumber.Length; c++)
                     {
                         switch (currNumber[c])
                         {
