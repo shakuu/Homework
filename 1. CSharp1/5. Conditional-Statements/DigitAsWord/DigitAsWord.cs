@@ -14,7 +14,9 @@ namespace DigitAsWord
             int digit;
             try
             {
+                //exception if input is a string
                 digit = int.Parse(Console.ReadLine());
+                //manually throw an exception if number is out of range
                 if (digit < 0 || digit > 9)
                 {
                     throw new FormatException();
