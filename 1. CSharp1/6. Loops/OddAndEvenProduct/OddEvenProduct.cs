@@ -12,7 +12,7 @@ namespace OddAndEvenProduct
         {
             int elementCount = int.Parse(Console.ReadLine());
             string elementsString = Console.ReadLine();
-            int oddSum = 1; int evenSum = 1;
+            long oddSum = 1; long evenSum = 1;
 
             string[] arrElements = elementsString.Split(' ');
 
@@ -20,11 +20,11 @@ namespace OddAndEvenProduct
             {
                 if (index%2!=0)
                 {
-                    evenSum *= Convert.ToInt32(arrElements[index]);
+                    evenSum *= Convert.ToInt64(arrElements[index]);
                 }
                 else
                 {
-                    oddSum *= Convert.ToInt32(arrElements[index]);
+                    oddSum *= Convert.ToInt64(arrElements[index]);
                 }
             }
 

@@ -3,6 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Numerics;
+
+//http://www.permadi.com/tutorial/numDecToHex/
 
 namespace DecimaltoHex
 {
@@ -10,30 +13,22 @@ namespace DecimaltoHex
     {
         static void Main()
         {
-            long input = long.Parse(Console.ReadLine());
+            BigInteger input = BigInteger.Parse(Console.ReadLine());
             string output = "";
 
             string hexDigits = "0 1 2 3 4 5 6 7 8 9 A B C D E F";
             string[] hexDigit = hexDigits.Split(' ');
 
-            long div = 16;
-
-            while (input > 15)
+            BigInteger div = 16;
+            BigInteger currIndex;
+            while (true)
             {
-                while (div*16 < input) //largest power of 16
-                {
-                    div *= 16;
-                } 
+                currIndex = input % div;
+                output = hexDigit[(int)currIndex] + output;
+                input /= div;
 
-                output += hexDigit[(input - (input % div)) / div].ToString();
-
-                input -= div *( (input - (input % div)) / div);
-                //reset div
-                div = 16;
+                if (input == 0) { break; }
             }
-
-            output += hexDigit[input].ToString();
-
             Console.WriteLine(output);
         }
     }
