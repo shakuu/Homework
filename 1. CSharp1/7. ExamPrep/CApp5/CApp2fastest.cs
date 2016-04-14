@@ -8,6 +8,8 @@ namespace ConsoleApp4
     {
         static void Main()
         {
+
+
             BigInteger RESULT = 1;
             bool isRunning = true;
             string currNumber = "";
@@ -36,7 +38,7 @@ namespace ConsoleApp4
                 {
                     if (currDigit != '0')
                     {
-                        digits[currDigit - '0']++;
+                    digits[currDigit - '0']++;
                     }
                 }
             }
@@ -62,7 +64,7 @@ namespace ConsoleApp4
                 {
                     if (currDigit != '0')
                     {
-                        digits2[currDigit - '0']++;
+                    digits2[currDigit - '0']++;
                     }
                 }
             }
@@ -73,7 +75,7 @@ namespace ConsoleApp4
                 RESULT10 = BigInteger.Multiply(RESULT10, BigInteger.Pow(i, digits2[i]));
             }
             Console.WriteLine(RESULT10);
-        } 
+        }  
+
     }
 }
-      

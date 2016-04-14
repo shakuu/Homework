@@ -64,7 +64,12 @@ namespace ConsoleApp2
                     {
                         if (currDigit != '0')
                         {
-                            digits2[currDigit - '0']++;
+                            if (currDigit == '4')
+                            { digits2[2] += 2; }
+                            else if ( currDigit=='8')
+                            { digits2[2] += 3; }
+                            else
+                            { digits2[currDigit - '0']++; }
                         }
                     }
                 }
