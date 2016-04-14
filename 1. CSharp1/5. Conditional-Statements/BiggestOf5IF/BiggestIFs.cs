@@ -8,7 +8,7 @@ namespace BiggestOf5IF
         {
             double temp2;
             double temp1;
-            double MAX = ((temp1 = double.Parse(Console.ReadLine())))
+            double MAX = (temp1 = double.Parse(Console.ReadLine()))
                 > (temp2 = double.Parse(Console.ReadLine())) ?
                 temp1 : temp2;
 
