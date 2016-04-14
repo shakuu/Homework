@@ -15,6 +15,10 @@ namespace DigitAsWord
             try
             {
                 digit = int.Parse(Console.ReadLine());
+                if (digit < 0 || digit > 9)
+                {
+                    throw new FormatException();
+                }
             }
             catch (System.FormatException)
             {
@@ -25,14 +29,8 @@ namespace DigitAsWord
             string digitsNames = "zero one two three four five six seven eight nine";
             string[] digits = digitsNames.Split(' ');
 
-            if ( digit < 0 || digit > 9)
-            {
-                Console.WriteLine("not a digit");
-            }
-            else
-            {
-                Console.WriteLine(digits[digit]);
-            }
+            Console.WriteLine(digits[digit]);
+
         }
     }
 }
