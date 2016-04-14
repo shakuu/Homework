@@ -20,10 +20,10 @@ namespace MMSA
             }
 
             //min max sum avrg
-            Console.WriteLine("{0,0:F2}", doubleNumbers.Min());
-            Console.WriteLine("{0,0:F2}", doubleNumbers.Max());
-            Console.WriteLine("{0,0:F2}", doubleNumbers.Sum());
-            Console.WriteLine("{0,0:F2}", doubleNumbers.Average());
+            Console.WriteLine("min={0,0:F2}", doubleNumbers.Min());
+            Console.WriteLine("max={0,0:F2}", doubleNumbers.Max());
+            Console.WriteLine("sum={0,0:F2}", doubleNumbers.Sum());
+            Console.WriteLine("avg={0,0:F2}", doubleNumbers.Average());
         }
     }
 }
