@@ -11,6 +11,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BullsCows", "BullsCows\Bull
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Neurons", "Neurons\Neurons.csproj", "{30727C79-B5D2-4894-974C-557624C0AB31}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FireInTheMatrix", "FireInTheMatrix\FireInTheMatrix.csproj", "{2E193963-7D6B-4EEE-B485-9D1BEAD9D14D}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -33,6 +35,10 @@ Global
 		{30727C79-B5D2-4894-974C-557624C0AB31}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{30727C79-B5D2-4894-974C-557624C0AB31}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{30727C79-B5D2-4894-974C-557624C0AB31}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2E193963-7D6B-4EEE-B485-9D1BEAD9D14D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2E193963-7D6B-4EEE-B485-9D1BEAD9D14D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2E193963-7D6B-4EEE-B485-9D1BEAD9D14D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2E193963-7D6B-4EEE-B485-9D1BEAD9D14D}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
