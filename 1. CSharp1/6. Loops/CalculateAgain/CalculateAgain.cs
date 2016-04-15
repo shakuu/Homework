@@ -10,21 +10,21 @@ namespace CalculateAgain
     {
         static void Main()
         {
-            uint numN = uint.Parse(Console.ReadLine());
-            uint numK = uint.Parse(Console.ReadLine());
-            ulong fact = numN;
-            uint div = numN-1;
+            decimal numN = decimal.Parse(Console.ReadLine());
+            decimal numK = decimal.Parse(Console.ReadLine());
+            decimal fact = numN;
+            decimal div = numN-1;
             unchecked
             {
                 
-                for (uint i = numN; i > numK+1 ; i--)
+                for (decimal i = numN; i > numK+1 ; i--)
                 {
                     fact *= div;
                     div--;
                 }
             }
 
-            Console.WriteLine(fact);
+            Console.WriteLine(fact.ToString("F0"));
         }
     }
 }

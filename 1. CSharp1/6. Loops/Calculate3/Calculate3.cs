@@ -10,10 +10,10 @@ namespace Calculate3
     {
         static void Main()
         {
-            double numbN = double.Parse(Console.ReadLine());
-            double numbK = double.Parse(Console.ReadLine());
+            decimal numbN = decimal.Parse(Console.ReadLine());
+            decimal numbK = decimal.Parse(Console.ReadLine());
 
-            double result = 1;
+            decimal result = 1;
 
             for (int i = 1; i < numbN - numbK + 1; i++)
             {
@@ -21,7 +21,7 @@ namespace Calculate3
                 result *= (i + (numbN - (numbN - numbK))) / i;
             }
 
-            Console.WriteLine(result);
+            Console.WriteLine(result.ToString("F0"));
         }
     }
 }
