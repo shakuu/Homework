@@ -15,13 +15,12 @@ namespace Calculate2
             
             double[] results = new double[numbN + 1];
             results[0] = 1;
-            
-            
+
                 for (int index = 1; index < numbN + 1; index++)
                 {
-
-                    results[index] =  results[index - 1] * (index / numbX);
-
+                    
+                    results[index] = results[index - 1] * (index / numbX);
+                    
                 }
             
             Console.WriteLine( "{0,0:f5}",  results.Sum());

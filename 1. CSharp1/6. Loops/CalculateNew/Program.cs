@@ -11,17 +11,15 @@ namespace CalculateNew
         static void Main()
         {
             int numN = int.Parse(Console.ReadLine());
-            decimal numX = decimal.Parse(Console.ReadLine());
+            double numX = double.Parse(Console.ReadLine());
 
-            long factorial = 1;
-            decimal powX = 1;
-            decimal Sum = 0;
+            int factorial = 1;
+            double Sum = 0;
 
             for ( int i = 1; i < numN +1; i++)
             {
                 factorial *= i;
-                powX *= numX;
-                Sum += factorial / powX;
+                Sum += factorial / Math.Pow(numX, i);
             }
 
             Console.WriteLine("{0:F5}", Sum + 1);
