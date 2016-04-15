@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-
+using System.Numerics;
 namespace Calculate2
 {
     class CalculateTrue
@@ -13,19 +13,30 @@ namespace Calculate2
             int numbN = int.Parse(Console.ReadLine());
             decimal numbX = decimal.Parse(Console.ReadLine());
 
-            decimal[] results = new decimal [numbN + 1];
-            results[0] = 1;
-
+            decimal[] resultsTop = new decimal [numbN + 1];
+            resultsTop[0] = 1;
+            decimal[] resultsBot = new decimal[numbN + 1];
+            resultsBot[0] = 1;
+            //ORIGNAL
             unchecked
             {
                 for (int index = 1; index < numbN + 1; index++)
                 {
-
-                    results[index] = results[index - 1] * index / numbX;
+                    resultsTop[index] = resultsTop[index - 1] * index;
+                    resultsBot[index] = resultsBot[index - 1] * numbX;
+                    // resultsTop[index] = resultsTop[index - 1] * index / numbX;
 
                 }
             }
-            Console.WriteLine("{0,0:f5}", results.Sum());
+
+            decimal endResult = 0;
+            for (int index = 0; index < numbN + 1; index++)
+            {
+                endResult += resultsTop[index] / resultsBot[index];
+                // resultsTop[index] = resultsTop[index - 1] * index / numbX;
+
+            }
+            Console.WriteLine("{0,0:f5}", endResult);
         }
     }
 }
