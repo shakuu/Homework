@@ -135,7 +135,7 @@ namespace FormulaBit1
             if (car5.isSuccessful)
             {
                 Console.WriteLine("{0} {1}",
-                    car5.stepsCount, car5.directionLog.Count - 1);
+                    car5.stepsCount, car5.directionLog.Count - 2);
             }
             else
             {
