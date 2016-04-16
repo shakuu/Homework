@@ -1,8 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace BullsCowsAgain
 {
@@ -41,13 +38,13 @@ namespace BullsCowsAgain
             {
                 secretNumber[i] = new Digits(secretNumberInput[i]);
             }
-            //bulls/ cows counters
+            //bulls/ cows Counters
             int currBulls; int currCows;
             // output no
             bool foundMatch = false;
             while (toGuess != "11111")
             {
-                //reset counters
+                //reset Counters
                 currBulls = 0;
                 currCows = 0;
                 //flag secret number to False
