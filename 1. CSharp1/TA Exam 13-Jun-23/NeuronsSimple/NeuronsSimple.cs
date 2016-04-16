@@ -4,7 +4,7 @@ using System.Linq;
 
 namespace NeuronsSimple
 {
-    class Program
+    class NeuronsSimple
     {
         static void Main()
         {
