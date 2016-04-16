@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Sort3nestedIFs
 {
-    class Program
+    class Sort3Nested
     {
         static void Main()
         {
@@ -14,11 +14,11 @@ namespace Sort3nestedIFs
             int numB = int.Parse(Console.ReadLine());
             int numC = int.Parse(Console.ReadLine());
 
-            if ( numA< numB)
+            if (numA < numB)
             {
-                if ( numA < numC)
+                if (numA < numC)
                 {
-                    Console.Write(numA+" ");
+                    Console.Write(numA + " ");
                     if (numB < numC)
                     {
                         Console.Write(numB + " " + numC);
@@ -31,10 +31,10 @@ namespace Sort3nestedIFs
             }
             else // b < A 
             {
-                if ( numB < numC)
+                if (numB < numC)
                 {
                     Console.Write(numB + " ");
-                    if ( numA < numC)
+                    if (numA < numC)
                     {
                         Console.Write(numA + " " + numC);
                     }
@@ -46,7 +46,7 @@ namespace Sort3nestedIFs
                 else //c < b
                 {
                     Console.Write(numC + " ");
-                    if ( numA < numB)
+                    if (numA < numB)
                     {
                         Console.Write(numA + " " + numB);
                     }
