@@ -10,7 +10,7 @@ namespace PrintADeck
     {
         static void Main()
         {
-            string playerCard = (Console.ReadLine()).ToUpper();
+            string playerCard = Console.ReadLine().ToUpper();
             //char playerCard = char.Parse((Console.ReadLine()).Substring(0,1));
 
             string allCards = "2 3 4 5 6 7 8 9 10 J Q K A";
