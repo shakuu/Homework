@@ -15,6 +15,7 @@ namespace FormulaBit1
             public int currRow = 0;
             public int currCol = 0;
             public int stepsCount = 1;
+            public bool changeDirection = false;
             public bool isSuccessful = false;
             public List<string> directionLog = new List<string>();
 
@@ -37,14 +38,14 @@ namespace FormulaBit1
         {
             //build the track
             string[] bitTrack = new string[8];
-            for (int row = 0; row< bitTrack.Length; row++)
+            for (int row = 0; row < bitTrack.Length; row++)
             {
                 bitTrack[row] = Convert.ToString(
                     int.Parse(Console.ReadLine()), 2).PadLeft(8, '0');
             }
             //start by moving South
             //@top right corner of the trach
-            Car car5 = new Car(0, bitTrack.Length-1); // seb vettel ftw
+            Car car5 = new Car(0, bitTrack.Length - 1); // seb vettel ftw
             car5.vSpeed = 1;
             car5.directionLog.Add("south");
             //check if starting position is 0
@@ -53,19 +54,33 @@ namespace FormulaBit1
                 Console.WriteLine("No {0}", car5.stepsCount);
             }
             //get moving
-            while(true)
+            while (true)
             {
+                //check if next position out of bounds
+                if (car5.currRow + car5.vSpeed < 0 ||
+                      car5.currRow + car5.vSpeed > bitTrack.Length - 1 ||
+                      car5.currCol + car5.hSpeed < 0 ||
+                      car5.currCol + car5.hSpeed > bitTrack.Length - 1)
+                {
+                    car5.changeDirection = true;
+                }
                 //check if the next step in the current direction is free ( == 0 )
-                if (bitTrack[car5.currRow+car5.vSpeed][
-                    car5.currCol+car5.hSpeed] == '0')
+                else if (bitTrack[car5.currRow + car5.vSpeed][
+                    car5.currCol + car5.hSpeed] == '0')
                 {
                     car5.currRow += car5.vSpeed;
                     car5.currCol += car5.hSpeed;
                     car5.stepsCount++;
-                } 
-                else //change direction of travel
+                    car5.changeDirection = false;
+                }
+                else
                 {
-                    switch(car5.directionLog[car5.directionLog.Count-1])
+                    car5.changeDirection = true;
+                }
+
+                if (car5.changeDirection == true) //change direction of travel
+                {
+                    switch (car5.directionLog[car5.directionLog.Count - 1])
                     {
                         case "south": //switch to west
                             car5.vSpeed = 0;
@@ -78,7 +93,7 @@ namespace FormulaBit1
                             car5.directionLog.Add("west");
                             break;
                         case "west": //switch check previous direction
-                            if (car5.directionLog[car5.directionLog.Count - 2] 
+                            if (car5.directionLog[car5.directionLog.Count - 2]
                                 == "south") //if south switch to north
                             {
                                 car5.vSpeed = -1;
@@ -91,7 +106,7 @@ namespace FormulaBit1
                                 car5.hSpeed = 0;
                                 car5.directionLog.Add("south");
                             }
-                                break;
+                            break;
                     }
                     //if new direction is not viable -> game over
                     if (bitTrack[car5.currRow + car5.vSpeed][
@@ -101,7 +116,7 @@ namespace FormulaBit1
                         break;
                     }
                     //if current position is exit = win 
-                    if (car5.currRow == 7 && car5.currCol=='0' )
+                    if (car5.currRow == 7 && car5.currCol == '0')
                     {
                         car5.isSuccessful = true;
                         break;
