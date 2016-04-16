@@ -14,7 +14,8 @@ namespace FormulaBit1
             public int hSpeed = 0;
             public int currRow = 0;
             public int currCol = 0;
-            public int stepsCount = 0;
+            public int stepsCount = 1;
+            public bool isSuccessful = false;
             public List<string> directionLog = new List<string>();
 
             public Car(int vPos, int hPos, int vSpd, int hSpd)
@@ -39,7 +40,7 @@ namespace FormulaBit1
             for (int row = 0; row< bitTrack.Length; row++)
             {
                 bitTrack[row] = Convert.ToString(
-                    int.Parse(Console.ReadLine()), 2);
+                    int.Parse(Console.ReadLine()), 2).PadLeft(8, '0');
             }
             //start by moving South
             //@top right corner of the trach
@@ -47,7 +48,7 @@ namespace FormulaBit1
             car5.vSpeed = 1;
             car5.directionLog.Add("south");
             //check if starting position is 0
-            if (bitTrack[car5.currRow][car5.currCol] != 0)
+            if (bitTrack[car5.currRow][car5.currCol] != '0')
             {
                 Console.WriteLine("No {0}", car5.stepsCount);
             }
@@ -56,7 +57,7 @@ namespace FormulaBit1
             {
                 //check if the next step in the current direction is free ( == 0 )
                 if (bitTrack[car5.currRow+car5.vSpeed][
-                    car5.currCol+car5.hSpeed] == 0)
+                    car5.currCol+car5.hSpeed] == '0')
                 {
                     car5.currRow += car5.vSpeed;
                     car5.currCol += car5.hSpeed;
@@ -64,7 +65,47 @@ namespace FormulaBit1
                 } 
                 else //change direction of travel
                 {
-
+                    switch(car5.directionLog[car5.directionLog.Count-1])
+                    {
+                        case "south": //switch to west
+                            car5.vSpeed = 0;
+                            car5.hSpeed = -1;
+                            car5.directionLog.Add("west");
+                            break;
+                        case "north": //switch to west
+                            car5.vSpeed = 0;
+                            car5.hSpeed = -1;
+                            car5.directionLog.Add("west");
+                            break;
+                        case "west": //switch check previous direction
+                            if (car5.directionLog[car5.directionLog.Count - 2] 
+                                == "south") //if south switch to north
+                            {
+                                car5.vSpeed = -1;
+                                car5.hSpeed = 0;
+                                car5.directionLog.Add("north");
+                            }
+                            else //else switch to south
+                            {
+                                car5.vSpeed = 1;
+                                car5.hSpeed = 0;
+                                car5.directionLog.Add("south");
+                            }
+                                break;
+                    }
+                    //if new direction is not viable -> game over
+                    if (bitTrack[car5.currRow + car5.vSpeed][
+                   car5.currCol + car5.hSpeed] != '0')
+                    {
+                        car5.isSuccessful = false;
+                        break;
+                    }
+                    //if current position is exit = win 
+                    if (car5.currRow == 7 && car5.currCol=='0' )
+                    {
+                        car5.isSuccessful = true;
+                        break;
+                    }
                 }
             }
         }
