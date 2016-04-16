@@ -17,7 +17,7 @@ namespace NextDate
             toPrint = DateTime.ParseExact(inputDateTime, "dd.MM.yyyy", null);
             toPrint = toPrint.AddDays(1);
 
-            Console.WriteLine(toPrint.ToString("d.MM.yyyy"));
+            Console.WriteLine(toPrint.ToString("d.M.yyyy"));
         }
     }
 }
