@@ -39,6 +39,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SheetsOfPaper", "SheetsOfPa
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SheetsWithBits", "SheetsWithBits\SheetsWithBits.csproj", "{B93A147E-A6A7-4935-8A98-979B27DD825D}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Carpets", "Carpets\Carpets.csproj", "{C3C615B8-F2A3-44DA-98BB-8819B75F6BAA}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -117,6 +119,10 @@ Global
 		{B93A147E-A6A7-4935-8A98-979B27DD825D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{B93A147E-A6A7-4935-8A98-979B27DD825D}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{B93A147E-A6A7-4935-8A98-979B27DD825D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C3C615B8-F2A3-44DA-98BB-8819B75F6BAA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C3C615B8-F2A3-44DA-98BB-8819B75F6BAA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C3C615B8-F2A3-44DA-98BB-8819B75F6BAA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C3C615B8-F2A3-44DA-98BB-8819B75F6BAA}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

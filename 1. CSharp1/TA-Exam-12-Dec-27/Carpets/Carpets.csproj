@@ -4,11 +4,11 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{B93A147E-A6A7-4935-8A98-979B27DD825D}</ProjectGuid>
+    <ProjectGuid>{C3C615B8-F2A3-44DA-98BB-8819B75F6BAA}</ProjectGuid>
     <OutputType>Exe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>SheetsWithBits</RootNamespace>
-    <AssemblyName>SheetsWithBits</AssemblyName>
+    <RootNamespace>Carpets</RootNamespace>
+    <AssemblyName>Carpets</AssemblyName>
     <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
@@ -43,7 +43,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="SheetsWithBits.cs" />
+    <Compile Include="Carpets.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
