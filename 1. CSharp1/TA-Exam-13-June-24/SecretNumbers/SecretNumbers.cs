@@ -1,8 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Numerics;
 
 namespace SecretNumbers
@@ -23,20 +19,20 @@ namespace SecretNumbers
                     Convert.ToInt32(inputN.Substring(inputN.Length - currIndex, 1))
                     * currIndex * currIndex;
                 //Even
-                if (inputN.Length- currIndex - 1 >= 0)
+                if (inputN.Length - currIndex - 1 >= 0)
                 {
                     specialSum +=
                         Convert.ToInt32(inputN.Substring(
-                            inputN.Length - currIndex - 1 , 1))
+                            inputN.Length - currIndex - 1, 1))
                         * Convert.ToInt32(inputN.Substring(
-                            inputN.Length - currIndex - 1 , 1))
-                        * (currIndex +1) ;
+                            inputN.Length - currIndex - 1, 1))
+                        * (currIndex + 1);
                 }
             }
 
             //secretsequence
             BigInteger sequenceLength = 0;
-            BigInteger.DivRem( specialSum,  10, out sequenceLength);
+            BigInteger.DivRem(specialSum, 10, out sequenceLength);
 
             BigInteger startLetter = 0;
             BigInteger.DivRem(specialSum, 26, out startLetter);
@@ -46,9 +42,9 @@ namespace SecretNumbers
 
             for (int curLetter = 0; curLetter < sequenceLength; curLetter++)
             {
-                secretSequence += (char) ('A' + startLetter);
+                secretSequence += (char)('A' + startLetter);
                 startLetter++;
-                if (startLetter>25)
+                if (startLetter > 25)
                 {
                     startLetter = 0; // start from A
                 }
