@@ -58,7 +58,13 @@ namespace FormulaBit1
             //get moving
             while (true)
             {
-               
+                //if current position is exit = win 
+                if (car5.currRow == 7 && car5.currCol == 0)
+                {
+                    car5.isSuccessful = true;
+                    break;
+                }
+
                 //check if next position out of bounds
                 if (car5.currRow + car5.vSpeed < 0 ||
                       car5.currRow + car5.vSpeed > bitTrack.Length - 1 ||
@@ -122,13 +128,6 @@ namespace FormulaBit1
                                 car5.stepsBetweenDirectionChange.Add(car5.stepsCount);
                             }
                             break;
-                    }
-                   
-                    //if current position is exit = win 
-                    if (car5.currRow == 7 && car5.currCol == 0)
-                    {
-                        car5.isSuccessful = true;
-                        break;
                     }
                 }
             }
