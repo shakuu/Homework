@@ -37,6 +37,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FallingRocks4", "..\4. Cons
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SheetsOfPaper", "SheetsOfPaper\SheetsOfPaper.csproj", "{4AF7E173-7FC4-4755-ACF7-C7D61D3E9765}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SheetsWithBits", "SheetsWithBits\SheetsWithBits.csproj", "{B93A147E-A6A7-4935-8A98-979B27DD825D}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -111,6 +113,10 @@ Global
 		{4AF7E173-7FC4-4755-ACF7-C7D61D3E9765}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{4AF7E173-7FC4-4755-ACF7-C7D61D3E9765}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{4AF7E173-7FC4-4755-ACF7-C7D61D3E9765}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B93A147E-A6A7-4935-8A98-979B27DD825D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B93A147E-A6A7-4935-8A98-979B27DD825D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B93A147E-A6A7-4935-8A98-979B27DD825D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B93A147E-A6A7-4935-8A98-979B27DD825D}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

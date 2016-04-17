@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace SheetsOfPaper
 {
-    class Program
+    class SheetsOfPaper
     {
         class SheetSizes
         {
