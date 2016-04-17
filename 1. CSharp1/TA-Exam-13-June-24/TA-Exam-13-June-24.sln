@@ -5,6 +5,10 @@ VisualStudioVersion = 14.0.25123.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Garden", "Garden\Garden.csproj", "{43F89C94-E62A-484C-A397-A0107082C4E9}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Enumerable", "Enumerable\Enumerable.csproj", "{1E4EDF26-56F7-444B-92B8-FD6627CD58A2}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SecretNumbers", "SecretNumbers\SecretNumbers.csproj", "{6B684E67-4D9D-447E-8FCB-F73CE9DF780C}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +19,14 @@ Global
 		{43F89C94-E62A-484C-A397-A0107082C4E9}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{43F89C94-E62A-484C-A397-A0107082C4E9}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{43F89C94-E62A-484C-A397-A0107082C4E9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1E4EDF26-56F7-444B-92B8-FD6627CD58A2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1E4EDF26-56F7-444B-92B8-FD6627CD58A2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1E4EDF26-56F7-444B-92B8-FD6627CD58A2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1E4EDF26-56F7-444B-92B8-FD6627CD58A2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6B684E67-4D9D-447E-8FCB-F73CE9DF780C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6B684E67-4D9D-447E-8FCB-F73CE9DF780C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6B684E67-4D9D-447E-8FCB-F73CE9DF780C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6B684E67-4D9D-447E-8FCB-F73CE9DF780C}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
