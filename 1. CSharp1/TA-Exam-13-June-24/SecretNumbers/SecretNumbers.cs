@@ -23,7 +23,7 @@ namespace SecretNumbers
                     Convert.ToInt32(inputN.Substring(inputN.Length - currIndex, 1))
                     * currIndex * currIndex;
                 //Even
-                if (currIndex - 1 >= 0)
+                if (inputN.Length- currIndex - 1 >= 0)
                 {
                     specialSum +=
                         Convert.ToInt32(inputN.Substring(
@@ -32,6 +32,38 @@ namespace SecretNumbers
                             inputN.Length - currIndex - 1 , 1))
                         * (currIndex +1) ;
                 }
+            }
+
+            //secretsequence
+            BigInteger sequenceLength = 0;
+            BigInteger.DivRem( specialSum,  10, out sequenceLength);
+
+            BigInteger startLetter = 0;
+            BigInteger.DivRem(specialSum, 26, out startLetter);
+            //startLetter++;
+
+            string secretSequence = "";
+
+            for (int curLetter = 0; curLetter < sequenceLength; curLetter++)
+            {
+                secretSequence += (char) ('A' + startLetter);
+                startLetter++;
+                if (startLetter>25)
+                {
+                    startLetter = 0; // start from A
+                }
+            }
+
+            //output
+            Console.WriteLine(specialSum);
+            if (sequenceLength > 0)
+            {
+                Console.WriteLine(secretSequence);
+            }
+            else
+            {
+                Console.WriteLine(inputN + " " +
+                    "has no secret alpha-sequence");
             }
         }
     }
