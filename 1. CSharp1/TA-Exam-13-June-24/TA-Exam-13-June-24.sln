@@ -11,6 +11,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SecretNumbers", "SecretNumb
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CardWars", "CardWars\CardWars.csproj", "{727B69E8-AD5C-461C-8DCF-9728C28887BB}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CardWars2", "CardWars2\CardWars2.csproj", "{8059A10C-1FC1-43E2-9D7A-B1A26DF06F7F}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -33,6 +35,10 @@ Global
 		{727B69E8-AD5C-461C-8DCF-9728C28887BB}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{727B69E8-AD5C-461C-8DCF-9728C28887BB}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{727B69E8-AD5C-461C-8DCF-9728C28887BB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8059A10C-1FC1-43E2-9D7A-B1A26DF06F7F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8059A10C-1FC1-43E2-9D7A-B1A26DF06F7F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8059A10C-1FC1-43E2-9D7A-B1A26DF06F7F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8059A10C-1FC1-43E2-9D7A-B1A26DF06F7F}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
