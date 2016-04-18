@@ -9,6 +9,8 @@ namespace SecretNumbers
         {
             //input StringN
             string inputN = Console.ReadLine();
+            //replace - with 0 // sign does not matter
+            inputN = inputN.Replace('-', '0');
 
             //special sum right to left - last element odd, next to last even
             BigInteger specialSum = 0;
