@@ -43,6 +43,7 @@ namespace SecretNumbers
             for (int curLetter = 0; curLetter < sequenceLength; curLetter++)
             {
                 secretSequence += (char)('A' + startLetter);
+
                 startLetter++;
                 if (startLetter > 25)
                 {
