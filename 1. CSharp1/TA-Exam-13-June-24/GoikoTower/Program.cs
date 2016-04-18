@@ -19,8 +19,7 @@ namespace GoikoTower
                     theTower[row, col] = '.';
                 }
             }
-
-            int currBeamRow = 1;
+            
             //build tower
             for (int row = 0; row < towerH; row++)
             {
