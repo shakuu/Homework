@@ -1,8 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Numerics;
 
 namespace CardWars
@@ -15,7 +12,6 @@ namespace CardWars
             public BigInteger score = 0;
             public int gamesWon = 0;
             public int zCounter = 0;
-            //public 
             public bool hasX = false;
             public string currCard = "";
         }
@@ -109,7 +105,8 @@ namespace CardWars
                     Console.WriteLine("X card drawn! Player two wins the match!");
                     return;
                 }
-                else if (Pesho.currHand > Gosho.currHand)
+                //test
+                if (Pesho.currHand > Gosho.currHand)
                 {
                     Pesho.gamesWon++;
                     Pesho.score += Pesho.currHand;
