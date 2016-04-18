@@ -2,7 +2,7 @@
 
 namespace GoikoTower
 {
-    class Program
+    class GoikoTower
     {
         static void Main()
         {

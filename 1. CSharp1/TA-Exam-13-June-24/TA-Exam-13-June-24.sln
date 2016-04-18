@@ -15,6 +15,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CardWars2", "CardWars2\Card
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GoikoTower", "GoikoTower\GoikoTower.csproj", "{D252791F-21D0-4012-954A-28E897CF51F2}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BitTris", "BitTris\BitTris.csproj", "{49B654DE-6772-4F69-AFF2-F7FE6898B624}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -45,6 +47,10 @@ Global
 		{D252791F-21D0-4012-954A-28E897CF51F2}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{D252791F-21D0-4012-954A-28E897CF51F2}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{D252791F-21D0-4012-954A-28E897CF51F2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{49B654DE-6772-4F69-AFF2-F7FE6898B624}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{49B654DE-6772-4F69-AFF2-F7FE6898B624}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{49B654DE-6772-4F69-AFF2-F7FE6898B624}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{49B654DE-6772-4F69-AFF2-F7FE6898B624}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
