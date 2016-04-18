@@ -43,12 +43,12 @@ namespace CardWars
             for (int round = 0; round < matchLength; round++)
             {
                 //reset
-                Pesho.zCounter = 0;Pesho.hasX = false;
-                Gosho.zCounter = 0;Gosho.hasX = false;
+                Pesho.zCounter = 0;Pesho.hasX = false; Pesho.currHand = 0;
+                Gosho.zCounter = 0;Gosho.hasX = false;Gosho.currHand = 0;
                 //Pesho goes 1st
                 for (int i = 0; i < 3; i++)
                 {
-                    Pesho.currCard = Console.ReadLine();
+                    Pesho.currCard = Console.ReadLine().ToUpper();
                     if (Pesho.currCard == "X")
                     {
                         Pesho.hasX = true;
@@ -65,7 +65,7 @@ namespace CardWars
                 //Gosho 2nd
                 for (int i = 0; i < 3; i++)
                 {
-                    Gosho.currCard = Console.ReadLine();
+                    Gosho.currCard = Console.ReadLine().ToUpper();
                     if (Gosho.currCard == "X")
                     {
                         Gosho.hasX = true;
@@ -117,12 +117,12 @@ namespace CardWars
             //get winner and print
             if (Pesho.score>Gosho.score)
             {
-                Console.WriteLine("First player wins!\nScore: {0}\nGames Won: {1}",
+                Console.WriteLine("First player wins!\nScore: {0}\nGames won: {1}",
                     Pesho.score, Pesho.gamesWon);
             }
             else if(Pesho.score<Gosho.score)
             {
-                Console.WriteLine("Second player wins!\nScore: {0}\nGames Won: {1}",
+                Console.WriteLine("Second player wins!\nScore: {0}\nGames won: {1}",
                     Gosho.score, Gosho.gamesWon);
             }
             else if (Pesho.score==Gosho.score)
