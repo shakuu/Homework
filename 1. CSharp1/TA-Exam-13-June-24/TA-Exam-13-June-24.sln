@@ -13,6 +13,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CardWars", "CardWars\CardWa
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CardWars2", "CardWars2\CardWars2.csproj", "{8059A10C-1FC1-43E2-9D7A-B1A26DF06F7F}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GoikoTower", "GoikoTower\GoikoTower.csproj", "{D252791F-21D0-4012-954A-28E897CF51F2}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -39,6 +41,10 @@ Global
 		{8059A10C-1FC1-43E2-9D7A-B1A26DF06F7F}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{8059A10C-1FC1-43E2-9D7A-B1A26DF06F7F}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{8059A10C-1FC1-43E2-9D7A-B1A26DF06F7F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D252791F-21D0-4012-954A-28E897CF51F2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D252791F-21D0-4012-954A-28E897CF51F2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D252791F-21D0-4012-954A-28E897CF51F2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D252791F-21D0-4012-954A-28E897CF51F2}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
