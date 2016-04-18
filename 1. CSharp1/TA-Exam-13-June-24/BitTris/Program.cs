@@ -67,26 +67,26 @@ namespace BitTris
 						case "L":
 							if (currShape.IndexOf("1") - 1 >= 0)
 							{
-								if (playField[input, currShape.IndexOf("1") - 1] != '1')
+								if (playField[rowCurrPiece, currShape.IndexOf("1") - 1] != '1')
 								{
 									
-									playField[input - 1, currShape.LastIndexOf('1')] = '0';
+									playField[rowCurrPiece, currShape.LastIndexOf('1')] = '0';
 									currShape = currShape.Remove(0, 1);
 									currShape = currShape.PadRight(8, '0');
-									playField = PrintInMatrix(input- 1, currShape, playField);
+									playField = PrintInMatrix(rowCurrPiece, currShape, playField);
 								}
 							}
 							break;
 						case "R":
 							if (currShape.LastIndexOf("1") + 1 <= 7)
 							{
-								if (playField[input, currShape.LastIndexOf("1") + 1] != '1')
+								if (playField[rowCurrPiece, currShape.LastIndexOf("1") + 1] != '1')
 								{
 									// TODO REPRINT CURRENT ROW AFTER SHIFT
-									playField[input - 1, currShape.IndexOf('1')] = '0';
+									playField[rowCurrPiece, currShape.IndexOf('1')] = '0';
 									currShape = currShape.Remove(7, 1);
 									currShape = currShape.PadLeft(8, '0');
-									playField = PrintInMatrix(input-1, currShape, playField);
+									playField = PrintInMatrix(rowCurrPiece, currShape, playField);
 								}
 							}
 							break;
@@ -116,13 +116,13 @@ namespace BitTris
 					}
 					else
 					{
-						break;
+						//break;
 					}
 				}
 
 				//TODO SCORE
 				bool fullRowOfOnes = true;
-				for (int col = 0; col < 7; col++)
+				for (int col = 0; col < 8; col++)
 				{
 					if (playField[rowCurrPiece, col] == '0')
 					{
@@ -132,7 +132,7 @@ namespace BitTris
 				if(fullRowOfOnes)
 				{
 					Score += 10 * currPieceOnes;
-					for (int col = 0; col < 7; col ++)
+					for (int col = 0; col < 8; col ++)
 					{
 						playField[rowCurrPiece, col] = '0';
 					}
@@ -162,7 +162,7 @@ namespace BitTris
 
 		static char[,] PrintInMatrix(int Row, string toPrint, char[,] Matrix)
 		{
-			for (int col = 0; col < 7; col++)
+			for (int col = 0; col < 8; col++)
 			{
 				if (toPrint[col] == '1')
 				{
