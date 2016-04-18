@@ -17,6 +17,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GoikoTower", "GoikoTower\Go
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BitTris", "BitTris\BitTris.csproj", "{49B654DE-6772-4F69-AFF2-F7FE6898B624}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "B1TrisTheGame", "B1TrisTheGame\B1TrisTheGame.csproj", "{2D5605F1-BD12-490F-AE59-73EBCFE12EA8}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -51,6 +53,10 @@ Global
 		{49B654DE-6772-4F69-AFF2-F7FE6898B624}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{49B654DE-6772-4F69-AFF2-F7FE6898B624}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{49B654DE-6772-4F69-AFF2-F7FE6898B624}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2D5605F1-BD12-490F-AE59-73EBCFE12EA8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2D5605F1-BD12-490F-AE59-73EBCFE12EA8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2D5605F1-BD12-490F-AE59-73EBCFE12EA8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2D5605F1-BD12-490F-AE59-73EBCFE12EA8}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
