@@ -1,6 +1,6 @@
 * {
     box-sizing: border-box;
-    font-size: 12px;
+    font-size: 10px;
     font-family: sans-serif;
 }
 .grid-container {
@@ -38,7 +38,7 @@
     width: 24%;
 }
 .col-5 {
-    width: 30%;
+    width: 20%;
 }
 .col-6 {
     width: 100%;
