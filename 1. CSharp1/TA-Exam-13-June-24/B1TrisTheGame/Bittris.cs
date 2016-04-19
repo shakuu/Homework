@@ -77,7 +77,7 @@ namespace B1TrisTheGame
                     //adjust speed and stay in play area
                     for (int speed = -this.hSpeed; speed >= 0; speed--)
                     {
-                        if (this.posCol -speed >1)
+                        if (this.posCol -speed >2)
                         { this.hSpeed = -speed; break; }
                     }
 
@@ -97,7 +97,7 @@ namespace B1TrisTheGame
                 {
                     for (int speed = this.hSpeed; speed >= 0; speed--)
                     {
-                        if ( this.posCol+this.stringLength+speed < Area.Width-1)
+                        if ( this.posCol+this.stringLength+speed < Area.Width-2)
                         { this.hSpeed = speed; break; }
                     }
 
@@ -268,6 +268,35 @@ namespace B1TrisTheGame
                 return existingPieces;
             }
             //TODO inside
+            public int FullRow(List<Pieces> existingPieces)
+            {
+                int Score = 0;
+                int totalWidth = 0;
+                
+                foreach (Pieces piece in existingPieces)
+                {
+                    if (piece.posRow == this.posRow) //step 1 - > same row
+                    {
+                        //step 2 cannot contain 0s
+                        if ( !piece.toPrint.Contains('0'))
+                        {
+                            totalWidth += piece.toPrint.Length;
+                            Score += piece.Score;
+                        }
+                    }
+                }
+
+                //TODO REMOVE ROW, SHIFT OTHER PIECES
+                if(totalWidth == 30-6) //player area width - borders
+                {
+                    Console.WriteLine("YES");
+                    Thread.Sleep(2000);
+                    Score *= 5;
+                }
+
+                return Score;
+            }
+            //TODO inside
             public void PrintMe()
             {
                 //TODO INSERT COLOR
@@ -307,7 +336,7 @@ namespace B1TrisTheGame
             Console.BufferWidth = Console.WindowWidth = playArea.CanvasWidth;
             Console.BufferHeight = Console.WindowHeight = playArea.CanvasHeight;
 
-            Console.Title = "B1tTris The Game";
+            Console.Title = "B1tTris: The Game";
 
             Console.BackgroundColor = ConsoleColor.Black;
             Console.CursorVisible = false;
@@ -329,7 +358,7 @@ namespace B1TrisTheGame
             while (appIsRunning)
             {
                 //Create a new Shape
-                player1.activePiece = new Pieces(mainRandomizer.Next(0, 31));
+                player1.activePiece = new Pieces(mainRandomizer.Next(3, 3));
                 //allign the new piece to the middle of the area
                 player1.activePiece.posCol = (playArea.Width - player1.activePiece.stringLength) / 2;
                 //MAIN
@@ -377,6 +406,8 @@ namespace B1TrisTheGame
 
                     if (!player1.activePiece.isMoving)
                     {
+                        //score
+                        player1.Score += player1.activePiece.Score;
                         //GAME OVER
                         if(player1.activePiece.posRow==0)
                         {
@@ -385,7 +416,9 @@ namespace B1TrisTheGame
 
                         staticPieces = player1.activePiece.CleanUp(staticPieces);
                         staticPieces.Add(player1.activePiece);
-                       
+                        //full row
+                        player1.Score += player1.activePiece.FullRow(staticPieces); 
+
                         //remove hidden blocks
                         for (int i = 0; i < staticPieces.Count; i++)
                         {
@@ -396,7 +429,6 @@ namespace B1TrisTheGame
                             }
                         }
                     }
-
                     //INSERT PRINT FINCTION
                     Console.Clear();
 
@@ -408,7 +440,7 @@ namespace B1TrisTheGame
                 // Thread.Sleep(appSpeed);
             }
 
-            Console.WriteLine("game over");
+            Console.WriteLine("game over" + player1.Score);
             Console.ReadLine();
         }
     }
