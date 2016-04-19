@@ -22,8 +22,8 @@ namespace B1TrisTheGame
 
             public PlayerArea()
             {
-                this.CanvasWidth = 36;
-                this.CanvasHeight = 30;
+                this.CanvasWidth = 30;
+                this.CanvasHeight = 24;
 
                 this.Width = this.CanvasWidth * 1;
                 this.Height = this.CanvasHeight * 5 / 6;
@@ -45,6 +45,7 @@ namespace B1TrisTheGame
             public int Score;
             public ConsoleColor Color;
             public bool isMoving = true;
+            public bool isVisible = true;
 
             public Pieces(int rndNumber)
             {
@@ -61,7 +62,7 @@ namespace B1TrisTheGame
                 { if (digit == '1') { this.Score++; } }
 
             }
-            
+
             //TODO inside
             public bool CheckSides(Pieces currElement, List<Pieces> existingPieces)
             {
@@ -102,15 +103,11 @@ namespace B1TrisTheGame
                 }
                 return result;
             }
-            //TODO inside
+            //TODO - DONE
             public bool CheckRowBelow(List<Pieces> existingPieces, PlayerArea Area)
             {
-                //THIS IS BROKEN elements stick to the row above
-                //TODO: 0 moves THROUGH 0, detailed check ! 
-                /////////////////////////////////////////////////////
-
+                //working
                 bool isFree = true;
-
                 //check if out of bounds
                 if (this.posRow + 1 > Area.Height)
                 {
@@ -129,8 +126,8 @@ namespace B1TrisTheGame
                         if (piece.posRow == this.posRow + 1)
                         {
                             //step2 check if they intersect
-                            if(Enumerable.Range(longerString.posCol, longerString.stringLength-1).Contains(shorterString.posCol)
-                                || Enumerable.Range(longerString.posCol, longerString.stringLength-1).Contains(shorterString.posCol + shorterString.stringLength-1))
+                            if (Enumerable.Range(longerString.posCol, longerString.stringLength - 1).Contains(shorterString.posCol)
+                                || Enumerable.Range(longerString.posCol, longerString.stringLength - 1).Contains(shorterString.posCol + shorterString.stringLength - 1))
                             {
                                 Pieces higherCol = piece.posCol >= this.posCol ?
                                     piece : this;
@@ -139,28 +136,105 @@ namespace B1TrisTheGame
                                 int StartPosition = higherCol.posCol - lowerCol.posCol;
                                 //step 3 check each bit
                                 for (int col = 0;
-                                    col < Math.Min(lowerCol.stringLength-StartPosition, 
+                                    col < Math.Min(lowerCol.stringLength - StartPosition,
                                     shorterString.stringLength); col++)
                                 {
-                                    if ( higherCol.toPrint[col] == '1'
-                                        && lowerCol.toPrint[higherCol.posCol- lowerCol.posCol+col] == '1')
+                                    if (higherCol.toPrint[col] == '1'
+                                        && lowerCol.toPrint[higherCol.posCol - lowerCol.posCol + col] == '1')
                                     {
                                         isFree = false;
                                     }
                                 }
-                               
                             }
                         }
                     }
                 }
                 return isFree;
             }
+            //TODO -> somethings not rihgt
+            public List<Pieces> CleanUp(List<Pieces> existingPieces)
+            {
+
+                string toReplace = "";
+
+                foreach (Pieces piece in existingPieces)
+                {
+                    Pieces longerString = piece.stringLength >= this.stringLength ?
+                        piece : this;
+                    Pieces shorterString = piece.stringLength < this.stringLength ?
+                        piece : this;
+
+                    //step1 check if they are on the same row
+                    if (piece.posRow == this.posRow)
+                    {
+                        //step2 check if they intersect
+                        if (Enumerable.Range(longerString.posCol, longerString.stringLength - 1).Contains(shorterString.posCol)
+                            || Enumerable.Range(longerString.posCol, longerString.stringLength - 1).Contains(shorterString.posCol + shorterString.stringLength - 1))
+                        {
+                            Pieces higherCol = piece.posCol >= this.posCol ?
+                                piece : this;
+                            Pieces lowerCol = piece.posCol < this.posCol ?
+                                piece : this;
+                            int StartPosition = higherCol.posCol - lowerCol.posCol;
+                            toReplace = "";
+                            //step 3 build a the strings
+                            for (int col = 0;
+                                col < Math.Min(lowerCol.stringLength - StartPosition,
+                                shorterString.stringLength); col++)
+                            {
+
+                                if (higherCol.toPrint[col] == '1'
+                                    || lowerCol.toPrint[higherCol.posCol - lowerCol.posCol + col] == '1')
+                                {
+                                    toReplace += "1";
+                                }
+                                else
+                                {
+                                    toReplace += "0";
+                                }
+                            }
+
+                            lowerCol.toPrint = lowerCol.toPrint.Insert(
+                                higherCol.posCol - lowerCol.posCol, toReplace);
+                            lowerCol.toPrint = lowerCol.toPrint.Remove(
+                                 higherCol.posCol - lowerCol.posCol + toReplace.Length,
+                                 toReplace.Length);
+
+                            //get the tail if higherCol.ToPrint is longer
+                            if (higherCol.posCol+higherCol.stringLength >=
+                                lowerCol.posCol+lowerCol.stringLength)
+                            {
+                                int offset =( higherCol.posCol + higherCol.stringLength) -
+                                  ( lowerCol.posCol + lowerCol.stringLength);
+
+                                lowerCol.toPrint += higherCol.toPrint.Substring(
+                                  higherCol.toPrint.Length - offset, offset);
+                            }
+                            lowerCol.stringLength = lowerCol.toPrint.Length;
+                            //step four add new one, make old ones invisible
+                            if ( higherCol != lowerCol)
+                            {
+                                higherCol.isVisible = false;
+                            }
+
+
+                        }
+                    }
+                }
+
+
+
+                return existingPieces;
+            }
             //TODO inside
             public void PrintMe()
             {
                 //TODO INSERT COLOR
-                Console.SetCursorPosition(this.posCol, this.posRow);
-                Console.Write(this.toPrint);
+                if (isVisible)
+                {
+                    Console.SetCursorPosition(this.posCol, this.posRow);
+                    Console.Write(this.toPrint);
+                }
             }
         }
 
@@ -255,12 +329,22 @@ namespace B1TrisTheGame
                     //INSERT PRINT FINCTION
                     Console.Clear();
                     player1.activePiece.PrintMe();
-                    foreach(Pieces piece in staticPieces) { piece.PrintMe(); }
-                    
+                    foreach (Pieces piece in staticPieces) { piece.PrintMe(); }
+
                     Thread.Sleep(appSpeed);
                 }
 
                 staticPieces.Add(player1.activePiece);
+                staticPieces= player1.activePiece.CleanUp(staticPieces);
+                //remove hidden blocks
+                for (int i = 0; i < staticPieces.Count; i++)
+                {
+                    if (!staticPieces[i].isVisible)
+                    {
+                        staticPieces.Remove(staticPieces[i]);
+                        i--;
+                    }
+                }
 
                 Thread.Sleep(appSpeed);
             }
