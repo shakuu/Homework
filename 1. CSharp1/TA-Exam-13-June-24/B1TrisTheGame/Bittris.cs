@@ -104,6 +104,7 @@ namespace B1TrisTheGame
             //TODO inside
             public bool CheckRowBelow(List<Pieces> existingPieces, PlayerArea Area)
             {
+                //THIS IS BROKEN elements stick to the row above
                 //TODO: 0 moves THROUGH 0, detailed check ! 
                 /////////////////////////////////////////////////////
 
@@ -120,6 +121,7 @@ namespace B1TrisTheGame
                     {
                         if (piece.posRow == this.posRow + 1)
                         {
+                            // this is BROKEN -> always true 
                             if (piece.posCol + piece.stringLength >= this.posCol
                                 || piece.posCol <= this.posCol + this.stringLength)
                             {
@@ -130,7 +132,7 @@ namespace B1TrisTheGame
                 }
                 return isFree;
             }
-
+            //TODO inside
             public void PrintMe()
             {
                 //TODO INSERT COLOR
