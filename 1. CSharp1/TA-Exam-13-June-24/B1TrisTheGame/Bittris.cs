@@ -23,7 +23,7 @@ namespace B1TrisTheGame
             public PlayerArea()
             {
                 this.CanvasWidth = 36;
-                this.CanvasHeight = 36;
+                this.CanvasHeight = 30;
 
                 this.Width = this.CanvasWidth * 1;
                 this.Height = this.CanvasHeight * 5 / 6;
@@ -54,6 +54,7 @@ namespace B1TrisTheGame
                     Substring(24, 8); // conver to binary
                 this.toPrint = this.toPrint.TrimStart('0');
                 this.toPrint = this.toPrint.TrimEnd('0');
+                this.stringLength = this.toPrint.Length;
 
                 //get score ( number of ones )
                 foreach (char digit in this.toPrint)
@@ -119,11 +120,17 @@ namespace B1TrisTheGame
                 {
                     foreach (Pieces piece in existingPieces)
                     {
+                        Pieces longerString = piece.stringLength >= this.stringLength ?
+                            piece : this;
+                        Pieces shorterString = piece.stringLength < this.stringLength ?
+                            piece : this;
+
+                        //step1 check if they are on the same row
                         if (piece.posRow == this.posRow + 1)
                         {
-                            // this is BROKEN -> always true 
-                            if (piece.posCol + piece.stringLength >= this.posCol
-                                || piece.posCol <= this.posCol + this.stringLength)
+                            //step2 check if they intersect
+                            if(Enumerable.Range(longerString.posCol, longerString.stringLength-1).Contains(shorterString.posCol)
+                                || Enumerable.Range(longerString.posCol, longerString.stringLength-1).Contains(shorterString.posCol + shorterString.stringLength-1))
                             {
                                 isFree = false;
                             }
