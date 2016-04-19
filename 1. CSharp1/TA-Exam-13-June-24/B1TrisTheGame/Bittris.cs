@@ -60,7 +60,8 @@ namespace B1TrisTheGame
                 { if (digit == '1') { this.Score++; } }
 
             }
-
+            
+            //TODO inside
             public bool CheckSides(Pieces currElement, List<Pieces> existingPieces)
             {
                 //TODO 
@@ -100,9 +101,12 @@ namespace B1TrisTheGame
                 }
                 return result;
             }
-
+            //TODO inside
             public bool CheckRowBelow(List<Pieces> existingPieces, PlayerArea Area)
             {
+                //TODO: 0 moves THROUGH 0, detailed check ! 
+                /////////////////////////////////////////////////////
+
                 bool isFree = true;
 
                 //check if out of bounds
@@ -125,6 +129,13 @@ namespace B1TrisTheGame
                     }
                 }
                 return isFree;
+            }
+
+            public void PrintMe()
+            {
+                //TODO INSERT COLOR
+                Console.SetCursorPosition(this.posCol, this.posRow);
+                Console.Write(this.toPrint);
             }
         }
 
@@ -216,10 +227,11 @@ namespace B1TrisTheGame
                         player1.activePiece.isMoving = false;
                     }
 
-                    //TEST PRINT TO DELETE
-                    Console.SetCursorPosition(player1.activePiece.posCol, player1.activePiece.posRow);
-                    Console.Write(player1.activePiece.toPrint);
-                    //////////////////////////////
+                    //INSERT PRINT FINCTION
+                    Console.Clear();
+                    player1.activePiece.PrintMe();
+                    foreach(Pieces piece in staticPieces) { piece.PrintMe(); }
+                    
                     Thread.Sleep(appSpeed);
                 }
 
