@@ -29,7 +29,7 @@ namespace B1TrisTheGame
                 this.Height = this.CanvasHeight * 5 / 6;
 
                 this.TopRow = (this.CanvasHeight - this.Height) / 2;
-                this.BotRow = this.CanvasHeight - (this.CanvasHeight - this.Height) / 2;
+                this.BotRow = this.CanvasHeight - ((this.CanvasHeight - this.Height) / 2);
             }
 
         }
@@ -163,7 +163,7 @@ namespace B1TrisTheGame
 
             Console.Clear();
 
-            int appSpeed = 200;
+            int appSpeed = 300;
             bool appIsRunning = true;
 
             Random mainRandomizer = new Random();
@@ -222,6 +222,8 @@ namespace B1TrisTheGame
                     //////////////////////////////
                     Thread.Sleep(appSpeed);
                 }
+
+                staticPieces.Add(player1.activePiece);
 
                 Thread.Sleep(appSpeed);
             }
