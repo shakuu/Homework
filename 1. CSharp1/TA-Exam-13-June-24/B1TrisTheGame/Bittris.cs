@@ -25,16 +25,14 @@ namespace B1TrisTheGame
                 this.CanvasWidth = 36;
                 this.CanvasHeight = 36;
 
-                this.Width = CanvasWidth * 1;
-                this.Height = CanvasHeight * (5 / 6);
+                this.Width = this.CanvasWidth * 1;
+                this.Height = this.CanvasHeight * 5 / 6;
 
-                this.TopRow = (CanvasHeight - Height) / 2;
-                this.BotRow = CanvasHeight - (CanvasHeight - Height) / 2;
+                this.TopRow = (this.CanvasHeight - this.Height) / 2;
+                this.BotRow = this.CanvasHeight - (this.CanvasHeight - this.Height) / 2;
             }
 
         }
-
-
 
         public class Pieces
         {
@@ -63,6 +61,71 @@ namespace B1TrisTheGame
 
             }
 
+            public bool CheckSides(Pieces currElement, List<Pieces> existingPieces)
+            {
+                //TODO 
+                //1. Check Outside of player Area
+                //2. ReWrite for current instance
+                bool result = true;
+
+                // each existing piece
+                if (currElement.hSpeed < 0) //check Left
+                {
+                    foreach (Pieces piece in existingPieces)
+                    {
+                        if (piece.posRow == currElement.posRow)
+                        {
+                            if (piece.posCol + piece.stringLength >=
+                                currElement.posCol + currElement.hSpeed) ;
+                            {
+                                result = false;
+                            }
+                        }
+                    }
+                }
+                else //Check Right
+                {
+                    foreach (Pieces piece in existingPieces)
+                    {
+                        if (piece.posRow == currElement.posRow)
+                        {
+                            if (piece.posCol <=
+                                currElement.posCol + currElement.stringLength
+                                + currElement.hSpeed) ;
+                            {
+                                result = false;
+                            }
+                        }
+                    }
+                }
+                return result;
+            }
+
+            public bool CheckRowBelow(List<Pieces> existingPieces, PlayerArea Area)
+            {
+                bool isFree = true;
+
+                //check if out of bounds
+                if (this.posRow + 1 > Area.Height)
+                {
+                    isFree = false;
+                }
+                else //check for elements on the row below
+                {
+                    foreach (Pieces piece in existingPieces)
+                    {
+                        if (piece.posRow == this.posRow + 1)
+                        {
+                            if (piece.posCol + piece.stringLength >= this.posCol
+                                || piece.posCol <= this.posCol + this.stringLength)
+                            {
+                                isFree = false;
+                            }
+                        }
+                    }
+                }
+                return isFree;
+            }
         }
 
         class Player
@@ -138,19 +201,25 @@ namespace B1TrisTheGame
                             break;
                     }
                     //check if position left or right is free
-                    if (CheckSides(player1.activePiece, staticPieces))
+                    if (player1.activePiece.CheckSides(player1.activePiece, staticPieces))
                     {
                         player1.activePiece.posCol += player1.activePiece.hSpeed; //move the piece
-                        player1.activePiece.hSpeed = 0;
+                    }
+                    player1.activePiece.hSpeed = 0; //rest hSpeed
+
+                    if (player1.activePiece.CheckRowBelow(staticPieces, playArea))
+                    {
+                        player1.activePiece.posRow++;
                     }
                     else
                     {
-                        player1.activePiece.hSpeed = 0; //ignore input
+                        player1.activePiece.isMoving = false;
                     }
 
+                    //TEST PRINT TO DELETE
                     Console.SetCursorPosition(player1.activePiece.posCol, player1.activePiece.posRow);
                     Console.Write(player1.activePiece.toPrint);
-
+                    //////////////////////////////
                     Thread.Sleep(appSpeed);
                 }
 
@@ -158,46 +227,5 @@ namespace B1TrisTheGame
             }
 
         }
-
-        public static bool CheckSides(Pieces currElement, List<Pieces> existingPieces)
-        {
-            //TODO 
-            //1. Check Outside of player Area
-
-            bool result = true;
-
-            // each existing piece
-            if (currElement.hSpeed < 0) //check Left
-            {
-                foreach (Pieces piece in existingPieces)
-                {
-                    if (piece.posRow == currElement.posRow)
-                    {
-                        if (piece.posCol + piece.stringLength >=
-                            currElement.posCol + currElement.hSpeed) ;
-                        {
-                            result = false;
-                        }
-                    }
-                }
-            }
-            else //Check Right
-            {
-                foreach (Pieces piece in existingPieces)
-                {
-                    if (piece.posRow == currElement.posRow)
-                    {
-                        if (piece.posCol <=
-                            currElement.posCol + currElement.stringLength
-                            + currElement.hSpeed) ;
-                        {
-                            result = false;
-                        }
-                    }
-                }
-            }
-            return result;
-        }
-
     }
 }
