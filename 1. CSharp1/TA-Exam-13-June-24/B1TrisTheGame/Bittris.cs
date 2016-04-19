@@ -56,6 +56,7 @@ namespace B1TrisTheGame
                 this.toPrint = this.toPrint.TrimStart('0');
                 this.toPrint = this.toPrint.TrimEnd('0');
                 this.stringLength = this.toPrint.Length;
+                this.Score = rndNumber;
 
                 //get score ( number of ones )
                 foreach (char digit in this.toPrint)
@@ -67,7 +68,6 @@ namespace B1TrisTheGame
             public bool CheckSides(Pieces currElement, List<Pieces> existingPieces, PlayerArea Area)
             {
                 //TODO 
-                //1. Check Outside of player Area
                 //2. ReWrite for current instance
                 bool result = true;
 
@@ -75,10 +75,10 @@ namespace B1TrisTheGame
                 if (currElement.hSpeed < 0) //check Left
                 {
                     //adjust speed and stay in play area
-                    for (int speed = 0; speed < 4; speed++)
+                    for (int speed = -this.hSpeed; speed >= 0; speed--)
                     {
-                        if (this.posCol - 2 == speed)
-                        { this.hSpeed = -speed; }
+                        if (this.posCol -speed >1)
+                        { this.hSpeed = -speed; break; }
                     }
 
                     foreach (Pieces piece in existingPieces)
@@ -95,10 +95,10 @@ namespace B1TrisTheGame
                 }
                 else //Check Right
                 {
-                    for (int speed = 0; speed < 4; speed++)
+                    for (int speed = this.hSpeed; speed >= 0; speed--)
                     {
-                        if (Area.Width - 2 -( this.posCol+this.stringLength) == speed)
-                        { this.hSpeed = speed; }
+                        if ( this.posCol+this.stringLength+speed < Area.Width-1)
+                        { this.hSpeed = speed; break; }
                     }
 
                     foreach (Pieces piece in existingPieces)
@@ -314,7 +314,7 @@ namespace B1TrisTheGame
 
             Console.Clear();
 
-            int appSpeed = 300;
+            int appSpeed = 300; // lower is faster
             bool appIsRunning = true;
 
             Random mainRandomizer = new Random();
@@ -377,6 +377,12 @@ namespace B1TrisTheGame
 
                     if (!player1.activePiece.isMoving)
                     {
+                        //GAME OVER
+                        if(player1.activePiece.posRow==0)
+                        {
+                            appIsRunning = false;
+                        }
+
                         staticPieces = player1.activePiece.CleanUp(staticPieces);
                         staticPieces.Add(player1.activePiece);
                        
@@ -402,6 +408,8 @@ namespace B1TrisTheGame
                 // Thread.Sleep(appSpeed);
             }
 
+            Console.WriteLine("game over");
+            Console.ReadLine();
         }
     }
 }
