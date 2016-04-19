@@ -126,13 +126,28 @@ namespace B1TrisTheGame
                         if (piece.posRow == this.posRow + 1)
                         {
                             //step2 check if they intersect
-                            if (Enumerable.Range(longerString.posCol, longerString.stringLength - 1).Contains(shorterString.posCol)
-                                || Enumerable.Range(longerString.posCol, longerString.stringLength - 1).Contains(shorterString.posCol + shorterString.stringLength - 1))
+                            if (Enumerable.Range(longerString.posCol, longerString.stringLength ).Contains(shorterString.posCol)
+                                || Enumerable.Range(longerString.posCol, longerString.stringLength ).Contains(shorterString.posCol + shorterString.stringLength ))
                             {
-                                Pieces higherCol = piece.posCol >= this.posCol ?
-                                    piece : this;
-                                Pieces lowerCol = piece.posCol < this.posCol ?
-                                    piece : this;
+                                Pieces higherCol;
+                                Pieces lowerCol;
+                                //broken if equal!!!
+                                if (piece.posCol > this.posCol)
+                                {
+                                    higherCol = piece;
+                                    lowerCol = this;
+                                }
+                                else if (piece.posCol == this.posCol)
+                                {
+                                    higherCol = piece;
+                                    lowerCol = this;
+                                }
+                                else 
+                                {
+                                    higherCol = this;
+                                    lowerCol = piece;
+                                }
+
                                 int StartPosition = higherCol.posCol - lowerCol.posCol;
                                 //step 3 check each bit
                                 for (int col = 0;
@@ -171,10 +186,25 @@ namespace B1TrisTheGame
                         if (Enumerable.Range(longerString.posCol, longerString.stringLength - 1).Contains(shorterString.posCol)
                             || Enumerable.Range(longerString.posCol, longerString.stringLength - 1).Contains(shorterString.posCol + shorterString.stringLength - 1))
                         {
-                            Pieces higherCol = piece.posCol >= this.posCol ?
-                                piece : this;
-                            Pieces lowerCol = piece.posCol < this.posCol ?
-                                piece : this;
+                            Pieces higherCol;
+                            Pieces lowerCol;
+                            //broken if equal!!!
+                            if (piece.posCol > this.posCol)
+                            {
+                                higherCol = piece;
+                                lowerCol = this;
+                            }
+                            else if (piece.posCol == this.posCol)
+                            {
+                                higherCol = piece;
+                                lowerCol = this;
+                            }
+                            else
+                            {
+                                higherCol = this;
+                                lowerCol = piece;
+                            }
+
                             int StartPosition = higherCol.posCol - lowerCol.posCol;
                             toReplace = "";
                             //step 3 build a the strings
@@ -216,8 +246,6 @@ namespace B1TrisTheGame
                             {
                                 higherCol.isVisible = false;
                             }
-
-
                         }
                     }
                 }
@@ -288,7 +316,7 @@ namespace B1TrisTheGame
             while (appIsRunning)
             {
                 //Create a new Shape
-                player1.activePiece = new Pieces(mainRandomizer.Next(0, 64));
+                player1.activePiece = new Pieces(mainRandomizer.Next(0, 31));
 
                 //MAIN
                 while (player1.activePiece.isMoving)
@@ -337,8 +365,9 @@ namespace B1TrisTheGame
 
                     if (!player1.activePiece.isMoving)
                     {
-                        staticPieces.Add(player1.activePiece);
                         staticPieces = player1.activePiece.CleanUp(staticPieces);
+                        staticPieces.Add(player1.activePiece);
+                       
                         //remove hidden blocks
                         for (int i = 0; i < staticPieces.Count; i++)
                         {
@@ -358,9 +387,6 @@ namespace B1TrisTheGame
 
                     Thread.Sleep(appSpeed);
                 }
-
-
-
                 // Thread.Sleep(appSpeed);
             }
 
