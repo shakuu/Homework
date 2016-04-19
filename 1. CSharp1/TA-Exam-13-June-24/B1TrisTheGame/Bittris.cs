@@ -25,7 +25,7 @@ namespace B1TrisTheGame
                 this.CanvasWidth = 30;
                 this.CanvasHeight = 24;
 
-                this.Width = this.CanvasWidth / 5 * 4;
+                this.Width = this.CanvasWidth *1;
                 this.Height = this.CanvasHeight * 5 / 6;
 
                 this.TopRow = (this.CanvasHeight - this.Height) / 2;
@@ -64,7 +64,7 @@ namespace B1TrisTheGame
             }
 
             //TODO inside
-            public bool CheckSides(Pieces currElement, List<Pieces> existingPieces)
+            public bool CheckSides(Pieces currElement, List<Pieces> existingPieces, PlayerArea Area)
             {
                 //TODO 
                 //1. Check Outside of player Area
@@ -74,6 +74,13 @@ namespace B1TrisTheGame
                 // each existing piece
                 if (currElement.hSpeed < 0) //check Left
                 {
+                    //adjust speed and stay in play area
+                    for (int speed = 0; speed < 4; speed++)
+                    {
+                        if (this.posCol - 2 == speed)
+                        { this.hSpeed = -speed; }
+                    }
+
                     foreach (Pieces piece in existingPieces)
                     {
                         if (piece.posRow == currElement.posRow)
@@ -88,6 +95,12 @@ namespace B1TrisTheGame
                 }
                 else //Check Right
                 {
+                    for (int speed = 0; speed < 4; speed++)
+                    {
+                        if (Area.Width - 2 -( this.posCol+this.stringLength) == speed)
+                        { this.hSpeed = speed; }
+                    }
+
                     foreach (Pieces piece in existingPieces)
                     {
                         if (piece.posRow == currElement.posRow)
@@ -183,8 +196,8 @@ namespace B1TrisTheGame
                     if (piece.posRow == this.posRow)
                     {
                         //step2 check if they intersect
-                        if (Enumerable.Range(longerString.posCol, longerString.stringLength - 1).Contains(shorterString.posCol)
-                            || Enumerable.Range(longerString.posCol, longerString.stringLength - 1).Contains(shorterString.posCol + shorterString.stringLength - 1))
+                        if (Enumerable.Range(longerString.posCol, longerString.stringLength ).Contains(shorterString.posCol)
+                            || Enumerable.Range(longerString.posCol, longerString.stringLength ).Contains(shorterString.posCol + shorterString.stringLength ))
                         {
                             Pieces higherCol;
                             Pieces lowerCol;
@@ -317,12 +330,11 @@ namespace B1TrisTheGame
             {
                 //Create a new Shape
                 player1.activePiece = new Pieces(mainRandomizer.Next(0, 31));
-
+                //allign the new piece to the middle of the area
+                player1.activePiece.posCol = (playArea.Width - player1.activePiece.stringLength) / 2;
                 //MAIN
                 while (player1.activePiece.isMoving)
                 {
-                    //test
-                    int currspeed = 0;
                     //read player input
                     while (Console.KeyAvailable)
                     {
@@ -348,7 +360,7 @@ namespace B1TrisTheGame
                         }
                     }
                     //check if position left or right is free
-                    if (player1.activePiece.CheckSides(player1.activePiece, staticPieces))
+                    if (player1.activePiece.CheckSides(player1.activePiece, staticPieces, playArea))
                     {
                         player1.activePiece.posCol += player1.activePiece.hSpeed; //move the piece
                     }
