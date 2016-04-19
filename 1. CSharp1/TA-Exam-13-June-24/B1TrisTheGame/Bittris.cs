@@ -132,7 +132,23 @@ namespace B1TrisTheGame
                             if(Enumerable.Range(longerString.posCol, longerString.stringLength-1).Contains(shorterString.posCol)
                                 || Enumerable.Range(longerString.posCol, longerString.stringLength-1).Contains(shorterString.posCol + shorterString.stringLength-1))
                             {
-                                isFree = false;
+                                Pieces higherCol = piece.posCol >= this.posCol ?
+                                    piece : this;
+                                Pieces lowerCol = piece.posCol < this.posCol ?
+                                    piece : this;
+                                int StartPosition = higherCol.posCol - lowerCol.posCol;
+                                //step 3 check each bit
+                                for (int col = 0;
+                                    col < Math.Min(lowerCol.stringLength-StartPosition, 
+                                    shorterString.stringLength); col++)
+                                {
+                                    if ( higherCol.toPrint[col] == '1'
+                                        && lowerCol.toPrint[higherCol.posCol- lowerCol.posCol+col] == '1')
+                                    {
+                                        isFree = false;
+                                    }
+                                }
+                               
                             }
                         }
                     }
