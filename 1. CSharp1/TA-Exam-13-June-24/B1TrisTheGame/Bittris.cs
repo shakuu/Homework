@@ -25,7 +25,7 @@ namespace B1TrisTheGame
                 this.CanvasWidth = 30;
                 this.CanvasHeight = 24;
 
-                this.Width = this.CanvasWidth * 1;
+                this.Width = this.CanvasWidth / 5 * 4;
                 this.Height = this.CanvasHeight * 5 / 6;
 
                 this.TopRow = (this.CanvasHeight - this.Height) / 2;
@@ -37,7 +37,7 @@ namespace B1TrisTheGame
         public class Pieces
         {
             public int posRow = 0; //row
-            public int posCol = 20; //col
+            public int posCol = 10; //col
             public int vSpeed = 1;
             public int hSpeed = 0;
             public string toPrint = "";
@@ -78,7 +78,7 @@ namespace B1TrisTheGame
                     {
                         if (piece.posRow == currElement.posRow)
                         {
-                            if (piece.posCol + piece.stringLength >=
+                            if (piece.posCol + piece.stringLength >
                                 currElement.posCol + currElement.hSpeed) ;
                             {
                                 result = false;
@@ -92,7 +92,7 @@ namespace B1TrisTheGame
                     {
                         if (piece.posRow == currElement.posRow)
                         {
-                            if (piece.posCol <=
+                            if (piece.posCol <
                                 currElement.posCol + currElement.stringLength
                                 + currElement.hSpeed) ;
                             {
@@ -201,18 +201,18 @@ namespace B1TrisTheGame
                                  toReplace.Length);
 
                             //get the tail if higherCol.ToPrint is longer
-                            if (higherCol.posCol+higherCol.stringLength >=
-                                lowerCol.posCol+lowerCol.stringLength)
+                            if (higherCol.posCol + higherCol.stringLength >=
+                                lowerCol.posCol + lowerCol.stringLength)
                             {
-                                int offset =( higherCol.posCol + higherCol.stringLength) -
-                                  ( lowerCol.posCol + lowerCol.stringLength);
+                                int offset = (higherCol.posCol + higherCol.stringLength) -
+                                  (lowerCol.posCol + lowerCol.stringLength);
 
                                 lowerCol.toPrint += higherCol.toPrint.Substring(
                                   higherCol.toPrint.Length - offset, offset);
                             }
                             lowerCol.stringLength = lowerCol.toPrint.Length;
                             //step four add new one, make old ones invisible
-                            if ( higherCol != lowerCol)
+                            if (higherCol != lowerCol)
                             {
                                 higherCol.isVisible = false;
                             }
@@ -288,27 +288,36 @@ namespace B1TrisTheGame
             while (appIsRunning)
             {
                 //Create a new Shape
-                player1.activePiece = new Pieces(mainRandomizer.Next(0, Int32.MaxValue));
+                player1.activePiece = new Pieces(mainRandomizer.Next(0, 64));
 
                 //MAIN
                 while (player1.activePiece.isMoving)
                 {
+                    //test
+                    int currspeed = 0;
                     //read player input
                     while (Console.KeyAvailable)
                     {
                         player1.Input = Console.ReadKey();
-                    }
-                    //Change Position
-                    switch (player1.Input.Key)
-                    {
-                        case ConsoleKey.LeftArrow:
-                            player1.activePiece.hSpeed = -1;
-                            player1.Input = new ConsoleKeyInfo();
-                            break;
-                        case ConsoleKey.RightArrow:
-                            player1.activePiece.hSpeed = 1;
-                            player1.Input = new ConsoleKeyInfo();
-                            break;
+                        switch (player1.Input.Key)
+                        {
+                            case ConsoleKey.LeftArrow:
+                                player1.activePiece.hSpeed += -1;
+                                if(player1.activePiece.hSpeed<-3)
+                                {
+                                    player1.activePiece.hSpeed = -3;
+                                }
+                                player1.Input = new ConsoleKeyInfo();
+                                break;
+                            case ConsoleKey.RightArrow:
+                                player1.activePiece.hSpeed += 1;
+                                if (player1.activePiece.hSpeed >3)
+                                {
+                                    player1.activePiece.hSpeed = 3;
+                                }
+                                player1.Input = new ConsoleKeyInfo();
+                                break;
+                        }
                     }
                     //check if position left or right is free
                     if (player1.activePiece.CheckSides(player1.activePiece, staticPieces))
@@ -326,27 +335,33 @@ namespace B1TrisTheGame
                         player1.activePiece.isMoving = false;
                     }
 
+                    if (!player1.activePiece.isMoving)
+                    {
+                        staticPieces.Add(player1.activePiece);
+                        staticPieces = player1.activePiece.CleanUp(staticPieces);
+                        //remove hidden blocks
+                        for (int i = 0; i < staticPieces.Count; i++)
+                        {
+                            if (!staticPieces[i].isVisible)
+                            {
+                                staticPieces.Remove(staticPieces[i]);
+                                i--;
+                            }
+                        }
+                    }
+
                     //INSERT PRINT FINCTION
                     Console.Clear();
-                    player1.activePiece.PrintMe();
+
                     foreach (Pieces piece in staticPieces) { piece.PrintMe(); }
+                    player1.activePiece.PrintMe();
 
                     Thread.Sleep(appSpeed);
                 }
 
-                staticPieces.Add(player1.activePiece);
-                staticPieces= player1.activePiece.CleanUp(staticPieces);
-                //remove hidden blocks
-                for (int i = 0; i < staticPieces.Count; i++)
-                {
-                    if (!staticPieces[i].isVisible)
-                    {
-                        staticPieces.Remove(staticPieces[i]);
-                        i--;
-                    }
-                }
 
-                Thread.Sleep(appSpeed);
+
+                // Thread.Sleep(appSpeed);
             }
 
         }
