@@ -9,7 +9,18 @@ namespace B1tClass
     public class B1ts
     {
         private int pfirstX = 0;
+        public int lastX = 0;
+        public int PosY = 0;
+        public string toPrint = "";
+        public ConsoleColor Color = new ConsoleColor();
+        public bool isMoving = true;
+        public int intValue;
+        public int Score = 0;
 
+        public int hSpeed = 0;
+        public int vSpeed = 1;
+        public const int MAXSPEED = 3;
+        //update las X 
         public int firstX
         {
             get
@@ -23,17 +34,6 @@ namespace B1tClass
             }
         }
 
-        public int lastX = 0;
-        public int PosY = 0;
-        public string toPrint = "";
-        public ConsoleColor Color = new ConsoleColor();
-        public bool isMoving = true;
-        public int intValue;
-
-        public int hSpeed = 0;
-        public int vSpeed = 1;
-
-        public const int MAXSPEED = 3;
 
         public B1ts(int rndNumber)
         {
@@ -43,7 +43,7 @@ namespace B1tClass
 
             this.intValue = Convert.ToInt32( this.toPrint, 2);
 
-
+            this.Score = rndNumber;
             //TODO assign COLOR
         }
 
@@ -51,10 +51,8 @@ namespace B1tClass
         {
             this.lastX = this.firstX + this.toPrint.Length - 1;
         }
-
-        //TODO
         //Move LEFT/ RIGHT
-        public bool canMoveSides(PlayArea Area, List<string> existingBits)
+        public bool canMoveSides(PlayArea Area, B1tTracker existingBits)
         {
             bool canMove = true;
 
@@ -74,7 +72,7 @@ namespace B1tClass
             }
 
             //Check 2: row below contains any 1s
-            if (!existingBits[this.PosY].Contains('1'))
+            if (!existingBits.rowTracker[this.PosY].Contains('1'))
             {
                 return true; //if no 1s then always true
             }
@@ -83,14 +81,14 @@ namespace B1tClass
             int newspeed = 0;
             for (int col = 0;  col <= Math.Abs(this.hSpeed); col++)
             {
-                if (existingBits[this.PosY][this.firstX - col] == '1' && this.hSpeed < 0)
+                if (existingBits.rowTracker[this.PosY][this.firstX - col] == '1' && this.hSpeed < 0)
                 {
                     newspeed = -col +1;
                     break;
                 }
                 else if(this.hSpeed<0)
                 { newspeed = -col; }
-                if (existingBits[this.PosY][this.lastX + col] == '1' && this.hSpeed > 0)
+                if (existingBits.rowTracker[this.PosY][this.lastX + col] == '1' && this.hSpeed > 0)
                 {
                     newspeed = col -1;
                     break;
@@ -99,37 +97,27 @@ namespace B1tClass
                 { newspeed = col; }
             }
             this.hSpeed = newspeed;
-            //Check 3 
-            //string toCheck = existingBits[this.PosY + 1].
-            //    Substring(this.firstX + this.hSpeed, this.toPrint.Length);
-            //for (int currBit = 0; currBit < toCheck.Length; currBit++)
-            //{
-            //    if (this.toPrint[currBit] == 1 && toCheck[currBit] == 1)
-            //    {
-            //        canMove = false;
-            //    }
-            //}
 
             return canMove;
         }
         //Move DOWN
-        public bool canMoveDown(PlayArea Area, List<string> existingBits)
+        public bool canMoveDown(PlayArea Area, B1tTracker existingBits)
         {
             bool canMove = true;
 
             //Check 0; Out of bounds
-            if(this.PosY+this.vSpeed>Area.Height)
+            if(this.PosY+this.vSpeed>=Area.Height)
             {
                 return false;
             }
 
             //check 1: if row contains ANY 1s
-            if (!existingBits[this.PosY + 1].Contains('1'))
+            if (!existingBits.rowTracker[this.PosY + 1].Contains('1'))
             {
                 return true;
             }
 
-            string toCheck = existingBits[this.PosY + 1].Substring(this.firstX, this.toPrint.Length);
+            string toCheck = existingBits.rowTracker[this.PosY + 1].Substring(this.firstX, this.toPrint.Length);
             toCheck = toCheck.Replace(' ', '0');
             int Check = Convert.ToInt32(toCheck, 2);
             
@@ -141,5 +129,11 @@ namespace B1tClass
             return canMove;
         }
         //PRINT
+    }
+
+    public class B1tTracker
+    {
+        public List<string> rowTracker = new List<string>();
+        public List<int> scoreTracker = new List<int>();
     }
 }

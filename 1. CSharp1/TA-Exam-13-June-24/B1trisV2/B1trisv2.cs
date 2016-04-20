@@ -47,13 +47,13 @@ namespace B1trisV2
 
             //variables
             // empty playing field 
-            List<string> existingRows = new List<string>();
+            B1tTracker playB1ts = new B1tTracker();
             
             for (int row = 0; row < playField.Height; row++)
             {
                 string toAdd = "";
                 toAdd = toAdd.PadLeft(playField.Width, ' ');
-                existingRows.Add(toAdd);
+                playB1ts.rowTracker.Add(toAdd);
             }
             //
             Player player1 = new Player();
@@ -92,14 +92,14 @@ namespace B1trisV2
                         }
                     }
                     //Move Left or Right 
-                    if (player1.B1t.canMoveSides(playField, existingRows))
+                    if (player1.B1t.canMoveSides(playField, playB1ts))
                     {
                         player1.B1t.firstX += player1.B1t.hSpeed;
                     }
                     player1.B1t.hSpeed = 0;
 
                     //Move Down
-                    if (player1.B1t.canMoveDown(playField, existingRows))
+                    if (player1.B1t.canMoveDown(playField, playB1ts))
                     {
                         player1.B1t.PosY += player1.B1t.vSpeed;
                     }
@@ -108,19 +108,21 @@ namespace B1trisV2
                         player1.B1t.isMoving = false;
                         player1.B1t.vSpeed = 0;
 
+                        playB1ts.scoreTracker[player1.B1t.PosY] += player1.B1t.Score;
+
                         //temporary
-                        existingRows[player1.B1t.PosY] = existingRows[player1.B1t.PosY].
+                        playB1ts.rowTracker[player1.B1t.PosY] = playB1ts.rowTracker[player1.B1t.PosY].
                             Insert(player1.B1t.firstX, player1.B1t.toPrint);
-                        existingRows[player1.B1t.PosY] = existingRows[player1.B1t.PosY].
+                        playB1ts.rowTracker[player1.B1t.PosY] = playB1ts.rowTracker[player1.B1t.PosY].
                             Remove(player1.B1t.lastX + 1, player1.B1t.toPrint.Length);
 
                     }
                     //test print
                     Console.Clear();
-                    for ( int i =0; i<existingRows.Count; i++)
+                    for ( int i =0; i<playB1ts.rowTracker.Count; i++)
                     {
                         Console.SetCursorPosition(0, i);
-                        Console.WriteLine(existingRows[i]);
+                        Console.WriteLine(playB1ts.rowTracker[i]);
                     }
                     Console.SetCursorPosition(player1.B1t.firstX, player1.B1t.PosY);
                     Console.Write(player1.B1t.toPrint);
