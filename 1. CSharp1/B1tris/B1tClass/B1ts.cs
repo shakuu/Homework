@@ -14,6 +14,7 @@ namespace B1tClass
         public string toPrint = "";
         public ConsoleColor Color = new ConsoleColor();
         public bool isMoving = true;
+        
         public int intValue;
         public int Score = 0;
 
@@ -41,7 +42,7 @@ namespace B1tClass
             this.toPrint = this.toPrint.TrimStart('0');
             this.toPrint = this.toPrint.TrimEnd('0');
 
-            this.intValue = Convert.ToInt32( this.toPrint, 2);
+            this.intValue = Convert.ToInt32(this.toPrint, 2);
 
             this.Score = rndNumber;
             //TODO assign COLOR
@@ -79,21 +80,21 @@ namespace B1tClass
 
             //Check3
             int newspeed = 0;
-            for (int col = 0;  col <= Math.Abs(this.hSpeed); col++)
+            for (int col = 0; col <= Math.Abs(this.hSpeed); col++)
             {
                 if (existingBits.rowTracker[this.PosY][this.firstX - col] == '1' && this.hSpeed < 0)
                 {
-                    newspeed = -col +1;
+                    newspeed = -col + 1;
                     break;
                 }
-                else if(this.hSpeed<0)
+                else if (this.hSpeed < 0)
                 { newspeed = -col; }
                 if (existingBits.rowTracker[this.PosY][this.lastX + col] == '1' && this.hSpeed > 0)
                 {
-                    newspeed = col -1;
+                    newspeed = col - 1;
                     break;
                 }
-                else if(this.hSpeed>0)
+                else if (this.hSpeed > 0)
                 { newspeed = col; }
             }
             this.hSpeed = newspeed;
@@ -106,7 +107,7 @@ namespace B1tClass
             bool canMove = true;
 
             //Check 0; Out of bounds
-            if(this.PosY+this.vSpeed>=Area.Height)
+            if (this.PosY + this.vSpeed >= Area.Height)
             {
                 return false;
             }
@@ -120,8 +121,8 @@ namespace B1tClass
             string toCheck = existingBits.rowTracker[this.PosY + 1].Substring(this.firstX, this.toPrint.Length);
             toCheck = toCheck.Replace(' ', '0');
             int Check = Convert.ToInt32(toCheck, 2);
-            
-            if( (Check&this.intValue) > 0)
+
+            if ((Check & this.intValue) > 0)
             {
                 canMove = false;
             }
@@ -135,5 +136,45 @@ namespace B1tClass
     {
         public List<string> rowTracker = new List<string>();
         public List<int> scoreTracker = new List<int>();
+
+        public void UpdateRow(B1ts B1t)
+        {
+            //get the string to combine
+            string toCheck = this.rowTracker[B1t.PosY].Substring(B1t.firstX, B1t.toPrint.Length);
+            toCheck = toCheck.Replace(' ', '0');
+            int Check = Convert.ToInt32(toCheck, 2);
+            //combine
+            Check = Check | B1t.intValue;
+            toCheck = Convert.ToString(Check, 2);
+            //insert new string
+            this.rowTracker[B1t.PosY] = this.rowTracker[B1t.PosY].Insert(B1t.firstX, toCheck);
+            this.rowTracker[B1t.PosY] = this.rowTracker[B1t.PosY].Remove(B1t.lastX + 1, toCheck.Length);
+        }
+
+        public int isFullRow(B1ts B1t)
+        {
+            int Score = 0;
+
+            if (this.rowTracker[B1t.PosY].Contains('0') ||
+               this.rowTracker[B1t.PosY].Contains(' '))
+            {
+                return 0;
+            }
+
+            //get the score
+            Score = this.scoreTracker[B1t.PosY] * 2;
+            //shift Rows down
+            for (int row = B1t.PosY; row>0; row--)
+            {
+                this.rowTracker[row] = this.rowTracker[row - 1];
+                this.scoreTracker[row] = this.scoreTracker[row - 1];
+            }
+            //reset row 0
+            this.scoreTracker[0] = 0;
+            this.rowTracker[0] = this.rowTracker[0].Replace('0', ' ' );
+            this.rowTracker[0] = this.rowTracker[0].Replace('1', ' ');
+
+            return Score;
+        }
     }
 }
