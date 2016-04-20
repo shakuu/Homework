@@ -43,6 +43,12 @@
     <Compile Include="B1ts.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\TA-Exam-13-June-24\ConsolePlayArea\ConsolePlayArea.csproj">
+      <Project>{dfff48d2-855c-4dc9-9e97-d473e4a0389f}</Project>
+      <Name>ConsolePlayArea</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

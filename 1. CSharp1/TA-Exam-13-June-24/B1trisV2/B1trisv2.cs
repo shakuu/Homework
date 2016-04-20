@@ -11,7 +11,13 @@ namespace B1trisV2
 {
     class B1trisv2
     {
-
+        public class Player
+        {
+            public string Name = "player1";
+            public int Score = 0;
+            public ConsoleKeyInfo Input = new ConsoleKeyInfo();
+            public B1ts B1t;
+        }
 
         static void Main(string[] args)
         {
@@ -55,10 +61,11 @@ namespace B1trisV2
             {
                 //create a new piece
                 player1.B1t = new B1ts(mainRandomizer.Next(difficultyMin, difficultyMax));
-                player1.B1t.PosX = (playField.Width - player1.B1t.toPrint.Length) / 2;
+                player1.B1t.firstX = (playField.Width - player1.B1t.toPrint.Length) / 2;
 
-                while(player1.B1t.isMoving)
+                while (player1.B1t.isMoving)
                 {
+                    
                     //read Input
                     while (Console.KeyAvailable)
                     {
@@ -67,7 +74,7 @@ namespace B1trisV2
                         {
                             case ConsoleKey.LeftArrow:
                                 player1.B1t.hSpeed += -1;
-                                if (player1.B1t.hSpeed < -3)
+                                if (player1.B1t.hSpeed <= -B1ts.MAXSPEED)
                                 {
                                     player1.B1t.hSpeed = -3;
                                 }
@@ -75,7 +82,7 @@ namespace B1trisV2
                                 break;
                             case ConsoleKey.RightArrow:
                                 player1.B1t.hSpeed += 1;
-                                if (player1.B1t.hSpeed > 3)
+                                if (player1.B1t.hSpeed >= B1ts.MAXSPEED)
                                 {
                                     player1.B1t.hSpeed = 3;
                                 }
@@ -84,11 +91,21 @@ namespace B1trisV2
                         }
                     }
                     //Move Left or Right 
-                    if ( player1.B1t.hSpeed> 0)
+                    if (player1.B1t.canMoveSides(playField, existingRows))
                     {
-                        player1.B1t
+                        player1.B1t.firstX += player1.B1t.hSpeed;
                     }
+                    player1.B1t.hSpeed = 0;
 
+                    //test print
+                    Console.Clear();
+                    for ( int i =0; i<existingRows.Count; i++)
+                    {
+                        Console.SetCursorPosition(i, 0);
+                        Console.WriteLine(existingRows[i]);
+                    }
+                    Console.SetCursorPosition(player1.B1t.firstX, player1.B1t.PosY);
+                    Console.Write(player1.B1t.toPrint);
 
                     Thread.Sleep(appSpeed);
                 }

@@ -85,8 +85,8 @@ namespace B1TrisTheGame
                     {
                         if (piece.posRow == currElement.posRow)
                         {
-                            if (piece.posCol + piece.stringLength >=
-                                currElement.posCol + currElement.hSpeed) ;
+                            if (piece.posCol + piece.stringLength >
+                                currElement.posCol + currElement.hSpeed) 
                             {
                                 result = false;
                             }
@@ -107,7 +107,7 @@ namespace B1TrisTheGame
                         {
                             if (piece.posCol <
                                 currElement.posCol + currElement.stringLength
-                                + currElement.hSpeed) ;
+                                + currElement.hSpeed) 
                             {
                                 result = false;
                             }

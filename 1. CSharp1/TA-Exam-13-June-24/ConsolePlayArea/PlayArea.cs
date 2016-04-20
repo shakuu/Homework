@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using B1tClass;
+
 namespace ConsolePlayArea
 {
     public class PlayArea
@@ -31,11 +31,5 @@ namespace ConsolePlayArea
         //TODO PRINT
     }
 
-    public class Player
-    {
-        public string Name = "player1";
-        public int Score = 0;
-        public ConsoleKeyInfo Input = new ConsoleKeyInfo();
-        public B1ts B1t;
-    }
+   
 }
