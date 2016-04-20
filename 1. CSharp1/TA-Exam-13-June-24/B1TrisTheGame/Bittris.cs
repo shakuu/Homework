@@ -85,7 +85,7 @@ namespace B1TrisTheGame
                     {
                         if (piece.posRow == currElement.posRow)
                         {
-                            if (piece.posCol + piece.stringLength >
+                            if (piece.posCol + piece.stringLength >=
                                 currElement.posCol + currElement.hSpeed) ;
                             {
                                 result = false;
@@ -343,6 +343,9 @@ namespace B1TrisTheGame
 
             Console.Clear();
 
+            int difficultyMin = 1;
+            int difficultyMax = 31;
+
             int appSpeed = 300; // lower is faster
             bool appIsRunning = true;
 
@@ -358,7 +361,7 @@ namespace B1TrisTheGame
             while (appIsRunning)
             {
                 //Create a new Shape
-                player1.activePiece = new Pieces(mainRandomizer.Next(3, 3));
+                player1.activePiece = new Pieces(mainRandomizer.Next(difficultyMin,difficultyMax));
                 //allign the new piece to the middle of the area
                 player1.activePiece.posCol = (playArea.Width - player1.activePiece.stringLength) / 2;
                 //MAIN

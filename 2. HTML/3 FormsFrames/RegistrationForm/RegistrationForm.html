@@ -10,38 +10,34 @@
     <nav></nav>
     <section>
         <form class="Registration">
-            <table border = 1px solid black>
+            <table class="MainTable">
                 <tr>
-                    <td><strong>Last Name</strong></td>
-                    <td><input type="text" name="" value="Nakov"></td>
+                    <td class="HeaderColumn"><strong>Last Name</strong></td>
+                    <td colspan=3><input type="text" class="Name" name="" value="Nakov"></td>
                 </tr>
                 <tr>    
-                    <td><strong>First Name</strong></td>
-                    <td><input type="text" name="" value="Svetlin"></td>
+                    <td class="HeaderColumn"><strong>First Name</strong></td>
+                    <td colspan=3><input type="text" class="Name" name="" value="Svetlin"></td>
                 </tr>
                 <tr>
-                    <td><strong>Address</strong></td>
-                    <td><textarea rows="4" cols="">17 Hristo Botev Str  floor 3, apt. 12</textarea></td>
+                    <td class="HeaderColumn"><strong>Address</strong></td>
+                    <td colspan=3><textarea rows="4" cols="">17 Hristo Botev Str .&#13;&#10;floor 3, apt. 12</textarea></td>
                 </tr>
                 <tr>
-                    <td><strong>City</strong></td>
-                    <td>
-                        <table>
-                            <tr>
+                    <td class="HeaderColumn"><strong>City</strong></td>
+                    
                                 <td><input type="text" name="" value="Kaspichan"></td>
-                                <td><strong>State</strong></td>
-                                <td><input type="text" name="" value=""></td>
-                            </tr>
-                        </table>
-                    </td>
+                                <td class="Extra"><strong>State</strong></td>
+                                <td class= "Extra"><input type="text" id="State" name="State" value=""></td>
+                            
                 </tr>
                 <tr>
-                    <td><strong>Zip/Postal Code</strong></td>
-                    <td><input type="number" name="" value="9325"></td>
+                    <td class="HeaderColumn"><strong>Zip/Postal Code</strong></td>
+                    <td colspan=3><input type="number" name="" value="9325"></td>
                 </tr>
                 <tr>
-                    <td><strong>Country</strong></td>
-                    <td>
+                    <td class="HeaderColumn"><strong>Country</strong></td>
+                    <td colspan=3>
                         <select>
                             <option value="Bulgaria">Bulgaria</option>
                             <option value="Other">Other</option>
@@ -49,24 +45,24 @@
                     </td>
                 </tr>
                 <tr>
-                    <td><strong>Phone (country code, </br>area code, number)</strong></td>
-                    <td>(+<input type="text" name="" value="359">) <input type="text" name="" value="88">- <input type="text" name="" value="8334343"></td>
+                    <td class="HeaderColumn"><strong>Phone (country code, </br>area code, number)</strong></td>
+                    <td colspan=3>(+<input type="text" class="Code" name="" value="359">) <input type="text" class="Code" name="" value="88">- <input type="text" class="Number" name="" value="8334343"></td>
                 </tr>
                 <tr>
-                    <td><strong>E-mail</strong></td>
-                    <td><input type="email" name="" value="nakov@kaspichan.org"></td>
+                    <td class="HeaderColumn"><strong>E-mail</strong></td>
+                    <td colspan=3><input type="email" name="" value="nakov@kaspichan.org"></td>
                 </tr>
                 <tr>
-                    <td><strong>Birth Date</strong></td>
-                    <td>
-                        Month <input type="text" name="" value="06">
-                        Day <input type="text" name="" value="14">
-                        Year (4 digit)<input type="text" name="" value="1980">
+                    <td class="HeaderColumn"><strong>Birth Date</strong></td>
+                    <td colspan=3>
+                        Month <input type="Month" class="Month" name="" value="06">
+                        Day <input type="text" class="Month"  name="" value="14">
+                        Year (4 digit)<input type="text" class="Year" name="" value="1980">
                     </td>
                 </tr>
                 <tr>
-                    <td><strong>Gender</strong></td>
-                    <td>
+                    <td class="HeaderColumn"><strong>Gender</strong></td>
+                    <td colspan=3>
                         <select>
                             <option value="Male">Male</option>
                             <option value="Female">Female</option>
@@ -74,19 +70,19 @@
                     </td>
                 </tr>
                 <tr>
-                    <td><strong>Starting date</strong></td>
-                    <td>
+                    <td class="HeaderColumn"><strong>Starting date</strong></td>
+                    <td colspan=3>
                         <input type="radio" name="" value="Spring 2006">Spring 2006
                         <input type="radio" name="" value="">Summer 2006
                     </td>
                 </tr>
                 <tr>
-                    <td><strong>Comments/Questions</strong></td>
-                    <td><textarea rows="4" cols="">Please send me mor information about the lodging</textarea></td>
+                    <td class="HeaderColumn"><strong>Comments/Questions</strong></td>
+                    <td colspan=3><textarea rows="4" cols="">Please send me mor information about the lodging</textarea></td>
                 </tr>
                 <tfoot>
                     <tr>
-                        <td colspan= 2>
+                        <td colspan= 4 class="FooterRow">
                             <input type="submit" name="" value="Submit">
                             <input type="button" name="" value="Clear This Form">
                         </td>

@@ -1,0 +1,51 @@
+.MainTable, td{
+    border:   1px solid darkgray;
+    border-collapse: collapse;
+    padding: 5px;
+}
+
+.FooterRow{
+    text-align: center;
+    background-color: lightblue;
+}
+
+.HeaderColumn{
+    text-align: right;
+}
+
+textarea{
+    width: 280px;
+}
+
+.TableInTable {
+    border: none;
+}
+
+#State{
+    width: 40px;
+}
+
+.Extra {
+    width: 50px;
+    text-align: center;
+}
+
+.Code{
+    width: 50px;
+}
+
+.Number{
+    width: 100px;
+}
+
+.Month{
+    width: 30px;
+}
+
+.Year{
+    width: 50px;
+}
+
+.Name{
+    width: 300px;
+}

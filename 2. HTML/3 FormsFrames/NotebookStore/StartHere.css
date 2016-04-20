@@ -1,0 +1,25 @@
+nav {
+    box-sizing: border-box;
+    font-family: Verdana;
+}
+
+
+
+a:link, a:visited {
+    background-color: dimgrey;
+    color: white;
+    padding: 14px 24px;
+    text-align: center; 
+    text-decoration: none;
+    display: inline-block;
+    width: 150px;
+    
+}
+
+img{
+    width: 600px;
+}
+
+a:hover, a:active {
+    background-color: darkgrey;
+}
