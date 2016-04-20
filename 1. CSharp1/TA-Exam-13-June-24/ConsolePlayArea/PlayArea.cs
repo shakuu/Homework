@@ -17,6 +17,13 @@ namespace ConsolePlayArea
         public int TopRow;
         public int BotRow;
 
+        //borders
+        public int playAreaSideBorderWidth = 1;
+        public int playAreaBottomBorderWidth = 1;
+
+        public string SideBorderSymbol = "█";
+        public string BottomBorderSymbol = "█";
+
         public PlayArea()
         {
             this.CanvasWidth = 30;
@@ -28,8 +35,20 @@ namespace ConsolePlayArea
             this.TopRow = (this.CanvasHeight - this.Height) / 2;
             this.BotRow = this.CanvasHeight - ((this.CanvasHeight - this.Height) / 2);
         }
-        //TODO PRINT
+        //TODO:
+        //1. Print Borders
+        //2. Print Bottom Border
+        //3. Print Score and Player Name
+        public void PrintBottomBorder()
+        {
+            for (int col = 1; col < this.Width; col++)
+            {
+                Console.SetCursorPosition(col, this.Height);
+                Console.Write(this.BottomBorderSymbol);
+            }
+
+        }
     }
 
-   
+
 }

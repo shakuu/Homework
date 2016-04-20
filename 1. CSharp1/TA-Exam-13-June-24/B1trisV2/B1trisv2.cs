@@ -23,7 +23,7 @@ namespace B1trisV2
         {
             //settings
             Console.Clear();
-
+            Console.OutputEncoding = Encoding.UTF8;
             PlayArea playField = new PlayArea();
 
             Console.BufferWidth = Console.WindowWidth = playField.CanvasWidth;
@@ -120,6 +120,7 @@ namespace B1trisV2
                     }
                     //test print
                     Console.Clear();
+                    playField.PrintBottomBorder();
                     for (int i = 0; i < playB1ts.rowTracker.Count; i++)
                     {
                         Console.SetCursorPosition(0, i);
