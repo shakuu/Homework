@@ -48,6 +48,7 @@ namespace B1trisV2
             //variables
             // empty playing field 
             List<string> existingRows = new List<string>();
+            
             for (int row = 0; row < playField.Height; row++)
             {
                 string toAdd = "";
@@ -97,11 +98,28 @@ namespace B1trisV2
                     }
                     player1.B1t.hSpeed = 0;
 
+                    //Move Down
+                    if (player1.B1t.canMoveDown(playField, existingRows))
+                    {
+                        player1.B1t.PosY += player1.B1t.vSpeed;
+                    }
+                    else
+                    {
+                        player1.B1t.isMoving = false;
+                        player1.B1t.vSpeed = 0;
+
+                        //temporary
+                        existingRows[player1.B1t.PosY] = existingRows[player1.B1t.PosY].
+                            Insert(player1.B1t.firstX, player1.B1t.toPrint);
+                        existingRows[player1.B1t.PosY] = existingRows[player1.B1t.PosY].
+                            Remove(player1.B1t.lastX + 1, player1.B1t.toPrint.Length);
+
+                    }
                     //test print
                     Console.Clear();
                     for ( int i =0; i<existingRows.Count; i++)
                     {
-                        Console.SetCursorPosition(i, 0);
+                        Console.SetCursorPosition(0, i);
                         Console.WriteLine(existingRows[i]);
                     }
                     Console.SetCursorPosition(player1.B1t.firstX, player1.B1t.PosY);

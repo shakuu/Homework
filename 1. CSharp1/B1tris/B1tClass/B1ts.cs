@@ -28,6 +28,7 @@ namespace B1tClass
         public string toPrint = "";
         public ConsoleColor Color = new ConsoleColor();
         public bool isMoving = true;
+        public int intValue;
 
         public int hSpeed = 0;
         public int vSpeed = 1;
@@ -40,6 +41,8 @@ namespace B1tClass
             this.toPrint = this.toPrint.TrimStart('0');
             this.toPrint = this.toPrint.TrimEnd('0');
 
+            this.intValue = Convert.ToInt32( this.toPrint, 2);
+
 
             //TODO assign COLOR
         }
@@ -49,9 +52,8 @@ namespace B1tClass
             this.lastX = this.firstX + this.toPrint.Length - 1;
         }
 
-        //TODO 
-        //MOVE LEFT
-        //MOVE RIGHT
+        //TODO
+        //Move LEFT/ RIGHT
         public bool canMoveSides(PlayArea Area, List<string> existingBits)
         {
             bool canMove = true;
@@ -72,20 +74,68 @@ namespace B1tClass
             }
 
             //Check 2: row below contains any 1s
-            if (!existingBits[this.PosY + 1].Contains('1'))
+            if (!existingBits[this.PosY].Contains('1'))
             {
                 return true; //if no 1s then always true
             }
 
-            //Check 3 
-            string toCheck = existingBits[this.PosY + 1].
-                Substring(this.firstX + this.hSpeed, this.toPrint.Length);
-            for (int currBit = 0; currBit < toCheck.Length; currBit++)
+            //Check3
+            int newspeed = 0;
+            for (int col = 0;  col <= Math.Abs(this.hSpeed); col++)
             {
-                if (this.toPrint[currBit] == 1 && toCheck[currBit] == 1)
+                if (existingBits[this.PosY][this.firstX - col] == '1' && this.hSpeed < 0)
                 {
-                    canMove = false;
+                    newspeed = -col +1;
+                    break;
                 }
+                else if(this.hSpeed<0)
+                { newspeed = -col; }
+                if (existingBits[this.PosY][this.lastX + col] == '1' && this.hSpeed > 0)
+                {
+                    newspeed = col -1;
+                    break;
+                }
+                else if(this.hSpeed>0)
+                { newspeed = col; }
+            }
+            this.hSpeed = newspeed;
+            //Check 3 
+            //string toCheck = existingBits[this.PosY + 1].
+            //    Substring(this.firstX + this.hSpeed, this.toPrint.Length);
+            //for (int currBit = 0; currBit < toCheck.Length; currBit++)
+            //{
+            //    if (this.toPrint[currBit] == 1 && toCheck[currBit] == 1)
+            //    {
+            //        canMove = false;
+            //    }
+            //}
+
+            return canMove;
+        }
+        //Move DOWN
+        public bool canMoveDown(PlayArea Area, List<string> existingBits)
+        {
+            bool canMove = true;
+
+            //Check 0; Out of bounds
+            if(this.PosY+this.vSpeed>Area.Height)
+            {
+                return false;
+            }
+
+            //check 1: if row contains ANY 1s
+            if (!existingBits[this.PosY + 1].Contains('1'))
+            {
+                return true;
+            }
+
+            string toCheck = existingBits[this.PosY + 1].Substring(this.firstX, this.toPrint.Length);
+            toCheck = toCheck.Replace(' ', '0');
+            int Check = Convert.ToInt32(toCheck, 2);
+            
+            if( (Check&this.intValue) > 0)
+            {
+                canMove = false;
             }
 
             return canMove;
