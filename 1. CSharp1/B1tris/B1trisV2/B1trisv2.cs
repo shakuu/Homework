@@ -29,7 +29,6 @@ namespace B1trisV2
 
         static void Main()
         {
-            Console.OutputEncoding = Encoding.UTF8;
             //settings
             Console.Clear();
             Console.OutputEncoding = Encoding.UTF8;
