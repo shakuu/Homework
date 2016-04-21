@@ -67,7 +67,7 @@ namespace B1tClass
                 this.toPrint = this.toPrint.Replace('0', '1');
                 this.intValue = Convert.ToInt32(this.toPrint, 2);
             }
-            else if (rndNumberCol ==13) // 13 -> Red
+            else if (rndNumberCol == 13) // 13 -> Red
             {
                 this.Color = ConsoleColor.Red;
             }
@@ -286,7 +286,7 @@ namespace B1tClass
         //If b1t is red
         public int isRed(B1ts B1t)
         {
-            int Score =0;
+            int Score = 0;
 
             //step 1: get score
             Score = this.scoreTracker[B1t.PosY];
@@ -307,18 +307,18 @@ namespace B1tClass
         //if b1t is green
         public void isGreen(B1ts B1t)
         {
-            if(B1t.PosY+1< this.rowTracker.Count)
-            { 
-            //get the string to combine on next row
-            string toCheck = this.rowTracker[B1t.PosY+1].Substring(B1t.firstX, B1t.toPrint.Length);
-            toCheck = toCheck.Replace(' ', '0');
-            int Check = Convert.ToInt32(toCheck, 2);
-            //combine
-            Check = Check | B1t.intValue;
-            toCheck = Convert.ToString(Check, 2);
-            //insert new string
-            this.rowTracker[B1t.PosY+1] = this.rowTracker[B1t.PosY+1].Insert(B1t.firstX, toCheck);
-            this.rowTracker[B1t.PosY+1] = this.rowTracker[B1t.PosY+1].Remove(B1t.lastX + 1, toCheck.Length);
+            if (B1t.PosY + 1 < this.rowTracker.Count)
+            {
+                //get the string to combine on next row
+                string toCheck = this.rowTracker[B1t.PosY + 1].Substring(B1t.firstX, B1t.toPrint.Length);
+                toCheck = toCheck.Replace(' ', '0');
+                int Check = Convert.ToInt32(toCheck, 2);
+                //combine
+                Check = Check | B1t.intValue;
+                toCheck = Convert.ToString(Check, 2);
+                //insert new string
+                this.rowTracker[B1t.PosY + 1] = this.rowTracker[B1t.PosY + 1].Insert(B1t.firstX, toCheck);
+                this.rowTracker[B1t.PosY + 1] = this.rowTracker[B1t.PosY + 1].Remove(B1t.lastX + 1, toCheck.Length);
             }
         }
     }
