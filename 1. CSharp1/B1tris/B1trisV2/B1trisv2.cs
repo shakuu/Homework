@@ -34,7 +34,7 @@ namespace B1trisV2
             Console.Clear();
             Console.OutputEncoding = Encoding.UTF8;
 
-            PlayArea playField = new PlayArea(); 
+            PlayArea playField = new PlayArea();
 
             Console.BufferWidth = Console.WindowWidth = playField.CanvasWidth;
             Console.BufferHeight = Console.WindowHeight = playField.CanvasHeight;
@@ -63,7 +63,7 @@ namespace B1trisV2
             for (int row = 0; row < playField.Height; row++)
             {
                 string toAdd = "";
-                toAdd = toAdd.PadLeft(playField.Width-2, ' ');
+                toAdd = toAdd.PadLeft(playField.Width - 2, ' ');
                 playB1ts.rowTracker.Add(toAdd);
                 playB1ts.rowTracker[row] = "+" + playB1ts.rowTracker[row] + "+";
                 playB1ts.scoreTracker.Add(0);
@@ -78,9 +78,9 @@ namespace B1trisV2
             while (appIsRunning)
             {
                 //create a new piece
-                player1.B1t = new B1ts(mainRandomizer.Next(difficultyMin, difficultyMax), 
+                player1.B1t = new B1ts(mainRandomizer.Next(difficultyMin, difficultyMax),
                     mainRandomizer.Next(1, 15)); //change to 20
-                player1.B1t.firstX = (playField.Width - player1.B1t.toPrint.Length +1) / 2;
+                player1.B1t.firstX = (playField.Width - player1.B1t.toPrint.Length + 1) / 2;
 
                 while (player1.B1t.isMoving)
                 {
@@ -150,9 +150,11 @@ namespace B1trisV2
                         //update score
                         player1.Score += player1.B1t.Score;
                         playB1ts.scoreTracker[player1.B1t.PosY] += player1.B1t.Score;
-                        //green fill as many 0s as possible
+
+                        //action based on color
+                        //green -> fill as many 0s as possible
                         if (player1.B1t.Color == ConsoleColor.Green &&
-                            player1.B1t.PosY < playField.Height-1)
+                            player1.B1t.PosY < playField.Height - 1)
                         {
                             playB1ts.isGreen(player1.B1t);
                         }
@@ -161,13 +163,13 @@ namespace B1trisV2
                             //Update the current row string
                             playB1ts.UpdateRow(player1.B1t);
                         }
-                        //action based on color
+
                         //red -> destroy current row
-                        if ( player1.B1t.Color==ConsoleColor.Red)
+                        if (player1.B1t.Color == ConsoleColor.Red)
                         {
-                            player1.Score+= playB1ts.isRed(player1.B1t);
+                            player1.Score += playB1ts.isRed(player1.B1t);
                         }
-                        
+
                         //CheckFullRow return int
                         player1.Score += playB1ts.isFullRow(player1.B1t);
 
@@ -183,27 +185,29 @@ namespace B1trisV2
                             //Re-Draw Previous Line
                             playB1ts.PrintOne(playField.playAreaSideBorderWidth, player1.B1t.prevY);
                         }
+                        //print score
                         playField.PrintScore(player1.Score, player1.Name,
-                            curAppSpeed, player1.B1t.intValue); 
+                            curAppSpeed, player1.B1t.intValue);
                     }
 
-                    curAppSpeed = initialAppSpeed - ( player1.Score / 50) > 100 ?
-                         initialAppSpeed -( player1.Score / 50) : 100;
+                    //adjust speed
+                    curAppSpeed = initialAppSpeed - (player1.Score / 50) > 100 ?
+                         initialAppSpeed - (player1.Score / 50) : 100;
                     Thread.Sleep(curAppSpeed);
                 }
             }
 
             //GAME OVER
-            if(!appIsRunning)
+            if (!appIsRunning)
             {
                 string PrintGO = "GAME OVER";
                 Console.ForegroundColor = ConsoleColor.Red;
-                Console.SetCursorPosition((playField.Width - PrintGO.Length) / 2 +1, 0);
+                Console.SetCursorPosition((playField.Width - PrintGO.Length) / 2 + 1, 0);
                 Console.Write(PrintGO);
 
                 string Continue = "Enter:Continue ESC:Exit";
                 Console.SetCursorPosition((playField.Width - Continue.Length) / 2 + 1,
-                    playField.CanvasHeight-3);
+                    playField.CanvasHeight - 3);
                 Console.Write(Continue);
 
                 while (player1.Input.Key != ConsoleKey.Escape ||
@@ -220,7 +224,7 @@ namespace B1trisV2
                     {
                         return;
                     }
-                }     
+                }
             }
         }
     }
