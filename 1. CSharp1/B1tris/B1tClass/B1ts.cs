@@ -48,7 +48,33 @@ namespace B1tClass
             this.intValue = Convert.ToInt32(this.toPrint, 2);
 
             this.Score = rndNumber;
-            //TODO assign COLOR
+        }
+        //Constructor with color
+        public B1ts(int rndNumber, int rndNumberCol)
+        {
+            this.toPrint = (Convert.ToString(rndNumber, 2).PadLeft(32, '0')).Substring(24, 8);
+            this.toPrint = this.toPrint.TrimStart('0');
+            this.toPrint = this.toPrint.TrimEnd('0');
+
+            this.intValue = Convert.ToInt32(this.toPrint, 2);
+
+            this.Score = rndNumber;
+
+            //get color
+            if (rndNumberCol == 7) // 7 -> Green
+            {
+                this.Color = ConsoleColor.Green;
+                this.toPrint = this.toPrint.Replace('0', '1');
+                this.intValue = Convert.ToInt32(this.toPrint, 2);
+            }
+            else if (rndNumberCol ==13) // 13 -> Red
+            {
+                this.Color = ConsoleColor.Red;
+            }
+            else //else blue
+            {
+                this.Color = ConsoleColor.Blue;
+            }
         }
 
         public void UpdateLastX()
@@ -256,6 +282,44 @@ namespace B1tClass
 
             Console.Write(this.rowTracker[row].Substring(BorderSize,
                     this.rowTracker[row].Length - 2 * BorderSize));
+        }
+        //If b1t is red
+        public int isRed(B1ts B1t)
+        {
+            int Score =0;
+
+            //step 1: get score
+            Score = this.scoreTracker[B1t.PosY];
+            //step 2: delete row
+            //shift Rows down
+            for (int row = B1t.PosY; row > 0; row--)
+            {
+                this.rowTracker[row] = this.rowTracker[row - 1];
+                this.scoreTracker[row] = this.scoreTracker[row - 1];
+            }
+            //reset row 0
+            this.scoreTracker[0] = 0;
+            this.rowTracker[0] = this.rowTracker[0].Replace('0', ' ');
+            this.rowTracker[0] = this.rowTracker[0].Replace('1', ' ');
+
+            return Score;
+        }
+        //if b1t is green
+        public void isGreen(B1ts B1t)
+        {
+            if(B1t.PosY+1< this.rowTracker.Count)
+            { 
+            //get the string to combine on next row
+            string toCheck = this.rowTracker[B1t.PosY+1].Substring(B1t.firstX, B1t.toPrint.Length);
+            toCheck = toCheck.Replace(' ', '0');
+            int Check = Convert.ToInt32(toCheck, 2);
+            //combine
+            Check = Check | B1t.intValue;
+            toCheck = Convert.ToString(Check, 2);
+            //insert new string
+            this.rowTracker[B1t.PosY+1] = this.rowTracker[B1t.PosY+1].Insert(B1t.firstX, toCheck);
+            this.rowTracker[B1t.PosY+1] = this.rowTracker[B1t.PosY+1].Remove(B1t.lastX + 1, toCheck.Length);
+            }
         }
     }
 }

@@ -47,7 +47,7 @@ namespace B1trisV2
             Console.Clear();
 
             int difficultyMin = 1;
-            int difficultyMax = 45;
+            int difficultyMax = 63;
 
             int initialAppSpeed = 400; // lower is faster + to increment
             int curAppSpeed = initialAppSpeed;
@@ -78,7 +78,8 @@ namespace B1trisV2
             while (appIsRunning)
             {
                 //create a new piece
-                player1.B1t = new B1ts(mainRandomizer.Next(difficultyMin, difficultyMax));
+                player1.B1t = new B1ts(mainRandomizer.Next(difficultyMin, difficultyMax), 
+                    mainRandomizer.Next(1, 15)); //change to 20
                 player1.B1t.firstX = (playField.Width - player1.B1t.toPrint.Length +1) / 2;
 
                 while (player1.B1t.isMoving)
@@ -149,8 +150,24 @@ namespace B1trisV2
                         //update score
                         player1.Score += player1.B1t.Score;
                         playB1ts.scoreTracker[player1.B1t.PosY] += player1.B1t.Score;
-                        //Update the current row string
-                        playB1ts.UpdateRow(player1.B1t);
+                        //green fill as many 0s as possible
+                        if (player1.B1t.Color == ConsoleColor.Green &&
+                            player1.B1t.PosY < playField.Height-1)
+                        {
+                            playB1ts.isGreen(player1.B1t);
+                        }
+                        else
+                        {
+                            //Update the current row string
+                            playB1ts.UpdateRow(player1.B1t);
+                        }
+                        //action based on color
+                        //red -> destroy current row
+                        if ( player1.B1t.Color==ConsoleColor.Red)
+                        {
+                            player1.Score+= playB1ts.isRed(player1.B1t);
+                        }
+                        
                         //CheckFullRow return int
                         player1.Score += playB1ts.isFullRow(player1.B1t);
 
@@ -170,8 +187,8 @@ namespace B1trisV2
                             curAppSpeed, player1.B1t.intValue); 
                     }
 
-                    curAppSpeed = initialAppSpeed - ( player1.Score / 25) > 100 ?
-                         initialAppSpeed -( player1.Score / 20) : 100;
+                    curAppSpeed = initialAppSpeed - ( player1.Score / 50) > 100 ?
+                         initialAppSpeed -( player1.Score / 50) : 100;
                     Thread.Sleep(curAppSpeed);
                 }
             }
