@@ -17,10 +17,19 @@ namespace B1trisV2
             public int Score = 0;
             public ConsoleKeyInfo Input = new ConsoleKeyInfo();
             public B1ts B1t;
+
+            public Player()
+            { }
+
+            public Player(string name)
+            {
+                this.Name = name;
+            }
         }
 
-        static void Main(string[] args)
+        static void Main()
         {
+            Console.OutputEncoding = Encoding.UTF8;
             //settings
             Console.Clear();
             Console.OutputEncoding = Encoding.UTF8;
@@ -40,7 +49,8 @@ namespace B1trisV2
             int difficultyMin = 1;
             int difficultyMax = 45;
 
-            int appSpeed = 250; // lower is faster
+            int initialAppSpeed = 400; // lower is faster + to increment
+            int curAppSpeed = initialAppSpeed;
             bool appIsRunning = true;
 
             Random mainRandomizer = new Random();
@@ -69,7 +79,7 @@ namespace B1trisV2
             {
                 //create a new piece
                 player1.B1t = new B1ts(mainRandomizer.Next(difficultyMin, difficultyMax));
-                player1.B1t.firstX = (playField.Width - player1.B1t.toPrint.Length) / 2;
+                player1.B1t.firstX = (playField.Width - player1.B1t.toPrint.Length +1) / 2;
 
                 while (player1.B1t.isMoving)
                 {
@@ -96,6 +106,14 @@ namespace B1trisV2
                                 }
                                 player1.Input = new ConsoleKeyInfo();
                                 break;
+                            case ConsoleKey.DownArrow:
+                                player1.B1t.vSpeed += 1;
+                                if (player1.B1t.vSpeed >= B1ts.MAXSPEED)
+                                {
+                                    player1.B1t.vSpeed = 3;
+                                }
+                                player1.Input = new ConsoleKeyInfo();
+                                break;
                         }
                     }
                     //Move Left or Right 
@@ -107,16 +125,24 @@ namespace B1trisV2
                     player1.B1t.hSpeed = 0;
 
                     //Move Down
-                    if (player1.B1t.canMoveDown(playField, playB1ts))
+                    if (player1.B1t.canMoveDownSpeed(playField, playB1ts))
                     {
                         player1.B1t.prevY = player1.B1t.PosY;
                         player1.B1t.PosY += player1.B1t.vSpeed;
+                        player1.B1t.vSpeed = 1;
                         //guideline
                         playField.PrintBottomBorder(player1.B1t.Color,
                             player1.B1t.firstX, player1.B1t.toPrint.Length);
                     }
                     else
                     {
+                        //GAME OVER
+                        if (player1.B1t.PosY == 0)
+                        {
+                            appIsRunning = false;
+                            break;
+                        }
+
                         //stop the current B1t
                         player1.B1t.isMoving = false;
                         player1.B1t.vSpeed = 0;
@@ -130,26 +156,54 @@ namespace B1trisV2
 
                         playB1ts.PrintAll(playField.playAreaSideBorderWidth); // print Rows
                     }
-                    //test print
-                    //Console.Clear();
-                    
-                    //playField.printSideBorder();
-                    //playField.PrintBottomBorder();
-                    //playB1ts.PrintAll(playField.playAreaSideBorderWidth); // print Rows
 
-                    if (player1.B1t.isMoving)
+                    //print player b1t
+                    if (appIsRunning)
                     {
-                        player1.B1t.PrintOne();
+                        if (player1.B1t.isMoving)
+                        {
+                            player1.B1t.PrintOne();
+                            //Re-Draw Previous Line
+                            playB1ts.PrintOne(playField.playAreaSideBorderWidth, player1.B1t.prevY);
+                        }
+                        playField.PrintScore(player1.Score, player1.Name,
+                            curAppSpeed, player1.B1t.intValue); 
                     }
-                    Console.SetCursorPosition(0, 22);
-                    Console.Write(player1.Score);
-                    
 
-
-                    Thread.Sleep(appSpeed);
+                    curAppSpeed = initialAppSpeed - ( player1.Score / 25) > 100 ?
+                         initialAppSpeed -( player1.Score / 20) : 100;
+                    Thread.Sleep(curAppSpeed);
                 }
+            }
 
+            //GAME OVER
+            if(!appIsRunning)
+            {
+                string PrintGO = "GAME OVER";
+                Console.ForegroundColor = ConsoleColor.Red;
+                Console.SetCursorPosition((playField.Width - PrintGO.Length) / 2 +1, 0);
+                Console.Write(PrintGO);
 
+                string Continue = "Enter:Continue ESC:Exit";
+                Console.SetCursorPosition((playField.Width - Continue.Length) / 2 + 1,
+                    playField.CanvasHeight-3);
+                Console.Write(Continue);
+
+                while (player1.Input.Key != ConsoleKey.Escape ||
+                    player1.Input.Key != ConsoleKey.Enter)
+                {
+                    player1.Input = new ConsoleKeyInfo();
+                    player1.Input = Console.ReadKey();
+
+                    if (player1.Input.Key == ConsoleKey.Enter)
+                    {
+                        B1trisV2.B1trisv2.Main();
+                    }
+                    else if (player1.Input.Key == ConsoleKey.Escape)
+                    {
+                        return;
+                    }
+                }     
             }
         }
     }
