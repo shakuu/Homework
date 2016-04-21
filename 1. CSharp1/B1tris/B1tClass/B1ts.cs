@@ -12,7 +12,7 @@ namespace B1tClass
         public int lastX = 0;
         public int PosY = 0;
         public string toPrint = "";
-        public ConsoleColor Color = new ConsoleColor();
+        public ConsoleColor Color = ConsoleColor.Blue;
         public bool isMoving = true;
         
         public int intValue;
@@ -21,6 +21,9 @@ namespace B1tClass
         public int hSpeed = 0;
         public int vSpeed = 1;
         public const int MAXSPEED = 3;
+
+        public int prevX = 0;
+        public int prevY = 0;
         //update las X 
         public int firstX
         {
@@ -130,6 +133,16 @@ namespace B1tClass
             return canMove;
         }
         //PRINT
+        public void PrintOne()
+        {
+            //clear previous position
+            Console.SetCursorPosition(this.prevX, this.prevY);
+            Console.Write(new string(' ', this.toPrint.Length));
+            //print on new positions
+            Console.ForegroundColor = this.Color;
+            Console.SetCursorPosition(this.firstX, this.PosY);
+            Console.Write(this.toPrint);
+        }
     }
 
     public class B1tTracker
@@ -175,6 +188,18 @@ namespace B1tClass
             this.rowTracker[0] = this.rowTracker[0].Replace('1', ' ');
 
             return Score;
+        }
+
+        public void PrintAll(int BorderSize)
+        {
+            for (int row = 0; row < this.rowTracker.Count; row++)
+            {
+                Console.ForegroundColor = ConsoleColor.Black;
+
+                Console.SetCursorPosition(0 + BorderSize, row);
+                Console.Write(this.rowTracker[row].Substring(BorderSize, 
+                    this.rowTracker[row].Length - 2 * BorderSize));
+            }
         }
     }
 }

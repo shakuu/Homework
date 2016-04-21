@@ -24,22 +24,23 @@ namespace B1trisV2
             //settings
             Console.Clear();
             Console.OutputEncoding = Encoding.UTF8;
-            PlayArea playField = new PlayArea();
+
+            PlayArea playField = new PlayArea(); 
 
             Console.BufferWidth = Console.WindowWidth = playField.CanvasWidth;
             Console.BufferHeight = Console.WindowHeight = playField.CanvasHeight;
 
             Console.Title = "B1tTris: The Game";
 
-            Console.BackgroundColor = ConsoleColor.Black;
+            Console.BackgroundColor = playField.BackgroundColor;
             Console.CursorVisible = false;
 
             Console.Clear();
 
             int difficultyMin = 1;
-            int difficultyMax = 31;
+            int difficultyMax = 45;
 
-            int appSpeed = 300; // lower is faster
+            int appSpeed = 250; // lower is faster
             bool appIsRunning = true;
 
             Random mainRandomizer = new Random();
@@ -59,6 +60,10 @@ namespace B1trisV2
             }
             //
             Player player1 = new Player();
+
+            //Pre Print Borders
+            playField.printSideBorder();
+            playField.PrintBottomBorder();
 
             while (appIsRunning)
             {
@@ -96,6 +101,7 @@ namespace B1trisV2
                     //Move Left or Right 
                     if (player1.B1t.canMoveSides(playField, playB1ts))
                     {
+                        player1.B1t.prevX = player1.B1t.firstX;
                         player1.B1t.firstX += player1.B1t.hSpeed;
                     }
                     player1.B1t.hSpeed = 0;
@@ -103,7 +109,11 @@ namespace B1trisV2
                     //Move Down
                     if (player1.B1t.canMoveDown(playField, playB1ts))
                     {
+                        player1.B1t.prevY = player1.B1t.PosY;
                         player1.B1t.PosY += player1.B1t.vSpeed;
+                        //guideline
+                        playField.PrintBottomBorder(player1.B1t.Color,
+                            player1.B1t.firstX, player1.B1t.toPrint.Length);
                     }
                     else
                     {
@@ -117,25 +127,28 @@ namespace B1trisV2
                         playB1ts.UpdateRow(player1.B1t);
                         //CheckFullRow return int
                         player1.Score += playB1ts.isFullRow(player1.B1t);
+
+                        playB1ts.PrintAll(playField.playAreaSideBorderWidth); // print Rows
                     }
                     //test print
-                    Console.Clear();
-                    playField.PrintBottomBorder();
-                    for (int i = 0; i < playB1ts.rowTracker.Count; i++)
-                    {
-                        Console.SetCursorPosition(0, i);
-                        Console.WriteLine(playB1ts.rowTracker[i]);
-                    }
+                    //Console.Clear();
+                    
+                    //playField.printSideBorder();
+                    //playField.PrintBottomBorder();
+                    //playB1ts.PrintAll(playField.playAreaSideBorderWidth); // print Rows
+
                     if (player1.B1t.isMoving)
                     {
-                        Console.SetCursorPosition(player1.B1t.firstX, player1.B1t.PosY);
-                        Console.Write(player1.B1t.toPrint);
+                        player1.B1t.PrintOne();
                     }
                     Console.SetCursorPosition(0, 22);
                     Console.Write(player1.Score);
+                    
+
 
                     Thread.Sleep(appSpeed);
                 }
+
 
             }
         }

@@ -54,7 +54,7 @@
       <Project>{cfe3e286-104e-438e-b3b3-31832165b669}</Project>
       <Name>B1tClass</Name>
     </ProjectReference>
-    <ProjectReference Include="..\ConsolePlayArea\ConsolePlayArea.csproj">
+    <ProjectReference Include="..\..\B1tris\ConsolePlayArea\ConsolePlayArea.csproj">
       <Project>{dfff48d2-855c-4dc9-9e97-d473e4a0389f}</Project>
       <Name>ConsolePlayArea</Name>
     </ProjectReference>

@@ -44,7 +44,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\TA-Exam-13-June-24\ConsolePlayArea\ConsolePlayArea.csproj">
+    <ProjectReference Include="..\ConsolePlayArea\ConsolePlayArea.csproj">
       <Project>{dfff48d2-855c-4dc9-9e97-d473e4a0389f}</Project>
       <Name>ConsolePlayArea</Name>
     </ProjectReference>
