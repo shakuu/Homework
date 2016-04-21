@@ -11,3 +11,21 @@ Get:
 Note: Set UTF-8 compatible Font in console->properties and restart 
 
 Ignore B1TrisTheGame-old
+
+##How To Play##
+
+###Controls###
+
+Left Arrow -> move left
+
+Right Arrow -> move right
+
+Down Arrow -> move down faster
+
+###B1t Types###
+
+Blue B1t -> 0s pass through 1s ( standard B1t )
+
+Red B1t -> Destroys the row it lands on
+
+Green B1t -> Fills any 0s below
