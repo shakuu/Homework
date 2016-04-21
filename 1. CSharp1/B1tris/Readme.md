@@ -26,6 +26,6 @@ Down Arrow -> move down faster
 
 Blue B1t -> 0s pass through 1s ( standard B1t )
 
-Red B1t -> Destroys the row it lands on
+Red B1t -> Destroys the row it lands in
 
 Green B1t -> Fills any 0s below
