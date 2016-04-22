@@ -72,7 +72,7 @@ namespace Pillar
                     onesAfter += onesCount[row];
                 }
                 
-                if (onesBefore==onesAfter)
+                if (onesBefore==onesAfter && !isEqual)
                 {
                     Console.WriteLine(numOfRows-1-bound);
                     Console.WriteLine(onesBefore);
