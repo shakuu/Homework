@@ -7,6 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ThreeNumbers", "ThreeNumber
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Decoding", "Decoding\Decoding.csproj", "{C5037A0D-BA98-49D4-9064-D807CF75980A}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PersianRugs", "PersianRugs\PersianRugs.csproj", "{A215D3C7-AA53-40A8-B311-7688DF85321C}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,10 @@ Global
 		{C5037A0D-BA98-49D4-9064-D807CF75980A}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{C5037A0D-BA98-49D4-9064-D807CF75980A}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{C5037A0D-BA98-49D4-9064-D807CF75980A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A215D3C7-AA53-40A8-B311-7688DF85321C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A215D3C7-AA53-40A8-B311-7688DF85321C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A215D3C7-AA53-40A8-B311-7688DF85321C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A215D3C7-AA53-40A8-B311-7688DF85321C}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
