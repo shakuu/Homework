@@ -7,6 +7,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ShipDamage", "ShipDamage\Sh
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Tribonacci", "Tribonacci\Tribonacci.csproj", "{89F18466-9518-4545-B127-F9C280492061}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FirTree", "FirTree\FirTree.csproj", "{D00E4CC1-E879-4BF0-922E-AF4197E83823}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IheartBits", "IheartBits\IheartBits.csproj", "{588247BC-685E-4E2D-BC43-9EC9C37B87E4}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +25,14 @@ Global
 		{89F18466-9518-4545-B127-F9C280492061}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{89F18466-9518-4545-B127-F9C280492061}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{89F18466-9518-4545-B127-F9C280492061}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D00E4CC1-E879-4BF0-922E-AF4197E83823}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D00E4CC1-E879-4BF0-922E-AF4197E83823}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D00E4CC1-E879-4BF0-922E-AF4197E83823}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D00E4CC1-E879-4BF0-922E-AF4197E83823}.Release|Any CPU.Build.0 = Release|Any CPU
+		{588247BC-685E-4E2D-BC43-9EC9C37B87E4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{588247BC-685E-4E2D-BC43-9EC9C37B87E4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{588247BC-685E-4E2D-BC43-9EC9C37B87E4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{588247BC-685E-4E2D-BC43-9EC9C37B87E4}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
