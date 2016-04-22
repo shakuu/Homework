@@ -66,11 +66,11 @@ namespace IheartBits
                     tempNumb = tempNumb >> 1;
                 }
 
-                // get result
+                // get result - unnecessary
                 result[index] = (inputP[index] ^ notP[index]);
                 result[index] = result[index] & invertP[index];
 
-                //print
+                //print 100/ 100
                 Console.WriteLine(invertP[index]);
             }
         }
