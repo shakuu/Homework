@@ -7,6 +7,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PieceOfCake", "PieceOfCake\
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AngryGPS", "AngryGPS\AngryGPS.csproj", "{6671BBA1-E7D0-41FE-A197-FC2029D4359E}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GPS2", "GPS2\GPS2.csproj", "{6B22EAF5-1666-4022-96B3-E09F462B788E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EggCellent", "EggCellent\EggCellent.csproj", "{1DB3F016-582A-4210-89E3-6E67DEE87D23}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +25,14 @@ Global
 		{6671BBA1-E7D0-41FE-A197-FC2029D4359E}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{6671BBA1-E7D0-41FE-A197-FC2029D4359E}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{6671BBA1-E7D0-41FE-A197-FC2029D4359E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6B22EAF5-1666-4022-96B3-E09F462B788E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6B22EAF5-1666-4022-96B3-E09F462B788E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6B22EAF5-1666-4022-96B3-E09F462B788E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6B22EAF5-1666-4022-96B3-E09F462B788E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1DB3F016-582A-4210-89E3-6E67DEE87D23}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1DB3F016-582A-4210-89E3-6E67DEE87D23}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1DB3F016-582A-4210-89E3-6E67DEE87D23}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1DB3F016-582A-4210-89E3-6E67DEE87D23}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

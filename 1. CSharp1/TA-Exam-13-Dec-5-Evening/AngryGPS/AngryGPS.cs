@@ -10,10 +10,7 @@ namespace AngryGPS
             // input - long by definition
             string inputNum = Console.ReadLine();
 
-            if (inputNum.Contains("-"));
-            {
-                inputNum = inputNum.TrimStart('-');
-            }
+            inputNum = inputNum.TrimStart('-');
 
             // variables
             BigInteger sumOdd = 0;
