@@ -2,7 +2,7 @@
 
 namespace PieceOfCake
 {
-    class Program
+    class CakeWars
     {
         static void Main()
         {
