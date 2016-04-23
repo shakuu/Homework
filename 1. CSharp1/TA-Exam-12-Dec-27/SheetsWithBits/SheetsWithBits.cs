@@ -8,9 +8,11 @@ namespace SheetsWithBits
         {
             int AsyaNeeds = int.Parse(Console.ReadLine());
 
+            int checkMask = 1;
+
             for (int i = 10; i >= 0; i--)
             {
-                if(AsyaNeeds%2==0)
+                if((AsyaNeeds&checkMask) ==1)
                 {
                     Console.WriteLine("A" + i.ToString());
                 }
