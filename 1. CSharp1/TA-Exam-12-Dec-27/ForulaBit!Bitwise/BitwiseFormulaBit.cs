@@ -14,7 +14,7 @@ namespace ForulaBit_Bitwise
             int GoalCol = 7;    // last bit right to left 
 
             // counters
-            int Steps = 1;
+            int Steps = 1;      // number of moves + starting position 
             int Turns = 0;
             int Direction = 0; // 0- south, 1- west, 2-north
 
@@ -36,7 +36,7 @@ namespace ForulaBit_Bitwise
             }
 
             //just in case
-            if (Track[0]%2 != 0)
+            if (Track[0] % 2 != 0)
             {
                 Console.WriteLine("No " + 0);
             }
