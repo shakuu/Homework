@@ -13,6 +13,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EggCellent", "EggCellent\Eg
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GrannyCalc", "GrannyCalc\GrannyCalc.csproj", "{8B0E7555-45E2-4FAE-8076-8EA51E99B897}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OnesAndZeroes", "OnesAndZeroes\OnesAndZeroes.csproj", "{B854B500-979F-4BE1-A0B0-61DFA919B9D7}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -39,6 +41,10 @@ Global
 		{8B0E7555-45E2-4FAE-8076-8EA51E99B897}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{8B0E7555-45E2-4FAE-8076-8EA51E99B897}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{8B0E7555-45E2-4FAE-8076-8EA51E99B897}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B854B500-979F-4BE1-A0B0-61DFA919B9D7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B854B500-979F-4BE1-A0B0-61DFA919B9D7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B854B500-979F-4BE1-A0B0-61DFA919B9D7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B854B500-979F-4BE1-A0B0-61DFA919B9D7}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
