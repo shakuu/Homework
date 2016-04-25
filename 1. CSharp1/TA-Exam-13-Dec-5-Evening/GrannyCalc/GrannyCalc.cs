@@ -133,7 +133,7 @@ namespace GrannyCalc
                     }
                 }
 
-                if (GrannySays == "right")
+                if (GrannySays == "right")      // WRONG COUNT RIGHT TO LEFT !!!!!
                 {
                     //Step 1: Read two more numbers : row and col
                     GrannySaysRow = int.Parse(Console.ReadLine());
