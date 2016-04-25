@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Numerics;
 
 namespace GrannyCalc
 {
@@ -18,12 +19,12 @@ namespace GrannyCalc
             int Width = int.Parse(Console.ReadLine());
 
             // 8 32bit numbs to fill it
-            int[] Calc = new int[definitionRows];
+            uint[] Calc = new uint[definitionRows];
 
             //fill the Calculator
             for (int row = 0; row < definitionRows; row++)
             {
-                Calc[row] = int.Parse(Console.ReadLine());
+                Calc[row] = uint.Parse(Console.ReadLine());
             }
 
             // variables
@@ -53,13 +54,13 @@ namespace GrannyCalc
                     for (int row = 0; row < definitionRows; row++)
                     {
                         int Counter = 0;
-                        int curBit = 0;
+                        uint curBit = 0;
 
                         // Step 1: Count 1s on this Row and set them to 0s
                         for (int col = 0; col < Width; col++)
                         {
                             // Step 1: get bit value
-                            curBit = (Calc[row] & (1 << col)) >> col;
+                            curBit = (Calc[row] & (uint)(1 << col)) >> col;
 
                             // Step 2: Check and Reset
                             if (curBit == 1)
@@ -68,7 +69,7 @@ namespace GrannyCalc
                                 Counter++;
 
                                 // reset to 0
-                                Calc[row] = Calc[row] ^ (1 << col);
+                                Calc[row] = Calc[row] & (~ (uint)(1 << col));
                             }
                         }
 
@@ -77,7 +78,7 @@ namespace GrannyCalc
                         for (int left = 0; left < Counter; left++)
                         {
                             // add 1s left to right
-                            Calc[row] = Calc[row] | (1 << Width - 1 - left);
+                            Calc[row] = Calc[row] | (uint)(1 << Width - 1 - left);
                         }
                     }
                 }
@@ -103,14 +104,14 @@ namespace GrannyCalc
                     // Same as reset
                     // Read 1 Row Only - Granny Says
                     int Counter = 0;
-                    int curBit = 0;
+                    uint curBit = 0;
 
                     // Step 1: Count 1s on this Row and set them to 0s
                     // Count Positions from Width ( LEFT ) to GrannySays ( RIght )
                     for (int col = Width - 1 - GrannySaysCol; col < Width; col++)
                     {
                         // Step 1: get bit value RIGHT to LEFT starting at GrannySaysCol
-                        curBit = (Calc[GrannySaysRow] & (1 << col)) >> col;
+                        curBit = (Calc[GrannySaysRow] & (uint)(1 << col)) >> col;
 
                         // Step 2: Check and Reset
                         if (curBit == 1)
@@ -119,7 +120,7 @@ namespace GrannyCalc
                             Counter++;
 
                             // reset to 0
-                            Calc[GrannySaysRow] = Calc[GrannySaysRow] ^ (1 << col);
+                            Calc[GrannySaysRow] = Calc[GrannySaysRow] &(~ (uint)(1 << col));
                         }
                     }
 
@@ -128,7 +129,7 @@ namespace GrannyCalc
                     for (int left = 0; left < Counter; left++)
                     {
                         // add 1s left to right
-                        Calc[GrannySaysRow] = Calc[GrannySaysRow] | (1 << Width - 1 - left);
+                        Calc[GrannySaysRow] = Calc[GrannySaysRow] | (uint)(1 << Width - 1 - left);
                     }
                 }
 
@@ -138,7 +139,7 @@ namespace GrannyCalc
                     GrannySaysRow = int.Parse(Console.ReadLine());
                     GrannySaysCol = int.Parse(Console.ReadLine());
 
-                    // input range -50 - 50
+                    // input range -50 to 50
                     if (GrannySaysCol > Width)
                     {
                         GrannySaysCol = Width;
@@ -152,14 +153,14 @@ namespace GrannyCalc
                     // Move 1s Right Starting at GrannSaysCol Position
                     // Read 1 Row Only - Granny Says
                     int Counter = 0;
-                    int curBit = 0;
+                    uint curBit = 0;
 
                     // Step 1: Count 1s on this Row and set them to 0s
                     // Count Positions from Width ( LEFT ) to GrannySays ( RIght )
-                    for (int col = 0; col < GrannySaysCol; col++)
+                    for (int col = 0; col < Width - GrannySaysCol; col++)
                     {
                         // Step 1: get bit value RIGHT to LEFT starting at GrannySaysCol
-                        curBit = (Calc[GrannySaysRow] & (1 << col)) >> col;
+                        curBit = (Calc[GrannySaysRow] & (uint)(1 << col)) >> col;
 
                         // Step 2: Check and Reset
                         if (curBit == 1)
@@ -168,7 +169,7 @@ namespace GrannyCalc
                             Counter++;
 
                             // reset to 0
-                            Calc[GrannySaysRow] = Calc[GrannySaysRow] ^ (1 << col);
+                            Calc[GrannySaysRow] = Calc[GrannySaysRow] & (~ (uint)(1 << col));
                         }
                     }
 
@@ -177,7 +178,7 @@ namespace GrannyCalc
                     for (int left = 0; left < Counter; left++)
                     {
                         // add 1s left to right
-                        Calc[GrannySaysRow] = Calc[GrannySaysRow] | (1 << left);
+                        Calc[GrannySaysRow] = Calc[GrannySaysRow] | (uint)(1 << left);
                     }
                 }
             }
@@ -194,7 +195,7 @@ namespace GrannyCalc
                 for (int row = 0; row < definitionRows; row++)
                 {
                     // Step 1: Get Bit on Position Col in Row - LEFT to RIGHT
-                    int curBit = (Calc[row] & (1 << col)) >> col;
+                    uint curBit = (Calc[row] & (uint)(1 << col)) >> col;
 
                     // Step 2: Check
                     if (curBit==1)
@@ -212,7 +213,15 @@ namespace GrannyCalc
             }
 
             //Calculate
-            int toPrint = (Calc.Sum() )* ZeroColCount;
+            BigInteger toPrint = 0;
+            // Step 1: Sum
+            foreach (uint value in Calc)
+            {
+                toPrint += value;
+            }
+
+            // Step 2: Multiply by number of columns without 1s
+            toPrint *= ZeroColCount;
             
             //Print
             Console.WriteLine(toPrint);
