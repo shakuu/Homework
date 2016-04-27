@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  
+  <title>LinkedIn</title>
+  
+  <link rel="stylesheet" type="" href="./linkedin.css">
+</head>
+
+<body>
+  <div class= "page-frame">
+    
+  <header>
+    <h2><strong class="brand-style"><a href="#">LinkedIn</a></strong></h2>
+
+    <nav class="nav-style">
+      <ul>
+         <div class="top-row-nav">
+          <li><a href="#">Home</a></li>
+          <li><a href="#main-heading">What is <strong class="brand-style">LinkedIn</strong>?</a></li>
+          <li><a href="#join-today">Join Today</a></li>
+         </div>
+        <li class="has-bot-row">
+         
+          <form method="POST">
+            <ul>
+              <div class="bot-row-nav">
+               <strong class="brand-style">Sign In</strong>
+              <li>
+                <label for="email">Email:</label>
+                <input type="text" 
+                        name="email" 
+                        id="email" 
+                        value="">
+              </li>
+
+              <li>
+                <label for="passwrd">Password:</label>
+                <input type="password" 
+                        name="email" 
+                        id="passwrd" 
+                        value="">
+              </li>
+
+              <li>
+                <input type="button" 
+                        name="sign-in" 
+                        value="Sign In" 
+                        disabled>
+              </li>
+              </div>
+            </ul>
+          </form>
+        </li>
+      </ul>
+    </nav>
+
+    <div class="horizontal-line"></div>
+
+  </header>
+
+  <main>
+    <header>
+          <h1 id="main-heading">Over 175 million professionals use <strong class="brand-style">LinkedIn</strong> to<wbr /> exchange information, ideas, and opportunities</h1>
+        </header>
+    <section>
+      <article>
+        <ul>
+          <li>Stay informed about your contacts and industry.</li>
+          <li>Find the people & knowledge you need to achieve your goals.</li>
+          <li>Control your professional identity online.</li>
+        </ul>
+      </article>
+    </section>
+
+    <section id="join-today">
+      <header>
+        <h2>Join <strong class="brand-style">LinkedIn</strong> Today</h2>
+      </header>
+
+      <form method="POST" class="sign-up-form">
+        <header>
+          <h3>Sign Up</h3>
+        </header>
+
+        <ul>
+          <li>
+            <p><label for="first-name">First Name:
+              </label></p>
+            <input type="text" 
+                   name="first-name" 
+                   id="first-name"
+                   value="">
+          </li>
+          
+          <li>
+            <p><label for="last-name">Last Name:
+              </label></p>
+            <input type="text" 
+                   name="last-name" 
+                   id="last-name"
+                   value="">
+          </li>
+          
+          <li>
+            <p><label for="sign-up-email">Email:
+              </label></p>
+            <input type="email" 
+                   name="sign-up-email" 
+                   id="sign-up-email"
+                   value="">
+          </li>
+          
+          <li>
+            <p><label for="sign-up-passwrd">Password:
+              </label></p>
+            <input type="password" 
+                   name="sign-up-passwrd" 
+                   id="sign-up-passwrd"
+                   value="">
+            <p>6 or more characters</p>
+          </li>
+        </ul>
+        
+        <input type="submit" 
+                name="join-now" 
+                id="join-now" 
+                value="Join Now">
+      </form>
+      
+      <p>Already on
+         <strong class="brand-style">LinkedIn</strong>? 
+         <a href="#">Sign in</a>
+         </p>
+         
+    </section>
+    
+    <div class="horizontal-line"></div>
+    
+    <section>
+      <header>
+        <h2>Search for someone by name:</h2>
+      </header>
+      
+      <form method="POST">
+        
+        <div class="search-by-name">
+        <ul>
+          <li>
+            <div class="align-label">
+              <label for="search-first-name">First Name</label></div>
+            <input type="text" 
+                    name="search-first-name"
+                    id="search-first-name"
+                    placeholder=" First Name" >
+          </li>
+          
+          <li>
+            <div class="align-label">
+              <label for="search-last-name">Last Name</label></div>
+            <input type="text" 
+                    name="search-last-name"
+                    id="search-last-name"
+                    placeholder=" Last Name" >
+          </li>
+        </ul>
+        
+        
+        <input type="submit" 
+                name="search-go" 
+                value="Go"
+                id="search-go">
+                </div>
+      </form>
+    </section>
+  </main>
+  </div>
+</body>
+
+</html>

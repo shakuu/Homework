@@ -1,0 +1,145 @@
+* {
+  font-family: verdana;
+  box-sizing: border-box;
+}
+
+/*Frames and Borders*/
+body {
+    padding-bottom: 768px;
+}
+
+.page-frame{
+  border: 2px solid black;
+  padding: 10px;
+  max-width: 960px;
+}
+
+.horizontal-line{
+  border: 1px solid dodgerblue;
+}
+
+/*Table*/
+.table{
+  display: table;
+}
+
+.table-row{
+  display: table-row;
+}
+
+.table-cell{
+  display: table-cell;
+}
+
+/*LinkedIn Logo*/
+.brand-style{
+  color: dodgerblue;
+  font-size: 110%;
+}
+
+.brand-style>a, 
+.brand-style>a:active,
+.brand-style>a:visited {
+  text-decoration: none;
+  color: dodgerblue;
+}
+
+.brand-style>a:hover{
+  color: deepskyblue;
+}
+
+/*Nav List*/
+/*TODO: Lots*/
+nav ul{
+  padding: 0px;
+}
+
+.has-bot-row{
+  list-style: none;
+}
+
+.top-row-nav li{
+  display: inline-block;
+  margin-right: 10px;
+}
+
+.top-row-nav{
+  background-color: dodgerblue;
+  padding: 3px;
+}
+
+.top-row-nav a, 
+.top-row-nav a:visited,
+.top-row-nav a:active,
+.top-row-nav .brand-style{
+  color: white;
+  text-decoration: none;
+}
+
+.top-row-nav li{
+  padding: 3px;
+}
+
+.bot-row-nav *{
+  display: inline-block;
+  margin-top: 8px; 
+}
+
+/*TODO: Align Button better*/
+.search-by-name ul{
+  color: dodgerblue;
+  padding-left: 20px;
+}
+
+.search-by-name li{
+  padding-bottom: 5px;
+}
+
+.search-by-name .align-label{
+  color: black;
+  text-align: left;
+  width:12%;
+  display: inline-block;
+}
+
+.search-by-name input[type="submit"]{
+   background-color: dodgerblue;
+  color: white;
+  border: none;
+  padding: 5px;
+  padding-left: 10px;
+  padding-right: 10px;
+  margin-left: 45px;
+  width: 100px;
+}
+
+/*TODO: Sign Up Form
+1. less vertical margin
+2. align button better*/
+
+.sign-up-form p{
+  margin:5px;
+}
+
+.sign-up-form header,
+.sign-up-form input[type="submit"]
+{
+  margin-left: 45px;
+}
+
+.sign-up-form input[type="text"],
+.sign-up-form input[type="password"],
+.sign-up-form input[type="email"]{
+  margin-left: 5px;
+}
+
+.sign-up-form input[type="submit"]{
+  background-color: dodgerblue;
+  color: white;
+  border: none;
+  padding: 5px;
+  padding-left: 10px;
+  padding-right: 10px;
+  
+  width: 100px;
+}
