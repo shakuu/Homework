@@ -1,0 +1,38 @@
+*{
+  font-family: cursive;
+  color: white
+}
+
+.page-frame{
+  border: 5px lime;
+  border-style: ridge;
+  border-radius: 30px;
+  
+  padding: 0px;
+  
+  background-color: background-image: -webkit-gradient(linear, left top, left bottom, from(white), to(end-color));
+  background-image: -webkit-linear-gradient(top, white, black);
+  background-image: -moz-linear-gradient(top, white, black);
+  background-image: linear-gradient(to bottom, white, black);;
+  
+  max-width: 960px;
+}
+
+.main-header-style{
+  border-bottom: 7px ridge lime;
+  padding:15px;
+  
+  text-align: center;
+}
+
+ main{
+   padding: 15px;
+ }
+ 
+ main p{
+  padding: 40px;
+  text-align: justify;
+  
+  border: 7px ridge lime;
+  border-radius: 10px;
+ }
