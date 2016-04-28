@@ -5,7 +5,6 @@ namespace _6_Maximal_K_Sum
 {
     class Program
     {
-
         public class myCompare : IComparer
         {
             int IComparer.Compare(object Two, object One)
@@ -27,9 +26,7 @@ namespace _6_Maximal_K_Sum
                 }
             }
         }
-
-
-
+        
         static void Main()
         {
             //input
