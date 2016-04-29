@@ -27,7 +27,7 @@ namespace _17_Subset_K_With_Sum_S
             int PowerSetSize = 1 << arraySize;  // equiavalent to Math.Pow(2, arraySize)
 
             var PowerSet =                                                       // each subset contains a set of array elements
-                from PowerSetIndex in Enumerable.Range(0, PowerSetSize)          // for each PowerSet Subset
+                from PowerSetIndex in Enumerable.Range(0, PowerSetSize)          // for each new PowerSet Subset 
                 select                                                           // Return Elements 
                     from ArrayIndex in Enumerable.Range(0, toSearch.Count())     // From the input Array toSearch
                         where (PowerSetIndex & (1 << ArrayIndex)) != 0           // If PowerSet Index and ArrayIndex 
@@ -38,7 +38,7 @@ namespace _17_Subset_K_With_Sum_S
                 from SubSet in PowerSet                     // for each existing subset in PowerSet
 
                 where SubSet.Sum() == toFindSum             // return if sum == toFindSUM
-                   && SubSet.Count() == toFindSubsetLen     // AND Count = required Length
+                   && SubSet.Count() == toFindSubsetLen     // AND Count == required Length
 
                 select SubSet;                              // Returb the subsets
 
