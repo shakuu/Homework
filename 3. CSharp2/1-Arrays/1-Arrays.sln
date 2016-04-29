@@ -59,6 +59,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "18-Remove-Elements-From-Arr
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "18-Remove-Elements-From-Array-Correct", "18-Remove-Elements-From-Array-Correct\18-Remove-Elements-From-Array-Correct.csproj", "{96AE7292-BE50-416D-8240-A8D24DBC6A24}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "19-Permutations-Of-Set", "19-Permutations-Of-Set\19-Permutations-Of-Set.csproj", "{3806F431-3BCF-4F02-8C63-09D2885DFFDD}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -177,6 +179,10 @@ Global
 		{96AE7292-BE50-416D-8240-A8D24DBC6A24}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{96AE7292-BE50-416D-8240-A8D24DBC6A24}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{96AE7292-BE50-416D-8240-A8D24DBC6A24}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3806F431-3BCF-4F02-8C63-09D2885DFFDD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3806F431-3BCF-4F02-8C63-09D2885DFFDD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3806F431-3BCF-4F02-8C63-09D2885DFFDD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3806F431-3BCF-4F02-8C63-09D2885DFFDD}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
