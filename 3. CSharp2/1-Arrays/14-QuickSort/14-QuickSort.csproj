@@ -4,11 +4,11 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{67608B13-8862-4A49-9B56-A38C4DEBD6FA}</ProjectGuid>
+    <ProjectGuid>{09E74D1F-7FB9-494C-BAF2-7EE7EE99FDC3}</ProjectGuid>
     <OutputType>Exe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>_00_Generate_Array_Input_HW_Format</RootNamespace>
-    <AssemblyName>00-Generate-Array-Input-HW-Format</AssemblyName>
+    <RootNamespace>_14_QuickSort</RootNamespace>
+    <AssemblyName>14-QuickSort</AssemblyName>
     <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
@@ -43,7 +43,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="GenerateArrayInput.cs" />
+    <Compile Include="QuickSort.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

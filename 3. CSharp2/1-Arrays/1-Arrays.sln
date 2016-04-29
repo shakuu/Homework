@@ -41,6 +41,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "13-Merge-Sort-Simple", "13-
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "00-Generate-Array-Input-HW-Format", "00-Generate-Array-Input-HW-Format\00-Generate-Array-Input-HW-Format.csproj", "{67608B13-8862-4A49-9B56-A38C4DEBD6FA}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "14-QuickSort", "14-QuickSort\14-QuickSort.csproj", "{09E74D1F-7FB9-494C-BAF2-7EE7EE99FDC3}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -123,6 +125,10 @@ Global
 		{67608B13-8862-4A49-9B56-A38C4DEBD6FA}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{67608B13-8862-4A49-9B56-A38C4DEBD6FA}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{67608B13-8862-4A49-9B56-A38C4DEBD6FA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{09E74D1F-7FB9-494C-BAF2-7EE7EE99FDC3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{09E74D1F-7FB9-494C-BAF2-7EE7EE99FDC3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{09E74D1F-7FB9-494C-BAF2-7EE7EE99FDC3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{09E74D1F-7FB9-494C-BAF2-7EE7EE99FDC3}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
