@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace _13_Merge_Sort_Simple
 {
-    class MergeSort
+    class MergeSortSimple
     {
         static void Main()
         {
@@ -196,6 +196,13 @@ namespace _13_Merge_Sort_Simple
             foreach (var element in toSort)
             {
                 Console.WriteLine(element);
+            }
+
+            // TEST
+            if (toSort[0] == toSort.Min() && 
+                toSort[toSort.Count()-1] == toSort.Max())
+            {
+                Console.WriteLine("YAY");
             }
         }
     }

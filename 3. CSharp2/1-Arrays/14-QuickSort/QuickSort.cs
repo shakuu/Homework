@@ -24,7 +24,10 @@ namespace _14_QuickSort
 
             toSort = Sort(toSort, arrayLeft, arrayRight);
 
-
+            foreach (var item in toSort)
+            {
+                Console.WriteLine(item);
+            }
         }
 
         public static List<int> Sort(List<int> toSort, int Left, int Right)

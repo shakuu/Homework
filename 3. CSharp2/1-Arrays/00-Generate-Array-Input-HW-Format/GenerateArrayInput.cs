@@ -18,7 +18,7 @@ namespace _00_Generate_Array_Input_HW_Format
 
             for (int i = 1; i < inputSize+1; i++)
             {
-                array[i] = (randomizer.Next(0, 100)).ToString(); // change max value
+                array[i] = (randomizer.Next(0, 10000)).ToString(); // change max value
             }
 
             // IMPORTANT: CHANGE THIS TO YOUR OWN EXISTING FOLDER

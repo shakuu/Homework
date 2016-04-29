@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace _13_Merge_Sort
 {
-    class MergeSort
+    class Program
     {
         static void Main()
         {
