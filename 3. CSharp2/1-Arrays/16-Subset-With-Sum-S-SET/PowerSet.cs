@@ -32,7 +32,7 @@ namespace _16_Subset_With_Sum_S_SET
                     select
                          from numb in Enumerable.Range(0, toSearch.Count()) // each subset containing a subset
                          where (subsetCount & (1 << numb)) != 0             // of individial items ( numbers )
-                         select toSearch[numb];
+                         select toSearch[numb];                             // return if indexes have matching bits
 
             //Console.Write(string.Join(Environment.NewLine,
             //            currQuery.Select(subset =>

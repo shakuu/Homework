@@ -4,11 +4,11 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{5554D1F3-E34E-40A0-893D-24F36619ECE2}</ProjectGuid>
+    <ProjectGuid>{CA688966-C097-45E4-A871-79F2C130F52C}</ProjectGuid>
     <OutputType>Exe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>_16_Subset_With_Sum_S_SET</RootNamespace>
-    <AssemblyName>16-Subset-With-Sum-S-SET</AssemblyName>
+    <RootNamespace>_16_Subset_With_Sum_S_Simple</RootNamespace>
+    <AssemblyName>16-Subset-With-Sum-S-Simple</AssemblyName>
     <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
@@ -43,7 +43,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="PowerSet.cs" />
+    <Compile Include="PowerSetSimple.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
