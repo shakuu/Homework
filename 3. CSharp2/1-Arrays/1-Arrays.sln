@@ -47,6 +47,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "15-Prime-Number-In-Range", 
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "15-Prime-Number-In-Range-Fast", "15-Prime-Number-In-Range-Fast\15-Prime-Number-In-Range-Fast.csproj", "{BCFFDFD5-B4A9-47D5-9642-A3636B0391E7}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "16-Subset-With-Sum-S", "16-Subset-With-Sum-S\16-Subset-With-Sum-S.csproj", "{005DC5AF-AB78-43A1-AC44-425031CC8677}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "16-Subset-With-Sum-S-SET", "16-Subset-With-Sum-S-SET\16-Subset-With-Sum-S-SET.csproj", "{5554D1F3-E34E-40A0-893D-24F36619ECE2}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -141,6 +145,14 @@ Global
 		{BCFFDFD5-B4A9-47D5-9642-A3636B0391E7}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{BCFFDFD5-B4A9-47D5-9642-A3636B0391E7}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{BCFFDFD5-B4A9-47D5-9642-A3636B0391E7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{005DC5AF-AB78-43A1-AC44-425031CC8677}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{005DC5AF-AB78-43A1-AC44-425031CC8677}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{005DC5AF-AB78-43A1-AC44-425031CC8677}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{005DC5AF-AB78-43A1-AC44-425031CC8677}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5554D1F3-E34E-40A0-893D-24F36619ECE2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5554D1F3-E34E-40A0-893D-24F36619ECE2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5554D1F3-E34E-40A0-893D-24F36619ECE2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5554D1F3-E34E-40A0-893D-24F36619ECE2}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
