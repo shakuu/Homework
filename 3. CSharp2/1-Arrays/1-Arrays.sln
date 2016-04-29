@@ -43,6 +43,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "00-Generate-Array-Input-HW-
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "14-QuickSort", "14-QuickSort\14-QuickSort.csproj", "{09E74D1F-7FB9-494C-BAF2-7EE7EE99FDC3}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "15-Prime-Number-In-Range", "15-Prime-Number-In-Range\15-Prime-Number-In-Range.csproj", "{0D7F07FC-3A3C-427D-8E89-349EA485DBF3}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "15-Prime-Number-In-Range-Fast", "15-Prime-Number-In-Range-Fast\15-Prime-Number-In-Range-Fast.csproj", "{BCFFDFD5-B4A9-47D5-9642-A3636B0391E7}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -129,6 +133,14 @@ Global
 		{09E74D1F-7FB9-494C-BAF2-7EE7EE99FDC3}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{09E74D1F-7FB9-494C-BAF2-7EE7EE99FDC3}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{09E74D1F-7FB9-494C-BAF2-7EE7EE99FDC3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0D7F07FC-3A3C-427D-8E89-349EA485DBF3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0D7F07FC-3A3C-427D-8E89-349EA485DBF3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0D7F07FC-3A3C-427D-8E89-349EA485DBF3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0D7F07FC-3A3C-427D-8E89-349EA485DBF3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BCFFDFD5-B4A9-47D5-9642-A3636B0391E7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BCFFDFD5-B4A9-47D5-9642-A3636B0391E7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BCFFDFD5-B4A9-47D5-9642-A3636B0391E7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BCFFDFD5-B4A9-47D5-9642-A3636B0391E7}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
