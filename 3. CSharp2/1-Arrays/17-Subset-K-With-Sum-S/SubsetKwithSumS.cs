@@ -48,8 +48,8 @@ namespace _17_Subset_K_With_Sum_S
             }
 
             // TEST
-            Console.Write(string.Join(Environment.NewLine, PowerSet.Select(     // For each subset
-                            subset => string.Join(" ", subset))));              // join it s sub elements in a string
+            Console.Write(string.Join("\n", PowerSet.Select(        // For each subset, separated by NewLine
+                            subset => string.Join(" ", subset))));  // join it s sub elements in a string
         }
     }
 }
