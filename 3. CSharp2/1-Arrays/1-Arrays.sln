@@ -55,6 +55,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "16-Subset-With-Sum-S-Simple
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "17-Subset-K-With-Sum-S", "17-Subset-K-With-Sum-S\17-Subset-K-With-Sum-S.csproj", "{14C89253-C57C-485F-ACD1-CCF854407586}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "18-Remove-Elements-From-Array", "18-Remove-Elements-From-Array\18-Remove-Elements-From-Array.csproj", "{70A9812F-D936-47EC-AC9C-DE568207E12B}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "18-Remove-Elements-From-Array-Correct", "18-Remove-Elements-From-Array-Correct\18-Remove-Elements-From-Array-Correct.csproj", "{96AE7292-BE50-416D-8240-A8D24DBC6A24}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -165,6 +169,14 @@ Global
 		{14C89253-C57C-485F-ACD1-CCF854407586}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{14C89253-C57C-485F-ACD1-CCF854407586}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{14C89253-C57C-485F-ACD1-CCF854407586}.Release|Any CPU.Build.0 = Release|Any CPU
+		{70A9812F-D936-47EC-AC9C-DE568207E12B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{70A9812F-D936-47EC-AC9C-DE568207E12B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{70A9812F-D936-47EC-AC9C-DE568207E12B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{70A9812F-D936-47EC-AC9C-DE568207E12B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{96AE7292-BE50-416D-8240-A8D24DBC6A24}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{96AE7292-BE50-416D-8240-A8D24DBC6A24}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{96AE7292-BE50-416D-8240-A8D24DBC6A24}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{96AE7292-BE50-416D-8240-A8D24DBC6A24}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

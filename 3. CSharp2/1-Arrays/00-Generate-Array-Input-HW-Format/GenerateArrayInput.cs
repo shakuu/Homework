@@ -22,7 +22,15 @@ namespace _00_Generate_Array_Input_HW_Format
             }
 
             // IMPORTANT: CHANGE THIS TO YOUR OWN EXISTING FOLDER
-            System.IO.File.WriteAllLines(@"D:\GitHub\_ArrayInput\test001.txt",  array);
+            try
+            {
+                System.IO.File.WriteAllLines(@"D:\GitHub\_ArrayInput\test001.txt", array);
+            }
+            catch (System.IO.DirectoryNotFoundException)
+            {
+                Console.WriteLine("Folder does NOT exist");
+            }
+            
         }
     }
 }
