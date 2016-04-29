@@ -53,6 +53,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "16-Subset-With-Sum-S-SET", 
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "16-Subset-With-Sum-S-Simple", "16-Subset-With-Sum-S-Simple\16-Subset-With-Sum-S-Simple.csproj", "{CA688966-C097-45E4-A871-79F2C130F52C}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "17-Subset-K-With-Sum-S", "17-Subset-K-With-Sum-S\17-Subset-K-With-Sum-S.csproj", "{14C89253-C57C-485F-ACD1-CCF854407586}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -159,6 +161,10 @@ Global
 		{CA688966-C097-45E4-A871-79F2C130F52C}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{CA688966-C097-45E4-A871-79F2C130F52C}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{CA688966-C097-45E4-A871-79F2C130F52C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{14C89253-C57C-485F-ACD1-CCF854407586}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{14C89253-C57C-485F-ACD1-CCF854407586}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{14C89253-C57C-485F-ACD1-CCF854407586}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{14C89253-C57C-485F-ACD1-CCF854407586}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
