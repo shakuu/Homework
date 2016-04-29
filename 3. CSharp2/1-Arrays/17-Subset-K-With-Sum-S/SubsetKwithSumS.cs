@@ -40,16 +40,21 @@ namespace _17_Subset_K_With_Sum_S
                 where SubSet.Sum() == toFindSum             // return if sum == toFindSUM
                    && SubSet.Count() == toFindSubsetLen     // AND Count == required Length
 
-                select SubSet;                              // Returb the subsets
+                select SubSet;                              // Return the matching subsets
 
+            // if PowerSet has at least 1 matching subset
             if (PowerSet.Count() > 0)
             {
-                Console.WriteLine("yes");
+                Console.WriteLine("yes");   // Print YES
+            }
+            else
+            {
+                Console.WriteLine("no");    // If not Print NO
             }
 
-            // TEST
+            // TODO: DELETE
             Console.Write(string.Join("\n", PowerSet.Select(        // For each subset, separated by NewLine
-                            subset => string.Join(" ", subset))));  // join it s sub elements in a string
+                            subset => string.Join(" ", subset))));  // join it's sub elements in a string
         }
     }
 }

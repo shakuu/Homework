@@ -33,7 +33,7 @@ namespace _16_Subset_With_Sum_S_Simple
                 // check with each element 
                 for (int Aindex = 0; Aindex < toSearch.Length; Aindex++)
                 {
-                    if ((Pindex & (1<<Aindex)) != 0)
+                    if ((Pindex & (1 << Aindex)) != 0)
                     {
                         powerSet[Pindex] += toSearch[Aindex];
                     }
