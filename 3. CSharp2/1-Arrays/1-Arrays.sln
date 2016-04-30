@@ -61,7 +61,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "18-Remove-Elements-From-Arr
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "19-Permutations-Of-Set", "19-Permutations-Of-Set\19-Permutations-Of-Set.csproj", "{3806F431-3BCF-4F02-8C63-09D2885DFFDD}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "20-Variations-Of-Set", "20-Variations-Of-Set\20-Variations-Of-Set.csproj", "{89902FA5-2423-426D-B175-1B683A47531A}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "21-Combinations-Of-Set", "20-Variations-Of-Set\21-Combinations-Of-Set.csproj", "{89902FA5-2423-426D-B175-1B683A47531A}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "20-Variatons-Of-Set-With-Same-Number", "20-Variatons-Of-Set-With-Same-Number\20-Variatons-Of-Set-With-Same-Number.csproj", "{D67219A7-7E19-4F17-B5FE-433319EB0D90}"
 EndProject

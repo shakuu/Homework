@@ -7,8 +7,8 @@
     <ProjectGuid>{89902FA5-2423-426D-B175-1B683A47531A}</ProjectGuid>
     <OutputType>Exe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>_20_Variations_Of_Set</RootNamespace>
-    <AssemblyName>20-Variations-Of-Set</AssemblyName>
+    <RootNamespace>_21_Combinations_Of_Set</RootNamespace>
+    <AssemblyName>21-Combinations-Of-Set</AssemblyName>
     <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
@@ -43,7 +43,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="VariationsOfSet.cs" />
+    <Compile Include="CombinationsOfSet.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
