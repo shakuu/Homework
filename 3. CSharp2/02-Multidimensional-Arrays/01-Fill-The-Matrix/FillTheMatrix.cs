@@ -138,7 +138,7 @@ namespace _01_Fill_The_Matrix
         // TYPE D
         public static int[,] OutputTypeD(int[,] toFill)
         {
-            // Type A                   1 8 7
+            // Type D                   1 8 7
             // Spiral                   2 9 6
             // Matrix                   3 4 5
 
