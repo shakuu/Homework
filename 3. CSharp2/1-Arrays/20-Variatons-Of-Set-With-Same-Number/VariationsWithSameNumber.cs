@@ -20,7 +20,10 @@ namespace _20_Variatons_Of_Set_With_Same_Number
                 toSearch.Add(i);
             }
 
+            // Using a SECOND list to fill with each 
+            // element of the input list
             List<int> curVariation = new List<int>();
+
             for (int i = 0; i < VariationSize; i++)
             {
                 curVariation.Add(0);

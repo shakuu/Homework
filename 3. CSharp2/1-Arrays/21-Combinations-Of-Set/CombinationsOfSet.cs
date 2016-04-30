@@ -15,7 +15,7 @@ namespace _21_Combinations_Of_Set
             // get the array
             List<int> toSearch = new List<int>();
 
-            for (int i = 0; i < arraySize; i++)
+            for (int i = 1; i < arraySize+1; i++)
             {
                 toSearch.Add(i);
             }
