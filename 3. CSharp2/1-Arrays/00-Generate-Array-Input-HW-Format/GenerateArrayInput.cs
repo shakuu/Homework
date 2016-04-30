@@ -58,10 +58,6 @@ namespace _00_Generate_Array_Input_HW_Format
             {
                 Console.WriteLine("Folder does NOT exist");
             }
-
-            
-
-            
         }
     }
 }
