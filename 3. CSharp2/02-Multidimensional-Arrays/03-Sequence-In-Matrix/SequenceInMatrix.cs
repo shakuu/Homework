@@ -25,7 +25,7 @@ namespace _03_Sequence_In_Matrix
 
             // vars
             int MaxSequence = 0;
-            int CurSequence = 0;
+            int CurSequence = 1;
 
             // Step 1: Check By Rows
             for (int row = 0; row < inputRows; row++)
