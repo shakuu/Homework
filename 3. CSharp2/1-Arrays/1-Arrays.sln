@@ -61,6 +61,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "18-Remove-Elements-From-Arr
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "19-Permutations-Of-Set", "19-Permutations-Of-Set\19-Permutations-Of-Set.csproj", "{3806F431-3BCF-4F02-8C63-09D2885DFFDD}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "20-Variations-Of-Set", "20-Variations-Of-Set\20-Variations-Of-Set.csproj", "{89902FA5-2423-426D-B175-1B683A47531A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "20-Variatons-Of-Set-With-Same-Number", "20-Variatons-Of-Set-With-Same-Number\20-Variatons-Of-Set-With-Same-Number.csproj", "{D67219A7-7E19-4F17-B5FE-433319EB0D90}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -183,6 +187,14 @@ Global
 		{3806F431-3BCF-4F02-8C63-09D2885DFFDD}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{3806F431-3BCF-4F02-8C63-09D2885DFFDD}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{3806F431-3BCF-4F02-8C63-09D2885DFFDD}.Release|Any CPU.Build.0 = Release|Any CPU
+		{89902FA5-2423-426D-B175-1B683A47531A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{89902FA5-2423-426D-B175-1B683A47531A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{89902FA5-2423-426D-B175-1B683A47531A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{89902FA5-2423-426D-B175-1B683A47531A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D67219A7-7E19-4F17-B5FE-433319EB0D90}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D67219A7-7E19-4F17-B5FE-433319EB0D90}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D67219A7-7E19-4F17-B5FE-433319EB0D90}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D67219A7-7E19-4F17-B5FE-433319EB0D90}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
