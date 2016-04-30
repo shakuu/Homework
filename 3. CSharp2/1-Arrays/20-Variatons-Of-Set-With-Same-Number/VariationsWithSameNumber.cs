@@ -5,7 +5,7 @@ namespace _20_Variatons_Of_Set_With_Same_Number
 {
     class VariationsWithSameNumber
     {
-        static void Main()
+        static void Main()      // WORKING, variation of the same element eg 1, 1, 1
         {
             // input
             int arraySize = int.Parse(Console.ReadLine());

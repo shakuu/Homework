@@ -3,9 +3,9 @@ using System.Collections.Generic;
 
 namespace _20_Variations_Of_Set
 {
-    class VariationsOfSet
+    class VariationsOfSetNOT
     {
-        static void Main()
+        static void Main()  // NOT WORKING, variations of UNIQUE elements
         {
             // input
             int arraySize = int.Parse(Console.ReadLine());
