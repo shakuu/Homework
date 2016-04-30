@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Threading;
 
 namespace _00_Generate_Array_Input_HW_Format
 {
@@ -7,6 +8,15 @@ namespace _00_Generate_Array_Input_HW_Format
         static void Main()
         {
             // input
+            Console.WriteLine("Paste path to debug folder here:\n" +
+                              "Example: C:\\GitHub\\00-Sample-Project\\bin\\Debug\n");
+            string PathToDebug =  Console.ReadLine();
+
+            if (PathToDebug=="")
+            {
+                PathToDebug = ".";
+            }
+
             Console.WriteLine("Enter Array Size: ");
             int inputSize = int.Parse(Console.ReadLine());
 
@@ -18,18 +28,39 @@ namespace _00_Generate_Array_Input_HW_Format
 
             for (int i = 1; i < inputSize+1; i++)
             {
-                array[i] = (randomizer.Next(0, 10000)).ToString(); // change max value
+                array[i] = (randomizer.Next(0, int.MaxValue)).ToString(); // change max value
             }
 
-            // IMPORTANT: CHANGE THIS TO YOUR OWN EXISTING FOLDER
+            // INSTRUCTIONS
+            string[] Path = PathToDebug.Split('\\');
+            string[] Instructions = new string[1];
+            Instructions[0] = Path[Path.Length - 3] + ".exe < test001.txt > test001out.txt";
+
             try
             {
-                System.IO.File.WriteAllLines(@"D:\GitHub\_ArrayInput\test001.txt", array);
+                System.IO.File.WriteAllLines(PathToDebug + "\\CMD-Instructions.txt", Instructions);
             }
             catch (System.IO.DirectoryNotFoundException)
             {
                 Console.WriteLine("Folder does NOT exist");
             }
+
+            try
+            {
+                System.IO.File.WriteAllLines(PathToDebug + "\\test001.txt", array);
+
+                Console.WriteLine("done!\nCopy array from .txt or copy cmd line from\nInstructions.txt to generate an output file");
+                Console.WriteLine("This app will self destruct in 5...");
+                Thread.Sleep(5000);
+                return;
+            }
+            catch (System.IO.DirectoryNotFoundException)
+            {
+                Console.WriteLine("Folder does NOT exist");
+            }
+
+            
+
             
         }
     }
