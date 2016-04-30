@@ -42,9 +42,6 @@ namespace _21_Combinations_Of_Set
                     toSearch.Insert(Left, toSearch[toSearch.Count - 1]);
                     toSearch.RemoveAt(toSearch.Count - 1);
                 }
-
-                Console.WriteLine("variation");
-
                 // Step 2: Go back up
                 return;
             }
