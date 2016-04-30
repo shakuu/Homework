@@ -5,6 +5,10 @@ VisualStudioVersion = 14.0.25123.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "01-Fill-The-Matrix", "01-Fill-The-Matrix\01-Fill-The-Matrix.csproj", "{5F0272E8-B509-45DB-BCFE-F5525D666274}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "02-Maximal-Sum", "02-Maximal-Sum\02-Maximal-Sum.csproj", "{B9F4FCDF-AD46-40F4-8403-B1B9C27811C7}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "00-Generate-Array-Input-HW-Format", "..\1-Arrays\00-Generate-Array-Input-HW-Format\00-Generate-Array-Input-HW-Format.csproj", "{67608B13-8862-4A49-9B56-A38C4DEBD6FA}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +19,14 @@ Global
 		{5F0272E8-B509-45DB-BCFE-F5525D666274}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{5F0272E8-B509-45DB-BCFE-F5525D666274}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{5F0272E8-B509-45DB-BCFE-F5525D666274}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B9F4FCDF-AD46-40F4-8403-B1B9C27811C7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B9F4FCDF-AD46-40F4-8403-B1B9C27811C7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B9F4FCDF-AD46-40F4-8403-B1B9C27811C7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B9F4FCDF-AD46-40F4-8403-B1B9C27811C7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{67608B13-8862-4A49-9B56-A38C4DEBD6FA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{67608B13-8862-4A49-9B56-A38C4DEBD6FA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{67608B13-8862-4A49-9B56-A38C4DEBD6FA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{67608B13-8862-4A49-9B56-A38C4DEBD6FA}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
