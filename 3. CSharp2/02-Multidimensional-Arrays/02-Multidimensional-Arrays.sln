@@ -9,6 +9,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "02-Maximal-Sum", "02-Maxima
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "00-Generate-Array-Input-HW-Format", "..\1-Arrays\00-Generate-Array-Input-HW-Format\00-Generate-Array-Input-HW-Format.csproj", "{67608B13-8862-4A49-9B56-A38C4DEBD6FA}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "03-Sequence-In-Matrix", "03-Sequence-In-Matrix\03-Sequence-In-Matrix.csproj", "{68798BE6-916C-4DA5-820A-3EE130C7CF82}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -27,6 +29,10 @@ Global
 		{67608B13-8862-4A49-9B56-A38C4DEBD6FA}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{67608B13-8862-4A49-9B56-A38C4DEBD6FA}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{67608B13-8862-4A49-9B56-A38C4DEBD6FA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{68798BE6-916C-4DA5-820A-3EE130C7CF82}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{68798BE6-916C-4DA5-820A-3EE130C7CF82}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{68798BE6-916C-4DA5-820A-3EE130C7CF82}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{68798BE6-916C-4DA5-820A-3EE130C7CF82}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

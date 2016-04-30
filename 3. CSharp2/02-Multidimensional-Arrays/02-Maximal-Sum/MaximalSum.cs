@@ -7,7 +7,8 @@ namespace _02_Maximal_Sum
     {
         static void Main()
         {
-            // input size Col and Row on a single input line
+            // IMPORTANT : POSSIBLY ROWS then COLUMNS ( TODO: Switch The Input Around )
+            // input size Col and Row on a single input line 
             var sizeInput = Console.ReadLine();
 
             string[] Sizes = sizeInput.Split(' ');
