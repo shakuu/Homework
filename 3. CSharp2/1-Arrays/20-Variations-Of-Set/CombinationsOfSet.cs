@@ -1,11 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace _20_Variations_Of_Set
+namespace _21_Combinations_Of_Set
 {
-    class VariationsOfSetNOT
+    class CombinationsOfSet
     {
-        static void Main()  // NOT WORKING, variations of UNIQUE elements
+        static void Main()  // 21-Combinations OF Set
         {
             // input
             int arraySize = int.Parse(Console.ReadLine());
