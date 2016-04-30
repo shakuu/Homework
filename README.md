@@ -8,5 +8,5 @@
   5. [Conditional Statements 900/ 900](https://github.com/shakuu/Homework/tree/master/1.%20CSharp1/5.%20Conditional-Statements) 
   5. [Loops 1700/ 1700](https://github.com/shakuu/Homework/tree/master/1.%20CSharp1/6.%20Loops)
   
-  ##[C# 2](https://github.com/shakuu/Homework/tree/master/3.%20CSharp2)##
+##[C# 2](https://github.com/shakuu/Homework/tree/master/3.%20CSharp2)##
   1. [Arrays](https://github.com/shakuu/Homework/tree/master/3.%20CSharp2/1-Arrays)
