@@ -13,12 +13,10 @@ namespace _07_Largest_Area_In_Matrix
 
         static void Main()
         {
-            // TODO: FIND A WAY TO TRACK CHECKS
+            // TODO: Better Way to Read input
 
             // input size Col and Row on a single input line
-            var sizeInput = Console.ReadLine();
-
-            string[] Sizes = sizeInput.Split(' ');
+            string[] Sizes = Console.ReadLine().Split(' ');
 
             int inputRows = int.Parse(Sizes[0]);
             int inputCols = int.Parse(Sizes[1]);
@@ -40,6 +38,8 @@ namespace _07_Largest_Area_In_Matrix
                 }
             }
 
+
+            // Helper Variables
             int curLength = 0;
             int MaxLength = int.MinValue;
 
@@ -51,25 +51,29 @@ namespace _07_Largest_Area_In_Matrix
                     // reset 
                     curLength = 1;
 
-                    if (toSearch[row, col].isChecked == false)           //if the current element has 
+                    if (toSearch[row, col].isChecked == false)           // if the current element has 
                     {                                                    // not been checked already
-                        curLength = Search(toSearch,
-                            int.Parse(toSearch[row, col].Value), 
-                            row, col, curLength);// Check the element
-                    }
+                        curLength = Search(toSearch,                     // check the elements around
+                            int.Parse(toSearch[row, col].Value),         // and go deeper in to the    
+                            row, col, curLength);                        // into the sequence
+                    }                                                    // before switching side
 
-                    if (curLength > MaxLength)
-                    {
-                        MaxLength = curLength;
+                    if (curLength > MaxLength)                           // Check whether
+                    {                                                    // current sequene is larger
+                        MaxLength = curLength;                           // than the highest previous one
                     }
                 }
             }
+
+            // print Output
+            Console.WriteLine(MaxLength);
+
         }
 
         public static int Search(MatrixElement[,] toSearch,
                       int curElelment,
-                      int Row, 
-                      int Col, 
+                      int Row,
+                      int Col,
                       int curLength)
         {
             // Check Down
@@ -77,13 +81,13 @@ namespace _07_Largest_Area_In_Matrix
             {
                 if (toSearch[Row + 1, Col].Value == curElelment.ToString()              // If current Element 
                     && toSearch[Row + 1, Col].isChecked == false)                       // is equal to the one before
-                {                                                                       // has not been checked before        
+                {                                                                       // AND has not been checked before        
                     curLength++;
                     toSearch[Row + 1, Col].isChecked = true;
                     curLength = Search(toSearch, curElelment, Row + 1, Col, curLength);
                 }
             }
-            
+
             // Check Right
             if (Col + 1 < toSearch.GetLength(1))    // if in range of array
             {
