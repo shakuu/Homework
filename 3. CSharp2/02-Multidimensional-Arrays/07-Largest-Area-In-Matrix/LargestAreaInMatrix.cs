@@ -1,8 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace _07_Largest_Area_In_Matrix
 {
@@ -13,8 +9,6 @@ namespace _07_Largest_Area_In_Matrix
             public string Value = "0";
 
             public bool isChecked = false;
-
-
         }
 
         static void Main()
@@ -31,7 +25,8 @@ namespace _07_Largest_Area_In_Matrix
 
             // N Sizes[0] Lines with M Sizes[1] Strings 
             // Break each row into separate elements
-            MatrixElement[,] toSearch = new MatrixElement[inputRows, inputCols];
+            MatrixElement[,] toSearch =
+                new MatrixElement[inputRows, inputCols];
 
             for (int row = 0; row < inputRows; row++)
             {
@@ -45,55 +40,58 @@ namespace _07_Largest_Area_In_Matrix
                 }
             }
 
-            // helping matrix
-            int[][] isChecked = new int[inputRows][];
-
-            for (int row = 0; row < inputRows; row++)
-            {
-                isChecked[row] = new int[inputCols];
-
-                for (int col = 0; col < inputCols; col++)
-                {
-                    isChecked[row][col] = 0;
-                }
-            }
-
             int curLength = 0;
+            int MaxLength = int.MinValue;
 
             // Check Each unchecked element
             for (int row = 0; row < inputRows; row++)
             {
                 for (int col = 0; col < inputCols; col++)
                 {
-                    if (toSearch[row,col].isChecked == false)           //if the current element has 
+                    // reset 
+                    curLength = 1;
+
+                    if (toSearch[row, col].isChecked == false)           //if the current element has 
                     {                                                    // not been checked already
-                        curLength = Search(toSearch, int.Parse(toSearch[row, col].Value), row, col, curLength);// Check the element
+                        curLength = Search(toSearch,
+                            int.Parse(toSearch[row, col].Value), 
+                            row, col, curLength);// Check the element
+                    }
+
+                    if (curLength > MaxLength)
+                    {
+                        MaxLength = curLength;
                     }
                 }
             }
         }
 
-        public static int Search(MatrixElement[,] toSearch, int curElelment, int Row, int Col, int curLength)
+        public static int Search(MatrixElement[,] toSearch,
+                      int curElelment,
+                      int Row, 
+                      int Col, 
+                      int curLength)
         {
             // Check Down
             if (Row + 1 < toSearch.GetLength(0))    // if in range of array
             {
-                if (toSearch[Row + 1,Col].Value == curElelment.ToString())
-                {
+                if (toSearch[Row + 1, Col].Value == curElelment.ToString()              // If current Element 
+                    && toSearch[Row + 1, Col].isChecked == false)                       // is equal to the one before
+                {                                                                       // has not been checked before        
                     curLength++;
-                    toSearch[Row + 1,Col].isChecked = true;
+                    toSearch[Row + 1, Col].isChecked = true;
                     curLength = Search(toSearch, curElelment, Row + 1, Col, curLength);
                 }
             }
-
-
+            
             // Check Right
             if (Col + 1 < toSearch.GetLength(1))    // if in range of array
             {
-                if (toSearch[Row,Col + 1].Value == curElelment.ToString())
+                if (toSearch[Row, Col + 1].Value == curElelment.ToString()
+                    && toSearch[Row, Col + 1].isChecked == false)
                 {
                     curLength++;
-                    toSearch[Row,Col + 1].isChecked = true;
+                    toSearch[Row, Col + 1].isChecked = true;
                     curLength = Search(toSearch, curElelment, Row, Col + 1, curLength);
                 }
             }
@@ -101,10 +99,11 @@ namespace _07_Largest_Area_In_Matrix
             // Check Up
             if (Row - 1 >= 0)    // if in range of array
             {
-                if (toSearch[Row - 1,Col].Value == curElelment.ToString())
+                if (toSearch[Row - 1, Col].Value == curElelment.ToString()
+                    && toSearch[Row - 1, Col].isChecked == false)
                 {
                     curLength++;
-                    toSearch[Row - 1,Col].isChecked = true;
+                    toSearch[Row - 1, Col].isChecked = true;
                     curLength = Search(toSearch, curElelment, Row - 1, Col, curLength);
                 }
             }
@@ -112,10 +111,11 @@ namespace _07_Largest_Area_In_Matrix
             // Check Left
             if (Col - 1 > 0)    // if in range of array
             {
-                if (toSearch[Row,Col - 1].Value == curElelment.ToString())
+                if (toSearch[Row, Col - 1].Value == curElelment.ToString()
+                    && toSearch[Row, Col - 1].isChecked == false)
                 {
                     curLength++;
-                    toSearch[Row,Col - 1].isChecked = true;
+                    toSearch[Row, Col - 1].isChecked = true;
                     curLength = Search(toSearch, curElelment, Row, Col - 1, curLength);
                 }
             }
