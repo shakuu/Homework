@@ -101,7 +101,7 @@ namespace _07_Largest_Area_In_Matrix
             }
 
             // Check Up
-            if (Row - 1 >= 0)    // if in range of array
+            if (Row - 1 >= 0)                       // if in range of array
             {                                                                             // If current Element 
                 if (toSearch[Row - 1, Col].Value == curElelment.ToString()                // is equal to the one before
                     && toSearch[Row - 1, Col].isChecked == false)                         // AND has not been checked before 
