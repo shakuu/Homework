@@ -17,6 +17,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Custom-Sort", "..\1-Arrays\
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "05-Sort-By-String-Length", "05-Sort-By-String-Length\05-Sort-By-String-Length.csproj", "{E9286C13-7806-4FED-994A-8FE05D5FD51F}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "06-Matrix-Class", "06-Matrix-Class\06-Matrix-Class.csproj", "{8FE077F0-B3E5-4F5C-9F3C-8D9778F0541A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "06-Matrix-Class-Test", "06-Matrix-Class-Test\06-Matrix-Class-Test.csproj", "{E55BB83D-C7B1-4175-9F73-FEF905E15881}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -51,6 +55,14 @@ Global
 		{E9286C13-7806-4FED-994A-8FE05D5FD51F}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{E9286C13-7806-4FED-994A-8FE05D5FD51F}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{E9286C13-7806-4FED-994A-8FE05D5FD51F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8FE077F0-B3E5-4F5C-9F3C-8D9778F0541A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8FE077F0-B3E5-4F5C-9F3C-8D9778F0541A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8FE077F0-B3E5-4F5C-9F3C-8D9778F0541A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8FE077F0-B3E5-4F5C-9F3C-8D9778F0541A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E55BB83D-C7B1-4175-9F73-FEF905E15881}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E55BB83D-C7B1-4175-9F73-FEF905E15881}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E55BB83D-C7B1-4175-9F73-FEF905E15881}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E55BB83D-C7B1-4175-9F73-FEF905E15881}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
