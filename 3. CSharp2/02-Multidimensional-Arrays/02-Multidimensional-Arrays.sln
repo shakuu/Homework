@@ -11,6 +11,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "00-Generate-Array-Input-HW-
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "03-Sequence-In-Matrix", "03-Sequence-In-Matrix\03-Sequence-In-Matrix.csproj", "{68798BE6-916C-4DA5-820A-3EE130C7CF82}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "04-Binary-Search", "04-Binary-Search\04-Binary-Search.csproj", "{80FFE03C-1AB1-4820-837A-BFFF2DCEFAE5}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Custom-Sort", "..\1-Arrays\Custom-Sort\Custom-Sort.csproj", "{F9280526-3198-453F-8E45-0C4FC1DE6A5C}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -33,6 +37,14 @@ Global
 		{68798BE6-916C-4DA5-820A-3EE130C7CF82}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{68798BE6-916C-4DA5-820A-3EE130C7CF82}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{68798BE6-916C-4DA5-820A-3EE130C7CF82}.Release|Any CPU.Build.0 = Release|Any CPU
+		{80FFE03C-1AB1-4820-837A-BFFF2DCEFAE5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{80FFE03C-1AB1-4820-837A-BFFF2DCEFAE5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{80FFE03C-1AB1-4820-837A-BFFF2DCEFAE5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{80FFE03C-1AB1-4820-837A-BFFF2DCEFAE5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F9280526-3198-453F-8E45-0C4FC1DE6A5C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F9280526-3198-453F-8E45-0C4FC1DE6A5C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F9280526-3198-453F-8E45-0C4FC1DE6A5C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F9280526-3198-453F-8E45-0C4FC1DE6A5C}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
