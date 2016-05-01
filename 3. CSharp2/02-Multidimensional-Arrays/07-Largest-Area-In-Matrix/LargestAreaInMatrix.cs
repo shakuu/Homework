@@ -102,26 +102,26 @@ namespace _07_Largest_Area_In_Matrix
 
             // Check Up
             if (Row - 1 >= 0)                       // if in range of array
-            {                                                                             // If current Element 
-                if (toSearch[Row - 1, Col].Value == curElelment.ToString()                // is equal to the one before
-                    && toSearch[Row - 1, Col].isChecked == false)                         // AND has not been checked before 
+            {                                                                            // If current Element 
+                if (toSearch[Row - 1, Col].Value == curElelment.ToString()               // is equal to the one before
+                    && toSearch[Row - 1, Col].isChecked == false)                        // AND has not been checked before 
                 {
-                    curLength++;                                                          // increment length 
-                    toSearch[Row - 1, Col].isChecked = true;                              // tag as checked
-                    curLength = Search(toSearch, curElelment, Row - 1, Col, curLength);   // recursively check 
-                }                                                                         // the area around 
+                    curLength++;                                                         // increment length 
+                    toSearch[Row - 1, Col].isChecked = true;                             // tag as checked
+                    curLength = Search(toSearch, curElelment, Row - 1, Col, curLength);  // recursively check 
+                }                                                                        // the area around 
             }
 
             // Check Left
             if (Col - 1 > 0)                        // if in range of array
-            {                                                                              // If current Element 
-                if (toSearch[Row, Col - 1].Value == curElelment.ToString()                 // is equal to the one before
-                    && toSearch[Row, Col - 1].isChecked == false)                          // AND has not been checked before 
+            {                                                                            // If current Element 
+                if (toSearch[Row, Col - 1].Value == curElelment.ToString()               // is equal to the one before
+                    && toSearch[Row, Col - 1].isChecked == false)                        // AND has not been checked before 
                 {
-                    curLength++;                                                           // increment length 
-                    toSearch[Row, Col - 1].isChecked = true;                               // tag as checked
-                    curLength = Search(toSearch, curElelment, Row, Col - 1, curLength);    // recursively check 
-                }                                                                          // the area around 
+                    curLength++;                                                         // increment length 
+                    toSearch[Row, Col - 1].isChecked = true;                             // tag as checked
+                    curLength = Search(toSearch, curElelment, Row, Col - 1, curLength);  // recursively check 
+                }                                                                        // the area around 
             }
 
             // Return the accumulated sequence length
