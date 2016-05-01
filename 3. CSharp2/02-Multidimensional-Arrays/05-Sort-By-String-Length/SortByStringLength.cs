@@ -5,6 +5,7 @@ namespace _05_Sort_By_String_Length
 {
     class SortByStringLength
     {
+        // Custom Coparer, Sorting based on String.Length
         public class myCompare : IComparer
         {
             int IComparer.Compare(object Right, object Left)
@@ -30,7 +31,6 @@ namespace _05_Sort_By_String_Length
         static void Main()
         {
             // input
-            // input
             int arraySize = int.Parse(Console.ReadLine());
 
             // get array
@@ -41,10 +41,13 @@ namespace _05_Sort_By_String_Length
                 toSearch[i] = Console.ReadLine();
             }
 
+            // initialize custom sort
             myCompare sortStrLength = new myCompare();
 
+            // sort
             Array.Sort(toSearch, sortStrLength);
 
+            // print the results
             Console.WriteLine(string.Join(Environment.NewLine, toSearch));
         }
     }
