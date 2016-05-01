@@ -113,7 +113,7 @@ namespace _07_Largest_Area_In_Matrix
             }
 
             // Check Left
-            if (Col - 1 > 0)    // if in range of array
+            if (Col - 1 > 0)                        // if in range of array
             {                                                                              // If current Element 
                 if (toSearch[Row, Col - 1].Value == curElelment.ToString()                 // is equal to the one before
                     && toSearch[Row, Col - 1].isChecked == false)                          // AND has not been checked before 
@@ -124,6 +124,8 @@ namespace _07_Largest_Area_In_Matrix
                 }                                                                          // the area around 
             }
 
+            // Return the accumulated sequence length
+            // 
             return curLength;
         }
     }
