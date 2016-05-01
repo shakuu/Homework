@@ -15,6 +15,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "04-Binary-Search", "04-Bina
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Custom-Sort", "..\1-Arrays\Custom-Sort\Custom-Sort.csproj", "{F9280526-3198-453F-8E45-0C4FC1DE6A5C}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "05-Sort-By-String-Length", "05-Sort-By-String-Length\05-Sort-By-String-Length.csproj", "{E9286C13-7806-4FED-994A-8FE05D5FD51F}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -45,6 +47,10 @@ Global
 		{F9280526-3198-453F-8E45-0C4FC1DE6A5C}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{F9280526-3198-453F-8E45-0C4FC1DE6A5C}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{F9280526-3198-453F-8E45-0C4FC1DE6A5C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E9286C13-7806-4FED-994A-8FE05D5FD51F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E9286C13-7806-4FED-994A-8FE05D5FD51F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E9286C13-7806-4FED-994A-8FE05D5FD51F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E9286C13-7806-4FED-994A-8FE05D5FD51F}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
