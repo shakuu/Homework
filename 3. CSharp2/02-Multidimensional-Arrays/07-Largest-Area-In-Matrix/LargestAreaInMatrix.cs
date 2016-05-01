@@ -4,12 +4,13 @@ namespace _07_Largest_Area_In_Matrix
 {
     class LargestAreaInMatrix
     {
-        public class MatrixElement
-        {
-            public string Value = "0";
-
-            public bool isChecked = false;
-        }
+        
+        public class MatrixElement          // a helper class 
+        {                                   // storing both
+            public string Value = "0";      // the value of the
+                                            // element
+            public bool isChecked = false;  // and whether it's 
+        }                                   // already been checked
 
         static void Main()
         {
@@ -23,22 +24,21 @@ namespace _07_Largest_Area_In_Matrix
 
             // N Sizes[0] Lines with M Sizes[1] Strings 
             // Break each row into separate elements
-            MatrixElement[,] toSearch =
-                new MatrixElement[inputRows, inputCols];
+            MatrixElement[,] toSearch =                    // Array of Matrix Elements 
+                new MatrixElement[inputRows, inputCols];   // 
 
-            for (int row = 0; row < inputRows; row++)
-            {
-                string[] inputString = Console.ReadLine().Split(' ');
-
-                for (int col = 0; col < inputCols; col++)
-                {
-                    toSearch[row, col] = new MatrixElement();
-
-                    toSearch[row, col].Value = inputString[col];
+            for (int row = 0; row < inputRows; row++)                   // For each row
+            {                                                           // Break the input string
+                string[] inputString = Console.ReadLine().Split(' ');   // into a helper array
+                                                                        //
+                for (int col = 0; col < inputCols; col++)               //
+                {                                                       //
+                    toSearch[row, col] = new MatrixElement();           // create a new Matrix() element
+                                                                        //
+                    toSearch[row, col].Value = inputString[col];        // assign it's value
                 }
             }
-
-
+            
             // Helper Variables
             int curLength = 0;
             int MaxLength = int.MinValue;
@@ -48,19 +48,19 @@ namespace _07_Largest_Area_In_Matrix
             {
                 for (int col = 0; col < inputCols; col++)
                 {
-                    // reset 
+                    // reset current sequence length before checking different numbers
                     curLength = 1;
 
-                    if (toSearch[row, col].isChecked == false)           // if the current element has 
-                    {                                                    // not been checked already
-                        curLength = Search(toSearch,                     // check the elements around
-                            int.Parse(toSearch[row, col].Value),         // and go deeper in to the    
-                            row, col, curLength);                        // into the sequence
-                    }                                                    // before switching side
-
-                    if (curLength > MaxLength)                           // Check whether
-                    {                                                    // current sequene is larger
-                        MaxLength = curLength;                           // than the highest previous one
+                    if (toSearch[row, col].isChecked == false)          // if the current element has 
+                    {                                                   // not been checked already
+                        curLength = Search(toSearch,                    // check the elements around
+                            int.Parse(toSearch[row, col].Value),        // and go deeper in to the    
+                            row, col, curLength);                       // into the sequence
+                    }                                                   // before switching side
+                                                                        //
+                    if (curLength > MaxLength)                          // Check whether
+                    {                                                   // current sequence is larger
+                        MaxLength = curLength;                          // than the highest previous one
                     }
                 }
             }
@@ -70,58 +70,58 @@ namespace _07_Largest_Area_In_Matrix
 
         }
 
-        public static int Search(MatrixElement[,] toSearch,
-                      int curElelment,
-                      int Row,
-                      int Col,
-                      int curLength)
-        {
+        public static int Search(MatrixElement[,] toSearch,     // Start with a unique element in the array
+                      int curElelment,                          // Recursively go deeper into tree
+                      int Row,                                  // Explore different branches on the way up
+                      int Col,                                  // South -> East -> North -> West
+                      int curLength)                            // Tag elements part of the current sequence
+        {                                                       // Keep track of sequence length
             // Check Down
             if (Row + 1 < toSearch.GetLength(0))    // if in range of array
             {
                 if (toSearch[Row + 1, Col].Value == curElelment.ToString()              // If current Element 
                     && toSearch[Row + 1, Col].isChecked == false)                       // is equal to the one before
                 {                                                                       // AND has not been checked before        
-                    curLength++;
-                    toSearch[Row + 1, Col].isChecked = true;
-                    curLength = Search(toSearch, curElelment, Row + 1, Col, curLength);
-                }
+                    curLength++;                                                        // increment length 
+                    toSearch[Row + 1, Col].isChecked = true;                            // tag as checked
+                    curLength = Search(toSearch, curElelment, Row + 1, Col, curLength); // recursively check 
+                }                                                                       // the area around 
             }
 
             // Check Right
             if (Col + 1 < toSearch.GetLength(1))    // if in range of array
             {
-                if (toSearch[Row, Col + 1].Value == curElelment.ToString()
-                    && toSearch[Row, Col + 1].isChecked == false)
-                {
-                    curLength++;
-                    toSearch[Row, Col + 1].isChecked = true;
-                    curLength = Search(toSearch, curElelment, Row, Col + 1, curLength);
-                }
+                if (toSearch[Row, Col + 1].Value == curElelment.ToString()               // If current Element 
+                    && toSearch[Row, Col + 1].isChecked == false)                        // is equal to the one before
+                {                                                                        // AND has not been checked before 
+                    curLength++;                                                         // increment length 
+                    toSearch[Row, Col + 1].isChecked = true;                             // tag as checked
+                    curLength = Search(toSearch, curElelment, Row, Col + 1, curLength);  // recursively check 
+                }                                                                        // the area around 
             }
 
             // Check Up
             if (Row - 1 >= 0)    // if in range of array
-            {
-                if (toSearch[Row - 1, Col].Value == curElelment.ToString()
-                    && toSearch[Row - 1, Col].isChecked == false)
+            {                                                                             // If current Element 
+                if (toSearch[Row - 1, Col].Value == curElelment.ToString()                // is equal to the one before
+                    && toSearch[Row - 1, Col].isChecked == false)                         // AND has not been checked before 
                 {
-                    curLength++;
-                    toSearch[Row - 1, Col].isChecked = true;
-                    curLength = Search(toSearch, curElelment, Row - 1, Col, curLength);
-                }
+                    curLength++;                                                          // increment length 
+                    toSearch[Row - 1, Col].isChecked = true;                              // tag as checked
+                    curLength = Search(toSearch, curElelment, Row - 1, Col, curLength);   // recursively check 
+                }                                                                         // the area around 
             }
 
             // Check Left
             if (Col - 1 > 0)    // if in range of array
-            {
-                if (toSearch[Row, Col - 1].Value == curElelment.ToString()
-                    && toSearch[Row, Col - 1].isChecked == false)
+            {                                                                              // If current Element 
+                if (toSearch[Row, Col - 1].Value == curElelment.ToString()                 // is equal to the one before
+                    && toSearch[Row, Col - 1].isChecked == false)                          // AND has not been checked before 
                 {
-                    curLength++;
-                    toSearch[Row, Col - 1].isChecked = true;
-                    curLength = Search(toSearch, curElelment, Row, Col - 1, curLength);
-                }
+                    curLength++;                                                           // increment length 
+                    toSearch[Row, Col - 1].isChecked = true;                               // tag as checked
+                    curLength = Search(toSearch, curElelment, Row, Col - 1, curLength);    // recursively check 
+                }                                                                          // the area around 
             }
 
             return curLength;
