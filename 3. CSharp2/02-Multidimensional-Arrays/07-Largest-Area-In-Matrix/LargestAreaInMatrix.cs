@@ -12,7 +12,7 @@ namespace _07_Largest_Area_In_Matrix
             public bool isChecked = false;  // and whether it's 
         }                                   // already been checked
 
-        static void Main()
+        static void Main()                  // Depth First Search
         {
             // TODO: Better Way to Read input
 
