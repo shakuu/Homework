@@ -21,6 +21,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "06-Matrix-Class", "06-Matri
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "06-Matrix-Class-Test", "06-Matrix-Class-Test\06-Matrix-Class-Test.csproj", "{E55BB83D-C7B1-4175-9F73-FEF905E15881}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "07-Largest-Area-In-Matrix", "07-Largest-Area-In-Matrix\07-Largest-Area-In-Matrix.csproj", "{136F6CA2-69CD-4789-96C0-617D3C6D5613}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -63,6 +65,10 @@ Global
 		{E55BB83D-C7B1-4175-9F73-FEF905E15881}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{E55BB83D-C7B1-4175-9F73-FEF905E15881}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{E55BB83D-C7B1-4175-9F73-FEF905E15881}.Release|Any CPU.Build.0 = Release|Any CPU
+		{136F6CA2-69CD-4789-96C0-617D3C6D5613}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{136F6CA2-69CD-4789-96C0-617D3C6D5613}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{136F6CA2-69CD-4789-96C0-617D3C6D5613}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{136F6CA2-69CD-4789-96C0-617D3C6D5613}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
