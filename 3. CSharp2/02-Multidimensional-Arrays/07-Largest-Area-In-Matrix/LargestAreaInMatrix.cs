@@ -54,7 +54,7 @@ namespace _07_Largest_Area_In_Matrix
                     if (toSearch[row, col].isChecked == false)          // if the current element has 
                     {                                                   // not been checked already
                         curLength = Search(toSearch,                    // check the elements around
-                            int.Parse(toSearch[row, col].Value),        // and go deeper in to the    
+                            toSearch[row, col].Value,                   // and go deeper in to the    
                             row, col, curLength);                       // into the sequence
                     }                                                   // before switching side
                                                                         //
@@ -71,10 +71,10 @@ namespace _07_Largest_Area_In_Matrix
         }
 
         public static int Search(MatrixElement[,] toSearch,     // Start with a unique element in the array
-                      int curElelment,                          // Recursively go deeper into tree
-                      int Row,                                  // Explore different branches on the way up
-                      int Col,                                  // South -> East -> North -> West
-                      int curLength)                            // Tag elements part of the current sequence
+                                 string curElelment,            // Recursively go deeper into tree
+                                 int Row,                       // Explore different branches on the way up
+                                 int Col,                       // South -> East -> North -> West
+                                 int curLength)                 // Tag elements part of the current sequence
         {                                                       // Keep track of sequence length
             // Check Down
             if (Row + 1 < toSearch.GetLength(0))    // if in range of array
