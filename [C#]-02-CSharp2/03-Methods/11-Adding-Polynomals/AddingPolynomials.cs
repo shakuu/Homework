@@ -1,8 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace _11_Adding_Polynomals
 {
@@ -17,6 +14,7 @@ namespace _11_Adding_Polynomals
 
             // polynomials as an array of their coefficients
             int[] PolynomialOne = Console.ReadLine()
+                                  .Trim(' ')
                                   .Split(' ')
                                   .Select(int.Parse)
                                   .ToArray();

@@ -12,6 +12,7 @@ namespace _09_Sorting_Array
 
             // get array
             int[] toSort = Console.ReadLine()
+                           .Trim(' ')
                            .Split(' ')
                            .Select(number => int.Parse(number))
                            .ToArray();

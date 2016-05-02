@@ -9,6 +9,7 @@ namespace _02_Get_Largest_Number
         {
             // input
             int[] inputNumbers = Console.ReadLine()           // Read the string
+                                 .Trim(' ')
                                  .Split(' ')                  // split the string
                                  .Select(x => int.Parse(x))   // convert to in
                                  .ToArray();                  // to array

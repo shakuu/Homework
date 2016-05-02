@@ -12,6 +12,7 @@ namespace _05_Larger_Than_Neighbours
 
             // Get the Array
             int[] toSearch = Console.ReadLine()          // Read Input string
+                             .Trim(' ')
                              .Split(' ')                 // Split
                              .Select(x => int.Parse(x))  // Convert to INT
                              .ToArray();                 // Store in Array

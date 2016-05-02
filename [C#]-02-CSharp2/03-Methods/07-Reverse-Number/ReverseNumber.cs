@@ -2,7 +2,7 @@
 
 namespace _07_Reverse_Number
 {
-    class Program
+    class ReverseNumber
     {
         static void Main()
         {

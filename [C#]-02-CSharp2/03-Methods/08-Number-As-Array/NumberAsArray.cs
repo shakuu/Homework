@@ -11,11 +11,13 @@ namespace _08_Number_As_Array
             Console.ReadLine();     // Input Line 1 : array sizes - not needed
 
             int[] NumberOne = Console.ReadLine()                    // read input
+                              .Trim(' ')                            // trim trailing empty 
                               .Split(' ')                           // split into digits
                               .Select(digit => int.Parse(digit))    // convert to int
                               .ToArray();                           // store in an array
 
             int[] NumberTwo = Console.ReadLine()                    // read input
+                              .Trim(' ')
                               .Split(' ')                           // split into digits
                               .Select(digit => int.Parse(digit))    // convert to int
                               .ToArray();                           // store in an array

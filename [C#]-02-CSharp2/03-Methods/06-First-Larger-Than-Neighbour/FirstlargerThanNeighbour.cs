@@ -14,6 +14,7 @@ namespace _06_First_Larger_Than_Neighbour
 
             // get array
             int[] toSearch = Console.ReadLine()
+                             .Trim(' ')
                              .Split(' ')
                              .Select(curElement => int.Parse(curElement))
                              .ToArray();

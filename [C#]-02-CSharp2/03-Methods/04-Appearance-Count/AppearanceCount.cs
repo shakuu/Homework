@@ -15,6 +15,7 @@ namespace _04_Appearance_Count
 
             // Get the array
             int[] toSearch = Console.ReadLine()            // Read the input
+                             .Trim(' ')
                              .Split(' ')                   // Split by empty space
                              .Select(x => int.Parse(x))    // convert to INT
                              .ToArray();                   // store in an array
