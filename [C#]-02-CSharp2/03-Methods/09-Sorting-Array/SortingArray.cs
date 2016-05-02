@@ -47,10 +47,9 @@ namespace _09_Sorting_Array
             return MaxNumberIndex;
         }
 
-        // Sort Descending
+        // Sort Descending - Sort Array Left to Right
         public static int[] SortDescending(int[] toSort)
         {
-            
             // For each element
             for (int CurElement = 0;
                  CurElement < toSort.Length;
@@ -69,7 +68,7 @@ namespace _09_Sorting_Array
             return toSort;
         }
 
-        // Sort Ascending
+        // Sort Ascending - Sort Array Right to Left
         public static int[] SortAscending(int[] toSort)
         {
             //SortAscending
