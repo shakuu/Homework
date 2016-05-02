@@ -25,6 +25,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "09-Sorting-Array", "09-Sort
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "10-N-Factorial", "10-N-Factorial\10-N-Factorial.csproj", "{535F3706-7E01-4F06-86B2-8A2E334B4026}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "11-Adding-Polynomals", "11-Adding-Polynomals\11-Adding-Polynomals.csproj", "{1268FD23-4304-497C-B1F2-F66E40AD3E00}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -75,6 +77,10 @@ Global
 		{535F3706-7E01-4F06-86B2-8A2E334B4026}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{535F3706-7E01-4F06-86B2-8A2E334B4026}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{535F3706-7E01-4F06-86B2-8A2E334B4026}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1268FD23-4304-497C-B1F2-F66E40AD3E00}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1268FD23-4304-497C-B1F2-F66E40AD3E00}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1268FD23-4304-497C-B1F2-F66E40AD3E00}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1268FD23-4304-497C-B1F2-F66E40AD3E00}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
