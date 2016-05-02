@@ -21,7 +21,7 @@ namespace _02_Binary_To_Decimal
                      curDigit++)
             {
                 // CurrentDigit * Base ^ Index
-                DecNumber += (int)Math.Pow(fromBase, curDigit) * 
+                DecNumber += (BigInteger)Math.Pow(fromBase, curDigit) * 
                     int.Parse(BinNumber[BinNumber.Length-1-curDigit].ToString());
             }
 
