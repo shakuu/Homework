@@ -63,9 +63,17 @@ namespace _09_Binary_Float
             // bits 30 - 24
             int Power = 127 + powCounter;
 
+            string PowString = Convert.ToString(Power, 2);
+
             // bit 31 -> 0 positive, 1 negative
+            string SignString = "0";
 
+            if (toDisplayInput < 0)
+            {
+                SignString = "1";
+            }
 
+            toPrint = SignString + PowString + NumString;
 
             Console.WriteLine(toPrint);
         }
