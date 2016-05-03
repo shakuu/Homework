@@ -2,7 +2,7 @@
 
 namespace _08_Binary_Short
 {
-    class Program
+    class BinaryShort
     {
         static void Main()
         {
