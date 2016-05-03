@@ -8,13 +8,15 @@ namespace _15_Prime_Number_In_Range_Fast
     {
         static void Main()
         {
+            // TODO: MEMORY
+
             // input Range N 
             int Range = int.Parse(Console.ReadLine());
 
             // List of Odd Numbers
             List<int> ListOfPrimes = Enumerable.Range(0, Range + 1).ToList();
-            List<int> Flags = Enumerable.Range(0, Range + 1).Select(num => num * 0).ToList();
-            
+            byte[] Flags = new byte[Range+1];
+
             // Variables
             int currStep = 2;
 

@@ -7,6 +7,8 @@ namespace _14_QuickSort
     {
         static void Main()
         {
+            // TODO: 80/ 100
+
             // input
             int arraySize = int.Parse(Console.ReadLine());
 

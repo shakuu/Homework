@@ -6,6 +6,8 @@ namespace _11_Binary_Search
     {
         static void Main()
         {
+            // TODO: TIME LIMIT, INCORRECT
+
             //input 
             int arraySize = int.Parse(Console.ReadLine());
 

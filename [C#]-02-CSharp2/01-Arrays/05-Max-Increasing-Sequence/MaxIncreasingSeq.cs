@@ -6,6 +6,8 @@ namespace _4_Maximal_Sequence
     {
         static void Main()
         {
+            // TODO: 0/ 100 BGCODER
+
             //input
             int seqLength = int.Parse(Console.ReadLine());
 

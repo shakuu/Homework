@@ -7,6 +7,8 @@ namespace _18_Remove_Elements_From_Array_Correct
     {
         static void Main()      // TODO: Counter LEFT == Counter Right 
         {                       // seems one is unnecessary
+            // INCORRECT
+
             //input
             int arraySize = int.Parse(Console.ReadLine());
 

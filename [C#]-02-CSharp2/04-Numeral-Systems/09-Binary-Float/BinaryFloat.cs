@@ -1,8 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace _09_Binary_Float
 {
@@ -22,6 +18,15 @@ namespace _09_Binary_Float
             string BinNumber = "";
 
 
+            // bit 31 -> 0 positive, 1 negative
+            string SignString = "0";
+
+            if (toDisplayInput < 0)
+            {
+                SignString = "1";
+                toDisplay = Math.Abs(toDisplay);
+            }
+
             // get nuumber in format 1+ 0.xxxxxxx
             int powCounter = 0;
 
@@ -30,9 +35,7 @@ namespace _09_Binary_Float
                 toDisplay /= 2;
                 powCounter++;
             }
-
-
-
+            
             // number part
             // TODO: to binary fraction
             // bits 0 -23
@@ -58,6 +61,8 @@ namespace _09_Binary_Float
                     NumString += "0";    // add 0
                 }                        // keep result
             }
+            // add trailing 0s
+            NumString = NumString.PadRight(23, '0');
 
             // TODO: to binary
             // bits 30 - 24
@@ -65,13 +70,7 @@ namespace _09_Binary_Float
 
             string PowString = Convert.ToString(Power, 2);
 
-            // bit 31 -> 0 positive, 1 negative
-            string SignString = "0";
-
-            if (toDisplayInput < 0)
-            {
-                SignString = "1";
-            }
+            
 
             toPrint = SignString + PowString + NumString;
 

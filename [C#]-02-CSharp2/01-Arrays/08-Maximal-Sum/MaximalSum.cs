@@ -1,8 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace _8_Maximal_Sum
 {
@@ -10,6 +8,7 @@ namespace _8_Maximal_Sum
     {
         static void Main()
         {
+            // TODO: MEMORY LIMIT
 
             //input
             int sizeN = int.Parse(Console.ReadLine());

@@ -1,8 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace _13_Merge_Sort_Simple
 {
@@ -10,6 +8,8 @@ namespace _13_Merge_Sort_Simple
     {
         static void Main()
         {
+            // TODO : 70/ 100
+
             // input 
             int arraySize = int.Parse(Console.ReadLine());
 
