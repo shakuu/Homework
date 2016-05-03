@@ -67,6 +67,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "09-Frequent-Number", "09-Fr
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "15-Prime-Number-Faster", "15-Prime-Number-Faster\15-Prime-Number-Faster.csproj", "{D8578349-DDDA-43EE-A645-68AB0CE64621}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "05-Max-Increasing-Sequence-New", "05-Max-Increasing-Sequence-New\05-Max-Increasing-Sequence-New.csproj", "{BDDC2E55-D4F5-4743-A549-F4FB3AC5CA08}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "05-Max-Increasing-Sequence-CheckWithFirst", "05-Max-Increasing-Sequence-CheckWithFirst\05-Max-Increasing-Sequence-CheckWithFirst.csproj", "{78FDAB95-5AF0-49B8-B5D2-3B99F6857C38}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -201,6 +205,14 @@ Global
 		{D8578349-DDDA-43EE-A645-68AB0CE64621}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{D8578349-DDDA-43EE-A645-68AB0CE64621}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{D8578349-DDDA-43EE-A645-68AB0CE64621}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BDDC2E55-D4F5-4743-A549-F4FB3AC5CA08}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BDDC2E55-D4F5-4743-A549-F4FB3AC5CA08}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BDDC2E55-D4F5-4743-A549-F4FB3AC5CA08}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BDDC2E55-D4F5-4743-A549-F4FB3AC5CA08}.Release|Any CPU.Build.0 = Release|Any CPU
+		{78FDAB95-5AF0-49B8-B5D2-3B99F6857C38}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{78FDAB95-5AF0-49B8-B5D2-3B99F6857C38}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{78FDAB95-5AF0-49B8-B5D2-3B99F6857C38}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{78FDAB95-5AF0-49B8-B5D2-3B99F6857C38}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

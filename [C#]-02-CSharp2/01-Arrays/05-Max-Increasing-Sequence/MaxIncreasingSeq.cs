@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace _4_Maximal_Sequence
+namespace _5_Maximal_Incresing_Sequence
 {
     class MaximalSequence
     {
@@ -9,36 +9,45 @@ namespace _4_Maximal_Sequence
             // TODO: 0/ 100 BGCODER
 
             //input
-            int seqLength = int.Parse(Console.ReadLine());
+            long seqLength = long.Parse(Console.ReadLine());
 
             //Fill the Array
-            int[] numbSeq = new int[seqLength];
+            long[] numbSeq = new long[seqLength];
 
             for (int i = 0; i < seqLength; i++)
             {
-                numbSeq[i] = int.Parse(Console.ReadLine());
+                numbSeq[i] = long.Parse(Console.ReadLine());
             }
 
             //Check the Array
             int MaxSeq = 1;
             int currSeq = 1;
+            //long curSeqSum = 0;
+            //long MaxSum = long.MinValue;
 
-            int Increment = 1;
+            //int Increment = 1;
 
             for (int i = 1; i < seqLength; i++)
             {
-                if (numbSeq[i] - Increment == numbSeq[i - 1])  // increment
+                if (numbSeq[i] >= numbSeq[i - 1])  // increment
                 {
                     currSeq++;      //increment sequence if equal
+                    //curSeqSum += numbSeq[i];
                 }
                 else
                 {
                     currSeq = 1;    // or reset sequence
+                    //curSeqSum = 0;
                 }
 
                 //update max seq if needed
                 MaxSeq = currSeq > MaxSeq ?
                     currSeq : MaxSeq;
+                //if (curSeqSum > MaxSum)
+                //{
+                //    MaxSum = curSeqSum;
+                //    MaxSeq = currSeq;
+                //}
             }
 
             //print
