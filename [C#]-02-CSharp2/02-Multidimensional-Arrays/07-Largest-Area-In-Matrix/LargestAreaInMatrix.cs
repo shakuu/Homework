@@ -14,6 +14,8 @@ namespace _07_Largest_Area_In_Matrix
 
         static void Main()                  // Depth First Search
         {
+            // MEMORY + WRONG
+
             // TODO: Better Way to Read input
 
             // input size Col and Row on a single input line

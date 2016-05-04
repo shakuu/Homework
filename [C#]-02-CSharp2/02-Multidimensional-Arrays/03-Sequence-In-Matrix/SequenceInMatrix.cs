@@ -6,6 +6,8 @@ namespace _03_Sequence_In_Matrix
     {
         static void Main()
         {
+            // RUNTIME ERROR
+
             // input size Col and Row on a single input line
             var sizeInput = Console.ReadLine();
 
