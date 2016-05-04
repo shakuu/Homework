@@ -4,11 +4,11 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{BC214DD2-7575-4E5B-969F-DDBAD1B8EF10}</ProjectGuid>
+    <ProjectGuid>{9A8E9C13-8AA3-4D27-81C4-0CC4ED76D964}</ProjectGuid>
     <OutputType>Exe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>_18_Remove_Element_Again</RootNamespace>
-    <AssemblyName>18-Remove-Element-Again</AssemblyName>
+    <RootNamespace>_18_Remove_Element_Yet_Again</RootNamespace>
+    <AssemblyName>18-Remove-Element-Yet-Again</AssemblyName>
     <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
@@ -43,7 +43,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="R.cs" />
+    <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
