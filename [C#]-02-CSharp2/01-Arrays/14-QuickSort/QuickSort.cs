@@ -35,7 +35,7 @@ namespace _14_QuickSort
         public static List<int> Sort(List<int> toSort, int Left, int Right)
         {
             // return if single element
-            if (Right-Left<=1)
+            if (Right - Left <= 1)
             {
                 return toSort;
             }
@@ -61,7 +61,7 @@ namespace _14_QuickSort
                         currPivotPos--;
                         index--;
                     }
-                    else if (toSort[index] <= currPivot &&
+                    else if (toSort[index] < currPivot &&
                              index > currPivotPos)
                     {
                         toSort.Insert(currPivotPos, toSort[index]);
@@ -72,7 +72,7 @@ namespace _14_QuickSort
             }
 
             // Sort Left Of Pivot
-            toSort = Sort(toSort, Left, currPivotPos-1);
+            toSort = Sort(toSort, Left, currPivotPos - 1);
 
             // Sort Right of Pivot
             toSort = Sort(toSort, currPivotPos, Right);

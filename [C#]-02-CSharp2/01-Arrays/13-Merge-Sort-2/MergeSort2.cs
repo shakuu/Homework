@@ -36,7 +36,10 @@ namespace _13_Merge_Sort_2
                     ));
         }
 
-        public static int[] Split(int arrLeft, int arrRight, params int[] toSearch)
+        public static int[] Split(
+                      int arrLeft, 
+                      int arrRight,
+                      params int[] toSearch)
         {
             if (arrRight - arrLeft <= 0)
             {
