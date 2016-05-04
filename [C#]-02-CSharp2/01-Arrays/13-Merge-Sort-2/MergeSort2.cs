@@ -1,8 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace _13_Merge_Sort_2
 {
@@ -29,13 +27,20 @@ namespace _13_Merge_Sort_2
 
             // Split Top to Bot , then Merge on the way up
             Split(arrLeft, arrRight, toSearch);
+
+            // Print the Array
+            Console.WriteLine(
+                string.Join(
+                    Environment.NewLine,
+                    toSearch
+                    ));
         }
 
         public static int[] Split(int arrLeft, int arrRight, params int[] toSearch)
         {
             if (arrRight - arrLeft <= 0)
             {
-                Console.WriteLine($"section {arrLeft} to {arrRight}");
+                //Console.WriteLine($"section {arrLeft} to {arrRight}");
                 return toSearch;
             }
 
@@ -52,8 +57,8 @@ namespace _13_Merge_Sort_2
             toSearch = Split(arrMidpoint + 1, arrRight, toSearch);
 
             // Step 2: MergeSort
-            Console.WriteLine($"section {arrLeft} to {arrRight}");
-
+            //Console.WriteLine($"section {arrLeft} to {arrRight}");
+            toSearch = Merge(arrLeft, arrRight, arrMidpoint, toSearch);
 
 
             // TODO: Return
