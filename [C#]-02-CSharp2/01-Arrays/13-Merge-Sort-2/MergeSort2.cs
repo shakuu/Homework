@@ -10,6 +10,8 @@ namespace _13_Merge_Sort_2
     {
         static void Main()
         {
+            // TODO: Change Array to List
+
             // INPUT
             int arrSize = int.Parse(Console.ReadLine());
 
@@ -118,7 +120,7 @@ namespace _13_Merge_Sort_2
                     continue;                                 //
                 }
             }
-
+            
             return toSearch;
         }
     }
