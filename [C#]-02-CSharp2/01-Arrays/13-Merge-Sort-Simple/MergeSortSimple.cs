@@ -31,10 +31,10 @@ namespace _13_Merge_Sort_Simple
 
             int curNumOfRuns = arraySize / curSortSize;
 
-            if (arraySize % curSortSize > 1)  // TODO: unnecessary at this point
-            {
-                curNumOfRuns++;
-            }
+            //if (arraySize % curSortSize > 1)  // TODO: unnecessary at this point
+            //{
+            //    curNumOfRuns++;
+            //}
 
             while (true)
             {
@@ -198,12 +198,12 @@ namespace _13_Merge_Sort_Simple
                 Console.WriteLine(element);
             }
 
-            // TEST
-            if (toSort[0] == toSort.Min() && 
-                toSort[toSort.Count()-1] == toSort.Max())
-            {
-                Console.WriteLine("YAY");
-            }
+            //// TEST
+            //if (toSort[0] == toSort.Min() && 
+            //    toSort[toSort.Count()-1] == toSort.Max())
+            //{
+            //    Console.WriteLine("YAY");
+            //}
         }
     }
 }
