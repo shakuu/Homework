@@ -6,7 +6,8 @@ namespace _11_Binary_Search
     {
         static void Main()
         {
-            // TODO: TIME LIMIT, INCORRECT
+            //  80/ 100 TIME LIMIT TESTS: 2, 7
+            // 100/ 100 See Bottom 
 
             //input 
             int arraySize = int.Parse(Console.ReadLine());
@@ -29,26 +30,17 @@ namespace _11_Binary_Search
 
             int currCheck = Middle;
 
-            // Step 1.5: Sort array ascending ( possibly not needed )
-            //Array.Sort(arrayA);
+            // Step 1.5: Sort array ascending ( not needed )
+            // Array.Sort(arrayA);
 
             // Step 2:
             while (true)
             {
-                
-                //// Stop on end of array
-                //if ((currCheck == Left || currCheck == Right) && arrayA[currCheck] != toFind)
-                //{
-                //    //Print not found
-                //    Console.WriteLine("-1");
-                //    return;
-                //}
-
                 if (arrayA[currCheck] < toFind)
                 {
-                    //value toFind is to the RIGHT of MID
+                    // value toFind is to the RIGHT of MID
                     // Move the search position RIGHT
-                     //Right = currCheck - 1;
+                    // Right = currCheck - 1; // -> per Wikipedia, but SLOW
 
                     currCheck++;
                     continue;
@@ -56,9 +48,9 @@ namespace _11_Binary_Search
 
                 if (toFind < arrayA[currCheck])
                 {
-                    //value toFind is to the LEFT of MID
+                    // value toFind is to the LEFT of MID
                     // Move the search position LEFT
-                    //Left = currCheck + 1;
+                    // Left = currCheck + 1; // -> per Wikipedia, but SLOW
 
                     currCheck--;
                     continue;
@@ -75,16 +67,17 @@ namespace _11_Binary_Search
                         return;
                     }
                 }
-                catch (System.IndexOutOfRangeException)
-                {
-                    Console.WriteLine("-1");
-                    return;
+                catch (System.IndexOutOfRangeException)   // Trying to check outside 
+                {                                         // of the array
+                    Console.WriteLine("-1");              // element is not found
+                    return;                               // print -1
                 }
-                //currCheck = (Left + Right) / 2;
+
+                // currCheck = (Left + Right) / 2; // -> per Wikipedia, but SLOW
             }
 
 
-            // 100 POINTS
+            // 100 POINTS -> built in binary search
             //int result = Array.BinarySearch(arrayA, toFind);
 
             //if (result<0)
