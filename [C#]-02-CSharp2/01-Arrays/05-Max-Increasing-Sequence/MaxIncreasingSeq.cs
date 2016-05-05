@@ -6,52 +6,43 @@ namespace _5_Maximal_Incresing_Sequence
     {
         static void Main()
         {
-            // TODO: 0/ 100 BGCODER
+            // TODO: 100/ 100 BGCODER - Working
+            // Tests Change ? 
 
             //input
-            long seqLength = long.Parse(Console.ReadLine());
+            int seqLength = int.Parse(Console.ReadLine());
 
             //Fill the Array
-            long[] numbSeq = new long[seqLength];
+            int[] numbSeq = new int[seqLength];
 
             for (int i = 0; i < seqLength; i++)
             {
-                numbSeq[i] = long.Parse(Console.ReadLine());
+                numbSeq[i] = int.Parse(Console.ReadLine());
             }
 
             //Check the Array
             int MaxSeq = 1;
             int currSeq = 1;
-            //long curSeqSum = 0;
-            //long MaxSum = long.MinValue;
 
             //int Increment = 1;
 
             for (int i = 1; i < seqLength; i++)
             {
-                if (numbSeq[i] >= numbSeq[i - 1])  // increment
+                if (numbSeq[i] > numbSeq[i - 1])  // increment
                 {
                     currSeq++;      //increment sequence if equal
-                    //curSeqSum += numbSeq[i];
                 }
                 else
                 {
                     currSeq = 1;    // or reset sequence
-                    //curSeqSum = 0;
                 }
 
                 //update max seq if needed
                 MaxSeq = currSeq > MaxSeq ?
                     currSeq : MaxSeq;
-                //if (curSeqSum > MaxSum)
-                //{
-                //    MaxSum = curSeqSum;
-                //    MaxSeq = currSeq;
-                //}
             }
 
             //print
             Console.WriteLine(MaxSeq);
         }
     }
-}

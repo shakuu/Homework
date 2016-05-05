@@ -23,7 +23,7 @@ namespace _2_Compare_Arrays_XOR
             {
                 for (int i = 0; i < arrayOne.Length; i++)
                 {
-                    arrayOne[i] = arrayOne[i] ^ int.Parse(Console.ReadLine());
+                    arrayOne[i] ^= int.Parse(Console.ReadLine());
                 }
             }
             
