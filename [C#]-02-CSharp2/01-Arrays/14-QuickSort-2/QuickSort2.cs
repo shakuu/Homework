@@ -10,6 +10,9 @@ namespace _14_QuickSort_2
     {
         static void Main()
         {
+            //// SOPTWATCH, TODO: DELETE
+            //var STOPWATCH = new System.Diagnostics.Stopwatch();
+
             // TIME LIMIT
 
             // input
@@ -38,6 +41,12 @@ namespace _14_QuickSort_2
                 string.Join(
                     Environment.NewLine,
                     toSort));
+
+            toSort.Sort();
+
+            //// TODO: DELETE
+            //STOPWATCH.Stop();
+            //Console.WriteLine(STOPWATCH.ElapsedMilliseconds);
         }
 
         // Sort it 
@@ -46,6 +55,9 @@ namespace _14_QuickSort_2
                            int arrRight,
                            List<int> toSort)
         {
+            // STOP WATCH
+            //var STOPWATCH = new System.Diagnostics.Stopwatch();
+
             if (arrRight - arrLeft <= 0)   // Sequence of 1
             {                              // is sorted by
                 return toSort;             // definition 
@@ -66,7 +78,7 @@ namespace _14_QuickSort_2
                 while (crawlLeft < crawlRight)               // Start Left
                 {                                            // Find the first
                     if (toSort[crawlLeft] >= sortPivot)      // element 
-                    {                                        // LESS THAN PIVOT
+                    {                                        // MORE THAN PIVOT
                         break;                               //
                     }                                        //
                     else                                     //
@@ -78,7 +90,7 @@ namespace _14_QuickSort_2
                 // Step 3: Right Crawler
                 while (crawlLeft < crawlRight)               // Then Start crawling
                 {                                            // right, find an element
-                    if (toSort[crawlRight] <= sortPivot)      // MORE THAN PIVOT
+                    if (toSort[crawlRight] <= sortPivot)     // LESS THAN PIVOT
                     {                                        //
                         break;                               //
                     }                                        //
@@ -93,22 +105,49 @@ namespace _14_QuickSort_2
                     break;                                   // elements sorted by
                 }                                            // pivot 
 
+
+                if (toSort[crawlLeft] == toSort[crawlRight] &&
+                    toSort[crawlLeft] == sortPivot)
+                {
+                    if (crawlLeft < crawlRight)
+                    {
+                        crawlLeft++;
+                    }
+
+                    //if (crawlLeft < crawlRight)              
+                    //{                                        
+                    //    crawlRight--;                        
+                    //}                                        
+
+                    continue;
+                }
+
                 // Step 4: Switch
                 toSort[crawlLeft] ^= toSort[crawlRight];     // switch the two elements
                 toSort[crawlRight] ^= toSort[crawlLeft];     // the crawlers found 
                 toSort[crawlLeft] ^= toSort[crawlRight];     // around
             }
 
+            // TODO:DELETE
+            //if (crawlLeft != crawlRight)
+            //{
+            //    Console.WriteLine("BREAK BREAK BREAK");
+            //}
+            // TODO: DELETE
+            //STOPWATCH.Stop();
+            //Console.WriteLine(STOPWATCH.ElapsedMilliseconds);
+
             // Special Case
-            if (crawlLeft == arrRight)    // if crawlers are the 
-            {                           // end of the sections
+            if (crawlLeft == arrRight)  // if crawlers are at the 
+            {
+                // end of the section
                 return toSort;          // then section is 
             }                           // sorted (also infiLoop)
 
             // Step 5: Pass Along
             toSort = QuickSort(arrLeft, crawlLeft - 1, toSort);  // 1: arrLeft to crawlLeft
             toSort = QuickSort(crawlLeft, arrRight, toSort);     // 2: crawlLeft to arrRight
-                                                                 //( crawlLeft = crawlRigh ) 
+                                                                 // ( crawlLeft = crawlRight ) 
 
             // return the current
             // sorted list
@@ -121,20 +160,43 @@ namespace _14_QuickSort_2
                       int arrRight,
                       List<int> toSort)
         {
+            // if 2 values, return (double) average
             if (arrRight - arrLeft == 1)
             {
-                return (double)(toSort[arrLeft] + toSort[arrRight]) / 2;
+                return (double)
+                    (toSort[arrLeft] +
+                     toSort[arrRight]) / 2;
             }
 
+            // create array
             int[] Pivot = new int[]
             {
                 toSort[arrLeft],
                 toSort[arrRight],
-                toSort[arrLeft+(arrRight-arrLeft)/2]
+                toSort[arrLeft +
+                      (arrRight-arrLeft) / 2]
             };
 
-            Array.Sort(Pivot);
+            // sort array
+            while (!(Pivot[0] <= Pivot[1] &&
+                     Pivot[1] <= Pivot[2]))
+            {
+                if (Pivot[0] > Pivot[1])
+                {
+                    Pivot[0] ^= Pivot[1];
+                    Pivot[1] ^= Pivot[0];
+                    Pivot[0] ^= Pivot[1];
+                }
 
+                if (Pivot[1] > Pivot[2])
+                {
+                    Pivot[1] ^= Pivot[2];
+                    Pivot[2] ^= Pivot[1];
+                    Pivot[1] ^= Pivot[2];
+                }
+            }
+
+            // return median
             return Pivot[1];
         }
     }
