@@ -109,6 +109,21 @@ namespace _14_QuickSort_2
                 if (toSort[crawlLeft] == toSort[crawlRight] &&
                     toSort[crawlLeft] == sortPivot)
                 {
+                    //if (crawlRight - crawlLeft > 1 &&
+                    //    toSort[crawlLeft] != toSort[crawlLeft + 1])
+                    //{
+                    //    toSort[crawlLeft] ^= toSort[crawlLeft + 1];
+                    //    toSort[crawlLeft + 1] ^= toSort[crawlLeft];
+                    //    toSort[crawlLeft] ^= toSort[crawlLeft + 1];
+                    //}
+                    //else
+                    //{
+                    //    if (crawlLeft < crawlRight)
+                    //    {
+                    //        crawlLeft++;
+                    //    }
+                    //}
+
                     if (crawlLeft < crawlRight)
                     {
                         crawlLeft++;
