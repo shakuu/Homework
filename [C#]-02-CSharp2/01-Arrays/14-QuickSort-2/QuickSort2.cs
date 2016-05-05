@@ -27,9 +27,9 @@ namespace _14_QuickSort_2
             int arrLeft = 0;
             int arrRight = toSort.Count() - 1;
 
-            // Run 1:
+            // Run 1: Work, Work, Work
             toSort = QuickSort(arrLeft, arrRight, toSort);
-            // Run 2: Sorting out special cases
+            // Run 2: The Cleaner
             toSort = QuickSort(arrLeft, arrRight, toSort);
 
             // Print
@@ -40,14 +40,11 @@ namespace _14_QuickSort_2
         }
 
         // Sort it 
-        public static List<int> QuickSort(
-                           int arrLeft,
-                           int arrRight,
-                           List<int> toSort)
+        public static List<int> QuickSort(     // Sort By Pivot
+                           int arrLeft,        // Split By Pivot position
+                           int arrRight,       // Pass the two sections 
+                           List<int> toSort)   // down recursively
         {
-            // STOP WATCH
-            //var STOPWATCH = new System.Diagnostics.Stopwatch();
-
             if (arrRight - arrLeft <= 0)   // Sequence of 1
             {                              // is sorted by
                 return toSort;             // definition 
@@ -61,8 +58,7 @@ namespace _14_QuickSort_2
             // Step 1:
             int crawlLeft = arrLeft;                         // Left Crawler index
             int crawlRight = arrRight;                       // Right Crawler indes
-                                                             //
-
+               
             while (true)                                     //
             {
                 // Step 2: Left Crawler
@@ -70,11 +66,11 @@ namespace _14_QuickSort_2
                 {                                            // Find the first
                     if (toSort[crawlLeft] >= sortPivot)      // element 
                     {                                        // MORE THAN PIVOT
-                        break;                               //
+                        break;                               // and break
                     }                                        //
                     else                                     //
-                    {                                        //
-                        crawlLeft++;                         //
+                    {                                        // if not a match
+                        crawlLeft++;                         // increment index
                     }                                        //
                 }
 
@@ -82,13 +78,13 @@ namespace _14_QuickSort_2
                 while (crawlLeft < crawlRight)               // Then Start crawling
                 {                                            // right, find an element
                     if (toSort[crawlRight] <= sortPivot)     // LESS THAN PIVOT
-                    {                                        //
+                    {                                        // and break
                         break;                               //
                     }                                        //
                     else                                     //
-                    {
-                        crawlRight--;
-                    }
+                    {                                        // if not a match
+                        crawlRight--;                        // increment index
+                    }                                        //
                 }
 
                 if (crawlLeft == crawlRight)                 // if the crawlers meet
@@ -97,27 +93,26 @@ namespace _14_QuickSort_2
                 }                                            // pivot 
 
 
-                if (toSort[crawlLeft] == toSort[crawlRight] &&
-                    toSort[crawlLeft] == sortPivot)
-                {
-                    if (crawlLeft < crawlRight)
-                    {
-                        crawlLeft++;
-                    }
-
-                    continue;
-                }
+                if (toSort[crawlLeft] == toSort[crawlRight] &&  // If the crawlers
+                    toSort[crawlLeft] == sortPivot)             // have found two
+                {                                               // equal elements
+                    if (crawlLeft < crawlRight)                 // which are also 
+                    {                                           // equal to the 
+                        crawlLeft++;                            // current Pivot
+                    }                                           // then skip the 
+                                                                // element on 
+                    continue;                                   // the left
+                }                                               // continue
 
                 // Step 4: Switch
                 toSort[crawlLeft] ^= toSort[crawlRight];     // switch the two elements
-                toSort[crawlRight] ^= toSort[crawlLeft];     // the crawlers found 
+                toSort[crawlRight] ^= toSort[crawlLeft];     // the crawlers have found 
                 toSort[crawlLeft] ^= toSort[crawlRight];     // around
             }
-            
-            // Special Case
-            if (crawlLeft == arrRight)  // if crawlers are at the 
-            {
-                // end of the section
+
+            // Section is sorted
+            if (crawlLeft == arrRight)  // if the crawlers meet at
+            {                           // end of the section
                 return toSort;          // then section is 
             }                           // sorted (also infiLoop)
 
@@ -132,10 +127,10 @@ namespace _14_QuickSort_2
         }
 
         // Get the current Pivot
-        public static double GetPivot(
-                      int arrLeft,
-                      int arrRight,
-                      List<int> toSort)
+        public static double GetPivot(   // 2 elements
+                      int arrLeft,       // return (double)Average
+                      int arrRight,      // 2 < Elements
+                      List<int> toSort)  // return Median of first, last and middle
         {
             // if 2 values, return (double) average
             if (arrRight - arrLeft == 1)
@@ -151,10 +146,10 @@ namespace _14_QuickSort_2
                 toSort[arrLeft],
                 toSort[arrRight],
                 toSort[arrLeft +
-                      (arrRight-arrLeft) / 2]
+                      (arrRight - arrLeft) / 2]
             };
 
-            // sort array
+            // sort array - Bitwise Magic Rules!
             while (!(Pivot[0] <= Pivot[1] &&
                      Pivot[1] <= Pivot[2]))
             {
