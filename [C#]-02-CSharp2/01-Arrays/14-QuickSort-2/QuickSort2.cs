@@ -1,8 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace _14_QuickSort_2
 {
@@ -10,15 +8,10 @@ namespace _14_QuickSort_2
     {
         static void Main()
         {
-            //// SOPTWATCH, TODO: DELETE
-            //var STOPWATCH = new System.Diagnostics.Stopwatch();
-
-            // TIME LIMIT
-
             // input
             int arrSize = int.Parse(Console.ReadLine());
 
-            // get the array
+            // get the array, can be an array
             List<int> toSort = new List<int>();
 
             for (int curInput = 0;
@@ -34,6 +27,9 @@ namespace _14_QuickSort_2
             int arrLeft = 0;
             int arrRight = toSort.Count() - 1;
 
+            // Run 1:
+            toSort = QuickSort(arrLeft, arrRight, toSort);
+            // Run 2: Sorting out special cases
             toSort = QuickSort(arrLeft, arrRight, toSort);
 
             // Print
@@ -41,12 +37,6 @@ namespace _14_QuickSort_2
                 string.Join(
                     Environment.NewLine,
                     toSort));
-
-            toSort.Sort();
-
-            //// TODO: DELETE
-            //STOPWATCH.Stop();
-            //Console.WriteLine(STOPWATCH.ElapsedMilliseconds);
         }
 
         // Sort it 
@@ -72,6 +62,7 @@ namespace _14_QuickSort_2
             int crawlLeft = arrLeft;                         // Left Crawler index
             int crawlRight = arrRight;                       // Right Crawler indes
                                                              //
+
             while (true)                                     //
             {
                 // Step 2: Left Crawler
@@ -109,30 +100,10 @@ namespace _14_QuickSort_2
                 if (toSort[crawlLeft] == toSort[crawlRight] &&
                     toSort[crawlLeft] == sortPivot)
                 {
-                    //if (crawlRight - crawlLeft > 1 &&
-                    //    toSort[crawlLeft] != toSort[crawlLeft + 1])
-                    //{
-                    //    toSort[crawlLeft] ^= toSort[crawlLeft + 1];
-                    //    toSort[crawlLeft + 1] ^= toSort[crawlLeft];
-                    //    toSort[crawlLeft] ^= toSort[crawlLeft + 1];
-                    //}
-                    //else
-                    //{
-                    //    if (crawlLeft < crawlRight)
-                    //    {
-                    //        crawlLeft++;
-                    //    }
-                    //}
-
                     if (crawlLeft < crawlRight)
                     {
                         crawlLeft++;
                     }
-
-                    //if (crawlLeft < crawlRight)              
-                    //{                                        
-                    //    crawlRight--;                        
-                    //}                                        
 
                     continue;
                 }
@@ -142,16 +113,7 @@ namespace _14_QuickSort_2
                 toSort[crawlRight] ^= toSort[crawlLeft];     // the crawlers found 
                 toSort[crawlLeft] ^= toSort[crawlRight];     // around
             }
-
-            // TODO:DELETE
-            //if (crawlLeft != crawlRight)
-            //{
-            //    Console.WriteLine("BREAK BREAK BREAK");
-            //}
-            // TODO: DELETE
-            //STOPWATCH.Stop();
-            //Console.WriteLine(STOPWATCH.ElapsedMilliseconds);
-
+            
             // Special Case
             if (crawlLeft == arrRight)  // if crawlers are at the 
             {
