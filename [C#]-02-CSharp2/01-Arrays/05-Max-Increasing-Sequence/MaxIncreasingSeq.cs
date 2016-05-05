@@ -46,3 +46,4 @@ namespace _5_Maximal_Incresing_Sequence
             Console.WriteLine(MaxSeq);
         }
     }
+}
