@@ -1,8 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace _02_Maximal_Sum_2_Line_By_Line
 {
@@ -10,7 +6,7 @@ namespace _02_Maximal_Sum_2_Line_By_Line
     {
         static void Main()
         {
-            // TODO: 100/ 100 TIME LIMIT
+            // TODO: 100/ 100 
 
             // input - Line 1: Rows, Empty, Cols
             string[] Sizes = Console.ReadLine()
@@ -96,8 +92,7 @@ namespace _02_Maximal_Sum_2_Line_By_Line
                         short.Parse(Input[curElement + (areaSize - 1)]);   // input element
 
             }
-
-
+            
             return ArrayOfSums;
         }
 
@@ -107,8 +102,8 @@ namespace _02_Maximal_Sum_2_Line_By_Line
             short curSum = 0;
 
             for (int curElement = 0;
-                curElement < curRows[0].Length;
-                curElement++)
+                     curElement < curRows[0].Length;
+                     curElement++)
             {
                 curSum = 0;
 

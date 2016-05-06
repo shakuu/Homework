@@ -6,12 +6,14 @@ namespace _07_Largest_Area_In_Matrix_2
 {
     class LargestAreaInMatrix2
     {
-        public static BitArray[] isChecked;
+        // Declare Flags BitArray to 
+        // be accessible in all methods
+        static BitArray[] isChecked;
 
         static void Main()
         {
-            // With Diagonals - > 100/ 100
-            // Wihtout Diagonals
+            // With Diagonals 
+            // Wihtout Diagonals - > 100/ 100
 
             // INPUT N Rows, M Columns
             // Sizes[0] Rows, Sizes[1] Cols
@@ -24,8 +26,7 @@ namespace _07_Largest_Area_In_Matrix_2
             // Read The Array
             int[][] toSearch = new int[Sizes[0]][];
 
-            //Flags for each row
-            //static BitArray[] 
+            //Initialize the bitarray for each row
             isChecked = new BitArray[toSearch.Length];
 
             for (int row = 0; row < toSearch.Length; row++)
@@ -59,7 +60,7 @@ namespace _07_Largest_Area_In_Matrix_2
 
                     if (isChecked[Row][Col] == false)
                     {
-                        isChecked[Row][Col] = true;
+                        isChecked[Row][Col] = true; 
 
                         // find sequence for current element
                         curSequence = CheckElement
@@ -83,13 +84,12 @@ namespace _07_Largest_Area_In_Matrix_2
 
         // Get Sequence - Up, Down, Left, Right
         public static int CheckElement
-            (
-                      int Row,
-                      int Col,
-                      int curSequence,
-                      int[][] toSearch
-            //BitArray[] isChecked
-            )
+                          (
+                            int Row,
+                            int Col,
+                            int curSequence,
+                            int[][] toSearch
+                          )
         {
             // Check Down
             if (Row + 1 < toSearch.Length)
@@ -175,7 +175,8 @@ namespace _07_Largest_Area_In_Matrix_2
                 }
             }
 
-            // TODO:
+            // Return crrent 
+            // sequence length
             return curSequence;
         }
     }
