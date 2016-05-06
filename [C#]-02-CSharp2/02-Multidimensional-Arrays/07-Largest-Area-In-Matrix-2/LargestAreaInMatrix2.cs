@@ -29,10 +29,10 @@ namespace _07_Largest_Area_In_Matrix_2
             //Initialize the bitarray for each row
             isChecked = new BitArray[toSearch.Length];
 
-            for (int row = 0; row < toSearch.Length; row++)
+            for (int Row = 0; Row < toSearch.Length; Row++)
             {
                 // Read Input row
-                toSearch[row] = Console.ReadLine()
+                toSearch[Row] = Console.ReadLine()
                                        .Trim(' ')
                                        .Split(' ')
                                        .Select(int.Parse)
@@ -40,7 +40,7 @@ namespace _07_Largest_Area_In_Matrix_2
 
                 // Create Flags for each element 
                 // of the current input row
-                isChecked[row] = new BitArray(toSearch[row].Length);
+                isChecked[Row] = new BitArray(toSearch[Row].Length);
             }
 
             // Output
