@@ -6,7 +6,7 @@ namespace _03_Sequence_In_Matrix
     {
         static void Main()
         {
-            // 100 / 100, TODO: MISSING CHECK FOR Diagonals BOTTOM LEFT
+            // 100 / 100, TODO: MISSING CHECK FOR Diagonals - Left-  BOTTOM RIGTH section
 
             // input size Col and Row on a single input line
             string sizeInput = Console.ReadLine();
@@ -122,6 +122,27 @@ namespace _03_Sequence_In_Matrix
                 }
             }
 
+            for (int Row = 1; Row < inputRows; Row++)
+            {
+                CurSequence = 1;
+
+                for (int curMod = 1;
+                         curMod <= Math.Min(inputRows - 1 - Row - 1, inputCols - 1);
+                         curMod++)
+                {
+                    if (toSearch[Row + curMod][(inputCols - 1) - curMod] ==
+                        toSearch[Row + (curMod + 1)][(inputCols - 1) - (curMod + 1)])
+                    {
+                        CurSequence++;
+                    }
+                }
+
+                if (CurSequence > MaxSequence)
+                {
+                    MaxSequence = CurSequence;
+                }
+            }
+
             // Diagonal Right
             for (int Row = inputRows - 2;
                      Row >= 0;
@@ -154,7 +175,7 @@ namespace _03_Sequence_In_Matrix
                 CurSequence = 1;
 
                 for (int curMod = 1;
-                    curMod <= Math.Min(Row -1, inputCols - 1);
+                    curMod <= Math.Min(Row - 1, inputCols - 1);
                     curMod++)
                 {
                     if (toSearch[Row - curMod][(inputCols - 1) - curMod] ==
