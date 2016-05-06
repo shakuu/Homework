@@ -4,38 +4,37 @@ namespace _01_Fill_The_Matrix
 {
     class FillTheMatrix
     {
-        private static int i;
-
         static void Main()
         {
             // input Size
             int arraySize = int.Parse(Console.ReadLine());
 
             // Type = a b c d 
-            string arrayType = Console.ReadLine().ToLower();
+            char arrayType = Console.ReadLine().ToLower()[0];
 
             // Creat The Array
-            int[,] toFill = new int[arraySize, arraySize];
+            short[,] toFill = new short[arraySize, arraySize];
 
-            if (arrayType == "a")
+            if (arrayType == 'a')
             {
                 toFill = OutputTypeA(toFill);
                 PrintTheMatrix(toFill);
             }
 
-            if (arrayType == "b")
+            if (arrayType == 'b')
             {
                 toFill = OutputTypeB(toFill);
                 PrintTheMatrix(toFill);
             }
 
-            if (arrayType == "c")
+            // Too Slow
+            if (arrayType == 'c')
             {
                 toFill = OutputTypeC(toFill);
                 PrintTheMatrix(toFill);
             }
 
-            if (arrayType == "d")
+            if (arrayType == 'd')
             {
                 toFill = OutputTypeD(toFill);
                 PrintTheMatrix(toFill);
@@ -44,14 +43,14 @@ namespace _01_Fill_The_Matrix
         }
 
         // TYPE A
-        public static int[,] OutputTypeA(int[,] toFill)
+        public static short[,] OutputTypeA(short[,] toFill)
         {
             // Type A                   1 4 7
             // Columns Left to Right    2 5 8
             // Rows Top to Bottom       3 6 9
 
             // Start Filling with 1
-            int toPrint = 1;
+            short toPrint = 1;
 
             // Columns First
             for (int col = 0; col < toFill.GetLength(0); col++)
@@ -68,14 +67,14 @@ namespace _01_Fill_The_Matrix
         }
 
         // TYPE B
-        public static int[,] OutputTypeB(int[,] toFill)
+        public static short[,] OutputTypeB(short[,] toFill)
         {
             // Type B                   1 6 7
             // Even Cols - Top to Bot   2 5 8
             // Odd Cols -  Bot to Top   3 4 9
 
             // Start Filling with 1
-            int toPrint = 1;
+            short toPrint = 1;
 
 
             for (int col = 0; col < toFill.GetLength(0); col++)
@@ -103,24 +102,31 @@ namespace _01_Fill_The_Matrix
             return toFill;
         }
 
-        // TYPE C
-        public static int[,] OutputTypeC(int[,] toFill)
+        // TYPE C - Split into two halves to 
+        // decrease the number of cycles
+        // and increase speed of execution
+        public static short[,] OutputTypeC(short[,] toFill)
         {
             // Type C                   4 7 9
             // Print                    2 5 8
             // Diagonals                1 3 6
 
             // Start Filling with 1
-            int toPrint = 1;
+            short toPrint = 1;
 
             int Target = toFill.GetLength(1) - 1;
 
             // Print Like BATMAN ! 
-            while (Target >= -(toFill.GetLength(1) - 1))
+            // eft half
+            while (Target >= 0)
             {
-                for (int row = 0; row < toFill.GetLength(1); row++)
+                for (int row = 0; 
+                         row < toFill.GetLength(1); 
+                         row++)
                 {
-                    for (int col = 0; col < toFill.GetLength(0); col++)
+                    for (int col = 0; 
+                             col < toFill.GetLength(0) - Target; 
+                             col++)
                     {
                         if (row - col == Target)
                         {
@@ -132,18 +138,41 @@ namespace _01_Fill_The_Matrix
 
                 Target--;
             }
+
+            // right half
+            while (Target >= -(toFill.GetLength(1) - 1))
+            {
+                for (int row = 0; 
+                         row < toFill.GetLength(1); 
+                         row++)
+                {
+                    for (int col = 0 - Target; 
+                             col < toFill.GetLength(0);
+                             col++)
+                    {
+                        if (row - col == Target)
+                        {
+                            toFill[col, row] = toPrint;
+                            toPrint++;
+                        }
+                    }
+                }
+
+                Target--;
+            }
+            
             return toFill;
         }
 
         // TYPE D
-        public static int[,] OutputTypeD(int[,] toFill)
+        public static short[,] OutputTypeD(short[,] toFill)
         {
             // Type D                   1 8 7
             // Spiral                   2 9 6
             // Matrix                   3 4 5
 
             // Start Filling with 1
-            int toPrint = 1;
+            short toPrint = 1;
 
             // Start at 0,0
             int curCol = 0;
@@ -198,7 +227,7 @@ namespace _01_Fill_The_Matrix
                         colSpeed = 1;
                         rowSpeed = 0;
                         canMove = true;
-                     }
+                    }
 
                     else if (curDirection == 1)
                     {
@@ -238,21 +267,22 @@ namespace _01_Fill_The_Matrix
         }
 
         // PRINT 
-        public static void PrintTheMatrix(int[,] toPrint)
+        public static void PrintTheMatrix(short[,] toPrint)
         {
-            string PrintString = "";
-
             for (int row = 0; row < toPrint.GetLength(1); row++)
             {
                 for (int col = 0; col < toPrint.GetLength(0); col++)
                 {
-                    PrintString += toPrint[col, row] + " ";             // Build the string 
-                }
-                PrintString = PrintString.TrimEnd(' ');                 // Trim the extra white space
-                PrintString += "\n";                                    // Add New Line
-            }
+                    Console.Write(toPrint[col, row]);
 
-            Console.Write(PrintString);                                 // Print the string
+                    if (col != toPrint.GetLength(0) - 1)
+                    {
+                        Console.Write(" ");
+                    }
+                }
+
+                Console.WriteLine();                                   // Add New Line
+            }
 
             return;
         }
