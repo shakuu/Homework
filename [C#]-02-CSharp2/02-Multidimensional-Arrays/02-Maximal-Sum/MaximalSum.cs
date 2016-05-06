@@ -1,5 +1,5 @@
 ﻿using System;
-using System.Numerics;
+using System.Linq;
 
 namespace _02_Maximal_Sum
 {
@@ -11,36 +11,39 @@ namespace _02_Maximal_Sum
 
             // IMPORTANT : POSSIBLY ROWS then COLUMNS ( TODO: Switch The Input Around )
             // input size Col and Row on a single input line 
-            var sizeInput = Console.ReadLine();
+            string sizeInput = Console.ReadLine().TrimEnd(' ');
 
             string[] Sizes = sizeInput.Split(' ');
 
-            int[,] toSearch = new int
-                [int.Parse(Sizes[0]),
-                 int.Parse(Sizes[1])];
+            short[][] toSearch = new short
+                [int.Parse(Sizes[0])][];
 
             // Read Array input
-            for (int row = 0; row < toSearch.GetLength(1); row++)
+            // read sums of each 3 elements out of each row 
+            for (int row = 0; row < toSearch.GetLength(0); row++)
             {
-                for (int col = 0; col < toSearch.GetLength(0); col++)
-                {
-                    toSearch[col, row] = int.Parse(Console.ReadLine());
-                }
+                toSearch[row] = Console.ReadLine()
+                                         .Trim(' ')
+                                         .Split(' ')
+                                         .Select(num => short.Parse(num))
+                                         .ToArray(); 
             }
 
             // Container Grid
             int SearchSize = 3;
             
-            BigInteger curMaxSum = int.MinValue;   // This will store the result  
-            BigInteger curSum = 0;                 // store current grid sum                     
+            short curMaxSum = short.MinValue;   // This will store the result  
+            short curSum = 0;                 // store current grid sum                     
 
             // Read each possible Grid 
             for (int row = 0;                                           // Each Row
-                     row < toSearch.GetLength(1) - (SearchSize - 1);    // Up to Size -2
+                     row < toSearch.GetLength(0) 
+                           - (SearchSize - 1);                          // Up to Size -2
                      row++)                                             // to accomodate GridSize
             {
-                for (int col = 0;                                         // Each Col
-                         col < toSearch.GetLength(0) - (SearchSize - 1);  // Up to Size -2
+                for (int col = 0;                                    // Each Col
+                         col < toSearch[0].GetLength(0)              // Up to Size -2
+                               - (SearchSize - 1);                     
                          col++)
                 {
                     curSum = 0;                                      // reset the sum  
@@ -54,7 +57,7 @@ namespace _02_Maximal_Sum
                                  curCol++)                           
                         {
                             // get the Sum
-                            curSum += toSearch[curCol, curRow];
+                            curSum += toSearch[curRow][curCol];
                         }
                     }
 
