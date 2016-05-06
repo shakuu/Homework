@@ -6,23 +6,25 @@ namespace _3_Compare_Char_Arrays_wArray
     {
         static void Main()
         {
+            // 100/ 100 Case Sensitive
+
             //vars
             string OneSmaller = "<";
             string TwoSmaller = ">";
-            string Equal = "=";           
+            string Equal = "=";
 
             //input
-            string inputA = Console.ReadLine().ToLower();
-            string inputB = Console.ReadLine().ToLower();
+            string inputA = Console.ReadLine();
+            string inputB = Console.ReadLine();
 
             //Step 1: Equal Length
-            if (inputA.Length<inputB.Length)
+            if (inputA.Length < inputB.Length)
             {
-                inputA = inputA.PadRight(inputB.Length, (char)('a' - 1));
+                inputA = inputA.PadRight(inputB.Length, (char)(0));
             }
             else if (inputA.Length > inputB.Length)
             {
-                inputB= inputB.PadRight(inputA.Length, (char)('a' - 1));
+                inputB = inputB.PadRight(inputA.Length, (char)(0));
             }
 
             //Step 2: To Char Arrays
