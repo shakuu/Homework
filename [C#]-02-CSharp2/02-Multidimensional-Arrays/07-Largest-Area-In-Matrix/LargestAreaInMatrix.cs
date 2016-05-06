@@ -31,7 +31,9 @@ namespace _07_Largest_Area_In_Matrix
 
             for (int row = 0; row < inputRows; row++)                   // For each row
             {                                                           // Break the input string
-                string[] inputString = Console.ReadLine().Split(' ');   // into a helper array
+                string[] inputString = Console.ReadLine()
+                                              .Trim(' ')
+                                              .Split(' ');              // into a helper array
                                                                         //
                 for (int col = 0; col < inputCols; col++)               //
                 {                                                       //
