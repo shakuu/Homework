@@ -10,7 +10,7 @@ namespace _02_Maximal_Sum_2_Line_By_Line
     {
         static void Main()
         {
-            // TODO: 80/ 100 TIME LIMIT
+            // TODO: 100/ 100 TIME LIMIT
 
             // input - Line 1: Rows, Empty, Cols
             string[] Sizes = Console.ReadLine()
@@ -110,18 +110,14 @@ namespace _02_Maximal_Sum_2_Line_By_Line
                 curElement < curRows[0].Length;
                 curElement++)
             {
-                //curSum = 0;
+                curSum = 0;
 
-                //for (int Row = 0;
-                //         Row < curRows.Length;
-                //         Row++)
-                //{
-                //    curSum += curRows[Row][curElement];
-                //}
-
-                curSum = (short)(curRows[0][curElement] +
-                                 curRows[1][curElement] +
-                                 curRows[2][curElement]);
+                for (int Row = 0;
+                         Row < curRows.Length;
+                         Row++)
+                {
+                    curSum += curRows[Row][curElement];
+                }
 
                 MaxSum = curSum > MaxSum ?
                          curSum : MaxSum;
@@ -129,28 +125,5 @@ namespace _02_Maximal_Sum_2_Line_By_Line
             
             return MaxSum;
         }
-
-        //public static short MaxSumGuess(short[][] curRows)
-        //{
-        //    short MaxSum = short.MinValue;
-        //    short curSum = 0;
-
-        //    for (int curElement = 0; curElement < curRows.Length; curElement++)
-        //    {
-        //        curSum = 0;
-
-        //        for (int curRow = 0; curRow < curRows.Length; curRow++)
-        //        {
-        //            curSum += (curRows[curRow][Array.IndexOf(curRows[curElement], curRows[curElement].Max())]);
-        //        }
-
-        //        if (curSum > MaxSum)
-        //        {
-        //            MaxSum = curSum;
-        //        }
-        //    }
-
-        //    return MaxSum;
-        //}
     }
 }

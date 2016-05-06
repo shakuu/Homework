@@ -7,7 +7,7 @@ namespace _02_Maximal_Sum
     {
         static void Main()
         {
-            // RUNTIME ERROR
+            // 100/ 100
 
             // IMPORTANT : POSSIBLY ROWS then COLUMNS ( TODO: Switch The Input Around )
             // input size Col and Row on a single input line 
