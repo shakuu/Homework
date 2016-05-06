@@ -127,7 +127,7 @@ namespace _03_Sequence_In_Matrix
                 CurSequence = 1;
 
                 for (int curMod = 1;
-                         curMod <= Math.Min(inputRows - 1 - Row - 1, inputCols - 1);
+                         curMod <= Math.Min(inputRows - 1 - Row - 1, inputCols - 2);
                          curMod++)
                 {
                     if (toSearch[Row + curMod][(inputCols - 1) - curMod] ==
