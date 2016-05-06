@@ -6,12 +6,14 @@ namespace _03_Sequence_In_Matrix
     {
         static void Main()
         {
-            // RUNTIME ERROR
+            // 100 / 100, TODO: MISSING CHECK FOR Diagonals BOTTOM LEFT
 
             // input size Col and Row on a single input line
-            var sizeInput = Console.ReadLine();
+            string sizeInput = Console.ReadLine();
 
-            string[] Sizes = sizeInput.Split(' ');
+            string[] Sizes = sizeInput
+                            .Trim(' ')
+                            .Split(' ');
 
             int inputRows = int.Parse(Sizes[0]);
             int inputCols = int.Parse(Sizes[1]);
@@ -22,7 +24,9 @@ namespace _03_Sequence_In_Matrix
 
             for (int i = 0; i < inputRows; i++)
             {
-                toSearch[i] = Console.ReadLine().Split(' ');
+                toSearch[i] = Console.ReadLine()
+                                     .Trim(' ')
+                                     .Split(' ');
             }
 
             // vars
@@ -62,12 +66,12 @@ namespace _03_Sequence_In_Matrix
             }
 
             // Step 2: Check By Cols
-            for (int col = 0; col < inputRows; col++)
+            for (int col = 0; col < inputCols; col++)
             {
                 // reset for each col
                 CurSequence = 1;
 
-                for (int row = 1; row < inputCols; row++)
+                for (int row = 1; row < inputRows; row++)
                 {
                     if (toSearch[row][col] ==
                         toSearch[row - 1][col])
@@ -87,6 +91,79 @@ namespace _03_Sequence_In_Matrix
                 }
 
                 // double check cursequence for last element
+                if (CurSequence > MaxSequence)
+                {
+                    MaxSequence = CurSequence;
+                }
+            }
+
+            // Check Diagonals
+            // Diagonal Left 
+            // TODO: Optimizie only check diagonals with enough
+            // elements to get a new Max Length
+            for (int Col = 1; Col < inputCols; Col++)
+            {
+                CurSequence = 1;
+
+                for (int curMod = 1;
+                         curMod <= Math.Min(Col, inputRows - 1);
+                         curMod++)
+                {
+                    if (toSearch[0 + curMod][Col - curMod] ==
+                        toSearch[0 + (curMod - 1)][Col - (curMod - 1)])
+                    {
+                        CurSequence++;
+                    }
+                }
+
+                if (CurSequence > MaxSequence)
+                {
+                    MaxSequence = CurSequence;
+                }
+            }
+
+            // Diagonal Right
+            for (int Row = inputRows - 2;
+                     Row >= 0;
+                     Row--)
+            {
+                CurSequence = 1;
+
+                for (int curMod = 1;
+                    curMod <= Math.Min(inputRows - Row - 1, inputCols - 1);
+                    curMod++)
+                {
+                    if (toSearch[Row + curMod][0 + curMod] ==
+                        toSearch[Row + (curMod - 1)][0 + (curMod - 1)])
+                    {
+                        CurSequence++;
+                    }
+                }
+
+                if (CurSequence > MaxSequence)
+                {
+                    MaxSequence = CurSequence;
+                }
+            }
+
+            // Top Right
+            for (int Row = 1;
+                     Row < inputRows - 1;
+                     Row++)
+            {
+                CurSequence = 1;
+
+                for (int curMod = 1;
+                    curMod <= Math.Min(Row -1, inputCols - 1);
+                    curMod++)
+                {
+                    if (toSearch[Row - curMod][(inputCols - 1) - curMod] ==
+                        toSearch[Row - (curMod - 1)][(inputCols - 1) - (curMod - 1)])
+                    {
+                        CurSequence++;
+                    }
+                }
+
                 if (CurSequence > MaxSequence)
                 {
                     MaxSequence = CurSequence;
