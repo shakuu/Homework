@@ -52,20 +52,14 @@ namespace _02_Maximal_Sum_2_Line_By_Line
                      Row++)
             {
                 // Read a new row
-                curSums[RowToWrite] = ReadInputLine(areaSize);
+                curSums[RowToWrite % areaSize] =
+                            ReadInputLine(areaSize);
 
                 // find Max Sum
-                MaxSum = (curSum = FindMaxSum(curSums)) > MaxSum ?
+                MaxSum = (curSum = FindMaxSum(curSums)) > MaxSum ? //FindMaxSum
                           curSum : MaxSum;
 
-                if (RowToWrite < 2)
-                {
-                    RowToWrite++;
-                }
-                else
-                {
-                    RowToWrite = 0;
-                }
+                RowToWrite++;
             }
 
             // output
@@ -116,23 +110,47 @@ namespace _02_Maximal_Sum_2_Line_By_Line
                 curElement < curRows[0].Length;
                 curElement++)
             {
-                curSum = 0;
+                //curSum = 0;
 
-                for (int Row = 0;
-                         Row < curRows.Length;
-                         Row++)
-                {
-                    curSum += curRows[Row][curElement];
-                }
+                //for (int Row = 0;
+                //         Row < curRows.Length;
+                //         Row++)
+                //{
+                //    curSum += curRows[Row][curElement];
+                //}
 
-                if (curSum > MaxSum)
-                {
-                    MaxSum = curSum;
-                }
+                curSum = (short)(curRows[0][curElement] +
+                                 curRows[1][curElement] +
+                                 curRows[2][curElement]);
+
+                MaxSum = curSum > MaxSum ?
+                         curSum : MaxSum;
             }
-
-
+            
             return MaxSum;
         }
+
+        //public static short MaxSumGuess(short[][] curRows)
+        //{
+        //    short MaxSum = short.MinValue;
+        //    short curSum = 0;
+
+        //    for (int curElement = 0; curElement < curRows.Length; curElement++)
+        //    {
+        //        curSum = 0;
+
+        //        for (int curRow = 0; curRow < curRows.Length; curRow++)
+        //        {
+        //            curSum += (curRows[curRow][Array.IndexOf(curRows[curElement], curRows[curElement].Max())]);
+        //        }
+
+        //        if (curSum > MaxSum)
+        //        {
+        //            MaxSum = curSum;
+        //        }
+        //    }
+
+        //    return MaxSum;
+        //}
     }
 }
