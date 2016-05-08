@@ -1,0 +1,62 @@
+body {
+  margin-top: 0;
+  margin-left: 0;
+  box-sizing: border-box;
+}
+
+body div.calculator-frame {
+  background-image: url('./Assets/04-Windows-Calculator-Frame.png');
+  background-repeat: no-repeat;
+  width: 458px;
+  height: 447px;
+  position: absolute;
+  z-index: 1;
+}
+
+body div.calculator-frame div.inside-frame {
+  background-color: #D9E4F1;
+  width: 430px;
+  height: 388px;
+  position: absolute;
+  top: 41px;
+  left: 14px;
+  z-index: 0;
+  border-radius: 1px;
+  border: 2px outset rgba(0, 0, 0, 0.3);
+  padding: 0;
+}
+
+body div.calculator-frame div.inside-frame div.menu-bar {
+  padding-top: 2px;
+  font-size: 13px;
+  border-bottom: 1px outset rgba(0, 0, 0, 0.3);
+  background-image: -webkit-gradient(linear, left top, left bottom, from(#FDFEFF), to(#E2E7F7));
+  background-image: -webkit-linear-gradient(top, #FDFEFF, #E2E7F7);
+  background-image: -moz-linear-gradient(top, #FDFEFF, #E2E7F7);
+  background-image: linear-gradient(to bottom, #FDFEFF, #E2E7F7);
+}
+
+body div.calculator-frame div.inside-frame div.menu-bar span {
+  margin-left: 5px;
+  text-decoration: underline;
+}
+
+body div.calculator-frame div.inside-frame div.result-box {
+  height: 34px;
+  margin-left: 9px;
+  margin-right: 11px;
+  margin-top: 14px;
+  background-image: -webkit-gradient(linear, left top, left bottom, from(#E6EEFB), to(#FEFEFE));
+  background-image: -webkit-linear-gradient(top, #E6EEFB, #FEFEFE);
+  background-image: -moz-linear-gradient(top, #E6EEFB, #FEFEFE);
+  background-image: linear-gradient(to bottom, #E6EEFB, #FEFEFE);
+  text-align: right;
+  font-family: consolas;
+  font-size: 24px;
+  padding-top: 18px;
+  padding-bottom: 0px;
+  padding-right: 5px;
+  border: 2px solid rgba(0, 0, 0, 0.3);
+  border-radius: 3px;
+}
+
