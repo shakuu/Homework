@@ -23,6 +23,7 @@ h1:first-letter{
 h1{
   font-weight: 600;
   margin-bottom: 0px;
+  letter-spacing: 0.05em;
 }
 
 p{
