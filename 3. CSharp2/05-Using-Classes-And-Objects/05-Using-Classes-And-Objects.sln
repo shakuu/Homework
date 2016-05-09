@@ -13,6 +13,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "04-Triangle-Surface", "04-T
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "05-Triangle-Surface-3-Sides", "05-Triangle-Surface-3-Sides\05-Triangle-Surface-3-Sides.csproj", "{209A02F8-6B32-4905-B26C-26C6CC29F912}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "06-Triangle-Surface-2-Sides-Angle", "06-Triangle-Surface-2-Sides-Angle\06-Triangle-Surface-2-Sides-Angle.csproj", "{91229C90-1CF2-4CF4-82BD-AA2A6789685A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "06-Workdays", "06-Workdays\06-Workdays.csproj", "{E64B5188-AFC2-4B41-A730-28AB3A393A61}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -39,6 +43,14 @@ Global
 		{209A02F8-6B32-4905-B26C-26C6CC29F912}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{209A02F8-6B32-4905-B26C-26C6CC29F912}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{209A02F8-6B32-4905-B26C-26C6CC29F912}.Release|Any CPU.Build.0 = Release|Any CPU
+		{91229C90-1CF2-4CF4-82BD-AA2A6789685A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{91229C90-1CF2-4CF4-82BD-AA2A6789685A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{91229C90-1CF2-4CF4-82BD-AA2A6789685A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{91229C90-1CF2-4CF4-82BD-AA2A6789685A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E64B5188-AFC2-4B41-A730-28AB3A393A61}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E64B5188-AFC2-4B41-A730-28AB3A393A61}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E64B5188-AFC2-4B41-A730-28AB3A393A61}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E64B5188-AFC2-4B41-A730-28AB3A393A61}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

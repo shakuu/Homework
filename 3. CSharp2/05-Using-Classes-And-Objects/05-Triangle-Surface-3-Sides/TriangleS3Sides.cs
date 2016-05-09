@@ -2,7 +2,7 @@
 
 namespace _05_Triangle_Surface_3_Sides
 {
-    class Program
+    class TriangleS3Sides
     {
         static void Main()
         {
