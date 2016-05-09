@@ -6,6 +6,10 @@
   background: red;
   border-radius: 100px/ 50%;
 }*/
+
+*{
+  box-sizing: border-box;
+}
 body div.main{
   width: 800px;
   height: 60px;
@@ -21,7 +25,7 @@ body div.main{
 
 body div.main div.cylinder-top{
   height: 97%;
-  width: 135px;
+  width: 120px;
   position: absolute;
   border-radius: 100px;
   background: black;
@@ -33,23 +37,26 @@ body div.main div.cylinder-top{
 body div.main div.cylinder-top div.cylinder-fill{
   position: absolute;
   margin:0;
-  left: 0px;
+  /*left: 0px;*/
+  right: 64%;
   height: 100%;
-  width: 0;
-  padding-right: 42%;
+  width: 100%;
+  /*padding-right: 42%;*/
   border-radius: 100px;
   z-index: 3;
-  
-  background:  yellow;
+  vertical-align: middle; 
+  background:  rgba(0, 100, 0, 0.5);
 }
 
 body div.main div.cylinder-fill div.cylinder-nest{
   position: absolute;
   margin: 2%;
-  margin-right: 4%;
+  margin-right: 1%;
   right: 0;
-  height: 96%;
-  width: 197%;
+  height: 90%;
+  width: 96%;
   border-radius: 100px ;
   background: black;
+  border: 2px solid red;
+  
 }
