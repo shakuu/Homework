@@ -9,7 +9,7 @@ namespace _09_Arithmetical_Expressions
     class ArithmeticalExpressions
     {
         // static Vars
-        static List<string> OutputString = new List<string>();
+        static List<string> OutputExpression = new List<string>();
         static List<string> OperatorStack = new List<string>();
 
         static string[] OperatorKey = "+ - * / %".Split(' ');
@@ -34,15 +34,15 @@ namespace _09_Arithmetical_Expressions
 
                 // if the current element is a digit
                 // read the number
-                if (InputExpression[curElement] >= '0' &&   
-                    InputExpression[curElement] <= '9')     
+                if (InputExpression[curElement] >= '0' &&
+                    InputExpression[curElement] <= '9')
                 {
                     toAdd = ReadNumber(           // Read The Number
                               InputExpression,    //
                               curElement          //
                               );
 
-                    OutputString.Add(toAdd);      // Add Numnber to output
+                    OutputExpression.Add(toAdd);      // Add Numnber to output
                                                   //
                     curElement += toAdd.Length - 1;   // skip the length of the number
 
@@ -50,7 +50,7 @@ namespace _09_Arithmetical_Expressions
                 }
 
                 // if current element is an operator 
-                if (OperatorKey.Contains(          
+                if (OperatorKey.Contains(
                         InputExpression[curElement].ToString()))
                 {
                     ReadOperator(InputExpression[curElement].ToString());
@@ -72,8 +72,6 @@ namespace _09_Arithmetical_Expressions
 
                     continue;
                 }
-
-
             }
         }
 
@@ -135,7 +133,7 @@ namespace _09_Arithmetical_Expressions
                 }
                 else
                 {
-                    OutputString.Add(OperatorStack[curElement]);
+                    OutputExpression.Add(OperatorStack[curElement]);
                     OperatorStack.RemoveAt(curElement);
 
                     if (OperatorStack.Count() == 0)     // case all previous
@@ -145,6 +143,47 @@ namespace _09_Arithmetical_Expressions
                     }
                 }
             }
+        }
+
+        // Read Closing Parenthesis ) 
+        public static void ClosingParenthesis()
+        {
+            // TODO: Error Handling
+            // 1. Empty Stack
+            // 2. Opening Parenthesis NOT found
+            
+
+            // read Operators off the stack till 
+            // the Opening Parenthsis ( 
+            for (int curElement = OperatorStack.Count() - 1; 
+                     curElement >= 0; 
+                     curElement--)
+            {
+                if (OperatorStack[curElement] != "(")
+                {
+                    OutputExpression.Add(OperatorStack[curElement]);
+                    OperatorStack.RemoveAt(curElement);
+                }
+
+                if (OperatorStack[curElement] == "(")
+                {
+                    OperatorStack.RemoveAt(curElement);
+                    break;
+                }
+            }
+
+            // TODO: If the next element in the stack is a FUNC
+            // add the FUNC to the OutputExpression
+
+            return;
+        }
+
+        // Check if an element is a func
+        public static bool isFunc(string Element)
+        {
+            // TODO: CHECK
+
+            return true;
         }
     }
 }
