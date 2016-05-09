@@ -49,6 +49,22 @@ namespace _09_Arithmetical_Expressions
                     continue;
                 }
 
+                // If the cur element is a function
+                if (char.IsLetter(InputExpression[curElement]))
+                {
+                    //TODO: Read Function
+                    toAdd = ReadFunc(           // Read The Number
+                              InputExpression,    //
+                              curElement          //
+                              );
+
+                    OperatorStack.Add(toAdd);      // Add Numnber to output
+                                                      //
+                    curElement += toAdd.Length - 1;   // skip the length of the number
+
+                    continue;
+                }
+
                 // if current element is an operator 
                 if (OperatorKey.Contains(
                         InputExpression[curElement].ToString()))
@@ -136,13 +152,13 @@ namespace _09_Arithmetical_Expressions
                     // TODO: If NOT Open Parenthesis 
                     if (OperatorStack[curElement] == "(")
                     {
-                        OperatorStack.Add(curOperator); 
+                        OperatorStack.Add(curOperator);
                         return;
                     }
                     // TODO: If NOT a Function
                     if (char.IsLetter(OperatorStack[curElement][0]))
                     {
-                        OperatorStack.Add(curOperator); 
+                        OperatorStack.Add(curOperator);
                         return;
                     }
 
@@ -202,9 +218,39 @@ namespace _09_Arithmetical_Expressions
                         );
                 }
             }
-            
+
             return;
         }
-        
+
+        // TODO: Read Function
+        public static string ReadFunc(
+                string InputExpression,
+                int StartPosition
+                )
+        {
+            string toReturn = "";
+
+            for (int curLetter = StartPosition; 
+                     curLetter < InputExpression.Count(); 
+                     curLetter++)
+            {
+                // if letter keep reading
+                if (char.IsLetter(InputExpression[curLetter]))
+                {
+                    toReturn += InputExpression[curLetter];
+
+                    continue;
+                }
+                else
+                {
+                    break;
+                }
+            }
+
+
+            return toReturn;
+        }
+
+        // TODO: Read Comma
     }
 }
