@@ -69,7 +69,7 @@ namespace _09_Arithmetical_Expressions
                 // if closing Parenthesis
                 if (InputExpression[curElement] == ')')
                 {
-
+                    ClosingParenthesis();
                     continue;
                 }
             }
@@ -133,6 +133,19 @@ namespace _09_Arithmetical_Expressions
                 }
                 else
                 {
+                    // TODO: If NOT Open Parenthesis 
+                    if (OperatorStack[curElement] == "(")
+                    {
+                        OperatorStack.Add(curOperator); 
+                        return;
+                    }
+                    // TODO: If NOT a Function
+                    if (char.IsLetter(OperatorStack[curElement][0]))
+                    {
+                        OperatorStack.Add(curOperator); 
+                        return;
+                    }
+
                     OutputExpression.Add(OperatorStack[curElement]);
                     OperatorStack.RemoveAt(curElement);
 
@@ -163,6 +176,8 @@ namespace _09_Arithmetical_Expressions
                 {
                     OutputExpression.Add(OperatorStack[curElement]);
                     OperatorStack.RemoveAt(curElement);
+
+                    continue;
                 }
 
                 if (OperatorStack[curElement] == "(")
