@@ -5,7 +5,7 @@ namespace _01_Leap_Year
 {
     class LeapYear
     {
-        static void Main(string[] args)
+        static void Main()
         {
             // https://support.microsoft.com/en-us/kb/214019
             // how to determine if it s a leap year
