@@ -6,6 +6,9 @@ namespace _09_Binary_Float
     {
         static void Main()
         {
+            // TODO: There should not be leading zeros
+            // Possibly incorrect output formatting
+
             // input
             float toDisplayInput = float.Parse(Console.ReadLine());
 
@@ -14,9 +17,6 @@ namespace _09_Binary_Float
             string toPrint = "";
 
             string[] BinKey = "0 1".Split(' ');
-
-            string BinNumber = "";
-
 
             // bit 31 -> 0 positive, 1 negative
             string SignString = "0";
