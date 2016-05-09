@@ -43,7 +43,7 @@ namespace _09_Arithmetical_Expressions
                               );
 
                     OutputExpression.Add(toAdd);      // Add Numnber to output
-                                                  //
+                                                      //
                     curElement += toAdd.Length - 1;   // skip the length of the number
 
                     continue;
@@ -151,12 +151,12 @@ namespace _09_Arithmetical_Expressions
             // TODO: Error Handling
             // 1. Empty Stack
             // 2. Opening Parenthesis NOT found
-            
+
 
             // read Operators off the stack till 
             // the Opening Parenthsis ( 
-            for (int curElement = OperatorStack.Count() - 1; 
-                     curElement >= 0; 
+            for (int curElement = OperatorStack.Count() - 1;
+                     curElement >= 0;
                      curElement--)
             {
                 if (OperatorStack[curElement] != "(")
@@ -174,16 +174,22 @@ namespace _09_Arithmetical_Expressions
 
             // TODO: If the next element in the stack is a FUNC
             // add the FUNC to the OutputExpression
+            if (OperatorStack.Count() > 0)
+            {
+                if (char.IsLetter(OperatorStack[OperatorStack.Count() - 1][0]))
+                {
+                    OutputExpression.Add(
+                        OperatorStack[OperatorStack.Count() - 1]
+                        );
 
+                    OperatorStack.RemoveAt(
+                        OperatorStack.Count() - 1
+                        );
+                }
+            }
+            
             return;
         }
-
-        // Check if an element is a func
-        public static bool isFunc(string Element)
-        {
-            // TODO: CHECK
-
-            return true;
-        }
+        
     }
 }
