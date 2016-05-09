@@ -61,7 +61,7 @@ namespace _09_Binary_Float
                     NumString += "0";    // add 0
                 }                        // keep result
             }
-            // add trailing 0s
+            // add trailing 0s 23 bits length
             NumString = NumString.PadRight(23, '0');
 
             // TODO: to binary
@@ -69,6 +69,9 @@ namespace _09_Binary_Float
             int Power = 127 + powCounter;
 
             string PowString = Convert.ToString(Power, 2);
+
+            // 8 bits
+            PowString = PowString.PadLeft(8, '0');
 
             
 
