@@ -4,11 +4,11 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{C8192CA5-A9DE-4FDD-B322-BA485874670B}</ProjectGuid>
+    <ProjectGuid>{B02B6214-F2B1-4C50-81D9-B7BE14AEFEE5}</ProjectGuid>
     <OutputType>Exe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>_07_Add_Integers</RootNamespace>
-    <AssemblyName>07-Add-Integers</AssemblyName>
+    <RootNamespace>_09_Arithmetical_Expressions</RootNamespace>
+    <AssemblyName>09-Arithmetical-Expressions</AssemblyName>
     <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
@@ -43,7 +43,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="SumIntegers.cs" />
+    <Compile Include="ArithmeticalExpressions.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
