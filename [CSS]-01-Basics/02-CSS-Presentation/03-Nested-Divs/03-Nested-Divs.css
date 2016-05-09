@@ -1,0 +1,55 @@
+/*.test{
+  box-sizing: border-box;
+  width: 100px;
+  height: 100px;
+  
+  background: red;
+  border-radius: 100px/ 50%;
+}*/
+body div.main{
+  width: 800px;
+  height: 60px;
+  
+  position: absolute;
+  z-index: 1;
+  background: red;
+  border-radius: 100px;
+  padding-top:1px;
+}
+
+
+
+body div.main div.cylinder-top{
+  height: 97%;
+  width: 135px;
+  position: absolute;
+  border-radius: 100px;
+  background: black;
+  margin:0;
+  right: 1px;
+  z-index: 2;
+}
+
+body div.main div.cylinder-top div.cylinder-fill{
+  position: absolute;
+  margin:0;
+  left: 0px;
+  height: 100%;
+  width: 0;
+  padding-right: 42%;
+  border-radius: 120%;
+  z-index: 3;
+  
+  background:  yellow;
+}
+
+body div.main div.cylinder-fill div.cylinder-nest{
+  position: absolute;
+  margin: 2%;
+  margin-right: 4%;
+  right: 0;
+  height: 96%;
+  width: 197%;
+  border-radius: 100%;
+  background: black;
+}
