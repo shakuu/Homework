@@ -7,6 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "01-Leap-Year", "01-Leap-Yea
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "02-Random-Numbers", "02-Random-Numbers\02-Random-Numbers.csproj", "{FB57AD32-1EC5-48EC-9A32-F31E0D5DEE42}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "03-Day-Of-Week", "03-Day-Of-Week\03-Day-Of-Week.csproj", "{9FAB8273-4D70-4D4F-B052-4FBFAD2CE89C}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,10 @@ Global
 		{FB57AD32-1EC5-48EC-9A32-F31E0D5DEE42}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{FB57AD32-1EC5-48EC-9A32-F31E0D5DEE42}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{FB57AD32-1EC5-48EC-9A32-F31E0D5DEE42}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9FAB8273-4D70-4D4F-B052-4FBFAD2CE89C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9FAB8273-4D70-4D4F-B052-4FBFAD2CE89C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9FAB8273-4D70-4D4F-B052-4FBFAD2CE89C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9FAB8273-4D70-4D4F-B052-4FBFAD2CE89C}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
