@@ -37,7 +37,7 @@ body div.main div.cylinder-top div.cylinder-fill{
   height: 100%;
   width: 0;
   padding-right: 42%;
-  border-radius: 120%;
+  border-radius: 100px;
   z-index: 3;
   
   background:  yellow;
@@ -50,6 +50,6 @@ body div.main div.cylinder-fill div.cylinder-nest{
   right: 0;
   height: 96%;
   width: 197%;
-  border-radius: 100%;
+  border-radius: 100px ;
   background: black;
 }
