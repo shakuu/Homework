@@ -7,6 +7,8 @@ namespace _07_One_Base_To_Any_Other
     {
         static void Main()
         {
+            // TODO: 85/ 100
+
             // input 
             int fromBase = int.Parse(Console.ReadLine());
 

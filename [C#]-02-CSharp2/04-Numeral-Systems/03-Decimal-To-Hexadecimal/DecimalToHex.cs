@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Numerics;
+
 
 namespace _03_Decimal_To_Hexadecimal
 {
@@ -6,8 +8,10 @@ namespace _03_Decimal_To_Hexadecimal
     {
         static void Main()
         {
+            // RUNTIME ERROR
+
             //input
-            int DecNumber = int.Parse(Console.ReadLine());
+            BigInteger DecNumber = BigInteger.Parse(Console.ReadLine());
 
             // variablse
             string HexNumber = "";
@@ -19,7 +23,7 @@ namespace _03_Decimal_To_Hexadecimal
             {
                 // Step 1: Remainders build the Hex number
                 // Right To Left
-                HexNumber = HexKey[DecNumber % toBase]
+                HexNumber = HexKey[(int)(DecNumber % toBase)]
                           + HexNumber;
 
                 // Step 2: Divide the Dec Number by toBase

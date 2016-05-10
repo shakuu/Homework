@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Numerics;
 
 namespace _01_Decimal_To_Binary
 {
@@ -6,8 +7,10 @@ namespace _01_Decimal_To_Binary
     {
         static void Main()
         {
+            // TODO: RUNTIME ERROR
+
             // input -> decimal number
-            int DecNumber = int.Parse(Console.ReadLine());
+            BigInteger DecNumber = BigInteger.Parse(Console.ReadLine());
 
             // output 
             string BinNumber = "";
