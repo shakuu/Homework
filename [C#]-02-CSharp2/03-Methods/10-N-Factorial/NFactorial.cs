@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Numerics;
 
 namespace _10_N_Factorial
 {
@@ -6,6 +7,8 @@ namespace _10_N_Factorial
     {
         static void Main()
         {
+            // TODO: 50/ 100
+
             // IMPORTANT: Number stored in reverse order
 
             // input number N 
@@ -30,8 +33,8 @@ namespace _10_N_Factorial
         // Multiply 
         public static int[] Multiply(int[] Number, int Multiplier)
         {
-            int curResult = 0;
-            int carryOver = 0;
+            BigInteger curResult = 0;
+            BigInteger carryOver = 0;
 
             for (int curDigit = 0;                   // go through  
                      curDigit < Number.Length;       // each digit
@@ -41,7 +44,7 @@ namespace _10_N_Factorial
                             Multiplier +         // and add 
                             carryOver;           // the carryover
 
-                Number[curDigit] = curResult % 10;  // last digit is current digit
+                Number[curDigit] = (int)(curResult % 10);  // last digit is current digit
 
                 carryOver = curResult / 10;     // next operation carryover
             }
@@ -57,14 +60,14 @@ namespace _10_N_Factorial
                 Array.Resize(ref Number,
                 Number.Length + carryOver.ToString().Length);
 
+                int CarryOverLength = carryOver.ToString().Length;
+
                 // Step 2: Append
                 for (int curDigit = 0;
-                         curDigit < carryOver
-                                    .ToString()
-                                    .Length;
+                         curDigit < CarryOverLength;
                          curDigit++)
                 {
-                    Number[oldNumberSize + curDigit] = carryOver % 10;
+                    Number[oldNumberSize + curDigit] = (int)(carryOver % 10);
 
                     carryOver /= 10;
                 }

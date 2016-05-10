@@ -7,6 +7,8 @@ namespace _09_Sorting_Array
     {
         static void Main()
         {
+            // TODO: 90 / 100
+
             // input
             Console.ReadLine();     // Size of the array
 

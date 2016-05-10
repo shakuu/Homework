@@ -7,6 +7,8 @@ namespace _11_Adding_Polynomals
     {
         static void Main()
         {
+            // TODO: 0/ 100
+
             // TODO: DOUBLE CHECK INPUT AND OUTPUT
 
             // input
@@ -28,9 +30,9 @@ namespace _11_Adding_Polynomals
             int[] PolynomialSum = SumTheArrays(PolynomialOne, PolynomialTwo);
 
             // Output
-            string toPrint = string.Join(", ", PolynomialSum);
+            string toPrint = string.Join(" ", PolynomialSum);
 
-            Console.WriteLine("{" + toPrint + "}");
+            Console.WriteLine(toPrint);
         }
 
         public static int[] SumTheArrays(int[] ArrayA, int[] ArrayB)

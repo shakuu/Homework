@@ -7,6 +7,8 @@ namespace _08_Number_As_Array
     {
         static void Main()
         {
+            // TODO: 50/ 100
+
             // input
             Console.ReadLine();     // Input Line 1 : array sizes - not needed
 

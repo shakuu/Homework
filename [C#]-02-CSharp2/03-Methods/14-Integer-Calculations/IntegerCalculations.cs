@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Linq;
+using System.Numerics;
 
 namespace _14_Integer_Calculations
 {
@@ -7,12 +8,18 @@ namespace _14_Integer_Calculations
     {
         static void Main()
         {
+            // TODO: 50/ 100;
+
             // input
             int[] Numbers = Console.ReadLine()
                             .Trim(' ')          // trim trailing and leading white spaces
                             .Split(' ')
                             .Select(number => int.Parse(number))
                             .ToArray();
+
+            //Console.WriteLine(Numbers.Min());
+            //Console.WriteLine(Numbers.Max());
+
 
             GetMin(Numbers);
             GetMax(Numbers);
@@ -39,8 +46,6 @@ namespace _14_Integer_Calculations
 
         // Get Maximum
         public static void GetMax(params int[] Numbers)
-
-
         {
             int MaxNumber = int.MinValue;
 
@@ -65,7 +70,7 @@ namespace _14_Integer_Calculations
                 NumbersSum += Numbers[curNumber];
             }
 
-            Console.WriteLine((double)NumbersSum/(double)Numbers.Length);
+            Console.WriteLine(((double)NumbersSum/(double)Numbers.Length).ToString("F2"));
         }
 
         // Get Sum
@@ -84,7 +89,7 @@ namespace _14_Integer_Calculations
         // Get Product
         public static void GetProduct(params int[] Numbers)
         {
-            int NumbersProduct = 1;
+            BigInteger NumbersProduct = 1;
 
             for (int curNumber = 0; curNumber < Numbers.Length; curNumber++)
             {
