@@ -134,6 +134,7 @@ namespace _09_Arithmetical_Expressions
             // Add them at the end of the OutputExpression
             FlushOperatorStack();
 
+            //////////////////////////////////
             // Step 2: Evaluate the expression
             for (int curElement = 0;
                      curElement < OutputExpression.Count();
@@ -143,8 +144,8 @@ namespace _09_Arithmetical_Expressions
                 if (OperatorKey.Contains(
                         OutputExpression[curElement].ToString()))
                 {
-                    curElement = EvaluateOperator(curElement);
-
+                    curElement = EvaluateOperator(curElement); // returning the index of 
+                                                               // the next element to check
                     continue;
                 }
 
@@ -152,8 +153,8 @@ namespace _09_Arithmetical_Expressions
                 if (char.IsLetter(OutputExpression[curElement][0]))
                 {
                     // TODO: Evaluate Function
-                    curElement = EvaluateFunction(curElement);
-
+                    curElement = EvaluateFunction(curElement); // returning the index of 
+                                                               // the next element to check
                     continue;
                 }
             }
@@ -471,11 +472,11 @@ namespace _09_Arithmetical_Expressions
             return OperatorIndex;
         }
 
-        // Evaluate Function
+        // Evaluate Function // TODO: More than 2 arguments
         public static int EvaluateFunction(int OperatorIndex)
         {
             //http://stackoverflow.com/questions/540066/calling-a-function-from-a-string-in-c-sharp
-            // TODO: eval func
+            // TODO: Methods with more than 2 arguments
 
             // Step 1: Format STring
             // TODO: LN = LOG
@@ -496,27 +497,42 @@ namespace _09_Arithmetical_Expressions
             var argsToPass = 0;
 
             MethodInfo curMethod = typeof(Math)
-                                   .GetMethod(OutputExpression[OperatorIndex],
-                                              new Type[] { typeof(double) });
+                                   .GetMethod(
+                                       OutputExpression[OperatorIndex],
+                                       new Type[] 
+                                       {
+                                           typeof(double)
+                                       });
             
             if (curMethod != null)
             {
+                // moethod taking 1 argument found
                 argsToPass = 1;
             }
             else
             {
+                // search for a method taking 2 arguments
                 curMethod = typeof(Math)
-                                   .GetMethod(OutputExpression[OperatorIndex],
-                                              new Type[] { typeof(double), typeof(double) });
+                            .GetMethod(
+                                OutputExpression[OperatorIndex],
+                                new Type[] 
+                                {
+                                    typeof(double),
+                                    typeof(double)
+                                });
+
+                // method taking 2 argumetns
                 argsToPass = 2;
+
+                // TODO: methods with more than 2 args
             }
 
             // curMethod.CustomAttributes -> number of arguments to pass
+            // includes optional arguments for overloads, not working
             if (argsToPass == 1)
             {
                 // call method
-                OutputExpression[OperatorIndex - 1] = (curMethod.Invoke
-                                                      (
+                OutputExpression[OperatorIndex - 1] = (curMethod.Invoke(
                                                           typeof(Math),
                                                           new object[]
                                                           {
@@ -534,8 +550,7 @@ namespace _09_Arithmetical_Expressions
             if (argsToPass == 2)
             {
                 // call method
-                OutputExpression[OperatorIndex - 2] = (curMethod.Invoke
-                                                      (
+                OutputExpression[OperatorIndex - 2] = (curMethod.Invoke(
                                                           typeof(Math),
                                                           new object[]
                                                           {
@@ -552,6 +567,9 @@ namespace _09_Arithmetical_Expressions
                 return OperatorIndex - 2;
             }
 
+            // return next index to check -1 
+            // ( for will increment it prior to next check )
+            // if no method was found -> return current index
             return OperatorIndex;
         }
     }
