@@ -23,14 +23,23 @@ namespace _09_Arithmetical_Expressions
             string InputExpression = Console.ReadLine()
                                             .ToLower();
 
+            // https://en.wikipedia.org/wiki/Shunting-yard_algorithm
+            // Shunting Yard Algorithm
+
             // iterate through the string
             for (int curElement = 0;
                 curElement < InputExpression.Length;
                 curElement++)
             {
+                // avoid unnecessary checks down 
+                // if the current char is empty space
+                if (InputExpression[curElement] == ' ')
+                {
+                    continue;
+                }
+
                 // reset
                 toAdd = "";
-
 
                 // if the current element is a digit
                 // read the number
@@ -99,6 +108,12 @@ namespace _09_Arithmetical_Expressions
                     continue;
                 }
             }
+
+            // Read any remaining Operators off the OperatorStack
+            // Add them at the end of the OutputExpression
+            FlushOperatorStack();
+
+
         }
 
         // Read A Number
@@ -261,15 +276,15 @@ namespace _09_Arithmetical_Expressions
             return toReturn;
         }
 
-        // TODO: Read Comma
+        // Read Comma
         public static void ReadComma()
         {
             // TODO: ERRORS
             // 1. Empty Stack
             // 2. No opening parenthesis found
 
-            for (int curElement = OperatorStack.Count() - 1; 
-                     curElement >= 0; 
+            for (int curElement = OperatorStack.Count() - 1;
+                     curElement >= 0;
                      curElement--)
             {
                 // Add Operators to Output Expression
@@ -288,7 +303,21 @@ namespace _09_Arithmetical_Expressions
                     break;
                 }
             }
-            
+
+            return;
+        }
+
+        // Read Remaining Operators
+        public static void FlushOperatorStack()
+        {
+            for (int curElement = OperatorStack.Count() - 1; 
+                     curElement >= 0; 
+                     curElement--)
+            {
+                OutputExpression.Add(OperatorStack[curElement]);
+                OperatorStack.RemoveAt(curElement); // -> not necesary to remove them at this point
+            }
+
             return;
         }
     }
