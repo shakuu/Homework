@@ -144,6 +144,8 @@ namespace _09_Arithmetical_Expressions
                         OutputExpression[curElement].ToString()))
                 {
                     EvaluateOperator(curElement);
+
+                    continue;
                 }
 
                 // If Func
@@ -151,6 +153,8 @@ namespace _09_Arithmetical_Expressions
                 {
                     // TODO: Evaluate Function
                     EvaluateFunction(curElement);
+
+                    continue;
                 }
             }
 
@@ -474,6 +478,7 @@ namespace _09_Arithmetical_Expressions
             // Step 1 : Format the string : Math.Pow -> 
             // add Math. prefix
             // First letter -> to Upper
+            // LN = LOG
             OutputExpression[OperatorIndex] = OutputExpression[OperatorIndex][0]
                                               .ToString()
                                               .ToUpper() +
@@ -489,7 +494,24 @@ namespace _09_Arithmetical_Expressions
 
             
             // curMethod.CustomAttributes -> number of arguments to pass
-            
+            if (curMethod.CustomAttributes.Count() == 1)
+            {
+                // call method
+                OutputExpression[OperatorIndex - 1] = (curMethod.Invoke
+                                                      (
+                                                          typeof(Math),
+                                                          new object[]
+                                                          {
+                                                              double.Parse(OutputExpression[OperatorIndex])
+                                                          }
+                                                      ))
+                                                      .ToString();
+
+                // remove extra elements
+                OutputExpression.RemoveAt(OperatorIndex);
+
+                return;
+            }
 
             return;
         }
