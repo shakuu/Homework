@@ -25,9 +25,7 @@ namespace _09_Arithmetical_Expressions
 
             // https://en.wikipedia.org/wiki/Shunting-yard_algorithm
             // Shunting Yard Algorithm
-
-            // TODO: NEGATIVE NUMBER
-
+            // Step 1: Read the expression
             // iterate through the string
             for (int curElement = 0;
                 curElement < InputExpression.Length;
@@ -96,7 +94,7 @@ namespace _09_Arithmetical_Expressions
                     {
                         toAdd = ReadNumber(           // Read The Number
                               InputExpression,        // after the MINUS
-                              curElement +1           //
+                              curElement + 1           //
                               );
 
                         toAdd = "-" + toAdd;          // Add the Minus 
@@ -135,6 +133,22 @@ namespace _09_Arithmetical_Expressions
             // Add them at the end of the OutputExpression
             FlushOperatorStack();
 
+            // Step 2: Evaluate the expression
+            for (int curElement = 0;
+                     curElement < OutputExpression.Count();
+                     curElement++)
+            {
+                // If Operator
+                // TODO:
+                if (OperatorKey.Contains(
+                        OutputExpression[curElement].ToString()))
+                {
+                    EvaluateOperator(curElement);
+                }
+
+                // If Func
+                // TODO:
+            }
 
         }
 
@@ -338,6 +352,109 @@ namespace _09_Arithmetical_Expressions
             {
                 OutputExpression.Add(OperatorStack[curElement]);
                 OperatorStack.RemoveAt(curElement); // -> not necesary to remove them at this point
+            }
+
+            return;
+        }
+
+        public static void EvaluateOperator(int OperatorIndex)
+        {
+            // TODO: Possible Errors
+
+            // Operator Key -> + - * / %
+            if (Array.IndexOf( // Index 0 -> Add
+                        OperatorKey,
+                        OutputExpression[OperatorIndex].ToString()
+                        )
+                        == 0)
+            {
+                // Add the two preceeding elements
+                OutputExpression[OperatorIndex - 2] =
+                        ((double.Parse(OutputExpression[OperatorIndex - 2])) +
+                         (double.Parse(OutputExpression[OperatorIndex - 1])))
+                        .ToString();
+
+                // remove the unnecessaty Elements
+                OutputExpression.RemoveAt(OperatorIndex);
+                OutputExpression.RemoveAt(OperatorIndex - 1);
+
+                return;
+            }
+
+            if (Array.IndexOf( // Index 1 -> Subtract
+                        OperatorKey,
+                        OutputExpression[OperatorIndex].ToString()
+                        )
+                        == 1)
+            {
+                // Add the two preceeding elements
+                OutputExpression[OperatorIndex - 2] =
+                        ((double.Parse(OutputExpression[OperatorIndex - 2])) -
+                         (double.Parse(OutputExpression[OperatorIndex - 1])))
+                        .ToString();
+
+                // remove the unnecessaty Elements
+                OutputExpression.RemoveAt(OperatorIndex);
+                OutputExpression.RemoveAt(OperatorIndex - 1);
+
+                return;
+            }
+
+            if (Array.IndexOf( // Index 2 -> Multiply
+                        OperatorKey,
+                        OutputExpression[OperatorIndex].ToString()
+                        )
+                        == 2)
+            {
+                // Add the two preceeding elements
+                OutputExpression[OperatorIndex - 2] =
+                        ((double.Parse(OutputExpression[OperatorIndex - 2])) *
+                         (double.Parse(OutputExpression[OperatorIndex - 1])))
+                        .ToString();
+
+                // remove the unnecessaty Elements
+                OutputExpression.RemoveAt(OperatorIndex);
+                OutputExpression.RemoveAt(OperatorIndex - 1);
+
+                return;
+            }
+
+            if (Array.IndexOf( // Index 3 -> Divide
+                        OperatorKey,
+                        OutputExpression[OperatorIndex].ToString()
+                        )
+                        == 3)
+            {
+                // Add the two preceeding elements
+                OutputExpression[OperatorIndex - 2] =
+                        ((double.Parse(OutputExpression[OperatorIndex - 2])) /
+                         (double.Parse(OutputExpression[OperatorIndex - 1])))
+                        .ToString();
+
+                // remove the unnecessaty Elements
+                OutputExpression.RemoveAt(OperatorIndex);
+                OutputExpression.RemoveAt(OperatorIndex - 1);
+
+                return;
+            }
+
+            if (Array.IndexOf( // Index 4 -> Mod
+                        OperatorKey,
+                        OutputExpression[OperatorIndex].ToString()
+                        )
+                        == 4)
+            {
+                // Add the two preceeding elements
+                OutputExpression[OperatorIndex - 2] =
+                        ((double.Parse(OutputExpression[OperatorIndex - 2])) %
+                         (double.Parse(OutputExpression[OperatorIndex - 1])))
+                        .ToString();
+
+                // remove the unnecessaty Elements
+                OutputExpression.RemoveAt(OperatorIndex);
+                OutputExpression.RemoveAt(OperatorIndex - 1);
+
+                return;
             }
 
             return;
