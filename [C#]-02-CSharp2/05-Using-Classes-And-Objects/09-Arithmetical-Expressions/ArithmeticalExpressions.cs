@@ -59,10 +59,17 @@ namespace _09_Arithmetical_Expressions
                               );
 
                     OperatorStack.Add(toAdd);      // Add Numnber to output
-                                                      //
+                                                   //
                     curElement += toAdd.Length - 1;   // skip the length of the number
 
                     continue;
+                }
+
+                // Read Comma ( Func Argument separator )
+                if (InputExpression[curElement] == ',')
+                {
+                    // TODO: Read Operators off the stack
+                    // till opening parenthesis
                 }
 
                 // if current element is an operator 
@@ -230,8 +237,8 @@ namespace _09_Arithmetical_Expressions
         {
             string toReturn = "";
 
-            for (int curLetter = StartPosition; 
-                     curLetter < InputExpression.Count(); 
+            for (int curLetter = StartPosition;
+                     curLetter < InputExpression.Count();
                      curLetter++)
             {
                 // if letter keep reading
@@ -252,5 +259,34 @@ namespace _09_Arithmetical_Expressions
         }
 
         // TODO: Read Comma
+        public static void ReadComma()
+        {
+            // TODO: ERRORS
+            // 1. Empty Stack
+            // 2. No opening parenthesis found
+
+            for (int curElement = OperatorStack.Count() - 1; 
+                     curElement >= 0; 
+                     curElement--)
+            {
+                // Add Operators to Output Expression
+                // Until the next operator is (
+                if (OperatorStack[curElement] != "(")
+                {
+                    OutputExpression.Add(OperatorStack[curElement]);
+                    OperatorStack.RemoveAt(curElement);
+
+                    continue;
+                }
+
+                // If next Operator is ( -> break
+                if (OperatorStack[curElement] == "(")
+                {
+                    break;
+                }
+            }
+            
+            return;
+        }
     }
 }
