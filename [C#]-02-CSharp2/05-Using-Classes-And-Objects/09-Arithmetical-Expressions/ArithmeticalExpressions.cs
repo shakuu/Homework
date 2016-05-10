@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Reflection;
 
 namespace _09_Arithmetical_Expressions
 {
@@ -149,6 +150,7 @@ namespace _09_Arithmetical_Expressions
                 if (char.IsLetter(OutputExpression[curElement][0]))
                 {
                     // TODO: Evaluate Function
+                    EvaluateFunction(curElement);
                 }
             }
 
@@ -466,6 +468,28 @@ namespace _09_Arithmetical_Expressions
         // Evaluate Function
         public static void EvaluateFunction(int OperatorIndex)
         {
+            //http://stackoverflow.com/questions/540066/calling-a-function-from-a-string-in-c-sharp
+            // TODO: eval func
+
+            // Step 1 : Format the string : Math.Pow -> 
+            // add Math. prefix
+            // First letter -> to Upper
+            OutputExpression[OperatorIndex] = OutputExpression[OperatorIndex][0]
+                                              .ToString()
+                                              .ToUpper() +
+                                              OutputExpression[OperatorIndex];
+
+            OutputExpression[OperatorIndex] = OutputExpression[OperatorIndex].Remove(1, 1);
+
+            //OutputExpression[OperatorIndex] = "Math." + OutputExpression[OperatorIndex];
+            
+            // Step 2: Get method info
+            MethodInfo curMethod = typeof(Math)
+                                   .GetMethod(OutputExpression[OperatorIndex]);
+
+            
+            // curMethod.CustomAttributes -> number of arguments to pass
+            
 
             return;
         }
