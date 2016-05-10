@@ -108,7 +108,10 @@ namespace _09_Arithmetical_Expressions
                     }
                     else // read an operator
                     {
-                        ReadOperator(InputExpression[curElement].ToString());
+                        ReadOperator(
+                            InputExpression[curElement]
+                            .ToString()
+                            );
 
                         continue;
                     }
@@ -160,7 +163,11 @@ namespace _09_Arithmetical_Expressions
             }
 
             // ouput
-            Console.WriteLine(double.Parse(OutputExpression[0]).ToString("F2"));
+            Console.WriteLine(
+                double.Parse(
+                    OutputExpression[0])
+                    .ToString("F2")
+                    );
         }
 
         // Read A Number
@@ -480,12 +487,14 @@ namespace _09_Arithmetical_Expressions
 
             // Step 1: Format STring
             // TODO: LN = LOG
-            OutputExpression[OperatorIndex] = OutputExpression[OperatorIndex][0]
-                                              .ToString()
-                                              .ToUpper() +
-                                              OutputExpression[OperatorIndex];
+            OutputExpression[OperatorIndex] = 
+                    OutputExpression[OperatorIndex][0]
+                    .ToString()
+                    .ToUpper() +
+                    OutputExpression[OperatorIndex];
 
-            OutputExpression[OperatorIndex] = OutputExpression[OperatorIndex].Remove(1, 1);
+            OutputExpression[OperatorIndex] = 
+                    OutputExpression[OperatorIndex].Remove(1, 1);
 
             // ln -> Log
             if (OutputExpression[OperatorIndex] == "Ln")
@@ -496,13 +505,14 @@ namespace _09_Arithmetical_Expressions
             // Step 2: Get method info
             var argsToPass = 0;
 
-            MethodInfo curMethod = typeof(Math)
-                                   .GetMethod(
-                                       OutputExpression[OperatorIndex],
-                                       new Type[] 
-                                       {
-                                           typeof(double)
-                                       });
+            MethodInfo curMethod = 
+                    typeof(Math)
+                        .GetMethod(
+                            OutputExpression[OperatorIndex],
+                            new Type[] 
+                            {
+                                typeof(double)
+                            });
             
             if (curMethod != null)
             {
@@ -512,14 +522,15 @@ namespace _09_Arithmetical_Expressions
             else
             {
                 // search for a method taking 2 arguments
-                curMethod = typeof(Math)
-                            .GetMethod(
-                                OutputExpression[OperatorIndex],
-                                new Type[] 
-                                {
-                                    typeof(double),
-                                    typeof(double)
-                                });
+                curMethod = 
+                    typeof(Math)
+                        .GetMethod(
+                            OutputExpression[OperatorIndex],
+                            new Type[] 
+                            {
+                                typeof(double),
+                                typeof(double)
+                            });
 
                 // method taking 2 argumetns
                 argsToPass = 2;
@@ -532,14 +543,15 @@ namespace _09_Arithmetical_Expressions
             if (argsToPass == 1)
             {
                 // call method
-                OutputExpression[OperatorIndex - 1] = (curMethod.Invoke(
-                                                          typeof(Math),
-                                                          new object[]
-                                                          {
-                                                              double.Parse(OutputExpression[OperatorIndex - 1])
-                                                          }
-                                                      ))
-                                                      .ToString();
+                OutputExpression[OperatorIndex - 1] = 
+                        (curMethod.Invoke(
+                            typeof(Math),
+                            new object[]
+                            {
+                                double.Parse(OutputExpression[OperatorIndex - 1])
+                            }
+                        ))
+                        .ToString();
 
                 // remove extra elements
                 OutputExpression.RemoveAt(OperatorIndex);
@@ -550,15 +562,16 @@ namespace _09_Arithmetical_Expressions
             if (argsToPass == 2)
             {
                 // call method
-                OutputExpression[OperatorIndex - 2] = (curMethod.Invoke(
-                                                          typeof(Math),
-                                                          new object[]
-                                                          {
-                                                              double.Parse(OutputExpression[OperatorIndex - 2]),
-                                                              double.Parse(OutputExpression[OperatorIndex - 1])
-                                                          }
-                                                      ))
-                                                      .ToString();
+                OutputExpression[OperatorIndex - 2] = 
+                            (curMethod.Invoke(
+                                typeof(Math),
+                                new object[]
+                                {
+                                    double.Parse(OutputExpression[OperatorIndex - 2]),
+                                    double.Parse(OutputExpression[OperatorIndex - 1])
+                                }
+                            ))
+                            .ToString();
 
                 // remove extra elements
                 OutputExpression.RemoveAt(OperatorIndex);
