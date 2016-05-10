@@ -493,12 +493,12 @@ namespace _09_Arithmetical_Expressions
             }
 
             // Step 2: Get method info
+            var argsToPass = 0;
+
             MethodInfo curMethod = typeof(Math)
                                    .GetMethod(OutputExpression[OperatorIndex],
                                               new Type[] { typeof(double) });
-
-            var argsToPass = 0;
-
+            
             if (curMethod != null)
             {
                 argsToPass = 1;
