@@ -26,6 +26,8 @@ namespace _09_Arithmetical_Expressions
             // https://en.wikipedia.org/wiki/Shunting-yard_algorithm
             // Shunting Yard Algorithm
 
+            // TODO: NEGATIVE NUMBER
+
             // iterate through the string
             for (int curElement = 0;
                 curElement < InputExpression.Length;
@@ -88,9 +90,29 @@ namespace _09_Arithmetical_Expressions
                 if (OperatorKey.Contains(
                         InputExpression[curElement].ToString()))
                 {
-                    ReadOperator(InputExpression[curElement].ToString());
+                    // Is it a negative number ? 
+                    if (InputExpression[curElement] == '-' &&
+                        char.IsDigit(InputExpression[curElement + 1]))
+                    {
+                        toAdd = ReadNumber(           // Read The Number
+                              InputExpression,        // after the MINUS
+                              curElement +1           //
+                              );
 
-                    continue;
+                        toAdd = "-" + toAdd;          // Add the Minus 
+
+                        OutputExpression.Add(toAdd);      // Add Numnber to output
+                                                          //
+                        curElement += toAdd.Length - 1;   // skip the length of the number
+
+                        continue;
+                    }
+                    else // read an operator
+                    {
+                        ReadOperator(InputExpression[curElement].ToString());
+
+                        continue;
+                    }
                 }
 
                 // if Opening Parenthesis
@@ -310,8 +332,8 @@ namespace _09_Arithmetical_Expressions
         // Read Remaining Operators
         public static void FlushOperatorStack()
         {
-            for (int curElement = OperatorStack.Count() - 1; 
-                     curElement >= 0; 
+            for (int curElement = OperatorStack.Count() - 1;
+                     curElement >= 0;
                      curElement--)
             {
                 OutputExpression.Add(OperatorStack[curElement]);
