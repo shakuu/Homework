@@ -139,7 +139,6 @@ namespace _09_Arithmetical_Expressions
                      curElement++)
             {
                 // If Operator
-                // TODO:
                 if (OperatorKey.Contains(
                         OutputExpression[curElement].ToString()))
                 {
@@ -147,7 +146,10 @@ namespace _09_Arithmetical_Expressions
                 }
 
                 // If Func
-                // TODO:
+                if (char.IsLetter(OutputExpression[curElement][0]))
+                {
+                    // TODO: Evaluate Function
+                }
             }
 
         }
@@ -357,6 +359,7 @@ namespace _09_Arithmetical_Expressions
             return;
         }
 
+        // Eva;uate Operator
         public static void EvaluateOperator(int OperatorIndex)
         {
             // TODO: Possible Errors
@@ -456,6 +459,13 @@ namespace _09_Arithmetical_Expressions
 
                 return;
             }
+
+            return;
+        }
+
+        // Evaluate Function
+        public static void EvaluateFunction(int OperatorIndex)
+        {
 
             return;
         }
