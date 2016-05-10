@@ -27,7 +27,7 @@ namespace _07_One_Base_To_Any_Other
             // Step 2: to Any
             Result = DecToAny(Result, toBase, HexKey);
 
-            Console.WriteLine(Result);
+            Console.WriteLine(Result.ToUpper().TrimStart('0'));
         }
 
         // Step 1: Any to Decimal
