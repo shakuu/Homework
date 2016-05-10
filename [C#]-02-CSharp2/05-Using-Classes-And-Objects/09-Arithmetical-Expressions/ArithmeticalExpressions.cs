@@ -70,6 +70,9 @@ namespace _09_Arithmetical_Expressions
                 {
                     // TODO: Read Operators off the stack
                     // till opening parenthesis
+                    ReadComma();
+
+                    continue;
                 }
 
                 // if current element is an operator 
