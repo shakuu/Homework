@@ -7,17 +7,20 @@ namespace _01_Leap_Year
     {
         static void Main()
         {
+            // TODO: RUNTIME ERROR
+
             // https://support.microsoft.com/en-us/kb/214019
             // how to determine if it s a leap year
 
-            DateTime Year = DateTime.ParseExact
-                            (
-                                Console.ReadLine(),            // string -> input string 
-                                "yyyy",                        // format -> 4 digit year
-                                CultureInfo.InvariantCulture   // invariant culture
-                            );
+            //DateTime Year = DateTime.ParseExact
+                            //(
+            /*                    Console.ReadLine(),         */   // string -> input string 
+            /*                    "yyyy",                     */   // format -> 4 digit year
+            /*                    CultureInfo.InvariantCulture*/   // invariant culture
+                            //);
 
-            //int Year = int.Parse(Console.ReadLine());        // alternatively read as int
+            int Year = int.Parse(Console.ReadLine()); 
+                   // alternatively read as int
             bool isLeap = false;
 
             // ouput 
@@ -25,13 +28,13 @@ namespace _01_Leap_Year
             string notWin = "Common";
 
             // Step 1
-            if (Year.Year % 4 == 0)
+            if (Year % 4 == 0)
             {
                 // Step 2
-                if (Year.Year % 100 == 0)
+                if (Year % 100 == 0)
                 {
                     // step 3
-                    if (Year.Year % 400 == 0)
+                    if (Year % 400 == 0)
                     {
                         isLeap = true;
                     }
