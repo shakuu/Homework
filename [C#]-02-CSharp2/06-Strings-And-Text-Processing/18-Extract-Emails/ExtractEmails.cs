@@ -3,7 +3,7 @@ using System.Text.RegularExpressions;
 
 namespace _18_Extract_Emails
 {
-    class Program
+    class ExtractEmails
     {
         static void Main()
         {
