@@ -27,6 +27,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "12-Parse-URL", "12-Parse-UR
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "13-Reverse-A-Sentence", "13-Reverse-A-Sentence\13-Reverse-A-Sentence.csproj", "{3B94FF2E-22FB-4E4A-B178-484A2536BA1C}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "14-Word-Dictionary", "14-Word-Dictionary\14-Word-Dictionary.csproj", "{F6DA196E-820A-482D-8412-CD0725524DDF}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -81,6 +83,10 @@ Global
 		{3B94FF2E-22FB-4E4A-B178-484A2536BA1C}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{3B94FF2E-22FB-4E4A-B178-484A2536BA1C}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{3B94FF2E-22FB-4E4A-B178-484A2536BA1C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F6DA196E-820A-482D-8412-CD0725524DDF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F6DA196E-820A-482D-8412-CD0725524DDF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F6DA196E-820A-482D-8412-CD0725524DDF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F6DA196E-820A-482D-8412-CD0725524DDF}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
