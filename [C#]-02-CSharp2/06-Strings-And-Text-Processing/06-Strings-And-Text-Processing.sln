@@ -43,6 +43,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "20-Palindromes", "20-Palind
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "21-Letters-Count", "21-Letters-Count\21-Letters-Count.csproj", "{DA58089C-3041-472E-B52C-253CAF87250D}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "22-Words-Count", "22-Words-Count\22-Words-Count.csproj", "{B4835688-FFB7-4CD2-8304-743F6432271C}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -129,6 +131,10 @@ Global
 		{DA58089C-3041-472E-B52C-253CAF87250D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{DA58089C-3041-472E-B52C-253CAF87250D}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{DA58089C-3041-472E-B52C-253CAF87250D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B4835688-FFB7-4CD2-8304-743F6432271C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B4835688-FFB7-4CD2-8304-743F6432271C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B4835688-FFB7-4CD2-8304-743F6432271C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B4835688-FFB7-4CD2-8304-743F6432271C}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
