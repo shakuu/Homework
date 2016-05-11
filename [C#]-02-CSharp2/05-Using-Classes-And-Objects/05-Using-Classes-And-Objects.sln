@@ -21,6 +21,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "07-Add-Integers", "07-Add-I
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "09-Arithmetical-Expressions", "09-Arithmetical-Expressions\09-Arithmetical-Expressions.csproj", "{B02B6214-F2B1-4C50-81D9-B7BE14AEFEE5}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "09-Arithmetic-Expressions-2-Func", "09-Arithmetic-Expressions-2-Func\09-Arithmetic-Expressions-2-Func.csproj", "{15DB35F0-EA9A-4F70-AAC6-2D648F7993EA}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -63,6 +65,10 @@ Global
 		{B02B6214-F2B1-4C50-81D9-B7BE14AEFEE5}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{B02B6214-F2B1-4C50-81D9-B7BE14AEFEE5}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{B02B6214-F2B1-4C50-81D9-B7BE14AEFEE5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{15DB35F0-EA9A-4F70-AAC6-2D648F7993EA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{15DB35F0-EA9A-4F70-AAC6-2D648F7993EA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{15DB35F0-EA9A-4F70-AAC6-2D648F7993EA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{15DB35F0-EA9A-4F70-AAC6-2D648F7993EA}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
