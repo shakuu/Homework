@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
 
 namespace _09_Forbidden_Words
 {
@@ -23,8 +22,7 @@ namespace _09_Forbidden_Words
                 .ReadLine()
                 .Trim()
                 .Split(new char[] { ' ', ',' }, 
-                       StringSplitOptions
-                       .RemoveEmptyEntries)
+                       StringSplitOptions.RemoveEmptyEntries)
                 .ToArray();
 
             // TODO: 
