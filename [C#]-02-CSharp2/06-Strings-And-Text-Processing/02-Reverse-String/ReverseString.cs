@@ -3,7 +3,7 @@ using System.Text;
 
 namespace _02_Reverse_String
 {
-    class Program
+    class ReverseString
     {
         static void Main()
         {
