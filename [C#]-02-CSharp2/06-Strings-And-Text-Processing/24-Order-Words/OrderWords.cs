@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace _24_Order_Words
 {
-    class Program
+    class OrderWords
     {
         static void Main()
         {

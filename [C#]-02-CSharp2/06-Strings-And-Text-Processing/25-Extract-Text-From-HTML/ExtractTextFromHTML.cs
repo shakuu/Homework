@@ -32,18 +32,43 @@ namespace _25_Extract_Text_From_HTML
 
             var strInput = input.ToString();
 
-            // Read Title , if any.
+            // Read all text between <Title> Tags 
+            // and store it in a list
+            var titlePattern = @"<title>(?<Title>.*)</title>";
 
-            // Then Read everything else
-            var titlePattern = @".title.([\w\d.]+)./title.";
+            var titleRegex = new Regex(titlePattern, RegexOptions.Singleline);
 
-            var titleRegex = new Regex(titlePattern);
+            var titleMatch = titleRegex.Match(strInput);
 
-            var titleMatch = titleRegex.Matches(strInput);
+            var Titles = new List<string>();
 
-            foreach (var match in titleMatch)
+            while (titleMatch.Success)
             {
-                Console.WriteLine(match);
+                Titles.Add(titleMatch.Groups[1].Value);
+
+                titleMatch = titleMatch.NextMatch();
+            }
+
+            // Step 2: Extract the contents of the Body
+            var bodyPattern = @"<body>(?<body>.*)</body>";
+
+            var bodyRegex = new Regex(bodyPattern, RegexOptions.Singleline);
+
+            var bodyMatch = bodyRegex.Match(strInput);
+
+            var Text = bodyMatch.Groups["body"].Value;
+
+            // Step 3: Remove all tags
+            for (int curIndex = 0; curIndex < Text.Length; curIndex++)
+            {
+                if (Text[curIndex] == '<')
+                {
+                    Text = Text.Remove(
+                        curIndex,
+                        Text.IndexOf('>') - curIndex + 1);
+
+                    curIndex--;
+                }
             }
         }
     }
