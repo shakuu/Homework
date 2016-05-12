@@ -45,6 +45,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "21-Letters-Count", "21-Lett
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "22-Words-Count", "22-Words-Count\22-Words-Count.csproj", "{B4835688-FFB7-4CD2-8304-743F6432271C}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "23-Series-Of-Letters", "23-Series-Of-Letters\23-Series-Of-Letters.csproj", "{5C399050-ADCE-4776-9FCA-AED059DC18AB}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -135,6 +137,10 @@ Global
 		{B4835688-FFB7-4CD2-8304-743F6432271C}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{B4835688-FFB7-4CD2-8304-743F6432271C}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{B4835688-FFB7-4CD2-8304-743F6432271C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5C399050-ADCE-4776-9FCA-AED059DC18AB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5C399050-ADCE-4776-9FCA-AED059DC18AB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5C399050-ADCE-4776-9FCA-AED059DC18AB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5C399050-ADCE-4776-9FCA-AED059DC18AB}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
