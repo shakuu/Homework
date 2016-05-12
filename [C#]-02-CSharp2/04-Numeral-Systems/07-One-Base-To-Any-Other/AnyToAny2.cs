@@ -27,6 +27,11 @@ namespace _07_One_Base_To_Any_Other
             // Step 2: to Any
             Result = DecToAny(Result, toBase, HexKey);
 
+            if (Result == "")
+            {
+                Result = "0";
+            }
+
             Console.WriteLine(Result.ToUpper().TrimStart('0'));
         }
 
