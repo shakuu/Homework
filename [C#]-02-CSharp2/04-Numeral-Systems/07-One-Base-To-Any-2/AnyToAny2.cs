@@ -7,7 +7,7 @@ using System.Numerics;
 
 namespace _07_One_Base_To_Any_2
 {
-    class Program
+    class AnyToAny2
     {
         // 100 / 100 -> Manually calculate POWER in Any to Dec
         // Thanks for the hint

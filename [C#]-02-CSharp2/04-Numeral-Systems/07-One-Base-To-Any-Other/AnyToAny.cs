@@ -3,7 +3,7 @@ using System.Numerics;
 
 namespace _07_One_Base_To_Any_Other
 {
-    class AnyToAny2
+    class AnyToAny
     {
         static void Main()
         {
