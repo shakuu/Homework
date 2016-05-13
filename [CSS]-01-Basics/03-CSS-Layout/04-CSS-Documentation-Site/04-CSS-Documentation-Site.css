@@ -1,5 +1,6 @@
 * {
   box-sizing: border-box;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
 body {
@@ -33,7 +34,7 @@ body div.main-background nav div.sub-nav {
 
 body div.main-background nav div.sub-nav header h2 {
   color: #961D1D;
-  font-size: 13px;
+  font-size: 12px;
   margin: 0px;
 }
 
@@ -46,10 +47,32 @@ body div.main-background nav div.sub-nav ul {
 body div.main-background nav div.sub-nav ul li {
   margin-left: 0px;
   list-style: none;
-  font-size: 13px;
+  font-size: 12px;
 }
 
 body div.main-background nav div.sub-nav ul li a{
   text-decoration: none;
   color: black;
+}
+
+body div.main-background main{
+  float: left;
+  border: 1px solid black;
+  width: 500px;
+  height: 550px;
+  margin-top: 2px;
+  background: #FFFFFF;
+  padding: 0px;
+  margin-left: 15px;
+}
+
+body div.main-background main header,
+body div.main-background main section {
+  margin-left: 1%;
+  width: 98%;
+  border-bottom: 1px solid black;
+}
+
+body div.main-background main header h1 {
+  font-size: 20px;
 }
