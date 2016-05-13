@@ -15,19 +15,32 @@ body div.main-background {
   height: 584px;
 }
 
+body div.main-background nav{
+  margin-top: 10px;
+}
+
 body div.main-background nav,
 body div.main-background nav div.sub-nav {
   float: left;
   line-height: 13px;
 }
 
+body div.main-background nav header h1,
+body div.main-background nav header img {
+  display: inline-block;
+}
+
+body div.main-background nav header img{
+  margin-left:2px;
+}
+
 body div.main-background nav header h1 {
   font-size : 12px;
-  margin-left: 2px;
+  margin-left: 0px;
 }
 
 body div.main-background nav div.sub-nav {
-  margin-bottom: 10px;
+  margin-bottom: 16px;
   margin-left: 2px;
   clear: left;
 }
