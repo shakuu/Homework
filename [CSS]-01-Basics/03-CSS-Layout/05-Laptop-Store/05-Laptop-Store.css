@@ -31,3 +31,16 @@ body div.main-frame div.header-links a{
   color: #00ACEF;
   letter-spacing: 0.04em;
 }
+
+body div.main-frame div.laptop-frame{
+  float: left;
+  border: 3px solid black;
+}
+
+body div.main-frame div.laptop-frame div.col-ads{
+  float: left;
+}
+
+body div.main-frame div.laptop-frame div.laptop-ad{
+  float: left;
+}
