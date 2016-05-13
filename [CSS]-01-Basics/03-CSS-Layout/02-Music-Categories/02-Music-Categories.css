@@ -1,0 +1,49 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  padding: 0px;
+  margin: 0px;
+}
+
+body div.background {
+  background-color: #EEEEEE;
+  border-radius: 10px;
+  width: 421px;
+  height: 538px;
+}
+
+body div.background h1 {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  font-weight: 400;
+  font-size: 17px;
+  padding-top: 10px;
+  padding-left: 12px;
+  letter-spacing: -0.05em;
+  margin-top: 0px;
+}
+
+body div.background div.item-wrapper{
+  background-color: #FFFFFF;
+  border: 1px solid black;
+  width: 94.7%;
+  margin-left: 3%;
+  padding: 4%;
+  margin-top: 36px;
+  padding-bottom: 2.1%;
+}
+
+body div.background div.item-wrapper img{
+  float: left;
+  margin-right: 10px;
+}
+
+body div.background div.item-wrapper div.item-text{
+  
+}
+
+body div.background div.item-wrapper div.item-buttons{
+  margin-top: 10px;
+  text-align: right;
+}

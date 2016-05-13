@@ -1,0 +1,25 @@
+body ul{
+  list-style: none;
+  padding-left: 10px;
+}
+
+body ul li.list{
+  width: 100px;
+}
+
+body ul li.list:hover span.text-underline{
+  text-decoration: underline;
+}
+
+body ul li.list ul.nested-list{
+  display: none;
+}
+
+body ul li.list:hover ul.nested-list{
+  display: block;
+}
+
+body ul li.list ul.nested-list li{
+  text-decoration: none;
+  color: #888888;
+}
