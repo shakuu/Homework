@@ -48,4 +48,36 @@ body div.background-wrapper header.login-row input#button-go{
 
 body div.background-wrapper main section header h1 {
   color: #FCD61B;
+  font-weight: 400;
+  font-size: 32px;
+  margin-left: 12px;
+  margin-top: 44px;
+}
+
+body div.background-wrapper main  {
+  padding: 0px;
+  margin:0px;
+}
+
+body div.background-wrapper main section {
+  padding: 0px;
+  margin:0px;
+}
+
+body div.background-wrapper main section article{
+  padding: 0px;
+  margin:0px;
+}
+
+body div.background-wrapper main section article p{
+  color: #919191;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  margin-left: 12px;
+  margin-top: -15px;
+  font-size: 14px;
+  line-height:18px;
+}
+
+body div.background-wrapper main section article p span.do-not-remove {
+  color: white;
 }

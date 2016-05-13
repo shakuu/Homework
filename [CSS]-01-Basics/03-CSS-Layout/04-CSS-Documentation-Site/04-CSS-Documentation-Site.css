@@ -1,0 +1,55 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0px;
+  padding: 0px;
+}
+
+body div.main-background {
+  background: #F1F1F1;
+  border: 1px solid black;
+  width: 791px;
+  height: 584px;
+}
+
+body div.main-background nav,
+body div.main-background nav div.sub-nav {
+  float: left;
+  line-height: 13px;
+}
+
+body div.main-background nav header h1 {
+  font-size : 12px;
+  margin-left: 2px;
+}
+
+body div.main-background nav div.sub-nav {
+  margin-bottom: 10px;
+  margin-left: 2px;
+  clear: left;
+}
+
+body div.main-background nav div.sub-nav header h2 {
+  color: #961D1D;
+  font-size: 13px;
+  margin: 0px;
+}
+
+body div.main-background nav div.sub-nav ul {
+  margin: 0px;
+  padding: 0px;
+  list-style: none;
+}
+
+body div.main-background nav div.sub-nav ul li {
+  margin-left: 0px;
+  list-style: none;
+  font-size: 13px;
+}
+
+body div.main-background nav div.sub-nav ul li a{
+  text-decoration: none;
+  color: black;
+}
