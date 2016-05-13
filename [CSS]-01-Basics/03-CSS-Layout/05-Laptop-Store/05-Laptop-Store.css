@@ -11,14 +11,23 @@ body {
 body div.main-frame {
   width: 1075px;
   height: 781px;
-  
   border: 3px solid black;
   border-radius: 10px;
   padding: 10px;
 }
 
 body div.main-frame div.header-links{
+  
   text-align: center;
+  padding-bottom: 12px;
+  margin-left: 2.5%;
+  width: 95%;
+  border-bottom: 3px solid black;
+}
+
+body div.main-frame div.header-links a{
   font-size: 33px;
   font-weight: 700;
+  color: #00ACEF;
+  letter-spacing: 0.04em;
 }
