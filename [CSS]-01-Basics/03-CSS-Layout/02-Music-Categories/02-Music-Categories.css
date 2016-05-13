@@ -29,21 +29,52 @@ body div.background div.item-wrapper{
   border: 1px solid black;
   width: 94.7%;
   margin-left: 3%;
-  padding: 4%;
-  margin-top: 36px;
+  padding: 3.4%;
+  margin-top: 37px;
   padding-bottom: 2.1%;
 }
 
 body div.background div.item-wrapper img{
   float: left;
-  margin-right: 10px;
+  margin-right: 16px;
 }
 
 body div.background div.item-wrapper div.item-text{
-  
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  font-size: 13px;
+  padding-top:0px;
+  margin-top: 0px;
+  line-height: 14px
+}
+
+body div.background div.item-wrapper div.item-text span.text-bold {
+  font-weight: bold;
 }
 
 body div.background div.item-wrapper div.item-buttons{
   margin-top: 10px;
   text-align: right;
+}
+
+body div.background div.item-wrapper div.item-buttons input.button-wide,
+body div.background div.item-wrapper div.item-buttons input.button-narrow
+{
+  margin-top: 10px;
+  text-align: right;
+  margin-bottom: 7px;
+  color: white;
+  border: none;
+  text-align: center;
+}
+
+body div.background div.item-wrapper div.item-buttons input.button-wide{
+  height: 25px;
+  width: 76px;
+  background: url(./btn1.png);
+}
+
+body div.background div.item-wrapper div.item-buttons input.button-narrow{
+  height: 25px;
+  width: 63px;
+  background: url(./btn-nrw.png);
 }
