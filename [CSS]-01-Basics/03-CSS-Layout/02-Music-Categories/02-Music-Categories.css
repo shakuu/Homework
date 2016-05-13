@@ -70,11 +70,11 @@ body div.background div.item-wrapper div.item-buttons input.button-narrow
 body div.background div.item-wrapper div.item-buttons input.button-wide{
   height: 25px;
   width: 76px;
-  background: url(./btn1.png);
+  background: url(./Assets/btn1.png);
 }
 
 body div.background div.item-wrapper div.item-buttons input.button-narrow{
   height: 25px;
   width: 63px;
-  background: url(./btn-nrw.png);
+  background: url(./Assets/btn-nrw.png);
 }

@@ -8,6 +8,8 @@ namespace _07_One_Base_To_Any_2
     {
         // 100 / 100 -> Manually calculate POWER in Any to Dec
         // Thanks for the hint
+        // https://github.com/TelerikAcademy/CSharp-Part-2/blob/master/Topics/04.%20Numeral-Systems/demos/Live-Demos-May%2010th%2C%202016%2C%20Koce/BaseNToDecimal/Startup.cs
+        // Koce - live demo
 
         static string HexKey = "0123456789ABCDEF";
 
@@ -29,18 +31,12 @@ namespace _07_One_Base_To_Any_2
         {
             BigInteger result = 0;
 
-            var onPower = toConvert.Length - 1;
-
-            var curPower = getPow(fromBase, onPower);
-
             foreach (var digit in toConvert)
             {
-                //var curPower = Math.Pow(fromBase, onPower); -> Incrrect results
-
-                result += (BigInteger)
-                    (curPower * HexKey.IndexOf(digit.ToString()));
-
-                curPower /= fromBase;
+                // from demo
+                // sum = digitsToValues[digit] + sum * radix;
+                result = (BigInteger)
+                    (HexKey.IndexOf(digit.ToString()) + result * fromBase);
             }
 
             return result.ToString();
@@ -62,19 +58,6 @@ namespace _07_One_Base_To_Any_2
             }
 
             return result.ToString();
-        }
-
-        // OMFG
-        static BigInteger getPow(int Base, int Power)
-        {
-            BigInteger result = 1;
-
-            for (int i = 0; i < Power; i++)
-            {
-                result *= Base;
-            }
-
-            return result;
         }
     }
 }

@@ -1,0 +1,51 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0px;
+  padding: 0px;
+}
+
+body div.background-wrapper {
+  background: url(./Assets/Background.png);
+  width: 662px;
+  height: 299px;
+}
+
+body div.background-wrapper header.login-row div.header-text{
+  color: white;
+  font-size: 24px;
+  font-weight: 700;
+  float: left;
+  margin-left: 72px;
+  margin-top: 16px;
+}
+
+body div.background-wrapper header.login-row input#name {
+  width: 149px;
+  margin-left: 18px;
+  margin-top: 19px;
+  padding-left: 11px;
+}
+
+body div.background-wrapper header.login-row input#email {
+  margin-left: 20px;
+  width: 149px;
+  padding-left: 11px;
+}
+
+body div.background-wrapper header.login-row input#button-go{
+  float:right;
+  background: url(./Assets/btn-go.png);
+  width: 56px;
+  height: 28px;
+  border: 1px solid white;
+  border-radius: 14px/18px;
+  margin-right: 9px;
+  margin-top: 17px;
+}
+
+body div.background-wrapper main section header h1 {
+  color: #FCD61B;
+}
