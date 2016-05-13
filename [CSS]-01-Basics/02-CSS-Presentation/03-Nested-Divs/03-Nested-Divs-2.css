@@ -1,0 +1,7 @@
+body .nested-div{
+  border: 1px solid red;
+  background: black;
+  border-radius: 100px;
+  width: 97%;
+}
+

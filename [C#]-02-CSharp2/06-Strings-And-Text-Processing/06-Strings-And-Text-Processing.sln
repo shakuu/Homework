@@ -51,6 +51,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "24-Order-Words", "24-Order-
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "25-Extract-Text-From-HTML", "25-Extract-Text-From-HTML\25-Extract-Text-From-HTML.csproj", "{93D82AB3-8C1C-4F89-9B3C-B53A5079F1BB}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "00-Nested-Divs", "00-Nested-Divs\00-Nested-Divs.csproj", "{FB8A1328-D075-4A26-81D4-E67A1B90453F}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -153,6 +155,10 @@ Global
 		{93D82AB3-8C1C-4F89-9B3C-B53A5079F1BB}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{93D82AB3-8C1C-4F89-9B3C-B53A5079F1BB}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{93D82AB3-8C1C-4F89-9B3C-B53A5079F1BB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FB8A1328-D075-4A26-81D4-E67A1B90453F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FB8A1328-D075-4A26-81D4-E67A1B90453F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FB8A1328-D075-4A26-81D4-E67A1B90453F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FB8A1328-D075-4A26-81D4-E67A1B90453F}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
