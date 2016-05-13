@@ -1,13 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.IO;
+﻿using System.IO;
 
 namespace _00_Nested_Divs
 {
-    class Program
+    class NestedDIvs
     {
         static void Main()
         {
@@ -16,8 +11,7 @@ namespace _00_Nested_Divs
 
             var divs = 60;
 
-            var htmlBuilder = new StringBuilder();
-
+            // Insert File name here.
             var file = @"D:\GitHub\Homework\[CSS]-01-Basics\02-CSS-Presentation\03-Nested-Divs\generate.txt";
 
             using (var writer = new StreamWriter(file) )
