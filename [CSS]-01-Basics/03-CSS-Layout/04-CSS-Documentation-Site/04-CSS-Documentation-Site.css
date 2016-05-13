@@ -63,16 +63,180 @@ body div.main-background main{
   margin-top: 2px;
   background: #FFFFFF;
   padding: 0px;
-  margin-left: 15px;
+  margin-left: 30px;
+  margin-right: 0;
+}
+
+body div.main-background main header{
+  border-bottom: 1px solid black;
 }
 
 body div.main-background main header,
 body div.main-background main section {
   margin-left: 1%;
   width: 98%;
-  border-bottom: 1px solid black;
+  padding-bottom: 4px;
 }
 
 body div.main-background main header h1 {
   font-size: 20px;
+}
+
+body div.main-background main header input{
+  width: 100px;
+  height: 21px;
+  border: none;
+  margin-top: -5px;
+}
+
+body div.main-background main header input.prev{
+  background: url(./Assets/btn-prev.png);
+}
+
+body div.main-background main header input.next{
+  background: url(./Assets/btn-next.png);
+}
+
+body div.main-background main section{
+  margin-top: 5px;
+  clear:both;
+}
+
+body div.main-background main section.header-section{
+  margin-bottom: 120px;
+}
+
+body div.main-background main section header{
+  background-color: #808080;
+  line-height: 10px;
+  width: 100%;
+  margin-left:0;
+  padding-top:2px;
+  padding-left: 5px;
+}
+
+body div.main-background main section header h2{
+  font-size: 12px;
+  font-weight: 400;
+  color: white;
+  padding: 0px;
+  margin: 0px;
+  letter-spacing: 0.15em;
+}
+
+body div.main-background main section img{
+  float: left;
+  margin-top: 17px;
+  margin-left:3px;
+  margin-right: 15px;
+}
+
+body div.main-background main section article {
+  font-size: 12px;
+  line-height: 11px;
+  float: left;
+}
+
+body div.main-background main section article strong p{
+  letter-spacing: 0.07em;
+}
+
+body div.main-background main section.header-section article p{
+  margin-top:15px;
+}
+
+body div.main-background main section article p {
+  margin-top: 12px;
+  letter-spacing: 0.05em;
+}
+
+body div.main-background main section article p a{
+  color:#961D1D;
+}
+
+body div.main-background main section.nav-buttons{
+  border-top: 1px solid black;
+  border-bottom: 1px solid black;
+  margin-top: 5px;
+}
+
+body div.main-background main section.nav-buttons input{
+  width: 100px;
+  height: 21px;
+  border: none;
+  margin-top: 7px;
+}
+
+body div.main-background main section.nav-buttons input.prev{
+  background: url(./Assets/btn-prev.png);
+}
+
+body div.main-background main section.nav-buttons input.next{
+  background: url(./Assets/btn-next.png);
+}
+
+body div.main-background aside{
+  float: left;
+  margin-top: 2px;
+  margin-left: 2px;
+}
+
+body div.main-background aside section{
+  float: right;
+  clear: right;
+  border: 1px solid black;
+  width: 142px;
+  text-align: center;
+  line-height: 13px;
+  padding-bottom: 6px;
+  margin-bottom: 2px;
+}
+
+body div.main-background aside section header{
+  background-color: #808080;
+  line-height: 10px;
+  width: 100%;
+  margin-left:0;
+  padding-top:2px;
+  padding-left: 5px;
+  padding-bottom:2px;
+}
+
+body div.main-background aside section header h2{
+  font-size: 12px;
+  font-weight: 400;
+  color: white;
+  padding: 0px;
+  margin: 0px;
+  letter-spacing: 0.15em;
+  text-align: center;
+}
+
+body div.main-background aside section input{
+  margin-top: 4px;
+}
+
+body div.main-background aside section input#search-box{
+  width:67%;
+  height: 20px;
+}
+
+body div.main-background aside section input#search-btn{
+  width: 18px;
+  height: 18px;
+  vertical-align: bottom;
+}
+
+body div.main-background aside section input#dynamic-btn{
+  background-image:url(./Assets/btn-ad.png);
+  border: none;
+  width: 100px;
+  height: 31px;
+}
+
+body div.main-background aside section a{
+  color:#961D1D;
+  font-size: 12px;
+  padding: 0;
+  margin: 0;
 }
