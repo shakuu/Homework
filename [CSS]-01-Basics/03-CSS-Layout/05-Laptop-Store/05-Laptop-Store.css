@@ -13,7 +13,7 @@ body div.main-frame {
   height: 781px;
   border: 3px solid black;
   border-radius: 10px;
-  padding: 10px;
+  padding: 15px;
 }
 
 body div.main-frame div.header-links{
@@ -35,12 +35,28 @@ body div.main-frame div.header-links a{
 body div.main-frame div.laptop-frame{
   float: left;
   border: 3px solid black;
+  width: 66%;
+  margin-top:10px;
+  padding: 5px;
+  font-size: 20px;
+  font-weight: bold;
+  text-align: center;
 }
 
 body div.main-frame div.laptop-frame div.col-ads{
   float: left;
+  width: 50%;
+  padding:1px;
 }
 
-body div.main-frame div.laptop-frame fieldset.laptop-ad figure{
+body div.main-frame div.laptop-frame div.col-ads fieldset.laptop-ad{
+  border: 3px solid black;
+  vertical-align: text-bottom;
+  margin-bottom: 10px;
+}
+
+body div.main-frame div.laptop-frame div.col-ads fieldset.laptop-ad figure{
   float: left;
+  margin: 0;
+  padding: 0;
 }
