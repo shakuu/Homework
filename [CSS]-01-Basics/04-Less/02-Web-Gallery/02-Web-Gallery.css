@@ -4,16 +4,22 @@ a {
   margin: 0;
   padding: 0;
 }
+body {
+  padding-top: 10px;
+  padding-left: 20px;
+}
 body a {
   text-decoration: none;
   float: left;
+  margin-right: 5px;
 }
 body [id*='zoom']:target {
   display: block;
   float: left;
   clear: both;
-  width: 400px;
-  height: 400px;
+  width: 260px;
+  height: 259px;
+  margin-top: 10px;
 }
 body img.zoom {
   display: none;
