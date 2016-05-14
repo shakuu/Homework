@@ -41,6 +41,6 @@ body div.main-frame div.laptop-frame div.col-ads{
   float: left;
 }
 
-body div.main-frame div.laptop-frame div.laptop-ad{
+body div.main-frame div.laptop-frame fieldset.laptop-ad figure{
   float: left;
 }
