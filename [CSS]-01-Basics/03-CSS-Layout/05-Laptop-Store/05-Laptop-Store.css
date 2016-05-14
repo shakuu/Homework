@@ -41,7 +41,6 @@ body div.main-frame div.laptop-frame {
   line-height: 24px;
   font-weight: 400;
   text-align: center;
-  padding-bottom: 12px;
 }
 
 body div.main-frame div.laptop-frame div.col-ads {
@@ -110,5 +109,5 @@ body div.main-frame div.sliders p span.range-value {
 body div.main-frame div.sliders input {
   width: 90%;
   height: 20px;
-  margin-top:5%;
+  margin-top: 5%;
 }
