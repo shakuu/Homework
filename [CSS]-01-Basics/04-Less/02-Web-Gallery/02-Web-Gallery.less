@@ -1,0 +1,31 @@
+@img1: url(./Assets/img_1.png);
+@img2: url(./Assets/img_2.png);
+@img3: url(./Assets/img_3.png);
+@img4: url(./Assets/img_4.png);
+@img5: url(./Assets/img_5.png);
+@img6: url(./Assets/img_6.png);
+
+body, img, a{
+  margin: 0;
+  padding: 0;
+}
+
+body{
+  
+  & a {
+    text-decoration: none;
+    float: left;
+  }
+  
+  & [id*='zoom']:target{
+    display: block;
+    float: left;
+    clear:both;
+    width: 400px;
+    height: 400px;
+  }
+  
+  & img.zoom{
+    display:none;
+  }
+}

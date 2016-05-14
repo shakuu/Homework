@@ -1,0 +1,20 @@
+body,
+img,
+a {
+  margin: 0;
+  padding: 0;
+}
+body a {
+  text-decoration: none;
+  float: left;
+}
+body [id*='zoom']:target {
+  display: block;
+  float: left;
+  clear: both;
+  width: 400px;
+  height: 400px;
+}
+body img.zoom {
+  display: none;
+}
