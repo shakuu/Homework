@@ -16,8 +16,7 @@ body div.main-frame {
   padding: 15px;
 }
 
-body div.main-frame div.header-links{
-  
+body div.main-frame div.header-links {
   text-align: center;
   padding-bottom: 12px;
   margin-left: 2.5%;
@@ -25,38 +24,91 @@ body div.main-frame div.header-links{
   border-bottom: 3px solid black;
 }
 
-body div.main-frame div.header-links a{
+body div.main-frame div.header-links a {
   font-size: 33px;
   font-weight: 700;
   color: #00ACEF;
   letter-spacing: 0.04em;
 }
 
-body div.main-frame div.laptop-frame{
+body div.main-frame div.laptop-frame {
   float: left;
   border: 3px solid black;
   width: 66%;
-  margin-top:10px;
+  margin-top: 15px;
   padding: 5px;
-  font-size: 20px;
-  font-weight: bold;
+  font-size: 26px;
+  line-height: 24px;
+  font-weight: 400;
   text-align: center;
+  padding-bottom: 12px;
 }
 
-body div.main-frame div.laptop-frame div.col-ads{
+body div.main-frame div.laptop-frame div.col-ads {
   float: left;
   width: 50%;
-  padding:1px;
+  padding: 1px;
 }
 
-body div.main-frame div.laptop-frame div.col-ads fieldset.laptop-ad{
+body div.main-frame div.laptop-frame div.col-ads fieldset.laptop-ad {
   border: 3px solid black;
   vertical-align: text-bottom;
+  padding: 0;
   margin-bottom: 10px;
 }
 
-body div.main-frame div.laptop-frame div.col-ads fieldset.laptop-ad figure{
+body div.main-frame div.laptop-frame div.col-ads fieldset.laptop-ad figure {
   float: left;
   margin: 0;
   padding: 0;
+  margin-top: 10px;
+  margin-left: 2px;
+}
+
+body div.main-frame div.laptop-frame div.col-ads fieldset.laptop-ad figure figcaption {
+  margin-top: 40px;
+  margin-bottom: 10px;
+}
+
+body div.main-frame div.laptop-frame div.col-ads fieldset.laptop-ad div.ad-spec {
+  float: right;
+  padding-right: 4%;
+  height: 90%;
+  margin-top: 6%;
+  text-align: left;
+}
+
+body div.main-frame div.laptop-frame div.col-ads fieldset.laptop-ad div.ad-spec p {
+  margin-top: 27px;
+  margin-bottom: 5px;
+}
+
+body div.main-frame div.sliders {
+  float: right;
+  width: 30%;
+  vertical-align: middle;
+  margin-top: 4.5%;
+}
+
+body div.main-frame div.sliders p {
+  font-size: 32px;
+  text-align: justify;
+  margin-top: 16%;
+}
+
+body div.main-frame div.sliders p span.range-label {
+  float: left;
+  width: 50%;
+}
+
+body div.main-frame div.sliders p span.range-value {
+  float: right;
+  text-align: center;
+  width: 50%;
+}
+
+body div.main-frame div.sliders input {
+  width: 90%;
+  height: 20px;
+  margin-top:5%;
 }
