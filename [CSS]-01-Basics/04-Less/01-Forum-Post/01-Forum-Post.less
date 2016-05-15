@@ -9,9 +9,15 @@
 // variables 
 @background-color: #9215F2;
 @text-color: #FFFFFF;
+@text-size-content: 14px;
 .border-style-main {
   border: 2px solid black;
   border-radius: 10px;
+}
+
+.border-style-widget {
+  border: 2px solid black;
+  border-radius: 5px;
 }
 
 body, div, h1, a, img, form, input, label, button, nav, ul, li, header, p, footer, article, section, h2, aside {
@@ -63,14 +69,42 @@ body {
     }
   }
   & section {
+    .clearfix;
     float: left;
     width: 65%;
+    & article {
+      .border-style-main;
+      padding: 10px 10px 10px 10px;
+      & header {
+        & h1 {
+          // TODO: FIX
+          padding: 10px 10px 10px 10px;
+        }
+      }
+      & p {
+        // TODO: Font Size
+      }
+      & footer {
+        & p {}
+      }
+    }
   }
   & aside {
+    .clearfix;
     float: right;
     width: 30%;
+    & > ul {
+      list-style: none;
+      & > li {
+        .border-style-widget;
+        & ul{
+          list-style-position: inside;
+          list-style-image: url(./images/li-dot.png);
+        }
+      }
+    }
   }
-  & footer{
+  & footer {
     clear: both;
-  } 
+  }
 }

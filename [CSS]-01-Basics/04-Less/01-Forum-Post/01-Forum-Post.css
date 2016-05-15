@@ -7,6 +7,10 @@
   border: 2px solid black;
   border-radius: 10px;
 }
+.border-style-widget {
+  border: 2px solid black;
+  border-radius: 5px;
+}
 body,
 div,
 h1,
@@ -74,9 +78,38 @@ body section {
   float: left;
   width: 65%;
 }
+body section:after {
+  content: "";
+  display: block;
+  clear: both;
+}
+body section article {
+  border: 2px solid black;
+  border-radius: 10px;
+  padding: 10px 10px 10px 10px;
+}
+body section article header h1 {
+  padding: 10px 10px 10px 10px;
+}
 body aside {
   float: right;
   width: 30%;
+}
+body aside:after {
+  content: "";
+  display: block;
+  clear: both;
+}
+body aside > ul {
+  list-style: none;
+}
+body aside > ul > li {
+  border: 2px solid black;
+  border-radius: 5px;
+}
+body aside > ul > li ul {
+  list-style-position: inside;
+  list-style-image: url(images/li-dot.png);
 }
 body footer {
   clear: both;
