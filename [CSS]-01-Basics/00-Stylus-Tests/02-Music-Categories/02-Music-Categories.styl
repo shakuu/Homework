@@ -10,9 +10,11 @@ body, header, main, div, h1, img, input, p
 
 bkgd-color = #EEEEEE
 def-font = segoe ui, sans-serif;
-def-font-size = 16px
-def-padding = 10px 10px 10px 10px
+def-font-size = 14px
+def-padding = 10px 10px 10px 12px
 def-line-height = 16px
+btn-wide-img = url(./Assets/btn1.png)
+btn-nrw-img = url(./Assets/btn-nrw.png)
 
 def-border()
   border 1px solid black
@@ -28,25 +30,44 @@ body
     padding: def-padding
     & header
       padding: def-padding
-      padding-left 0
+      padding-left 0px
+      padding-top 5px
+      padding-bottom: 4px
       & h1
-        font-size 20px
+        font-size 18px
+        letter-spacing: -0.07em
         font-weight: normal;
     & main
       & section.content-container
-        width: 90%
+        width: 88.5%
         def-border()
         clearfix()
         padding def-padding
-        margin-top: 20px
+        padding-top: 15px
+        padding-left: 15px
+        padding-bottom: 15px
+        margin-top: 34px
         background: white
         & div.image-container
           float left
-          margin-right: 10px
+          margin-right: 17px
         & div.text-container
           font-size: def-font-size;
-          & span
-            font-weight: bold;
+          & p
+            letter-spacing: -0.03em
+            & span
+              font-weight: bold;
         & div.btn-container
-          margin-top: 20px
-          text-align: right 
+          margin-top: 15px
+          text-align: right
+          padding-right: 5px
+          & input
+            color white
+          & input.btn-listen
+            width 77px
+            height: 25px
+            background: btn-wide-img
+          & input.btn-add
+            width 63px
+            height: 25px
+            background: btn-nrw-img

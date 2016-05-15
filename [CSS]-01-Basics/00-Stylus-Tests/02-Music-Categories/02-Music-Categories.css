@@ -16,21 +16,27 @@ body div.main-container {
   height: 538px;
   border-radius: 10px;
   font-family: segoe ui, sans-serif;
-  padding: 10px 10px 10px 10px;
+  padding: 10px 10px 10px 12px;
 }
 body div.main-container header {
-  padding: 10px 10px 10px 10px;
-  padding-left: 0;
+  padding: 10px 10px 10px 12px;
+  padding-left: 0px;
+  padding-top: 5px;
+  padding-bottom: 4px;
 }
 body div.main-container header h1 {
-  font-size: 20px;
+  font-size: 18px;
+  letter-spacing: -0.07em;
   font-weight: normal;
 }
 body div.main-container main section.content-container {
-  width: 90%;
+  width: 88.5%;
   border: 1px solid #000;
-  padding: 10px 10px 10px 10px;
-  margin-top: 20px;
+  padding: 10px 10px 10px 12px;
+  padding-top: 15px;
+  padding-left: 15px;
+  padding-bottom: 15px;
+  margin-top: 34px;
   background: #fff;
 }
 body div.main-container main section.content-container:after {
@@ -40,15 +46,32 @@ body div.main-container main section.content-container:after {
 }
 body div.main-container main section.content-container div.image-container {
   float: left;
-  margin-right: 10px;
+  margin-right: 17px;
 }
 body div.main-container main section.content-container div.text-container {
-  font-size: 16px;
+  font-size: 14px;
 }
-body div.main-container main section.content-container div.text-container span {
+body div.main-container main section.content-container div.text-container p {
+  letter-spacing: -0.03em;
+}
+body div.main-container main section.content-container div.text-container p span {
   font-weight: bold;
 }
 body div.main-container main section.content-container div.btn-container {
-  margin-top: 20px;
+  margin-top: 15px;
   text-align: right;
+  padding-right: 5px;
+}
+body div.main-container main section.content-container div.btn-container input {
+  color: #fff;
+}
+body div.main-container main section.content-container div.btn-container input.btn-listen {
+  width: 77px;
+  height: 25px;
+  background: url("./Assets/btn1.png");
+}
+body div.main-container main section.content-container div.btn-container input.btn-add {
+  width: 63px;
+  height: 25px;
+  background: url("./Assets/btn-nrw.png");
 }
