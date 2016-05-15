@@ -36,6 +36,8 @@ aside {
 body {
   color: #FFFFFF;
   background: #9215F2;
+  font-size: 12px;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 body:after {
   content: "";
@@ -49,6 +51,9 @@ body header div#header-container:after {
 }
 body header div#header-container div#logo-container {
   float: left;
+}
+body header div#header-container div#logo-container h1 a img {
+  padding: 16px 10px 10px 6px;
 }
 body header div#header-container div#reg-form-container {
   float: right;
@@ -76,7 +81,7 @@ body header nav li ul.sub-nav-list {
 }
 body section {
   float: left;
-  width: 65%;
+  width: 72%;
 }
 body section:after {
   content: "";
@@ -93,7 +98,7 @@ body section article header h1 {
 }
 body aside {
   float: right;
-  width: 30%;
+  width: 24%;
 }
 body aside:after {
   content: "";

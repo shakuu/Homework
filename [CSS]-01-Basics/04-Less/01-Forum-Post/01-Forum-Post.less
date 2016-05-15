@@ -9,7 +9,11 @@
 // variables 
 @background-color: #9215F2;
 @text-color: #FFFFFF;
-@text-size-content: 14px;
+@text-size-content: 12px;
+@max-width: 924px;
+@def-font-face: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+@section-width: 72%;
+@aside-width: 24%;
 .border-style-main {
   border: 2px solid black;
   border-radius: 10px;
@@ -29,12 +33,19 @@ body {
   .clearfix;
   color: @text-color;
   background: @background-color;
+  font-size: @text-size-content;
+  font-family: @def-font-face;
   & header {
     & div#header-container {
       // inserte gradient here
       .clearfix;
       & div#logo-container {
         float: left;
+        & h1 a img{
+          padding: 16px 10px 10px 6px;
+          // height: 50px;
+          // width: 197px;
+        }
       }
       & div#reg-form-container {
         float: right;
@@ -71,7 +82,7 @@ body {
   & section {
     .clearfix;
     float: left;
-    width: 65%;
+    width: @section-width;
     & article {
       .border-style-main;
       padding: 10px 10px 10px 10px;
@@ -92,12 +103,12 @@ body {
   & aside {
     .clearfix;
     float: right;
-    width: 30%;
+    width: @aside-width;
     & > ul {
       list-style: none;
       & > li {
         .border-style-widget;
-        & ul{
+        & ul {
           list-style-position: inside;
           list-style-image: url(./images/li-dot.png);
         }
