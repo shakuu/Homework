@@ -1,0 +1,67 @@
+body,
+header,
+nav,
+section,
+ul,
+li,
+article,
+h1,
+p,
+footer {
+  margin: 0;
+  padding: 0;
+}
+body {
+  background: #a9a9a9;
+}
+body > header {
+  text-align: center;
+}
+body > header h1 {
+  padding-top: 35px;
+  padding-bottom: 33px;
+  font-size: 48px;
+  color: #fafad2;
+}
+body > header nav ul {
+  list-style: none;
+}
+body > header nav ul li a {
+  font-size: 28px;
+  color: #fff;
+  text-decoration: none;
+}
+body > header nav ul li a:hover {
+  text-decoration: underline;
+}
+body > header nav ul li a.current {
+  background: rgba(255,255,255,0.5);
+}
+body section article {
+  padding-top: 32px;
+  padding-left: 10px;
+  padding-right: 10px;
+}
+body section article header h1 {
+  font-size: 28px;
+  color: #fafad2;
+}
+body section article > p {
+  margin-top: 36px;
+  font-size: 20px;
+}
+body section article footer p {
+  margin-top: 20px;
+}
+body section article footer p a {
+  color: #000;
+  text-decoration: none;
+}
+body section article footer p a:hover {
+  text-decoration: underline;
+}
+body > footer {
+  text-align: center;
+  padding: 20px;
+  font-size: 20px;
+}

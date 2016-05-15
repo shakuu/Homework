@@ -1,0 +1,58 @@
+clearfix()
+  &:after
+    display: block;
+    content: ""
+    clear: both;
+
+background-color = #A9A9A9;
+text-header-color = #FAFAD2;
+
+body, header, nav, section, ul, li, article, h1, p, footer
+  margin 0
+  padding 0
+
+body
+  background: background-color
+  & > header
+    text-align: center;
+    & h1
+      padding-top: 35px
+      padding-bottom: 33px
+      font-size: 48px
+      color text-header-color
+    & nav
+      & ul
+        list-style: none;
+        & li
+          & a
+            font-size: 28px
+            color: white
+            text-decoration: none;
+          & a:hover
+            text-decoration: underline;
+          & a.current
+            background: rgba(255,255,255,0.5)
+  & section
+    & article
+      padding-top: 32px
+      padding-left: 10px
+      padding-right: 10px
+      & header
+        & h1
+          font-size 28px
+          color: text-header-color
+      & > p
+        margin-top: 36px
+        font-size: 20px
+      & footer
+        & p
+          margin-top: 20px
+          & a
+            color black
+            text-decoration: none
+          & a:hover
+            text-decoration: underline;
+  & > footer
+    text-align: center;
+    padding: 20px
+    font-size: 20px
