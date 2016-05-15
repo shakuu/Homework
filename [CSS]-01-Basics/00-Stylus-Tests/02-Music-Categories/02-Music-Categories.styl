@@ -1,0 +1,52 @@
+clearfix()
+  &:after
+    display block
+    content ""
+    clear both
+
+body, header, main, div, h1, img, input, p
+  margin 0
+  padding 0
+
+bkgd-color = #EEEEEE
+def-font = segoe ui, sans-serif;
+def-font-size = 16px
+def-padding = 10px 10px 10px 10px
+def-line-height = 16px
+
+def-border()
+  border 1px solid black
+
+body
+  & div.main-container
+    line-height: def-line-height
+    background: bkgd-color
+    width: 421px;
+    height: 538px;
+    border-radius 10px
+    font-family: def-font
+    padding: def-padding
+    & header
+      padding: def-padding
+      padding-left 0
+      & h1
+        font-size 20px
+        font-weight: normal;
+    & main
+      & section.content-container
+        width: 90%
+        def-border()
+        clearfix()
+        padding def-padding
+        margin-top: 20px
+        background: white
+        & div.image-container
+          float left
+          margin-right: 10px
+        & div.text-container
+          font-size: def-font-size;
+          & span
+            font-weight: bold;
+        & div.btn-container
+          margin-top: 20px
+          text-align: right 

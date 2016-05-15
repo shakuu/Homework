@@ -1,0 +1,54 @@
+body,
+header,
+main,
+div,
+h1,
+img,
+input,
+p {
+  margin: 0;
+  padding: 0;
+}
+body div.main-container {
+  line-height: 16px;
+  background: #eee;
+  width: 421px;
+  height: 538px;
+  border-radius: 10px;
+  font-family: segoe ui, sans-serif;
+  padding: 10px 10px 10px 10px;
+}
+body div.main-container header {
+  padding: 10px 10px 10px 10px;
+  padding-left: 0;
+}
+body div.main-container header h1 {
+  font-size: 20px;
+  font-weight: normal;
+}
+body div.main-container main section.content-container {
+  width: 90%;
+  border: 1px solid #000;
+  padding: 10px 10px 10px 10px;
+  margin-top: 20px;
+  background: #fff;
+}
+body div.main-container main section.content-container:after {
+  display: block;
+  content: "";
+  clear: both;
+}
+body div.main-container main section.content-container div.image-container {
+  float: left;
+  margin-right: 10px;
+}
+body div.main-container main section.content-container div.text-container {
+  font-size: 16px;
+}
+body div.main-container main section.content-container div.text-container span {
+  font-weight: bold;
+}
+body div.main-container main section.content-container div.btn-container {
+  margin-top: 20px;
+  text-align: right;
+}
