@@ -8,41 +8,72 @@
 
 // variables
 @background-color: #9215F2;
+@background-color-alpha: rgba(146, 21, 242, 0.79);
+@background-color-alpha-2: rgba(191, 150, 236, 0.9);
 @text-color: #FFFFFF;
+@input-bkgd-color: #B35EF3;
+@a-color: #B664F5;
 @text-size-content: 12px;
 @max-width: 924px;
-@def-font-face: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-@section-width: 72%;
-@aside-width: 24%;
-@def-line-height: 20px;
+@def-font-face: 'Times New Roman', Times, serif;
+@section-width: 74%;
+@section-padding: 10px 10px 10px 10px;
+@section-margin-left: 10px;
+@aside-width: 22%;
+@aside-margin-right: 20px;
+@li-image: url("./images/li-dot.png");
+.gradient-header {
+  background: -webkit-linear-gradient(top, rgb(195, 160, 236) 0%, rgb(174, 82, 243) 81%, rgb(164, 59, 244) 100%);
+  background: -o-linear-gradient(top, rgb(195, 160, 236) 0%, rgb(174, 82, 243) 81%, rgb(164, 59, 244) 100%);
+  background: -ms-linear-gradient(top, rgb(195, 160, 236) 0%, rgb(174, 82, 243) 81%, rgb(164, 59, 244) 100%);
+  background: -moz-linear-gradient(top, rgb(195, 160, 236) 0%, rgb(174, 82, 243) 81%, rgb(164, 59, 244) 100%);
+  background: linear-gradient(to bottom, rgb(195, 160, 236) 0%, rgb(174, 82, 243) 81%, rgb(164, 59, 244) 100%);
+}
+
+.gradient-background {
+  background: -webkit-linear-gradient(top, rgb(195, 160, 236) 0%, rgb(145, 28, 239) 20%, rgb(146, 21, 242) 100%);
+  background: -o-linear-gradient(top, rgb(195, 160, 236) 0%, rgb(145, 28, 239) 20%, rgb(146, 21, 242) 100%);
+  background: -ms-linear-gradient(top, rgb(195, 160, 236) 0%, rgb(145, 28, 239) 20%, rgb(146, 21, 242) 100%);
+  background: -moz-linear-gradient(top, rgb(195, 160, 236) 0%, rgb(145, 28, 239) 20%, rgb(146, 21, 242) 100%);
+  background: linear-gradient(to bottom, rgb(195, 160, 236) 0%, rgb(145, 28, 239) 20%, rgb(146, 21, 242) 100%);
+  background-repeat: no-repeat;
+}
+
 .border-style-main {
   border: 2px solid black;
   border-radius: 10px;
+  border-color: rgba(0, 0, 0, 0.33);
 }
 
 .border-style-widget {
-  border: 2px solid black;
+  &:extend(.border-style-main);
   border-radius: 5px;
 }
 
-body, div, h1, a, img, form, input, label, button, nav, ul, li, header, p, footer, article, section, h2, aside {
+a, article, aside, body, button, div, footer, form, h1, h2, header, img, input, label, li, nav, p, section, ul {
   margin: 0;
   padding: 0;
 }
 
 body {
+  & a {
+    text-decoration: none;
+    color: @a-color;
+  }
+  & a:hover {
+    text-decoration: underline;
+  }
+  .gradient-background;
   .clearfix;
   color: @text-color;
-  background: @background-color;
   font-size: @text-size-content;
   font-family: @def-font-face;
   & header {
     & div#header-container {
-      // inserte gradient here
       .clearfix;
       & div#logo-container {
         float: left;
-        & h1 a img{
+        & h1 a img {
           padding: 16px 10px 10px 6px;
           // height: 50px;
           // width: 197px;
@@ -50,33 +81,94 @@ body {
       }
       & div#reg-form-container {
         float: right;
+        margin-top: 20px;
+        margin-right: 50px;
+        & form {
+          & div {
+            .clearfix;
+            text-align: center;
+            vertical-align: middle;
+            line-height: 22px;
+            & label {
+              float: left;
+              margin-right: 5px;
+            }
+            & input {
+              color: @text-color;
+              padding-left: 5px;
+              float: right;
+              background: @input-bkgd-color;
+              .border-style-main;
+              border-width: 1px;
+              width: 150px;
+              height: 20px;
+            }
+            & input, & label {
+              margin-top: 5px;
+            }
+          }
+          & button {
+            color: @text-color;
+            background: @input-bkgd-color;
+            padding: 5px 10px;
+            border-color: @input-bkgd-color;
+            border-radius: 10px;
+            border-style: outset;
+            font-size: @text-size-content;
+            margin-top: 5px;
+          }
+        }
       }
     }
     & nav {
       & ul.nav-list {
         // TODO: Text Format
         .border-style-main;
-        width: 60%;
-        padding: 10px 10px 10px 10px;
-        margin: 10px 10px 10px 10px;
+        width: 75%;
+        padding: 10px 10px 10px 15px;
+        margin: 10px 10px 10px 20px;
         & li {
           & a {
             color: @text-color;
             text-decoration: none;
           }
+          & a:hover {
+            text-decoration: underline;
+            color: lighten(@a-color, 20%);
+          }
+        }
+        & li.selected {
+          font-weight: bold;
+        }
+        & li:hover > a + ul.sub-nav-list {
+          display: block;
         }
       }
       & ul#main-nav-list {
         list-style: none;
         & li {
+          margin-right: 15px;
           display: inline-block;
         }
       }
       & li ul.sub-nav-list {
         display: none;
         list-style: none;
+        position: absolute;
+        margin-top: 0;
+        margin-left: -15px;
+        z-index: 3;
+        background: @background-color-alpha-2;
+        width: 15%;
+        .clearfix;
         //  TODO: Format
-        & li {}
+        & li {
+          float: left;
+          clear: left;
+        }
+      }
+      & li ul.sun-nav-list:hover {
+        display: block;
       }
     }
   }
@@ -84,19 +176,25 @@ body {
     .clearfix;
     float: left;
     width: @section-width;
+    padding-left: @section-margin-left;
     & article {
+      .clearfix;
       .border-style-main;
-      padding: 10px 10px 10px 10px;
+      padding: 10px 15px;
+      margin-top: 15px;
       & header {
         & h1 {
           // TODO: FIX
-          padding: 10px 10px 10px 10px;
+          padding: 10px;
         }
       }
       & p {
         // TODO: Font Size
       }
       & footer {
+        float: right;
+        text-align: right;
+        padding-top: 10px;
         & p {}
       }
     }
@@ -105,18 +203,28 @@ body {
     .clearfix;
     float: right;
     width: @aside-width;
+    padding-right: @aside-margin-right;
     & > ul {
       list-style: none;
       & > li {
+        margin-top: 15px;
         .border-style-widget;
+        padding: 10px 15px;
+        & h2 {
+          padding: 0 10px 10px;
+        }
         & ul {
           list-style-position: inside;
-          list-style-image: url(./images/li-dot.png);
+          list-style-image: @li-image;
         }
       }
     }
   }
-  & footer {
+  & > footer {
     clear: both;
+    padding: 20px;
+    & p {
+      text-align: center;
+    }
   }
 }
