@@ -3,10 +3,19 @@
   display: block;
   clear: both;
 }
+/**/
 .gradient-header {
+  background: -webkit-linear-gradient(top, #c3a0ec 0%, #ae52f3 81%, #a43bf4 100%);
+  background: -o-linear-gradient(top, #c3a0ec 0%, #ae52f3 81%, #a43bf4 100%);
+  background: -ms-linear-gradient(top, #c3a0ec 0%, #ae52f3 81%, #a43bf4 100%);
+  background: -moz-linear-gradient(top, #c3a0ec 0%, #ae52f3 81%, #a43bf4 100%);
   background: linear-gradient(to bottom, #c3a0ec 0%, #ae52f3 81%, #a43bf4 100%);
 }
 .gradient-background {
+  background: -webkit-linear-gradient(top, #c3a0ec 0%, #911cef 20%, #9215f2 100%);
+  background: -o-linear-gradient(top, #c3a0ec 0%, #911cef 20%, #9215f2 100%);
+  background: -ms-linear-gradient(top, #c3a0ec 0%, #911cef 20%, #9215f2 100%);
+  background: -moz-linear-gradient(top, #c3a0ec 0%, #911cef 20%, #9215f2 100%);
   background: linear-gradient(to bottom, #c3a0ec 0%, #911cef 20%, #9215f2 100%);
   background-repeat: no-repeat;
 }
@@ -16,6 +25,7 @@ body aside > ul > li {
   border: 2px solid black;
   border-radius: 10px;
   border-color: rgba(0, 0, 0, 0.33);
+  /**/
 }
 .border-style-widget {
   border-radius: 5px;
@@ -43,6 +53,10 @@ ul {
   padding: 0;
 }
 body {
+  background: -webkit-linear-gradient(top, #c3a0ec 0%, #911cef 20%, #9215f2 100%);
+  background: -o-linear-gradient(top, #c3a0ec 0%, #911cef 20%, #9215f2 100%);
+  background: -ms-linear-gradient(top, #c3a0ec 0%, #911cef 20%, #9215f2 100%);
+  background: -moz-linear-gradient(top, #c3a0ec 0%, #911cef 20%, #9215f2 100%);
   background: linear-gradient(to bottom, #c3a0ec 0%, #911cef 20%, #9215f2 100%);
   background-repeat: no-repeat;
   color: #FFFFFF;
@@ -99,6 +113,7 @@ body header div#header-container div#reg-form-container form div input {
   border: 2px solid black;
   border-radius: 10px;
   border-color: rgba(0, 0, 0, 0.33);
+  /**/
   border-width: 1px;
   width: 150px;
   height: 20px;
@@ -121,6 +136,7 @@ body header nav ul.nav-list {
   border: 2px solid black;
   border-radius: 10px;
   border-color: rgba(0, 0, 0, 0.33);
+  /**/
   width: 75%;
   padding: 10px 10px 10px 15px;
   margin: 10px 10px 10px 20px;
@@ -182,6 +198,7 @@ body section article {
   border: 2px solid black;
   border-radius: 10px;
   border-color: rgba(0, 0, 0, 0.33);
+  /**/
   padding: 10px 15px;
   margin-top: 15px;
 }
