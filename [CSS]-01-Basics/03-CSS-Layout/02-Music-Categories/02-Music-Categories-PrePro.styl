@@ -1,0 +1,39 @@
+clearfix()
+  &:after
+    display block
+    content: ""
+    clear: both;
+
+def-background-color = #EEEEEE
+def-font = 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+
+body, div, a, h1, h2, h3, img, input
+  margin 0
+  padding 0
+body
+  & div.background
+    background: def-background-color
+    width: 421px
+    height: 528px
+    padding 15px
+    & header
+      & h1
+        font-size: 17px
+        // TODO: FORMAT
+    & div.item-wrapper
+      clearfix()
+      width: 90%
+      border: 1px solid black
+      background: white
+      padding 15px
+      margin-top 36px
+      & img
+        float left
+        margin-right: 10px
+      & div.item-text
+        font-family: def-font
+        & span
+          font-weight bold
+      & div.item-buttons
+        float right
+        clear right

@@ -1,0 +1,46 @@
+body,
+div,
+a,
+h1,
+h2,
+h3,
+img,
+input {
+  margin: 0;
+  padding: 0;
+}
+body div.background {
+  background: #eee;
+  width: 421px;
+  height: 528px;
+  padding: 15px;
+}
+body div.background header h1 {
+  font-size: 17px;
+}
+body div.background div.item-wrapper {
+  width: 90%;
+  border: 1px solid #000;
+  background: #fff;
+  padding: 15px;
+  margin-top: 36px;
+}
+body div.background div.item-wrapper:after {
+  display: block;
+  content: "";
+  clear: both;
+}
+body div.background div.item-wrapper img {
+  float: left;
+  margin-right: 10px;
+}
+body div.background div.item-wrapper div.item-text {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+body div.background div.item-wrapper div.item-text span {
+  font-weight: bold;
+}
+body div.background div.item-wrapper div.item-buttons {
+  float: right;
+  clear: right;
+}
