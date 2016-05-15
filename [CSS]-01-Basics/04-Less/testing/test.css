@@ -1,6 +1,0 @@
-div.random-class {
-  background: green;
-}
-div.random-class:hover {
-  background: ligthen(green, 50%);
-}
