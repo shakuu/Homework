@@ -7,7 +7,7 @@ using System.IO;
 
 namespace _02_Concatenate_Text_Files
 {
-    class Program
+    class ConcatenateFiles
     {
         static void Main()
         {
