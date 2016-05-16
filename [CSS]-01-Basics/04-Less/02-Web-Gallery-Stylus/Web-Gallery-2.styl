@@ -1,0 +1,39 @@
+clearfix()
+  &:after
+    display: block;
+    clear: both;
+    content: ""
+
+thumbnail-size()
+  width: 100px
+  height: 100px
+  background-size: @width @height
+
+full-size()
+  width: 330px
+  height: 330px
+  background-size: @width @height
+
+link-format()
+  text-decoration: none;
+
+body
+  & nav
+    for img_ in img_1 img_2 img_3 img_4 img_5 img_6
+      & a
+        link-format()
+        & div.{img_}
+          background-image: url(./Assets/img_.png)
+          display: inline-block;
+          thumbnail-size()
+
+  for img_ in img_1 img_2 img_3 img_4 img_5 img_6
+    & div#full-size-{img_}
+      background-image: url(./Assets/img_.png)
+      display: none
+      full-size()
+    & div#full-size-{img_}:target
+      display: block;
+
+  & section a
+    link-format()

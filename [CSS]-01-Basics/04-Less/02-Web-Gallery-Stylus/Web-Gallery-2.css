@@ -1,0 +1,123 @@
+body nav a {
+  text-decoration: none;
+}
+body nav a div.img_1 {
+  background-image: url("./Assets/img_1.png");
+  display: inline-block;
+  width: 100px;
+  height: 100px;
+  background-size: 100px 100px;
+}
+body nav a {
+  text-decoration: none;
+}
+body nav a div.img_2 {
+  background-image: url("./Assets/img_2.png");
+  display: inline-block;
+  width: 100px;
+  height: 100px;
+  background-size: 100px 100px;
+}
+body nav a {
+  text-decoration: none;
+}
+body nav a div.img_3 {
+  background-image: url("./Assets/img_3.png");
+  display: inline-block;
+  width: 100px;
+  height: 100px;
+  background-size: 100px 100px;
+}
+body nav a {
+  text-decoration: none;
+}
+body nav a div.img_4 {
+  background-image: url("./Assets/img_4.png");
+  display: inline-block;
+  width: 100px;
+  height: 100px;
+  background-size: 100px 100px;
+}
+body nav a {
+  text-decoration: none;
+}
+body nav a div.img_5 {
+  background-image: url("./Assets/img_5.png");
+  display: inline-block;
+  width: 100px;
+  height: 100px;
+  background-size: 100px 100px;
+}
+body nav a {
+  text-decoration: none;
+}
+body nav a div.img_6 {
+  background-image: url("./Assets/img_6.png");
+  display: inline-block;
+  width: 100px;
+  height: 100px;
+  background-size: 100px 100px;
+}
+body div#full-size-img_1 {
+  background-image: url("./Assets/img_1.png");
+  display: none;
+  width: 330px;
+  height: 330px;
+  background-size: 330px 330px;
+}
+body div#full-size-img_1:target {
+  display: block;
+}
+body div#full-size-img_2 {
+  background-image: url("./Assets/img_2.png");
+  display: none;
+  width: 330px;
+  height: 330px;
+  background-size: 330px 330px;
+}
+body div#full-size-img_2:target {
+  display: block;
+}
+body div#full-size-img_3 {
+  background-image: url("./Assets/img_3.png");
+  display: none;
+  width: 330px;
+  height: 330px;
+  background-size: 330px 330px;
+}
+body div#full-size-img_3:target {
+  display: block;
+}
+body div#full-size-img_4 {
+  background-image: url("./Assets/img_4.png");
+  display: none;
+  width: 330px;
+  height: 330px;
+  background-size: 330px 330px;
+}
+body div#full-size-img_4:target {
+  display: block;
+}
+body div#full-size-img_5 {
+  background-image: url("./Assets/img_5.png");
+  display: none;
+  width: 330px;
+  height: 330px;
+  background-size: 330px 330px;
+}
+body div#full-size-img_5:target {
+  display: block;
+}
+body div#full-size-img_6 {
+  background-image: url("./Assets/img_6.png");
+  display: none;
+  width: 330px;
+  height: 330px;
+  background-size: 330px 330px;
+}
+body div#full-size-img_6:target {
+  display: block;
+}
+body section a {
+  text-decoration: none;
+}
