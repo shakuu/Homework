@@ -7,6 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "01-Sqare-Root", "01-Sqare-R
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "02-Enter-Numbers", "02-Enter-Numbers\02-Enter-Numbers.csproj", "{662DFC4C-8198-4EB5-9AE2-4C3771D2C695}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "02-Enter-Numbers-2", "02-Enter-Numbers-2\02-Enter-Numbers-2.csproj", "{596754BD-9D60-4C4F-BA3E-393F08CE0B4A}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,10 @@ Global
 		{662DFC4C-8198-4EB5-9AE2-4C3771D2C695}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{662DFC4C-8198-4EB5-9AE2-4C3771D2C695}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{662DFC4C-8198-4EB5-9AE2-4C3771D2C695}.Release|Any CPU.Build.0 = Release|Any CPU
+		{596754BD-9D60-4C4F-BA3E-393F08CE0B4A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{596754BD-9D60-4C4F-BA3E-393F08CE0B4A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{596754BD-9D60-4C4F-BA3E-393F08CE0B4A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{596754BD-9D60-4C4F-BA3E-393F08CE0B4A}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
