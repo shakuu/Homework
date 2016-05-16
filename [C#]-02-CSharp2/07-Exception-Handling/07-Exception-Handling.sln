@@ -9,6 +9,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "02-Enter-Numbers", "02-Ente
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "02-Enter-Numbers-2", "02-Enter-Numbers-2\02-Enter-Numbers-2.csproj", "{596754BD-9D60-4C4F-BA3E-393F08CE0B4A}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "03-Read-File-Contents", "03-Read-File-Contents\03-Read-File-Contents.csproj", "{463DC0A0-B1CB-4A39-B48C-6C326F32B696}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -27,6 +29,10 @@ Global
 		{596754BD-9D60-4C4F-BA3E-393F08CE0B4A}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{596754BD-9D60-4C4F-BA3E-393F08CE0B4A}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{596754BD-9D60-4C4F-BA3E-393F08CE0B4A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{463DC0A0-B1CB-4A39-B48C-6C326F32B696}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{463DC0A0-B1CB-4A39-B48C-6C326F32B696}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{463DC0A0-B1CB-4A39-B48C-6C326F32B696}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{463DC0A0-B1CB-4A39-B48C-6C326F32B696}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

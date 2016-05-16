@@ -2,7 +2,7 @@
 
 namespace _02_Enter_Numbers_2
 {
-    class Program
+    class EnterNumbers2
     {
         static string exceptionMessage = "Exception";
 
