@@ -6,7 +6,7 @@ using System.Text;
 
 namespace _01_Odd_Lines
 {
-    class Program
+    class OddLines
     {
         static void Main()
         {
