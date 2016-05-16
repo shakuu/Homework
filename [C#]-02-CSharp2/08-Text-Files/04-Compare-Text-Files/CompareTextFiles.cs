@@ -7,7 +7,7 @@ using System.IO;
 
 namespace _04_Compare_Text_Files
 {
-    class Program
+    class CompareTextFiles
     {
         static void Main()
         {

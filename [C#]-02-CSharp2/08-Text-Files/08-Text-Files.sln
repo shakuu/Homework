@@ -11,6 +11,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "03-Line-Numbers", "03-Line-
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "04-Compare-Text-Files", "04-Compare-Text-Files\04-Compare-Text-Files.csproj", "{6C39FF7F-373F-4C38-877C-E8FC0FCE0CF5}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "05-Maximal-Area-Sum", "05-Maximal-Area-Sum\05-Maximal-Area-Sum.csproj", "{B24B0E2C-ABF0-497D-BF14-5C45E72790D8}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "02-Maximal-Sum-2-Line-By-Line", "..\02-Multidimensional-Arrays\02-Maximal-Sum-2-Line-By-Line\02-Maximal-Sum-2-Line-By-Line.csproj", "{1A4FE454-A148-4719-AF70-C914B970F761}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -33,6 +37,14 @@ Global
 		{6C39FF7F-373F-4C38-877C-E8FC0FCE0CF5}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{6C39FF7F-373F-4C38-877C-E8FC0FCE0CF5}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{6C39FF7F-373F-4C38-877C-E8FC0FCE0CF5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B24B0E2C-ABF0-497D-BF14-5C45E72790D8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B24B0E2C-ABF0-497D-BF14-5C45E72790D8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B24B0E2C-ABF0-497D-BF14-5C45E72790D8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B24B0E2C-ABF0-497D-BF14-5C45E72790D8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1A4FE454-A148-4719-AF70-C914B970F761}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1A4FE454-A148-4719-AF70-C914B970F761}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1A4FE454-A148-4719-AF70-C914B970F761}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1A4FE454-A148-4719-AF70-C914B970F761}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
