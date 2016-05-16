@@ -7,7 +7,7 @@ using System.IO;
 
 namespace _06_Save_Sorted_Names
 {
-    class Program
+    class SaveSortedNames
     {
         static void Main()
         {
