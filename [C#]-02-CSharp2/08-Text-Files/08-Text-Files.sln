@@ -9,6 +9,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "02-Concatenate-Text-Files",
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "03-Line-Numbers", "03-Line-Numbers\03-Line-Numbers.csproj", "{723C0B52-B980-4EF1-B787-E9D2CD668E30}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "04-Compare-Text-Files", "04-Compare-Text-Files\04-Compare-Text-Files.csproj", "{6C39FF7F-373F-4C38-877C-E8FC0FCE0CF5}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -27,6 +29,10 @@ Global
 		{723C0B52-B980-4EF1-B787-E9D2CD668E30}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{723C0B52-B980-4EF1-B787-E9D2CD668E30}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{723C0B52-B980-4EF1-B787-E9D2CD668E30}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6C39FF7F-373F-4C38-877C-E8FC0FCE0CF5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6C39FF7F-373F-4C38-877C-E8FC0FCE0CF5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6C39FF7F-373F-4C38-877C-E8FC0FCE0CF5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6C39FF7F-373F-4C38-877C-E8FC0FCE0CF5}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
