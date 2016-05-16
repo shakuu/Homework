@@ -15,6 +15,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "05-Maximal-Area-Sum", "05-M
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "02-Maximal-Sum-2-Line-By-Line", "..\02-Multidimensional-Arrays\02-Maximal-Sum-2-Line-By-Line\02-Maximal-Sum-2-Line-By-Line.csproj", "{1A4FE454-A148-4719-AF70-C914B970F761}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "06-Save-Sorted-Names", "06-Save-Sorted-Names\06-Save-Sorted-Names.csproj", "{70656436-8A46-4874-BDE6-784C763915F6}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -45,6 +47,10 @@ Global
 		{1A4FE454-A148-4719-AF70-C914B970F761}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{1A4FE454-A148-4719-AF70-C914B970F761}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{1A4FE454-A148-4719-AF70-C914B970F761}.Release|Any CPU.Build.0 = Release|Any CPU
+		{70656436-8A46-4874-BDE6-784C763915F6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{70656436-8A46-4874-BDE6-784C763915F6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{70656436-8A46-4874-BDE6-784C763915F6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{70656436-8A46-4874-BDE6-784C763915F6}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

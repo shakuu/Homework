@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 using System.IO;
 namespace _05_Maximal_Area_Sum
 {
-    class Program
+    class MaximalAreaSum
     {
         static int[][] tempMatrix;
         static int areaSize;
