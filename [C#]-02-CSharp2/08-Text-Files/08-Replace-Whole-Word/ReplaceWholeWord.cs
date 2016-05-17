@@ -42,7 +42,7 @@ namespace _08_Replace_Whole_Word
 
                 curLine = reader.ReadLine();
             }
-
+            
             reader.Close();
             writer.Close();
 
