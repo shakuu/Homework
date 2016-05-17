@@ -7,7 +7,7 @@ using System.IO;
 
 namespace _10_Extract_Text_From_XML
 {
-    class Program
+    class ExtractTextFromXML
     {
         static char tagOpen = '<';
         static char tagClose = '>';
@@ -98,8 +98,6 @@ namespace _10_Extract_Text_From_XML
                     toReturn.Append(curLine[curElement]);
                     continue;
                 }
-
-                
             }
 
             return toReturn.ToString();
