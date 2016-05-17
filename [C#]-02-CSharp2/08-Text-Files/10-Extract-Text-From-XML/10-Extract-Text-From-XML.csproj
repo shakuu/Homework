@@ -4,11 +4,11 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{C17C5925-5AC1-474B-9F12-0F8057C4D538}</ProjectGuid>
+    <ProjectGuid>{A25B5904-6594-4D28-AAAE-1144024BD397}</ProjectGuid>
     <OutputType>Exe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>_09_Delete_Odd_Lines_2</RootNamespace>
-    <AssemblyName>09-Delete-Odd-Lines-2</AssemblyName>
+    <RootNamespace>_10_Extract_Text_From_XML</RootNamespace>
+    <AssemblyName>10-Extract-Text-From-XML</AssemblyName>
     <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
@@ -43,7 +43,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="DeleteOddLines2files.cs" />
+    <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

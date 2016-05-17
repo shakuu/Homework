@@ -7,7 +7,7 @@ using System.IO;
 
 namespace _09_Delete_Odd_Lines
 {
-    class Program
+    class DeleteOddLinesweirdstuff
     {
         static void Main()
         {

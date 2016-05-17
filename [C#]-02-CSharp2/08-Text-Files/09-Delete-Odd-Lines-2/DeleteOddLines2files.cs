@@ -8,7 +8,7 @@ using System.IO;
 
 namespace _09_Delete_Odd_Lines_2
 {
-    class Program
+    class DeleteOddLines2files
     {
         static void Main()
         {
