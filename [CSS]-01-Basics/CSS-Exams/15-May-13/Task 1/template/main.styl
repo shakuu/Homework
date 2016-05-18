@@ -1,0 +1,89 @@
+clearfix()
+  &:after
+    display: block;
+    clear: both;
+    content: ""
+
+def-font()
+  font-family: 'Times New Roman'
+  font-size: 16px
+  color #000000
+
+li-style()
+  font-weight: bold
+  border:4px solid black
+  background-color: white
+  border-top-left-radius: 15px
+  border-right none
+  border-top-width: 3px
+  padding 10px 15px 10px 15px
+  margin-right: -5px
+
+preview-style()
+  position absolute
+  top 44px
+  left 2px
+  background-color: #CCCCCC
+  padding 15px 20px 20px 15px
+  width 633px
+  height 270px
+  border: 4px solid black
+  border-top none
+  box-sizing: border-box;
+  vertical-align: middle;
+  text-align: center;
+
+img-style()
+  padding: 4px
+  background-color: white
+  border-radius: 5px
+  width: 68%
+  float: left;
+
+skills-style()
+  display: list-item;
+  text-align: center;
+  def-font()
+  font-size: 20px
+  font-weight: normal;
+  margin-top: 41px
+  letter-spacing: 0.03em
+
+body, div, ul, li, span, img
+  margin 0
+  padding 0
+
+body
+  def-font()
+  & div#root
+    & ul.avengers
+      & > li.avenger
+        display: inline-block;
+        clearfix()
+        li-style()
+        & span.name
+          float left
+        & div.preview
+          display: none;
+          preview-style()
+          & img
+            img-style()
+          & ul.skills
+            list-style: none
+            margin-left: 4px
+            & li
+              skills-style()
+            & li:first-letter
+              text-transform: uppercase;
+        & div.preview *
+          display: inline-block;
+      & li.avenger:last-child
+        border-right: 3px solid black
+      & li.avenger:hover
+        background-color: #CCCCCC
+        border-bottom: none
+        margin-bottom 4px
+      & li.avenger:hover > span.name
+        text-decoration: underline;
+      & li.avenger:hover > div.preview
+        display: block;

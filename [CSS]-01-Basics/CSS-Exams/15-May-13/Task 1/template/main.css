@@ -1,0 +1,90 @@
+body,
+div,
+ul,
+li,
+span,
+img {
+  margin: 0;
+  padding: 0;
+}
+body {
+  font-family: 'Times New Roman';
+  font-size: 16px;
+  color: #000;
+}
+body div#root ul.avengers > li.avenger {
+  display: inline-block;
+  font-weight: bold;
+  border: 4px solid #000;
+  background-color: #fff;
+  border-top-left-radius: 15px;
+  border-right: none;
+  border-top-width: 3px;
+  padding: 10px 15px 10px 15px;
+  margin-right: -5px;
+}
+body div#root ul.avengers > li.avenger:after {
+  display: block;
+  clear: both;
+  content: "";
+}
+body div#root ul.avengers > li.avenger span.name {
+  float: left;
+}
+body div#root ul.avengers > li.avenger div.preview {
+  display: none;
+  position: absolute;
+  top: 44px;
+  left: 2px;
+  background-color: #ccc;
+  padding: 15px 20px 20px 15px;
+  width: 633px;
+  height: 270px;
+  border: 4px solid #000;
+  border-top: none;
+  box-sizing: border-box;
+  vertical-align: middle;
+  text-align: center;
+}
+body div#root ul.avengers > li.avenger div.preview img {
+  padding: 4px;
+  background-color: #fff;
+  border-radius: 5px;
+  width: 68%;
+  float: left;
+}
+body div#root ul.avengers > li.avenger div.preview ul.skills {
+  list-style: none;
+  margin-left: 4px;
+}
+body div#root ul.avengers > li.avenger div.preview ul.skills li {
+  display: list-item;
+  text-align: center;
+  font-family: 'Times New Roman';
+  font-size: 16px;
+  color: #000;
+  font-size: 20px;
+  font-weight: normal;
+  margin-top: 41px;
+  letter-spacing: 0.03em;
+}
+body div#root ul.avengers > li.avenger div.preview ul.skills li:first-letter {
+  text-transform: uppercase;
+}
+body div#root ul.avengers > li.avenger div.preview * {
+  display: inline-block;
+}
+body div#root ul.avengers li.avenger:last-child {
+  border-right: 3px solid #000;
+}
+body div#root ul.avengers li.avenger:hover {
+  background-color: #ccc;
+  border-bottom: none;
+  margin-bottom: 4px;
+}
+body div#root ul.avengers li.avenger:hover > span.name {
+  text-decoration: underline;
+}
+body div#root ul.avengers li.avenger:hover > div.preview {
+  display: block;
+}
