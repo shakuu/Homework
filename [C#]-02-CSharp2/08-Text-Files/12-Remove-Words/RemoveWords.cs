@@ -71,16 +71,20 @@ namespace _12_Remove_Words
 
                     // Check if the word is surrounded by separators
                     // First word in the string.
-                    if (curWordIndex == 0 &&
-                        separators.Contains(toParseLine[curWordIndex + word.Length]))
+                    if (curWordIndex == 0)
                     {
-                        toRemove = true;
+                        if (separators.Contains(toParseLine[curWordIndex + word.Length]))
+                        {
+                            toRemove = true;
+                        }
                     }
                     // Last word in the string.
-                    else if (curWordIndex + word.Length == toParseLine.Length &&
-                             separators.Contains(toParseLine[curWordIndex - 1]))
+                    else if (curWordIndex + word.Length == toParseLine.Length)
                     {
-                        toRemove = true;
+                        if (separators.Contains(toParseLine[curWordIndex - 1]))
+                        {
+                            toRemove = true;
+                        }
                     }
                     else if (separators.Contains(toParseLine[curWordIndex - 1]) &&
                              separators.Contains(toParseLine[curWordIndex + word.Length]))
@@ -105,10 +109,7 @@ namespace _12_Remove_Words
                     curWordIndex = toParseLine.IndexOf(word, ++curWordIndex);
                 }
             }
-
-            // Remove unnecessary empty spaces
-            toParseLine = toParseLine.Replace("  ", " ");
-
+            
             return toParseLine.Trim();
         }
 
@@ -149,7 +150,8 @@ namespace _12_Remove_Words
             // Create File if it does not exist.
             if (!File.Exists(filePath))
             {
-                File.Create(filePath, 32, FileOptions.None);
+                var fileCreateNew = File.Create(filePath, 32, FileOptions.None);
+                fileCreateNew.Close(); // release the file to be used 
             }
 
             try
