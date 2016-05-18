@@ -1,0 +1,85 @@
+body,
+div,
+ul,
+li,
+span,
+img {
+  margin: 0;
+  padding: 0;
+}
+body {
+  width: 635px;
+}
+body div#root ul.avengers li.avenger:first-child {
+  border-left-width: 4px;
+}
+body div#root ul.avengers li.avenger:nth-child(3) {
+  padding-left: 15px;
+}
+body div#root ul.avengers li.avenger:last-child {
+  border-right: 3px solid #000;
+}
+body div#root ul.avengers li.avenger:hover {
+  text-decoration: underline;
+  background-color: #ccc;
+  border-bottom: none;
+}
+body div#root ul.avengers li.avenger {
+  border: 3px solid #000;
+  display: inline-block;
+  padding: 10px 15px 10px 15px;
+  border-top-left-radius: 15px;
+  border-right: none;
+  margin-right: -4px;
+  border-bottom-width: 4px;
+  font-weight: bold;
+}
+body div#root ul.avengers li.avenger span.name {
+  font-size: 16px;
+  font-family: "Times New Roman";
+  color: #000;
+}
+body div#root ul.avengers li.avenger:hover div.preview {
+  display: block;
+}
+body div#root ul.avengers li.avenger div.preview {
+  display: none;
+  position: absolute;
+  left: 0;
+  top: 44px;
+  border: 3px solid #000;
+  border-top: none;
+  background-color: #ccc;
+  margin-left: 2px;
+  width: 595px;
+  height: 240px;
+  padding: 15px 15px 10px 15px;
+}
+body div#root ul.avengers li.avenger div.preview:after {
+  display: block;
+  clear: both;
+  content: "";
+}
+body div#root ul.avengers li.avenger div.preview img {
+  float: left;
+  width: 400px;
+  padding: 5px;
+  background-color: #fff;
+  border-radius: 5px;
+}
+body div#root ul.avengers li.avenger div.preview ul.skills {
+  padding-top: 0px;
+  text-align: center;
+}
+body div#root ul.avengers li.avenger div.preview ul.skills li:first-letter {
+  text-transform: uppercase;
+}
+body div#root ul.avengers li.avenger div.preview ul.skills li {
+  margin-top: 40px;
+  margin-bottom: 5px;
+  font-size: 20px;
+  line-height: 24px;
+}
+body div#root ul.avengers li.avenger div.preview ul.skills li:hover {
+  text-decoration: underline;
+}

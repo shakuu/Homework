@@ -1,0 +1,83 @@
+clearfix()
+  &:after
+    display: block;
+    clear: both;
+    content: ""
+
+def-font-size = 16px
+def-font-family = "Times New Roman"
+def-text-color = #000000
+
+body, div, ul, li, span, img
+  margin: 0
+  padding 0
+
+def-text-style()
+  font-size: def-font-size
+  font-family: def-font-family
+  color: def-text-color
+
+avenger-style()
+  border: 3px solid black
+  display: inline-block;
+  padding 10px 15px 10px 15px
+  border-top-left-radius: 15px
+  border-right: none
+  margin-right: -4px
+  border-bottom-width: 4px
+
+preview-style()
+  position: absolute;
+  left 0
+  top 44px
+  border 3px solid black
+  border-top none
+  background-color: #CCCCCC
+  margin-left: 2px
+  width 595px
+  height: 240px
+  padding 15px 15px 10px 15px
+
+body
+  width 635px
+  & div#root
+    & ul.avengers
+      & li.avenger:first-child
+        border-left-width: 4px
+      & li.avenger:nth-child(3)
+        padding-left: 15px
+      & li.avenger:last-child
+        border-right: 3px solid black
+      & li.avenger:hover
+        text-decoration: underline;
+        background-color: #CCCCCC
+        border-bottom none
+      & li.avenger
+        avenger-style()
+        font-weight: bold
+        & span.name
+          def-text-style()
+        &:hover div.preview
+          display: block
+        & div.preview
+          display: none;
+          preview-style()
+          clearfix()
+          & img
+            float left
+            width 400px
+            padding 5px
+            background-color white
+            border-radius: 5px
+          & ul.skills
+            padding-top 0px
+            text-align: center;
+            & li:first-letter
+              text-transform: uppercase;
+            & li
+              margin-top: 40px
+              margin-bottom: 5px
+              font-size: 20px
+              line-height: 24px
+              &:hover
+                text-decoration: underline;
