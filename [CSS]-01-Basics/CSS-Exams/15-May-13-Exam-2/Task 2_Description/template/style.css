@@ -1,10 +1,80 @@
-html, body {
-    font-family: 'Segoe UI', 'Segoe UI Web', 'Segoe UI Symbol', 'Helvetica Neue', 'BBAlpha Sans', 'S60 Sans', Arial, sans-serif;
-    background-color: #FFFFFF;
-    padding: 0;
-    margin: 0 auto;
-    width: 1000px;
-    font-weight: 400;
-    -webkit-text-stroke-width: 0;
-    -webkit-font-smoothing: subpixel-antialiased;
+html,
+body {
+  font-family: 'Segoe UI', 'Segoe UI Web', 'Segoe UI Symbol', 'Helvetica Neue', 'BBAlpha Sans', 'S60 Sans', Arial, sans-serif;
+  background-color: #fff;
+  padding: 0;
+  margin: 0;
+  width: 1000px;
+  font-weight: 400;
+  -webkit-text-stroke-width: 0;
+  -webkit-font-smoothing: subpixel-antialiased;
+}
+body,
+header,
+div,
+input,
+ul,
+li,
+a,
+main,
+h1,
+img,
+p,
+b,
+footer {
+  margin: 0;
+  padding: 0;
+}
+body {
+  margin-left: 12px;
+}
+body header#header * {
+  display: inline-block;
+}
+body header#header {
+  background-color: #077cc6;
+  text-align: right;
+}
+body header#header:after {
+  content: "";
+  display: block;
+  clear: both;
+}
+body header#header div#logo {
+  float: left;
+  background-image: url("./images/logo.png");
+  width: 195px;
+  height: 35px;
+}
+body header#header div#search {
+  float: right;
+  margin-right: 5px;
+  margin-top: 4px;
+}
+body header#header div#search input {
+  height: 23px;
+  width: 200px;
+}
+body header#header ul#menu {
+  list-style: none;
+  margin-right: 15px;
+}
+body header#header ul#menu li {
+  margin-top: 6px;
+  margin-left: 11px;
+}
+body header#header ul#menu li a {
+  text-decoration: none;
+  font-size: 13px;
+  color: #e0e0e0;
+  font-weight: bold;
+}
+body header#header ul#menu li a:first-letter {
+  text-transform: uppercase;
+}
+body main#main {
+  color: #000;
+}
+body footer#footer {
+  color: #000;
 }
