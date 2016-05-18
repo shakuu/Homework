@@ -1,0 +1,77 @@
+clearfix()
+  &:after
+    content: ""
+    display: block;
+    clear: both;
+
+
+def-font-size = 14px
+def-font-family = "Arial"
+
+color1 = #205D99
+color2 = #79AEE3
+color3 = #E4E5E1
+
+def-width = 500px
+def-height = 632px
+
+label-style()
+  display: inline-block;
+  height: 40px
+  font-size: 20px
+  margin-top: 15px
+  font-family: def-font-family
+  color: color3
+  letter-spacing: -0.01em
+  font-weight: bold
+
+label-style-checked()
+  label-style()
+  font-weight: bold
+  font-size: 24px
+  color color2
+  letter-spacing: 0
+
+body, div, ul, li, input, label, img, p
+  margin 0
+  padding 0
+
+
+body
+  & div#root
+    background-color: color2
+    width  def-width
+    height def-height
+    & ul.avengers
+      list-style none
+      text-align: center;
+      & li
+        margin-bottom: 2px
+        background-color: color1
+        & input
+          display none
+        & label
+          label-style()
+        & div.preview
+          clearfix()
+          padding: 15px 15px 15px 15px
+          display: none
+          height 260px
+          & img
+            margin-top: 2px
+            border: 15px solid color2
+            border-radius: 15px
+            width 200px
+            float left
+            margin-right: 10px
+            margin-bottom: 10px
+          & p
+            margin-top: 3px
+            font-family: def-font-family
+            color color3
+            text-align: justify;
+            font-size: def-font-size
+        & input:checked + label
+          label-style-checked()
+        & input:checked ~ div.preview
+          display: block;

@@ -1,0 +1,80 @@
+body,
+div,
+ul,
+li,
+input,
+label,
+img,
+p {
+  margin: 0;
+  padding: 0;
+}
+body div#root {
+  background-color: #79aee3;
+  width: 500px;
+  height: 632px;
+}
+body div#root ul.avengers {
+  list-style: none;
+  text-align: center;
+}
+body div#root ul.avengers li {
+  margin-bottom: 2px;
+  background-color: #205d99;
+}
+body div#root ul.avengers li input {
+  display: none;
+}
+body div#root ul.avengers li label {
+  display: inline-block;
+  height: 40px;
+  font-size: 20px;
+  margin-top: 15px;
+  font-family: "Arial";
+  color: #e4e5e1;
+  letter-spacing: -0.01em;
+  font-weight: bold;
+}
+body div#root ul.avengers li div.preview {
+  padding: 15px 15px 15px 15px;
+  display: none;
+  height: 260px;
+}
+body div#root ul.avengers li div.preview:after {
+  content: "";
+  display: block;
+  clear: both;
+}
+body div#root ul.avengers li div.preview img {
+  margin-top: 2px;
+  border: 15px solid #79aee3;
+  border-radius: 15px;
+  width: 200px;
+  float: left;
+  margin-right: 10px;
+  margin-bottom: 10px;
+}
+body div#root ul.avengers li div.preview p {
+  margin-top: 3px;
+  font-family: "Arial";
+  color: #e4e5e1;
+  text-align: justify;
+  font-size: 14px;
+}
+body div#root ul.avengers li input:checked + label {
+  display: inline-block;
+  height: 40px;
+  font-size: 20px;
+  margin-top: 15px;
+  font-family: "Arial";
+  color: #e4e5e1;
+  letter-spacing: -0.01em;
+  font-weight: bold;
+  font-weight: bold;
+  font-size: 24px;
+  color: #79aee3;
+  letter-spacing: 0;
+}
+body div#root ul.avengers li input:checked ~ div.preview {
+  display: block;
+}
