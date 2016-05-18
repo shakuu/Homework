@@ -1,0 +1,120 @@
+html, body
+  font-family: 'Segoe UI', 'Segoe UI Web', 'Segoe UI Symbol','Helvetica Neue', 'BBAlpha Sans', 'S60 Sans', Arial, sans-serif;
+  background-color: #FFFFFF;
+  padding: 0;
+  margin: 0;
+  width: 1000px;
+  font-weight: 400;
+  -webkit-text-stroke-width: 0;
+  -webkit-font-smoothing: subpixel-antialiased;
+
+color1 = #0078D7
+color2 = #333333
+color3 = #505050
+color4 = #CCCCCC
+
+font-size-header= 22px
+font-size-main-h1= 30px
+font-size-main-h2= 24px
+font-size-main-text= 16px
+font-size-footer= 14px
+
+img-logo = url(./images/logo.png)
+
+clearfix()
+  &:after
+    display: block;
+    clear: both;
+    content: ""
+logo-style()
+  width: 175px
+  height: 65px
+separator-style()
+  background-color: color2
+  height: 45px
+  width: 5px
+  margin-top: 10px
+  margin-left: 0px
+header-title()
+  color color2
+  margin-left: 10px
+  font-size font-size-header
+  font-weight: bold;
+  margin-top: 15px
+search-style()
+  background-color: color1
+  height: 65px
+  width: 100%
+  text-align: center;
+body, header, div, input, main, h1, h2, p, footer, ul, li, a
+  padding: 0
+  margin: 0
+
+body
+  margin-left: 12px
+  & header#header
+    & div#shellHeader *
+      float: left;
+    & div#shellHeader
+      clearfix()
+      & div#logo
+        background-image: img-logo
+        logo-style()
+      & div.separator
+        separator-style()
+      & div#headerTitle
+        header-title()
+    & div#search
+      search-style()
+      & input.searchInput
+        width: 400px
+        margin-top: 15px
+        height: 35px
+        padding-left: 1px
+  & main#main
+    padding 15px
+    & h1
+      font-size: font-size-main-h1
+      color color2
+    & h2
+      font-size: font-size-main-h2
+      font-weight: normal;
+      color color2
+    & hr
+      margin-top: 8px
+      height: 4px
+      background-color: color2
+      border-color: color2
+    & p
+      margin-top: 17px
+      color color2
+      font-size: font-size-main-text
+      text-align: justify;
+      line-height: 21px
+  & footer#footer *
+    display: inline-block;
+    font-size: font-size-footer
+    color color4
+  & footer#footer
+    clearfix()
+    background-color: color3
+    text-align: right
+    height: 60px
+    margin-top: 15px
+    & ul#footerMenu
+      list-style: none;
+      margin-right: 17px
+      margin-top: 20px
+      & li
+        margin-left: 12px
+        & a
+          text-decoration: none
+    & div#language
+      margin-left: 20px
+      margin-top: 20px
+      float left
+    & div#copyright
+      font-weight: bold
+      float: right;
+      margin-right: 20px
+      margin-top: 20px
