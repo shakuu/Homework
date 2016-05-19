@@ -1,0 +1,93 @@
+
+// by definition
+html, body
+  font-family: Arial, Helvetica, sans-serif
+
+#wrapper
+  width: 960px
+  margin 0 auto
+
+.clear
+  clear both
+
+font-size-def = 14px
+font-size-title = 34px
+font-size-menu-item = 18px
+font-size-content-title = 30px
+// All other pixel sizes will be
+// divisible by 5 or exactly 8px.
+img-header-bg = url(./images/header-bg.png)
+
+color-header-border = #39C518
+color-header-sub = #C0C0C0
+color-menu-text = #CC6600
+color-search = #59770E
+color-content-text = #555555
+color-borders = #A9A9A9
+color-header = #EEFFEE
+
+clearfix()
+  &:after
+    content: ""
+    display: block
+    clear both
+
+*
+  margin: 0
+  padding 0
+  font-size: font-size-def
+
+body
+  margin-left: 5px
+  & div#wrapper
+    & header
+      background-image: img-header-bg
+      height: 97px
+      clearfix()
+      & div#title
+        float left
+        & h1
+          margin-top: 25px
+          margin-bottom 5px
+          color color-header
+          font-size: font-size-title
+        & h2
+          color color-header-sub
+      & #nav
+        margin-top:45px
+        margin-right: 30px
+        float right
+        & ul
+          list-style: none
+          & li
+            font-weight: normal;
+            margin-left: 20px
+            display: inline-block;
+            color color-menu-text
+            font-size: font-size-menu-item
+    & div#line
+      border-bottom 5px solid color-header-border
+    & div#content
+      float left
+      width: 760px
+      & h1
+        margin-top: 25px
+        margin-bottom: 30px
+        color color-search
+        font-size: font-size-content-title
+      & p
+        color color-content-text
+        font-size: font-size-def
+        margin-bottom: 20px
+    & aside#aside
+      margin-top: 20px
+      margin-bottom 10px
+      color color-search
+      font-weight: bold
+      font-size font-size-menu-item
+      & form
+        padding-left: 2px
+        & input
+          margin-top: 10px
+          width 153px
+          border 1px solid color-borders
