@@ -6,34 +6,48 @@
 body {
   font-size: 18px;
   font-family: Arial;
+  margin: 0;
 }
 #root {
   width: 610px;
 }
+body {
+  margin-left: 8px;
+}
 body div#root h1 {
   text-align: center;
   font-style: italic;
+  margin-top: 9px;
+  letter-spacing: -0.03em;
+  margin-bottom: 20px;
 }
 body div#root div.chat-container {
   background: #4ae871;
   background: linear-gradient(to bottom, #4ae871 0%, #4ae871 45%, #f1ffbc 75%, #f1ffbc 100%);
   display: inline-block;
   height: 470px;
-  width: 270px;
+  width: 300px;
   border: 1px solid #ccc;
   border-radius: 5px;
   overflow: hidden;
-  padding: 15px 15px 15px 15px;
+  padding: 15px 0px 15px 0px;
 }
 body div#root div.chat-container h2 {
   text-align: center;
   font-size: 20px;
-  margin-bottom: 50px;
+  margin-top: 8px;
+  margin-bottom: 40px;
+  font-size: 28px;
+  letter-spacing: -0.01em;
+}
+body div#root div.chat-container div.messages ul {
+  padding: 0px 15px 0px 15px;
+  height: 370px;
 }
 body div#root div.chat-container div.messages ul li {
   width: 270px;
   list-style: none;
-  border-bottom: 1px solid #333;
+  border-top: 1px solid #333;
   word-break: break-all;
   margin-bottom: 5px;
 }
@@ -43,8 +57,8 @@ body div#root div.chat-container div.messages ul li.me {
 body div#root div.chat-container div.messages ul li.other {
   text-align: right;
 }
-body div#root div.chat-container div.messages ul li:last-child {
-  border-bottom: none;
+body div#root div.chat-container div.messages ul li:first-child {
+  border-top: none;
 }
 body div#root div.chat-container div.messages ul li strong {
   display: list-item;
@@ -57,12 +71,54 @@ body div#root div.chat-container div.messages ul li span {
   list-style: none;
 }
 body div#root div#me div.sent-message {
-  position: absolute;
-  top: 520px;
-  left: 50px;
+  margin-left: 5px;
+}
+body div#root div#me div.sent-message input {
+  padding-left: 15px;
+  height: 34px;
+  width: 185px;
+  background-color: transparent;
+  border: 1px solid #ccc;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+  color: #ccc;
+  color: #2aa0bd;
+}
+body div#root div#me div.sent-message button {
+  margin-left: 5px;
+  height: 34px;
+  width: 75px;
+  border: 1px solid #ccc;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+  background-color: transparent;
+}
+body div#root div#me div.sent-message button:hover {
+  background: linear-gradient(to bottom, #4ae871 0%, #4ae871 12%, #4de872 15%, #f1ffbc 76%, #f1ffbc 100%);
 }
 body div#root div#other div.sent-message {
-  position: absolute;
-  top: 520px;
-  left: 350px;
+  margin-left: 5px;
+}
+body div#root div#other div.sent-message input {
+  padding-left: 15px;
+  height: 34px;
+  width: 185px;
+  background-color: transparent;
+  border: 1px solid #ccc;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+  color: #ccc;
+  color: #2aa0bd;
+}
+body div#root div#other div.sent-message button {
+  margin-left: 5px;
+  height: 34px;
+  width: 75px;
+  border: 1px solid #ccc;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+  background-color: transparent;
+}
+body div#root div#other div.sent-message button:hover {
+  background: linear-gradient(to bottom, #4ae871 0%, #4ae871 12%, #4de872 15%, #f1ffbc 76%, #f1ffbc 100%);
 }
