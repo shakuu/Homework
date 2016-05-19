@@ -1,0 +1,88 @@
+btn-bg-gradient()
+  background: -webkit-linear-gradient(top, rgb(37, 220, 242) 0%, rgb(92, 173, 231) 65%, rgb(121, 149, 226) 100%);
+  background: -o-linear-gradient(top, rgb(37, 220, 242) 0%, rgb(92, 173, 231) 65%, rgb(121, 149, 226) 100%);
+  background: -ms-linear-gradient(top, rgb(37, 220, 242) 0%, rgb(92, 173, 231) 65%, rgb(121, 149, 226) 100%);
+  background: -moz-linear-gradient(top, rgb(37, 220, 242) 0%, rgb(92, 173, 231) 65%, rgb(121, 149, 226) 100%);
+  background: linear-gradient(to bottom, rgb(37, 220, 242) 0%, rgb(92, 173, 231) 65%, rgb(121, 149, 226) 100%);
+
+content-bg-gradient()
+  background: -webkit-linear-gradient(top, rgb(253, 255, 255) 0%, rgb(196, 231, 245) 62%, rgb(160, 216, 239) 100%);
+  background: -o-linear-gradient(top, rgb(253, 255, 255) 0%, rgb(196, 231, 245) 62%, rgb(160, 216, 239) 100%);
+  background: -ms-linear-gradient(top, rgb(253, 255, 255) 0%, rgb(196, 231, 245) 62%, rgb(160, 216, 239) 100%);
+  background: -moz-linear-gradient(top, rgb(253, 255, 255) 0%, rgb(196, 231, 245) 62%, rgb(160, 216, 239) 100%);
+  background: linear-gradient(to bottom, rgb(253, 255, 255) 0%, rgb(196, 231, 245) 62%, rgb(160, 216, 239) 100%);
+
+
+def-width = 960px
+def-font-family = 'Courier New', Courier, 'Nimbus Mono L', monospace;
+def-font-size = 16px
+
+clearfix()
+  &:after
+    content: ""
+    display: block;
+    clear: both;
+
+*
+  margin 0
+  padding 0
+  font-family: def-font-family
+  font-size: def-font-size
+
+.bold
+  font-weight: bold
+
+a
+  color #0000FF
+
+body
+  & div#wrapper
+    width: def-width
+    margin-left: 7px
+    margin-top: 18px
+    & ul.menu
+      vertical-align: top
+      height 100px
+      list-style: none
+      & > li
+        margin-right: 10px
+        float left;
+        top 20px
+        left 100px
+        &  > a
+          btn-bg-gradient()
+          text-decoration: none
+          padding 10px 22px 10px 21px
+          line-height: 16px
+          border: 1px solid black
+          border-radius: 10px
+        &:hover > a
+            font-size: 24px
+            line-height: 20px
+            padding 10px 45px 10px 45px
+        &:hover > div.content
+          display: block
+        & div.content
+          display none
+          border 1px solid black
+          position absolute
+          z-index: 2
+          margin-left: 20px
+          border-radius: 10px
+          content-bg-gradient()
+          padding 20px 30px 20px 20px
+          & h3
+            text-decoration: underline;
+            margin-bottom: 20px
+          & ul
+            list-style: square;
+            & li
+              & a
+                text-decoration: none;
+                &:hover
+                  text-decoration: underline;
+          & p
+            & a
+              text-decoration: none;
+              &:hover
+                text-decoration: underline;

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<head>
+  <title>CSS Styling Exam - April 2014</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="main.js"></script>
+</head>
+<body>
+  <div id="root">
+    <h1>Welcome to the Chat!</h1>
+    <div id="me" class="chat-container">
+      <h2>Doncho Minkov's chat</h2>
+      <div>
+        <div class="messages">
+          <ul>
+            <li class="me"><strong>by me</strong><span>Hello Ivaylo</span></li>
+            <li class="other"><strong>by Ivaylo Kenov</strong><span>Hi, Doncho!</span></li>
+          </ul>
+        </div>
+        <div class="sent-message">
+          <input placeholder="type here">
+          <button>Send</button>
+        </div>
+      </div>
+    </div>
+    <div id="other" class="chat-container">
+      <h2>Ivaylo Kenov's chat</h2>
+      <div>
+        <div class="messages">
+          <ul>
+            <li class="other"><strong>by Doncho Minkov</strong><span>Hello Ivaylo</span></li>
+            <li class="me"><strong>by me</strong><span>Hi, Doncho!</span></li>
+          </ul>
+        </div>
+        <div class="sent-message">
+          <input placeholder="type here">
+          <button>Send</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>

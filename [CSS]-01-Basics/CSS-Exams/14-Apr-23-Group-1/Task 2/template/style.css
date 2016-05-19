@@ -1,0 +1,81 @@
+* {
+  margin: 0;
+  padding: 0;
+  font-family: 'Courier New', Courier, 'Nimbus Mono L', monospace;
+  font-size: 16px;
+}
+.bold {
+  font-weight: bold;
+}
+a {
+  color: #00f;
+}
+body div#wrapper {
+  width: 960px;
+  margin-left: 7px;
+  margin-top: 18px;
+}
+body div#wrapper ul.menu {
+  vertical-align: top;
+  height: 100px;
+  list-style: none;
+}
+body div#wrapper ul.menu > li {
+  margin-right: 10px;
+  float: left;
+  top: 20px;
+  left: 100px;
+}
+body div#wrapper ul.menu > li > a {
+  background: -webkit-linear-gradient(top, #25dcf2 0%, #5cade7 65%, #7995e2 100%);
+  background: -o-linear-gradient(top, #25dcf2 0%, #5cade7 65%, #7995e2 100%);
+  background: -ms-linear-gradient(top, #25dcf2 0%, #5cade7 65%, #7995e2 100%);
+  background: -moz-linear-gradient(top, #25dcf2 0%, #5cade7 65%, #7995e2 100%);
+  background: linear-gradient(to bottom, #25dcf2 0%, #5cade7 65%, #7995e2 100%);
+  text-decoration: none;
+  padding: 10px 22px 10px 21px;
+  line-height: 16px;
+  border: 1px solid #000;
+  border-radius: 10px;
+}
+body div#wrapper ul.menu > li:hover > a {
+  font-size: 24px;
+  line-height: 20px;
+  padding: 10px 45px 10px 45px;
+}
+body div#wrapper ul.menu > li:hover > div.content {
+  display: block;
+}
+body div#wrapper ul.menu > li div.content {
+  display: none;
+  border: 1px solid #000;
+  position: absolute;
+  z-index: 2;
+  margin-left: 20px;
+  border-radius: 10px;
+  background: -webkit-linear-gradient(top, #fdffff 0%, #c4e7f5 62%, #a0d8ef 100%);
+  background: -o-linear-gradient(top, #fdffff 0%, #c4e7f5 62%, #a0d8ef 100%);
+  background: -ms-linear-gradient(top, #fdffff 0%, #c4e7f5 62%, #a0d8ef 100%);
+  background: -moz-linear-gradient(top, #fdffff 0%, #c4e7f5 62%, #a0d8ef 100%);
+  background: linear-gradient(to bottom, #fdffff 0%, #c4e7f5 62%, #a0d8ef 100%);
+  padding: 20px 30px 20px 20px;
+}
+body div#wrapper ul.menu > li div.content h3 {
+  text-decoration: underline;
+  margin-bottom: 20px;
+}
+body div#wrapper ul.menu > li div.content ul {
+  list-style: square;
+}
+body div#wrapper ul.menu > li div.content ul li a {
+  text-decoration: none;
+}
+body div#wrapper ul.menu > li div.content ul li a:hover {
+  text-decoration: underline;
+}
+body div#wrapper ul.menu > li div.content p a {
+  text-decoration: none;
+}
+body div#wrapper ul.menu > li div.content p a:hover {
+  text-decoration: underline;
+}

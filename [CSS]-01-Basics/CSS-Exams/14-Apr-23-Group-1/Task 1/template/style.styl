@@ -1,0 +1,86 @@
+font-size-title = 16px
+font-size-menu = 14px
+font-size-content-title = 24px
+font-size-content = 14px
+
+header-bg-image = url(./images/header-bg.png)
+
+html, body
+  font-family: "Open Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
+
+#wrapper
+  width 960px
+  margin 0 auto
+
+.clear
+  clear both
+
+clearfix()
+  &:after
+    content: ""
+    display: block;
+    clear: both;
+
+body, div, header, h1, nav, ul, li,a, article, p
+  margin: 0
+  padding: 0
+
+body
+  margin-left: 5px
+  & div#wrapper
+    & > header
+      clearfix()
+      background-image: header-bg-image
+      height: 50px
+      & h1
+        float left
+
+        text-transform: uppercase;
+        font-size: 16px
+        font-weight: bold;
+        margin-left 13px
+        letter-spacing: 0.02em
+        margin-top: 12px
+        padding: 0
+      & nav#nav
+        float right
+        margin-right: 23px
+        margin-top: 12px
+        & ul
+          margin: 0
+          & li
+            margin-left: 15px
+            display: inline-block;
+            font-size: font-size-menu
+    & div#searchBar
+      clearfix()
+      background-color: black
+      height: 35px
+      & div#archives
+        margin-left: 6px
+        margin-top: 5px
+        float: left;
+        color #C6C6C6
+        & a
+          font-size: font-size-content
+          text-decoration: none;
+          color #C6C6C6
+          letter-spacing: -0.04em
+      & div#search
+        float right
+        margin-right: 9px
+        margin-top: 6px
+        & a
+          font-size: font-size-menu
+          text-decoration: none;
+          color #C6C6C6
+    & div#content
+      & h1
+        font-size: font-size-content-title
+        margin-top: 13px
+        letter-spacing: 0.0em
+        margin-bottom: 16px
+      & p
+        font-size: 14px
+        margin-bottom: 14px
+        line-height: 16px
