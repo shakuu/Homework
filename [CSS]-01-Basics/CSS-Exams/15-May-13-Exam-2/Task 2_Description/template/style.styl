@@ -64,6 +64,43 @@ body
         & a:first-letter
           text-transform: uppercase;
   & main#main
-    color black
+    clearfix()
+    padding 15px 15px 15px 15px
+    & h1
+      font-size: font-size-main-h1
+      font-weight: normal;
+      display: inline-block;
+    & img.mainImage
+      float right
+      border none
+    & div.clear
+      height: 15px
+    & p
+      text-align: justify;
+      margin-bottom: 16px
+      font-size: font-size-main
+      & a
+        text-decoration: none;
+        color color2
+      & code
+        color black
+        border 1px solid black
+        font-weight: bold
   & footer#footer
-    color black
+    background-color: color1
+    text-align: center;
+    padding-top: 15px
+    height: 60px - @padding-top
+    & *
+      font-size: font-size-footer
+      font-weight: bold;
+    & div.copyright
+      text-transform: capitalize;
+      color color3
+      text-decoration: underline;
+      & a
+        color color3
+        text-decoration: none;
+        text-transform: capitalize;
+    & div
+      color color3
