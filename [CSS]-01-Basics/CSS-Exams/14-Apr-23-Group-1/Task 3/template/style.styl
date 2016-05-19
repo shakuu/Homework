@@ -1,0 +1,80 @@
+main-bg-gradient()
+  background: #4ae871;
+  background: -moz-linear-gradient(top, #4ae871 0%, #4ae871 45%, #f1ffbc 75%, #f1ffbc 100%);
+  background: -webkit-linear-gradient(top, #4ae871 0%,#4ae871 45%,#f1ffbc 75%,#f1ffbc 100%);
+  background: linear-gradient(to bottom, #4ae871 0%,#4ae871 45%,#f1ffbc 75%,#f1ffbc 100%);
+
+btn-gradient()
+  background: -moz-linear-gradient(top, #4ae871 0%, #4ae871 12%, #4de872 15%, #f1ffbc 76%, #f1ffbc 100%);
+  background: -webkit-linear-gradient(top, #4ae871 0%,#4ae871 12%,#4de872 15%,#f1ffbc 76%,#f1ffbc 100%);
+  background: linear-gradient(to bottom, #4ae871 0%,#4ae871 12%,#4de872 15%,#f1ffbc 76%,#f1ffbc 100%);
+
+clearfix()
+  &:after
+    content: ""
+    display: block;
+    clear: both;
+
+color-def = #2AA0BD
+color-msg-border = #333333
+color-container-border = #CCCCCC
+
+*
+  margin: 0
+  padding: 0
+  color  color-def
+
+body
+  font-size: 18px
+  font-family: Arial
+#root
+  width 610px
+
+body
+  & div#root
+    & h1
+      text-align: center;
+      font-style: italic;
+    & div.chat-container
+      main-bg-gradient()
+      display: inline-block;
+      height: 470px
+      width: 270px
+      border 1px solid color-container-border
+      border-radius: 5px
+      overflow hidden;
+      padding 15px 15px 15px 15px
+      & h2
+        text-align: center;
+        font-size: 20px
+        margin-bottom: 50px
+      & div.messages
+        & ul
+          & li
+            width: 270px
+            list-style: none
+            border-bottom: 1px solid color-msg-border
+            word-break: break-all;
+            margin-bottom: 5px
+            &.me
+              text-align: left;
+            &.other
+              text-align: right;
+            &:last-child
+              border-bottom: none
+            & strong
+              display: list-item;
+              font-style: italic;
+              list-style: none;
+              font-weight: normal;
+            & span
+              display: list-item;
+              list-style: none
+    & div#me div.sent-message
+      position absolute
+      top 520px
+      left 50px
+    & div#other div.sent-message
+      position absolute
+      top 520px
+      left 350px
