@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Globalization;
+using System.Threading;
 
 namespace _05_Parse_Tags_2
 {
@@ -14,11 +16,11 @@ namespace _05_Parse_Tags_2
             var closeTag = "</upcase>";
 
             var toParse = Console.ReadLine();
-
+            
             var openTagIndex = toParse.IndexOf(openTag);
             var closeTagIndex = toParse.IndexOf(closeTag);
 
-            while (openTagIndex >= 0 && 
+            while (openTagIndex >= 0 &&
                    closeTagIndex >= 0)
             {
                 toParse = toParse.Replace(
@@ -28,14 +30,22 @@ namespace _05_Parse_Tags_2
                      toParse.Substring(
                         openTagIndex,
                         closeTagIndex - openTagIndex).ToUpper());
-                
+
+
+                toParse = toParse.Remove(closeTagIndex, closeTag.Length);
+                toParse = toParse.Remove(openTagIndex, openTag.Length);
 
                 openTagIndex = toParse.IndexOf(openTag, ++openTagIndex);
-                closeTagIndex = toParse.IndexOf(closeTag, ++closeTagIndex);
-            }
+                try
+                {
+                    closeTagIndex = toParse.IndexOf(closeTag, ++closeTagIndex);
+                }
+                catch (ArgumentOutOfRangeException)
+                {
+                    closeTagIndex = -1;
+                }
 
-            toParse = toParse.Replace(openTag.ToUpper(), "");
-            toParse = toParse.Replace(closeTag, "");
+            }
 
             Console.WriteLine(toParse);
         }
