@@ -4,7 +4,7 @@ body {
 }
 #wrapper {
   width: 960px;
-  margin: 0 auto;
+  margin: 0;
 }
 .clear {
   clear: both;
@@ -28,15 +28,17 @@ body div#wrapper header:after {
 }
 body div#wrapper header div#title {
   float: left;
+  margin-left: 20px;
 }
 body div#wrapper header div#title h1 {
-  margin-top: 25px;
-  margin-bottom: 5px;
+  margin-top: 20px;
+  margin-bottom: 3px;
   color: #efe;
   font-size: 34px;
 }
 body div#wrapper header div#title h2 {
   color: #c0c0c0;
+  font-weight: normal;
 }
 body div#wrapper header #nav {
   margin-top: 45px;
@@ -47,8 +49,8 @@ body div#wrapper header #nav ul {
   list-style: none;
 }
 body div#wrapper header #nav ul li {
-  font-weight: normal;
-  margin-left: 20px;
+  font-weight: bold;
+  margin-left: 18px;
   display: inline-block;
   color: #c60;
   font-size: 18px;
@@ -61,28 +63,35 @@ body div#wrapper div#content {
   width: 760px;
 }
 body div#wrapper div#content h1 {
-  margin-top: 25px;
-  margin-bottom: 30px;
+  margin-top: 24px;
+  margin-bottom: 20px;
   color: #59770e;
   font-size: 30px;
+  letter-spacing: -0.01em;
 }
 body div#wrapper div#content p {
   color: #555;
   font-size: 14px;
-  margin-bottom: 20px;
+  margin-bottom: 10px;
 }
 body div#wrapper aside#aside {
   margin-top: 20px;
+  margin-left: 0px;
   margin-bottom: 10px;
   color: #59770e;
   font-weight: bold;
-  font-size: 18px;
+  font-size: 14px;
+  text-transform: uppercase;
+}
+body div#wrapper aside#aside hr {
+  margin-top: 8px;
 }
 body div#wrapper aside#aside form {
-  padding-left: 2px;
+  padding-left: 0px;
 }
 body div#wrapper aside#aside form input {
-  margin-top: 10px;
-  width: 153px;
+  margin-top: 8px;
+  width: 155px;
   border: 1px solid #a9a9a9;
+  height: 23px;
 }
