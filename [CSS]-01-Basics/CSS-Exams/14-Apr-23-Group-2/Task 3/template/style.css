@@ -1,7 +1,100 @@
+* {
+  margin: 0;
+  padding: 0; }
+
 body {
   font-size: 14px;
-  font-family: Corbel;
-}
-body #root {
-  width: 350px;
-}
+  font-family: Corbel; }
+  body #root {
+    width: 350px; }
+
+body div#root {
+  margin-left: 5px;
+  margin-top: 5px;
+  border: 3px solid black;
+  border-right: none;
+  border-bottom: none;
+  border-top-left-radius: 10px;
+  height: 290px;
+  width: 375px;
+  padding-left: 25px; }
+  body div#root h1 {
+    line-height: 25px;
+    text-align: center;
+    margin-top: 25px;
+    margin-bottom: 25px; }
+  body div#root div.box {
+    border: 1px solid black;
+    background: #cbf7be;
+    background: -moz-linear-gradient(top, #cbf7be 0%, #cbf7be 14%, #e5d96e 59%, #e5d96e 100%);
+    background: -webkit-linear-gradient(top, #cbf7be 0%, #cbf7be 14%, #e5d96e 59%, #e5d96e 100%);
+    background: linear-gradient(to bottom, #cbf7be 0%, #cbf7be 14%, #e5d96e 59%, #e5d96e 100%);
+    height: 195px;
+    width: 290px;
+    padding-top: 15px;
+    text-align: center; }
+    body div#root div.box::after {
+      content: "";
+      display: block;
+      clear: both; }
+  body div#root div.add-employee label {
+    font-weight: bold; }
+  body div#root div.add-employee input {
+    background: transparent;
+    border-style: solid;
+    border-right-color: #CBF7BE;
+    border-bottom-color: #CBF7BE;
+    border-left-color: #86A37D;
+    border-top-color: #86A37D;
+    border-radius: 5px;
+    height: 35px;
+    width: 160px;
+    color: black; }
+    body div#root div.add-employee input::-webkit-input-placeholder {
+      color: black;
+      text-align: center;
+      font-style: italic; }
+    body div#root div.add-employee input:-moz-placeholder {
+      /* Firefox 18- */
+      color: black;
+      text-align: center;
+      font-style: italic; }
+    body div#root div.add-employee input::-moz-placeholder {
+      /* Firefox 19+ */
+      color: black;
+      text-align: center;
+      font-style: italic; }
+    body div#root div.add-employee input:-ms-input-placeholder {
+      color: black;
+      text-align: center;
+      font-style: italic; }
+  body div#root div.add-employee div.dropdown {
+    vertical-align: middle;
+    background-image: url(./images/down-arrow.png);
+    background-repeat: no-repeat;
+    padding-left: 20px;
+    float: right;
+    clear: right; }
+    body div#root div.add-employee div.dropdown span.chosen {
+      line-height: 10px; }
+    body div#root div.add-employee div.dropdown ul {
+      display: none;
+      position: absolute;
+      margin-left: 200px;
+      list-style: none;
+      background: #cbf7be;
+      background: -moz-linear-gradient(top, #cbf7be 0%, #cbf7be 14%, #e5d96e 59%, #e5d96e 100%);
+      background: -webkit-linear-gradient(top, #cbf7be 0%, #cbf7be 14%, #e5d96e 59%, #e5d96e 100%);
+      background: linear-gradient(to bottom, #cbf7be 0%, #cbf7be 14%, #e5d96e 59%, #e5d96e 100%); }
+      body div#root div.add-employee div.dropdown ul.expanded {
+        display: block; }
+  body div#root div.add-employee button {
+    background: transparent;
+    border-style: solid;
+    border-right-color: #CBF7BE;
+    border-bottom-color: #CBF7BE;
+    border-left-color: #86A37D;
+    border-top-color: #86A37D;
+    border-radius: 5px;
+    height: 25px;
+    width: 255px; }

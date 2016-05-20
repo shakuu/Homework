@@ -1,0 +1,132 @@
+$down-arrow-img: url(./images/down-arrow.png);
+$up-arrow-img: url(./images/up-arrow.png);
+
+$border-bottom-color: #CBF7BE;
+$border-top-color: #86A37D;
+
+@mixin clearfix {
+  &::after{
+    content: "";
+    display: block;
+    clear: both;
+  }
+}
+
+@mixin input-border {
+  background: transparent;
+  border-style: solid;
+  border-right-color: $border-bottom-color;
+  border-bottom-color: $border-bottom-color;
+  border-left-color: $border-top-color;
+  border-top-color: $border-top-color;
+  border-radius: 5px;
+}
+
+@mixin placeholder-style {
+  &::-webkit-input-placeholder {
+    color: black;
+    text-align: center;
+    font-style: italic;
+ }
+  &:-moz-placeholder { /* Firefox 18- */
+    color: black;
+    text-align: center;
+    font-style: italic;
+ }
+  &::-moz-placeholder {  /* Firefox 19+ */
+    color: black;
+    text-align: center;
+    font-style: italic;
+ }
+  &:-ms-input-placeholder {
+    color: black;
+    text-align: center;
+    font-style: italic;
+  }
+}
+
+@mixin bg-gradient {
+  background: #cbf7be;
+  background: -moz-linear-gradient(top, #cbf7be 0%, #cbf7be 14%, #e5d96e 59%, #e5d96e 100%);
+  background: -webkit-linear-gradient(top, #cbf7be 0%,#cbf7be 14%,#e5d96e 59%,#e5d96e 100%);
+  background: linear-gradient(to bottom, #cbf7be 0%,#cbf7be 14%,#e5d96e 59%,#e5d96e 100%);
+}
+*{
+  margin: 0;
+  padding: 0;
+}
+
+body{
+  font-size: 14px;
+  font-family: Corbel;
+  #root{
+    width: 350px;
+  }
+}
+
+body{
+  div#root{
+    margin-left: 5px;
+    margin-top: 5px;
+    border: 3px solid black;
+    border-right: none;
+    border-bottom: none;
+    border-top-left-radius: 10px;
+    height: 290px;
+    width: 375px;
+    padding-left: 25px;
+    h1{
+      line-height: 25px;
+      text-align: center;
+      margin-top: 25px;
+      margin-bottom: 25px;
+    }
+    div.box{
+      border: 1px solid black;
+      @include bg-gradient;
+      height: 195px;
+      width: 290px;
+      padding-top: 15px;
+      @include clearfix;
+      text-align: center;
+    }
+    div.add-employee{
+      label{
+        font-weight: bold;
+      }
+      input{
+        @include input-border;
+        height: 35px;
+        width: 160px;
+        color: black;
+        @include placeholder-style;
+      }
+      div.dropdown{
+        vertical-align: middle;
+        background-image: $down-arrow-img;
+        background-repeat: no-repeat;
+        padding-left: 20px;
+        float: right;
+        clear: right;
+        span.chosen{
+          line-height: 10px;
+        }
+        ul{
+          display: none;
+          position: absolute;
+          margin-left: 200px;
+          list-style: none;
+          @include bg-gradient;
+          &.expanded{
+            display: block;
+          }
+        }
+      }
+      button{
+        @include input-border;
+        height: 25px;
+        width: 255px;
+      }
+    }
+  }
+}
