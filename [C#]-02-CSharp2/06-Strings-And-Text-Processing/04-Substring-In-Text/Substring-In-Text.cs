@@ -8,6 +8,8 @@ namespace _04_Substring_In_Text
 {
     class Program
     {
+        // TODO: 0/ 100
+
         static void Main()
         {
             // Get Input

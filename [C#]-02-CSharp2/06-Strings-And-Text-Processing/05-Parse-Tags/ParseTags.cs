@@ -6,6 +6,8 @@ namespace _05_Parse_Tags
     {
         static void Main()
         {
+            // TODO: 30/ 100
+
             // Given : tags
             var openTag = "<upcase>";
             var closeTag = "</upcase>";
@@ -16,7 +18,8 @@ namespace _05_Parse_Tags
                      curIndex < toParse.Length;
                      curIndex++)
             {
-                if (toParse.IndexOf(openTag, curIndex) < 0)
+                if (toParse.IndexOf(openTag, curIndex) < 0 ||
+                    toParse.IndexOf(closeTag, curIndex) < 0)
                 {
                     break;
                 }

@@ -8,6 +8,9 @@ namespace _03_Correct_Brackets
         {
             var toCheck = Console.ReadLine();
 
+            var win = "Correct";
+            var notwin = "Incorrect";
+
             // Count opening and closing brackets.
             var openBrackets = 0;
             var closeBrackets = 0;
@@ -32,7 +35,14 @@ namespace _03_Correct_Brackets
             // Check if each Opening Bracket has a matching 
             // closing bracket - regardless of whether the 
             // expression is correct.
-            Console.WriteLine(openBrackets == closeBrackets);
+            if (openBrackets==closeBrackets)
+            {
+                Console.WriteLine(win);
+            }
+            else
+            {
+                Console.WriteLine(notwin);
+            }
         }
     }
 }

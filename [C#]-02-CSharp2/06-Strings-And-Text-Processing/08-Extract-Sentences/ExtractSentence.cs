@@ -8,8 +8,10 @@ namespace _08_Extract_Sentences
     {
         static void Main()
         {
+            // TODO: 30/ 100
+
             // Given Sentence Separator : DOT .
-            var Separator = '.';
+            var Separator = ".!?".ToCharArray();
 
             // Options:
             // .Split into array -> easier
@@ -17,7 +19,7 @@ namespace _08_Extract_Sentences
 
             // Alternatively can split each
             // sentence into words. 
-            var wordToFind = "in";    //Console.ReadLine();
+            var wordToFind = Console.ReadLine();
 
             // Each separate word is surrounded
             // by empty spaces.
