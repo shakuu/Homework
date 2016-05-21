@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace _06_String_Length_4
 {
-    class Program
+    class ConvertEscapedSymbolsToChars
     {
         static Dictionary<string,string> EscSeqDicitonary = 
             new Dictionary<string, string>()

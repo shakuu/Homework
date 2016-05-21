@@ -11,7 +11,7 @@ namespace _08_Extract_Sentences
             // TODO: 30/ 100
 
             // Given Sentence Separator : DOT .
-            var Separator = ".!?".ToCharArray();
+            var Separator = ".".ToCharArray();
 
             // Options:
             // .Split into array -> easier
@@ -48,7 +48,7 @@ namespace _08_Extract_Sentences
                         string.Format(
                             sentenceFormat,
                             sentence,
-                            Separator));
+                            Separator[0]));
                 }
             }
 
