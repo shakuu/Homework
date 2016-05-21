@@ -132,14 +132,12 @@ body{
         padding-left: 20px;
         text-align: left;
         display: inline-block;
-
+        width: 160px;
         &#dd-rank{
-          margin-right: 112px;
-          margin-left: 11px;
+          margin-left: 0px;
         }
         &#dd-title{
-          margin-right: 35px;
-          margin-left: 10px;
+          margin-left: 0px;
         }
         span.chosen{
           line-height: 10px;

@@ -102,7 +102,7 @@ body{
       width: 290px;
       padding-top: 15px;
       @include clearfix;
-      text-align: right;
+      text-align: center;
       border-radius: 5px;
     }
     div.add-employee{
@@ -118,9 +118,6 @@ body{
         width: 160px;
         color: black;
         @include placeholder-style;
-        margin-right: 15px;
-        margin-left: 5px;
-        margin-top: 0px;
       }
       div.expanded{
         background-image: $up-arrow-img;
@@ -132,14 +129,14 @@ body{
         padding-left: 20px;
         text-align: left;
         display: inline-block;
-
+        width: 120px;
         &#dd-rank{
-          margin-right: 112px;
-          margin-left: 11px;
+          margin-left: 0px;
+          text-align: left;
         }
         &#dd-title{
-          margin-right: 35px;
-          margin-left: 10px;
+          margin-left: 0px;
+          text-align: left;
         }
         span.chosen{
           line-height: 10px;

@@ -1,12 +1,16 @@
 * {
   margin: 0;
-  padding: 0; }
+  padding: 0;
+}
 
 body {
   font-size: 14px;
-  font-family: Corbel; }
-  body #root {
-    width: 350px; }
+  font-family: Corbel;
+}
+
+body #root {
+  width: 350px;
+}
 
 body div#root {
   margin-left: 5px;
@@ -17,122 +21,162 @@ body div#root {
   border-top-left-radius: 10px;
   height: 290px;
   width: 375px;
-  padding-left: 25px; }
-  body div#root h1 {
-    line-height: 25px;
-    margin-top: 23px;
-    margin-bottom: 21px;
-    margin-left: 45px;
-    letter-spacing: -0.03rem; }
-  body div#root div.box {
-    border: 1px solid black;
-    background: #cbf7be;
-    background: -moz-linear-gradient(top, #cbf7be 0%, #cbf7be 14%, #e5d96e 59%, #e5d96e 100%);
-    background: -webkit-linear-gradient(top, #cbf7be 0%, #cbf7be 14%, #e5d96e 59%, #e5d96e 100%);
-    background: linear-gradient(to bottom, #cbf7be 0%, #cbf7be 14%, #e5d96e 59%, #e5d96e 100%);
-    height: 180px;
-    width: 290px;
-    padding-top: 15px;
-    text-align: right;
-    border-radius: 5px; }
-    body div#root div.box::after {
-      content: "";
-      display: block;
-      clear: both; }
-  body div#root div.add-employee label {
-    margin-top: 6px;
-    display: inline-block;
-    font-weight: bold;
-    margin-bottom: 5px; }
-  body div#root div.add-employee input {
-    background: transparent;
-    border-style: solid;
-    border-right-color: #CBF7BE;
-    border-bottom-color: #CBF7BE;
-    border-left-color: #86A37D;
-    border-top-color: #86A37D;
-    border-radius: 5px;
-    border-width: 3px;
-    height: 30px;
-    width: 160px;
-    color: black;
-    margin-right: 15px;
-    margin-left: 5px;
-    margin-top: 0px; }
-    body div#root div.add-employee input::-webkit-input-placeholder {
-      color: black;
-      padding-left: 15px;
-      letter-spacing: -0.0rem;
-      font-style: italic; }
-    body div#root div.add-employee input:-moz-placeholder {
-      /* Firefox 18- */
-      color: black;
-      padding-left: 15px;
-      letter-spacing: -0.0rem;
-      font-style: italic; }
-    body div#root div.add-employee input::-moz-placeholder {
-      /* Firefox 19+ */
-      color: black;
-      padding-left: 15px;
-      letter-spacing: -0.0rem;
-      font-style: italic; }
-    body div#root div.add-employee input:-ms-input-placeholder {
-      color: black;
-      padding-left: 15px;
-      letter-spacing: -0.0rem;
-      font-style: italic; }
-  body div#root div.add-employee div.expanded {
-    background-image: url(./images/up-arrow.png); }
-  body div#root div.add-employee div.dropdown {
-    vertical-align: middle;
-    background-image: url(./images/down-arrow.png);
-    background-repeat: no-repeat;
-    padding-left: 20px;
-    text-align: left;
-    display: inline-block; }
-    body div#root div.add-employee div.dropdown#dd-rank {
-      margin-right: 112px;
-      margin-left: 11px; }
-    body div#root div.add-employee div.dropdown#dd-title {
-      margin-right: 35px;
-      margin-left: 10px; }
-    body div#root div.add-employee div.dropdown span.chosen {
-      line-height: 10px; }
-    body div#root div.add-employee div.dropdown ul {
-      display: none;
-      position: absolute;
-      margin-left: 105px;
-      margin-top: -17px;
-      list-style: none;
-      background: #e5d96e;
-      background: -moz-linear-gradient(top, #e5d96e 0%, #e4d96f 11%, #cbf7be 70%, #cbf7be 100%);
-      background: -webkit-linear-gradient(top, #e5d96e 0%, #e4d96f 11%, #cbf7be 70%, #cbf7be 100%);
-      background: linear-gradient(to bottom, #e5d96e 0%, #e4d96f 11%, #cbf7be 70%, #cbf7be 100%);
-      padding-left: 5px;
-      padding-right: 5px;
-      border: 1px solid black;
-      border-radius: 5px;
-      width: 150px;
-      text-align: center; }
-      body div#root div.add-employee div.dropdown ul.expanded {
-        display: block; }
-      body div#root div.add-employee div.dropdown ul li {
-        padding: 5px 5px 5px 5px;
-        border-bottom: 1px solid black; }
-        body div#root div.add-employee div.dropdown ul li:last-child {
-          border-bottom: none; }
-        body div#root div.add-employee div.dropdown ul li:hover {
-          background-color: rgba(0, 0, 0, 0.1); }
-  body div#root div.add-employee button {
-    background: transparent;
-    border-style: solid;
-    border-right-color: #CBF7BE;
-    border-bottom-color: #CBF7BE;
-    border-left-color: #86A37D;
-    border-top-color: #86A37D;
-    border-radius: 5px;
-    border-width: 3px;
-    height: 35px;
-    width: 260px;
-    margin-top: 5px;
-    margin-right: 15px; }
+  padding-left: 25px;
+}
+
+body div#root h1 {
+  line-height: 25px;
+  margin-top: 23px;
+  margin-bottom: 21px;
+  margin-left: 45px;
+  letter-spacing: -0.03rem;
+}
+
+body div#root div.box {
+  border: 1px solid black;
+  background: #cbf7be;
+  background: -moz-linear-gradient(top, #cbf7be 0%, #cbf7be 14%, #e5d96e 59%, #e5d96e 100%);
+  background: -webkit-linear-gradient(top, #cbf7be 0%, #cbf7be 14%, #e5d96e 59%, #e5d96e 100%);
+  background: linear-gradient(to bottom, #cbf7be 0%, #cbf7be 14%, #e5d96e 59%, #e5d96e 100%);
+  height: 180px;
+  width: 290px;
+  padding-top: 15px;
+  text-align: right;
+  border-radius: 5px;
+}
+
+body div#root div.box::after {
+  content: "";
+  display: block;
+  clear: both;
+}
+
+body div#root div.add-employee label {
+  margin-top: 6px;
+  display: inline-block;
+  font-weight: bold;
+  margin-bottom: 5px;
+}
+
+body div#root div.add-employee input {
+  background: transparent;
+  border-style: solid;
+  border-right-color: #CBF7BE;
+  border-bottom-color: #CBF7BE;
+  border-left-color: #86A37D;
+  border-top-color: #86A37D;
+  border-radius: 5px;
+  border-width: 3px;
+  height: 30px;
+  width: 160px;
+  color: black;
+  margin-right: 15px;
+  margin-left: 5px;
+  margin-top: 0px;
+}
+
+body div#root div.add-employee input::-webkit-input-placeholder {
+  color: black;
+  padding-left: 15px;
+  letter-spacing: -0.0rem;
+  font-style: italic;
+}
+
+body div#root div.add-employee input:-moz-placeholder {
+  /* Firefox 18- */
+  color: black;
+  padding-left: 15px;
+  letter-spacing: -0.0rem;
+  font-style: italic;
+}
+
+body div#root div.add-employee input::-moz-placeholder {
+  /* Firefox 19+ */
+  color: black;
+  padding-left: 15px;
+  letter-spacing: -0.0rem;
+  font-style: italic;
+}
+
+body div#root div.add-employee input:-ms-input-placeholder {
+  color: black;
+  padding-left: 15px;
+  letter-spacing: -0.0rem;
+  font-style: italic;
+}
+
+body div#root div.add-employee div.expanded {
+  background-image: url(./images/up-arrow.png);
+}
+
+body div#root div.add-employee div.dropdown {
+  vertical-align: middle;
+  background-image: url(./images/down-arrow.png);
+  background-repeat: no-repeat;
+  padding-left: 20px;
+  text-align: left;
+  display: inline-block;
+  width: 160px;
+}
+
+body div#root div.add-employee div.dropdown#dd-rank {
+  margin-left: 0px;
+}
+
+body div#root div.add-employee div.dropdown#dd-title {
+  margin-left: 0px;
+}
+
+body div#root div.add-employee div.dropdown span.chosen {
+  line-height: 10px;
+}
+
+body div#root div.add-employee div.dropdown ul {
+  display: none;
+  position: absolute;
+  margin-left: 105px;
+  margin-top: -17px;
+  list-style: none;
+  background: #e5d96e;
+  background: -moz-linear-gradient(top, #e5d96e 0%, #e4d96f 11%, #cbf7be 70%, #cbf7be 100%);
+  background: -webkit-linear-gradient(top, #e5d96e 0%, #e4d96f 11%, #cbf7be 70%, #cbf7be 100%);
+  background: linear-gradient(to bottom, #e5d96e 0%, #e4d96f 11%, #cbf7be 70%, #cbf7be 100%);
+  padding-left: 5px;
+  padding-right: 5px;
+  border: 1px solid black;
+  border-radius: 5px;
+  width: 150px;
+  text-align: center;
+}
+
+body div#root div.add-employee div.dropdown ul.expanded {
+  display: block;
+}
+
+body div#root div.add-employee div.dropdown ul li {
+  padding: 5px 5px 5px 5px;
+  border-bottom: 1px solid black;
+}
+
+body div#root div.add-employee div.dropdown ul li:last-child {
+  border-bottom: none;
+}
+
+body div#root div.add-employee div.dropdown ul li:hover {
+  background-color: rgba(0, 0, 0, 0.1);
+}
+
+body div#root div.add-employee button {
+  background: transparent;
+  border-style: solid;
+  border-right-color: #CBF7BE;
+  border-bottom-color: #CBF7BE;
+  border-left-color: #86A37D;
+  border-top-color: #86A37D;
+  border-radius: 5px;
+  border-width: 3px;
+  height: 35px;
+  width: 260px;
+  margin-top: 5px;
+  margin-right: 15px;
+}
