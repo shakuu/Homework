@@ -130,24 +130,7 @@ namespace _08_Extract_Sentences_2
                     {
                         return true;
                     }
-
-                    if ((toCheck[wordCurIndex - 1]) == '"' &&
-                        (toCheck[wordCurIndex + wordLength]) == '"')
-                    {
-                        return true;
-                    }
-
-                    if (!char.IsLetter(toCheck[wordCurIndex - 1]) &&
-                        (toCheck[wordCurIndex + wordLength]) == '.')
-                    {
-                        return true;
-                    }
-
-                    if (!char.IsLetter(toCheck[wordCurIndex - 1]) &&
-                        (toCheck[wordCurIndex + wordLength]) == ''')
-                    {
-                        return true;
-                    }
+                    
                     // Find next occurance.
                     wordCurIndex = toCheck.IndexOf(word, ++wordCurIndex);
                 }
