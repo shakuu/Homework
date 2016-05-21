@@ -14,10 +14,146 @@ namespace _08_Extract_Sentences_2
             // words separated by non leter symbols
             var separator = ".";
 
+            // {0} sentence {1} separator
+            var sentenceFormat = "{0}{1}";
+
             // Word to find.
-            var toFind = Console.ReadLine();
+            var toFindWord = Console.ReadLine();
+
             // Text to search.
-            var toParse = Console.ReadLine();
+            var toParseSentences = Console
+                .ReadLine()
+                .Split(separator.ToCharArray())
+                .ToArray();
+
+            // Get a List of words with different
+            // cases upper, lower, capitalized
+            var toFind = GetWords(toFindWord);
+
+            var output = new StringBuilder();
+
+            foreach (var sentence in toParseSentences)
+            {
+                if (ContainsWord(sentence, toFind))
+                {
+                    output.Append(
+                        string.Format(
+                            sentenceFormat,
+                            sentence,
+                            separator
+                            ));
+                }
+            }
+
+            Console.WriteLine(output);
+        }
+
+        static List<string> GetWords(string Word)
+        {
+            var toReturn =
+                new List<string>()
+                {
+                    Word,
+                    Word.ToLower(),
+                    Word.ToUpper(),
+                    Word.Replace(
+                        Word[0],
+                        char.ToUpper(Word[0])),
+                };
+
+            return toReturn;
+        }
+
+        static List<string> GenerateAllCases(string Word)
+        {
+            var curWordVariation = new StringBuilder();
+
+            var toReturn = new List<string>();
+
+            toReturn.Add(Word);
+
+            var WordToLower = Word.ToLower();
+
+            toReturn.Add(WordToLower);
+            toReturn.Add(Word.ToUpper());
+
+            for (int curEndPoint = 0; curEndPoint < Word.Length; curEndPoint++)
+            {
+                for (int curStartPoint = 0; curStartPoint <= curEndPoint; curStartPoint++)
+                {
+                    //reset the string builder
+                    curWordVariation.Clear();
+
+                    // Everything BEFORE StartPont AS IS 
+                    for (int curIndex = 0; curIndex < curStartPoint; curIndex++)
+                    {
+                        curWordVariation.Append(WordToLower[curIndex]);
+                    }
+                    // Everuthing BETWEEN StartPoint and EndPoint to UPPER
+                    for (int curIndex = curStartPoint; curIndex <= curEndPoint; curIndex++)
+                    {
+                        curWordVariation.Append(char.ToUpper(WordToLower[curIndex]));
+                    }
+                    // Everything AFTER EndPoint AS IS 
+                    for (int curIndex = curEndPoint + 1; curIndex < WordToLower.Length; curIndex++)
+                    {
+                        curWordVariation.Append(WordToLower[curIndex]);
+                    }
+
+                    // Add the current variation to the list.
+                    toReturn.Add(curWordVariation.ToString());
+                }
+            }
+
+            return toReturn;
+        }
+
+        static bool ContainsWord(string Sentence, List<string> Words)
+        {
+            var checkFormat = "^{0}$";
+            var toCheck = string.Format(checkFormat, Sentence);
+
+            foreach (var word in Words)
+            {
+                var wordLength = word.Length;
+
+                var wordCurIndex = toCheck.IndexOf(word);
+
+                // While the current sentece contains
+                // the current variation of the word.
+                while (wordCurIndex >= 0)
+                {
+                    // Check if the word string is a 
+                    // separate word.
+                    if (!char.IsLetter(toCheck[wordCurIndex - 1]) &&
+                        !char.IsLetter(toCheck[wordCurIndex + wordLength]))
+                    {
+                        return true;
+                    }
+
+                    if ((toCheck[wordCurIndex - 1]) == '"' &&
+                        (toCheck[wordCurIndex + wordLength]) == '"')
+                    {
+                        return true;
+                    }
+
+                    if (!char.IsLetter(toCheck[wordCurIndex - 1]) &&
+                        (toCheck[wordCurIndex + wordLength]) == '.')
+                    {
+                        return true;
+                    }
+
+                    if (!char.IsLetter(toCheck[wordCurIndex - 1]) &&
+                        (toCheck[wordCurIndex + wordLength]) == ''')
+                    {
+                        return true;
+                    }
+                    // Find next occurance.
+                    wordCurIndex = toCheck.IndexOf(word, ++wordCurIndex);
+                }
+            }
+
+            return false;
         }
     }
 }
