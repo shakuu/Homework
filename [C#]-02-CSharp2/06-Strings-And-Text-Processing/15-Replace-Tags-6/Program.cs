@@ -6,23 +6,38 @@ namespace _15_Replace_Tags_6
     using System.Linq;
     using System.Text;
     using System.Threading.Tasks;
+    using System.IO;
 
     class Program
     {
         static void Main()
         {
-            var BREAK = 13;
+            var stream = Console.OpenStandardInput(16000);
+
+            var BREAK = new[] { 13, 10, 3, 4, 12, 23, 25 };
 
             var isTag = false;
 
             var inputTag = new StringBuilder();
 
+            var curChar = 0;
+
             while (true)
             {
-                // Read a letter
-                var curChar = Console.Read();
 
-                if (curChar == BREAK)
+
+                try
+                {
+                    curChar = stream.ReadByte();
+                }
+                catch (IOException)
+                {
+                    break;
+                }
+                // Read a letter
+                
+
+                if (BREAK.Contains(curChar))
                 {
                     break;
                 }
@@ -74,9 +89,10 @@ namespace _15_Replace_Tags_6
                 if (!isTag)
                 {
                     Console.Write((char)curChar);
-                    continue;
                 }
             }
+
+            stream.Close();
         }
 
         static bool ContainsCloseAnchor(string Tag)
@@ -97,12 +113,7 @@ namespace _15_Replace_Tags_6
                 }
             }
 
-            if (ContainsCloseAnchor(Tag))
-            {
-                return false;
-            }
-
-            return true;
+            return !(ContainsCloseAnchor(Tag));
         }
 
         // Replace tags
