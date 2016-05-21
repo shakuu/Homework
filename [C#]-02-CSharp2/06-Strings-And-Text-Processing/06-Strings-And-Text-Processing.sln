@@ -75,6 +75,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "06-String-Length-CP", "06-S
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "08-Extract-Sentences-2", "08-Extract-Sentences-2\08-Extract-Sentences-2.csproj", "{1F5DCA42-DC50-4193-9899-4F9BEA034DD3}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "10-Unicode-Characters-2", "10-Unicode-Characters-2\10-Unicode-Characters-2.csproj", "{C5AAFC14-CA11-4751-BB2A-7C364596C624}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "10-Unicode-Characters-3", "10-Unicode-Characters-3\10-Unicode-Characters-3.csproj", "{B9BB4C0A-6238-49FF-B945-BE6DE992A9E8}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -225,6 +229,14 @@ Global
 		{1F5DCA42-DC50-4193-9899-4F9BEA034DD3}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{1F5DCA42-DC50-4193-9899-4F9BEA034DD3}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{1F5DCA42-DC50-4193-9899-4F9BEA034DD3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C5AAFC14-CA11-4751-BB2A-7C364596C624}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C5AAFC14-CA11-4751-BB2A-7C364596C624}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C5AAFC14-CA11-4751-BB2A-7C364596C624}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C5AAFC14-CA11-4751-BB2A-7C364596C624}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B9BB4C0A-6238-49FF-B945-BE6DE992A9E8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B9BB4C0A-6238-49FF-B945-BE6DE992A9E8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B9BB4C0A-6238-49FF-B945-BE6DE992A9E8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B9BB4C0A-6238-49FF-B945-BE6DE992A9E8}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

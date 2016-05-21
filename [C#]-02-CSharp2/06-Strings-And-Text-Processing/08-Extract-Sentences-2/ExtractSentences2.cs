@@ -11,7 +11,7 @@ namespace _08_Extract_Sentences_2
         static void Main()
         {
             // Sentences separated by DOT, 
-            // words separated by non leter symbols
+            // words separated by non letter symbols
             var separator = ".";
 
             // {0} sentence {1} separator
@@ -64,6 +64,7 @@ namespace _08_Extract_Sentences_2
             return toReturn;
         }
 
+        // TOO SLOW
         static List<string> GenerateAllCases(string Word)
         {
             var curWordVariation = new StringBuilder();
@@ -77,25 +78,35 @@ namespace _08_Extract_Sentences_2
             toReturn.Add(WordToLower);
             toReturn.Add(Word.ToUpper());
 
-            for (int curEndPoint = 0; curEndPoint < Word.Length; curEndPoint++)
+            for (int curEndPoint = 0; 
+                     curEndPoint < Word.Length; 
+                     curEndPoint++)
             {
-                for (int curStartPoint = 0; curStartPoint <= curEndPoint; curStartPoint++)
+                for (int curStartPoint = 0; 
+                         curStartPoint <= curEndPoint;
+                         curStartPoint++)
                 {
                     //reset the string builder
                     curWordVariation.Clear();
 
                     // Everything BEFORE StartPont AS IS 
-                    for (int curIndex = 0; curIndex < curStartPoint; curIndex++)
+                    for (int curIndex = 0; 
+                             curIndex < curStartPoint; 
+                             curIndex++)
                     {
                         curWordVariation.Append(WordToLower[curIndex]);
                     }
                     // Everuthing BETWEEN StartPoint and EndPoint to UPPER
-                    for (int curIndex = curStartPoint; curIndex <= curEndPoint; curIndex++)
+                    for (int curIndex = curStartPoint; 
+                             curIndex <= curEndPoint; 
+                             curIndex++)
                     {
                         curWordVariation.Append(char.ToUpper(WordToLower[curIndex]));
                     }
                     // Everything AFTER EndPoint AS IS 
-                    for (int curIndex = curEndPoint + 1; curIndex < WordToLower.Length; curIndex++)
+                    for (int curIndex = curEndPoint + 1; 
+                             curIndex < WordToLower.Length; 
+                             curIndex++)
                     {
                         curWordVariation.Append(WordToLower[curIndex]);
                     }
