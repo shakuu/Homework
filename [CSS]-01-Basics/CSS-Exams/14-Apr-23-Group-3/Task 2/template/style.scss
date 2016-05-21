@@ -4,6 +4,15 @@ $color: #000;
 $color-bg-menu: #B6FF00;
 $color-bg-sub-menu: #008000;
 $color-sub-menu: #FFFFEF;
+
+@mixin clearfix {
+  &:after{
+    clear: both;
+    content: "";
+    display: block;
+  }
+}
+
 * {
   margin: 0;
   padding: 0;
@@ -38,29 +47,41 @@ body {
           display: block;
         }
         ul.sub-menu {
-          // display: none;
+          display: none;
           position: absolute;
           top: 0px;
           left: 170px;
           list-style: none;
+          height: 500px;
+          @include clearfix;
+          &:hover{
+            display: block;
+          }
           li {
             width: 520px;
             height: 58px;
             margin-bottom: 10px;
             border-radius: 10px;
-            line-height: 58px;
+            line-height: 60px;
             background-color: $color-bg-sub-menu;
             padding-left: 20px;
             text-align: left;
             &:hover{
               text-decoration: underline;
+              height: 330px;
             }
             a{
               color: $color-sub-menu;
               text-decoration: none;
             }
+            &:hover > img{
+              display: block;
+            }
             img {
               display: none;
+              width: 500px;
+              margin-top: -12px;
+              border-radius: 10px;
             }
           }
         }

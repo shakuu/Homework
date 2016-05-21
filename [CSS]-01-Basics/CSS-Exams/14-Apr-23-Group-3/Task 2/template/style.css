@@ -27,22 +27,37 @@ body div#wrapper ul.menu {
     body div#wrapper ul.menu > li:hover ul.sub-menu {
       display: block; }
     body div#wrapper ul.menu > li ul.sub-menu {
+      display: none;
       position: absolute;
       top: 0px;
-      left: 170px; }
+      left: 170px;
+      list-style: none;
+      height: 500px; }
+      body div#wrapper ul.menu > li ul.sub-menu:after {
+        clear: both;
+        content: "";
+        display: block; }
+      body div#wrapper ul.menu > li ul.sub-menu:hover {
+        display: block; }
       body div#wrapper ul.menu > li ul.sub-menu li {
         width: 520px;
         height: 58px;
         margin-bottom: 10px;
         border-radius: 10px;
-        line-height: 58px;
+        line-height: 60px;
         background-color: #008000;
         padding-left: 20px;
         text-align: left; }
         body div#wrapper ul.menu > li ul.sub-menu li:hover {
-          text-decoration: underline; }
+          text-decoration: underline;
+          height: 330px; }
         body div#wrapper ul.menu > li ul.sub-menu li a {
           color: #FFFFEF;
           text-decoration: none; }
+        body div#wrapper ul.menu > li ul.sub-menu li:hover > img {
+          display: block; }
         body div#wrapper ul.menu > li ul.sub-menu li img {
-          display: none; }
+          display: none;
+          width: 500px;
+          margin-top: -12px;
+          border-radius: 10px; }
