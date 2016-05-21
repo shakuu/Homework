@@ -68,7 +68,7 @@ namespace _06_String_Length_3
             {
                 try
                 {
-                    toReturn.Add(Convert.ToChar(@chr));
+                    toReturn.Add(Convert.ToChar(Regex.Unescape( chr)));
                 }
                 catch (ArgumentException)
                 {

@@ -16,21 +16,21 @@ namespace _06_String_Length_2
 
             //var input = Regex.Unescape(Console.ReadLine());
 
-            var input = Convert.ToString( Console.ReadLine());
+            //var input = Convert.ToString( Console.ReadLine());
             
 
-            var test = new StringInfo(input);
+            //var test = new StringInfo(input);
 
-            test.SubstringByTextElements(0, 1);
+            //test.SubstringByTextElements(0, 1);
 
-            var testbuild = new StringBuilder();
+            //var testbuild = new StringBuilder();
 
-            for (int i = 0; i < StringInfo.ParseCombiningCharacters(input).Length; i++)
-            {
-                testbuild.Append(test.SubstringByTextElements(i, 1));
-            }
+            //for (int i = 0; i < StringInfo.ParseCombiningCharacters(input).Length; i++)
+            //{
+            //    testbuild.Append(test.SubstringByTextElements(i, 1));
+            //}
 
-            Console.WriteLine(testbuild);
+            //Console.WriteLine(testbuild);
 
             //var charEnum = StringInfo.GetTextElementEnumerator(input);
 
