@@ -1,0 +1,116 @@
+html, body{
+  font-family: Tahoma, sans-serif;
+}
+
+#wrapper{
+  width: 960px;
+	margin: 0 auto;
+}
+
+.clear{
+  clear: both;
+}
+
+@mixin clearfix {
+  &:after{
+    content: "";
+    display: block;
+    clear: both;
+  }
+}
+
+$font-size-default: 14px;
+$font-size-title: 28px;
+$font-size-top-menu: 10px;
+$font-size-main-menu: 18px;
+$font-size-content-title: 24px;
+
+$text-color-header: #FEFFFF;
+$text-color-body: #333333;
+$bg-color-body: #FEFFFF;
+
+$img-header-bg: url(./images/topnav_divider.png);
+
+//All other pixel sizes will be divisible by 5 or exactly 6px.
+
+*{
+  margin: 0;
+  padding: 0;
+  color: $text-color-body;
+  font-size: $font-size-default;
+}
+
+body{
+  div#wrapper{
+    background-color: $bg-color-body;
+    header {
+      div#archive{
+        height: 16px;
+        text-align: right;
+        margin-right: 5px;
+        ul{
+          list-style: none;
+          & *{
+            display: inline-block;
+          }
+          li{
+            margin-left: 10px;
+            a{
+              font-size: $font-size-top-menu;
+              text-decoration: none;
+            }
+          }
+        }
+      }
+      div#header{
+        background-image: $img-header-bg;
+        height: 65px;
+        & *{
+            color: $text-color-header;
+        }
+        nav#nav{
+          @include clearfix;
+          float: left;
+          & *{
+            display: inline-block;
+            list-style: none;
+          }
+          ul{
+            margin-left: 50px;
+            margin-top: 20px;
+            li{
+              margin-right: 20px;
+              a{
+                font-size: $font-size-main-menu;
+                text-decoration: none;
+                text-transform: capitalize;
+              }
+            }
+          }
+        }
+        h1{
+          float: right;
+          margin-top: 15px;
+          margin-right: 15px;
+          font-size: $font-size-title;
+          text-align: right;
+        }
+      }
+    }
+    div#content{
+      color: $text-color-body;
+      h1{
+        margin-top: 15px;
+        font-size: $font-size-content-title;
+        margin-bottom: 17px;
+      }
+      article{
+        p{
+          text-align: justify;
+          font-style: $font-size-default;
+          margin-bottom: 14px;
+        }
+      }
+    }
+  }
+}

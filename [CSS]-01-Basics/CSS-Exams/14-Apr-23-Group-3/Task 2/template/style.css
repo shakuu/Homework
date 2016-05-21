@@ -1,0 +1,48 @@
+* {
+  margin: 0;
+  padding: 0;
+  font-family: Constantina, Georgia, "Nimbus Roman No9 L", serif;
+  font-size: 16px; }
+
+#wrapper {
+  width: 960px;
+  margin: 0; }
+
+body div#wrapper ul.menu {
+  list-style: none; }
+  body div#wrapper ul.menu > li {
+    width: 170px;
+    height: 38px;
+    border-radius: 15px;
+    background-color: #B6FF00;
+    text-align: center;
+    margin-bottom: 10px; }
+    body div#wrapper ul.menu > li:hover {
+      text-decoration: underline; }
+    body div#wrapper ul.menu > li > a {
+      line-height: 40px;
+      font-size: 16px;
+      color: black;
+      text-decoration: none; }
+    body div#wrapper ul.menu > li:hover ul.sub-menu {
+      display: block; }
+    body div#wrapper ul.menu > li ul.sub-menu {
+      position: absolute;
+      top: 0px;
+      left: 170px; }
+      body div#wrapper ul.menu > li ul.sub-menu li {
+        width: 520px;
+        height: 58px;
+        margin-bottom: 10px;
+        border-radius: 10px;
+        line-height: 58px;
+        background-color: #008000;
+        padding-left: 20px;
+        text-align: left; }
+        body div#wrapper ul.menu > li ul.sub-menu li:hover {
+          text-decoration: underline; }
+        body div#wrapper ul.menu > li ul.sub-menu li a {
+          color: #FFFFEF;
+          text-decoration: none; }
+        body div#wrapper ul.menu > li ul.sub-menu li img {
+          display: none; }
