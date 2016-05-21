@@ -7,7 +7,7 @@ using System.Text.RegularExpressions;
 
 namespace _06_String_Length_3
 {
-    class Program
+    class StringLength3
     {
         static void Main()
         {
@@ -52,6 +52,8 @@ namespace _06_String_Length_3
 
                         curIndex += 4;
                     }
+
+                    // check for oct
                 }
 
                 InputChars.Add(toAdd.ToString());

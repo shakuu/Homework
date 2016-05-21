@@ -8,7 +8,7 @@ using System.Text.RegularExpressions;
 
 namespace _06_String_Length_2
 {
-    class Program
+    class StringLength2
     {
         static void Main()
         {
