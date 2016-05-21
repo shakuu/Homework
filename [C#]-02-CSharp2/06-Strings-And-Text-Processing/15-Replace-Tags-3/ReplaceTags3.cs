@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace _15_Replace_Tags_3
 {
-    class ParseTag3
+    class ReplaceTags3
     {
         static void Main()
         {

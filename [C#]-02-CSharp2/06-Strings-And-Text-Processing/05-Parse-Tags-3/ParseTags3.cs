@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace _05_Parse_Tags_3
 {
-    class Program
+    class ParseTags3
     {
         // 100/ 100
         static void Main()
