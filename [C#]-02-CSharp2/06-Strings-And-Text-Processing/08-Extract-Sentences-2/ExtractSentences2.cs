@@ -59,6 +59,8 @@ namespace _08_Extract_Sentences_2
                     Word.Replace(
                         Word[0],
                         char.ToUpper(Word[0])),
+                    (Word + "'s"),
+                    (Word + "'")
                 };
 
             return toReturn;
