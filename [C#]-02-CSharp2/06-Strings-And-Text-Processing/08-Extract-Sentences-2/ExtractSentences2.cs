@@ -36,6 +36,7 @@ namespace _08_Extract_Sentences_2
             {
                 if (ContainsWord(sentence, toFind))
                 {
+
                     output.Append(
                         string.Format(
                             sentenceFormat,
@@ -123,8 +124,7 @@ namespace _08_Extract_Sentences_2
 
         static bool ContainsWord(string Sentence, List<string> Words)
         {
-            var checkFormat = "^{0}$";
-            var toCheck = string.Format(checkFormat, Sentence.ToLower());
+            var toCheck = string.Format("^{0}$", Sentence.ToLower());
 
             foreach (var word in Words)
             {
