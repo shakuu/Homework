@@ -2,6 +2,93 @@ body {
   font-size: 14px;
   font-family: 'Times New Roman';
 }
+
 #root {
   width: 700px;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body div#root div#previewer:after {
+  content: "";
+  clear: both;
+  display: block;
+}
+
+body div#root div#previewer div#large {
+  width: 495px;
+  height: 400px;
+  float: left;
+  border: 2px solid #999999;
+}
+
+body div#root div#previewer div#large h1 {
+  text-align: center;
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+
+body div#root div#previewer div#large img {
+  border: 2px solid #999999;
+  border-radius: 5px;
+  margin-left: 15px;
+  width: 455px;
+}
+
+body div#root div#previewer div#list {
+  float: right;
+  width: 205px;
+  height: 405px;
+  border: 2px solid #999999;
+}
+
+body div#root div#previewer div#list > strong {
+  display: block;
+  font-size: 21px;
+  margin-left: 32px;
+  margin-top: 5px;
+  margin-bottom: 5px;
+}
+
+body div#root div#previewer div#list button {
+  border: 2px solid #999999;
+  border-radius: 5px;
+  width: 97px;
+  height: 50px;
+}
+
+body div#root div#previewer div#list ul {
+  height: 305px;
+  overflow: hidden;
+  overflow-y: scroll;
+  margin-top: 5px;
+  text-align: center;
+}
+
+body div#root div#previewer div#list ul li {
+  padding-top: 8px;
+  margin-left: 5px;
+  margin-bottom: 0px;
+  height: 100px;
+  width: 173px;
+  border-bottom: 2px solid #999999;
+}
+
+body div#root div#previewer div#list ul li.current {
+  background-color: #CCCCCC;
+  border-radius: 5px;
+  height: 90px;
+}
+
+body div#root div#previewer div#list ul li.current img {
+  margin-top: 10px;
+  width: 65px;
+}
+
+body div#root div#previewer div#list ul li strong {
+  display: block;
 }
