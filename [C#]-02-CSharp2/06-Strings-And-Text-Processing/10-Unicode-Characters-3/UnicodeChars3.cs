@@ -40,6 +40,8 @@ namespace _10_Unicode_Characters_3
                                 unicodeFormat, 
                                 EscSeqDicitonary[input.Substring(curIndex, 2)])
                                 );
+
+                        curIndex++;
                     }
                 }
 
