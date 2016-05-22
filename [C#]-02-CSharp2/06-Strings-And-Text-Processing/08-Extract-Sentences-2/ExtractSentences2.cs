@@ -122,13 +122,13 @@ namespace _08_Extract_Sentences_2
         static bool ContainsWord(string Sentence, List<string> Words)
         {
             var checkFormat = "^{0}$";
-            var toCheck = string.Format(checkFormat, Sentence);
+            var toCheck = string.Format(checkFormat, Sentence.ToLower());
 
             foreach (var word in Words)
             {
                 var wordLength = word.Length;
 
-                var wordCurIndex = toCheck.IndexOf(word);
+                var wordCurIndex = toCheck.IndexOf(word.ToLower());
 
                 // While the current sentece contains
                 // the current variation of the word.
@@ -143,7 +143,7 @@ namespace _08_Extract_Sentences_2
                     }
                     
                     // Find next occurance.
-                    wordCurIndex = toCheck.IndexOf(word, ++wordCurIndex);
+                    wordCurIndex = toCheck.IndexOf(word.ToLower(), ++wordCurIndex);
                 }
             }
 
