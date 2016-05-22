@@ -26,7 +26,7 @@ namespace _15_Replace_Tags_6
 
             while (read)
             {
-                var readChars =  stream.Read(curBuffer, 0, 1024);
+                var readChars = stream.Read(curBuffer, 0, 1024);
 
                 for (int i = 0; i < readChars; i++)
                 {
