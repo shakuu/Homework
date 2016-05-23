@@ -11,26 +11,30 @@ namespace _04_CATastrophe
     {
         static int RowsRead = 0;
 
-        static string[] PrimitiveDataTypes = "sbyte, byte, short, ushort, int, uint, long, ulong, float, double, decimal, bool, char, string"
-                .Split(new[] { ' ', ',' }, StringSplitOptions.RemoveEmptyEntries);
+        static string[] PrimitiveDataTypes = "sbyte ,byte ,short ,ushort ,int ,uint ,long ,ulong ,float ,double ,decimal ,bool ,char ,string ,int? "
+                .Split(new[] { ',' }, StringSplitOptions.RemoveEmptyEntries);
 
         // only methods are static by definition
         // therefore no variables outside of methods
-        static string[] ConditionalStatements = "if, else"
-            .Split(new[] { ' ', ',' }, StringSplitOptions.RemoveEmptyEntries);
+        static string[] ConditionalStatements = "if ,else "
+            .Split(new[] { ',' }, StringSplitOptions.RemoveEmptyEntries);
 
-        static string[] Loops = "while, for, foreach"
-            .Split(new[] { ' ', ',' }, StringSplitOptions.RemoveEmptyEntries);
+        static string[] Loops = "while ,for ,foreach "
+            .Split(new[] { ',' }, StringSplitOptions.RemoveEmptyEntries);
 
-        static string MethodIdendtifier = "static";
+        static string[] toSkip = "do ,switch "
+            .Split(new[] { ',' }, StringSplitOptions.RemoveEmptyEntries);
+
+        static string MethodIdendtifier = "static ";
 
         static List<List<string>> ListsContainer = new List<List<string>>();
 
         static List<string> conditionVars = new List<string>();
         static List<string> methodVars = new List<string>();
         static List<string> loopVars = new List<string>();
+        static List<string> SkipVars = new List<string>();
 
-
+        static int numberOfRows;
 
         static void Main()
         {
@@ -40,16 +44,17 @@ namespace _04_CATastrophe
             ListsContainer.Add(methodVars);
             ListsContainer.Add(loopVars);
             ListsContainer.Add(conditionVars);
+            ListsContainer.Add(SkipVars);
 
             var modifiers = "public, private, internal, protected"
                 .Split(new[] { ' ', ',' }, StringSplitOptions.RemoveEmptyEntries);
 
             // Input
-            var numberOfRows = int.Parse(Console.ReadLine());
+            numberOfRows = int.Parse(Console.ReadLine());
 
             for (RowsRead = 0; RowsRead < numberOfRows; RowsRead++)
             {
-                var currentRowOfCode = Console.ReadLine().Trim();
+                var currentRowOfCode = Console.ReadLine();
 
                 var isMethod = false;
 
@@ -113,13 +118,18 @@ namespace _04_CATastrophe
 
             while (true)
             {
-                var curLine = Console.ReadLine().Trim();
+                if (RowsRead == numberOfRows - 1)
+                {
+                    break;
+                }
+
+                var curLine = Console.ReadLine();
                 RowsRead++;
 
                 var isChecked = false;
 
                 // Break on End of current block of code
-                if (curLine == "}")
+                if (curLine.Trim() == "}" || curLine.Contains("} while") )
                 {
                     break;
                 }
@@ -141,7 +151,7 @@ namespace _04_CATastrophe
                     }
 
                 }
-
+                
                 // Check for loops.
                 foreach (var loop in Loops)
                 {
@@ -153,6 +163,17 @@ namespace _04_CATastrophe
                         break;
                     }
                 }
+
+                Check for skips.
+                foreach (var skip in toSkip)
+                    {
+                        if (curLine.Contains(skip))
+                        {
+                            isChecked = true;
+                            ParseText(3);
+                            break;
+                        }
+                    }
 
                 // If it's not a new block of code
                 // check for newly declared variables
@@ -215,7 +236,7 @@ namespace _04_CATastrophe
         {
             var separators = " [=;,)".ToCharArray();
 
-            var curPosition = LineOfCode.IndexOf(DataType) + DataType.Length + 1;
+            var curPosition = LineOfCode.IndexOf(DataType) + DataType.Length;
 
             if (LineOfCode[curPosition - 1] == '?')
             {
