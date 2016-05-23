@@ -1,0 +1,64 @@
+body {
+  font-size: 14px;
+  font-family: 'Times New Roman';
+}
+
+#root {
+  width: 700px;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+}
+
+body div#root div#previewer {
+  display: flex;
+}
+
+body div#root div#previewer div#large {
+  border: 3px solid #999999;
+  width: 488px;
+  height: 391px;
+}
+
+body div#root div#previewer div#large h1 {
+  text-align: center;
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+
+body div#root div#previewer div#large img {
+  margin-left: 15px;
+  border: 3px solid #999999;
+  border-radius: 5px;
+  width: 450px;
+}
+
+body div#root div#previewer div#list {
+  border: 3px solid #999999;
+  width: 200px;
+  height: 395px;
+}
+
+body div#root div#previewer div#list strong.title {
+  display: block;
+  text-align: left;
+  margin-left: 30px;
+  font-size: 21px;
+  line-height: 32px;
+  letter-spacing: -0.0em;
+}
+
+body div#root div#previewer div#list button {
+  border: 3px solid #999999;
+  margin-top: 2px;
+  border-radius: 5px;
+  width: 98px;
+  height: 50px;
+  background-color: #CCCCCC;
+}
+
+body div#root div#previewer div#list ul {
+  list-style: none;
+}

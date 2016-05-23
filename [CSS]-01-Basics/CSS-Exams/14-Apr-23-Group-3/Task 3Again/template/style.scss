@@ -1,0 +1,72 @@
+// given
+body {
+    font-size: 14px;
+    font-family: 'Times New Roman';
+}
+#root {
+    width: 700px;
+}
+// end given
+$border-color: #999999;
+$button-color: #CCCCCC;
+@mixin clearfix {
+    &:after {
+        content: "";
+        clear: both;
+        display: block;
+    }
+}
+@mixin borderstyle {
+    border: 3px solid $border-color;
+}
+* {
+    margin: 0;
+    padding: 0;
+}
+body {
+    div#root {
+        div#previewer {
+            display: flex;
+            div#large {
+                @include borderstyle;
+                width: 488px;
+                height: 391px;
+                h1{
+                    text-align: center;
+                    margin-top: 20px;
+                    margin-bottom: 20px;
+                }
+                img{
+                    margin-left: 15px;
+                    @include borderstyle;
+                    border-radius: 5px;
+                    width: 450px;
+                }
+            }
+            div#list {
+                @include borderstyle;
+                width: 200px;
+                height: 395px;
+                strong.title{
+                    display: block;
+                    text-align: left;
+                    margin-left: 30px;
+                    font-size: 21px;
+                    line-height: 32px;
+                    letter-spacing: -0.0em;
+                }
+                button{
+                    @include borderstyle;
+                    margin-top: 2px;
+                    border-radius: 5px;
+                    width: 98px;
+                    height: 50px;
+                    background-color: $button-color;
+                }
+                ul{
+                    list-style: none;
+                }
+            }
+        }
+    }
+}
