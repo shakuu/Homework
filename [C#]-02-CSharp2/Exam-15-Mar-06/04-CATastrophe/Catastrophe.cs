@@ -31,12 +31,18 @@ namespace _04_CATastrophe
         static List<string> loopVars = new List<string>();
 
 
+
         static void Main()
         {
+            // MAIN SKIPPED BLOCKS -> Switch - DO WHile, additional curly brackets
+            //  EMTPY READ , to skip the curly brackets
 
             ListsContainer.Add(methodVars);
-            ListsContainer.Add(conditionVars);
             ListsContainer.Add(loopVars);
+            ListsContainer.Add(conditionVars);
+
+            var modifiers = "public, private, internal, protected"
+                .Split(new[] { ' ', ',' }, StringSplitOptions.RemoveEmptyEntries);
 
             // Input
             var numberOfRows = int.Parse(Console.ReadLine());
@@ -45,13 +51,59 @@ namespace _04_CATastrophe
             {
                 var currentRowOfCode = Console.ReadLine().Trim();
 
+                var isMethod = false;
+
                 if (currentRowOfCode.Contains(MethodIdendtifier))
                 {
+                    isMethod = true;
+
+                    foreach (var mod in modifiers)
+                    {
+                        if (currentRowOfCode.Contains(mod))
+                        {
+                            isMethod = false;
+                        }
+                    }
+
                     //CheckCurrentLineForVariables(currentRowOfCode);
                     // NEED A SEPARATE METHOD FOR READING VARS OUT OF METHODs
-                    CheckCurrentLineForVariables(GetArgsInBrackets(currentRowOfCode), 0);
-                    ParseText(0);
+                    if (isMethod)
+                    {
+                        CheckCurrentLineForVariables(GetArgsInBrackets(currentRowOfCode), 0);
+                        ParseText(0);
+                    }
                 }
+            }
+
+            // Output
+            if (methodVars.Count() > 0)
+            {
+                Console.WriteLine("Methods -> {0} -> {1}",
+                methodVars.Count(), string.Join(", ", methodVars));
+            }
+            else
+            {
+                Console.WriteLine("Methods -> None");
+            }
+
+            if (loopVars.Count > 0)
+            {
+                Console.WriteLine("Loops -> {0} -> {1}",
+                loopVars.Count(), string.Join(", ", loopVars));
+            }
+            else
+            {
+                Console.WriteLine("Loops -> None");
+            }
+
+            if (conditionVars.Count() > 0)
+            {
+                Console.WriteLine("Conditional Statements -> {0} -> {1}",
+                conditionVars.Count(), string.Join(", ", conditionVars));
+            }
+            else
+            {
+                Console.WriteLine("Conditional Statements -> None");
             }
         }
 
@@ -82,9 +134,9 @@ namespace _04_CATastrophe
                 {
                     if (curLine.Contains(condition))
                     {
-                        CheckCurrentLineForVariables(curLine, 1);
+                        CheckCurrentLineForVariables(curLine, 2);
                         isChecked = true;
-                        ParseText(1);
+                        ParseText(2);
                         break;
                     }
 
@@ -95,9 +147,9 @@ namespace _04_CATastrophe
                 {
                     if (curLine.Contains(loop))
                     {
-                        CheckCurrentLineForVariables(curLine, 2);
+                        CheckCurrentLineForVariables(curLine, 1);
                         isChecked = true;
-                        ParseText(2);
+                        ParseText(1);
                         break;
                     }
                 }
