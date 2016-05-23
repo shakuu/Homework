@@ -164,7 +164,7 @@ namespace _04_CATastrophe
                     }
                 }
 
-                Check for skips.
+                //Check for skips.
                 foreach (var skip in toSkip)
                     {
                         if (curLine.Contains(skip))
