@@ -5,7 +5,7 @@ namespace _03_Bit_Shift_Matrix
     using System.Linq;
     using System.Numerics;
 
-    class Program
+    class BitShiftMatrix
     {
         static int sizeRows;
         static int sizeCols;

@@ -9,6 +9,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "02-Increasing-Absolute-Diff
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "03-Bit-Shift-Matrix", "03-Bit-Shift-Matrix\03-Bit-Shift-Matrix.csproj", "{7ECAE76E-68F9-477B-9769-F987A5595D6A}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "04-CATastrophe", "04-CATastrophe\04-CATastrophe.csproj", "{5C00A466-9B2D-4B5A-AD2F-42B94BB5078C}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -27,6 +29,10 @@ Global
 		{7ECAE76E-68F9-477B-9769-F987A5595D6A}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{7ECAE76E-68F9-477B-9769-F987A5595D6A}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{7ECAE76E-68F9-477B-9769-F987A5595D6A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5C00A466-9B2D-4B5A-AD2F-42B94BB5078C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5C00A466-9B2D-4B5A-AD2F-42B94BB5078C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5C00A466-9B2D-4B5A-AD2F-42B94BB5078C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5C00A466-9B2D-4B5A-AD2F-42B94BB5078C}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
