@@ -105,6 +105,7 @@ namespace _05_Singing_Cats
 
                     checkOtherCats(curSong, SongCounter, curSongList);
 
+                    // Should not be necessary here.
                     if (curSongList.Sum() == numberOfCats) isConcert = true;
                 }
             }
