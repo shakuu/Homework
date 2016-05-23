@@ -5,24 +5,28 @@ namespace _05_Singing_Cats
     using System.Collections;
     using System.Collections.Generic;
     using System.Linq;
-    using System.Text;
-    using System.Threading.Tasks;
 
-
-    class Program
+    class SingingCats
     {
+        // Create a custom Compararer
         public class CustomCopare : IComparer
         {
-            // Calls CaseInsensitiveComparer.Compare with the parameters reversed.
             int IComparer.Compare(Object x, Object y)
             {
-                int[] xarray = (int[])x;
-                int[] yarray = (int[])y;
+                int[] xArray = (int[])x;
+                int[] yArray = (int[])y;
 
-                return ((new CaseInsensitiveComparer()).Compare(xarray.Sum(), yarray.Sum()));
+                var myComp = new CaseInsensitiveComparer();
+
+                // X first -> Ascending, y first -> Descending
+                var toReturn = myComp.Compare(xArray.Sum(), yArray.Sum());
+
+                return toReturn;
             }
         }
 
+        // Static Variables to avoid passing around 
+        // too many arguments.
         static List<int[]> CatScripts = new List<int[]>();
 
         static int[][] Cats;
@@ -57,9 +61,7 @@ namespace _05_Singing_Cats
             Songs = new int[numberOfSongs][]
                 .Select(x => x = new int[numberOfCats])
                 .ToArray();
-
-
-
+            
             while (true)
             {
                 // Cat X knows song Y
@@ -73,7 +75,9 @@ namespace _05_Singing_Cats
                         .Select(x => x - 1)
                         .ToArray();
 
-                if (curInputLine.Length == 0) break;
+                // Break if not enough arguments,
+                // Mew! -> 0 arguments.
+                if (curInputLine.Length < 2) break;
 
                 // Cat X knows song Y
                 Cats[curInputLine[0]][curInputLine[1]] = 1;
@@ -82,14 +86,12 @@ namespace _05_Singing_Cats
                 Songs[curInputLine[1]][curInputLine[0]] = 1;
             }
 
-            // Sort Songs by "popularity"
+            // Sort Songs by "popularity" with Cats.
             var myCompare = new CustomCopare();
 
             Array.Sort(Cats, myCompare);
 
-            
-
-            // For each song the cat with least songs can sing
+            // For each song the cat with least songs can sing.
             for (int curSong = 0; curSong < Cats[0].Length; curSong++)
             {
                 // helper variables
@@ -151,7 +153,7 @@ namespace _05_Singing_Cats
             {
                 var nextCat = 0;
 
-                // Find the next Cat and Song
+                // Find the next Cat without a song to sing.
                 for (int cat = 0; cat < curSongList.Length; cat++)
                 {
                     if (curSongList[cat] == 0)
