@@ -1,8 +1,11 @@
 // given
+
 body {
     font-size: 14px;
     font-family: 'Times New Roman';
+    margin: 0 auto;
 }
+
 #root {
     width: 700px;
 }
@@ -19,35 +22,45 @@ $button-color: #CCCCCC;
 @mixin borderstyle {
     border: 3px solid $border-color;
 }
+
 * {
     margin: 0;
     padding: 0;
 }
+
 body {
+    padding-top: 5px;
+    padding-left: 5px;
     div#root {
         div#previewer {
             display: flex;
+
             div#large {
                 @include borderstyle;
-                width: 488px;
+                width: 490px;
                 height: 391px;
-                h1{
+                border-left-width: 1px;
+                border-right-width: 1px;
+                h1 {
                     text-align: center;
                     margin-top: 20px;
                     margin-bottom: 20px;
                 }
-                img{
+
+                img {
                     margin-left: 15px;
                     @include borderstyle;
                     border-radius: 5px;
                     width: 450px;
                 }
             }
+
             div#list {
                 @include borderstyle;
                 width: 200px;
                 height: 395px;
-                strong.title{
+
+                strong.title {
                     display: block;
                     text-align: left;
                     margin-left: 30px;
@@ -55,16 +68,53 @@ body {
                     line-height: 32px;
                     letter-spacing: -0.0em;
                 }
-                button{
+
+                button {
                     @include borderstyle;
-                    margin-top: 2px;
+                    margin-top: 3px;
                     border-radius: 5px;
                     width: 98px;
                     height: 50px;
                     background-color: $button-color;
+                    &:hover{
+                        background-color: #E6E6E6;
+                    }
                 }
-                ul{
+
+                ul {
                     list-style: none;
+                    overflow-y: scroll;
+                    margin-top: 5px;
+                    height: 300px;
+                    li{
+                        border-bottom: 2px solid $border-color;
+                        width: 175px;
+                        margin-left: 5px;
+                        height: 110px;
+                        text-align: center;
+                        &:hover{
+                            text-decoration: underline;
+                        }
+                        &.current{
+                            background-color: $border-color;
+                            border-radius: 5px;
+                            height: 85px;
+                            margin-top: -5px;
+                            img{
+                                width: 65px;
+                                border-radius: 5px;
+                                margin-top: 10px;
+                            }
+                        }
+                        strong{
+                            display: block;
+                            margin-top: 6px;
+                        }
+                        img{
+                            border-radius: 5px;
+                            margin-top: 12px;
+                        }
+                    }
                 }
             }
         }

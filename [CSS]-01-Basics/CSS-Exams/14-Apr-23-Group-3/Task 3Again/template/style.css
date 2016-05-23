@@ -1,6 +1,7 @@
 body {
   font-size: 14px;
   font-family: 'Times New Roman';
+  margin: 0 auto;
 }
 
 #root {
@@ -12,14 +13,21 @@ body {
   padding: 0;
 }
 
+body {
+  padding-top: 5px;
+  padding-left: 5px;
+}
+
 body div#root div#previewer {
   display: flex;
 }
 
 body div#root div#previewer div#large {
   border: 3px solid #999999;
-  width: 488px;
+  width: 490px;
   height: 391px;
+  border-left-width: 1px;
+  border-right-width: 1px;
 }
 
 body div#root div#previewer div#large h1 {
@@ -52,13 +60,55 @@ body div#root div#previewer div#list strong.title {
 
 body div#root div#previewer div#list button {
   border: 3px solid #999999;
-  margin-top: 2px;
+  margin-top: 3px;
   border-radius: 5px;
   width: 98px;
   height: 50px;
   background-color: #CCCCCC;
 }
 
+body div#root div#previewer div#list button:hover {
+  background-color: #E6E6E6;
+}
+
 body div#root div#previewer div#list ul {
   list-style: none;
+  overflow-y: scroll;
+  margin-top: 5px;
+  height: 300px;
+}
+
+body div#root div#previewer div#list ul li {
+  border-bottom: 2px solid #999999;
+  width: 175px;
+  margin-left: 5px;
+  height: 110px;
+  text-align: center;
+}
+
+body div#root div#previewer div#list ul li:hover {
+  text-decoration: underline;
+}
+
+body div#root div#previewer div#list ul li.current {
+  background-color: #999999;
+  border-radius: 5px;
+  height: 85px;
+  margin-top: -5px;
+}
+
+body div#root div#previewer div#list ul li.current img {
+  width: 65px;
+  border-radius: 5px;
+  margin-top: 10px;
+}
+
+body div#root div#previewer div#list ul li strong {
+  display: block;
+  margin-top: 6px;
+}
+
+body div#root div#previewer div#list ul li img {
+  border-radius: 5px;
+  margin-top: 12px;
 }
