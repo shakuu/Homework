@@ -1,13 +1,18 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
+﻿
 namespace _08_Extract_Sentences_7
 {
+    using System;
+    using System.Collections.Generic;
+    using System.Linq;
+    using System.Text;
+    using System.Threading.Tasks;
+    using System.Globalization;
+
     class Program
     {
+        static string Alphabet = "abcdefghijklmnopqrstuwxyz";
+        static string bgAlphabet = "абвгдежзийклмнопрстуфхцчшщъьюя";
+
         static void Main()
         {
             // 0/ 100
@@ -98,6 +103,11 @@ namespace _08_Extract_Sentences_7
                     return true;
                 }
 
+                //if (char.GetUnicodeCategory(checkSentence[wordCurIndex - 1]) == UnicodeCategory.ModifierLetter ||
+                //    char.GetUnicodeCategory(checkSentence[wordCurIndex + wordLength]) == UnicodeCategory.ModifierLetter)
+                //{
+                //    return true;
+                //}
                 // Find the next string match.
                 wordCurIndex = checkSentence.IndexOf(word, ++wordCurIndex);
             }
