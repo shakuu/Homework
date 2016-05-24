@@ -183,12 +183,17 @@ namespace _04_Catastrophe_4
                 }
                 else if (isType)
                 {
+                    if (curValue == "?")
+                    {
+                        continue;
+                    }
+
                     // Check for array
                     if (!isArray(curValue))
                     {
                         var strLength = curValue.Length;
 
-                        if (endofname.Contains(curValue[curValue.Length - 1])) strLength--;
+                        if (!char.IsLetter(curValue[curValue.Length - 1])) strLength--;
 
                         ListContainer[curScope].Add(curValue.Substring(0, strLength));
                     }
@@ -207,7 +212,7 @@ namespace _04_Catastrophe_4
                     {
                         var strLength = curValue.Length;
 
-                        if (endofname.Contains(curValue[curValue.Length - 1])) strLength--;
+                        if (!char.IsLetter(curValue[curValue.Length - 1])) strLength--;
 
                         ListContainer[curScope].Add(curValue.Substring(0, strLength));
                     }

@@ -94,6 +94,9 @@ namespace Scopes
                 return true;
             }
 
+
+            int                                                         ? asd = null;
+
             return false;
         }
 
@@ -108,6 +111,7 @@ namespace Scopes
 
             for (int i = 0; i < lines; i++)
             {
+
                 var currentLineTokens = Console.ReadLine().Trim().Split(new char[] { ' ' }, StringSplitOptions.RemoveEmptyEntries);
 
                 for (int j = 0; j < currentLineTokens.Length; j++)
