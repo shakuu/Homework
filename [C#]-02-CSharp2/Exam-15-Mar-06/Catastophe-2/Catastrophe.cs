@@ -92,13 +92,13 @@ namespace Catastophe_2
                 if (curLine.Trim() == "{")
                 {
                     // Parse a new block of code
-                    ParseBlock(false);
+                    ParseBlock(MethodIndex, false);
                 }
             }
         }
 
         // TODO: Parse Block of code
-        static void ParseBlock(bool isSkip)
+        static void ParseBlock(int Scope, bool isSkip)
         {
 
             while (RowCounter < rowsToRead)
@@ -106,9 +106,11 @@ namespace Catastophe_2
                 var curLine = Console.ReadLine();
                 ++RowCounter;
 
+                var isChecked = false;
+
                 // On curly brackets - start a new block
                 // or return a block up.
-                if (curLine.Trim() == "{") ParseBlock(isSkip);
+                if (curLine.Trim() == "{") ParseBlock(Scope, isSkip);
                 if (curLine.Trim() == "}") return;
 
                 // Check for Loops
@@ -124,6 +126,8 @@ namespace Catastophe_2
                         {
                             // Parse the text
                             ParseMethod(curLine, LoopIndex);
+                            Scope = LoopIndex;
+                            isChecked = true;
                             isSkip = false;
                         }
                     }
@@ -144,6 +148,8 @@ namespace Catastophe_2
                         {
                             // Parse the text
                             ParseMethod(curLine, ConditionIndex);
+                            Scope = ConditionIndex;
+                            isChecked = true;
                             isSkip = false;
                         }
                     }
@@ -161,11 +167,20 @@ namespace Catastophe_2
                         // is a separarte statement.
                         if (isWord(curLine, skip, curIndex))
                         {
+                            Scope = SkipIndex;
+                            isChecked = true;
                             isSkip = true;
                         }
                     }
 
                     curIndex = curLine.IndexOf(skip, ++curIndex);
+                }
+
+                // if none of the above, extract all variables
+                // from the current row.
+                if (!isChecked)
+                {
+                    ExtractVars(curLine, Scope);
                 }
             }
 
