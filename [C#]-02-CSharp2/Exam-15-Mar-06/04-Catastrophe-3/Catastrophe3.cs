@@ -1,5 +1,5 @@
 ﻿
-namespace Catastophe_2
+namespace Catastophe_3
 {
     using System;
     using System.Collections.Generic;
@@ -7,10 +7,9 @@ namespace Catastophe_2
     using System.Text;
     using System.Threading.Tasks;
 
-    class Catastrophe
+    class Catastrophe3
     {
         // Stuff to look for
-        // REMOE VAR
         static string[] Types = @"string, int, sbyte, byte, 
                                   short, ushort, uint, long,
                                   ulong, float, double, decimal, 
@@ -63,9 +62,9 @@ namespace Catastophe_2
 
             rowsToRead = int.Parse(Console.ReadLine());
 
-            var isMethod = false;
+            var Scope = -1;
 
-            while (RowCounter < rowsToRead - 1)
+            while (RowCounter < rowsToRead)
             {
                 // Step 1: Read Lines until 
                 // a new method.
@@ -73,7 +72,7 @@ namespace Catastophe_2
                 ++RowCounter;
 
                 if (curLine == "") continue;
-                
+
                 // Check for method
                 foreach (var method in Methods)
                 {
@@ -86,47 +85,12 @@ namespace Catastophe_2
                         if (isWord(curLine, method, curIndex))
                         {
                             // Parse the text
-                            var toExtract = ParseMethod(curLine, MethodIndex);
-                            ExtractVars(toExtract, MethodIndex);
-                            isMethod = true;
+                            Scope = MethodIndex;
                         }
 
                         curIndex = curLine.IndexOf(method, ++curIndex);
                     }
                 }
-
-                // Check for new Block of Code
-                if (curLine.Trim() == "{" && isMethod)
-                {
-                    // Parse a new block of code
-                    ParseBlock(MethodIndex, false);
-                    isMethod = false;
-                }
-            }
-
-            // Output
-            PrintOutput();
-        }
-
-        // TODO: Parse Block of code
-        static void ParseBlock(int Scope, bool isSkip)
-        {
-            var nextScope = 0;
-
-            while (RowCounter < rowsToRead - 1)
-            {
-                var curLine = Console.ReadLine();
-                ++RowCounter;
-
-                // skip on empty.
-                if (curLine == "") continue;
-
-                var isChecked = false;
-
-                // On curly brackets - start a new block
-                // or return a block up.
-                if (curLine.Trim() == "{") { ParseBlock(nextScope, isSkip); continue; }
-                if (curLine.Trim() == "}" || curLine.Contains("} while")) return;
 
                 // Check for Loops
                 foreach (var loop in Loops)
@@ -140,11 +104,7 @@ namespace Catastophe_2
                         if (isWord(curLine, loop, curIndex))
                         {
                             // Parse the text
-                            var toExtract = ParseMethod(curLine, LoopIndex);
-                            ExtractVars(toExtract, LoopIndex);
-                            nextScope = LoopIndex;
-                            isChecked = true;
-                            isSkip = false;
+                            Scope = LoopIndex;
                         }
 
                         curIndex = curLine.IndexOf(loop, ++curIndex);
@@ -163,16 +123,14 @@ namespace Catastophe_2
                         if (isWord(curLine, condition, curIndex))
                         {
                             // Parse the text
-                            var toExtract = ParseMethod(curLine, ConditionIndex);
-                            ExtractVars(toExtract, ConditionIndex);
-                            nextScope = ConditionIndex;
-                            isChecked = true;
-                            isSkip = false;
+                            Scope = ConditionIndex;
                         }
 
                         curIndex = curLine.IndexOf(condition, ++curIndex);
                     }
                 }
+
+
                 // Check for Skips
                 foreach (var skip in Skips)
                 {
@@ -184,14 +142,44 @@ namespace Catastophe_2
                         // is a separarte statement.
                         if (isWord(curLine, skip, curIndex))
                         {
-                            nextScope = SkipIndex;
-                            isChecked = true;
-                            isSkip = true;
+                            // Parse
+                            Scope = SkipIndex;
                         }
 
                         curIndex = curLine.IndexOf(skip, ++curIndex);
                     }
                 }
+
+                // Parse the current line 
+                // and add to to current scope.
+            }
+
+            // Output
+            PrintOutput();
+        }
+
+        // TODO: Parse Block of code
+        static void ParseBlock(int Scope, bool isSkip)
+        {
+            var nextScope = 0;
+
+            while (RowCounter < rowsToRead)
+            {
+                var curLine = Console.ReadLine();
+                ++RowCounter;
+
+                // skip on empty.
+                if (curLine == "") continue;
+
+                var isChecked = false;
+
+                // On curly brackets - start a new block
+                // or return a block up.
+                if (curLine.Trim() == "{") { ParseBlock(nextScope, isSkip); continue; }
+                if (curLine.Trim() == "}") return;
+
+
+                
 
                 // if none of the above, extract all variables
                 // from the current row.
@@ -319,9 +307,9 @@ namespace Catastophe_2
                 if (ListContainer[i].Count() > 0)
                 {
                     Console.WriteLine(
-                        Format[0], 
-                        Names[i], 
-                        ListContainer[i].Count(), 
+                        Format[0],
+                        Names[i],
+                        ListContainer[i].Count(),
                         string.Join(", ", ListContainer[i]));
                 }
                 else
