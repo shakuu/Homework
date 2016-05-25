@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 namespace _08_Extract_Sentences_8
 {
     
-    class Program
+    class ExtractSentences8
     {
         static void Main()
         {

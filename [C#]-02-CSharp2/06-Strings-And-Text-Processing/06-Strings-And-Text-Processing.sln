@@ -95,6 +95,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "08-Extract-Sentences-7", "0
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "08-Extract-Sentences-8", "08-Extract-Sentences-8\08-Extract-Sentences-8.csproj", "{ADA14D07-1930-4ADA-A050-289AA28C72AC}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "10-Unicode-Characters-4", "10-Unicode-Characters-4\10-Unicode-Characters-4.csproj", "{086BB68B-F5E7-4F72-91CE-8A9BFA81AFBD}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -285,6 +287,10 @@ Global
 		{ADA14D07-1930-4ADA-A050-289AA28C72AC}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{ADA14D07-1930-4ADA-A050-289AA28C72AC}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{ADA14D07-1930-4ADA-A050-289AA28C72AC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{086BB68B-F5E7-4F72-91CE-8A9BFA81AFBD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{086BB68B-F5E7-4F72-91CE-8A9BFA81AFBD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{086BB68B-F5E7-4F72-91CE-8A9BFA81AFBD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{086BB68B-F5E7-4F72-91CE-8A9BFA81AFBD}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
