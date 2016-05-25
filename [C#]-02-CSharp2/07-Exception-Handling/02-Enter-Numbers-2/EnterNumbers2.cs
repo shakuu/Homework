@@ -4,13 +4,15 @@ namespace _02_Enter_Numbers_2
 {
     class EnterNumbers2
     {
+        // Start 1 100/ 100
+
         static string exceptionMessage = "Exception";
 
         static int[] Numbers;
 
         static void Main()
         {
-            var start = 0;
+            var start = 1;
             var end = 100;
 
             // size of input + start + end.
