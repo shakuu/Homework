@@ -5,6 +5,10 @@ VisualStudioVersion = 14.0.25123.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "01-Calculation-Problem", "01-Calculation-Problem\01-Calculation-Problem.csproj", "{A222AE67-9790-49CC-A07E-DA78374CADFC}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "02-Even-Differences", "02-Even-Differences\02-Even-Differences.csproj", "{D967AE63-C98D-4B0E-9D6C-8C3BFBC5691E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "03-Lover-of-Three", "03-Lover-of-Three\03-Lover-of-Three.csproj", "{71672F22-46C5-45DD-A6D3-73BE69FD75C9}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +19,14 @@ Global
 		{A222AE67-9790-49CC-A07E-DA78374CADFC}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A222AE67-9790-49CC-A07E-DA78374CADFC}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{A222AE67-9790-49CC-A07E-DA78374CADFC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D967AE63-C98D-4B0E-9D6C-8C3BFBC5691E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D967AE63-C98D-4B0E-9D6C-8C3BFBC5691E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D967AE63-C98D-4B0E-9D6C-8C3BFBC5691E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D967AE63-C98D-4B0E-9D6C-8C3BFBC5691E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{71672F22-46C5-45DD-A6D3-73BE69FD75C9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{71672F22-46C5-45DD-A6D3-73BE69FD75C9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{71672F22-46C5-45DD-A6D3-73BE69FD75C9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{71672F22-46C5-45DD-A6D3-73BE69FD75C9}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
