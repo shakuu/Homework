@@ -24,6 +24,7 @@ namespace _04_Konspiration
 
             foreach (var item in curLine)
             {
+                var isNewObject = false;
                 // If the line contains
                 // "static" then it's a new 
                 // method
@@ -32,23 +33,51 @@ namespace _04_Konspiration
                 // Check if the current word contains 
                 // a name of a previously declared method.
                 // TODO: More checks might be needed.
-                for (int i = 0; i < foundMethods.Count(); i++)
+                //for (int i = 0; i < foundMethods.Count(); i++)
+                //{
+                //    if (item.Contains(foundMethods[i]))
+                //    {
+                //        // checki if separate method
+                //        if (isDeclaredMethod(item, foundMethods[i]))
+                //        {
+                //            var index = foundMethods.IndexOf(curMethod);
+                //            invokedMethods[index].Add(foundMethods[i]);
+                //        }
+                //    }
+                //}
+
+                if (item == "new")
                 {
-                    if (item.Contains(foundMethods[i]))
-                    {
-                        var index = foundMethods.IndexOf(curMethod);
-                        invokedMethods[index].Add(foundMethods[i]);
-                    }
+                    isNewObject = true;
                 }
-                
+
                 // Check if object.Method()
                 if (item.Contains(".") ||
-                    item.Contains("("))
+                    (item.Contains("(") && !isNewObject))
                 {
                     SearchForMethods(curLine);
                     break;
                 }
             }
+        }
+
+        // Check if static method is a separate word
+        static bool isDeclaredMethod(string curString, string methodName)
+        {
+            var check = string.Format("0{0}0", curString);
+
+            var indexOfMethodName = check.IndexOf(methodName);
+            var lengthOfMethodName = methodName.Length;
+
+            if (!char.IsLetter(check[indexOfMethodName-1]))
+            {
+                if (!char.IsLetter(check[indexOfMethodName+lengthOfMethodName]) ||
+                    check[indexOfMethodName + lengthOfMethodName] == '(')
+                {
+                    return true;
+                }
+            }
+            return false;
         }
 
         // Search for invoked static method
@@ -72,25 +101,31 @@ namespace _04_Konspiration
         {
             var methodName = new StringBuilder();
             var isMethod = false;
+            var isNewObject = false;
 
             foreach (var item in curLine)
             {
-                foreach (var chr in item)
+                var checkItem = " " + item;
+
+                for (int i = 1; i < checkItem.Length; i++)
                 {
+                    var chr = checkItem[i];
+
                     if (chr == '.')
                     {
                         methodName.Clear();
                         isMethod = true;
                     }
 
-                    if (char.IsUpper(chr))
+                    if (char.IsUpper(chr) && !char.IsLetter(checkItem[i-1]))
                     {
+                        
                         isMethod = true;
                     }
 
                     if (isMethod == true) methodName.Append(chr);
 
-                    if (chr == '=' || chr == ',')
+                    if (chr == '=' || chr == ',' || chr == '<')
                     {
                         isMethod = false;
                         methodName.Clear();
