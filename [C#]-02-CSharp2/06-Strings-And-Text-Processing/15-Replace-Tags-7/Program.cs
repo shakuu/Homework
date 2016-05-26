@@ -1,18 +1,16 @@
-﻿
-namespace _15_Replace_Tags_6
-{
-    using System;
-    using System.Collections.Generic;
-    using System.Linq;
-    using System.Text;
-    using System.Threading.Tasks;
-    using System.IO;
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 
-    class ReplaceTags6
+namespace _15_Replace_Tags_7
+{
+    class Program
     {
         static void Main()
         {
-            var stream = Console.OpenStandardInput(1048576);
+            var stream = Console.OpenStandardInput(500000);
 
             var BREAK = new[] { 13, 10, 3, 4, 12, 23, 25 };
 
@@ -27,8 +25,6 @@ namespace _15_Replace_Tags_6
             while (read)
             {
                 var readChars = stream.Read(curBuffer, 0, 1024);
-
-                if (readChars == 0) break;
 
                 for (int i = 0; i < readChars; i++)
                 {
@@ -76,7 +72,7 @@ namespace _15_Replace_Tags_6
                             }
                             else
                             {
-                                Console.Write(inputTag);
+                                //Console.Write(inputTag);
                             }
 
                             inputTag.Clear();
@@ -140,3 +136,4 @@ namespace _15_Replace_Tags_6
         }
     }
 }
+
