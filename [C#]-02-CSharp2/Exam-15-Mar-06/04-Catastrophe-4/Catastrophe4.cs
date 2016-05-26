@@ -55,7 +55,7 @@ namespace _04_Catastrophe_4
         static int ConditionIndex = 2;
         static int SkipIndex = 3;
 
-        static int RowCounter = 1;
+        static int RowCounter = 0;
         static int rowsToRead = 0;
 
         static void Main(string[] args)
@@ -76,7 +76,7 @@ namespace _04_Catastrophe_4
             var curScope = -1;
             var nextScope = -1;
 
-            while (RowCounter < rowsToRead)
+            while (RowCounter < rowsToRead )
             {
                 var curLine = Console.ReadLine()
                     .Trim()
@@ -157,9 +157,7 @@ namespace _04_Catastrophe_4
         {
             var isType = false;
             var isComma = false;
-
-            var endofname = ",;";
-
+            
             // Check for method or loop/ condition
             var startat = 0;
 
@@ -172,19 +170,32 @@ namespace _04_Catastrophe_4
             for (int curElement = startat;
                      curElement < curLine.Length;
                      curElement++)
-            {
+             {
                 var curValue = curLine[curElement];
 
                 if (curValue == "") continue;
 
                 if (Types.Contains(curValue))
                 {
-                    isType = true;
-                }
+                    if (curLine[curElement+1] != ">" &&
+                        curLine[curElement + 1] != ".")
+                    {
+                        isType = true;
+                    }
+                    // check for list declaration
+                 }
                 else if (isType)
                 {
                     if (curValue == "?")
                     {
+                        continue;
+                    }
+
+                    if (curValue == ">" || 
+                        curValue =="." ||
+                        curValue == ",")
+                    {
+                        isType = false;
                         continue;
                     }
 
@@ -193,9 +204,22 @@ namespace _04_Catastrophe_4
                     {
                         var strLength = curValue.Length;
 
-                        if (!char.IsLetter(curValue[curValue.Length - 1])) strLength--;
+                        var name = new StringBuilder();
 
-                        ListContainer[curScope].Add(curValue.Substring(0, strLength));
+                        foreach (var ltr in curValue)
+                        {
+                            if (!char.IsLetter(ltr))
+                            {
+                                break;
+                            }
+                            else
+                            {
+                                name.Append(ltr);   
+                            }
+                        }
+                        // OLD CHECK if (!char.IsLetter(curValue[curValue.Length - 1])) strLength--;
+
+                        ListContainer[curScope].Add(name.ToString());
                     }
 
                     if (curValue[curValue.Length - 1] == ',')
