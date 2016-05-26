@@ -56,7 +56,8 @@ namespace _04_Konspiration_2
                             // object.method
                             methodName.Clear();
                         }
-                        else if (letter == '<')
+                        else if(!char.IsLetter(letter) &&
+                                letter != '(')    //else if (letter == '<')
                         {
                             // List<>, Dictionary<> etc
                             isMethod = false;
@@ -66,31 +67,34 @@ namespace _04_Konspiration_2
                         {
                             var newMethod = methodName.ToString();
 
-                            if (isNewMethod)
+                            if (!string.IsNullOrEmpty(newMethod))
                             {
-                                isNewMethod = false;
+                                if (isNewMethod)
+                                {
+                                    isNewMethod = false;
 
-                                // Add the name to found and create its list
-                                // of invoked methods
-                                foundMethods.Add(newMethod);
-                                invokedMethods.Add(new List<string>());
+                                    // Add the name to found and create its list
+                                    // of invoked methods
+                                    foundMethods.Add(newMethod);
+                                    invokedMethods.Add(new List<string>());
 
-                                // Set current method as this one
-                                curMethod = newMethod;
-                            }
+                                    // Set current method as this one
+                                    curMethod = newMethod;
+                                }
 
-                            else if (isNewObject)
-                            {
-                                // Do nothing
-                                isNewObject = false;
-                            }
-                            else
-                            {
-                                // Index of the current method
-                                var indexListToAddTo =
-                                    foundMethods.IndexOf(curMethod);
+                                else if (isNewObject)
+                                {
+                                    // Do nothing
+                                    isNewObject = false;
+                                }
+                                else
+                                {
+                                    // Index of the current method
+                                    var indexListToAddTo =
+                                        foundMethods.IndexOf(curMethod);
 
-                                invokedMethods[indexListToAddTo].Add(newMethod);
+                                    invokedMethods[indexListToAddTo].Add(newMethod);
+                                }
                             }
 
                             methodName.Clear();
@@ -101,6 +105,24 @@ namespace _04_Konspiration_2
                             methodName.Append(letter);
                         }
                     }
+                }
+            }
+        }
+
+        static void Output()
+        {
+            for (int index = 0; index < foundMethods.Count(); index++)
+            {
+                if (invokedMethods[index].Count() > 0)
+                {
+                    Console.WriteLine("{0} -> {1} -> {2}",
+                        foundMethods[index],
+                        invokedMethods[index].Count(),
+                        string.Join(", ", invokedMethods[index]));
+                }
+                else
+                {
+                    Console.WriteLine("{0} -> None", foundMethods[index]);
                 }
             }
         }
@@ -117,8 +139,9 @@ namespace _04_Konspiration_2
                 ++lineNumber;
 
                 ParseLine(line);
-
             }
+
+            Output();
         }
     }
 }
