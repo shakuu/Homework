@@ -7,7 +7,7 @@ namespace _04_Konspiration_2
     using System.Text;
     using System.Threading.Tasks;
 
-    class Konspiration
+    class Konspiration2
     {
         // Store found methods
         static List<string> foundMethods = new List<string>();
