@@ -8,7 +8,7 @@ namespace _03_Lover_of_Three
     using System.Threading.Tasks;
     using System.Numerics;
 
-    class Program
+    class LoverOfThree
     {
         static void Main()
         {
