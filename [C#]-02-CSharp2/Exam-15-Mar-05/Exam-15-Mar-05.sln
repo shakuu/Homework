@@ -21,6 +21,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "05-Bad-Cat-5", "05-Bad-Cat-
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "04-Konspiration", "04-Konspiration\04-Konspiration.csproj", "{CCB7999A-266D-446A-9676-553A4855DD50}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "04-Konspiration-2", "04-Konspiration-2\04-Konspiration-2.csproj", "{E35394C4-0900-4F55-9170-82CC07394EBD}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -63,6 +65,10 @@ Global
 		{CCB7999A-266D-446A-9676-553A4855DD50}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{CCB7999A-266D-446A-9676-553A4855DD50}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{CCB7999A-266D-446A-9676-553A4855DD50}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E35394C4-0900-4F55-9170-82CC07394EBD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E35394C4-0900-4F55-9170-82CC07394EBD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E35394C4-0900-4F55-9170-82CC07394EBD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E35394C4-0900-4F55-9170-82CC07394EBD}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
