@@ -30,16 +30,109 @@ namespace _04_Konspiration
                 if (item == method) { AddNewMethod(curLine); break; }
 
                 // Check if the current word contains 
-                // a name of a previously declared method
-                foreach (var existing in foundMethods)
+                // a name of a previously declared method.
+                // TODO: More checks might be needed.
+                for (int i = 0; i < foundMethods.Count(); i++)
                 {
-                    if (item.Contains(existing))
+                    if (item.Contains(foundMethods[i]))
                     {
-                        // 1. Confirm the string is a name
-                        // 2. Set current method
+                        var index = foundMethods.IndexOf(curMethod);
+                        invokedMethods[index].Add(foundMethods[i]);
+                    }
+                }
+                
+                // Check if object.Method()
+                if (item.Contains(".") ||
+                    item.Contains("("))
+                {
+                    SearchForMethods(curLine);
+                    break;
+                }
+            }
+        }
+
+        // Search for invoked static method
+        static void SearchForStaticMethod(string[] curLine)
+        {
+            var isMethod = false;
+            var methodName = new StringBuilder();
+
+            foreach (var item in curLine)
+            {
+                foreach (var ltr in item)
+                {
+                    if (char.IsUpper(item[0])) isMethod = true;
+                    if (ltr == '(') isMethod = false;
+                    if (isMethod) methodName.Append(ltr);
+                }
+            }
+        }
+
+        static void SearchForMethods(string[] curLine)
+        {
+            var methodName = new StringBuilder();
+            var isMethod = false;
+
+            foreach (var item in curLine)
+            {
+                foreach (var chr in item)
+                {
+                    if (chr == '.')
+                    {
+                        methodName.Clear();
+                        isMethod = true;
+                    }
+
+                    if (char.IsUpper(chr))
+                    {
+                        isMethod = true;
+                    }
+
+                    if (isMethod == true) methodName.Append(chr);
+
+                    if (chr == '=' || chr == ',')
+                    {
+                        isMethod = false;
+                        methodName.Clear();
+                    }
+
+                    if (chr == '(' && isMethod)
+                    {
+                        isMethod = false;
+
+                        var name = ExtractName(methodName.ToString());
+
+                        if (!string.IsNullOrEmpty(name))
+                        {
+                            var index = foundMethods.IndexOf(curMethod);
+                            invokedMethods[index].Add(name);
+                        }
+
+                        methodName.Clear();
                     }
                 }
             }
+        }
+
+        static string ExtractName(string toParse)
+        {
+            var name = new StringBuilder();
+            var write = false;
+
+            foreach (var ltr in toParse)
+            {
+                if (ltr == '.') write = true;
+                else if (char.IsUpper(ltr))
+                {
+                    name.Append(ltr);
+                    write = true;
+                }
+                else if (ltr == '(') break;
+                else if (write) name.Append(ltr);
+
+            }
+
+            return name.ToString().Replace(" ", string.Empty);
         }
 
         static void AddNewMethod(string[] curLine)
@@ -82,7 +175,10 @@ namespace _04_Konspiration
                 if (item.Contains("(")) { isMethod = false; break; }
             }
 
-            var toAddName = newMethodName.ToString().Trim();
+            var toAddName = newMethodName.ToString()
+                .Trim()
+                .Replace(" ", string.Empty);
+
             newMethodName.Clear();
 
             foreach (var chr in toAddName)
@@ -102,6 +198,24 @@ namespace _04_Konspiration
             curMethod = toAddName;
         }
 
+        static void Output()
+        {
+            for (int index = 0; index < foundMethods.Count(); index++)
+            {
+                if (invokedMethods[index].Count() > 0)
+                {
+                    Console.WriteLine("{0} -> {1} -> {2}",
+                        foundMethods[index],
+                        invokedMethods[index].Count(),
+                        string.Join(", ", invokedMethods[index]));
+                }
+                else
+                {
+                    Console.WriteLine("{0} -> None", foundMethods[index]);
+                }
+            }
+        }
+
         static void Main()
         {
             foundMethods = new List<string>();
@@ -116,12 +230,22 @@ namespace _04_Konspiration
                     .Split();
                 ++curLineNumber;
 
+                // Skip Line
+                if (curLine.Contains("using") ||
+                    curLine.Contains("namespace") ||
+                    curLine.Contains("class"))
+                {
+                    continue;
+                }
+
                 // Search for 
                 // 1. Declaring methdos
                 // 2. Invoking methods
                 ParseLine(curLine);
-
             }
+
+            // Print
+            Output();
         }
     }
 }
