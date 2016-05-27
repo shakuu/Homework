@@ -7,7 +7,7 @@ namespace _01_TRES4
     using System.Text;
     using System.Numerics;
 
-    class Program
+    class TRES4nians
     {
         // 90/ 100
 
