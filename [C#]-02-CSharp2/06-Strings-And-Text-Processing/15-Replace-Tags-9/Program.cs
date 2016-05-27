@@ -2,35 +2,50 @@
 namespace _15_Replace_Tags_9
 {
     using System;
-    using System.Collections.Generic;
     using System.Linq;
-    using System.Text;
-    using System.Threading.Tasks;
 
     class Program
     {
         static void Main()
         {
-            var openTag = "<a href=\"";
-            var closeTag = "</a>";
-            var midTag = "\">";
+            var openTag = @"<a ";
+            var closeTag = @"</a>";
 
-            var toParse = Console.ReadLine().Split(new[] { openTag, closeTag }, StringSplitOptions.RemoveEmptyEntries);
+            var toParse = Console.ReadLine()
+                .Split(new[] { openTag, closeTag }, 
+                    StringSplitOptions.RemoveEmptyEntries).ToArray();
             
             for (int strIndex = 0; strIndex < toParse.Length; strIndex++)
             {
-                if (toParse[strIndex].Contains(midTag))
+                if (toParse[strIndex].IndexOf("href=") == 0)
                 {
-                    // Replace
-                    var replacement = toParse[strIndex].Split( new[] { midTag }, StringSplitOptions.RemoveEmptyEntries);
+                    var url = GetURL(toParse[strIndex]);
+                    var label = GetLabel(toParse[strIndex]);
 
-                    Console.Write("[{0}]({1})", replacement[1], replacement[0]);
+                    Console.Write( "[{0}]({1})", label, url);
                 }
                 else
                 {
                     Console.Write(toParse[strIndex]);
                 }
             }
+        }
+
+        static string GetURL(string tag)
+        {
+            var left = tag.IndexOf("\"");
+            var right = tag.IndexOf("\"", left + 1);
+
+            return tag.Substring(left+1, right - left - 1);
+        }
+
+        static string GetLabel(string tag)
+        {
+            var left = tag.IndexOf(">");
+            var right = tag.IndexOf("<", left + 1);
+
+            return tag.Substring(left+1);
+
         }
     }
 }

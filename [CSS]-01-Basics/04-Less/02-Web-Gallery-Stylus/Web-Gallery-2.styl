@@ -16,24 +16,25 @@ full-size()
 
 link-format()
   text-decoration: none;
-
+  
 body
   & nav
     for img_ in img_1 img_2 img_3 img_4 img_5 img_6
       & a
         link-format()
         & div.{img_}
-          background-image: url(./Assets/img_.png)
-          display: inline-block;
-          thumbnail-size()
+            background-image: url(./Assets/img_.png)
+            display: inline-block;
+            thumbnail-size()
 
   for img_ in img_1 img_2 img_3 img_4 img_5 img_6
     & div#full-size-{img_}
-      background-image: url(./Assets/img_.png)
-      display: none
-      full-size()
+        background-image: url(./Assets/img_.png)
+        display: none
+        full-size()
     & div#full-size-{img_}:target
-      display: block;
-
+        display: block;
+      
+      
   & section a
     link-format()
