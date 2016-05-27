@@ -13,14 +13,14 @@ namespace _01_TRES4
 
         static Dictionary<char, string> TRES4 = new Dictionary<char, string>()
         {
-            { '0', "LON+" },
-            { '1', "VK-" },
+            { '0', "LON+"  },
+            { '1', "VK-"   },
             { '2', "*ACAD" },
-            { '3', "^MIM" },
+            { '3', "^MIM"  },
             { '4', "ERIK|" },
-            { '5', "SEY&" },
+            { '5', "SEY&"  },
             { '6', "EMY>>" },
-            { '7', "/TEL" },
+            { '7', "/TEL"  },
             { '8', "<<DON" }
         };
 
@@ -38,6 +38,8 @@ namespace _01_TRES4
 
         static string DecimalToAny(BigInteger decimalNumber, int toBase)
         {
+            if (decimalNumber == 0) return "0";
+
             var newNumber = new StringBuilder();
 
             while (decimalNumber > 0)

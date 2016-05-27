@@ -6,10 +6,9 @@ namespace _02_Bunny_Factory_3
     using System.Collections.Generic;
     using System.Linq;
     using System.Text;
-    using System.Threading.Tasks;
     using System.Numerics;
 
-    class Program
+    class BunnyFactoryListInput
     {
         static void Main()
         {
