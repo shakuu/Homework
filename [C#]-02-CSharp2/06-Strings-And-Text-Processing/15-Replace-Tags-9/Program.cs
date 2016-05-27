@@ -9,17 +9,14 @@ namespace _15_Replace_Tags_9
 
     class Program
     {
-        static string openTag = "<a href=\"";
-        static string closeTag = "</a>";
-        static string midTag = "\">";
-
         static void Main()
         {
+            var openTag = "<a href=\"";
+            var closeTag = "</a>";
+            var midTag = "\">";
+
             var toParse = Console.ReadLine().Split(new[] { openTag, closeTag }, StringSplitOptions.RemoveEmptyEntries);
-
-            var startIndex = toParse[0].Contains(midTag) ?
-                             0 : 1;
-
+            
             for (int strIndex = 0; strIndex < toParse.Length; strIndex++)
             {
                 if (toParse[strIndex].Contains(midTag))
