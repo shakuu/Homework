@@ -17,6 +17,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "05-Help-Doge", "05-Help-Dog
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "05-Help-Doge-2", "05-Help-Doge-2\05-Help-Doge-2.csproj", "{035E8AF2-A01B-439E-88E1-F32BC6967135}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "04-Variable-Length-Codes", "04-Variable-Length-Codes\04-Variable-Length-Codes.csproj", "{D3C7FACF-132B-48C1-B966-2F2A57FEC503}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "04-Variable-Length-Codes-2", "04-Variable-Length-Codes-2\04-Variable-Length-Codes-2.csproj", "{89D30745-130A-41EF-86DD-96D106706ADB}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -51,6 +55,14 @@ Global
 		{035E8AF2-A01B-439E-88E1-F32BC6967135}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{035E8AF2-A01B-439E-88E1-F32BC6967135}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{035E8AF2-A01B-439E-88E1-F32BC6967135}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D3C7FACF-132B-48C1-B966-2F2A57FEC503}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D3C7FACF-132B-48C1-B966-2F2A57FEC503}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D3C7FACF-132B-48C1-B966-2F2A57FEC503}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D3C7FACF-132B-48C1-B966-2F2A57FEC503}.Release|Any CPU.Build.0 = Release|Any CPU
+		{89D30745-130A-41EF-86DD-96D106706ADB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{89D30745-130A-41EF-86DD-96D106706ADB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{89D30745-130A-41EF-86DD-96D106706ADB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{89D30745-130A-41EF-86DD-96D106706ADB}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
