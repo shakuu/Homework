@@ -51,7 +51,8 @@ namespace _04_Variable_Length_Codes_2
 
                 // Get Key length.
                 var keyLen = new StringBuilder();
-                for (int chr = 2; chr < bytes.Length; chr += 2) keyLen.Append(BitConverter.ToChar(bytes, chr));
+                for (int chr = 2; chr < bytes.Length; chr += 2)
+                    keyLen.Append(BitConverter.ToChar(bytes, chr));
                 var keyLength = int.Parse(keyLen.ToString());
 
                 // Build the key.
@@ -63,6 +64,7 @@ namespace _04_Variable_Length_Codes_2
             }
         }
 
+        // ARGH concat and .SPLIT('0') !!!!!!
         static void DecodeInput()
         {
             output = new StringBuilder();
