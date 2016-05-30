@@ -6,13 +6,13 @@ namespace _03_Slides
 
     class Slides
     {
-        // Consts
+        // Consts.
         const char Slide = 'S';
         const char Empty = 'E';
         const char Basket = 'B';
         const char Teleport = 'T';
 
-        // Variables 
+        // Variables.
         static string[,,] cuboid;
         static int ballRow;
         static int ballCol;
