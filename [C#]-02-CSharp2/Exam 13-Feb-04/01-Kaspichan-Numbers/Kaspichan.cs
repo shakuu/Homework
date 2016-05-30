@@ -6,7 +6,7 @@ namespace _01_Kaspichan_Numbers
     using System.Text;
     using System.Numerics;
 
-    class Program
+    class Kaspichan
     {
         // Variables.
         static int kaspichanBase = 256;
