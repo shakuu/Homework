@@ -14,7 +14,10 @@ namespace _05_They_Are_Green
         static int stringSize;
         static List<int> elements;
         static int assignedElements = 0;
-        static int output = 1;
+        static int output = 0;
+        static List<string> permutations = new List<string>();
+        static List<char> inputElements = new List<char>();
+        static List<string> win = new List<string>();
 
         static void Input()
         {
@@ -27,6 +30,45 @@ namespace _05_They_Are_Green
                 .GroupBy(x => x)
                 .Select(x => x.Count())
                 .ToList();
+        }
+
+        static void Input2()
+        {
+            var lines = int.Parse(Console.ReadLine());
+
+            for (int i = 0; i < lines; i++)
+            {
+                inputElements.Add(Console.ReadLine()[0]);
+            }
+        }
+
+        static void CheckPermuatations()
+        {
+            output = 0;
+
+            foreach (var str in permutations)
+            {
+                var isWin = true;
+
+                if (str.Length == inputElements.Count)
+                {
+                    for (int i = 1; i < str.Length; i++)
+                    {
+                        if (str[i] == str[i - 1])
+                        {
+                            isWin = false;
+                            break;
+                            
+                        }
+                    }
+
+                    if (isWin && !win.Contains(str) )
+                    {
+                        win.Add(str);
+                        output++;
+                    }
+                }
+            }
         }
 
         static void BuildTableForElement(int index)
@@ -158,14 +200,52 @@ namespace _05_They_Are_Green
 
         static void Main()
         {
-            Input();
+            Input2();
+            Permutate(inputElements, 0, inputElements.Count - 1);
+            CheckPermuatations();
+            Console.WriteLine(output);
+        }
 
-            for (int i = 0; i < elements.Count; i++)
+        // Recursive Permutation
+        public static void Permutate(List<char> toSearch, int Left, int Right)
+        {
+            // If the current section has 3 elements
+            // Permutate them 
+            if (Right - Left == 1)
             {
-                BuildTableForElement(i);
+                for (int i = 0; i <= Right - Left; i++)
+                {
+                    // Step 1: Add current permutation
+                    permutations.Add(string.Join("", toSearch));
+
+                    // Step 2: Switch the 2 elements
+                    toSearch[Left] ^= toSearch[Right];
+                    toSearch[Right] ^= toSearch[Left];
+                    toSearch[Left] ^= toSearch[Right];
+                }
+
+                // Job's done
+                return;
             }
 
-            Console.WriteLine(output);
+            // Otherwise, shuffle the elements
+            // and pass along for permutation
+            for (int curPermutation = 0;
+                     curPermutation <= Right - Left;
+                     curPermutation++)
+            {
+                // Step 1: Permutate the current section
+                // less one element
+                Permutate(toSearch, Left + 1, Right);
+
+                // Step 2: Rearrange Elements
+                // Last Element goes first 
+                // withing the current section
+                toSearch.Insert(Left, toSearch[toSearch.Count - 1]);
+                toSearch.RemoveAt(toSearch.Count - 1);
+            }
+
+            return;
         }
     }
 }
