@@ -7,7 +7,7 @@ namespace _04_Encode_And_Encrypt
     using System.Text;
     using System.Threading.Tasks;
 
-    class Program
+    class EncodeAndEncrypt
     {
         // By description
         static char addChrA = 'A';
