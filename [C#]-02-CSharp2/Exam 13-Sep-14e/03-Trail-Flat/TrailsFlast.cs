@@ -9,6 +9,10 @@ namespace _03_Trail_Flat
 
     class Player
     {
+        private int StartX;
+        private int StartY;
+
+        public int ManhattanDistance = 0;
         public int PosX;
         public int PosY;
         public int NextX;
@@ -23,6 +27,8 @@ namespace _03_Trail_Flat
 
         public Player(int x, int y, int tag)
         {
+            this.StartX = x;
+            this.StartY = y;
             this.PosX = x;
             this.PosY = y;
             this.NextX = 0;
@@ -42,6 +48,18 @@ namespace _03_Trail_Flat
             //var player = moves.Count() - 1;
 
             var input = Console.ReadLine();
+
+            // REMOVE Ms After L/ R
+            for (int chr = 0; chr < input.Length; chr++)
+            {
+                if (input[chr] == 'L' || input[chr] == 'R')
+                {
+                    if (input[chr+1] == 'M')
+                    {
+                        input = input.Remove(chr + 1, 1);
+                    }
+                }
+            }
 
             var isDigit = false;
             var digit = new StringBuilder();
@@ -91,6 +109,10 @@ namespace _03_Trail_Flat
                 if (TrailsFlat.area[NextX, NextY] != 0)
                 {
                     this.Crash = true;
+
+                    PosX = NextX;
+                    PosY = NextY;
+                    Steps++;
                 }
                 else
                 {
@@ -145,6 +167,25 @@ namespace _03_Trail_Flat
                 SpeedY = 0;
             }
         }
+
+        public void FlushMovesQueue()
+        {
+            while(this.Moves.Count > 0)
+            {
+                this.Move();
+                if (this.Crash) break;
+            }
+        }
+
+        public int GetManhattanDistance()
+        {
+            var distanceX = Math.Abs(this.StartX - this.PosX);
+            var distanceY = Math.Abs(this.StartY - this.PosY);
+
+            this.ManhattanDistance = distanceX + distanceY;
+
+            return this.ManhattanDistance;
+        }
     }
 
     class TrailsFlat
@@ -168,9 +209,9 @@ namespace _03_Trail_Flat
                 .Select(x => x + 1)
                 .ToArray();
 
-            var areaX = dimensions[0];
-            var areaY = dimensions[1]
-                      + dimensions[1]
+            var areaX = dimensions[1];
+            var areaY = dimensions[0]
+                      + dimensions[0]
                       + dimensions[2]
                       + dimensions[2];
 
@@ -179,9 +220,9 @@ namespace _03_Trail_Flat
 
             // Starting Positions for the players
             // 1. Red
-            var startPosX = (dimensions[0] - 1) / 2;
-            var startPosY1 = (dimensions[1] - 1) / 2;
-            var startPosY2 = startPosY1 + dimensions[1] + dimensions[2];
+            var startPosX = (dimensions[1] - 1) / 2;
+            var startPosY1 = (dimensions[0] - 1) / 2;
+            var startPosY2 = startPosY1 + dimensions[0] + dimensions[2];
 
             // Create Players
             red = new Player(startPosX, startPosY1, 1);
@@ -209,8 +250,9 @@ namespace _03_Trail_Flat
             if (red.Crash && blue.Crash) Console.WriteLine("DRAW");
             else if (red.Crash) Console.WriteLine("BLUE");
             else if (blue.Crash) Console.WriteLine("RED");
-
-            Console.WriteLine(red.Steps);
+            
+            red.FlushMovesQueue();
+            Console.WriteLine(red.GetManhattanDistance());
         }
 
         static void Trails()
@@ -227,8 +269,8 @@ namespace _03_Trail_Flat
                 blue.Move();
 
                 // TESTING
-                Console.Clear();
-                PrintArea();
+                //Console.Clear();
+                //PrintArea();
 
                 if (red.Crash || blue.Crash) break;
             }
