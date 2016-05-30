@@ -15,6 +15,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "04-Encode-And-Encrypt", "04
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "05-They-Are-Green", "05-They-Are-Green\05-They-Are-Green.csproj", "{BC89418A-9D05-4B7A-8DC9-0611991A55BB}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "03-Trail-Flat", "03-Trail-Flat\03-Trail-Flat.csproj", "{55616CF5-EC0B-4A7B-9B81-F5711133ADAF}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -45,6 +47,10 @@ Global
 		{BC89418A-9D05-4B7A-8DC9-0611991A55BB}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{BC89418A-9D05-4B7A-8DC9-0611991A55BB}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{BC89418A-9D05-4B7A-8DC9-0611991A55BB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{55616CF5-EC0B-4A7B-9B81-F5711133ADAF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{55616CF5-EC0B-4A7B-9B81-F5711133ADAF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{55616CF5-EC0B-4A7B-9B81-F5711133ADAF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{55616CF5-EC0B-4A7B-9B81-F5711133ADAF}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
