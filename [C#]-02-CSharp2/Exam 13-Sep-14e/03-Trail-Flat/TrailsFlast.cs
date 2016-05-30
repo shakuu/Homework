@@ -11,8 +11,8 @@ namespace _03_Trail_Flat
     {
         private int StartX;
         private int StartY;
+        private string NextMove;
 
-        public int ManhattanDistance = 0;
         public int PosX;
         public int PosY;
         public int NextX;
@@ -21,7 +21,6 @@ namespace _03_Trail_Flat
         public int SpeedY;
         public int Steps;
         public int Tag;
-        public string NextMove;
         public bool Crash;
         public Queue<string> Moves;
 
@@ -168,7 +167,7 @@ namespace _03_Trail_Flat
             }
         }
 
-        public void FlushMovesQueue()
+        private void FlushMovesQueue()
         {
             while(this.Moves.Count > 0)
             {
@@ -179,12 +178,14 @@ namespace _03_Trail_Flat
 
         public int GetManhattanDistance()
         {
+            this.FlushMovesQueue();
+
             var distanceX = Math.Abs(this.StartX - this.PosX);
             var distanceY = Math.Abs(this.StartY - this.PosY);
 
-            this.ManhattanDistance = distanceX + distanceY;
+            var manhattanDistance = distanceX + distanceY;
 
-            return this.ManhattanDistance;
+            return manhattanDistance;
         }
     }
 
@@ -251,7 +252,6 @@ namespace _03_Trail_Flat
             else if (red.Crash) Console.WriteLine("BLUE");
             else if (blue.Crash) Console.WriteLine("RED");
             
-            red.FlushMovesQueue();
             Console.WriteLine(red.GetManhattanDistance());
         }
 
