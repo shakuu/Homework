@@ -214,7 +214,8 @@ namespace _03_Trail_Flat
             var areaY = dimensions[0]
                       + dimensions[0]
                       + dimensions[2]
-                      + dimensions[2];
+                      + dimensions[2]
+                      - 4;
 
             // Create the area.
             area = new int[areaX, areaY];
@@ -223,7 +224,9 @@ namespace _03_Trail_Flat
             // 1. Red
             var startPosX = (dimensions[1] - 1) / 2;
             var startPosY1 = (dimensions[0] - 1) / 2;
-            var startPosY2 = startPosY1 + dimensions[0] + dimensions[2];
+            var startPosY2 = startPosY1
+                           + dimensions[0] - 1 
+                           + dimensions[2] - 1;
 
             // Create Players
             red = new Player(startPosX, startPosY1, 1);
@@ -269,8 +272,8 @@ namespace _03_Trail_Flat
                 blue.Move();
 
                 // TESTING
-                //Console.Clear();
-                //PrintArea();
+                Console.Clear();
+                PrintArea();
 
                 if (red.Crash || blue.Crash) break;
             }
