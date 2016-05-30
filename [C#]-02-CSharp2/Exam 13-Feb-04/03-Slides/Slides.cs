@@ -2,10 +2,7 @@
 namespace _03_Slides
 {
     using System;
-    using System.Collections.Generic;
     using System.Linq;
-    using System.Text;
-    using System.Threading.Tasks;
 
     class Slides
     {
@@ -20,6 +17,8 @@ namespace _03_Slides
         static int ballRow;
         static int ballCol;
         static int ballLvl;
+        static bool isStuck = false;
+        static bool isOut = false;
 
         // Input: Working.
         static void Input()
@@ -44,15 +43,15 @@ namespace _03_Slides
             // Next H Lines
             FillTheCuboid();
 
-            // Ball position W D (row col)
+            // Ball position W D (col row)
             dims = Console.ReadLine()
                .Trim()
                .Split(' ')
                .Select(int.Parse)
                .ToArray();
 
-            ballRow = dims[0];
-            ballCol = dims[1];
+            ballRow = dims[1];
+            ballCol = dims[0];
             ballLvl = 0; // def
 
             // TEST
@@ -107,44 +106,125 @@ namespace _03_Slides
                         SlideTheBall();
                         break;
                     case Teleport:
+                        TeleportTheBall();
                         break;
                     case Empty:
+                        EmptyTheBall();
                         break;
                     case Basket:
+                        BasketTheBall();
                         break;
                     default:
                         throw new ArgumentException
                             ("invalid input");
                 }
+
+                // End on:
+                // 1. Basket
+                // 2. Slide into a Wall ( out of bounds )
+                // 3. Out of the cube
+                if (isOut) break;
+                if (isStuck) break;
+                if (ballLvl >= cuboid.GetLength(2)) break;
             }
         }
-
         static void SlideTheBall()
         {
             var direction = cuboid[ballRow, ballCol, ballLvl]
                 .Split(new[] { ' ' }, StringSplitOptions.RemoveEmptyEntries)[1];
 
+            if (ballLvl == cuboid.GetLength(2) - 1)
+            { isOut = true; return; }
+
+            var buRow = ballRow;
+            var buCol = ballCol;
+            var buLvl = ballLvl;
+
+            // Move On the Level
             switch (direction)
             {
                 case "F":
+                    ballRow--;
                     break;
                 case "B":
+                    ballRow++;
                     break;
                 case "L":
+                    ballCol--;
                     break;
                 case "R":
+                    ballCol++;
                     break;
                 case "FL":
+                    ballRow--;
+                    ballCol--;
                     break;
                 case "FR":
+                    ballRow--;
+                    ballCol++;
                     break;
                 case "BL":
+                    ballRow++;
+                    ballCol--;
                     break;
                 case "BR":
+                    ballRow++;
+                    ballCol++;
                     break;
                 default:
                     break;
             }
+            // And move a level down;
+            ballLvl++;
+
+            // Check if the Ball is stuck
+            if (ballRow >= cuboid.GetLength(0)
+                || ballCol >= cuboid.GetLength(1)
+                || ballCol < 0
+                || ballRow < 0)
+            {
+                // Revert to previous 
+                // position for correct output
+                ballRow = buRow;
+                ballCol = buCol;
+                ballLvl = buLvl;
+                isStuck = true;
+            }
+        }
+        static void TeleportTheBall()
+        {
+            // T W D
+            // Col Row
+            var newPosition = cuboid[ballRow, ballCol, ballLvl]
+                .Split(new[] { ' ' }, StringSplitOptions.RemoveEmptyEntries)
+                .Where(x => char.IsDigit(x[0]))
+                .Select(int.Parse)
+                .ToArray();
+
+            // Level does NOT change
+            ballRow = newPosition[1];
+            ballCol = newPosition[0];
+        }
+        static void EmptyTheBall()
+        {
+            if (ballLvl == cuboid.GetLength(2) - 1)
+            { isOut = true; return; }
+
+            else ballLvl++;
+        }
+        static void BasketTheBall()
+        {
+            isStuck = true;
+        }
+
+        // Output
+        static void Output()
+        {
+            if (isStuck) Console.WriteLine("No");
+            else Console.WriteLine("Yes");
+            // w, h, d
+            Console.WriteLine("{0} {1} {2}",
+                ballCol, ballLvl, ballRow);
         }
 
         static void PrintCuboid()
@@ -167,6 +247,7 @@ namespace _03_Slides
         {
             Input();
             MoveTheBall();
+            Output();
         }
     }
 }
