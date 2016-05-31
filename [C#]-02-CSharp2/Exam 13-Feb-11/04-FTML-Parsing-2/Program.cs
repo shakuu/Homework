@@ -1,11 +1,13 @@
-﻿
-namespace _04_FTML_Parsing
+﻿namespace _04_FTML_Parsing
 {
     using System;
     using System.Collections.Generic;
     using System.Linq;
     using System.Text;
-    using System.Threading.Tasks;
+
+    // 60 / 100
+    // RunTimeErrors
+    // Possible split lines
 
     class FakeMarkup
     {
@@ -67,12 +69,12 @@ namespace _04_FTML_Parsing
             // Call ParseTag method
             // Finally Print the 
 
-            for (curWordLine = 0; 
+            for (curWordLine = 0;
                  curWordLine < words.Count;
                  curWordLine++)
             {
-                for (curWordIndex = 0; 
-                     curWordIndex < words[curWordLine].Count; 
+                for (curWordIndex = 0;
+                     curWordIndex < words[curWordLine].Count;
                      curWordIndex++)
                 {
                     if (openTags
@@ -99,7 +101,6 @@ namespace _04_FTML_Parsing
             // in case of nested tags
             // call recursively 
             var openTagIndex = curWordIndex;
-            var openTagLineIndex = curWordLine;
 
             var tag = words[curWordLine][curWordIndex];
             var tagContent = new StringBuilder();
@@ -146,16 +147,10 @@ namespace _04_FTML_Parsing
 
                     // Remove the current tags
                     words[curWordLine].RemoveAt(curWordIndex);
-                    words[openTagLineIndex].RemoveAt(openTagIndex);
+                    words[curWordLine].RemoveAt(openTagIndex);
 
                     // Word index is index of closing tag - 1 
                     curWordIndex -= 2;
-
-                    if (curWordIndex < 0)
-                    {
-                        curWordIndex++;
-                    }
-
                     return toAdd;
                 }
                 else
@@ -163,22 +158,7 @@ namespace _04_FTML_Parsing
                     tagContent.Append(curWord);
                 }
 
-                // Check if Multiline Tag
-                // If index out of range
-                // Row + 1
-                // word 0
-                if (curWordIndex + 1 == words[curWordLine].Count)
-                {
-                    curWordLine++;
-                    curWordIndex = 0;
-                    tagContent.Append(Environment.NewLine);
-                }
-                // Else proceed normally
-                else
-                {
-                    curWordIndex++;
-                }
-                
+                curWordIndex++;
             }
         }
 
