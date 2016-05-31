@@ -11,6 +11,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "03-Slides", "03-Slides\03-S
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "04-Console-Justification", "04-Console-Justification\04-Console-Justification.csproj", "{6B317905-600E-489F-8CE0-3A07ABD6A1B9}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "05-OneTaskIsNotEnough", "05-OneTaskIsNotEnough\05-OneTaskIsNotEnough.csproj", "{1BA8F796-1333-4119-B2CF-9618A280D4A0}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "05-One-Task-Is-Not-Enough", "05-One-Task-Is-Not-Enough\05-One-Task-Is-Not-Enough.csproj", "{277AF234-7ADF-4241-B699-DCF9E911802C}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -33,6 +37,14 @@ Global
 		{6B317905-600E-489F-8CE0-3A07ABD6A1B9}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{6B317905-600E-489F-8CE0-3A07ABD6A1B9}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{6B317905-600E-489F-8CE0-3A07ABD6A1B9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1BA8F796-1333-4119-B2CF-9618A280D4A0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1BA8F796-1333-4119-B2CF-9618A280D4A0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1BA8F796-1333-4119-B2CF-9618A280D4A0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1BA8F796-1333-4119-B2CF-9618A280D4A0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{277AF234-7ADF-4241-B699-DCF9E911802C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{277AF234-7ADF-4241-B699-DCF9E911802C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{277AF234-7ADF-4241-B699-DCF9E911802C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{277AF234-7ADF-4241-B699-DCF9E911802C}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

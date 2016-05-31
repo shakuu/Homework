@@ -15,9 +15,6 @@ namespace _04_Console_Justification
         static List<string> words =
            new List<string>();
 
-        static List<string> output =
-           new List<string>();
-
         // Input: Working.
         static void Input()
         {
@@ -35,7 +32,7 @@ namespace _04_Console_Justification
                 words.AddRange
                     (Console.ReadLine()
                         .Trim()
-                        .Split(new[] {' ' },
+                        .Split(new[] { ' ' },
                             StringSplitOptions
                             .RemoveEmptyEntries));
             }
@@ -57,10 +54,10 @@ namespace _04_Console_Justification
                 if (curLineLength + words[cur].Length <= width)
                 {
                     curLineLength += words[cur].Length;
-                    cur++;
 
                     // First Word to use on this line
-                    if (curLineLength == 0) startIndex = cur;
+                    if (curLineLength - words[cur].Length == 0)
+                        startIndex = cur;
 
                     // If line is full then nothing to justify
                     if (curLineLength == width)
@@ -76,12 +73,22 @@ namespace _04_Console_Justification
                         // before the next word
                         curLineLength++;
                     }
+
+                    // Last word available
+                    if (cur == words.Count-1)
+                    {
+                        JustifyASentence(startIndex, cur, curLineLength);
+                        return;
+                    }
+
+                    cur++;
                 }
                 else
                 {
                     // Build a justified string and print
                     // Words from start index to the one before
-                    JustifyASentence(startIndex, cur - 1);
+                    JustifyASentence(startIndex, cur - 1, curLineLength);
+                    curLineLength = 0;
                 }
             }
         }
@@ -99,10 +106,42 @@ namespace _04_Console_Justification
 
             Console.WriteLine(output);
         }
-        // TODO: 
-        static void JustifyASentence(int first, int last)
+        static void JustifyASentence(int first, int last, int length)
         {
+            // Case just one word
+            if (last == first)
+            {
+                Console.WriteLine(words[first]);
+                return;
+            }
 
+            var wordCount = last - first + 1;
+            var spacesCount = wordCount - 1;
+            var spacesToAdd = width - (length - wordCount);
+
+            var spaces = new StringBuilder[spacesCount]
+                .Select(x => x = new StringBuilder())
+                .ToArray();
+
+            for (int space = 0; space < spacesToAdd; space++)
+            {
+                var curSpace = space % spacesCount;
+
+                spaces[curSpace].Append(" ");
+            }
+
+            // Build the line
+            var output = new StringBuilder();
+
+            for (int word = 0; word < spacesCount; word++)
+            {
+                output.Append(words[first + word]);
+                output.Append(spaces[word]);
+            }
+
+            output.Append(words[last]);
+
+            Console.WriteLine(output);
         }
 
         static void Main()
