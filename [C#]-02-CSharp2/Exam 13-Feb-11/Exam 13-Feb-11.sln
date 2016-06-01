@@ -13,6 +13,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "04-FTML-Parsing", "04-FTML-
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "04-FTML-Parsing-2", "04-FTML-Parsing-2\04-FTML-Parsing-2.csproj", "{8A13E82F-6DCD-4958-9C81-BD58AFE6FB18}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "05-3-in-1", "05-3-in-1\05-3-in-1.csproj", "{05BF2A7A-E415-49FB-A157-3F42AEB90059}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -39,6 +41,10 @@ Global
 		{8A13E82F-6DCD-4958-9C81-BD58AFE6FB18}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{8A13E82F-6DCD-4958-9C81-BD58AFE6FB18}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{8A13E82F-6DCD-4958-9C81-BD58AFE6FB18}.Release|Any CPU.Build.0 = Release|Any CPU
+		{05BF2A7A-E415-49FB-A157-3F42AEB90059}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{05BF2A7A-E415-49FB-A157-3F42AEB90059}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{05BF2A7A-E415-49FB-A157-3F42AEB90059}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{05BF2A7A-E415-49FB-A157-3F42AEB90059}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
