@@ -143,14 +143,6 @@ namespace _05_3_in_1
                            have[i] - goal[i] : 0;
             }
         }
-        static void HasEnoughGold()
-        {
-
-            for (int i = 0; i < 3; i++)
-            {
-
-            }
-        }
 
         static void Main()
         {
