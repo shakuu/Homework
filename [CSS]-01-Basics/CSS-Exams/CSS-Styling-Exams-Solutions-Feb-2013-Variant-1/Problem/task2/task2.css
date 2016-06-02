@@ -11,7 +11,7 @@ body {
 body div#wrapper {
   border: 1px solid #000;
   border-radius: 5px;
-  width: 340px;
+  width: 345px;
   height: 230px;
 }
 body div#wrapper > ul.tab-strip {
@@ -25,6 +25,7 @@ body div#wrapper > ul.tab-strip > li a.tab-btn {
   box-sizing: border-box;
   text-decoration: none;
   width: 85px;
+  margin-right: -3px;
   height: 35px;
   color: #000;
   text-align: center;
