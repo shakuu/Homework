@@ -1,0 +1,73 @@
+﻿body,
+div,
+html,
+ul,
+li,
+a,
+aside {
+  margin: 0;
+  padding: 0;
+}
+body #wrapper {
+  width: 960px;
+  font-size: 16px;
+  font-family: Arial, 'DejaVu Sans', 'Liberation Sans', Freesans, sans-serif;
+}
+body #wrapper aside {
+  margin-left: 20px;
+  margin-top: 10px;
+  display: inline-block;
+  background: #8977ff;
+  background: -moz-linear-gradient(top, #d29bff 0%, #8977ff 100%);
+  background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #d29bff), color-stop(100%, #8977ff));
+  background: -webkit-linear-gradient(top, #d29bff 0%, #8977ff 100%);
+  background: -o-linear-gradient(top, #d29bff 0%, #8977ff 100%);
+  background: -ms-linear-gradient(top, #d29bff 0%, #8977ff 100%);
+  background: linear-gradient(to bottom, #d29bff 0%, #8977ff 100%);
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#d29bff', endColorstr='#8977ff', GradientType=0);
+  border-radius: 10px;
+  padding: 5px 15px;
+}
+body #wrapper aside ul {
+  list-style-type: none;
+}
+body #wrapper aside ul > li {
+  font-size: 1.4em;
+}
+body #wrapper aside ul li {
+  position: relative;
+  padding: 5px 15px;
+  border-bottom: 1px solid #9D00FF;
+}
+body #wrapper aside ul li a {
+  color: black;
+  text-decoration: none;
+}
+body #wrapper aside ul li ul {
+  background-image: url(imgs/arrow.png);
+  background-repeat: no-repeat;
+  background-position: 5px 15px;
+  display: none;
+  position: absolute;
+  top: -5px;
+  left: 190px;
+  background-color: #b5aaff;
+  border-radius: 10px;
+  padding: 5px;
+  padding-left: 20px;
+  text-align: center;
+}
+body #wrapper aside ul li ul li {
+  width: 180px;
+  font-size: 0.8em;
+}
+body #wrapper aside ul li:last-of-type {
+  border: none;
+}
+body #wrapper aside ul li:hover {
+  border: 1px solid #9D00FF;
+  border-radius: 5px;
+}
+body #wrapper aside ul li:hover ul {
+  display: block;
+}

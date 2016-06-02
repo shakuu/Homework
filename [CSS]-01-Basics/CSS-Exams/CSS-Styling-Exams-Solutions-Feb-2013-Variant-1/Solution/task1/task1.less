@@ -1,0 +1,92 @@
+﻿body, div, html, ul, li, a, aside {
+    margin: 0;
+    padding: 0;
+}
+
+.linear-gradient(@from-color,@from-pos,@to-color,@to-pos) {
+    background: @to-color;
+    background: -moz-linear-gradient(top, @from-color @from-pos, @to-color @to-pos);
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(@from-pos,@from-color), color-stop(@to-pos,@to-color));
+    background: -webkit-linear-gradient(top, @from-color @from-pos,@to-color @to-pos);
+    background: -o-linear-gradient(top, @from-color @from-pos,@to-color @to-pos);
+    background: -ms-linear-gradient(top, @from-color @from-pos,@to-color @to-pos);
+    background: linear-gradient(to bottom, @from-color @from-pos,@to-color @to-pos);
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='@{from-color}', endColorstr='@{to-color}',GradientType=0 );
+}
+
+body {
+    #wrapper {
+        @default-bg-color: lighten( #A435FF,20%);
+        @aside-bg-color: lighten( #5D44FF,10%);
+        @default-font-family: Arial, 'DejaVu Sans', 'Liberation Sans', Freesans, sans-serif;
+        @default-font-size: 16px;
+
+        width: 960px;
+        font-size: @default-font-size;
+        font-family: @default-font-family;
+
+        aside {
+            margin-left: 20px;
+            margin-top: 10px;
+            display: inline-block;
+            .linear-gradient(@default-bg-color,0%,@aside-bg-color,100%);
+            border-radius: 10px;
+            padding: 5px 15px;
+
+
+            ul {
+                list-style-type: none;
+
+                & > li {
+                    font-size: 1.4em;
+                }
+
+                li {
+                    position: relative;
+                    padding: 5px 15px;
+                    border-bottom: 1px solid #9D00FF;
+
+                    a {
+                        color: black;
+                        text-decoration: none;
+                    }
+
+
+                    ul {
+                        background-image: url(imgs/arrow.png);
+                        background-repeat: no-repeat;
+                        background-position: 5px 15px;
+                        display: none;
+                        position: absolute;
+                        top: -5px;
+                        left: 190px;
+                        background-color: lighten(@aside-bg-color,10%);
+                        border-radius: 10px;
+                        padding: 5px;
+                        padding-left: 20px;
+                        text-align: center;
+
+
+                        li {
+                            width: 180px;
+                            font-size: 0.8em;
+                        }
+                    }
+
+                    &:last-of-type {
+                        border: none;
+                    }
+
+                    &:hover {
+                        border: 1px solid #9D00FF;
+                        border-radius: 5px;
+
+                        ul {
+                            display: block;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

@@ -1,0 +1,81 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+body {
+  width: 960px;
+  font-family: Arial, 'DejaVu Sans', 'Liberation Sans', Freesans, sans-serif;
+  font-size: 16px;
+}
+body div#wrapper aside ul.sidebar {
+  margin: 10px 20px;
+  background: #d29bff;
+  background: -moz-linear-gradient(top, #d29bff 0%, #8977ff 100%);
+  background: -webkit-linear-gradient(top, #d29bff 0%, #8977ff 100%);
+  background: linear-gradient(to bottom, #d29bff 0%, #8977ff 100%);
+  width: 215px;
+  height: 220px;
+  border-radius: 10px;
+  list-style: none;
+  padding-top: 10px;
+}
+body div#wrapper aside ul.sidebar > li {
+  text-align: center;
+  margin-bottom: 11px;
+  position: relative;
+}
+body div#wrapper aside ul.sidebar > li:hover > ul {
+  display: block;
+}
+body div#wrapper aside ul.sidebar > li:last-child > a {
+  border-bottom: none;
+}
+body div#wrapper aside ul.sidebar > li > a {
+  text-decoration: none;
+  color: #000;
+  font-size: 22px;
+  border-bottom: 1px solid #9d00ff;
+  padding: 5px 15px 6px 15px;
+}
+body div#wrapper aside ul.sidebar > li > a:hover {
+  border: 1px solid #9d00ff;
+  border-radius: 5px;
+}
+body div#wrapper aside ul.sidebar > li > ul {
+  display: none;
+  position: absolute;
+  top: -5px;
+  left: 210px;
+  width: 240px;
+  list-style: none;
+  background-color: #b5aaff;
+  border-radius: 10px;
+  padding-top: 10px;
+  background-image: url("./imgs/arrow.png");
+  background-repeat: no-repeat;
+  background-position-x: 5px;
+  background-position-y: 15px;
+}
+body div#wrapper aside ul.sidebar > li > ul li {
+  text-align: center;
+  margin-bottom: 5px;
+  margin-left: 10px;
+}
+body div#wrapper aside ul.sidebar > li > ul li:last-child > a {
+  border-bottom: none;
+}
+body div#wrapper aside ul.sidebar > li > ul li > a {
+  margin-top: -5px;
+  display: block;
+  width: 180px;
+  margin-left: 10px;
+  text-decoration: none;
+  color: #000;
+  font-size: 18px;
+  border-bottom: 1px solid #9d00ff;
+  padding: 5px 15px 5px 15px;
+}
+body div#wrapper aside ul.sidebar > li > ul li > a:hover {
+  border: 1px solid #9d00ff;
+  border-radius: 5px;
+}

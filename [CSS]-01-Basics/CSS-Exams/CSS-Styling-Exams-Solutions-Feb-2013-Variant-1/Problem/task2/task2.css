@@ -1,0 +1,90 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+body {
+  width: 960px;
+  font-family: Cambria, 'Times New Roman', 'Nimbus Roman No9 L', 'Freeserif', Times, serif;
+  font-size: 16px;
+  margin: 15px;
+}
+body div#wrapper {
+  border: 1px solid #000;
+  border-radius: 5px;
+  width: 340px;
+  height: 230px;
+}
+body div#wrapper > ul.tab-strip {
+  list-style: none;
+}
+body div#wrapper > ul.tab-strip > li {
+  display: inline-block;
+}
+body div#wrapper > ul.tab-strip > li a.tab-btn {
+  display: block;
+  box-sizing: border-box;
+  text-decoration: none;
+  width: 85px;
+  height: 35px;
+  color: #000;
+  text-align: center;
+  padding-top: 5px;
+  font-size: 22px;
+  font-weight: bold;
+  background: #ededed;
+  background: -moz-linear-gradient(top, #ededed 0%, #ababab 100%);
+  background: -webkit-linear-gradient(top, #ededed 0%, #ababab 100%);
+  background: linear-gradient(to bottom, #ededed 0%, #ababab 100%);
+  border-radius: 5px;
+  border-bottom: 1px solid #000;
+  border-right: 1px solid #000;
+}
+body div#wrapper > ul.tab-strip > li a.tab-btn:hover {
+  background: #eee;
+}
+body div#wrapper > ul.tab-strip > li div.tab-content {
+  display: none;
+  position: absolute;
+  top: 60px;
+  left: 30px;
+}
+body div#wrapper > ul.tab-strip > li.current > div.tab-content {
+  display: block;
+}
+body div#wrapper > ul.tab-strip > li.current > div.tab-content > ul {
+  margin-left: 10px;
+  list-style: disc;
+}
+body div#wrapper > ul.tab-strip > li.current > div.tab-content > ul li ul {
+  margin-left: 15px;
+  list-style: lower-latin;
+}
+body div#wrapper > ul.tab-strip > li.current > div.tab-content > table {
+  background: #ededed;
+  background: -moz-linear-gradient(top, #ababab 0%, #ededed 100%);
+  background: -webkit-linear-gradient(top, #ababab 0%, #ededed 100%);
+  background: linear-gradient(to bottom, #ababab 0%, #ededed 100%);
+  margin-top: 5px;
+  margin-left: 10px;
+  padding: 0;
+  border: 1px solid #000;
+  border-collapse: collapse;
+}
+body div#wrapper > ul.tab-strip > li.current > div.tab-content > table tr th {
+  text-align: center;
+}
+body div#wrapper > ul.tab-strip > li.current > div.tab-content > table tr td,
+body div#wrapper > ul.tab-strip > li.current > div.tab-content > table tr th {
+  width: 85px;
+  padding: 5px 5px;
+  border: 1px solid #000;
+}
+body div#wrapper > ul.tab-strip > li.current > a.tab-btn {
+  border-right: 1px solid #000;
+  background: #fff;
+  border-radius: 0;
+  border-bottom: none;
+}
+body div#wrapper > ul.tab-strip > li:last-child > a.tab-btn {
+  border-right: none;
+}

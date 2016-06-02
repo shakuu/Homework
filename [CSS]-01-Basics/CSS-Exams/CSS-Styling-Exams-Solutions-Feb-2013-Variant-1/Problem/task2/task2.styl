@@ -1,0 +1,109 @@
+default()
+  width 960px
+  font-family: Cambria, 'Times New Roman', 'Nimbus Roman No9 L', 'Freeserif', Times, serif
+  font-size: 16px
+  
+clearfix()
+  &:after
+    content ""
+    display block
+    clear both
+    
+gradient()
+  background: #ededed;
+  background: -moz-linear-gradient(top,  #ededed 0%, #ababab 100%);
+  background: -webkit-linear-gradient(top,  #ededed 0%,#ababab 100%);
+  background: linear-gradient(to bottom,  #ededed 0%,#ababab 100%);
+  
+gradient-rev()
+  background: #ededed;
+  background: -moz-linear-gradient(top,  #ababab 0%, #ededed 100%);
+  background: -webkit-linear-gradient(top,  #ababab 0%,#ededed 100%);
+  background: linear-gradient(to bottom,  #ababab 0%,#ededed 100%);
+
+
+    
+*
+  margin 0
+  padding 0
+
+body
+  default()
+  margin 15px
+  
+  div#wrapper
+    border 1px solid black
+    border-radius 5px
+    width 340px
+    height 230px
+    
+    > ul.tab-strip
+      list-style none
+      
+      > li
+        display inline-block
+        
+        a.tab-btn
+          display block
+          box-sizing border-box
+          text-decoration: none
+          width 85px
+          height 35px
+          color black
+          text-align center
+          padding-top 5px
+          font-size 22px
+          font-weight: bold
+          gradient()
+          border-radius 5px
+          border-bottom 1px solid black
+          border-right 1px solid black
+          
+          &:hover
+            background #EEEEEE
+          
+        div.tab-content
+          display none
+          position absolute
+          top 60px
+          left 30px
+          
+        &.current 
+        
+          > div.tab-content
+            display block
+            
+            > ul
+              margin-left 10px
+              list-style disc
+              
+              li
+                ul
+                  margin-left 15px
+                  list-style lower-latin
+            > table
+              gradient-rev()
+              margin-top 5px
+              margin-left: 10px
+              padding 0
+              border 1px solid black
+              border-collapse: collapse
+              tr
+                th
+                  text-align: center
+                td, th
+                  width 85px
+                  padding 5px 5px
+                  border 1px solid black
+                  
+                  
+              
+          > a.tab-btn
+            border-right 1px solid black
+            background white
+            border-radius 0
+            border-bottom none
+        
+        &:last-child 
+          > a.tab-btn
+            border-right none

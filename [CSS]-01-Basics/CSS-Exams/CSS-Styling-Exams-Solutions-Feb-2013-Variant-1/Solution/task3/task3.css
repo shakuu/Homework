@@ -1,0 +1,131 @@
+﻿html,
+li,
+body,
+ul,
+div,
+span,
+p,
+a {
+  margin: 0;
+  padding: 0;
+}
+body {
+  color: #555555;
+  font-family: Cambria, 'Times New Roman', 'Nimbus Roman No9 L', 'Freeserif', Times, serif;
+  font-size: 16px;
+}
+body #wrapper {
+  width: 960px;
+}
+body #wrapper div {
+  margin-left: 30px;
+  margin-top: 30px;
+  border: 1px solid black;
+  border-radius: 15px;
+  width: 350px;
+  background: #aaaaaa;
+  background: -moz-linear-gradient(top, #eeeeee 0%, #aaaaaa 100%);
+  background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #eeeeee), color-stop(100%, #aaaaaa));
+  background: -webkit-linear-gradient(top, #eeeeee 0%, #aaaaaa 100%);
+  background: -o-linear-gradient(top, #eeeeee 0%, #aaaaaa 100%);
+  background: -ms-linear-gradient(top, #eeeeee 0%, #aaaaaa 100%);
+  background: linear-gradient(to bottom, #eeeeee 0%, #aaaaaa 100%);
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#eeeeee', endColorstr='#aaaaaa', GradientType=0);
+  text-align: right;
+  padding: 5px 15px;
+}
+body #wrapper div h1 {
+  text-align: center;
+  margin: 10px auto;
+  font-size: 1.8em;
+}
+body #wrapper div .messages-list {
+  list-style-type: none;
+  zoom: 1;
+}
+body #wrapper div .messages-list:after {
+  display: block;
+  content: "";
+  height: 0;
+  clear: both;
+}
+body #wrapper div .messages-list li {
+  border: 1px solid black;
+  border-radius: 15px;
+  padding: 5px 15px;
+  width: 200px;
+  margin-bottom: 5px;
+}
+body #wrapper div .messages-list li.me-item {
+  float: right;
+  text-align: right;
+  background: #c1faff;
+  background: -moz-linear-gradient(top, #28edff 0%, #c1faff 100%);
+  background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #28edff), color-stop(100%, #c1faff));
+  background: -webkit-linear-gradient(top, #28edff 0%, #c1faff 100%);
+  background: -o-linear-gradient(top, #28edff 0%, #c1faff 100%);
+  background: -ms-linear-gradient(top, #28edff 0%, #c1faff 100%);
+  background: linear-gradient(to bottom, #28edff 0%, #c1faff 100%);
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#28edff', endColorstr='#c1faff', GradientType=0);
+}
+body #wrapper div .messages-list li.me-item span:first-of-type {
+  text-align: left;
+}
+body #wrapper div .messages-list li.toshko-item {
+  float: left;
+  text-align: left;
+  background: #6fff3a;
+  background: -moz-linear-gradient(top, #dfffd3 0%, #6fff3a 100%);
+  background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #dfffd3), color-stop(100%, #6fff3a));
+  background: -webkit-linear-gradient(top, #dfffd3 0%, #6fff3a 100%);
+  background: -o-linear-gradient(top, #dfffd3 0%, #6fff3a 100%);
+  background: -ms-linear-gradient(top, #dfffd3 0%, #6fff3a 100%);
+  background: linear-gradient(to bottom, #dfffd3 0%, #6fff3a 100%);
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#dfffd3', endColorstr='#6fff3a', GradientType=0);
+}
+body #wrapper div .messages-list li.toshko-item span:first-of-type {
+  text-align: right;
+}
+body #wrapper div .messages-list li span {
+  display: block;
+  font-weight: bold;
+  font-size: 1.1em;
+}
+body #wrapper div .messages-list li span.date {
+  font-size: 0.8em;
+  font-weight: normal;
+  font-family: Consolas, 'Lucida Console', 'DejaVu Sans Mono', monospace;
+  display: block;
+}
+body #wrapper div .messages-list li p {
+  text-align: justify;
+}
+body #wrapper div input {
+  border: none;
+  line-height: 25px;
+  display: block;
+  border-radius: 5px;
+  padding: 5px 15px;
+  background-color: #eee;
+  color: #555;
+  width: 70%;
+}
+body #wrapper div button {
+  border: none;
+  padding: 5px 15px;
+  font-size: 1.1em;
+  float: right;
+  margin-top: -35px;
+  border-radius: 5px;
+  background: #aaaaaa;
+  background: -moz-linear-gradient(top, #eeeeee 0%, #aaaaaa 100%);
+  background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #eeeeee), color-stop(100%, #aaaaaa));
+  background: -webkit-linear-gradient(top, #eeeeee 0%, #aaaaaa 100%);
+  background: -o-linear-gradient(top, #eeeeee 0%, #aaaaaa 100%);
+  background: -ms-linear-gradient(top, #eeeeee 0%, #aaaaaa 100%);
+  background: linear-gradient(to bottom, #eeeeee 0%, #aaaaaa 100%);
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#eeeeee', endColorstr='#aaaaaa', GradientType=0);
+}
+body #wrapper div button:hover {
+  background: #eee;
+}
