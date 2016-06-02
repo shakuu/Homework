@@ -1,0 +1,144 @@
+font-family-dates = consolas
+
+font-color = #555555
+
+bg-gradient()
+  background: #eeeeee;
+  background: -moz-linear-gradient(top, #eeeeee 0%, #aaaaaa 100%);
+  background: -webkit-linear-gradient(top, #eeeeee 0%,#aaaaaa 100%);
+  background: linear-gradient(to bottom, #eeeeee 0%,#aaaaaa 100%);
+
+me-gradient()
+  background: #dfffd2;
+  background: -moz-linear-gradient(top, #dfffd2 0%, #6fff3b 100%);
+  background: -webkit-linear-gradient(top, #dfffd2 0%,#6fff3b 100%);
+  background: linear-gradient(to bottom, #dfffd2 0%,#6fff3b 100%);
+
+toshko-gradient()
+  background: #29edff;
+  background: -moz-linear-gradient(top, #29edff 0%, #c0faff 100%);
+  background: -webkit-linear-gradient(top, #29edff 0%,#c0faff 100%);
+  background: linear-gradient(to bottom, #29edff 0%,#c0faff 100%);
+
+btn-gradient()
+  background: #ededed;
+  background: -moz-linear-gradient(top, #ededed 0%, #ababab 100%);
+  background: -webkit-linear-gradient(top, #ededed 0%,#ababab 100%);
+  background: linear-gradient(to bottom, #ededed 0%,#ababab 100%);
+
+clearfix()
+  &:after
+    content ""
+    display block
+    clear both
+
+default()
+  width: 960px
+  font-family: Cambria, 'Times New Roman', 'Nimbus Roman No9 L', 'Freeserif', Times, serif
+  
+border-style()
+  border 1px solid black
+  
+message-item()
+  border-style()
+  clear both
+  display block
+  height 60px
+  width 200px
+  border-radius 15px
+  margin-bottom 5px
+  padding-left  15px
+  padding-right 15px
+  padding-top 5px
+  
+*
+  margin 0
+  padding 0
+  
+body
+  default()
+  color font-color
+  margin 30px 30px
+  
+  div#wrapper
+    bg-gradient()
+    border-style()
+    border-radius 15px
+    width 380px
+    height 465px
+    
+    div
+      h1
+        font-size 28px
+        text-align: center
+        margin-top 15px
+        letter-spacing 0.03rem
+        
+      ul.messages-list
+        list-style none
+        margin-top 10px
+        padding 0px 15px
+        clearfix()
+        height 360px
+        
+        li.me-item
+          toshko-gradient()
+          float right 
+          
+          span 
+            text-align left
+            
+          p
+            letter-spacing: 0.02rem
+          
+        li.toshko-item
+          me-gradient()
+          float left 
+          
+          span 
+            text-align right 
+            
+          p
+            letter-spacing: 0.01em
+          
+        li.me-item, li.toshko-item
+          message-item()
+          
+          *
+            display block
+            
+          span 
+            font-weight bold
+            font-size 18px
+            letter-spacing: 0.01em
+            
+          p
+            margin-top 0px
+            
+            
+          span.date
+            text-align right
+            font-size 12px
+            font-family font-family-dates
+            letter-spacing 0.03em
+          
+    input
+      margin-left 15px
+      height 35px
+      width 255px
+      border-radius: 5px
+      background #EEEEEE
+      color font-color
+      padding-left 15px
+    
+    button
+      height 30px
+      width 70px
+      border-radius 5px
+      font-size 18px
+      font-weight bold
+      btn-gradient()
+      border none
+      
+      &:hover 
+        background #EEEEEE

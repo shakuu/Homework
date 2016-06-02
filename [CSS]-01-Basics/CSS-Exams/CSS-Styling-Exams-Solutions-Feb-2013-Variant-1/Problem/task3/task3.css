@@ -1,0 +1,121 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+body {
+  width: 960px;
+  font-family: Cambria, 'Times New Roman', 'Nimbus Roman No9 L', 'Freeserif', Times, serif;
+  color: #555;
+  margin: 30px 30px;
+}
+body div#wrapper {
+  background: #eee;
+  background: -moz-linear-gradient(top, #eee 0%, #aaa 100%);
+  background: -webkit-linear-gradient(top, #eee 0%, #aaa 100%);
+  background: linear-gradient(to bottom, #eee 0%, #aaa 100%);
+  border: 1px solid #000;
+  border-radius: 15px;
+  width: 380px;
+  height: 465px;
+}
+body div#wrapper div h1 {
+  font-size: 28px;
+  text-align: center;
+  margin-top: 15px;
+  letter-spacing: 0.03rem;
+}
+body div#wrapper div ul.messages-list {
+  list-style: none;
+  margin-top: 10px;
+  padding: 0px 15px;
+  height: 360px;
+}
+body div#wrapper div ul.messages-list:after {
+  content: "";
+  display: block;
+  clear: both;
+}
+body div#wrapper div ul.messages-list li.me-item {
+  background: #29edff;
+  background: -moz-linear-gradient(top, #29edff 0%, #c0faff 100%);
+  background: -webkit-linear-gradient(top, #29edff 0%, #c0faff 100%);
+  background: linear-gradient(to bottom, #29edff 0%, #c0faff 100%);
+  float: right;
+}
+body div#wrapper div ul.messages-list li.me-item span {
+  text-align: left;
+}
+body div#wrapper div ul.messages-list li.me-item p {
+  letter-spacing: 0.02rem;
+}
+body div#wrapper div ul.messages-list li.toshko-item {
+  background: #dfffd2;
+  background: -moz-linear-gradient(top, #dfffd2 0%, #6fff3b 100%);
+  background: -webkit-linear-gradient(top, #dfffd2 0%, #6fff3b 100%);
+  background: linear-gradient(to bottom, #dfffd2 0%, #6fff3b 100%);
+  float: left;
+}
+body div#wrapper div ul.messages-list li.toshko-item span {
+  text-align: right;
+}
+body div#wrapper div ul.messages-list li.toshko-item p {
+  letter-spacing: 0.01em;
+}
+body div#wrapper div ul.messages-list li.me-item,
+body div#wrapper div ul.messages-list li.toshko-item {
+  border: 1px solid #000;
+  clear: both;
+  display: block;
+  height: 60px;
+  width: 200px;
+  border-radius: 15px;
+  margin-bottom: 5px;
+  padding-left: 15px;
+  padding-right: 15px;
+  padding-top: 5px;
+}
+body div#wrapper div ul.messages-list li.me-item *,
+body div#wrapper div ul.messages-list li.toshko-item * {
+  display: block;
+}
+body div#wrapper div ul.messages-list li.me-item span,
+body div#wrapper div ul.messages-list li.toshko-item span {
+  font-weight: bold;
+  font-size: 18px;
+  letter-spacing: 0.01em;
+}
+body div#wrapper div ul.messages-list li.me-item p,
+body div#wrapper div ul.messages-list li.toshko-item p {
+  margin-top: 0px;
+}
+body div#wrapper div ul.messages-list li.me-item span.date,
+body div#wrapper div ul.messages-list li.toshko-item span.date {
+  text-align: right;
+  font-size: 12px;
+  font-family: consolas;
+  letter-spacing: 0.03em;
+}
+body div#wrapper input {
+  margin-left: 15px;
+  height: 35px;
+  width: 255px;
+  border-radius: 5px;
+  background: #eee;
+  color: #555;
+  padding-left: 15px;
+}
+body div#wrapper button {
+  height: 30px;
+  width: 70px;
+  border-radius: 5px;
+  font-size: 18px;
+  font-weight: bold;
+  background: #ededed;
+  background: -moz-linear-gradient(top, #ededed 0%, #ababab 100%);
+  background: -webkit-linear-gradient(top, #ededed 0%, #ababab 100%);
+  background: linear-gradient(to bottom, #ededed 0%, #ababab 100%);
+  border: none;
+}
+body div#wrapper button:hover {
+  background: #eee;
+}
