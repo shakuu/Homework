@@ -22,20 +22,20 @@ body div#wrapper div.select-list ul.selected-items {
   background: -webkit-linear-gradient(top, #8168ff 0%, #fff 100%);
   background: linear-gradient(to bottom, #8168ff 0%, #fff 100%);
   float: left;
-  list-style: none;
-  overflow-y: scroll;
   width: 150px;
   height: 200px;
   margin-left: 25px;
   margin-top: 25px;
+  list-style: none;
+  overflow-y: scroll;
 }
 body div#wrapper div.select-list ul.all-items > li,
 body div#wrapper div.select-list ul.selected-items > li {
+  height: 19px;
   cursor: pointer;
   padding: 5px 15px;
-  border-bottom: 1px solid #000;
-  height: 19px;
   letter-spacing: -0.01rem;
+  border-bottom: 1px solid #000;
 }
 body div#wrapper div.select-list ul.all-items > li:first-letter,
 body div#wrapper div.select-list ul.selected-items > li:first-letter {
