@@ -1,1 +1,64 @@
-﻿
+* {
+  padding: 0;
+  margin: 0;
+}
+body {
+  width: 960px;
+  font-family: Helvetica, Arial, 'DejaVu Sans', 'Liberation Sans', Freesans, sans-serif;
+  font-size: 16px;
+}
+body div#wrapper {
+  width: 396px;
+}
+body div#wrapper:after {
+  content: "";
+  display: block;
+  clear: both;
+}
+body div#wrapper div.select-list ul.all-items,
+body div#wrapper div.select-list ul.selected-items {
+  background: #8168ff;
+  background: -moz-linear-gradient(top, #8168ff 0%, #fff 100%);
+  background: -webkit-linear-gradient(top, #8168ff 0%, #fff 100%);
+  background: linear-gradient(to bottom, #8168ff 0%, #fff 100%);
+  float: left;
+  list-style: none;
+  overflow-y: scroll;
+  width: 150px;
+  height: 200px;
+  margin-left: 25px;
+  margin-top: 25px;
+}
+body div#wrapper div.select-list ul.all-items > li,
+body div#wrapper div.select-list ul.selected-items > li {
+  cursor: pointer;
+  padding: 5px 15px;
+  border-bottom: 1px solid #000;
+  height: 19px;
+  letter-spacing: -0.01rem;
+}
+body div#wrapper div.select-list ul.all-items > li:first-letter,
+body div#wrapper div.select-list ul.selected-items > li:first-letter {
+  text-decoration: underline;
+}
+body div#wrapper div.select-list ul.all-items > li:last-child,
+body div#wrapper div.select-list ul.selected-items > li:last-child {
+  border-bottom: none;
+}
+body div#wrapper div.select-list ul.all-items > li.selected,
+body div#wrapper div.select-list ul.selected-items > li.selected {
+  background-color: #6c4eff;
+}
+body div#wrapper div.select-list ul.selected-items {
+  float: right;
+  margin-left: -15px;
+}
+body div#wrapper div.select-list a.btn-unselect,
+body div#wrapper div.select-list a.btn.select {
+  display: inline-block;
+  margin-top: 115px;
+  margin-left: 5px;
+}
+body div#wrapper div.select-list a.btn.select {
+  margin-right: -10px;
+}

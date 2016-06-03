@@ -1,0 +1,70 @@
+bg-color-selected = #6C4EFF
+
+clearfix()
+  &:after
+    content ""
+    display block
+    clear both
+
+bg-gradient()
+  background: #8168ff;
+  background: -moz-linear-gradient(top, #8168ff 0%, #ffffff 100%);
+  background: -webkit-linear-gradient(top, #8168ff 0%,#ffffff 100%);
+  background: linear-gradient(to bottom, #8168ff 0%,#ffffff 100%);
+
+default()
+  width 960px
+  font-family Helvetica, Arial, 'DejaVu Sans', 'Liberation Sans', Freesans, sans-serif
+  font-size 16px
+
+*
+  padding 0
+  margin 0
+
+body
+  default()
+  
+  div#wrapper
+    clearfix()
+    width 396px
+    
+    div.select-list
+    
+      ul.all-items
+        bg-gradient()
+        float left
+        list-style none
+        overflow-y scroll
+        width 150px
+        height 200px
+        margin-left 25px
+        margin-top 25px
+        
+        > li
+          cursor: pointer
+          padding 5px 15px
+          border-bottom 1px solid black
+          height 19px
+          letter-spacing -0.01rem
+          
+          &:first-letter
+            text-decoration underline
+            
+          &:last-child
+            border-bottom none
+          
+        > li.selected
+          background-color bg-color-selected
+          
+      ul.selected-items
+        @extend body div#wrapper div.select-list ul.all-items
+        float right
+        margin-left -15px
+          
+      a.btn-unselect, a.btn.select
+        display inline-block
+        margin-top 115px  
+        margin-left 5px  
+      
+      a.btn.select
+        margin-right -10px
