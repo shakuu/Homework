@@ -1,1 +1,105 @@
-﻿
+* {
+  margin: 0;
+  padding: 0;
+}
+body {
+  width: 960px;
+  font-family: Cambria, 'Palatino Linotype', 'Book Antiqua', 'URW Palladio L', serif;
+  font-size: 18px;
+}
+body div#wrapper {
+  background: #ebff5b;
+  background: -moz-linear-gradient(top, #ebff5b 0%, #444 100%);
+  background: -webkit-linear-gradient(top, #ebff5b 0%, #444 100%);
+  background: linear-gradient(to bottom, #ebff5b 0%, #444 100%);
+  width: 380px;
+  height: 365px;
+  padding: 15px;
+  margin: 25px 25px;
+  border-radius: 15px;
+  border: 1px solid #444;
+}
+body div#wrapper form {
+  text-align: right;
+  color: #fff;
+  font-size: 16px;
+}
+body div#wrapper form > label {
+  display: inline-block;
+  margin-top: 12px;
+  margin-left: 3px;
+}
+body div#wrapper form > input[type=radio] {
+  display: none;
+}
+body div#wrapper form > input[type=radio]:checked + label {
+  font-weight: bold;
+  font-size: 18px;
+}
+body div#wrapper form button,
+body div#wrapper form input[type=reset] {
+  background: #e3fd28;
+  background: -moz-linear-gradient(top, #e3fd28 0%, #464644 100%);
+  background: -webkit-linear-gradient(top, #e3fd28 0%, #464644 100%);
+  background: linear-gradient(to bottom, #e3fd28 0%, #464644 100%);
+  border: none;
+  border-bottom: 2px solid #000;
+  border-radius: 5px;
+  padding: 5px 15px;
+  font-size: 19px;
+  color: #333;
+  margin-top: 15px;
+}
+body div#wrapper form button:hover,
+body div#wrapper form input[type=reset]:hover {
+  background: #f1ff8e;
+}
+body div#wrapper form > fieldset {
+  padding: 12px 15px;
+  color: #fff;
+  border: 3px solid #555;
+  border-radius: 10px;
+  padding-bottom: 0;
+}
+body div#wrapper form > fieldset > legend {
+  padding: 0px 15px;
+  font-size: 20px;
+  font-weight: bold;
+  font-style: italic;
+  letter-spacing: 0.02em;
+}
+body div#wrapper form > fieldset > label {
+  font-size: 16px;
+}
+body div#wrapper form > fieldset > input[type=text],
+body div#wrapper form > fieldset input[type=password] {
+  background: #e8fc5b;
+  background: -moz-linear-gradient(top, #e8fc5b 0%, #474744 100%);
+  background: -webkit-linear-gradient(top, #e8fc5b 0%, #474744 100%);
+  background: linear-gradient(to bottom, #e8fc5b 0%, #474744 100%);
+  border: 2px solid #444;
+  border-radius: 5px;
+  height: 25px;
+  width: 170px;
+  margin-bottom: 6px;
+  color: #fff;
+  padding-left: 10px;
+}
+body div#wrapper form > fieldset > input[type=number] {
+  background: #e8fc5b;
+  background: -moz-linear-gradient(top, #e8fc5b 0%, #474744 100%);
+  background: -webkit-linear-gradient(top, #e8fc5b 0%, #474744 100%);
+  background: linear-gradient(to bottom, #e8fc5b 0%, #474744 100%);
+  border: 2px solid #444;
+  border-radius: 5px;
+  height: 25px;
+  width: 40px;
+  color: #fff;
+  padding-left: 5px;
+  margin-bottom: 5px;
+}
+body div#wrapper form > fieldset > input[type=number]::-webkit-outer-spin-button,
+body div#wrapper form > fieldset > input[type=number]::-webkit-inner-spin-button {
+  opacity: 1;
+  height: 25px;
+}

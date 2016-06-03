@@ -1,0 +1,113 @@
+wrapper-border-color = #444444
+fieldset-border-color = #555555
+element-border-color = #444444
+btn-text-color = #333333
+
+default()
+  width 960px
+  font-family: Cambria, 'Palatino Linotype', 'Book Antiqua', 'URW Palladio L', serif
+  font-size: 18px
+  
+wrapper-gradient()
+  background: #ebff5b;
+  background: -moz-linear-gradient(top, #ebff5b 0%, #444444 100%);
+  background: -webkit-linear-gradient(top, #ebff5b 0%,#444444 100%);
+  background: linear-gradient(to bottom, #ebff5b 0%,#444444 100%);  
+
+text-gradient()
+  background: #e8fc5b;
+  background: -moz-linear-gradient(top, #e8fc5b 0%, #474744 100%);
+  background: -webkit-linear-gradient(top, #e8fc5b 0%,#474744 100%);
+  background: linear-gradient(to bottom, #e8fc5b 0%,#474744 100%);
+
+button-gradient()
+  background: #e3fd28;
+  background: -moz-linear-gradient(top, #e3fd28 0%, #464644 100%);
+  background: -webkit-linear-gradient(top, #e3fd28 0%,#464644 100%);
+  background: linear-gradient(to bottom, #e3fd28 0%,#464644 100%);
+
+
+*
+  margin 0
+  padding 0
+  
+body
+  default()
+  
+  div#wrapper
+    wrapper-gradient()
+    width 380px
+    height 365px
+    padding 15px
+    margin 25px 25px
+    border-radius 15px
+    border 1px solid wrapper-border-color
+    
+    form
+      text-align right 
+      color white
+      font-size 16px
+      
+      > label
+        display inline-block
+        margin-top 12px
+        margin-left 3px
+      
+      > input[type=radio]
+        display none
+        &:checked + label
+          font-weight bold
+          font-size: 18px
+          
+      button, input[type=reset]
+        button-gradient()
+        border none
+        border-bottom 2px solid black
+        border-radius 5px
+        padding 5px 15px
+        font-size 19px
+        color btn-text-color
+        margin-top 15px
+        &:hover
+          background #F1FF8E
+      
+      > fieldset
+        padding 12px 15px
+        color #fff
+        border 3px solid fieldset-border-color
+        border-radius: 10px
+        padding-bottom 0
+        
+        > legend
+          padding 0px 15px
+          font-size 20px
+          font-weight bold
+          font-style italic
+          letter-spacing 0.02em
+          
+        > label
+          font-size 16px
+          
+        > input[type=text], input[type=password]
+          text-gradient()
+          border 2px solid element-border-color
+          border-radius 5px
+          height 25px
+          width 170px
+          margin-bottom 6px
+          color white
+          padding-left 10px
+          
+        > input[type=number]
+          text-gradient()
+          border 2px solid element-border-color
+          border-radius 5px
+          height 25px
+          width 40px
+          color white
+          padding-left 5px
+          margin-bottom 5px
+          
+          &::-webkit-outer-spin-button, &::-webkit-inner-spin-button
+            opacity 1
+            height 25px
