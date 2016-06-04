@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>Document</title>
+  <link rel="stylesheet" type="" href="../assets/js-console.css">
+</head>
+
+<body>
+  <input type="text" id="input" name="" value="">
+  <a href="#" onclick="Check()">Divisible by 5 And 7</a>
+  <div id="console">
+
+  </div>
+  <script src="../assets/js-console.js">
+
+  </script>
+  <script>
+    function Check(){
+  var input = document.getElementById("input");
+  
+  if (input.value % 5 == 0 && input.value % 7 ==0) {
+    jsConsole.writeLine(true);
+  }
+  else{
+    jsConsole.writeLine(false);
+  }
+}
+  </script>
+</body>
+
+</html>
