@@ -179,7 +179,7 @@ namespace GSM
             this.calls.RemoveAt(index);
         }
 
-        public int CallPrice(double price)
+        public string CallPrice(double price)
         {
             var totalCallDuration = 0;
 
@@ -190,7 +190,7 @@ namespace GSM
 
             var cost = totalCallDuration / 60 * price;
             
-            return cost;
+            return cost.ToString();
         }
     }
 }
