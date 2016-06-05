@@ -106,9 +106,21 @@ namespace PointAndMatrix.Lists
             this.container = new T[initialSize];
         }
         
-        public void Min<Type>()
+        public T Min<Type>() where Type : IComparable
         {
-            
+            var min = this.container[0];
+
+            for (int i = 0; i < count; i++)
+            {
+                var compare = Comparer<T>.Default.Compare(min, this.container[i]);
+
+                if (compare == 1)
+                {
+                    min = this.container[i];
+                }
+            }
+
+            return min;
         }
 
         private void ExpandCapacity()

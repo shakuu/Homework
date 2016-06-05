@@ -18,6 +18,9 @@ namespace PointAndMatrix
             var myList2 = new GenericList<int>();
             myList2.Add(0);
             myList2.Add(1);
+            myList2.Add(-1);
+
+            Console.WriteLine(myList2.Min<int>());
 
             myList.Add(new Point3D(0, 0, 0));
             myList.Insert(0, new Point3D(1, 1, 1));
