@@ -8,6 +8,7 @@ namespace GSM
 
     class GSM
     {
+        #region Static Fields
         private static GSM iphone4s = new GSM("Apple", "Iphone 4S")
         {
             Owner = "Steve Jobs",
@@ -18,8 +19,9 @@ namespace GSM
             DisplaySize = 4,
             DisplayColors = 16000000
         };
+        #endregion
 
-        // Fields
+        #region Fields
         private string manufacturer;
         private string model;
         private string owner;
@@ -29,8 +31,9 @@ namespace GSM
         private Display display;
 
         private List<Call> calls;
+        #endregion
 
-        // Constructors.
+        #region Constructors
         public GSM(string make, string model)
         {
             this.Manufacturer = make;
@@ -55,8 +58,9 @@ namespace GSM
             this.DisplaySize = displaySize;
             this.DisplayColors = displayColors;
         }
+        #endregion
 
-        // Properties
+        #region Properties
         public string Manufacturer
         {
             get
@@ -238,7 +242,7 @@ namespace GSM
                 return iphone4s;
             }
         }
-
+        #endregion
         // Methods.
         public override string ToString()
         {

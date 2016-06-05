@@ -4,11 +4,11 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{2C2BDE09-65FD-4BF6-85B0-EADCFA7B1574}</ProjectGuid>
+    <ProjectGuid>{543F4880-78B8-496D-94AF-C5A745A13334}</ProjectGuid>
     <OutputType>Exe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>GSM</RootNamespace>
-    <AssemblyName>GSM</AssemblyName>
+    <RootNamespace>PointAndMatrix</RootNamespace>
+    <AssemblyName>PointAndMatrix</AssemblyName>
     <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
@@ -43,12 +43,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Battery.cs" />
-    <Compile Include="Call.cs" />
-    <Compile Include="GSMTest.cs" />
-    <Compile Include="Display.cs" />
-    <Compile Include="GSM.cs" />
-    <Compile Include="Program.cs" />
+    <Compile Include="Lists\GenericList.cs" />
+    <Compile Include="PathUtility\Path.cs" />
+    <Compile Include="PathUtility\PathStorage.cs" />
+    <Compile Include="Point\Point3D.cs" />
+    <Compile Include="Point\PointMath.cs" />
+    <Compile Include="StartUp.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

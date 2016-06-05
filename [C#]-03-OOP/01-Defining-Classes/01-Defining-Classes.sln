@@ -3,9 +3,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 14
 VisualStudioVersion = 14.0.25123.0
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GSMOld", "GSM\GSMOld.csproj", "{2C2BDE09-65FD-4BF6-85B0-EADCFA7B1574}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GSM", "GSM2\GSM.csproj", "{2CD4CCCF-AF25-47A3-9B74-8A33EBADB3C8}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PointAndMatrix", "PointAndMatrix\PointAndMatrix.csproj", "{543F4880-78B8-496D-94AF-C5A745A13334}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -13,14 +13,14 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{2C2BDE09-65FD-4BF6-85B0-EADCFA7B1574}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{2C2BDE09-65FD-4BF6-85B0-EADCFA7B1574}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{2C2BDE09-65FD-4BF6-85B0-EADCFA7B1574}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{2C2BDE09-65FD-4BF6-85B0-EADCFA7B1574}.Release|Any CPU.Build.0 = Release|Any CPU
 		{2CD4CCCF-AF25-47A3-9B74-8A33EBADB3C8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{2CD4CCCF-AF25-47A3-9B74-8A33EBADB3C8}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{2CD4CCCF-AF25-47A3-9B74-8A33EBADB3C8}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{2CD4CCCF-AF25-47A3-9B74-8A33EBADB3C8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{543F4880-78B8-496D-94AF-C5A745A13334}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{543F4880-78B8-496D-94AF-C5A745A13334}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{543F4880-78B8-496D-94AF-C5A745A13334}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{543F4880-78B8-496D-94AF-C5A745A13334}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
