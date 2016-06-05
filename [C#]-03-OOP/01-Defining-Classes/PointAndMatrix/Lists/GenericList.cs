@@ -106,6 +106,11 @@ namespace PointAndMatrix.Lists
             this.container = new T[initialSize];
         }
         
+        public void Min<Type>()
+        {
+            
+        }
+
         private void ExpandCapacity()
         {
             var newContainer = new T[this.Capacity * 2];
