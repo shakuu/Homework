@@ -10,8 +10,6 @@ namespace GSM
         private int hoursIdle;
         private int hoursTalk;
 
-        private enum BatteryType { LiIon, NiMH, NiCd };
-
         public Battery() { }
         public Battery(string model, int hoursIdle, int hoursTalk)
         {
@@ -19,7 +17,7 @@ namespace GSM
             this.IdleTime = hoursIdle;
             this.TalkTime = hoursTalk;
         }
-
+        
         // Properties
         public string Model
         {
@@ -29,6 +27,13 @@ namespace GSM
             }
             set
             {
+
+
+                if (string.IsNullOrEmpty(value))
+                {
+                    throw new ArgumentException("Battery Model is empty");
+                }
+
                 this.model = value;
             }
         }
@@ -40,6 +45,11 @@ namespace GSM
             }
             set
             {
+                if (value <= 0)
+                {
+                    throw new ArgumentException("Battery Idle Time should be a positive number");
+                }
+
                 this.hoursIdle = value;
             }
         }
@@ -51,8 +61,14 @@ namespace GSM
             }
             set
             {
+                if (value <= 0)
+                {
+                    throw new ArgumentException("Battery Talk Time should be a positive number");
+                }
+
                 this.hoursTalk = value;
             }
         }
+        public enum BatteryType { LiIon, NiMH, NiCd };
     }
 }

@@ -65,6 +65,11 @@ namespace GSM
             }
             set
             {
+                if (!char.IsUpper(value[0]))
+                {
+                    throw new ArgumentException("Manufacturer Brand should begin with a capital letter");
+                }
+
                 this.manufacturer = value;
             }
         }
@@ -76,6 +81,11 @@ namespace GSM
             }
             set
             {
+                if (!(char.IsUpper(value[0]) || char.IsDigit(value[0])) )
+                {
+                    throw new ArgumentException("Model should begin with a capital letter or number");
+                }
+
                 this.model = value;
             }
         }
@@ -87,6 +97,11 @@ namespace GSM
             }
             set
             {
+                if (!char.IsUpper(value[0]))
+                {
+                    throw new ArgumentException("Owner name should begin with a capital letter");
+                }
+
                 this.owner = value;
             }
         }
@@ -98,6 +113,11 @@ namespace GSM
             }
             set
             {
+                if (value < 0)
+                {
+                    throw new ArgumentException("Price cannot be a negative number");
+                }
+
                 this.price = value;
             }
         }
@@ -156,13 +176,13 @@ namespace GSM
                 this.display.Colors = value;
             }
         }
-        public List<Call> CallHistory
-        {
-            get
-            {
-                return this.calls;
-            }
-        }
+        //public List<Call> CallHistory
+        //{
+        //    get
+        //    {
+        //        return this.calls;
+        //    }
+        //}
         public string DisplayCallHistory
         {
             get

@@ -25,6 +25,11 @@ namespace GSM
             }
             set
             {
+                if (value <= 0)
+                {
+                    throw new ArgumentException("Display Size should be a positive number");
+                }
+
                 this.size = value;
             }
         }
@@ -36,6 +41,11 @@ namespace GSM
             }
             set
             {
+                if (value <= 0)
+                {
+                    throw new ArgumentException("Display Colors shold be a positive number");
+                }
+
                 this.colors = value;
             }
         }
