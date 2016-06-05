@@ -8,23 +8,29 @@ namespace PointAndMatrix
     using System.Threading.Tasks;
     using Point;
     using PathUtility;
+    using Lists;
 
     class StartUp
     {
         static void Main(string[] args)
         {
-            var test = 0;
+            var myList = new GenericList<Point3D>();
+            var myList2 = new GenericList<int>();
+            myList2.Add(0);
+            myList2.Add(1);
 
-            var myPath = new Path();
-
-            myPath.AddPoint(new Point3D(0, 0, 0));
-            myPath.AddPoint(new Point3D(0, 20, 0));
-            myPath.AddPoint(new Point3D(0, 0, 3));
-            myPath.AddPoint(new Point3D(0, 60, 0));
-            myPath.AddPoint(new Point3D(0, 5, 0));
-
-            //PathStorage.SavePath(myPath, nameof(myPath));
-            var newPath =  PathStorage.ReadPath();
+            myList.Add(new Point3D(0, 0, 0));
+            myList.Insert(0, new Point3D(1, 1, 1));
+            myList.Remove(1);
+            myList.Add(new Point3D(2, 2, 2));
+            myList.Add(new Point3D(3, 2, 2));
+            myList.Add(new Point3D(4, 2, 2));
+            myList.Add(new Point3D(5, 2, 2));
+            myList.Add(new Point3D(6, 2, 2));
+            myList.Insert(3, new Point3D(7, 2, 2));
+            myList.Remove(4);
+            
         }
+        
     }
 }

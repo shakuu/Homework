@@ -2,12 +2,13 @@
 namespace PointAndMatrix.Lists
 {
     using System;
+    using System.Collections;
     using System.Collections.Generic;
     using System.Linq;
     using System.Text;
     using System.Threading.Tasks;
 
-    public class GenericList<T>
+    public class GenericList<T> //where T : IComparer<T>
     {
         #region Fields
         private const int initialSize = 4;
@@ -37,6 +38,13 @@ namespace PointAndMatrix.Lists
         }
 
         #region Properties
+        public int Count
+        {
+            get
+            {
+                return this.count;
+            }
+        }
         public int Capacity
         {
             get
@@ -48,6 +56,10 @@ namespace PointAndMatrix.Lists
         {
             get
             {
+                if (count == 0)
+                {
+                    throw new ArgumentOutOfRangeException("List is empty");
+                }
                 return this.container[count - 1];
             }
         }
@@ -75,7 +87,7 @@ namespace PointAndMatrix.Lists
 
             for (int i = index + 1; i <= count; i++)
                 container[i - 1] = container[i];
-            
+
         }
         public void Insert(int index, T element)
         {
@@ -89,7 +101,11 @@ namespace PointAndMatrix.Lists
             container[index] = element;
             count++;
         }
-
+        public void Clear()
+        {
+            this.container = new T[initialSize];
+        }
+        
         private void ExpandCapacity()
         {
             var newContainer = new T[this.Capacity * 2];
@@ -99,9 +115,9 @@ namespace PointAndMatrix.Lists
 
             this.container = newContainer;
         }
+        
+
 
         #endregion
-
-
     }
 }
