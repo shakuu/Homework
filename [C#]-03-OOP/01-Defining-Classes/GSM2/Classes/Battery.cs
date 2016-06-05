@@ -13,7 +13,6 @@ namespace GSM
         private enum BatteryType { LiIon, NiMH, NiCd };
 
         public Battery() { }
-
         public Battery(string model, int hoursIdle, int hoursTalk)
         {
             this.Model = model;
@@ -33,7 +32,6 @@ namespace GSM
                 this.model = value;
             }
         }
-
         public int IdleTime
         {
             get
@@ -45,7 +43,6 @@ namespace GSM
                 this.hoursIdle = value;
             }
         }
-
         public int TalkTime
         {
             get

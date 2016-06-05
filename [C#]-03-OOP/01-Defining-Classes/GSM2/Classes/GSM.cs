@@ -4,9 +4,7 @@ namespace GSM
 {
     using System;
     using System.Collections.Generic;
-    using System.Linq;
     using System.Text;
-    using System.Threading.Tasks;
 
     class GSM
     {
@@ -30,6 +28,8 @@ namespace GSM
         private Battery battery;
         private Display display;
 
+        private List<Call> calls;
+
         // Constructors.
         public GSM(string make, string model)
         {
@@ -38,8 +38,10 @@ namespace GSM
 
             this.battery = new Battery();
             this.display = new Display();
+
+            this.calls = new List<Call>();
         }
-        public GSM(string make, string model, string owner, int price, 
+        public GSM(string make, string model, string owner, int price,
             string batteryModel, int batteryIdelTime, int batteryTalkTime,
             int displaySize, int displayColors) : this(make, model)
         {
@@ -154,6 +156,59 @@ namespace GSM
                 this.display.Colors = value;
             }
         }
+        public List<Call> CallHistory
+        {
+            get
+            {
+                return this.calls;
+            }
+        }
+        public string DisplayCallHistory
+        {
+            get
+            {
+                var separator = '+';
+                var fill = new string('-', 10);
+                var smallFill = new string('-', 4);
+
+                var format = "|{0, 4}{1}{2}";
+                var output = new StringBuilder();
+
+                output.Append(
+                    separator + smallFill
+                    + separator + fill
+                    + separator + fill
+                    + separator + fill
+                    + separator + fill + fill + separator
+                    + Environment.NewLine);
+
+                output.AppendFormat("|{5, 4}|{0, 10}|{1, 10}|{2, 10}|{3, 20}|{4}",
+                    "Date ", "Time ", "Duration ", "Number ", Environment.NewLine, "Nr.");
+
+                for (int call = 0; call < this.calls.Count; call++)
+                {
+                    output.Append(
+                        separator + smallFill
+                        + separator + fill
+                        + separator + fill
+                        + separator + fill
+                        + separator + fill + fill + separator
+                        + Environment.NewLine);
+
+                    output.AppendFormat(format, call, calls[call].ToString(), Environment.NewLine);
+                }
+
+                output.Append(
+                        separator + smallFill
+                        + separator + fill
+                        + separator + fill
+                        + separator + fill
+                        + separator + fill + fill + separator
+                        + Environment.NewLine);
+
+                return output.ToString();
+            }
+        }
 
         // Static Properties.
         public static GSM Iphone4S
@@ -181,6 +236,34 @@ namespace GSM
             toString.Append('+' + new String('-', 20) + '+' + new String('-', 20) + '+' + Environment.NewLine);
 
             return toString.ToString();
+        }
+
+        public void ClearCallHistory()
+        {
+            this.calls = new List<Call>();
+        }
+        public void AddCall(DateTime start, DateTime end, string number)
+        {
+            this.calls.Add(new Call(start, end, number));
+        }
+        public void AddCall(Call addMe)
+        {
+            this.calls.Add(addMe);
+        }
+        public void DeleteCall(int ID)
+        {
+            this.calls.RemoveAt(ID);
+        }
+        public decimal CallHistoryCost(decimal price)
+        {
+            var totalCalls = (decimal)0;
+
+            foreach (var call in this.calls)
+            {
+                totalCalls += call.Duration / (decimal)60;
+            }
+
+            return totalCalls * price;
         }
     }
 }

@@ -11,7 +11,6 @@ namespace GSM
         private int colors;
 
         public Display() { }
-
         public Display(int size, int colors)
         {
             this.Size = size;
@@ -29,7 +28,6 @@ namespace GSM
                 this.size = value;
             }
         }
-
         public int Colors
         {
             get
