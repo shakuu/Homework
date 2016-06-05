@@ -5,10 +5,8 @@ namespace PointAndMatrix.Lists
     using System.Collections;
     using System.Collections.Generic;
     using System.Linq;
-    using System.Text;
-    using System.Threading.Tasks;
 
-    public class GenericList<T> //where T : IComparer<T>
+    public class GenericList<T> : IEnumerable
     {
         #region Fields
         private const int initialSize = 4;
@@ -105,19 +103,29 @@ namespace PointAndMatrix.Lists
         {
             this.container = new T[initialSize];
         }
-        
+
+        #region Comparing
         public T Min()
         {
             var min = this.container[0];
 
             for (int i = 0; i < count; i++)
             {
-                var compare = Comparer<T>.Default.Compare(min, this.container[i]);
-
-                if (compare == 1)
+                try
                 {
-                    min = this.container[i];
+                    var compare = Comparer<T>.Default.Compare(min, this.container[i]);
+
+                    if (compare == 1)
+                    {
+                        min = this.container[i];
+                    }
                 }
+                catch (ArgumentException)
+                {
+                    Console.WriteLine("Type does not implement IComparable");
+                    throw;
+                }
+                
             }
 
             return min;
@@ -129,17 +137,26 @@ namespace PointAndMatrix.Lists
 
             for (int i = 0; i < count; i++)
             {
-                var compare = Comparer<T>.Default.Compare(max, this.container[i]);
-
-                if (compare == -1)
+                try
                 {
-                    max = this.container[i];
+                    var compare = Comparer<T>.Default.Compare(max, this.container[i]);
+
+                    if (compare == -1)
+                    {
+                        max = this.container[i];
+                    }
+                }
+                catch (ArgumentException)
+                {
+                    Console.WriteLine("Type does not implement IComparable");
+                    throw;
                 }
             }
 
             return max;
         }
-        
+        #endregion
+
         private void ExpandCapacity()
         {
             var newContainer = new T[this.Capacity * 2];
@@ -149,9 +166,14 @@ namespace PointAndMatrix.Lists
 
             this.container = newContainer;
         }
+
+        public IEnumerator GetEnumerator()
+        {
+            var newEnumerator = this.container.Take(this.Count).GetEnumerator();
+
+            return newEnumerator;
+        }
         
-
-
         #endregion
     }
 }

@@ -3,7 +3,7 @@ namespace PointAndMatrix.Point
 {
     using System;
 
-    public struct Point3D
+    public struct Point3D : IComparable<Point3D>
     {
         #region Fields
 
@@ -79,7 +79,22 @@ namespace PointAndMatrix.Point
         {
             return string.Format("|{0, 4}|{1, 4}|{2, 4}|", this.X, this.Y, this.Z);
         }
+        public int CompareTo(Point3D other)
+        {
+            // this > other = 1
+            // this < other = -1
+            // this == other = 0
 
+            var distanceThis = Point3DMath.Distance(this, Point3D.Origin);
+            var distanceOther = Point3DMath.Distance(other, Point3D.Origin);
+
+            if (distanceThis > distanceOther) return 1;
+            else if (distanceThis < distanceOther) return -1;
+            else if (distanceThis == distanceOther) return 0;
+
+            throw new Exception("Invalid Arguments");
+        }
+        
         #endregion
     }
 }
