@@ -27,12 +27,12 @@ namespace PointAndMatrix.Lists
         {
             get
             {
-                if (index >= this.count) throw new IndexOutOfRangeException("Element does not exist");
+                if (index >= this.count || index < 0) throw new IndexOutOfRangeException("Element does not exist");
                 return this.container[index];
             }
             set
             {
-                if (index >= this.count) throw new IndexOutOfRangeException("Element does not exist");
+                if (index >= this.count || index < 0) throw new IndexOutOfRangeException("Element does not exist");
                 this.container[index] = value;
             }
         }
@@ -106,7 +106,7 @@ namespace PointAndMatrix.Lists
             this.container = new T[initialSize];
         }
         
-        public T Min<Type>() where Type : IComparable
+        public T Min()
         {
             var min = this.container[0];
 
@@ -123,6 +123,23 @@ namespace PointAndMatrix.Lists
             return min;
         }
 
+        public T Max()
+        {
+            var max = this.container[0];
+
+            for (int i = 0; i < count; i++)
+            {
+                var compare = Comparer<T>.Default.Compare(max, this.container[i]);
+
+                if (compare == -1)
+                {
+                    max = this.container[i];
+                }
+            }
+
+            return max;
+        }
+        
         private void ExpandCapacity()
         {
             var newContainer = new T[this.Capacity * 2];
