@@ -103,6 +103,13 @@ namespace PointAndMatrix.Lists
         {
             this.container = new T[initialSize];
         }
+        public IEnumerator GetEnumerator()
+        {
+            var newEnumerator = this.container
+                .Take(this.Count).GetEnumerator();
+
+            return newEnumerator;
+        }
 
         #region Comparing
         public T Min()
@@ -167,12 +174,7 @@ namespace PointAndMatrix.Lists
             this.container = newContainer;
         }
 
-        public IEnumerator GetEnumerator()
-        {
-            var newEnumerator = this.container.Take(this.Count).GetEnumerator();
-
-            return newEnumerator;
-        }
+        
         
         #endregion
     }

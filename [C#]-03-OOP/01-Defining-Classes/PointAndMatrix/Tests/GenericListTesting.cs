@@ -31,6 +31,8 @@ namespace PointAndMatrix.Tests
                 Console.WriteLine(point.ToString());
             }
 
+            Console.WriteLine((myTestingList[0] + myTestingList[1]).ToString());
+
         }
     }
 }

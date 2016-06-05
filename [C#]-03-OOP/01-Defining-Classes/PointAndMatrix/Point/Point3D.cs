@@ -38,7 +38,7 @@ namespace PointAndMatrix.Point
             set
             {
                 if (value < 0) throw new ArgumentException("All Coordinates must be >= 0");
-                
+
                 this.x = value;
             }
         }
@@ -75,6 +75,22 @@ namespace PointAndMatrix.Point
 
         #region Methods
 
+        public static Point3D operator +(Point3D a, Point3D b)
+        {
+            var x = a.X + b.X;
+            var y = a.Y + b.Y;
+            var z = a.Z + b.Z;
+
+            return new Point3D(x, y, z);
+        }
+        public static Point3D operator -(Point3D a, Point3D b)
+        {
+            var x = Math.Abs(a.X - b.X);
+            var y = Math.Abs(a.Y - b.Y);
+            var z = Math.Abs(a.Z - b.Z);
+
+            return new Point3D(x, y, z);
+        }
         public override string ToString()
         {
             return string.Format("|{0, 4}|{1, 4}|{2, 4}|", this.X, this.Y, this.Z);
@@ -94,7 +110,7 @@ namespace PointAndMatrix.Point
 
             throw new Exception("Invalid Arguments");
         }
-        
+
         #endregion
     }
 }

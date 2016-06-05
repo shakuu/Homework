@@ -43,6 +43,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="GenericMatrix\Matrix.cs" />
     <Compile Include="Lists\CustomCompare.cs" />
     <Compile Include="Lists\GenericList.cs" />
     <Compile Include="PathUtility\Path.cs" />
@@ -52,6 +53,7 @@
     <Compile Include="StartUp.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Tests\GenericListTesting.cs" />
+    <Compile Include="Tests\MatrixTesting.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

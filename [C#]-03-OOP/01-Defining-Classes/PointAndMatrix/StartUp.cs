@@ -8,7 +8,8 @@ namespace PointAndMatrix
     {
         static void Main(string[] args)
         {
-            GenericListTesting.MainTest();
+            //GenericListTesting.MainTest();
+            MatrixTesting.MainTest();
         }
     }
 }
