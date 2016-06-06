@@ -5,7 +5,9 @@ namespace PointAndMatrix.Lists
     using System.Collections;
     using System.Collections.Generic;
     using System.Linq;
+    using Attributes;
 
+    [Version(0, 11)]
     public class GenericList<T> : IEnumerable
     {
         #region Fields
@@ -163,7 +165,7 @@ namespace PointAndMatrix.Lists
             return max;
         }
         #endregion
-
+        
         private void ExpandCapacity()
         {
             var newContainer = new T[this.Capacity * 2];

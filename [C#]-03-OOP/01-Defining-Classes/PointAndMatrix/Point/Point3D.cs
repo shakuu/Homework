@@ -2,7 +2,9 @@
 namespace PointAndMatrix.Point
 {
     using System;
+    using Attributes;
 
+    [Version(0, 10)]
     public struct Point3D : IComparable<Point3D>
     {
         #region Fields
