@@ -7,31 +7,50 @@ namespace Homework3.Students
     using System.Text;
     using System.Threading.Tasks;
     using PointAndMatrix.Lists;
+    using TimedEvent;
 
     public class Student
     {
-        private string firstName;
-        private string lastName;
-        private string id;
+        #region Fields
+        private string first;
+        private string last;
+        private string email;
+        private string tel;
+        private int group;
+        private int fn;
         private int age;
 
+        private List<int> marks;
+
         private GenericList<Course> courses;
-
-        public Student(string first, string last, int age)
+        #endregion
+        #region Constructors
+        public Student()
         {
-            this.FirstName = first;
-            this.LastName = last;
-            this.Age = age;
-
+            this.marks = new List<int>();
             this.courses = new GenericList<Course>();
         }
 
+        public Student(string first, string last)
+            : this()
+        {
+            this.FirstName = first;
+            this.LastName = last;
+        }
+
+        // Constructor subscribed to Timer event
+        public Student(string first, string last, Timer timer)
+            : this(first, last)
+        {
+            timer.TimedEvent += OnTimedEvent;
+        }
+        #endregion
         #region Properties
         public string FirstName
         {
             get
             {
-                return this.firstName;
+                return this.first;
             }
             set
             {
@@ -40,7 +59,7 @@ namespace Homework3.Students
                     throw new ArgumentException("Empty string");
                 }
 
-                this.firstName = value;
+                this.first = value;
             }
 
         }
@@ -49,7 +68,7 @@ namespace Homework3.Students
         {
             get
             {
-                return this.lastName;
+                return this.last;
             }
             set
             {
@@ -58,8 +77,44 @@ namespace Homework3.Students
                     throw new ArgumentException("Empty string");
                 }
 
-                this.lastName = value;
+                this.last = value;
             }
+        }
+
+        public string Email
+        {
+            get
+            {
+                return this.email;
+            }
+            set
+            {
+                if (string.IsNullOrEmpty(value))
+                {
+                    throw new ArgumentException("Empty string");
+                }
+
+                this.email = value;
+            }
+
+        }
+
+        public string Tel
+        {
+            get
+            {
+                return this.tel;
+            }
+            set
+            {
+                if (string.IsNullOrEmpty(value))
+                {
+                    throw new ArgumentException("Empty string");
+                }
+
+                this.tel = value;
+            }
+
         }
 
         public int Age
@@ -70,27 +125,33 @@ namespace Homework3.Students
             }
             set
             {
-                if (value<=0)
-                {
-                    throw new ArgumentException("Age must be a positive number");
-                }
-
                 this.age = value;
             }
         }
 
-        public string ID
+        public int FN
         {
             get
             {
-                return this.id;
+                return this.fn;
             }
-            private set
+            set
             {
-                this.id = value;
+                this.fn = value;
             }
         }
 
+        public int Group
+        {
+            get
+            {
+                return this.group;
+            }
+            set
+            {
+                this.group = value;
+            }
+        }
 
         public int CoursesCount
         {
@@ -100,8 +161,20 @@ namespace Homework3.Students
             }
         }
 
-        #endregion
+        public List<int> Marks
+        {
+            get
+            {
+                return this.marks;
+            }
+            set
+            {
+                this.marks = value;
+            }
+        }
 
+        #endregion
+        #region Methods
         public Course GetCourseInfo(int index)
         {
             return this.courses[index];
@@ -112,5 +185,32 @@ namespace Homework3.Students
             this.courses.Add(new Course(name, mark));
         }
 
+        public override string ToString()
+        {
+            var output = new StringBuilder();
+            var separator = "|";
+            //FirstName|LastName|FN|Phone|Email|Group|Marks|Marks|Marks|Marks
+            output.Append(this.FirstName);
+            output.Append(separator + this.LastName );
+            output.Append(separator + this.FN );
+            output.Append(separator + this.Tel);
+            output.Append(separator + this.Email);
+            output.Append(separator + this.Group);
+
+            foreach (var mark in this.Marks)
+            {
+                output.Append(separator + mark);
+            }
+
+            return output.ToString();
+        }
+        #endregion
+        #region Events
+        void OnTimedEvent(object sender, EventArgs args)
+        {
+            Console.WriteLine(sender);
+            Console.WriteLine(this.FirstName + " " + this.LastName);
+        }
+        #endregion
     }
 }

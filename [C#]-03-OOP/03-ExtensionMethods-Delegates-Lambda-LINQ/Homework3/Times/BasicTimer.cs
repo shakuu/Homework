@@ -9,7 +9,7 @@ namespace Homework3.Times
     using System.Diagnostics;
     using System.Threading;
 
-    public static class Timer
+    public static class BasicTimer
     {
         delegate void ToExecute(); 
 

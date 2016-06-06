@@ -61,9 +61,9 @@ namespace Homework3.Students
             this.students.Add(student);
         }
 
-        public void AddStudent(string first, string last, int age)
+        public void AddStudent(string first, string last)
         {
-            this.students.Add(new Student(first, last, age));
+            this.students.Add(new Student(first, last));
         }
         public void RemoveStudent(int index)
         {
@@ -107,8 +107,7 @@ namespace Homework3.Students
 
                     var newStudent = new Student(
                         studentInfo[0],
-                        studentInfo[1],
-                        int.Parse(studentInfo[2]));
+                        studentInfo[1]);
 
                     output.AddStudent(newStudent);
                 }

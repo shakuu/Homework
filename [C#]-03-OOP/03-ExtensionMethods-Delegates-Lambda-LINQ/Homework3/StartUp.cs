@@ -20,7 +20,9 @@ namespace Homework3
 
             //var a =  test2.Max();
 
-            StudentsTesting.MainTest(rng);
+            //StudentsTesting.MainTest(rng);
+            //TimerTesting.TimedEventTest();
+            StudentsListTesting.MainTest();
 
         }
     }

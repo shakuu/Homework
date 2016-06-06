@@ -43,8 +43,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Extensions\ClassOfStudentsExtensions.cs" />
     <Compile Include="Extensions\IEnumerableExtensions.cs" />
+    <Compile Include="Extensions\IntExtensions.cs" />
+    <Compile Include="Extensions\ListsExtensions.cs" />
     <Compile Include="Extensions\StringBuilderExtensions.cs" />
     <Compile Include="Lists\GenericList.cs" />
     <Compile Include="StartUp.cs" />
@@ -53,7 +54,11 @@
     <Compile Include="Students\Student.cs" />
     <Compile Include="Attributes\Version.cs" />
     <Compile Include="Students\ClassOfStudents.cs" />
+    <Compile Include="Testing\StudentsListTesting.cs" />
     <Compile Include="Testing\StudentsTesting.cs" />
+    <Compile Include="Testing\TimerTesting.cs" />
+    <Compile Include="TimedEvent\Timer.cs" />
+    <Compile Include="Times\BasicTimer.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
