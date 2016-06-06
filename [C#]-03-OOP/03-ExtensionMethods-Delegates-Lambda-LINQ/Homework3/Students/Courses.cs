@@ -7,7 +7,7 @@ namespace Homework3.Students
     using System.Text;
     using System.Threading.Tasks;
 
-    class Course
+    public class Course
     {
         private string name;
         private int mark;

@@ -45,11 +45,19 @@
   <ItemGroup>
     <Compile Include="Extensions\IEnumerableExtensions.cs" />
     <Compile Include="Extensions\StringBuilderExtensions.cs" />
+    <Compile Include="Lists\GenericList.cs" />
     <Compile Include="StartUp.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Students\Courses.cs" />
+    <Compile Include="Students\Student.cs" />
+    <Compile Include="Attributes\Version.cs" />
+    <Compile Include="Students\ClassOfStudents.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="LINQ.Problems\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
