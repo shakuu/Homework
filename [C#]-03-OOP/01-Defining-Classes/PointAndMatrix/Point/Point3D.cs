@@ -103,8 +103,8 @@ namespace PointAndMatrix.Point
             // this < other = -1
             // this == other = 0
 
-            var distanceThis = Point3DMath.Distance(this, Point3D.Origin);
-            var distanceOther = Point3DMath.Distance(other, Point3D.Origin);
+            var distanceThis = this.DistanceToOrigin();
+            var distanceOther = other.DistanceToOrigin();
 
             if (distanceThis > distanceOther) return 1;
             else if (distanceThis < distanceOther) return -1;

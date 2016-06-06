@@ -13,7 +13,6 @@ namespace PointAndMatrix
             var type = typeof(StartUp);
             var attributes = type.GetCustomAttributes(false);
             
-
             foreach (VersionAttribute atr in attributes)
             {
                 Console.WriteLine("Version: {0}", atr.Version);
