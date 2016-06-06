@@ -10,9 +10,9 @@ namespace Homework3.Extensions
     using Students;
     using System.IO;
 
-    public static class ListsExtensions
+    public static class StudenListExtensions
     {
-        public static void GetStudentDataFromFile(this List<Student> list, string filename)
+        public static void LoadStudentDataFromFile(this List<Student> list, string filename)
         {
             try
             {
@@ -58,7 +58,6 @@ namespace Homework3.Extensions
             }
             
         }
-
         public static void SaveStudentDataToFile(this List<Student> list, string filename)
         {
             var header = "FirstName|LastName|FN|Phone|Email|Group|Marks|Marks|Marks|Marks";
@@ -74,6 +73,27 @@ namespace Homework3.Extensions
 
                 writer.Close();
             }
+        }
+        public static List<Student> GetStudentsFromGroup(this List<Student> list, int group)
+        {
+            var output =
+                from student in list
+                where student.Group == 2
+                select student;
+
+            return output.ToList();
+        }
+        public static void OrderByStudentFirstName(this List<Student> list)
+        {
+            list =
+                (from student in list
+                 orderby student.FirstName
+                 select student)
+                 .ToList();
+        }
+        public static void OrderByStudentFirstNameLINQ(this List<Student> list)
+        {
+            list = list.OrderBy(student => student.FirstName).ToList();
         }
     }
 }
