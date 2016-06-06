@@ -5,6 +5,7 @@ namespace PointAndMatrix.Lists
     using System.Collections;
     using System.Collections.Generic;
     using System.Linq;
+    using System.Linq.Expressions;
     using Attributes;
 
     [Version(0, 11)]
@@ -70,6 +71,7 @@ namespace PointAndMatrix.Lists
                 return count - 1;
             }
         }
+        
         #endregion
 
         #region Methods

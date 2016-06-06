@@ -7,6 +7,7 @@ namespace Homework3.Students
     using PointAndMatrix.Lists;
     using System.IO;
     using System.Collections;
+    using Extensions;
 
     public class ClassOfStudents : IEnumerable
     {
@@ -16,6 +17,43 @@ namespace Homework3.Students
         {
             students = new GenericList<Student>();
         }
+
+        #region Homework Methods
+        public ClassOfStudents FirstBeforeLast()
+        {
+            var output =
+                from Student student in this.students
+                where string.Compare(student.FirstName, student.LastName) < 1
+                select student;
+
+            return output.ToClassOfStudents();
+        }
+
+        public ClassOfStudents AgeRange(int min, int max)
+        {
+            var outputNamesStrings =
+                from Student student in this.students
+                where 18 <= student.Age && student.Age <= 24
+                select student.FirstName + student.LastName;
+
+            var outputToClassOfStudents =
+                from Student student in this.students
+                where 18 <= student.Age && student.Age <= 24
+                select student;
+            
+            return outputToClassOfStudents.ToClassOfStudents();
+        }
+
+        public ClassOfStudents OrderByLambda()
+        {
+            var output =
+                 from Student student in this.students
+                 orderby student.FirstName, student.LastName
+                 select student;
+
+            return output.ToClassOfStudents();
+        }
+        #endregion
 
         #region Methods
         public void AddStudent(Student student)
@@ -50,11 +88,7 @@ namespace Homework3.Students
                 }
             }
         }
-
-        public IEnumerator GetEnumerator()
-        {
-            return this.students.GetEnumerator();
-        }
+        
         #endregion
 
         #region Static Methods
@@ -84,6 +118,13 @@ namespace Homework3.Students
             return output;
         }
 
+        #endregion
+
+        #region Interface implementations
+        public IEnumerator GetEnumerator()
+        {
+            return this.students.GetEnumerator();
+        }
         #endregion
     }
 }

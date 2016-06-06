@@ -6,6 +6,7 @@ namespace Homework3.Extensions
     using System.Linq;
     using System.Text;
     using System.Threading.Tasks;
+    using Students;
 
     public static class IEnumerableExtension
     {
@@ -79,6 +80,19 @@ namespace Homework3.Extensions
             }
 
             return max;
+        }
+
+        public static ClassOfStudents ToClassOfStudents<T>(this IEnumerable<T> collection) 
+                where T : Student
+        {
+            var output = new ClassOfStudents();
+
+            foreach (dynamic student in collection)
+            {
+                output.AddStudent(student);
+            }
+
+            return output;
         }
     }
 }

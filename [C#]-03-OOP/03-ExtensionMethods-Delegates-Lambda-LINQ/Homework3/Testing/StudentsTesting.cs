@@ -15,6 +15,7 @@ namespace Homework3.Testing
             // Create a ClassOfStudents
             var filename = @"myClassOfStudents.txt";
             var myClassOfStudents = ClassOfStudents.CreateFromFile(filename);
+            myClassOfStudents.FirstBeforeLast();
         }
     }
 }
