@@ -16,8 +16,10 @@ namespace Homework3.Testing
             var myListOfStudents = new List<Student>();
 
             myListOfStudents.LoadStudentDataFromFile("Students.csv");
-            var myStudentsGroup2 = myListOfStudents.GetStudentsFromGroup(2);
-            myStudentsGroup2.SaveStudentDataToFile(nameof(myStudentsGroup2) + "csv");
+            //var myStudentsGroup2 = myListOfStudents.GetStudentsByGroup(2);
+            //myStudentsGroup2.SaveStudentDataToFile(nameof(myStudentsGroup2) + "csv");
+
+            myListOfStudents.GetStudentsByMarks(6);
         }
     }
 }

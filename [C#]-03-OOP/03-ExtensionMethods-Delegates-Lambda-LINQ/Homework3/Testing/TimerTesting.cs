@@ -17,6 +17,9 @@ namespace Homework3.Testing
 
             var myStudents = new ClassOfStudents();
 
+            // Student has a constuctor for testing 
+            // subscribing to the testing event TimedEvent
+            // printing first and last name on event
             myStudents.AddStudent(new Student("1", "1", timer));
             myStudents.AddStudent(new Student("2", "2"));
             myStudents.AddStudent(new Student("3", "3", timer));

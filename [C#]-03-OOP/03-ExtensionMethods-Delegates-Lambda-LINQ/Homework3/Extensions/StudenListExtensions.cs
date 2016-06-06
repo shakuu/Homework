@@ -40,7 +40,7 @@ namespace Homework3.Extensions
                         };
 
                         // Add All Marks
-                        for (int index =6; index < data.Length; index++)
+                        for (int index = 6; index < data.Length; index++)
                         {
                             newStudent.Marks.Add(int.Parse(data[index]));
                         }
@@ -56,7 +56,7 @@ namespace Homework3.Extensions
 
                 throw;
             }
-            
+
         }
         public static void SaveStudentDataToFile(this List<Student> list, string filename)
         {
@@ -74,15 +74,7 @@ namespace Homework3.Extensions
                 writer.Close();
             }
         }
-        public static List<Student> GetStudentsFromGroup(this List<Student> list, int group)
-        {
-            var output =
-                from student in list
-                where student.Group == 2
-                select student;
 
-            return output.ToList();
-        }
         public static void OrderByStudentFirstName(this List<Student> list)
         {
             list =
@@ -94,6 +86,75 @@ namespace Homework3.Extensions
         public static void OrderByStudentFirstNameLINQ(this List<Student> list)
         {
             list = list.OrderBy(student => student.FirstName).ToList();
+        }
+
+        public static List<Student> GetStudentsByGroup(this List<Student> list, int group)
+        {
+            var output =
+                from student in list
+                where student.Group == 2
+                select student;
+
+            return output.ToList();
+        }
+        public static List<Student> GetStudentsByEmail(this List<Student> list, string domain)
+        {
+            Func<string, bool> Check = (input) =>
+            {
+                var studentDomain = input.Split('@').ToArray()[1];
+                return studentDomain == domain;
+            };
+
+            var output = list
+                .Where(student => Check(student.Email))
+                .ToList();
+
+            return output;
+        }
+        public static List<Student> GetStudentsByTel(this List<Student> list, string areaCode)
+        {
+            // Assuming (062) 92037385
+            Func<string, bool> Check = (input) =>
+            {
+                var studentAreaCode = input
+                    .Split(new[] { '(', ')', ' ' }, StringSplitOptions.RemoveEmptyEntries)
+                    .ToArray()[0];
+
+                return studentAreaCode == areaCode;
+            };
+
+            var output = list
+                .Where(student => Check(student.Tel))
+                .ToList();
+
+            return output;
+        }
+        public static dynamic GetStudentsByMarks(this List<Student> list, int mark)
+        {
+            var output =
+                from student in list
+                where student.Marks.Any(m => m == mark)
+                select new
+                {
+                    FullName = student.FirstName + " " + student.LastName,
+                    Marks = string.Join(", ", student.Marks)
+                };
+
+            // Testing
+            //Console.WriteLine(string.Join(Environment.NewLine, output));
+
+            return output;
+        }
+        public static List<Student> GetStudentsByTwoMarks(this List<Student> list, int mark, int occurnaces)
+        {
+            Func<List<int>, bool> Check = (studentMarks) => 
+                studentMarks.Where(m => m == mark).Count() == occurnaces;
+            
+            var output = list
+                .Where(student => Check(student.Marks))
+                .ToList();
+
+            return output;
         }
     }
 }

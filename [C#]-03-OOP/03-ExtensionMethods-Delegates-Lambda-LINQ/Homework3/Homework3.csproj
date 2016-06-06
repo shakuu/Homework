@@ -45,7 +45,7 @@
   <ItemGroup>
     <Compile Include="Extensions\IEnumerableExtensions.cs" />
     <Compile Include="Extensions\IntExtensions.cs" />
-    <Compile Include="Extensions\ListsExtensions.cs" />
+    <Compile Include="Extensions\StudenListExtensions.cs" />
     <Compile Include="Extensions\StringBuilderExtensions.cs" />
     <Compile Include="Lists\GenericList.cs" />
     <Compile Include="StartUp.cs" />
