@@ -4,6 +4,7 @@ namespace PointAndMatrix
     using System;
     using Tests;
     using Attributes;
+    using System.Linq;
 
     [Version(1, 14)]
     class StartUp

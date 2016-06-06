@@ -7,6 +7,7 @@ namespace Homework3
     using System.Text;
     using System.Threading.Tasks;
     using Extensions;
+
     class StartUp
     {
         static Random rng = new Random();
@@ -14,8 +15,9 @@ namespace Homework3
         static void Main()
         {
             var test = new StringBuilder().Append("0123456789");
+            var test2 = new[] { 10, 1, 2, 3, 4, 5, 6 };
 
-            Console.WriteLine(test.Substring(10));
+            var a =  test2.Max();
         }
     }
 }
