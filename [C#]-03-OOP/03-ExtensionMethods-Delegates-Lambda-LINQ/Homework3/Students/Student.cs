@@ -12,6 +12,7 @@ namespace Homework3.Students
     {
         private string firstName;
         private string lastName;
+        private string id;
         private int age;
 
         private GenericList<Course> courses;
@@ -28,23 +29,70 @@ namespace Homework3.Students
         #region Properties
         public string FirstName
         {
-            get;
-            set;
+            get
+            {
+                return this.firstName;
+            }
+            set
+            {
+                if (string.IsNullOrEmpty(value))
+                {
+                    throw new ArgumentException("Empty string");
+                }
+
+                this.firstName = value;
+            }
+
         }
 
         public string LastName
         {
-            get;
-            set;
+            get
+            {
+                return this.lastName;
+            }
+            set
+            {
+                if (string.IsNullOrEmpty(value))
+                {
+                    throw new ArgumentException("Empty string");
+                }
+
+                this.lastName = value;
+            }
         }
 
         public int Age
         {
-            get;
-            set;
+            get
+            {
+                return this.age;
+            }
+            set
+            {
+                if (value<=0)
+                {
+                    throw new ArgumentException("Age must be a positive number");
+                }
+
+                this.age = value;
+            }
         }
 
-        public int CoursesCouhjt
+        public string ID
+        {
+            get
+            {
+                return this.id;
+            }
+            private set
+            {
+                this.id = value;
+            }
+        }
+
+
+        public int CoursesCount
         {
             get
             {

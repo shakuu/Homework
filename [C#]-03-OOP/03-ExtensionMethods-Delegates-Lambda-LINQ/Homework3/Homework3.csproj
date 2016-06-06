@@ -52,6 +52,7 @@
     <Compile Include="Students\Student.cs" />
     <Compile Include="Attributes\Version.cs" />
     <Compile Include="Students\ClassOfStudents.cs" />
+    <Compile Include="Testing\StudentsTesting.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
