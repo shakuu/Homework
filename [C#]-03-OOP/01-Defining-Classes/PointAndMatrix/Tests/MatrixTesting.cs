@@ -37,6 +37,15 @@ namespace PointAndMatrix.Tests
             //}
 
             var resultProduct = matrix1 * matrix2;
+
+            if (matrix2)
+            {
+                Console.WriteLine("no zeroes");
+            }
+            else
+            {
+                Console.WriteLine("yes zeroes");
+            }
         }
     }
 }

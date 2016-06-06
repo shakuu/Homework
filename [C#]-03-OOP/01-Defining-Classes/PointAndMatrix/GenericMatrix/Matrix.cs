@@ -1,21 +1,30 @@
 ﻿
+// http://stackoverflow.com/questions/3329576/generic-constraint-to-match-numeric-types
+// constraints
+
+// dynamic keyword for operations
+
 namespace PointAndMatrix.GenericMatrix
 {
     using System;
-    using System.Collections.Generic;
-    using System.Linq;
-    using System.Text;
-    using System.Threading.Tasks;
 
-    class Matrix<T>
+    class Matrix<T> 
+        where T : struct, IComparable, IComparable<T>, 
+                  IConvertible, IEquatable<T>, IFormattable
     {
+        #region Fields
+
         private T[,] container;
+
+        #endregion
+        #region Contructors
 
         public Matrix(int x, int y)
         {
             this.container = new T[x, y];
         }
 
+        #endregion
         #region Properties
 
         public int Rows
@@ -34,8 +43,8 @@ namespace PointAndMatrix.GenericMatrix
         }
 
         #endregion
-
         #region Indexer and Operators
+
         public T this[int row, int col]
         {
             get
@@ -142,6 +151,46 @@ namespace PointAndMatrix.GenericMatrix
             }
 
             return result;
+        }
+        public static bool operator true(Matrix<T> a)
+        {
+            // Returns TRUE if no 0s are found.
+
+            var output = true;
+
+            for (int row = 0; row < a.Rows; row++)
+            {
+                for (int col = 0; col < a.Cols; col++)
+                {
+                    dynamic value = a[row, col];
+
+                    if (value == 0)
+                    {
+                        output = false;
+                    }
+                }
+            }
+
+            return output;
+        }
+        public static bool operator false(Matrix<T> a)
+        {
+            var output = false;
+
+            for (int row = 0; row < a.Rows; row++)
+            {
+                for (int col = 0; col < a.Cols; col++)
+                {
+                    dynamic value = a[row, col];
+
+                    if (value == 0)
+                    {
+                        output = true;
+                    }
+                }
+            }
+
+            return output;
         }
 
         #endregion
