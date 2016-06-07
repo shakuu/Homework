@@ -22,9 +22,9 @@ namespace Homework3
 
             //StudentsTesting.MainTest(rng);
             //TimerTesting.TimedEventTest();
-            //StudentsListTesting.MainTest();
+            StudentsListTesting.GroupsTesting();
 
-            StudentsListTesting.CreateNewList(rng);
+            //StudentsListTesting.CreateNewList(rng);
 
         }
     }

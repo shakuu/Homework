@@ -1,17 +1,19 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
+﻿
 namespace Homework3.Students
 {
+    using System;
+    using System.Collections.Generic;
+    using System.Linq;
+    using System.Text;
+    using System.Threading.Tasks;
+    using Enumerators;
+
     public class Group
     {
         private int number;
-        private string department;
+        private DepartmentsType department;
 
-        public Group(int number, string department)
+        public Group(int number, DepartmentsType department)
         {
             this.GroupNumber = number;
             this.DepartmentName = department;
@@ -30,7 +32,7 @@ namespace Homework3.Students
             }
         }
 
-        public string DepartmentName
+        public DepartmentsType DepartmentName
         {
             get
             {
