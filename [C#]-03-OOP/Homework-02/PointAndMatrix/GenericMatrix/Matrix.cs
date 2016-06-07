@@ -17,6 +17,7 @@ namespace PointAndMatrix.GenericMatrix
         private T[,] container;
 
         #endregion
+
         #region Contructors
 
         public Matrix(int x, int y)
@@ -198,7 +199,18 @@ namespace PointAndMatrix.GenericMatrix
         #endregion
 
         #region Overloads
+        public override string ToString()
+        {
+            for (int row = 0; row < this.Rows; row++)
+            {
+                for (int col = 0; col < this.Cols; col++)
+                {
+                    Console.Write(this[row, col].ToString() + "|");
+                }
+            }
 
+            return base.ToString();
+        }
         #endregion
     }
 }

@@ -7,14 +7,12 @@ namespace PointAndMatrix.Tests
 
     class GenericListTesting
     {
-        public static void MainTest()
+        public static void MainTest(Random rng)
         {
             Console.WriteLine("GenericList<T> Testing: " + Environment.NewLine);
 
             var myTestingList = new GenericList<Point3D>();
-
-            var rng = new Random();
-
+            
             var numberOfElements = rng.Next(1, 25);
 
             for (int i = 0; i < numberOfElements; i++)

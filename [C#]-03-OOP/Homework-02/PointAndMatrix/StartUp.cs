@@ -9,6 +9,8 @@ namespace PointAndMatrix
     [Version(1, 14)]
     class StartUp
     {
+        static Random rng = new Random();
+
         static void Main(string[] args)
         {
             var type = typeof(StartUp);
@@ -19,7 +21,7 @@ namespace PointAndMatrix
                 Console.WriteLine("Version: {0}", atr.Version);
             }
             
-            GenericListTesting.MainTest();
+            GenericListTesting.MainTest(rng);
             MatrixTesting.MainTest();
         }
     }
