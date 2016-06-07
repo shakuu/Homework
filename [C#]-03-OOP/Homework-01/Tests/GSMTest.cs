@@ -7,6 +7,9 @@ namespace GSM
     {
         public static void Test()
         {
+            Console.WriteLine( "Problem 7. GSM test"
+                   + Environment.NewLine);
+
             var arrGsm = new GSM[]
             {
                 GSM.Iphone4S,

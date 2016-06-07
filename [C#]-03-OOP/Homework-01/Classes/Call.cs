@@ -34,7 +34,7 @@ namespace GSM
             }
         }
 
-        // Properties
+        #region Properties
         public string Date
         {
             get
@@ -70,8 +70,9 @@ namespace GSM
                 return output;
             }
         }
+        #endregion
 
-        // Methods
+        #region Methods
         public override string ToString()
         {
             //var separator = '+';
@@ -102,5 +103,6 @@ namespace GSM
 
             return output.ToString();
         }
+        #endregion
     }
 }

@@ -5,7 +5,7 @@ namespace PointAndMatrix
     using Tests;
     using Attributes;
     using System.Linq;
-
+    
     [Version(1, 14)]
     class StartUp
     {
@@ -18,9 +18,8 @@ namespace PointAndMatrix
             {
                 Console.WriteLine("Version: {0}", atr.Version);
             }
-
-
-            //GenericListTesting.MainTest();
+            
+            GenericListTesting.MainTest();
             MatrixTesting.MainTest();
         }
     }

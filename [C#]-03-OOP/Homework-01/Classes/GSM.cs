@@ -5,6 +5,7 @@ namespace GSM
     using System;
     using System.Collections.Generic;
     using System.Text;
+    using System.Linq;
 
     class GSM
     {
@@ -46,7 +47,8 @@ namespace GSM
         }
         public GSM(string make, string model, string owner, int price,
             string batteryModel, int batteryIdelTime, int batteryTalkTime,
-            int displaySize, int displayColors) : this(make, model)
+            int displaySize, int displayColors)
+                : this(make, model)
         {
             this.Owner = owner;
             this.Price = price;
@@ -243,7 +245,8 @@ namespace GSM
             }
         }
         #endregion
-        // Methods.
+
+        #region Methods
         public override string ToString()
         {
             var toString = new StringBuilder();
@@ -266,18 +269,22 @@ namespace GSM
         {
             this.calls = new List<Call>();
         }
+
         public void AddCall(DateTime start, DateTime end, string number)
         {
             this.calls.Add(new Call(start, end, number));
         }
+
         public void AddCall(Call addMe)
         {
             this.calls.Add(addMe);
         }
+
         public void DeleteCall(int ID)
         {
             this.calls.RemoveAt(ID);
         }
+
         public decimal CallHistoryCost(decimal price)
         {
             var totalCalls = (decimal)0;
@@ -289,5 +296,16 @@ namespace GSM
 
             return totalCalls * price;
         }
+
+        public void RemoveLongestCall()
+        {
+            var toRemove = this.calls
+                .Find(c => c.Duration == this.calls.Max
+                    (call => call.Duration)
+                    );
+            
+            this.DeleteCall(this.calls.IndexOf(toRemove));
+        }
+        #endregion
     }
 }

@@ -9,6 +9,8 @@ namespace PointAndMatrix.Tests
     {
         public static void MainTest()
         {
+            Console.WriteLine("GenericList<T> Testing: " + Environment.NewLine);
+
             var myTestingList = new GenericList<Point3D>();
 
             var rng = new Random();
@@ -32,7 +34,6 @@ namespace PointAndMatrix.Tests
             }
 
             Console.WriteLine((myTestingList[0] + myTestingList[1]).ToString());
-
         }
     }
 }

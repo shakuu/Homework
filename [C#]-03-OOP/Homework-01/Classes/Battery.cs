@@ -3,12 +3,14 @@
 namespace GSM
 {
     using System;
+    using Classes;
 
-    class Battery
+    public class Battery
     {
         private string model;
         private int hoursIdle;
         private int hoursTalk;
+        private BatteryTypes type; 
 
         public Battery() { }
         public Battery(string model, int hoursIdle, int hoursTalk)
@@ -17,8 +19,8 @@ namespace GSM
             this.IdleTime = hoursIdle;
             this.TalkTime = hoursTalk;
         }
-        
-        // Properties
+
+        #region Properties
         public string Model
         {
             get
@@ -69,6 +71,17 @@ namespace GSM
                 this.hoursTalk = value;
             }
         }
-        public enum BatteryType { LiIon, NiMH, NiCd };
+        public BatteryTypes BatteryType
+        {
+            get
+            {
+                return this.type;
+            }
+            set
+            {
+                this.type = value;
+            }
+        }
+        #endregion
     }
 }

@@ -25,6 +25,7 @@ namespace PointAndMatrix.GenericMatrix
         }
 
         #endregion
+
         #region Properties
 
         public int Rows
@@ -43,6 +44,7 @@ namespace PointAndMatrix.GenericMatrix
         }
 
         #endregion
+
         #region Indexer and Operators
 
         public T this[int row, int col]
@@ -192,6 +194,10 @@ namespace PointAndMatrix.GenericMatrix
 
             return output;
         }
+
+        #endregion
+
+        #region Overloads
 
         #endregion
     }

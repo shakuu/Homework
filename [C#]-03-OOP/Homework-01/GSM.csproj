@@ -46,13 +46,14 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Classes\BatteryTypes.cs" />
     <Compile Include="Classes\Call.cs" />
     <Compile Include="Classes\Battery.cs" />
     <Compile Include="Classes\Display.cs" />
     <Compile Include="Classes\GSM.cs" />
-    <Compile Include="Classes\GSMCallHistoryTest.cs" />
-    <Compile Include="Classes\GSMTest.cs" />
-    <Compile Include="Classes\Main.cs" />
+    <Compile Include="Tests\GSMCallHistoryTest.cs" />
+    <Compile Include="Tests\GSMTest.cs" />
+    <Compile Include="Main.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
