@@ -9,6 +9,7 @@ namespace Homework3.Extensions
     using System.Threading.Tasks;
     using Students;
     using System.IO;
+    using Extensions;
 
     public static class StudenListExtensions
     {
@@ -36,7 +37,7 @@ namespace Homework3.Extensions
                             FN = int.Parse(data[2]),
                             Tel = data[3],
                             Email = data[4],
-                            Group = int.Parse(data[5]),
+                            GroupNumber = int.Parse(data[5]),
                         };
 
                         // Add All Marks
@@ -92,7 +93,7 @@ namespace Homework3.Extensions
         {
             var output =
                 from student in list
-                where student.Group == 2
+                where student.GroupNumber == 2
                 select student;
 
             return output.ToList();
@@ -155,6 +156,29 @@ namespace Homework3.Extensions
                 .ToList();
 
             return output;
+        }
+
+        //
+        public static void ModfiyFN(this List<Student> list, Random rng)
+        {
+            var output = new List<Student>();
+
+            for (int index = 0; index < list.Count; index++)
+            {
+                var newFN = new StringBuilder();
+
+                var letter1 = list[index].FirstName[0];
+                var letter2 = list[index].LastName[0];
+
+                var year = rng.Next(3, 12).ToString("D2");
+
+                newFN.Append((int)(letter1 * letter1));
+                newFN.Append(year);
+                newFN.Append((int)(letter1 * letter1));
+                
+                list[index].FN = int.Parse(newFN.Substring(0, 8).ToString());
+                output.Clear();
+            }
         }
     }
 }

@@ -141,7 +141,7 @@ namespace Homework3.Students
             }
         }
 
-        public int Group
+        public int GroupNumber
         {
             get
             {
@@ -195,7 +195,7 @@ namespace Homework3.Students
             output.Append(separator + this.FN );
             output.Append(separator + this.Tel);
             output.Append(separator + this.Email);
-            output.Append(separator + this.Group);
+            output.Append(separator + this.GroupNumber);
 
             foreach (var mark in this.Marks)
             {
