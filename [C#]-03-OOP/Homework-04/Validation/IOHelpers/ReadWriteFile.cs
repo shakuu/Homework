@@ -35,12 +35,13 @@ namespace Validation.IOHelpers
                 throw;
             }
             
-
             return output;
         }
 
         internal static void DownloadForbidenWords()
         {
+            // Link to my google drive with Forbidden.txt
+            // (contains forbidden word for validation) 
             var url = "https://docs.google.com/uc?authuser=0&id=0B8ljp3Uug64VUVRMUl9IUWZLcGc&export=download";
             var path = GetDocumentsPath();
 
