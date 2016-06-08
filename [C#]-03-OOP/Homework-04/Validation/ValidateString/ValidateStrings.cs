@@ -47,13 +47,16 @@ namespace Validation.ValidateString
                 throw new ArgumentException("Comment must be between 0 and 200 words");
             }
 
-            var forbidden = ReadWriteFile.ReadForbiddenWordsFromFile("forbidden.txt");
+            foreach (var word in words)
+            {
+                CheckForLettersAndDigits(word);
+                CheckWordLength(word);
+            }
+
+            var forbidden = ReadWriteFile.ReadForbiddenWordsFromFile();
 
             foreach (var word in forbidden)
             {
-                CheckWordLength(word);
-                CheckForLettersAndDigits(word);
-
                 var check = words.Where(current => current == word).Count();
                 if (check > 0)
                 {

@@ -4,12 +4,20 @@ namespace Validation.IOHelpers
     using System;
     using System.Collections.Generic;
     using System.IO;
+    using System.Net;
 
     internal static class ReadWriteFile
     {
-        internal static List<string> ReadForbiddenWordsFromFile(string filename)
+        internal static List<string> ReadForbiddenWordsFromFile()
         {
             var output = new List<string>();
+            var filename = GetDocumentsPath();
+
+            if (!File.Exists(filename))
+            {
+                DownloadForbidenWords();
+            }
+
             try
             {
                 using (var reader = new StreamReader(filename))
@@ -29,6 +37,24 @@ namespace Validation.IOHelpers
             
 
             return output;
+        }
+
+        internal static void DownloadForbidenWords()
+        {
+            var url = "https://docs.google.com/uc?authuser=0&id=0B8ljp3Uug64VUVRMUl9IUWZLcGc&export=download";
+            var path = GetDocumentsPath();
+
+            using (var client = new WebClient())
+            {
+                client.DownloadFile(url, path);
+            }
+        }
+
+        private static string GetDocumentsPath()
+        {
+            var path = "C:\\Users\\{0}\\Documents\\Forbidden.txt";
+            var user = Environment.UserName;
+            return string.Format(path, user);
         }
     }
 }
