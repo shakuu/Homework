@@ -1,19 +1,22 @@
 ﻿
 namespace SchoolClasses.People
 {
-    using Validation.ValidateString;
+    using System;
 
     public class Student : Person
     {
-        private string id;
+        private const int MinClassNumber = 1;
+        private const int MaxClassNumber = 50;
 
-        public Student(string name, string id)
+        private int id;
+
+        public Student(string name, int id)
             : base(name)
         {
             this.ClassNumber = id;
         }
 
-        public string ClassNumber
+        public int ClassNumber
         {
             get
             {
@@ -21,8 +24,14 @@ namespace SchoolClasses.People
             }
             set
             {
-                ValidateStrings.ValidateStudentID(value);
-                this.id = value;
+                if (!(MinClassNumber <= value && value <= MaxClassNumber))
+                {
+                    throw new ArgumentException("Student Class Number must be between 1 and 50");
+                }
+                else
+                {
+                    this.id = value;
+                }
             }
         }
     }

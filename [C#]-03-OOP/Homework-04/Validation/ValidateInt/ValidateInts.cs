@@ -36,5 +36,15 @@ namespace Validation.ValidateInt
             }
         }
 
+        /// <summary>
+        ///  ID must be unique for the student out
+        ///  of the students in his class. ( that's how school works ? )
+        ///  OR unique overall ( as a university number ) ? 
+        /// </summary
+        /// <param name="value"></param>
+        public static void ValidateStudentID(int value)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

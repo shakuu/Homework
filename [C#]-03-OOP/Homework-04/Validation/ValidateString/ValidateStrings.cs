@@ -2,10 +2,8 @@
 namespace Validation.ValidateString
 {
     using System;
-    using System.Collections.Generic;
     using System.Linq;
-    using System.Text;
-    using System.Threading.Tasks;
+    using IOHelpers;
 
     public class ValidateStrings
     {
@@ -39,29 +37,56 @@ namespace Validation.ValidateString
         /// <param name="value"></param>
         public static void ValidateComment(string value)
         {
+            var words = value
+                .Trim()
+                .Split(new[] { ' ' }, StringSplitOptions.RemoveEmptyEntries)
+                .ToList();
 
-            // TODO: 
-            throw new NotImplementedException();
-        }
+            if (!(0<words.Count&&words.Count <= 200))
+            {
+                throw new ArgumentException("Comment must be between 0 and 200 words");
+            }
 
-        /// <summary>
-        /// Each Class MUST have a Unique ID
-        /// </summary>
-        /// <param name="value"></param>
-        public static void ValidateClassID(string value)
-        {
-            throw new NotImplementedException();
+            var forbidden = ReadWriteFile.ReadForbiddenWordsFromFile("forbidden.txt");
+
+            foreach (var word in forbidden)
+            {
+                CheckWordLength(word);
+                CheckForLettersAndDigits(word);
+
+                var check = words.Where(current => current == word).Count();
+                if (check > 0)
+                {
+                    throw new ArgumentException("Using inappropriate language");
+                }
+            }
         }
         
-        /// <summary>
-        ///  ID must be unique for the student out
-        ///  of the students in his class. ( that's how school works ? )
-        ///  OR unique overall ( as a university number ) ? 
-        /// </summary
-        /// <param name="value"></param>
-        public static void ValidateStudentID(string value)
+        public static void ValidateClassID(string value)
         {
-            throw new NotImplementedException();
+            CheckWordLength(value);
+            CheckForLettersAndDigits(value);
         }
+
+        #region Private Methods
+        private static void CheckWordLength(string word)
+        {
+            if (word.Length > 30)
+            {
+                throw new ArgumentException("Words must be less than 30 symbols long");
+            }
+        }
+
+        private static void CheckForLettersAndDigits(string word)
+        {
+            foreach (var ltr in word)
+            {
+                if (!char.IsLetter(ltr) || !char.IsDigit(ltr) || ltr != ' ')
+                {
+                    throw new ArgumentException("Only letters and digits are allowed");
+                }
+            }
+        }
+        #endregion
     }
 }
