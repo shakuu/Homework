@@ -1,13 +1,8 @@
 ﻿
 namespace SchoolClasses.People
 {
-    using System;
     using System.Collections.Generic;
-    using System.Linq;
-    using System.Text;
-    using System.Threading.Tasks;
     using Disciplines;
-    using Validation;
 
     public class Teacher : Person
     {
@@ -16,6 +11,7 @@ namespace SchoolClasses.People
         public Teacher(string name)
             : base(name)
         {
+            this.isTeaching = new List<Discipline>();
         }
         
         public List<Discipline> IsTeaching

@@ -41,6 +41,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Disciplines\Discipline.cs" />
+    <Compile Include="Enumerators\DisciplineType.cs" />
     <Compile Include="Interfaces\ICommentable.cs" />
     <Compile Include="Interfaces\INameable.cs" />
     <Compile Include="People\Person.cs" />
@@ -51,7 +52,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Enumerators\" />
+    <None Include="SchoolDiagram.cd" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Validation\Validation.csproj">

@@ -2,13 +2,11 @@
 namespace SchoolClasses.People
 {
     using System;
-    using System.Collections.Generic;
-    using System.Linq;
-    using System.Text;
-    using System.Threading.Tasks;
     using Interfaces;
     using Validation.ValidateString;
-    
+    using System.Collections.Generic;
+    using System.Linq;
+
     public class SchoolClass : ICommentable
     {
         private string id;
@@ -16,9 +14,17 @@ namespace SchoolClasses.People
         private List<Teacher> teachers;
         private List<Student> students;
 
-        public SchoolClass(string id)
+        public SchoolClass()
         {
+            this.teachers = new List<Teacher>();
+            this.students = new List<Student>();
 
+        }
+
+        public SchoolClass(string id)
+            : this()
+        {
+            this.ID = id;
         }
 
         #region Properties
@@ -66,11 +72,25 @@ namespace SchoolClasses.People
             {
                 return this.students;
             }
-            set
+            private set
             {
                 this.students = value;
             }
         }
         #endregion
+
+        public void AddStudent(Student student)
+        {
+            var check = this.students.Where(std => std.ClassNumber == student.ClassNumber).Count();
+
+            if (check > 0)
+            {
+                throw new ArgumentException("Student Class Numbers must be unique for the class");
+            }
+            else
+            {
+                this.Students.Add(student);
+            }
+        }
     }
 }

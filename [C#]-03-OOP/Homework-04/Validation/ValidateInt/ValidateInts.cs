@@ -15,19 +15,25 @@ namespace Validation.ValidateInt
         /// <param name="value"></param>
         public static void ValidateNumberOfLectures(int value)
         {
-            // TODO: 
-            throw new NotImplementedException();
+            StandardValidation(value);
         }
 
         /// <summary>
-        /// Larger than zero
+        /// Exercises CAN be zero
         /// Possibly merge with ValidateNumberOfLectures ?  
         /// </summary>
         /// <param name="value"></param>
         public static void ValidateNumberOfExcercises(int value)
         {
-            // TODO:
-            throw new NotImplementedException();
+            StandardValidation(value);
+        }
+
+        private static void StandardValidation(int value)
+        {
+            if (value < 0)
+            {
+                throw new ArgumentException("Number must be positive");
+            }
         }
 
     }

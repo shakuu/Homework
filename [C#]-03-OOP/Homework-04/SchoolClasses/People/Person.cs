@@ -1,13 +1,9 @@
 ﻿
 namespace SchoolClasses.People
 {
-    using System;
     using Interfaces;
     using Validation.ValidateString;
-    /// <summary>
-    /// Figure out how to validate comments.
-    /// List of forbidden words ? 
-    /// </summary>
+
     public class Person : INameable, ICommentable
     {
         private string name;

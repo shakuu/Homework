@@ -1,18 +1,8 @@
 ﻿
 namespace SchoolClasses.People
 {
-    using System;
-    using System.Collections.Generic;
-    using System.Linq;
-    using System.Text;
-    using System.Threading.Tasks;
-    using Validation;
+    using Validation.ValidateString;
 
-    /// <summary>
-    ///  ID must be unique for the student out
-    ///  of the students in his class. ( that's how school works ? )
-    ///  OR unique overall ( as a university number ) ? 
-    /// </summary>
     public class Student : Person
     {
         private string id;
@@ -20,7 +10,7 @@ namespace SchoolClasses.People
         public Student(string name, string id)
             : base(name)
         {
-
+            this.ClassNumber = id;
         }
 
         public string ClassNumber
@@ -31,8 +21,7 @@ namespace SchoolClasses.People
             }
             set
             {
-                // TODO: Add validation once
-                // there are classes of students
+                ValidateStrings.ValidateStudentID(value);
                 this.id = value;
             }
         }
