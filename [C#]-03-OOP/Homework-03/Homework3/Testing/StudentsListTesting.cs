@@ -14,9 +14,8 @@ namespace Homework3.Testing
     {
         public static void MainTest()
         {
-            var myListOfStudents = new List<Student>();
-
-            myListOfStudents.LoadStudentDataFromFile("Students.csv");
+            var myListOfStudents = CreateAList();
+            
             var myStudentsGroup2 = myListOfStudents.GetStudentsByGroup(2);
             myStudentsGroup2.SaveStudentDataToFile(nameof(myStudentsGroup2) + "csv");
 
@@ -63,6 +62,15 @@ namespace Homework3.Testing
             output.Add(new Group(4, DepartmentsType.Law));
 
             return output;
+        }
+
+        private static List<Student> CreateAList()
+        {
+            var myListOfStudents = new List<Student>();
+
+            myListOfStudents.LoadStudentDataFromFile("Students.csv");
+
+            return myListOfStudents;
         }
     }
 }

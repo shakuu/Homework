@@ -61,7 +61,6 @@
     <Compile Include="Testing\StudentsTesting.cs" />
     <Compile Include="Testing\TimerTesting.cs" />
     <Compile Include="TimedEvent\Timer.cs" />
-    <Compile Include="Times\BasicTimer.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
