@@ -4,7 +4,7 @@ namespace SchoolClasses.Disciplines
     using System;
     using Interfaces;
     using Enumerators;
-    using Validation.ValidateString;
+    using Validation.ValidateStrings;
 
     public class Discipline : ICommentable
     {
@@ -41,7 +41,7 @@ namespace SchoolClasses.Disciplines
             }
             set
             {
-                ValidateStrings.ValidateComment(value);
+                ValidateString.ValidateComment(value);
                 this.comment = value;
             }
         }

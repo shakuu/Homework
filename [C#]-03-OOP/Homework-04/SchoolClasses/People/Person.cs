@@ -2,9 +2,9 @@
 namespace SchoolClasses.People
 {
     using Interfaces;
-    using Validation.ValidateString;
+    using Validation.ValidateStrings;
 
-    public class Person : INameable, ICommentable
+    public abstract class Person : INameable, ICommentable
     {
         private string name;
         private string comment;
@@ -23,7 +23,7 @@ namespace SchoolClasses.People
             }
             set
             {
-                ValidateStrings.ValidateComment(value);
+                ValidateString.ValidateComment(value);
                 this.comment = value;
             }
         }
@@ -36,7 +36,7 @@ namespace SchoolClasses.People
             }
             protected set
             {
-                ValidateStrings.ValidateName(value);
+                ValidateString.ValidateName(value);
                 this.name = value;
             }
         }

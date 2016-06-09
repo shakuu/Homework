@@ -3,7 +3,7 @@ namespace SchoolClasses.People
 {
     using System;
     using Interfaces;
-    using Validation.ValidateString;
+    using Validation.ValidateStrings;
     using System.Collections.Generic;
     using System.Linq;
 
@@ -36,7 +36,7 @@ namespace SchoolClasses.People
             }
             set
             {
-                ValidateStrings.ValidateComment(value);
+                ValidateString.ValidateComment(value);
                 this.comment = value;
             }
         }
@@ -49,7 +49,7 @@ namespace SchoolClasses.People
             }
             set
             {
-                ValidateStrings.ValidateClassID(value);
+                ValidateString.ValidateClassID(value);
                 this.id = value; 
             }
         }

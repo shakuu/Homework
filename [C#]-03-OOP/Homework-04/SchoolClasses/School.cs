@@ -2,7 +2,7 @@
 namespace SchoolClasses
 {
     using System.Collections.Generic;
-    using Validation.ValidateString;
+    using Validation.ValidateStrings;
     using People;
     using System.Linq;
     using System;
@@ -36,7 +36,7 @@ namespace SchoolClasses
             }
             set
             {
-                ValidateStrings.ValidateName(value);
+                ValidateString.ValidateName(value);
                 this.name = value;
             }
         }

@@ -1,11 +1,11 @@
 ﻿
-namespace Validation.ValidateString
+namespace Validation.ValidateStrings
 {
     using System;
     using System.Linq;
     using IOHelpers;
 
-    public class ValidateStrings
+    public class ValidateString
     {
         public static void ValidateName(string value)
         {
@@ -42,7 +42,7 @@ namespace Validation.ValidateString
                 .Split(new[] { ' ' }, StringSplitOptions.RemoveEmptyEntries)
                 .ToList();
 
-            if (!(0<words.Count&&words.Count <= 200))
+            if (!(0 < words.Count && words.Count <= 200))
             {
                 throw new ArgumentException("Comment must be between 0 and 200 words");
             }
@@ -64,7 +64,7 @@ namespace Validation.ValidateString
                 }
             }
         }
-        
+
         public static void ValidateClassID(string value)
         {
             CheckWordLength(value);
@@ -79,9 +79,11 @@ namespace Validation.ValidateString
                 throw new ArgumentException("Words must be less than 30 symbols long");
             }
         }
-
+        
         private static void CheckForLettersAndDigits(string word)
         {
+            // TODO: Add punctuation to the permitted symbols list.
+
             foreach (var ltr in word)
             {
                 if (!char.IsLetter(ltr) || !char.IsDigit(ltr) || ltr != ' ')

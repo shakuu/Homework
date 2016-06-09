@@ -6,13 +6,13 @@ namespace StartUp
     using System.Linq;
     using System.Text;
     using System.Threading.Tasks;
-    using Validation.ValidateString;
+    using Validation.ValidateStrings;
 
     class StartUp
     {
         static void Main()
         {
-            ValidateStrings.ValidateComment("blah blah blah");
+            ValidateString.ValidateComment("blah blah blah");
         }
     }
 }
