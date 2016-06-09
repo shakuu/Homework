@@ -9,7 +9,10 @@ var el = document
   });
 
 function MaxIncSeq(arg) {
-  var array = String(arg).split(' ');
+
+  var str = String(arg);
+  str = str.replace(/,/g, '');
+  var array = String(str).split(' ');
 
   var max = 0;
   var counter = 1;
@@ -18,8 +21,9 @@ function MaxIncSeq(arg) {
   var len = array.length;
   for (var index = 1; index < len; index += 1) {
     var element = array[index];
+    console.log(element);
 
-    if (Number(element.trim(' ')) >= Number(prev.trim(' '))) {
+    if (Number(element.trim(' ')) > Number(prev.trim(' '))) {
       counter += 1;
     } else {
       if (counter > max) {
