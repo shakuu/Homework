@@ -1,12 +1,12 @@
 ﻿
 namespace StartUp._02_Test
 {
+    using Randomizers;
     using StudentsAndWorkers.AbstractModels;
     using StudentsAndWorkers.Models;
     using System;
     using System.Collections.Generic;
     using System.Linq;
-    using System.Text;
 
     class Problem_02_Tests
     {
@@ -35,6 +35,8 @@ namespace StartUp._02_Test
         /// </summary>
         public static void Tasks()
         {
+            Console.WriteLine("Problem 2. Students and workers Tasks: " + Environment.NewLine);
+
             const int size = 10;
 
             var students = GetListOfSudents(size);
@@ -67,7 +69,7 @@ namespace StartUp._02_Test
             Print(mergedList, "merged");
         }
 
-        private static void Print<T>(List<T> list, string name) 
+        private static void Print<T>(List<T> list, string name)
             where T : Human
         {
             Console.WriteLine($"Sorted List: {name}");
@@ -78,16 +80,16 @@ namespace StartUp._02_Test
         }
 
         #region Private Methods - Generating Field Values
-        
+
         private static List<Student> GetListOfSudents(int size)
         {
             var output = new List<Student>();
 
             for (int i = 0; i < size; i++)
             {
-                var first = GenerateName();
-                var last = GenerateName();
-                var grade = GenerateGrade();
+                var first = Generators.GenerateName(random);
+                var last = Generators.GenerateName(random);
+                var grade = Generators.GenerateGrade(random);
                 var student = new Student(first, last, grade);
                 output.Add(student);
             }
@@ -101,8 +103,8 @@ namespace StartUp._02_Test
 
             for (int i = 0; i < size; i++)
             {
-                var first = GenerateName();
-                var last = GenerateName();
+                var first = Generators.GenerateName(random);
+                var last = Generators.GenerateName(random);
                 var weekSalary = random.Next(100, 1000);
                 var hoursPerDay = random.Next(4, 10);
                 var worker = new Worker(first, last, weekSalary, hoursPerDay);
@@ -112,48 +114,7 @@ namespace StartUp._02_Test
 
             return output;
         }
-        private static string GenerateName()
-        {
-            const string consonants = "bcdfghjklmnpqrstvwxyz";
-            const string vowels = "aeiou";
 
-            int consonantsLength = consonants.Length;
-            int vowelsLength = vowels.Length;
-
-            var output = new StringBuilder();
-
-            var length = random.Next(3, 8);
-            var letter = 0;
-            for (int i = 0; i < length; i++)
-            {
-                if (i % 2 == 0)
-                {
-                    letter = consonants[random.Next(0, consonants.Length)];
-                }
-                else
-                {
-                    letter = vowels[random.Next(0, vowels.Length)];
-                }
-
-                output.Append((char)letter);
-            }
-
-            output[0] = char.ToUpper(output[0]);
-
-            return output.ToString();
-        }
-
-        private static double GenerateGrade()
-        {
-            var format = "{0}.{1}";
-
-            var whoGrade = random.Next(2, 6);
-            var decGrade = random.Next(0, 99);
-
-            var grade = string.Format(format, whoGrade, decGrade);
-
-            return double.Parse(grade);
-        }
         #endregion
     }
 }

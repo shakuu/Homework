@@ -4,7 +4,7 @@ namespace AnimalHierarchy.Models.CatsModels
     using System;
     using Types;
 
-    class Kitten : Cat
+    public class Kitten : Cat
     {
         private const string Sound = "Kitten says: Miaw Miaw";
 

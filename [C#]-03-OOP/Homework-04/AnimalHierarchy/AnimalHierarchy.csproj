@@ -45,6 +45,8 @@
     <Compile Include="Models\Cat.cs" />
     <Compile Include="Models\CatsModels\Kitten.cs" />
     <Compile Include="Models\CatsModels\TomCat.cs" />
+    <Compile Include="Models\Dog.cs" />
+    <Compile Include="Models\Frog.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Types\SexType.cs" />
   </ItemGroup>

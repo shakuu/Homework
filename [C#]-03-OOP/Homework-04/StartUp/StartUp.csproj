@@ -44,6 +44,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="02_Test\Problem_02_Tests.cs" />
+    <Compile Include="03_Test\Problem_03_Tests.cs" />
+    <Compile Include="Randomizers\Generators.cs" />
     <Compile Include="StartUp.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -51,6 +53,10 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\AnimalHierarchy\AnimalHierarchy.csproj">
+      <Project>{5d59b4b3-e8d6-4753-945c-fdb32376a248}</Project>
+      <Name>AnimalHierarchy</Name>
+    </ProjectReference>
     <ProjectReference Include="..\SchoolClasses\SchoolClasses.csproj">
       <Project>{8b77f3a6-82d6-4175-9a35-17c2dff5a1f1}</Project>
       <Name>SchoolClasses</Name>
