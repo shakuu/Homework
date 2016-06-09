@@ -105,12 +105,24 @@ namespace PointAndMatrix.Lists
         {
             this.container = new T[initialSize];
         }
+
+        // Enumerator out of private array
+        //public IEnumerator GetEnumerator()
+        //{
+        //    // 
+        //    var newEnumerator = this.container
+        //        .Take(this.Count).GetEnumerator();
+
+        //    return newEnumerator;
+        //}
+
+        // YIELD RETURN
         public IEnumerator GetEnumerator()
         {
-            var newEnumerator = this.container
-                .Take(this.Count).GetEnumerator();
-
-            return newEnumerator;
+            for (int i = 0; i < this.Count; i++)
+            {
+                yield return this[i];
+            }
         }
 
         #region Comparing
@@ -175,8 +187,6 @@ namespace PointAndMatrix.Lists
 
             this.container = newContainer;
         }
-
-        
         
         #endregion
     }
