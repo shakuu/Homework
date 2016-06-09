@@ -4,17 +4,15 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{4AA738D4-3240-4A4A-9700-AFB4F4E9F9CB}</ProjectGuid>
-    <OutputType>Exe</OutputType>
+    <ProjectGuid>{55B3CD75-3410-43C0-A457-19415C3C48D2}</ProjectGuid>
+    <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>StartUp</RootNamespace>
-    <AssemblyName>StartUp</AssemblyName>
+    <RootNamespace>StudentsAndWorkers</RootNamespace>
+    <AssemblyName>StudentsAndWorkers</AssemblyName>
     <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
-    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
-    <PlatformTarget>AnyCPU</PlatformTarget>
     <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
@@ -24,7 +22,6 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
-    <PlatformTarget>AnyCPU</PlatformTarget>
     <DebugType>pdbonly</DebugType>
     <Optimize>true</Optimize>
     <OutputPath>bin\Release\</OutputPath>
@@ -43,26 +40,10 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="02_Test\Problem_02_Tests.cs" />
-    <Compile Include="StartUp.cs" />
+    <Compile Include="AbstractModels\Human.cs" />
+    <Compile Include="Models\Student.cs" />
+    <Compile Include="Models\Worker.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="App.config" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\SchoolClasses\SchoolClasses.csproj">
-      <Project>{8b77f3a6-82d6-4175-9a35-17c2dff5a1f1}</Project>
-      <Name>SchoolClasses</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\StudentsAndWorkers\StudentsAndWorkers.csproj">
-      <Project>{55b3cd75-3410-43c0-a457-19415c3c48d2}</Project>
-      <Name>StudentsAndWorkers</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\Validation\Validation.csproj">
-      <Project>{9a0c58e2-0987-44e8-888e-0ceaf0f738ca}</Project>
-      <Name>Validation</Name>
-    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
