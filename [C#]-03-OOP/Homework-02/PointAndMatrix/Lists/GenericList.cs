@@ -20,7 +20,7 @@ namespace PointAndMatrix.Lists
         public GenericList()
         {
             this.container = new T[initialSize];
-            this.count = 0;
+            this.Count = 0;
         }
 
         public T this[int index]
@@ -43,6 +43,14 @@ namespace PointAndMatrix.Lists
             get
             {
                 return this.count;
+            }
+            private set
+            {
+                if (value < 0)
+                {
+                    throw new ArgumentException("Count must be a positive number");
+                }
+                this.count = value;
             }
         }
         public int Capacity
@@ -67,7 +75,7 @@ namespace PointAndMatrix.Lists
         {
             get
             {
-                return count - 1;
+                return this.Count - 1;
             }
         }
         #endregion
@@ -78,15 +86,15 @@ namespace PointAndMatrix.Lists
         {
             if (this.count + 1 > this.Capacity) ExpandCapacity();
 
-            container[count] = element;
-            count++;
+            this.container[count] = element;
+            this.Count++;
         }
         public void Remove(int index)
         {
-            count--;
+            this.Count--;
 
-            for (int i = index + 1; i <= count; i++)
-                container[i - 1] = container[i];
+            for (int i = index + 1; i <= this.Count; i++)
+                this.container[i - 1] = this.container[i];
 
         }
         public void Insert(int index, T element)
@@ -98,32 +106,34 @@ namespace PointAndMatrix.Lists
                 container[i] = container[i - 1];
             }
 
-            container[index] = element;
-            count++;
+            this.container[index] = element;
+            this.Count++;
         }
         public void Clear()
         {
             this.container = new T[initialSize];
+            this.Count = 0;
         }
 
+        //Original: 
         // Enumerator out of private array
-        //public IEnumerator GetEnumerator()
-        //{
-        //    // 
-        //    var newEnumerator = this.container
-        //        .Take(this.Count).GetEnumerator();
-
-        //    return newEnumerator;
-        //}
-
-        // YIELD RETURN
         public IEnumerator GetEnumerator()
         {
-            for (int i = 0; i < this.Count; i++)
-            {
-                yield return this[i];
-            }
+            // 
+            var newEnumerator = this.container
+                .Take(this.Count).GetEnumerator();
+
+            return newEnumerator;
         }
+
+        //// YIELD RETURN
+        //public IEnumerator GetEnumerator()
+        //{
+        //    for (int i = 0; i < this.Count; i++)
+        //    {
+        //        yield return this[i];
+        //    }
+        //}
 
         #region Comparing
         public T Min()
@@ -182,8 +192,8 @@ namespace PointAndMatrix.Lists
         {
             var newContainer = new T[this.Capacity * 2];
 
-            for (int i = 0; i < container.Length; i++)
-                newContainer[i] = container[i];
+            for (int i = 0; i < this.container.Length; i++)
+                newContainer[i] = this.container[i];
 
             this.container = newContainer;
         }
