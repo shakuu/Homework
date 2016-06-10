@@ -27,7 +27,7 @@
 
         public override string ToString()
         {
-            return base.FullName + $", Grade: {this.Grade}";
+            return this.FullName + $", Grade: {this.Grade}";
         }
     }
 }
