@@ -2,7 +2,6 @@
 {
     using AbstractModels;
     using CustomerModels.AbstractModels;
-    using System;
 
     public class Mortgage : Account
     {
@@ -14,10 +13,10 @@
         {
         }
 
-        public override void WithdrawMoney(decimal amount)
-        {
-            throw new ArgumentException("Not allowed");
-        }
+        //public override void WithdrawMoney(decimal amount)
+        //{
+        //    throw new ArgumentException("Not allowed");
+        //}
 
         #region CalcInterestRate
         protected override decimal CalculateIndividualInterest(int period)

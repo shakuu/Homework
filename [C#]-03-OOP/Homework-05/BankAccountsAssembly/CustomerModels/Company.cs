@@ -2,5 +2,9 @@
 {
     public class Company : AbstractModels.Customer
     {
+        public Company(string name) 
+            : base(name)
+        {
+        }
     }
 }

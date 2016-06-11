@@ -43,6 +43,7 @@
     <Compile Include="AccountModels\Deposit.cs" />
     <Compile Include="AccountModels\Loan.cs" />
     <Compile Include="AccountModels\Mortgage.cs" />
+    <Compile Include="BankModels\Bank.cs" />
     <Compile Include="CustomerModels\AbstractModels\Customer.cs" />
     <Compile Include="CustomerModels\Company.cs" />
     <Compile Include="CustomerModels\Individual.cs" />

@@ -5,7 +5,7 @@
     using System;
     using Types;
 
-    public abstract class Account : IRate, IDeposit, IWithdraw
+    public abstract class Account : IRate, IDeposit
     {
         private Customer customer;
         private decimal balance;
@@ -91,17 +91,17 @@
             this.Balance += amount;
         }
 
-        public virtual void WithdrawMoney(decimal amount)
-        {
-            if (this.Balance - amount < 0 )
-            {
-                throw new ArgumentOutOfRangeException("Whithdraw amount must be higher than current account balance");
-            }
-            else
-            {
-                this.Balance -= amount;
-            }
-        }
+        //public virtual void WithdrawMoney(decimal amount)
+        //{
+        //    if (this.Balance - amount < 0 )
+        //    {
+        //        throw new ArgumentOutOfRangeException("Whithdraw amount must be higher than current account balance");
+        //    }
+        //    else
+        //    {
+        //        this.Balance -= amount;
+        //    }
+        //}
 
         private void SetCustomerType(Type type)
         {
