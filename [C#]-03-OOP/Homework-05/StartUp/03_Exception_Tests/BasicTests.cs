@@ -9,20 +9,27 @@ namespace StartUp._03_Exception_Tests
         {
             var teste = new ExceptionsAssembly
                 .InvalidRange
-                .InvalidRangeException<DateTime>("message",
+                .InvalidRangeException<DateTime>("unsuccessful",
                     DateTime.ParseExact( "01-01-1980", "dd-MM-yyyy", null),
                     DateTime.ParseExact("31-12-2013", "dd-MM-yyyy", null));
 
-            var test = DateTime.Parse("1.1.1985");
-
-            if (test < teste.Min || test > teste.Max)
+            var test = DateTime.Parse("1.1.1975");
+            try
             {
-                throw teste;
+                if (test < teste.Min || test > teste.Max)
+                {
+                    throw teste;
+                }
+                else
+                {
+                    Console.WriteLine("success");
+                }
             }
-            else
+            catch (ExceptionsAssembly.InvalidRange.InvalidRangeException<DateTime> e)
             {
-                Console.WriteLine("success");
+                Console.WriteLine(e.Message);
             }
+           
         }
     }
 }
