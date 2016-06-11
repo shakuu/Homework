@@ -5,33 +5,33 @@
       "name": "Launch",
       "type": "node",
       "request": "launch",
-      "program": "${workspaceRoot}\\04-parse-tags.js",
+      "program": "${workspaceRoot}\\07-parse-url.js",
       "stopOnEntry": false,
-      "args": ["We are <mixcase>living</mixcase> in a <upcase>yellow submarine</upcase>. We <mixcase>don't</mixcase> have <lowcase>anything</lowcase> else."],
-      "cwd": "${workspaceRoot}",
-      "preLaunchTask": null,
-      "runtimeExecutable": null,
-      "runtimeArgs": [
-        "--nolazy"
-      ],
-      "env": {
-        "NODE_ENV": "development"
+      "args": ["ftp://telerikacademy.com/Courses/Courses/Details/239"],
+        "cwd": "${workspaceRoot}",
+        "preLaunchTask": null,
+        "runtimeExecutable": null,
+        "runtimeArgs": [
+          "--nolazy"
+        ],
+        "env": {
+          "NODE_ENV": "development"
+        },
+        "externalConsole": false,
+        "sourceMaps": false,
+        "outDir": null
       },
-      "externalConsole": false,
-      "sourceMaps": false,
-      "outDir": null
-    },
-    {
-      "name": "Attach",
-      "type": "node",
-      "request": "attach",
-      "port": 5858,
-      "address": "localhost",
-      "restart": false,
-      "sourceMaps": false,
-      "outDir": null,
-      "localRoot": "${workspaceRoot}",
-      "remoteRoot": null
-    }
-  ]
-}
+      {
+        "name": "Attach",
+        "type": "node",
+        "request": "attach",
+        "port": 5858,
+        "address": "localhost",
+        "restart": false,
+        "sourceMaps": false,
+        "outDir": null,
+        "localRoot": "${workspaceRoot}",
+        "remoteRoot": null
+      }
+    ]
+  }
