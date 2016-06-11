@@ -4,17 +4,15 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{6761B593-53E4-4C21-9063-3E482D15BAB1}</ProjectGuid>
-    <OutputType>Exe</OutputType>
+    <ProjectGuid>{94F670A5-357B-4AED-A577-5256072823A0}</ProjectGuid>
+    <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>StartUp</RootNamespace>
-    <AssemblyName>StartUp</AssemblyName>
+    <RootNamespace>ExceptionsAssembly</RootNamespace>
+    <AssemblyName>ExceptionsAssembly</AssemblyName>
     <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
-    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
-    <PlatformTarget>AnyCPU</PlatformTarget>
     <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
@@ -24,7 +22,6 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
-    <PlatformTarget>AnyCPU</PlatformTarget>
     <DebugType>pdbonly</DebugType>
     <Optimize>true</Optimize>
     <OutputPath>bin\Release\</OutputPath>
@@ -43,28 +40,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="01_Shapes_Tests\Array_Of_Shapes.cs" />
-    <Compile Include="02_BankAccount_Testing\InitialTests.cs" />
-    <Compile Include="03_Exception_Tests\BasicTests.cs" />
-    <Compile Include="StartUp.cs" />
+    <Compile Include="InvalidRange\InvalidRangeException.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="App.config" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\BankAccountsAssembly\BankAccountsAssembly.csproj">
-      <Project>{89512d90-005c-45ed-bc8c-0005db891533}</Project>
-      <Name>BankAccountsAssembly</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\ExceptionsAssembly\ExceptionsAssembly.csproj">
-      <Project>{94f670a5-357b-4aed-a577-5256072823a0}</Project>
-      <Name>ExceptionsAssembly</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\ShapesAssembly\ShapesAssembly.csproj">
-      <Project>{c1b80eaa-5286-4a96-8709-f92dc9f1ddf2}</Project>
-      <Name>ShapesAssembly</Name>
-    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
