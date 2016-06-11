@@ -6,6 +6,9 @@
 
     public class Loan : Account
     {
+        private const int IndividualNoInterestMonths = 3;
+        private const int CompanyNoInterestMonths = 2;
+
         public Loan(Customer customer, decimal balance, decimal rate)
             : base(customer, balance, rate)
         {
@@ -16,31 +19,38 @@
             throw new ArgumentException("Not allowed");
         }
 
-        public override decimal CalculateInterest(int period)
+        #region Calculate Interest
+        protected override decimal CalculateIndividualInterest(int period)
         {
             decimal result = 0;
 
-            switch (this.CustomerType)
+            if (period <= IndividualNoInterestMonths)
             {
-                case Types.CustomerType.Individual:
-                    break;
-                case Types.CustomerType.Company:
-                    break;
-                default:
-                    throw new ArgumentException("Unknown cutomer type");
+                result = 0;
+            }
+            else
+            {
+                result = (period - IndividualNoInterestMonths) * this.InterestRate;
             }
 
             return result;
         }
 
-        private decimal CalculateIndividualInterest(int period)
+        protected override decimal CalculateCompanyInterest(int period)
         {
-            return 0;
-        }
+            decimal result = 0;
 
-        private decimal CalculateCompanyInterest(int period)
-        {
-            return 0;
+            if (period <= CompanyNoInterestMonths)
+            {
+                result = 0;
+            }
+            else
+            {
+                result = (period - CompanyNoInterestMonths) * this.InterestRate;
+            }
+
+            return result;
         }
+        #endregion
     }
 }

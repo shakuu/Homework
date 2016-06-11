@@ -44,6 +44,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="01_Shapes_Tests\Array_Of_Shapes.cs" />
+    <Compile Include="02_BankAccount_Testing\InitialTests.cs" />
     <Compile Include="StartUp.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -51,6 +52,10 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\BankAccountsAssembly\BankAccountsAssembly.csproj">
+      <Project>{89512d90-005c-45ed-bc8c-0005db891533}</Project>
+      <Name>BankAccountsAssembly</Name>
+    </ProjectReference>
     <ProjectReference Include="..\ShapesAssembly\ShapesAssembly.csproj">
       <Project>{c1b80eaa-5286-4a96-8709-f92dc9f1ddf2}</Project>
       <Name>ShapesAssembly</Name>

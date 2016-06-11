@@ -1,7 +1,6 @@
 ﻿namespace BankAccountsAssembly.AccountModels
 {
     using CustomerModels.AbstractModels;
-    using System;
 
     public class Deposit : AbstractModels.Account
     {
@@ -10,7 +9,7 @@
         {
         }
 
-        public override decimal CalculateInterest(int period)
+        protected override decimal CalculateIndividualInterest(int period)
         {
             decimal result = 0;
 
@@ -22,8 +21,13 @@
             {
                 result = period * this.InterestRate;
             }
-            
+
             return result;
+        }
+
+        protected override decimal CalculateCompanyInterest(int period)
+        {
+            return CalculateIndividualInterest(period);
         }
     }
 }

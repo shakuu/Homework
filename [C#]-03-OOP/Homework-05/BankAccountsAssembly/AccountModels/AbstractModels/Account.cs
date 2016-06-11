@@ -64,7 +64,27 @@
         protected CustomerType CustomerType { get; private set; }
         #endregion
 
-        public abstract decimal CalculateInterest(int period);
+        public decimal CalculateInterest(int period)
+        {
+            decimal result = 0;
+
+            switch (this.CustomerType)
+            {
+                case Types.CustomerType.Individual:
+                    result = CalculateIndividualInterest(period);
+                    break;
+                case Types.CustomerType.Company:
+                    result = CalculateCompanyInterest(period);
+                    break;
+                default:
+                    throw new ArgumentException("Unknown cutomer type");
+            }
+
+            return result;
+        }
+
+        protected abstract decimal CalculateIndividualInterest(int period);
+        protected abstract decimal CalculateCompanyInterest(int period);
 
         public virtual void DepositMoney(decimal amount)
         {
