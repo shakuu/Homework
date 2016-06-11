@@ -91,6 +91,11 @@ namespace PointAndMatrix.Lists
         }
         public void Remove(int index)
         {
+            if (index < 0 || count <= index)
+            {
+                throw new ArgumentOutOfRangeException("Index out of range");
+            }
+
             this.Count--;
 
             for (int i = index + 1; i <= this.Count; i++)
@@ -99,6 +104,11 @@ namespace PointAndMatrix.Lists
         }
         public void Insert(int index, T element)
         {
+            if (index < 0 || count < index)
+            {
+                throw new ArgumentOutOfRangeException("Index out of range");
+            }
+
             if (this.count + 1 > this.Capacity) ExpandCapacity();
 
             for (int i = count; i > index; i--)

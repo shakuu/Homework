@@ -91,18 +91,6 @@
             this.Balance += amount;
         }
 
-        //public virtual void WithdrawMoney(decimal amount)
-        //{
-        //    if (this.Balance - amount < 0 )
-        //    {
-        //        throw new ArgumentOutOfRangeException("Whithdraw amount must be higher than current account balance");
-        //    }
-        //    else
-        //    {
-        //        this.Balance -= amount;
-        //    }
-        //}
-
         private void SetCustomerType(Type type)
         {
             if (type == typeof(CustomerModels.Company))

@@ -13,11 +13,6 @@
         {
         }
 
-        //public override void WithdrawMoney(decimal amount)
-        //{
-        //    throw new ArgumentException("Not allowed");
-        //}
-
         #region Calculate Interest
         protected override decimal CalculateIndividualInterest(int period)
         {

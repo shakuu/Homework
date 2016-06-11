@@ -4,6 +4,8 @@
 
     public class InvalidRangeException<T> : Exception
     {
+
+        #region Constructors
         public InvalidRangeException()
         {
         }
@@ -26,6 +28,7 @@
             this.Min = min;
             this.Max = max;
         }
+        #endregion
 
         public override string Message
         {
