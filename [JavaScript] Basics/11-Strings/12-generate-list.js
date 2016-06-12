@@ -60,8 +60,8 @@ function stringFormat() {
 }
 
 let btngo = document
-.getElementById('go')
-.addEventListener('click', function () {
-  
-createList();
-});
+  .getElementById('go')
+  .addEventListener('click', function () {
+
+    createList();
+  });
