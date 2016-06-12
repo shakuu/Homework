@@ -2,11 +2,14 @@
 {
     using System;
     using System.Collections;
+    using System.IO;
     using System.Reflection;
+    using System.Runtime.Serialization.Formatters.Binary;
     using System.Text;
     using Types;
 
-    public class Student : IEnumerable
+    [Serializable]
+    public class Student : IEnumerable, ICloneable
     {
         #region Properties
         public string FirstName { get; set; }
@@ -101,6 +104,23 @@
             {
                 yield return prop;
             }
+        }
+
+        public object Clone()
+        {
+            object output;
+
+            using (var stream = new MemoryStream())
+            {
+                var formatter = new BinaryFormatter();
+
+                formatter.Serialize(stream, this);
+
+                stream.Position = 0;
+                output = formatter.Deserialize(stream);
+            }
+
+            return output;
         }
     }
 }

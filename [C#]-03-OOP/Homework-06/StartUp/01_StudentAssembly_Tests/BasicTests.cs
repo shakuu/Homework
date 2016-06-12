@@ -47,5 +47,26 @@
             Console.WriteLine(test.GetHashCode());
             Console.WriteLine(test1.GetHashCode());
         }
+
+        public static void TestClone()
+        {
+            var test = new StudentAssembly.Models.Student
+            {
+                FirstName = "a",
+                MiddleName = "b",
+                LastName = "mahalalov",
+                Email = "blah@mlah.glah",
+                Faculty = FacultyType.Law
+            };
+
+            var test1 = (StudentAssembly.Models.Student) test.Clone();
+
+
+            Console.WriteLine(test.ToString());
+            Console.WriteLine(test1.ToString());
+            Console.WriteLine(test.Equals(test1));
+            Console.WriteLine(test.GetHashCode());
+            Console.WriteLine(test1.GetHashCode());
+        }
     }
 }
