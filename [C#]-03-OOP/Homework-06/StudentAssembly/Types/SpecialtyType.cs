@@ -2,6 +2,7 @@
 {
     public enum SpecialtyType
     {
+        NotSpecified,
         Ninja,
         CSharpProgrammer,
         JSProgrammer,
