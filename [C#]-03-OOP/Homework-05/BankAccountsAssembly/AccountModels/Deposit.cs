@@ -38,7 +38,6 @@
 
             return result;
         }
-
         protected override decimal CalculateCompanyInterest(int period)
         {
             return CalculateIndividualInterest(period);

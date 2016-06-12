@@ -8,7 +8,7 @@
         private const int IndividualZeroInterestMonths = 6;
         private const int CompanyHalfInterestMonths = 12;
 
-        public Mortgage(Customer customer, decimal balance, decimal rate) 
+        public Mortgage(Customer customer, decimal balance, decimal rate)
             : base(customer, balance, rate)
         {
         }
@@ -29,7 +29,6 @@
 
             return result;
         }
-
         protected override decimal CalculateCompanyInterest(int period)
         {
             decimal result = 0;

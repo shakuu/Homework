@@ -3,8 +3,10 @@
     using CustomerModels.AbstractModels;
     using Interfaces;
     using System;
-    using System.Linq;
+    using System.Reflection;
     using Types;
+
+    public delegate decimal Test(int period);
 
     public abstract class Account : IRate, IDeposit
     {
@@ -64,24 +66,16 @@
             }
         }
 
-        public CustomerType CustomerType { get; private set; }
+        protected CustomerType CustomerType { get; private set; }
         #endregion
 
         public decimal CalculateInterest(int period)
         {
-            decimal result = 0;
+            var format = "Calculate{0}Interest";
+            var name = string.Format(format, this.Customer.GetType().Name);
+            var method = this.GetType().GetMethod(name, BindingFlags.NonPublic | BindingFlags.Instance);
 
-            switch (this.CustomerType)
-            {
-                case Types.CustomerType.Individual:
-                    result = CalculateIndividualInterest(period);
-                    break;
-                case Types.CustomerType.Company:
-                    result = CalculateCompanyInterest(period);
-                    break;
-                default:
-                    throw new ArgumentException("Unknown cutomer type");
-            }
+            var result = (decimal)method.Invoke(this, new object[] { period });
 
             return result;
         }
@@ -96,12 +90,8 @@
 
         private void SetCustomerType(Type type)
         {
-            var name = type.ToString()
-                .Split('.')
-                .Last();
-
             CustomerType temp;
-            if (CustomerType.TryParse(name, out temp)) this.CustomerType = temp;
+            if (CustomerType.TryParse(type.Name, out temp)) this.CustomerType = temp;
             else throw new ArgumentException("Unknown Customer Type");
         }
     }

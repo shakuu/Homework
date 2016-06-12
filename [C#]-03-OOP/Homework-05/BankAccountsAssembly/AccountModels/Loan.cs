@@ -29,7 +29,6 @@
 
             return result;
         }
-
         protected override decimal CalculateCompanyInterest(int period)
         {
             decimal result = 0;
