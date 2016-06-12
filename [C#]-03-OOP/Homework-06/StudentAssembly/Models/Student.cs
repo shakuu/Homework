@@ -95,7 +95,11 @@
         }
         #endregion
 
-
+        #region Interface Implementations
+        /// <summary>
+        /// Enumarates all properties of this class.
+        /// </summary>
+        /// <returns>Enumareta all class properties.</returns>
         public IEnumerator GetEnumerator()
         {
             var properties = this.GetType().GetProperties();
@@ -106,6 +110,13 @@
             }
         }
 
+        /// <summary>
+        /// Init a MemoryStreamand a BinaryFormatter.
+        /// Serialze this to stream.
+        /// Reset stream position.
+        /// Deserialize stream to a new object.
+        /// </summary>
+        /// <returns>Object binary copy of this</returns>
         public object Clone()
         {
             object output;
@@ -113,14 +124,16 @@
             using (var stream = new MemoryStream())
             {
                 var formatter = new BinaryFormatter();
-
+                
                 formatter.Serialize(stream, this);
-
                 stream.Position = 0;
                 output = formatter.Deserialize(stream);
+
+                stream.Close();
             }
 
             return output;
         }
+        #endregion
     }
 }
