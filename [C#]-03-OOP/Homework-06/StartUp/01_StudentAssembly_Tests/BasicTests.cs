@@ -24,5 +24,28 @@
 
             Console.WriteLine(test.Equals(test1));
         }
+
+        public static void TestHash()
+        {
+            var test = new StudentAssembly.Models.Student
+            {
+                FirstName = "a",
+                MiddleName = "b",
+                LastName = "mahalalov",
+                Email = "blah@mlah.glah",
+                Faculty = FacultyType.Law
+            };
+
+            var test1 = new StudentAssembly.Models.Student
+            {
+                FirstName = "a",
+                MiddleName = "b",
+                Faculty = FacultyType.Law
+            };
+
+            Console.WriteLine(test.Equals(test1));
+            Console.WriteLine(test.GetHashCode());
+            Console.WriteLine(test1.GetHashCode());
+        }
     }
 }

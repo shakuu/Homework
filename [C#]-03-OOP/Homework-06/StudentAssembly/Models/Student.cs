@@ -55,13 +55,30 @@
 
                 if (thisValue != otherValue) return false;
             }
-            
+
             return true;
         }
 
         public override int GetHashCode()
         {
-            return base.GetHashCode();
+            int result = 797;
+            var multiply = 37;
+
+            // Allow overflow.
+            unchecked
+            {
+                // Known types strings and ints ( enums default to int )
+                foreach (PropertyInfo prop in this)
+                {
+                    var hash = prop.GetValue(this) == null ?
+                               0 : prop.GetValue(this).GetHashCode();
+
+                    result = multiply * result + hash;
+
+                }
+            }
+
+            return result;
         }
 
         public static bool operator ==(Student one, Student other)
