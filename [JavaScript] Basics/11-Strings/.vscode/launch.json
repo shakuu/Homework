@@ -5,7 +5,7 @@
       "name": "Launch",
       "type": "node",
       "request": "launch",
-      "program": "${workspaceRoot}\\10-palidromes.js",
+      "program": "${workspaceRoot}\\12-generate-list.js",
       "stopOnEntry": false,
       "args": ["ABBA baba ABAABA ABBA"],
         "cwd": "${workspaceRoot}",
