@@ -66,12 +66,12 @@
 
         public static bool operator ==(Student one, Student other)
         {
-            return true;
+            return one.Equals(other);
         }
 
         public static bool operator !=(Student one, Student other)
         {
-            return true;
+            return !one.Equals(other);
         }
         #endregion
 
