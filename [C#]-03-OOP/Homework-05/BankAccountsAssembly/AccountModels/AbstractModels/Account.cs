@@ -3,6 +3,7 @@
     using CustomerModels.AbstractModels;
     using Interfaces;
     using System;
+    using System.Linq;
     using Types;
 
     public abstract class Account : IRate, IDeposit
@@ -35,7 +36,8 @@
             }
         }
 
-        public decimal Balance {
+        public decimal Balance
+        {
             get
             {
                 return this.balance;
@@ -46,7 +48,8 @@
             }
         }
 
-        public decimal InterestRate {
+        public decimal InterestRate
+        {
             get
             {
                 return this.rate;
@@ -61,7 +64,7 @@
             }
         }
 
-        protected CustomerType CustomerType { get; private set; }
+        public CustomerType CustomerType { get; private set; }
         #endregion
 
         public decimal CalculateInterest(int period)
@@ -93,18 +96,13 @@
 
         private void SetCustomerType(Type type)
         {
-            if (type == typeof(CustomerModels.Company))
-            {
-                this.CustomerType = CustomerType.Company;
-            }
-            else if (type == typeof(CustomerModels.Individual))
-            {
-                this.CustomerType = CustomerType.Individual;
-            }
-            else
-            {
-                throw new ArgumentException("Unknown Cutomer Type");
-            }
+            var name = type.ToString()
+                .Split('.')
+                .Last();
+
+            CustomerType temp;
+            if (CustomerType.TryParse(name, out temp)) this.CustomerType = temp;
+            else throw new ArgumentException("Unknown Customer Type");
         }
     }
 }

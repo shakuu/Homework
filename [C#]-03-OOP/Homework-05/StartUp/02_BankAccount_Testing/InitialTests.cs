@@ -14,6 +14,7 @@ namespace StartUp._02_BankAccount_Testing
             Console.WriteLine(test);
             Console.WriteLine(test.Balance);
             Console.WriteLine(test.InterestRate);
+            Console.WriteLine(test.CustomerType);
             Console.WriteLine(test.CalculateInterest(15));
         }
     }
