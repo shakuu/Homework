@@ -73,7 +73,8 @@
         {
             var format = "Calculate{0}Interest";
             var name = string.Format(format, this.Customer.GetType().Name);
-            var method = this.GetType().GetMethod(name, BindingFlags.NonPublic | BindingFlags.Instance);
+            var method = this.GetType()
+                .GetMethod(name, BindingFlags.NonPublic | BindingFlags.Instance);
 
             var result = (decimal)method.Invoke(this, new object[] { period });
 

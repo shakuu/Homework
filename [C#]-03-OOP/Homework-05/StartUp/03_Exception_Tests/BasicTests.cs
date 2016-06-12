@@ -7,6 +7,8 @@ namespace StartUp._03_Exception_Tests
     {
         public static void Test_01()
         {
+            Console.WriteLine();
+
             var teste = new ExceptionsAssembly
                 .InvalidRange
                 .InvalidRangeException<DateTime>("unsuccessful",
