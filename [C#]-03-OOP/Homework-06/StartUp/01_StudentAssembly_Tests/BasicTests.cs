@@ -59,7 +59,7 @@
                 Faculty = FacultyType.Law
             };
 
-            var test1 = (StudentAssembly.Models.Student) test.Clone();
+            var test1 = (StudentAssembly.Models.Student)test.Clone();
 
 
             Console.WriteLine(test.ToString());
@@ -67,6 +67,21 @@
             Console.WriteLine(test.Equals(test1));
             Console.WriteLine(test.GetHashCode());
             Console.WriteLine(test1.GetHashCode());
+        }
+
+        public static void TestCompare()
+        {
+            var test = new StudentAssembly.Models.Student
+            {
+                SSN = "1"
+            };
+            
+            var test1 = new StudentAssembly.Models.Student
+            {
+                SSN = "2"
+            };
+
+            Console.WriteLine(test.CompareTo(test1));
         }
     }
 }

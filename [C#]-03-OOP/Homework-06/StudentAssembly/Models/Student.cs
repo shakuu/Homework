@@ -3,13 +3,14 @@
     using System;
     using System.Collections;
     using System.IO;
+    using System.Numerics;
     using System.Reflection;
     using System.Runtime.Serialization.Formatters.Binary;
     using System.Text;
     using Types;
 
     [Serializable]
-    public class Student : IEnumerable, ICloneable
+    public class Student : IEnumerable, ICloneable, IComparable<Student>
     {
         #region Properties
         public string FirstName { get; set; }
@@ -124,7 +125,7 @@
             using (var stream = new MemoryStream())
             {
                 var formatter = new BinaryFormatter();
-                
+
                 formatter.Serialize(stream, this);
                 stream.Position = 0;
                 output = formatter.Deserialize(stream);
@@ -133,6 +134,53 @@
             }
 
             return output;
+        }
+
+        /// <summary>
+        /// Comapre by: 
+        /// FirstName
+        /// MiddleName
+        /// LastName
+        /// SSN
+        /// </summary>
+        /// <param name="other"></param>
+        /// <returns></returns>
+        public int CompareTo(Student other)
+        {
+            var comapre = new string[]
+            {
+                "FirstName",
+                "LastName",
+                "MiddleName",
+                "SSN"
+            };
+
+            var len = comapre.Length;
+            for (int i = 0; i < len ; i++)
+            {
+                var property = this.GetType().GetProperty(comapre[i]);
+
+                var valueThis = property.GetValue(this);
+                var strThis = valueThis == null ?
+                            string.Empty : valueThis.ToString();
+
+                var valueOther = property.GetValue(other);
+                var strOther = valueOther == null ?
+                            string.Empty : valueOther.ToString();
+
+                var result = strThis.CompareTo(strOther);
+
+                if (result != 0) return -result;
+            }
+
+            //var thisSSN = BigInteger.Parse(this.SSN);
+            //var otherSSN = BigInteger.Parse(other.SSN);
+
+            //if (thisSSN > otherSSN) return -1;
+            //else if (thisSSN < otherSSN) return 1;
+            //else return 0;
+
+            return 0;
         }
         #endregion
     }
