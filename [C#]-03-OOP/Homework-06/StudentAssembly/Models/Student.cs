@@ -147,7 +147,7 @@
         /// <returns></returns>
         public int CompareTo(Student other)
         {
-            var comapre = new string[]
+            var comapre = new[]
             {
                 "FirstName",
                 "LastName",

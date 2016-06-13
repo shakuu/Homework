@@ -11,6 +11,8 @@
             //_01_StudentAssembly_Tests.BasicTests.TestHash();
             //_01_StudentAssembly_Tests.BasicTests.TestClone();
             //_01_StudentAssembly_Tests.BasicTests.TestCompare();
+
+            //_02_PersonAssembly_Tests.BasicTests.Test_01();
         }
     }
 }
