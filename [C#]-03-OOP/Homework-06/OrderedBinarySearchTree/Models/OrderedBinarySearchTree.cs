@@ -3,20 +3,18 @@
     using System;
     using System.Collections;
     using System.Collections.Generic;
-    using System.Linq;
     using System.Text;
-    using System.Threading.Tasks;
 
     /// <summary>
     /// http://www.introprogramming.info/english-intro-csharp-book/read-online/chapter-17-trees-and-graphs/
     /// Source
     /// </summary>
     /// <typeparam name="T"></typeparam>
-    public class OrderedBinarySearchTree<T> : IEnumerable<TreeNode<T>> where T : IComparable
+    public struct OrderedBinarySearchTree<T> : IEnumerable<TreeNode<T>> where T : IComparable
     {
         private const int MultiplyHash = 337;
 
-        private List<TreeNode<T>> nodes = new List<TreeNode<T>>();
+        private List<TreeNode<T>> nodes;
 
         public TreeNode<T> Root { get; set; }
 
@@ -162,7 +160,7 @@
                 throw new Exception("Invalid object type");
             }
 
-            var other = obj as OrderedBinarySearchTree<T>;
+            var other = (OrderedBinarySearchTree<T>)obj;
 
             var hashThis = this.GetHashCode();
             var hashOther = other.GetHashCode();
@@ -203,6 +201,8 @@
         #region Interfaces
         public IEnumerator<TreeNode<T>> GetEnumerator()
         {
+            this.nodes = new List<TreeNode<T>>();
+
             this.GetAllElements(this.Root);
 
             foreach (var node in nodes)
@@ -226,7 +226,5 @@
             return this.GetEnumerator();
         }
         #endregion
-
-        
     }
 }
