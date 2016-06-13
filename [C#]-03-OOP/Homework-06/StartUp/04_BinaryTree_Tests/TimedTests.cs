@@ -14,7 +14,7 @@
     {
         #region Settings
         public const int NumberOfElemets = 30000;
-        public const int NumberOfRuns = 15000;
+        public const int NumberOfRuns = 10000;
         public const int MinValue = 0;
         public const int MaxValue = 9999999;
         #endregion
@@ -43,8 +43,7 @@
             List<int> list;
             BinarySearchTree<int> tree;
             GenerateListAndTree(out list, out tree);
-
-
+            
             var find = random.Next(MinValue, MaxValue);
 
             var timeList = NaiveBenchmarkList(list, NumberOfRuns, find);
@@ -57,6 +56,7 @@
                 timeTree.TotalMilliseconds, timeTree.TotalMilliseconds / NumberOfRuns);
         }
 
+        #region Naive benchmarks
         private static TimeSpan NaiveBenchmarkTree
             (BinarySearchTree<int> tree, int runs, int find)
         {
@@ -86,6 +86,7 @@
 
             return stopwatch.Elapsed;
         }
+        #endregion
 
         private static void GenerateListAndTree
             (out List<int> list, out BinarySearchTree<int> tree)
