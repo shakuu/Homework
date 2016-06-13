@@ -13,7 +13,7 @@
     /// </summary>
     /// <typeparam name="T"></typeparam>
     [Serializable]
-    public struct OrderedBinarySearchTree<T> 
+    public struct BinarySearchTree<T> 
         : IEnumerable<TreeNode<T>>, ICloneable, IComparable 
         where T : IComparable
     {
@@ -160,12 +160,12 @@
         #region Overrides
         public override bool Equals(object obj)
         {
-            if (obj.GetType() != typeof(OrderedBinarySearchTree<T>))
+            if (obj.GetType() != typeof(BinarySearchTree<T>))
             {
                 throw new Exception("Invalid object type");
             }
 
-            var other = (OrderedBinarySearchTree<T>)obj;
+            var other = (BinarySearchTree<T>)obj;
 
             var hashThis = this.GetHashCode();
             var hashOther = other.GetHashCode();

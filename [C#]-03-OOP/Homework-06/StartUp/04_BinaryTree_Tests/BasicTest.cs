@@ -7,21 +7,21 @@
     {
         public static void Test_01()
         {
-            var tree = new OrderedBinarySearchTree<int>();
+            var tree = new BinarySearchTree<int>();
             tree.Add(5);
             tree.Add(4);
             tree.Add(6);
             tree.Add(2);
             tree.Add(100);
 
-            var tree1 = new OrderedBinarySearchTree<string>();
+            var tree1 = new BinarySearchTree<string>();
             tree1.Add("5");
             tree1.Add("4");
             tree1.Add("6");
             tree1.Add("2");
             tree1.Add("100");
 
-            var tree2 = new OrderedBinarySearchTree<string>();
+            var tree2 = new BinarySearchTree<string>();
             tree2.Add("5");
             tree2.Add("4");
             tree2.Add("6");
@@ -29,7 +29,7 @@
             tree2.Add("100");
 
             var type = tree2.GetType();
-            var tree3 = (OrderedBinarySearchTree<string>)tree2.Clone();
+            var tree3 = (BinarySearchTree<string>)tree2.Clone();
 
             Console.WriteLine(tree.ToString());
 

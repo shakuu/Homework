@@ -14,7 +14,7 @@
     {
         #region Settings
         public const int NumberOfElemets = 30000;
-        public const int NumberOfRuns = 10000;
+        public const int NumberOfRuns = 15000;
         public const int MinValue = 0;
         public const int MaxValue = 9999999;
         #endregion
@@ -28,11 +28,20 @@
         }
         #endregion
 
-        public static void TimedSearchListVTree()
+        public static void TimeToGenerate()
         {
             // Generate input
             List<int> list;
-            OrderedBinarySearchTree<int> tree;
+            BinarySearchTree<int> tree;
+            GenerateListAndTree(out list, out tree);
+            
+        }
+
+        public static void TimeSearchListVTree()
+        {
+            // Generate input
+            List<int> list;
+            BinarySearchTree<int> tree;
             GenerateListAndTree(out list, out tree);
 
 
@@ -41,15 +50,15 @@
             var timeList = NaiveBenchmarkList(list, NumberOfRuns, find);
             var timeTree = NaiveBenchmarkTree(tree, NumberOfRuns, find);
 
-            Console.WriteLine("List<int>.Contains() -> Total time: {0, 12}ms, Average Time: {1, 12}ms",
+            Console.WriteLine("List<int>.Contains() -> Total time: {0, 12}ms, Average Time: {1, 12:F10}ms",
                 timeList.TotalMilliseconds, timeList.TotalMilliseconds / NumberOfRuns);
 
-            Console.WriteLine("Tree<int>.Contains() -> Total time: {0, 12}ms, Average Time: {1, 12}ms",
+            Console.WriteLine("Tree<int>.Contains() -> Total time: {0, 12}ms, Average Time: {1, 12:F10}ms",
                 timeTree.TotalMilliseconds, timeTree.TotalMilliseconds / NumberOfRuns);
         }
 
         private static TimeSpan NaiveBenchmarkTree
-            (OrderedBinarySearchTree<int> tree, int runs, int find)
+            (BinarySearchTree<int> tree, int runs, int find)
         {
             var stopwatch = new Stopwatch();
 
@@ -79,10 +88,10 @@
         }
 
         private static void GenerateListAndTree
-            (out List<int> list, out OrderedBinarySearchTree<int> tree)
+            (out List<int> list, out BinarySearchTree<int> tree)
         {
             list = new List<int>();
-            tree = new OrderedBinarySearchTree<int>();
+            tree = new BinarySearchTree<int>();
 
             for (int el = 0; el < NumberOfElemets; el++)
             {
