@@ -1,9 +1,10 @@
-﻿namespace OrderedBinarySearchTree.Models
+﻿namespace OrderedBinarySearchTreeAssembly.Models
 {
     using System;
     using System.Collections.Generic;
 
-    public class TreeNode<T> : IComparable<TreeNode<T>>, IComparable<T>
+    [Serializable]
+    public class TreeNode<T> : IComparable<TreeNode<T>>, IComparable<T>, IComparable
     {
         public TreeNode(T value)
         {
@@ -48,6 +49,11 @@
             }
 
             return hash;
+        }
+
+        public int CompareTo(object obj)
+        {
+            throw new NotImplementedException();
         }
     }
 }

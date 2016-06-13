@@ -1,6 +1,6 @@
 ﻿namespace StartUp._04_BinaryTree_Tests
 {
-    using OrderedBinarySearchTree.Models;
+    using OrderedBinarySearchTreeAssembly.Models;
     using System;
 
     public static class BasicTest
@@ -28,11 +28,15 @@
             tree2.Add("2");
             tree2.Add("100");
 
+            var type = tree2.GetType();
+            var tree3 = (OrderedBinarySearchTree<string>)tree2.Clone();
+
             Console.WriteLine(tree.ToString());
 
             Console.WriteLine(tree.GetHashCode());
             Console.WriteLine(tree2.GetHashCode());
             Console.WriteLine(tree1.GetHashCode());
+            Console.WriteLine(tree3.GetHashCode());
         }
     }
 }

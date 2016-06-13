@@ -1,8 +1,10 @@
-﻿namespace OrderedBinarySearchTree.Models
+﻿namespace OrderedBinarySearchTreeAssembly.Models
 {
     using System;
     using System.Collections;
     using System.Collections.Generic;
+    using System.IO;
+    using System.Runtime.Serialization.Formatters.Binary;
     using System.Text;
 
     /// <summary>
@@ -10,7 +12,10 @@
     /// Source
     /// </summary>
     /// <typeparam name="T"></typeparam>
-    public struct OrderedBinarySearchTree<T> : IEnumerable<TreeNode<T>> where T : IComparable
+    [Serializable]
+    public struct OrderedBinarySearchTree<T> 
+        : IEnumerable<TreeNode<T>>, ICloneable, IComparable 
+        where T : IComparable
     {
         private const int MultiplyHash = 337;
 
@@ -180,7 +185,7 @@
 
             return output.ToString().Trim();
         }
-        
+
         public override int GetHashCode()
         {
             var hash = 37;
@@ -225,6 +230,30 @@
         {
             return this.GetEnumerator();
         }
+
+        public object Clone()
+        {
+            object clone;
+
+            using (var stream = new MemoryStream())
+            {
+                var formatter = new BinaryFormatter();
+
+                formatter.Serialize(stream, this);
+
+                stream.Position = 0;
+
+                clone = formatter.Deserialize(stream);
+            }
+
+            return clone;
+        }
+
+        public int CompareTo(object obj)
+        {
+            throw new NotImplementedException();
+        }
+
         #endregion
     }
 }

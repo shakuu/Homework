@@ -7,7 +7,7 @@
     <ProjectGuid>{29D384A0-5995-4A43-8319-70CFC4E9FE13}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>OrderedBinarySearchTree</RootNamespace>
+    <RootNamespace>OrderedBinarySearchTreeAssemly</RootNamespace>
     <AssemblyName>OrderedBinarySearchTree</AssemblyName>
     <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>

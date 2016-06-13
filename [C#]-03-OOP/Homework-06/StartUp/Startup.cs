@@ -16,7 +16,8 @@
 
             //_03_BitArray64Assembly_Tests.BasicTests.Test_01();
 
-            _04_BinaryTree_Tests.BasicTest.Test_01();
+            //_04_BinaryTree_Tests.BasicTest.Test_01();
+            _04_BinaryTree_Tests.TimedTests.TimedSearchListVTree();
         }
     }
 }
