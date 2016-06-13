@@ -13,6 +13,8 @@
             //_01_StudentAssembly_Tests.BasicTests.TestCompare();
 
             //_02_PersonAssembly_Tests.BasicTests.Test_01();
+
+            _03_BitArray64Assembly_Tests.BasicTests.Test_01();
         }
     }
 }

@@ -2,6 +2,7 @@
 {
     using System;
     using System.Collections;
+    using System.Collections.Generic;
     using System.IO;
     using System.Numerics;
     using System.Reflection;
@@ -10,7 +11,7 @@
     using Types;
 
     [Serializable]
-    public class Student : IEnumerable, ICloneable, IComparable<Student>
+    public class Student : IEnumerable<PropertyInfo>, ICloneable, IComparable<Student>
     {
         #region Properties
         public string FirstName { get; set; }
@@ -32,7 +33,7 @@
             var toString = new StringBuilder();
             var format = "{0, -16}: {1, 16}{2}";
 
-            foreach (PropertyInfo prop in this)
+            foreach (var prop in this)
             {
                 toString.AppendFormat(
                     format,
@@ -50,7 +51,7 @@
                 throw new ArgumentException("Invalid Object Type");
 
             var other = obj as Student;
-            foreach (PropertyInfo prop in this)
+            foreach (var prop in this)
             {
                 var thisValue = prop.GetValue(this) == null ?
                                 string.Empty : prop.GetValue(this).ToString();
@@ -72,7 +73,7 @@
             unchecked
             {
                 // Known types strings and ints ( enums default to int )
-                foreach (PropertyInfo prop in this)
+                foreach (var prop in this)
                 {
                     var hash = prop.GetValue(this) == null ?
                                0 : prop.GetValue(this).GetHashCode();
@@ -97,20 +98,6 @@
         #endregion
 
         #region Interface Implementations
-        /// <summary>
-        /// Enumarates all properties of this class.
-        /// </summary>
-        /// <returns>Enumareta all class properties.</returns>
-        public IEnumerator GetEnumerator()
-        {
-            var properties = this.GetType().GetProperties();
-
-            foreach (var prop in properties)
-            {
-                yield return prop;
-            }
-        }
-
         /// <summary>
         /// Init a MemoryStreamand a BinaryFormatter.
         /// Serialze this to stream.
@@ -182,6 +169,26 @@
 
             return 0;
         }
+
+        /// <summary>
+        /// Iterate through each Student class property
+        /// </summary>
+        /// <returns></returns>
+        public IEnumerator<PropertyInfo> GetEnumerator()
+        {
+            var properties = this.GetType().GetProperties();
+
+            foreach (var prop in properties)
+            {
+                yield return prop;
+            }
+        }
+
+        IEnumerator IEnumerable.GetEnumerator()
+        {
+           return this.GetEnumerator();
+        }
+
         #endregion
     }
 }

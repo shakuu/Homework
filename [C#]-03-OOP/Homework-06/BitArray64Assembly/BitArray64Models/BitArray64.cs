@@ -3,19 +3,53 @@
     using System;
     using System.Collections;
     using System.Collections.Generic;
-    using System.Linq;
     using System.Text;
-    using System.Threading.Tasks;
-
     public class BitArray64 : IEnumerable<int>
     {
         private const int Size = 64;
 
         private ulong container;
 
+        #region Constructors
         public BitArray64()
         {
             this.container = 0;
+        }
+
+        public BitArray64(string binary)
+        {
+            this.Container = Convert.ToUInt64(binary, 2);
+        }
+
+        public BitArray64(ulong value)
+        {
+            this.Container = value;
+        }
+        #endregion
+
+        private ulong Container
+        {
+            get
+            {
+                return this.container;
+            }
+            set
+            {
+                if (value < ulong.MinValue || ulong.MaxValue < value)
+                {
+                    throw new ArgumentOutOfRangeException("Invalid value");
+                }
+
+                this.container = value;
+            }
+        }
+
+        public ulong ULongValue
+        {
+            get
+            {
+                return this.Container;
+            }
         }
 
         public int this[int index]
@@ -27,7 +61,7 @@
                     throw new IndexOutOfRangeException("Index must be: 0 <= index <= 63");
                 }
 
-                var mask = (ulong)(1 << index);
+                var mask = ((ulong)1 << index);
                 var result = (int)((this.container & mask) >> index);
 
                 return result;
@@ -39,15 +73,76 @@
                     throw new ArgumentOutOfRangeException("Bit value can be 1 or 0");
                 }
 
-                var mask = (ulong)(1 << index);
+                var mask = ((ulong)1 << index);
                 if (value == 1) this.container |= mask;
                 else this.container &= ~mask;
             }
         }
 
+        #region Operators
+        public static bool operator ==(BitArray64 one, BitArray64 other)
+        {
+            return one.Equals(other);
+        }
+
+        public static bool operator !=(BitArray64 one, BitArray64 other)
+        {
+            return !one.Equals(other);
+        }
+        #endregion
+
         #region Overrides
+        public override string ToString()
+        {
+            var output = new StringBuilder();
 
+            for (int index = Size - 1; index >= 0; index--)
+            {
+                output.Append(this[index]);
 
+                if ((index + 1) % 8 == 0 && index != 63)
+                {
+                    output.Append(' ');
+                }
+            }
+
+            return output.ToString();
+        }
+
+        public override bool Equals(object obj)
+        {
+            if (obj.GetType() != typeof(BitArray64))
+            {
+                throw new ArgumentException("Argument is not BitArray64");
+            }
+
+            var other = obj as BitArray64;
+
+            if ((this.container ^ other.container) == 0)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
+
+        public override int GetHashCode()
+        {
+            int result = 37;
+            int multiply = 373;
+
+            unchecked
+            {
+                foreach (var value in this)
+                {
+                    result = multiply * result + value;
+                }
+            }
+
+            return result;
+        }
         #endregion
 
         #region Interface implementations
@@ -55,8 +150,10 @@
         {
             for (int index = 0; index < Size; index++)
             {
-                var mask = (ulong)(1 << index);
-                yield return (int)((this.container & mask) >> index);
+                var mask = ((ulong)1 << index);
+                var result = (int)((this.container & mask) >> index);
+                
+                yield return (int)result;
             }
         }
 

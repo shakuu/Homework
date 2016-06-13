@@ -64,6 +64,7 @@
   <ItemGroup>
     <Compile Include="01_StudentAssembly_Tests\BasicTests.cs" />
     <Compile Include="02_PersonAssembly_Tests\BasicTests.cs" />
+    <Compile Include="03_BitArray64Assembly_Tests\BasicTests.cs" />
     <Compile Include="Startup.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
