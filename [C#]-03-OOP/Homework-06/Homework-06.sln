@@ -11,6 +11,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PersonAssembly", "PersonAss
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BitArray64Assembly", "BitArray64Assembly\BitArray64Assembly.csproj", "{758C2163-3475-433B-99B3-E770455C6FAA}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BinarySearchTreeAssembly", "BinarySearchTreeAssembly\BinarySearchTreeAssembly.csproj", "{A24B978D-D761-4E71-BC5A-F9DE94DC9E83}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OrderedBinarySearchTree", "OrderedBinarySearchTree\OrderedBinarySearchTree.csproj", "{29D384A0-5995-4A43-8319-70CFC4E9FE13}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -33,6 +37,14 @@ Global
 		{758C2163-3475-433B-99B3-E770455C6FAA}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{758C2163-3475-433B-99B3-E770455C6FAA}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{758C2163-3475-433B-99B3-E770455C6FAA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A24B978D-D761-4E71-BC5A-F9DE94DC9E83}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A24B978D-D761-4E71-BC5A-F9DE94DC9E83}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A24B978D-D761-4E71-BC5A-F9DE94DC9E83}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A24B978D-D761-4E71-BC5A-F9DE94DC9E83}.Release|Any CPU.Build.0 = Release|Any CPU
+		{29D384A0-5995-4A43-8319-70CFC4E9FE13}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{29D384A0-5995-4A43-8319-70CFC4E9FE13}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{29D384A0-5995-4A43-8319-70CFC4E9FE13}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{29D384A0-5995-4A43-8319-70CFC4E9FE13}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

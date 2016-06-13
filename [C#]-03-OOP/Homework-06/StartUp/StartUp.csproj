@@ -65,6 +65,7 @@
     <Compile Include="01_StudentAssembly_Tests\BasicTests.cs" />
     <Compile Include="02_PersonAssembly_Tests\BasicTests.cs" />
     <Compile Include="03_BitArray64Assembly_Tests\BasicTests.cs" />
+    <Compile Include="04_BinaryTree_Tests\BasicTest.cs" />
     <Compile Include="Startup.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -72,9 +73,17 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\BinarySearchTreeAssembly\BinarySearchTreeAssembly.csproj">
+      <Project>{a24b978d-d761-4e71-bc5a-f9de94dc9e83}</Project>
+      <Name>BinarySearchTreeAssembly</Name>
+    </ProjectReference>
     <ProjectReference Include="..\BitArray64Assembly\BitArray64Assembly.csproj">
       <Project>{758c2163-3475-433b-99b3-e770455c6faa}</Project>
       <Name>BitArray64Assembly</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\OrderedBinarySearchTree\OrderedBinarySearchTree.csproj">
+      <Project>{29d384a0-5995-4a43-8319-70cfc4e9fe13}</Project>
+      <Name>OrderedBinarySearchTree</Name>
     </ProjectReference>
     <ProjectReference Include="..\PersonAssembly\PersonAssembly.csproj">
       <Project>{ebb9b6b4-8f6b-4525-9e02-2efc3cf91eb2}</Project>

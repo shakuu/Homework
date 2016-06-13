@@ -14,7 +14,9 @@
 
             //_02_PersonAssembly_Tests.BasicTests.Test_01();
 
-            _03_BitArray64Assembly_Tests.BasicTests.Test_01();
+            //_03_BitArray64Assembly_Tests.BasicTests.Test_01();
+
+            _04_BinaryTree_Tests.BasicTest.Test_01();
         }
     }
 }

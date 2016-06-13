@@ -58,7 +58,7 @@
             {
                 if (!(0 <= index && index <= 63))
                 {
-                    throw new IndexOutOfRangeException("Index must be: 0 <= index <= 63");
+                    throw new Exception("Index must be: 0 <= index <= 63");
                 }
 
                 var mask = ((ulong)1 << index);
@@ -70,7 +70,7 @@
             {
                 if (value < 0 || 1 < value)
                 {
-                    throw new ArgumentOutOfRangeException("Bit value can be 1 or 0");
+                    throw new Exception("Bit value can be 1 or 0");
                 }
 
                 var mask = ((ulong)1 << index);
