@@ -18,6 +18,7 @@
 
             //_04_BinaryTree_Tests.BasicTest.Test_01();
             _04_BinaryTree_Tests.TimedTests.TimeSearchListVTree();
+            _04_BinaryTree_Tests.TimedTests.TimeToGenerate();
         }
     }
 }
