@@ -9,6 +9,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "StudentAssembly", "StudentA
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PersonAssembly", "PersonAssembly\PersonAssembly.csproj", "{EBB9B6B4-8F6B-4525-9E02-2EFC3CF91EB2}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BitArray64Assembly", "BitArray64Assembly\BitArray64Assembly.csproj", "{758C2163-3475-433B-99B3-E770455C6FAA}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -27,6 +29,10 @@ Global
 		{EBB9B6B4-8F6B-4525-9E02-2EFC3CF91EB2}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{EBB9B6B4-8F6B-4525-9E02-2EFC3CF91EB2}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{EBB9B6B4-8F6B-4525-9E02-2EFC3CF91EB2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{758C2163-3475-433B-99B3-E770455C6FAA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{758C2163-3475-433B-99B3-E770455C6FAA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{758C2163-3475-433B-99B3-E770455C6FAA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{758C2163-3475-433B-99B3-E770455C6FAA}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
