@@ -22,6 +22,8 @@
     /// </summary>
     public partial class MainWindow : Window
     {
+        public string Path { get; set; }
+
         public MainWindow()
         {
             InitializeComponent();
@@ -29,15 +31,29 @@
 
         private void button_Click(object sender, RoutedEventArgs e)
         {
-            var dialog = new System.Windows.Forms.FolderBrowserDialog();
+            var dialog = new FolderBrowserDialog();
             var result = dialog.ShowDialog();
 
-            var path = dialog.SelectedPath;
+            this.Path = dialog.SelectedPath;
+            textBlock.Text = string.Format($"Current Folder: {this.Path}");
+        }
 
-            textBlock.Text = RemoveFiles.Remove(path);
-            
-            //System.Windows.Forms.MessageBox.Show(dialog.SelectedPath, "result", MessageBoxButtons.OK);
-            
+        private void delbtn_Click(object sender, RoutedEventArgs e)
+        {
+            var box =
+                 System.Windows.Forms.MessageBox.Show("Are you sure sure?", "Confirm", MessageBoxButtons.OKCancel);
+
+            if (box.ToString() == "OK")
+            {
+                if (string.IsNullOrEmpty(this.Path))
+                {
+                    textBlock.Text = "No folder is selected";
+                }
+                else
+                {
+                    textBlock.Text = RemoveFiles.Remove(this.Path);
+                }
+            }
         }
     }
 }

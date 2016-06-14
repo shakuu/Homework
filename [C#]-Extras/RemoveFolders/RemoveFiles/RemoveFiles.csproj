@@ -40,6 +40,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Buttons.cs" />
     <Compile Include="Remove.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
