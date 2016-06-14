@@ -68,14 +68,21 @@
             return this.Value.ToString();
         }
 
-        public static bool operator ==(TreeNode<T> one, TreeNode<T> other)
-        {
-            return one.Equals(other);
-        }
+        //public static bool operator ==(TreeNode<T> one, TreeNode<T> other)
+        //{
+        //    try
+        //    {
+        //        return (one.GetHashCode() == other.GetHashCode());
+        //    }
+        //    catch (Exception)
+        //    {
+        //        return false;
+        //    }
+        //}
 
-        public static bool operator !=(TreeNode<T> one, TreeNode<T> other)
-        {
-            return !one.Equals(other);
-        }
+        //public static bool operator !=(TreeNode<T> one, TreeNode<T> other)
+        //{
+        //    return !(one == other);
+        //}
     }
 }
