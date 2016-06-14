@@ -8,7 +8,7 @@ function solve(args) {
   }
 
   var len = Math.floor(Math.sqrt(input));
-  for (var divisor = 2; divisor < len; divisor+=1) {
+  for (var divisor = 2; divisor <= len; divisor+=1) {
 
     if (input % divisor === 0) {
       isPrime = false;
