@@ -5,9 +5,7 @@
     using System;
     using System.Reflection;
     using Types;
-
-    public delegate decimal Test(int period);
-
+    
     public abstract class Account : IRate, IDeposit
     {
         private Customer customer;

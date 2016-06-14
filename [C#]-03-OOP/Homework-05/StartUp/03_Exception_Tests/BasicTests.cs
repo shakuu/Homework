@@ -31,7 +31,6 @@ namespace StartUp._03_Exception_Tests
             {
                 Console.WriteLine(e.Message);
             }
-           
         }
     }
 }

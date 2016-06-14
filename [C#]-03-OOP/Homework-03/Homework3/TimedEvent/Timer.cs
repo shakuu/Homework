@@ -3,10 +3,6 @@
 namespace Homework3.TimedEvent
 {
     using System;
-    using System.Collections.Generic;
-    using System.Linq;
-    using System.Text;
-    using System.Threading.Tasks;
     using System.Threading;
 
     public class Timer
@@ -31,8 +27,7 @@ namespace Homework3.TimedEvent
                 this.timer = value;
             }
         }
-
-
+        
         #region Methods
         public void Run()
         {
