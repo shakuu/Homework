@@ -4,6 +4,7 @@
     using WinForms = System.Windows.Forms;
     using RemoveFilesModels;
     using System.Windows.Forms;
+
     /// <summary>
     /// Interaction logic for MainWindow.xaml
     /// </summary>

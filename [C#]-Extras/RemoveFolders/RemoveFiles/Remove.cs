@@ -1,5 +1,4 @@
-﻿
-namespace RemoveFilesModels
+﻿namespace RemoveFilesModels
 {
     using System;
     using System.Linq;
@@ -8,7 +7,8 @@ namespace RemoveFilesModels
 
     public static class RemoveFiles
     {
-        private static StringBuilder testing = new StringBuilder();
+        private static StringBuilder listDirsDeleted
+            = new StringBuilder();
 
         public static string Remove(string path)
         {
@@ -25,7 +25,7 @@ namespace RemoveFilesModels
                 {
                     // delete
                     //Directory.Delete(dir, true);
-                    testing.AppendLine(dir);
+                    listDirsDeleted.AppendLine(dir);
                 }
                 else
                 {
@@ -33,23 +33,18 @@ namespace RemoveFilesModels
                 }
             }
 
-            return testing.ToString();
+            return listDirsDeleted.ToString();
         }
 
         private static bool CheckDir(string path)
         {
-            var folders = path.Split(new[] { '\\' }, StringSplitOptions.RemoveEmptyEntries)
+            var folders = path
+                .Split(
+                    new[] { '\\' }, 
+                    StringSplitOptions.RemoveEmptyEntries)
                 .Last();
 
-            if (folders == "bin" || folders == "obj")
-            {
-                return true;
-            }
-            else
-            {
-                return false;
-            }
-
+            return (folders == "bin" || folders == "obj");
         }
     }
 }
