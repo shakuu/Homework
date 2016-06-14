@@ -24,7 +24,7 @@ namespace RemoveFilesModels
                 if (CheckDir(dir))
                 {
                     // delete
-                    Directory.Delete(dir, true);
+                    //Directory.Delete(dir, true);
                     testing.AppendLine(dir);
                 }
                 else

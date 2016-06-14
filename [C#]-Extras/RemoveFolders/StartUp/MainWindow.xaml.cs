@@ -18,11 +18,12 @@
 
         private void button_Click(object sender, RoutedEventArgs e)
         {
-            var dialog = new Ookii.Dialogs.Wpf.VistaFolderBrowserDialog();
+            var dialog = new FolderBrowserDialog();
             dialog.ShowDialog();
 
             this.Path = dialog.SelectedPath;
             textBlock.Text = string.Format($"Current Folder: {this.Path}");
+            
         }
 
         private void delbtn_Click(object sender, RoutedEventArgs e)

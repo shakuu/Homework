@@ -97,10 +97,6 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Ookii.Dialogs.Wpf\Ookii.Dialogs.Wpf.csproj">
-      <Project>{d01b1d20-8f5b-4834-8e5c-c7ec6dd587d4}</Project>
-      <Name>Ookii.Dialogs.Wpf</Name>
-    </ProjectReference>
     <ProjectReference Include="..\RemoveFiles\RemoveFiles.csproj">
       <Project>{58ad42b2-c316-46f4-9e0a-01b696db74f7}</Project>
       <Name>RemoveFiles</Name>
