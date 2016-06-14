@@ -26,6 +26,18 @@
             return Comparer<T>.Default.Compare(this.Value, other);
         }
 
+        public int CompareTo(object obj)
+        {
+            if (obj.GetType() != typeof(TreeNode<T>))
+            {
+                throw new Exception("Invalid argument type");
+            }
+
+            var check = obj as TreeNode<T>;
+
+            return this.CompareTo(check);
+        }
+
         public override bool Equals(object obj)
         {
             if (obj.GetType() != typeof(TreeNode<T>))
@@ -51,9 +63,19 @@
             return hash;
         }
 
-        public int CompareTo(object obj)
+        public override string ToString()
         {
-            throw new NotImplementedException();
+            return this.Value.ToString();
+        }
+
+        public static bool operator ==(TreeNode<T> one, TreeNode<T> other)
+        {
+            return one.Equals(other);
+        }
+
+        public static bool operator !=(TreeNode<T> one, TreeNode<T> other)
+        {
+            return !one.Equals(other);
         }
     }
 }

@@ -158,6 +158,16 @@
         #endregion
 
         #region Overrides
+        public static bool operator ==(BinarySearchTree<T> one, BinarySearchTree<T> other)
+        {
+            return one.Equals(other);
+        }
+
+        public static bool operator !=(BinarySearchTree<T> one, BinarySearchTree<T> other)
+        {
+            return !one.Equals(other);
+        }
+
         public override bool Equals(object obj)
         {
             if (obj.GetType() != typeof(BinarySearchTree<T>))
