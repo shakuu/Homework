@@ -1,10 +1,9 @@
-function Test() {
-    var input = document.getElementById("a").value;
+function solve(args) {
+    var input = +args;
 
-    for (var index = 1; index <= input; index++) {
-        var element = index;
-        
-        console.log(element)
+    for (var index = 1; index <= input; index += 1) {
+
+        console.log(index);
     }
 }
 
