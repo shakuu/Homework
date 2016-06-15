@@ -1,5 +1,5 @@
-function NumberAsWords() {
-  var input = String(document.getElementById("a").value);
+function solve(args) {
+  var input = String(args);
 
   var length = input.length;
   var output = "";
@@ -117,7 +117,7 @@ function NumberAsWords() {
           output += "ninety";
           break;
       }
-      
+
       input = input.substr(1);
     }
   }
@@ -160,6 +160,5 @@ function NumberAsWords() {
     }
   }
 
-
-  jsConsole.writeLine(output);
+  console.log(output);
 }

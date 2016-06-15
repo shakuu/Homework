@@ -1,17 +1,17 @@
-function QuadraticEquation() {
-  var numA = Number(document.getElementById("a").value);
-  var numB = Number(document.getElementById("b").value);
-  var numC = Number(document.getElementById("c").value);
-
+function solve(args) {
+  var numA = +args[0];
+  var numB = +args[1];
+  var numC = +args[2];
+  
   var numD = (numB * numB) - (4 * numA * numC);
 
   if (numD < 0) {
-    jsConsole.writeLine("no real roots");
+   console.log("no real roots");
   }
 
-  else if (numD == 0) {
+  else if (numD === 0) {
     var output = -numB / (2 * numA);
-    jsConsole.writeLine(output);
+     console.log(output);
   }
   
   else if (numD > 0) {
@@ -20,6 +20,8 @@ function QuadraticEquation() {
     var output1 = (-numB + sqrtD) / (2 * numA);
     var output2 = (-numB - sqrtD) / (2 * numA);
     
-    jsConsole.writeLine(output2 + " " + output1);
+    console.log(output2 + " " + output1);
   }
 }
+
+solve(['5', '2', '8']);

@@ -5,7 +5,7 @@
       "name": "Launch",
       "type": "node",
       "request": "launch",
-      "program": "${workspaceRoot}\\04-sort-three.js",
+      "program": "${workspaceRoot}\\07-biggest-of-five.js",
       "stopOnEntry": false,
       "args": [],
       "cwd": "${workspaceRoot}",
