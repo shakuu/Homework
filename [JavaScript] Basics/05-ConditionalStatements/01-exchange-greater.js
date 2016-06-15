@@ -1,13 +1,14 @@
-function Exchange() {
-  var numberA = Number(document.getElementById("x").value);
-  var numberB = Number(document.getElementById("y").value);
-  
+function solve(args) {
+  var numberA = +args[0];
+  var numberB = +args[1];
+
   if (numberA > numberB) {
-    numberA ^= numberB;
-    numberB ^= numberA;
-    numberA ^= numberB;
+    var temp = numberA;
+    numberA = numberB;
+    numberB = numberA;
   }
-  
-  jsConsole.writeLine(numberA + " " + numberB);
+
   console.log(numberA + " " + numberB);
 }
+
+solve(['5.5', '4.5']);

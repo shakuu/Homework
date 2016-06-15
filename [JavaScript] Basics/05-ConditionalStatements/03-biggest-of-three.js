@@ -1,22 +1,25 @@
-function Biggest() {
-  var numA = Number(document.getElementById("a").value);
-  var numB = Number(document.getElementById("b").value);
-  var numC = Number(document.getElementById("c").value);
+function solve(args) {
+  var numA = +args[0];
+  var numB = +args[1];
+  var numC = +args[2];
 
   if (numA >= numB) {
     if (numA >= numC) {
-      jsConsole.writeLine(numA);
+      console.log(numA);
     }
     else {
-      jsConsole.writeLine(numC);
+      console.log(numC);
     }
   }
   else {
     if (numB >= numC) {
-      jsConsole.writeLine(numB);
+      console.log(numB);
     }
     else {
-      jsConsole.writeLine(numC);
+      console.log(numC);
     }
   }
 }
+
+solve(['0', '-2', '2.5']);
+

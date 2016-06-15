@@ -1,27 +1,24 @@
+function solve(args) {
+  var numA = +args[0];
+  var numB = +args[1];
+  var numC = +args[2];
+  var temp = 0;
 
-function Sort() {
-  var numA = Number(document.getElementById("a").value);
-  var numB = Number(document.getElementById("b").value);
-  var numC = Number(document.getElementById("c").value);
-
-  if (numA < numB) {
-    numA ^= numB;
-    numB ^= numA;
-    numA ^= numB;
-
-    if (numA < numC) {
-      numA ^= numC;
-      numC ^= numA;
-      numA ^= numC;
+  while (!(numA >= numB && numB >= numC)) {
+    if (numA < numB) {
+      temp = numA;
+      numA = numB;
+      numB = temp;
     }
-  }
-  else {
+
     if (numB < numC) {
-      numB ^= numC;
-      numC ^= numB;
-      numB ^= numC;
+      temp = numC;
+      numC = numB;
+      numB = temp;
     }
   }
   
-  jsConsole.writeLine(numA + " " + numB + " " + numC);
+  console.log(numA + " " + numB + " " + numC);
 }
+
+solve(['2', '5', '10']);

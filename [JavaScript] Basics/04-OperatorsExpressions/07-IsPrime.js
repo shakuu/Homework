@@ -1,5 +1,5 @@
 function solve(args) {
-  var input = Number(args);
+  var input = +args;
   var isPrime = true;
 
   if (input < 2) {
@@ -19,4 +19,4 @@ function solve(args) {
  console.log(isPrime);
 }
 
-solve('2');
+solve('10');
