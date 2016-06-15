@@ -60,6 +60,7 @@
                  FontFamily="Consolas"
                  Width="412"
                  Background="LightGray"
+                 TextChanged="DirNameTextBox_TextChanged"
                  />
         <Button x:Name="SearchBtn" 
                 Content="Search" 

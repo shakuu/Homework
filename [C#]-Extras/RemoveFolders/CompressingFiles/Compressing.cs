@@ -1,10 +1,6 @@
 ﻿namespace CompressingFiles
 {
     using System;
-    using System.Collections.Generic;
-    using System.Linq;
-    using System.Text;
-    using System.Threading.Tasks;
     using System.IO;
     using System.IO.Compression;
 
@@ -12,7 +8,7 @@
     {
         public static bool CompressFolder(string path)
         {
-            var newPath = path + "-archived.zip";
+            var newPath = path + ".zip";
 
             if (File.Exists(newPath))
             {

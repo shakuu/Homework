@@ -73,6 +73,7 @@
 
             if (userInput != WinForms.DialogResult.Cancel)
             {
+                DeleteBtn.Visibility = Visibility.Collapsed;
                 DirNameTextBox.Text = dialog.SelectedPath;
             }
             else
@@ -100,11 +101,11 @@
                 {
                     DisplayDeletedFolders.Text = "Una";
                 }
-                
+
 
                 if (result.Count == 0)
                 {
-                    DirNameTextBox.Text = "Operation Complete";
+                    DisplayDeletedFolders.Text = "Operation Complete";
                 }
                 else
                 {
@@ -175,6 +176,11 @@
                     Environment.NewLine);
             }
 
+        }
+
+        private void DirNameTextBox_TextChanged(object sender, System.Windows.Controls.TextChangedEventArgs e)
+        {
+            DeleteBtn.Visibility = Visibility.Collapsed;
         }
     }
 }
