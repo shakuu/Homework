@@ -139,5 +139,17 @@
                 DisplayDeletedFolders.Text = "No Obj or Bin folders found";
             }
         }
+
+        private void ArchiveBtn_Click(object sender, RoutedEventArgs e)
+        {
+            var success = CompressingFiles.Compressing.CompressFolder(DirNameTextBox.Text);
+            if (success)
+            {
+                DisplayDeletedFolders.Text = string.Format("Successfully archived{1}Output file: {0}",
+                    DirNameTextBox.Text + ".zip",
+                    Environment.NewLine);
+            }
+
+        }
     }
 }

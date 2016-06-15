@@ -50,14 +50,13 @@
                 FontFamily="Consolas"
                 FontSize="16"/>
         <TextBox x:Name="DirNameTextBox" 
-                 
                  HorizontalAlignment="Left" 
                  Height="30" Margin="160,33,0,0" 
-                 TextWrapping="Wrap" 
+                 TextWrapping="WrapWithOverflow" 
                  Text="Current directory:" 
                  VerticalAlignment="Top"
                  VerticalContentAlignment="Center"
-                 FontSize="14"
+                 FontSize="12"
                  FontFamily="Consolas"
                  Width="412"
                  Background="LightGray"
@@ -80,6 +79,16 @@
                HorizontalContentAlignment="center"
                Margin="10,2,0,0" 
                VerticalAlignment="Top" Width="562"/>
+        <Button x:Name="ArchiveBtn" 
+                Content="Archive"
+                HorizontalAlignment="Left"
+                Margin="10,164,0,0"
+                VerticalAlignment="Top" 
+                FontFamily="consolas"
+                FontSize="16"
+                Foreground="White"
+                Background="RoyalBlue"
+                Width="125" Height="30" Click="ArchiveBtn_Click"/>
 
     </Grid>
 </Window>
