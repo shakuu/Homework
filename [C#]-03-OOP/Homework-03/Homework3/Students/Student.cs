@@ -91,6 +91,10 @@ namespace Homework3.Students
                 {
                     throw new ArgumentException("Empty string");
                 }
+                else if (!value.Contains("@"))
+                {
+                    throw new ArgumentException("Not a valid email");
+                }
 
                 this.email = value;
             }
@@ -123,6 +127,10 @@ namespace Homework3.Students
             }
             set
             {
+                if (!(0<= value && value <=100))
+                {
+                    throw new ArgumentException("Age out of reasonable range");
+                }
                 this.age = value;
             }
         }
@@ -135,6 +143,11 @@ namespace Homework3.Students
             }
             set
             {
+                if (value.ToString().Length != 8)
+                {
+                    throw new ArgumentException("Value must be 8 digits long");
+                }
+
                 this.fn = value;
             }
         }
@@ -147,6 +160,10 @@ namespace Homework3.Students
             }
             set
             {
+                if (!(0 <= value && value <= 20))
+                {
+                    throw new ArgumentException("Group number out of reasonable range");
+                }
                 this.group = value;
             }
         }
@@ -172,6 +189,7 @@ namespace Homework3.Students
         }
 
         #endregion
+
         #region Methods
         public Course GetCourseInfo(int index)
         {
@@ -203,6 +221,7 @@ namespace Homework3.Students
             return output.ToString();
         }
         #endregion
+
         #region Events
         void OnTimedEvent(object sender, EventArgs args)
         {

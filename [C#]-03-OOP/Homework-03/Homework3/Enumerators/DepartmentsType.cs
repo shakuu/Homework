@@ -1,6 +1,4 @@
-﻿
-
-namespace Homework3.Enumerators
+﻿namespace Homework3.Enumerators
 {
     public enum DepartmentsType
     {

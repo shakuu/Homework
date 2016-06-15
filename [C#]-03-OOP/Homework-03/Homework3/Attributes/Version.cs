@@ -1,5 +1,4 @@
-﻿
-namespace PointAndMatrix.Attributes
+﻿namespace PointAndMatrix.Attributes
 {
     using System;
     
@@ -7,7 +6,7 @@ namespace PointAndMatrix.Attributes
                     AttributeTargets.Class | 
                     AttributeTargets.Interface,
                     AllowMultiple = true)]
-    public class VersionAttribute : System.Attribute
+    public class VersionAttribute : Attribute
     {
         private int major;
         private int minor;

@@ -40,6 +40,20 @@ namespace Homework3.Extensions
             return list;
         }
 
+        public static List<Student> GetStudentsWithFirstBeforeLast(this List<Student> list)
+        {
+            var output = list.Where(stu => stu.FirstName.CompareTo(stu.LastName) < 0).ToList();
+
+            return output;
+        }
+
+        public static List<Student> GetStudentsWithinAgeRange(this List<Student> list, int min, int max)
+        {
+            var output = list.Where(stu => stu.Age >= min && stu.Age <= max).ToList();
+
+            return output;
+        }
+
         public static List<Student> GetStudentsByGroup(this List<Student> list, int group)
         {
             var output =
@@ -120,7 +134,8 @@ namespace Homework3.Extensions
         /// <param name="groups"></param>
         /// <param name="department"></param>
         /// <returns></returns>
-        public static List<Student> GetStudentsByDepartment(this List<Student> list, List<Group> groups, DepartmentsType department)
+        public static List<Student> GetStudentsByDepartment
+            (this List<Student> list, List<Group> groups, DepartmentsType department)
         {
 
             var output = list.Join(
@@ -132,7 +147,7 @@ namespace Homework3.Extensions
 
             return output;
         }
-        
+
         public static dynamic GetStudentsByMarks(this List<Student> list, int mark)
         {
             var output =
@@ -208,8 +223,7 @@ namespace Homework3.Extensions
             }
             catch (Exception)
             {
-
-                throw;
+                throw new Exception("Follow the instructions in Readme.txt");
             }
 
         }

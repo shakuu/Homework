@@ -1,11 +1,7 @@
-﻿
-namespace Homework3.Testing
+﻿namespace Homework3.Testing
 {
     using System;
     using System.Collections.Generic;
-    using System.Linq;
-    using System.Text;
-    using System.Threading.Tasks;
     using Students;
     using Extensions;
     using Enumerators;
@@ -21,11 +17,7 @@ namespace Homework3.Testing
 
             myListOfStudents.GetStudentsByMarks(6);
 
-
-
             Console.WriteLine(string.Join(Environment.NewLine, myListOfStudents));
-
-
         }
 
         public static void GroupsTesting()

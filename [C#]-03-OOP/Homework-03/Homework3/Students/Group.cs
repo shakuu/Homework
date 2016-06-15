@@ -2,10 +2,6 @@
 namespace Homework3.Students
 {
     using System;
-    using System.Collections.Generic;
-    using System.Linq;
-    using System.Text;
-    using System.Threading.Tasks;
     using Enumerators;
 
     public class Group
@@ -28,6 +24,11 @@ namespace Homework3.Students
             }
             set
             {
+                if (!(0 <= value && value <= 20))
+                {
+                    throw new ArgumentException("Group number out of reasonable range");
+                }
+
                 this.number = value;
             }
         }
