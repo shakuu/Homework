@@ -34,16 +34,16 @@
             {
                 if (string.IsNullOrEmpty(value))
                 {
-                    throw new Exception("Input is Empty");
+                    throw new Exception("Invalid input (empty).");
                 }
                 else if (!Directory.Exists(value))
                 {
-                    throw new Exception("Folder does not exist");
+                    throw new Exception("Unable to find folder.");
                 }
                 else if (value.Where(chr => chr == '\\').Count() == 1
                          && value.Last() == '\\')
                 {
-                    throw new Exception("Drive root is not a valid selection");
+                    throw new Exception("Drive root is not a valid folder input.");
                 }
                 else
                 {
@@ -99,13 +99,13 @@
                 }
                 catch (Exception)
                 {
-                    DisplayDeletedFolders.Text = "Una";
+                    DisplayDeletedFolders.Text = "Unable to delete all files/";
                 }
 
 
                 if (result.Count == 0)
                 {
-                    DisplayDeletedFolders.Text = "Operation Complete";
+                    DisplayDeletedFolders.Text = "Operation Complete.";
                 }
                 else
                 {
@@ -118,7 +118,7 @@
             }
             else
             {
-                DirNameTextBox.Text = "Operation canceled";
+                DirNameTextBox.Text = "Operation canceled.";
                 DeleteBtn.Visibility = Visibility.Hidden;
             }
         }
@@ -151,7 +151,7 @@
             else
             {
                 DeleteBtn.Visibility = Visibility.Collapsed;
-                DisplayDeletedFolders.Text = "No Obj or Bin folders found";
+                DisplayDeletedFolders.Text = "No Obj or Bin folders found.";
             }
         }
 
