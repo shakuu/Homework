@@ -4,6 +4,10 @@
     using WinForms = System.Windows.Forms;
     using RemoveFilesModels;
     using System.Windows.Forms;
+    using System.Collections.Generic;
+    using System;
+    using System.IO;
+    using System.Linq;
 
     /// <summary>
     /// Interaction logic for MainWindow.xaml
@@ -12,15 +16,45 @@
     {
         private const string DefaultPath = "D:\\GitHub";
 
-        public string PathToDeleteFrom { get; set; }
+        private string pathToDeleteFrom;
+
         public string LastSelectedPath { get; private set; }
+        public List<string> listOfDirsToDelete { get; private set; }
+
+        public string PathToDeleteFrom
+        {
+            get
+            {
+                return this.pathToDeleteFrom;
+            }
+            private set
+            {
+                if (string.IsNullOrEmpty(value))
+                {
+                    throw new Exception("String is Empty");
+                }
+                else if (!Directory.Exists(value))
+                {
+                    throw new Exception("Folder does not exist");
+                }
+                else if (value.Where(chr => chr == '\\').Count() == 1
+                         && value.Last() == '\\')
+                {
+                    throw new Exception("Drive root is not a valid selection");
+                }
+                else
+                {
+                    this.pathToDeleteFrom = value;
+                }
+            }
+        }
 
         public MainWindow()
         {
             InitializeComponent();
             WindowStartupLocation = WindowStartupLocation.CenterScreen;
             DeleteBtn.Visibility = Visibility.Collapsed;
-            DirNameTextBox.Text = string.Format("Default directory: {0}", DefaultPath);
+            DirNameTextBox.Text = DefaultPath;
         }
 
         private void FolderBtn_Click(object sender, RoutedEventArgs e)
@@ -30,14 +64,10 @@
             dialog.SelectedPath = DefaultPath; // Read from file
 
             var userInput = dialog.ShowDialog();
-            this.PathToDeleteFrom = dialog.SelectedPath;
 
             if (userInput != WinForms.DialogResult.Cancel)
             {
-                DeleteBtn.Visibility = Visibility.Visible;
-                this.PathToDeleteFrom = dialog.SelectedPath;
-                DirNameTextBox.Text = string
-                    .Format("{0}", this.PathToDeleteFrom);
+                DirNameTextBox.Text = dialog.SelectedPath;
             }
             else
             {
@@ -48,18 +78,60 @@
         private void DeleteBtn_Click(object sender, RoutedEventArgs e)
         {
             var userInput = WinForms.MessageBox
-                .Show(string.Format( "Are you sure sure you want to delete all /obj and /bin folders in {0}?", 
-                this.PathToDeleteFrom), 
+                .Show(string.Format("Are you sure sure you want to delete all /obj and /bin folders in {0}?",
+                this.PathToDeleteFrom),
                 "Confirm", MessageBoxButtons.OKCancel);
 
             if (userInput == WinForms.DialogResult.OK)
             {
-                DisplayDeletedFolders.Text =
-                    RemoveFiles.Remove(this.PathToDeleteFrom);
+                var result = RemoveFiles.RemoveFolder(this.listOfDirsToDelete);
+
+                if (result.Count == 0)
+                {
+                    DirNameTextBox.Text = "Operation Complete";
+                }
+                else
+                {
+                    result.Insert(0, "Folders not found: ");
+                    DisplayDeletedFolders.Text = 
+                        string.Join(Environment.NewLine, result);
+                }
+
+                DeleteBtn.Visibility = Visibility.Collapsed;
             }
             else
             {
-                DisplayDeletedFolders.Text = "Aborting...";
+                DirNameTextBox.Text = "Operation canceled";
+            }
+        }
+
+        private void SearchBtn_Click(object sender, RoutedEventArgs e)
+        {
+            try
+            {
+                this.PathToDeleteFrom = DirNameTextBox.Text;
+            }
+            catch (Exception caught)
+            {
+                DisplayDeletedFolders.Text = caught.Message;
+                DeleteBtn.Visibility = Visibility.Collapsed;
+                return;
+            }
+
+            this.listOfDirsToDelete =
+                    RemoveFiles.FindObjBinDirectories(this.PathToDeleteFrom);
+
+            if (this.listOfDirsToDelete.Count > 0)
+            {
+                DisplayDeletedFolders.Text =
+                    string.Join(Environment.NewLine, listOfDirsToDelete);
+
+                DeleteBtn.Visibility = Visibility.Visible;
+            }
+            else
+            {
+                DeleteBtn.Visibility = Visibility.Collapsed;
+                DisplayDeletedFolders.Text = "No Obj or Bin folders found";
             }
         }
     }
