@@ -1,13 +1,13 @@
 ﻿namespace StartUp
 {
-    using System.Windows;
-    using WinForms = System.Windows.Forms;
     using RemoveFilesModels;
-    using System.Windows.Forms;
-    using System.Collections.Generic;
     using System;
+    using System.Collections.Generic;
     using System.IO;
     using System.Linq;
+    using System.Windows;
+    using System.Windows.Forms;
+    using WinForms = System.Windows.Forms;
 
     /// <summary>
     /// Interaction logic for MainWindow.xaml
@@ -17,6 +17,8 @@
         private const string DefaultPath = "D:\\GitHub";
 
         private string pathToDeleteFrom;
+
+        #region Properties
 
         public string LastSelectedPath { get; private set; }
         public List<string> listOfDirsToDelete { get; private set; }
@@ -31,7 +33,7 @@
             {
                 if (string.IsNullOrEmpty(value))
                 {
-                    throw new Exception("String is Empty");
+                    throw new Exception("Input is Empty");
                 }
                 else if (!Directory.Exists(value))
                 {
@@ -48,6 +50,8 @@
                 }
             }
         }
+
+        #endregion
 
         public MainWindow()
         {
@@ -93,7 +97,7 @@
                 else
                 {
                     result.Insert(0, "Folders not found: ");
-                    DisplayDeletedFolders.Text = 
+                    DisplayDeletedFolders.Text =
                         string.Join(Environment.NewLine, result);
                 }
 
@@ -118,6 +122,7 @@
                 return;
             }
 
+            RemoveFiles.ClearList();
             this.listOfDirsToDelete =
                     RemoveFiles.FindObjBinDirectories(this.PathToDeleteFrom);
 

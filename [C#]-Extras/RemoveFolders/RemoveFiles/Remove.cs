@@ -2,16 +2,25 @@
 {
     using System;
     using System.Linq;
-    using System.Text;
     using System.IO;
     using System.Collections.Generic;
 
     public static class RemoveFiles
     {
-        private static StringBuilder listDirsDeleted
-            = new StringBuilder();
-
         private static List<string> dirsFound = new List<string>();
+
+        public static bool ClearList()
+        {
+            try
+            {
+                dirsFound.Clear();
+                return true;
+            }
+            catch (Exception)
+            {
+                return false;
+            }
+        }
 
         public static List<string> FindObjBinDirectories(string path)
         {
@@ -26,8 +35,6 @@
             {
                 if (CheckDir(dir))
                 {
-                    // delete
-                    //Directory.Delete(dir, true);
                     dirsFound.Add(dir);
                 }
                 else
