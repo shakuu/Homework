@@ -1,11 +1,8 @@
-var found = false;
-var len = 0;
-
-function CompareCharArray() {
-  var arrayA = String(document.
-    getElementById('a').value);
-  var arrayB = String(document.
-    getElementById('b').value);
+function solve(args) {
+  var arrayA = args[0];
+  var arrayB = args[1];
+  var found = false;
+  var len = 0;
 
   if (arrayA.length >= arrayB.length) {
     len = arrayB.length;

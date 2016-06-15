@@ -1,6 +1,5 @@
-function MaxSeqq(arg) {
-  var array = String(arg)
-    .split(',');
+function solve(args) {
+  var array = args;
 
   var counter = 1;
   var max = 0;
@@ -28,9 +27,5 @@ function MaxSeqq(arg) {
   console.log(max);
 }
 
-var input = document.getElementById('a');
-input.addEventListener('click', function () {
-  MaxSeqq(input.value);
-});
 
 
