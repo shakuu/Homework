@@ -1,7 +1,7 @@
-String.prototype.bind = function (args) {
+String.prototype.bind = function (binding, data) {
   // Assuming a single tag
-  var str = String(this);
-  var toInsert = args;
+  var str = String(binding);
+  var toInsert = data;
 
   var matchDataBind = new RegExp('data-bind-(([a-z]*)="([a-z]*)")', 'g');
   var allDataBinds = str.match(matchDataBind);
@@ -27,8 +27,9 @@ String.prototype.bind = function (args) {
 };
 
 var str = '<div data-bind-content="name"></div>';
-str = str.bind({ name: 'Steven' });
+var binding = {name: 'Steven'};
+str = str.bind(str, {name: 'Steven'});
 console.log(str);
 
 var bindingString = '<a data-bind-content="name" data-bind-href="link" data-bind-class="name"></а>';
-console.log(bindingString.bind({ name: 'Elena', link: 'http://telerikacademy.com' })); 
+console.log(bindingString.bind(bindingString, { name: 'Elena', link: 'http://telerikacademy.com' })); 
