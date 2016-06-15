@@ -142,7 +142,18 @@
 
         private void ArchiveBtn_Click(object sender, RoutedEventArgs e)
         {
-            var success = CompressingFiles.Compressing.CompressFolder(DirNameTextBox.Text);
+            try
+            {
+                this.PathToDeleteFrom = DirNameTextBox.Text;
+            }
+            catch (Exception caught)
+            {
+                DisplayDeletedFolders.Text = caught.Message;
+                return;
+            }
+
+            var success = CompressingFiles.Compressing.CompressFolder(this.PathToDeleteFrom);
+
             if (success)
             {
                 DisplayDeletedFolders.Text = string.Format("Successfully archived{1}Output file: {0}",
