@@ -50,11 +50,20 @@
         {
             var foldersNotFound = new List<string>();
 
+
             foreach (var folder in folders)
             {
                 if (Directory.Exists(folder))
                 {
-                    Directory.Delete(folder, true);
+                    try
+                    {
+                        Directory.Delete(folder, true);
+                    }
+                    catch (Exception)
+                    {
+
+                        foldersNotFound.Add(folder);
+                    }
                 }
                 else
                 {

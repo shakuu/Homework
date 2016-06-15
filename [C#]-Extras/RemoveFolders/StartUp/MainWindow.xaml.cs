@@ -14,7 +14,7 @@
     /// </summary>
     public partial class MainWindow : Window
     {
-        private const string DefaultPath = "D:\\GitHub";
+        private const string InitialDefaultPath = "D:\\GitHub";
 
         private string pathToDeleteFrom;
 
@@ -22,6 +22,7 @@
 
         public string LastSelectedPath { get; private set; }
         public List<string> listOfDirsToDelete { get; private set; }
+        public string DefaultPath { get; private set; }
 
         public string PathToDeleteFrom
         {
@@ -58,7 +59,8 @@
             InitializeComponent();
             WindowStartupLocation = WindowStartupLocation.CenterScreen;
             DeleteBtn.Visibility = Visibility.Collapsed;
-            DirNameTextBox.Text = DefaultPath;
+            this.DefaultPath = InitialDefaultPath;
+            DirNameTextBox.Text = this.DefaultPath;
         }
 
         private void FolderBtn_Click(object sender, RoutedEventArgs e)
@@ -88,7 +90,17 @@
 
             if (userInput == WinForms.DialogResult.OK)
             {
-                var result = RemoveFiles.RemoveFolder(this.listOfDirsToDelete);
+                var result = new List<string>();
+
+                try
+                {
+                    result = RemoveFiles.RemoveFolder(this.listOfDirsToDelete);
+                }
+                catch (Exception)
+                {
+                    DisplayDeletedFolders.Text = "Una";
+                }
+                
 
                 if (result.Count == 0)
                 {
@@ -96,7 +108,7 @@
                 }
                 else
                 {
-                    result.Insert(0, "Folders not found: ");
+                    result.Insert(0, "Unable to delete: ");
                     DisplayDeletedFolders.Text =
                         string.Join(Environment.NewLine, result);
                 }
@@ -106,6 +118,7 @@
             else
             {
                 DirNameTextBox.Text = "Operation canceled";
+                DeleteBtn.Visibility = Visibility.Hidden;
             }
         }
 
@@ -114,6 +127,7 @@
             try
             {
                 this.PathToDeleteFrom = DirNameTextBox.Text;
+                this.DefaultPath = this.pathToDeleteFrom;
             }
             catch (Exception caught)
             {
