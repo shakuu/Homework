@@ -1,5 +1,4 @@
-﻿
-namespace Homework3.Extensions
+﻿namespace Homework3.Extensions
 {
     using System;
     using System.Linq;

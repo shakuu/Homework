@@ -1,5 +1,4 @@
-﻿
-namespace Homework3.Students
+﻿namespace Homework3.Students
 {
     using System;
 

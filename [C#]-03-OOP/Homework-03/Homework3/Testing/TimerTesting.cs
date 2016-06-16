@@ -1,5 +1,4 @@
-﻿
-namespace Homework3.Testing
+﻿namespace Homework3.Testing
 {
     using Students;
     using TimedEvent;

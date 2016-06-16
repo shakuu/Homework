@@ -1,0 +1,25 @@
+﻿<Window x:Class="CanvasTesting.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:CanvasTesting"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="350" Width="525">
+    <Grid Margin="0,0,0,46">
+        <Canvas 
+            HorizontalAlignment="Left" 
+            VerticalAlignment="Top"
+            Height="319" 
+            Width="517"
+            Name="TestCanvas"
+            >
+            <Button x:Name="MoveBtn" 
+                    Content="Button" 
+                    Canvas.Left="195" 
+                    Canvas.Top="294" 
+                    Width="75"/>
+        </Canvas>
+
+    </Grid>
+</Window>
