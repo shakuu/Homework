@@ -1,5 +1,4 @@
-﻿
-namespace SchoolClasses
+﻿namespace SchoolClasses
 {
     using System.Collections.Generic;
     using Validation.ValidateStrings;

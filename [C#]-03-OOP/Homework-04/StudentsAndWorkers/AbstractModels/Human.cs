@@ -1,6 +1,9 @@
 ﻿
 namespace StudentsAndWorkers.AbstractModels
 {
+    using System.Text;
+    using System.Linq;
+
     public abstract class Human
     {
         private string first;
@@ -31,7 +34,7 @@ namespace StudentsAndWorkers.AbstractModels
             {
                 return this.last;
             }
-                        set
+            set
             {
                 this.last = value;
             }
@@ -46,5 +49,32 @@ namespace StudentsAndWorkers.AbstractModels
             }
         }
         #endregion
+
+        //public override string ToString()
+        //{
+        //    var allProperties = this.GetType()
+        //        .GetProperties()
+        //        .Where(prop => prop.Name != "FirstName" && prop.Name != "LastName")
+        //        .OrderBy(prop => prop.ToString().Length)
+        //        .ToArray();
+
+        //    var output = new StringBuilder();
+        //    var format = "{0, -6}: {1, 6}";
+
+        //    var len = allProperties.Length;
+        //    foreach (var prop in allProperties)
+        //    {
+        //        //var prop = allProperties[i];
+
+        //        var propValue = this.GetType()
+        //            .GetProperty(prop.Name)
+        //            .GetValue(this);
+
+        //        output.AppendFormat(format, prop.Name, propValue);
+        //        output.AppendFormat(", ");
+        //    }
+            
+        //    return output.ToString().Trim(new[] { ',', ' ' });
+        //}
     }
 }
