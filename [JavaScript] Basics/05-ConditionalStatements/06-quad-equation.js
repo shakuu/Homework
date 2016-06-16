@@ -11,7 +11,7 @@ function solve(args) {
 
   else if (numD === 0) {
     var output = -numB / (2 * numA);
-     console.log(output);
+     console.log('x1=x2='+ output.toFixed(2));
   }
   
   else if (numD > 0) {
@@ -20,7 +20,13 @@ function solve(args) {
     var output1 = (-numB + sqrtD) / (2 * numA);
     var output2 = (-numB - sqrtD) / (2 * numA);
     
-    console.log(output2 + " " + output1);
+    if (output2 < output1) {
+      temp = output1;
+      output1 = output2;
+      output2 = temp;
+    }
+
+    console.log('x1=' + output1.toFixed(2) + "; x2=" + output2.toFixed(2));
   }
 }
 

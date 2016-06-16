@@ -43,11 +43,10 @@ function solve(args) {
 
   if (length >= 2) {
 
-
     var digit = input.substring(0, 1);
 
-    if (digit == '1') {
-      if (length == 3) {
+    if (digit === '1') {
+      if (length === 3) {
         output += " and ";
       }
       isTeen = true;
@@ -86,7 +85,7 @@ function solve(args) {
       }
     }
     else {
-      if (length == 3) {
+      if (length == 3 && input[1] !== '0')  {
         output += " and ";
       }
       digit = input.substring(0, 1);
@@ -160,5 +159,13 @@ function solve(args) {
     }
   }
 
-  console.log(output);
+  var replacespaces = new RegExp('  ', 'g');
+
+  output = output.trim();
+
+  var firstChar = output[0];
+  firstChar = firstChar.toUpperCase();
+  var print = firstChar + output.slice(1);
+  print = print.replace(replacespaces, ' ');
+  console.log(print);
 }

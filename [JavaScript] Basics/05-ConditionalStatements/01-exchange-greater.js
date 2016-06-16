@@ -5,7 +5,7 @@ function solve(args) {
   if (numberA > numberB) {
     var temp = numberA;
     numberA = numberB;
-    numberB = numberA;
+    numberB = temp;
   }
 
   console.log(numberA + " " + numberB);

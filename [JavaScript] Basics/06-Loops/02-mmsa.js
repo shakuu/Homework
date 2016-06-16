@@ -6,17 +6,17 @@ function solve(args) {
   var sum = +args[0];
   var avg = 0;
 
-  for (let i = 1; i < len; i += 1) {
+  for (var i = 1; i < len; i += 1) {
     // Min
-    if (min > args[i]) {
-      min = args[i];
+    if (min > +args[i]) {
+      min = +args[i];
     }
     // Max
-    if (max < args[i]) {
-      max = args[i];
+    if (max < +args[i]) {
+      max = +args[i];
     }
     // Sum
-    sum += args[i];
+    sum += +args[i];
   }
 
   avg = sum / len;
@@ -27,3 +27,5 @@ function solve(args) {
   console.log('sum=' + sum.toFixed(2));
   console.log('avg=' + avg.toFixed(2));
 }
+
+solve(['3', '2', '5', '1']);

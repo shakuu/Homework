@@ -5,7 +5,7 @@ function solve(args) {
   var sum = 0;
 
   var len = input.length;
-  for (let i = 0; i < len; i += 1) {
+  for (var i = 0; i < len; i += 1) {
     var digit = hexKey.indexOf(input[i]);
 
     sum = digit + sum * 16;

@@ -5,7 +5,7 @@
       "name": "Launch",
       "type": "node",
       "request": "launch",
-      "program": "${workspaceRoot}\\05-hex-to-dec.js",
+      "program": "${workspaceRoot}\\03-matrix-of-numbers.js",
       "stopOnEntry": false,
       "args": [],
       "cwd": "${workspaceRoot}",
