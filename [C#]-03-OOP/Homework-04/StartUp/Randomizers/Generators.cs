@@ -1,5 +1,4 @@
-﻿
-namespace StartUp.Randomizers
+﻿namespace StartUp.Randomizers
 {
     using System;
     using System.Text;

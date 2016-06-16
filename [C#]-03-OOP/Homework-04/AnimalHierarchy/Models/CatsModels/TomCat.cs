@@ -1,5 +1,4 @@
-﻿
-namespace AnimalHierarchy.Models.CatsModels
+﻿namespace AnimalHierarchy.Models.CatsModels
 {
     using System;
     using Types;

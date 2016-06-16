@@ -1,5 +1,4 @@
-﻿
-namespace AnimalHierarchy.AbstractModels
+﻿namespace AnimalHierarchy.AbstractModels
 {
     using System;
     using Interfaces;
@@ -27,6 +26,11 @@ namespace AnimalHierarchy.AbstractModels
             }
             set
             {
+                if (!(0 <= value && value <= 20))
+                {
+                    throw new Exception("Age must be in the range 0-20");
+                }
+
                 this.age = value;
             }
         }
@@ -39,6 +43,11 @@ namespace AnimalHierarchy.AbstractModels
             }
             protected set
             {
+                if (string.IsNullOrEmpty(value))
+                {
+                    throw new Exception("Sring is empty");
+                }
+
                 this.name = value;
             }
         }

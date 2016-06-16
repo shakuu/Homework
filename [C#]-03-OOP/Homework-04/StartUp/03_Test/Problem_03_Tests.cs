@@ -79,8 +79,8 @@
                 var age = random.Next(0, 21);
                 var sex = random.Next(0, 2);
                 var type = random.Next(0, 6);
-                Animal animal;
 
+                Animal animal;
                 try
                 {
                     switch (type)

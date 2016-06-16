@@ -1,5 +1,4 @@
-﻿
-namespace StartUp._02_Test
+﻿namespace StartUp._02_Test
 {
     using Randomizers;
     using StudentsAndWorkers.AbstractModels;
@@ -35,7 +34,8 @@ namespace StartUp._02_Test
         /// </summary>
         public static void Tasks()
         {
-            Console.WriteLine("Problem 2. Students and workers Tasks: " + Environment.NewLine);
+            Console.WriteLine("Problem 2. Students and workers Tasks: "
+                + Environment.NewLine);
 
             const int size = 10;
 
