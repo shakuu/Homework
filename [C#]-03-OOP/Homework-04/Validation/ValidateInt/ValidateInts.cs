@@ -1,5 +1,4 @@
-﻿
-namespace Validation.ValidateInt
+﻿namespace Validation.ValidateInt
 {
     using System;
     using System.Collections.Generic;

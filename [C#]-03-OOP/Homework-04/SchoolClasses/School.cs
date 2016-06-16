@@ -67,7 +67,9 @@
 
         public void AddClass(SchoolClass newClass)
         {
-            var check = this.SchoolClasses.Where(schoolClass => schoolClass.ID == newClass.ID).Count();
+            var check = this.SchoolClasses
+                .Where(schoolClass => schoolClass.ID == newClass.ID)
+                .Count();
 
             if (check > 0)
             {

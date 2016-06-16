@@ -1,5 +1,4 @@
-﻿
-namespace SchoolClasses.People
+﻿namespace SchoolClasses.People
 {
     using System.Collections.Generic;
     using Disciplines;

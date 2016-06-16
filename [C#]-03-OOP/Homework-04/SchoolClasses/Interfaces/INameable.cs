@@ -1,12 +1,7 @@
-﻿
-namespace SchoolClasses.Interfaces
+﻿namespace SchoolClasses.Interfaces
 {
     interface INameable
     {
-
-        string Name
-        {
-            get;
-        }
+        string Name { get; }
     }
 }

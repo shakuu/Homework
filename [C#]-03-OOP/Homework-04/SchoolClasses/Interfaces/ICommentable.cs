@@ -1,5 +1,4 @@
-﻿
-namespace SchoolClasses.Interfaces
+﻿namespace SchoolClasses.Interfaces
 {
     interface ICommentable
     {

@@ -9,7 +9,6 @@ namespace Validation.ValidateStrings
     {
         public static void ValidateName(string value)
         {
-            #region validate
             if (string.IsNullOrEmpty(value))
             {
                 throw new ArgumentException("Name is null or empty");
@@ -26,7 +25,6 @@ namespace Validation.ValidateStrings
                     throw new ArgumentException("Names can only contain valid letters");
                 }
             }
-            #endregion
         }
 
         /// <summary>

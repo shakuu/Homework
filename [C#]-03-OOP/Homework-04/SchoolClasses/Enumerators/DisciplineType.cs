@@ -1,5 +1,4 @@
-﻿
-namespace SchoolClasses.Enumerators
+﻿namespace SchoolClasses.Enumerators
 {
     public enum DisciplineType
     {

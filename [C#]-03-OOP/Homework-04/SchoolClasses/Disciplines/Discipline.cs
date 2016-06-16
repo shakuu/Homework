@@ -1,5 +1,4 @@
-﻿
-namespace SchoolClasses.Disciplines
+﻿namespace SchoolClasses.Disciplines
 {
     using System;
     using Interfaces;
