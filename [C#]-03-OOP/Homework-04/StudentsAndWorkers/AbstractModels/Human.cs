@@ -1,8 +1,6 @@
-﻿
-namespace StudentsAndWorkers.AbstractModels
+﻿namespace StudentsAndWorkers.AbstractModels
 {
-    using System.Text;
-    using System.Linq;
+    using System;
 
     public abstract class Human
     {
@@ -24,7 +22,14 @@ namespace StudentsAndWorkers.AbstractModels
             }
             set
             {
-                this.first = value;
+                if (string.IsNullOrEmpty(value))
+                {
+                    throw new Exception("Empty string");
+                }
+                else
+                {
+                    this.first = value;
+                }
             }
         }
 
@@ -36,7 +41,14 @@ namespace StudentsAndWorkers.AbstractModels
             }
             set
             {
-                this.last = value;
+                if (string.IsNullOrEmpty(value))
+                {
+                    throw new Exception("Empty string");
+                }
+                else
+                {
+                    this.first = value;
+                }
             }
         }
 
@@ -50,6 +62,7 @@ namespace StudentsAndWorkers.AbstractModels
         }
         #endregion
 
+        #region ToStringTest
         //public override string ToString()
         //{
         //    var allProperties = this.GetType()
@@ -64,8 +77,6 @@ namespace StudentsAndWorkers.AbstractModels
         //    var len = allProperties.Length;
         //    foreach (var prop in allProperties)
         //    {
-        //        //var prop = allProperties[i];
-
         //        var propValue = this.GetType()
         //            .GetProperty(prop.Name)
         //            .GetValue(this);
@@ -73,8 +84,9 @@ namespace StudentsAndWorkers.AbstractModels
         //        output.AppendFormat(format, prop.Name, propValue);
         //        output.AppendFormat(", ");
         //    }
-            
+
         //    return output.ToString().Trim(new[] { ',', ' ' });
         //}
+        #endregion
     }
 }

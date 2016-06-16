@@ -1,6 +1,7 @@
 ﻿namespace StudentsAndWorkers.Models
 {
     using AbstractModels;
+    using System;
 
     public class Student : Human
     {
@@ -21,7 +22,14 @@
 
             set
             {
-                this.grade = value;
+                if (!(2 <= value && value <= 6))
+                {
+                    throw new Exception("Grade must be between 2 and 6");
+                }
+                else
+                {
+                    this.grade = value;
+                }
             }
         }
 
