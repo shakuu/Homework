@@ -8,13 +8,12 @@
     
     public abstract class Account : IRate, IDeposit
     {
-        private Customer customer;
-        private decimal balance;
         private decimal rate;
         private CustomerType customerType;
 
         #region Constructor
-        public Account(Customer customer, decimal balance, decimal rate)
+
+        protected Account(Customer customer, decimal balance, decimal rate)
         {
             this.Customer = customer;
             this.Balance = balance;
@@ -24,29 +23,9 @@
         #endregion
 
         #region Properties
-        public Customer Customer
-        {
-            get
-            {
-                return this.customer;
-            }
-            protected set
-            {
-                this.customer = value;
-            }
-        }
+        public Customer Customer { get; protected set; }
 
-        public decimal Balance
-        {
-            get
-            {
-                return this.balance;
-            }
-            set
-            {
-                this.balance = value;
-            }
-        }
+        public decimal Balance { get; set; }
 
         public decimal InterestRate
         {
@@ -58,7 +37,7 @@
             {
                 if (value < 0)
                 {
-                    throw new ArgumentOutOfRangeException("InterestRate must be positive or 0");
+                    throw new ArgumentOutOfRangeException($"Interest rate must be positive or 0");
                 }
                 this.rate = value;
             }
@@ -90,7 +69,7 @@
         private void SetCustomerType(Type type)
         {
             CustomerType temp;
-            if (CustomerType.TryParse(type.Name, out temp)) this.CustomerType = temp;
+            if (Enum.TryParse(type.Name, out temp)) this.CustomerType = temp;
             else throw new ArgumentException("Unknown Customer Type");
         }
     }

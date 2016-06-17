@@ -4,15 +4,15 @@
 
     public abstract class Shape
     {
-        private double width;
-        private double height;
+        private double _width;
+        private double _height;
 
         #region Properties
         public double Width
         {
             get
             {
-                return this.width;
+                return this._width;
             }
             set
             {
@@ -21,7 +21,7 @@
                     throw new ArgumentOutOfRangeException("Width must be positive");
                 }
 
-                this.width = value;
+                this._width = value;
             }
         }
 
@@ -29,7 +29,7 @@
         {
             get
             {
-                return this.height;
+                return this._height;
             }
             set
             {
@@ -38,7 +38,7 @@
                     throw new ArgumentOutOfRangeException("Height must be positive");
                 }
 
-                this.height = value;
+                this._height = value;
             }
         }
         #endregion

@@ -4,7 +4,7 @@
 
     public abstract class Customer
     {
-        private string name;
+        private string _name;
 
         public Customer(string name)
         {
@@ -15,7 +15,7 @@
         {
             get
             {
-                return this.name;
+                return this._name;
             }
             protected set
             {
@@ -27,7 +27,7 @@
                 {
                     throw new ArgumentException("Name is too long");
                 }
-                this.name = value;
+                this._name = value;
             }
         }
     }

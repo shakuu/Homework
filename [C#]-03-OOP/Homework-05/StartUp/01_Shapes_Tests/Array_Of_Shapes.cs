@@ -5,14 +5,14 @@
     using System;
     using System.Linq;
 
-    public static class Array_Of_Shapes
+    public static class ArrayOfShapes
     {
         #region Init static randomizer
-        private static Random random;
+        private static Random _random;
 
-        static Array_Of_Shapes()
+        static ArrayOfShapes()
         {
-            random = new Random();
+            _random = new Random();
         }
         #endregion
 
@@ -23,7 +23,7 @@
         /// </summary>
         public static void Test_01()
         {
-            var shapes = InitArray(random);
+            var shapes = InitArray(_random);
 
             shapes =
                 (from shape in shapes

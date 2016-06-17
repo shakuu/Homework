@@ -5,33 +5,33 @@
 
     public class Bank
     {
-        private string name;
-        private List<Account> accounts;
+        private string _name;
+        private List<Account> _accounts;
 
         public Bank()
         {
-            this.accounts = new List<Account>();
+            this._accounts = new List<Account>();
         }
 
         public string Name {
             get
             {
-                return this.name;
+                return this._name;
             }
             private set
             {
-                this.name = value;
+                this._name = value;
             }
         }
 
         public List<Account> Accounts {
             get
             {
-                return this.accounts;
+                return this._accounts;
             }
             private set
             {
-                this.accounts = value;
+                this._accounts = value;
             }
         }
     }

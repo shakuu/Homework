@@ -8,13 +8,13 @@ namespace PointAndMatrix.GenericMatrix
 {
     using System;
 
-    class Matrix<T> 
+    internal class Matrix<T> 
         where T : struct, IComparable, IComparable<T>, 
                   IConvertible, IEquatable<T>, IFormattable
     {
         #region Fields
 
-        private T[,] container;
+        private readonly T[,]  _container;
 
         #endregion
 
@@ -22,27 +22,16 @@ namespace PointAndMatrix.GenericMatrix
 
         public Matrix(int x, int y)
         {
-            this.container = new T[x, y];
+            this._container = new T[x, y];
         }
 
         #endregion
 
         #region Properties
 
-        public int Rows
-        {
-            get
-            {
-                return this.container.GetLength(0);
-            }
-        }
-        public int Cols
-        {
-            get
-            {
-                return this.container.GetLength(1);
-            }
-        }
+        public int Rows => this._container.GetLength(0);
+
+        public int Cols => this._container.GetLength(1);
 
         #endregion
 
@@ -52,11 +41,11 @@ namespace PointAndMatrix.GenericMatrix
         {
             get
             {
-                return this.container[row, col];
+                return this._container[row, col];
             }
             set
             {
-                this.container[row, col] = value;
+                this._container[row, col] = value;
             }
         }
 
