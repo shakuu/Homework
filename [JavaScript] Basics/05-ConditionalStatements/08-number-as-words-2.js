@@ -98,7 +98,7 @@ function solve(args) {
           output += "thirty";
           break;
         case "4":
-          output += "fourty";
+          output += "forty";
           break;
         case "5":
           output += "fifty";
