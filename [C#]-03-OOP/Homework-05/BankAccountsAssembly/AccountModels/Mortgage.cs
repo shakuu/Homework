@@ -13,7 +13,6 @@
         {
         }
 
-        #region CalcInterestRate
         protected override decimal CalculateIndividualInterest(int period)
         {
             decimal result = 0;
@@ -46,6 +45,5 @@
 
             return result;
         }
-        #endregion
     }
 }

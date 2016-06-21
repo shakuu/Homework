@@ -8,10 +8,7 @@
     
     public abstract class Account : IRate, IDeposit
     {
-        private decimal rate;
-        private CustomerType customerType;
-
-        #region Constructor
+        private decimal _rate;
 
         protected Account(Customer customer, decimal balance, decimal rate)
         {
@@ -20,9 +17,7 @@
             this.InterestRate = rate;
             this.SetCustomerType(customer.GetType());
         }
-        #endregion
-
-        #region Properties
+        
         public Customer Customer { get; protected set; }
 
         public decimal Balance { get; set; }
@@ -31,7 +26,7 @@
         {
             get
             {
-                return this.rate;
+                return this._rate;
             }
             set
             {
@@ -39,16 +34,15 @@
                 {
                     throw new ArgumentOutOfRangeException($"Interest rate must be positive or 0");
                 }
-                this.rate = value;
+                this._rate = value;
             }
         }
 
         protected CustomerType CustomerType { get; private set; }
-        #endregion
-
+        
         public decimal CalculateInterest(int period)
         {
-            var format = "Calculate{0}Interest";
+            const string format = "Calculate{0}Interest";
             var name = string.Format(format, this.Customer.GetType().Name);
             var method = this.GetType()
                 .GetMethod(name, BindingFlags.NonPublic | BindingFlags.Instance);
@@ -59,6 +53,7 @@
         }
 
         protected abstract decimal CalculateIndividualInterest(int period);
+
         protected abstract decimal CalculateCompanyInterest(int period);
 
         public virtual void DepositMoney(decimal amount)
