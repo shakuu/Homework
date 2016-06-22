@@ -9,8 +9,7 @@
         private const int Size = 64;
 
         private ulong container;
-
-        #region Constructors
+        
         public BitArray64()
         {
             this.container = 0;
@@ -25,7 +24,7 @@
         {
             this.Container = value;
         }
-        #endregion
+       
 
         private ulong Container
         {
@@ -78,8 +77,7 @@
                 else this.container &= ~mask;
             }
         }
-
-        #region Operators
+        
         public static bool operator ==(BitArray64 one, BitArray64 other)
         {
             return one.Equals(other);
@@ -89,9 +87,7 @@
         {
             return !one.Equals(other);
         }
-        #endregion
-
-        #region Overrides
+       
         public override string ToString()
         {
             var output = new StringBuilder();
@@ -143,9 +139,8 @@
 
             return result;
         }
-        #endregion
-
-        #region Interface implementations
+        
+        
         public IEnumerator<int> GetEnumerator()
         {
             for (int index = 0; index < Size; index++)
@@ -161,6 +156,6 @@
         {
             return this.GetEnumerator();
         }
-        #endregion
+        
     }
 }

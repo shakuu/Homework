@@ -13,22 +13,19 @@
     /// </summary>
     public static class TimedTests
     {
-        #region Settings
         public const int NumberOfElemets = 30000;
         public const int NumberOfRuns = 10000;
         public const int NumberOfRunsTofill = 100; // Can take A LOOOOOONG time.
         public const int MinValue = 0;
         public const int MaxValue = 9999999;
-        #endregion
-
-        #region Static Ctor
-        static Random random;
+        
+        
+        static readonly Random Random;
 
         static TimedTests()
         {
-            random = new Random();
+            Random = new Random();
         }
-        #endregion
 
         public static void TimeToGenerate()
         {
@@ -60,7 +57,7 @@
             BinarySearchTree<int> tree;
             GenerateListAndTree(out list, out tree);
 
-            var find = random.Next(MinValue, MaxValue);
+            var find = Random.Next(MinValue, MaxValue);
 
             var timeList = NaiveBenchmarkList(list, NumberOfRuns, find);
             var timeTree = NaiveBenchmarkTree(tree, NumberOfRuns, find);
@@ -77,8 +74,7 @@
 
             Console.WriteLine();
         }
-
-        #region Generate Benchmarks
+        
         private static TimeSpan FillTree(List<int> numbers)
         {
             var stopwatch = new Stopwatch();
@@ -114,9 +110,7 @@
 
             return stopwatch.Elapsed;
         }
-        #endregion
-
-        #region Searching Benchmarks
+        
         private static TimeSpan NaiveBenchmarkLinq
             (List<int> list, int runs, int find)
         {
@@ -164,7 +158,6 @@
 
             return stopwatch.Elapsed;
         }
-        #endregion
 
         private static void PrintHeader(string header)
         {
@@ -181,11 +174,11 @@
 
             for (int el = 0; el < NumberOfElemets; el++)
             {
-                var add = random.Next(MinValue, MaxValue);
+                var add = Random.Next(MinValue, MaxValue);
 
                 while (tree.Contains(add))
                 {
-                    add = random.Next(MinValue, MaxValue);
+                    add = Random.Next(MinValue, MaxValue);
                 }
 
                 list.Add(add);

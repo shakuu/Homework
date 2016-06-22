@@ -13,7 +13,6 @@
     [Serializable]
     public class Student : IEnumerable<PropertyInfo>, ICloneable, IComparable<Student>
     {
-        #region Properties
         public string FirstName { get; set; }
         public string MiddleName { get; set; }
         public string LastName { get; set; }
@@ -25,9 +24,8 @@
         public SpecialtyType Specialty { get; set; }
         public FacultyType Faculty { get; set; }
         public UniversityType University { get; set; }
-        #endregion
-
-        #region Overrides
+        
+        
         public override string ToString()
         {
             var toString = new StringBuilder();
@@ -95,9 +93,7 @@
         {
             return !one.Equals(other);
         }
-        #endregion
-
-        #region Interface Implementations
+        
         /// <summary>
         /// Init a MemoryStreamand a BinaryFormatter.
         /// Serialze this to stream.
@@ -188,7 +184,6 @@
         {
            return this.GetEnumerator();
         }
-
-        #endregion
+        
     }
 }

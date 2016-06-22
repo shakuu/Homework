@@ -6,8 +6,7 @@
     {
         private int? age;
         private string name;
-
-        #region Contructors
+        
         public Person(string name)
         {
             this.Name = name;
@@ -18,9 +17,7 @@
         {
             this.Age = age;
         }
-        #endregion
-
-        #region Properties
+        
         public int? Age
         {
             get
@@ -54,9 +51,7 @@
                 this.name = value;
             }
         }
-        #endregion
-
-        #region Overrides
+        
         public override string ToString()
         {
             var format = "Name: {0}, Age: {1}";
@@ -69,6 +64,5 @@
 
             return string.Format(format, name, age);
         }
-        #endregion
     }
 }

@@ -22,8 +22,7 @@
         private List<TreeNode<T>> nodes;
 
         public TreeNode<T> Root { get; set; }
-
-        #region Add Node
+        
         public void Add(T value)
         {
             this.Root = this.AddElement(value, this.Root, null);
@@ -52,9 +51,7 @@
 
             return node;
         }
-        #endregion
-
-        #region Find Node
+        
         public TreeNode<T> FindNode(T value)
         {
             var node = this.Root;
@@ -85,9 +82,7 @@
             var contains = this.FindNode(value) != null;
             return contains;
         }
-        #endregion
-
-        #region Remove Node
+        
         public void RemoveValue(T value)
         {
             var node = this.FindNode(value);        // Search for a node with required value .
@@ -155,9 +150,8 @@
                 }
             }
         }
-        #endregion
-
-        #region Overrides
+       
+        
         public static bool operator ==(BinarySearchTree<T> one, BinarySearchTree<T> other)
         {
             return one.Equals(other);
@@ -210,10 +204,8 @@
 
             return hash;
         }
-
-        #endregion
-
-        #region Interfaces
+        
+        
         public IEnumerator<TreeNode<T>> GetEnumerator()
         {
             this.nodes = new List<TreeNode<T>>();
@@ -263,7 +255,6 @@
         {
             throw new NotImplementedException();
         }
-
-        #endregion
+        
     }
 }

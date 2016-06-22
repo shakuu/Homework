@@ -7,8 +7,7 @@
     {
         private List<TreeNode<T>> children;
         private TreeNode<T> root;
-
-        #region Ctors
+        
         public BinarySearchTree(TreeNode<T> root)
         {
             this.Root = root;
@@ -22,9 +21,8 @@
                 this.AddChild(child);
             }
         }
-        #endregion
-
-        #region Props
+        
+        
         public List<TreeNode<T>> Children
         {
             get
@@ -48,7 +46,6 @@
                 this.root = value;
             }
         }
-        #endregion
 
         public void AddChild(TreeNode<T> child)
         {
