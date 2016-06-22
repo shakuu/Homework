@@ -1,14 +1,13 @@
 function solve(args) {
-  var array = args;
+  var array = (args + '').split('\n').map(Number),
+    counter = 1,
+    max = 0,
+    prev = +array[0],
+    index, len, element;
 
-  var counter = 1;
-  var max = 0;
-  var prev = array[1];
-
-  var len = array.length;
-  for (var index = 1; index < len; index += 1) {
-    var element = array[index];
-    console.log(element);
+  len = array.length;
+  for (index = 1; index < len; index += 1) {
+    element = +array[index];
 
     if (element === prev) {
       counter += 1;
@@ -22,6 +21,10 @@ function solve(args) {
     }
 
     prev = element;
+  }
+
+  if (counter > max) {
+    max = counter;
   }
 
   console.log(max);
