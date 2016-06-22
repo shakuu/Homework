@@ -2,6 +2,7 @@
 namespace StartUp._03_Exception_Tests
 {
     using System;
+    using ExceptionsAssembly;
 
     public static class BasicTests
     {
@@ -9,25 +10,19 @@ namespace StartUp._03_Exception_Tests
         {
             Console.WriteLine();
 
-            var teste = new ExceptionsAssembly
-                .InvalidRange
-                .InvalidRangeException<DateTime>("unsuccessful",
-                    DateTime.ParseExact( "01-01-1980", "dd-MM-yyyy", null),
+            var min = DateTime.ParseExact("01-01-1980", "dd-MM-yyyy", null);
+            var max = DateTime.ParseExact("31-12-2013", "dd-MM-yyyy", null);
+
+            var teste = new InvalidRangeException<DateTime>("unsuccessful",
+                    DateTime.ParseExact("01-01-1980", "dd-MM-yyyy", null),
                     DateTime.ParseExact("31-12-2013", "dd-MM-yyyy", null));
 
             var test = DateTime.Parse("1.1.1975");
             try
             {
-                if (test < teste.Min || test > teste.Max)
-                {
-                    throw teste;
-                }
-                else
-                {
-                    Console.WriteLine("success");
-                }
+                Validate.ValidateDataInRange(test, min, max);
             }
-            catch (ExceptionsAssembly.InvalidRange.InvalidRangeException<DateTime> e)
+            catch (InvalidRangeException<DateTime> e)
             {
                 Console.WriteLine(e.Message);
             }
