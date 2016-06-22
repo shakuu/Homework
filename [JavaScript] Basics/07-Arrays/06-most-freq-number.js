@@ -1,57 +1,35 @@
-var datain = document
-  .getElementById('data-in');
+function solve(args) {
+  var input = (args + '').split('\n').map(Number),
+  // var input = [].concat(args).map(Number),
+    checked = [],
+    i, j, len,
+    counter = 0, max = 0, maxNum = 0;
 
-var btngo = document
-  .getElementById('go')
-  .addEventListener('click', function () {
-    var args = datain.value;
-    MFN(args);
-  });
+  input.splice(0, 1);
+  len = input.length;
 
-function MFN(args) {
-  var arr = SplitInput(args);
-  var occurances = new Array(0);
-  var uniqueElements = new Array(0);
+  for (i = 0; i < len; i += 1) {
 
-  var index;
-  var len = arr.length;
-
-  for (index = 0; index < len; index += 1) {
-
-    var indexOfElement = uniqueElements.indexOf(arr[index]);
-
-    if (indexOfElement < 0) {
-      uniqueElements.push(arr[index]);
-      occurances.push(1);
-    } else {
-      occurances[indexOfElement] += 1;
+    if (checked.indexOf(input[i]) >= 0) {
+      continue;
     }
+
+    for (j = 0; j < len; j += 1) {
+      if (input[j] === input[i]) {
+        counter += 1;
+      }
+    }
+
+    if (max < counter) {
+      max = counter;
+      maxNum = input[i];
+    }
+
+    counter = 0;
+    checked.push(input[i]);
   }
 
-  FindMax(occurances);
+  console.log(maxNum + ' (' + max + ' times)');
 }
 
-function FindMax(args) {
-  var max = args[0];
-
-  var index = 1;
-  var length = args.length;
-  for (index; index < length; index += 1) {
-
-    if (args[index] > max) {
-      max = args[index];
-    }
-  }
-
-  console.log(max);
-}
-
-function SplitInput(args) {
-
-  var input = String(args)
-    .trim()
-    .replace(/,/g, '')
-    .split(' ');
-
-  return input;
-}
+// solve(['13', '4', '1', '1', '4', '2', '3', '4', '4', '1', '2', '4', '9', '3']);

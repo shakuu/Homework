@@ -5,7 +5,7 @@
       "name": "Launch",
       "type": "node",
       "request": "launch",
-      "program": "${workspaceRoot}\\02-compare-char-arrays.js",
+      "program": "${workspaceRoot}\\08-primes.js",
       "stopOnEntry": false,
       "args": [],
       "cwd": "${workspaceRoot}",

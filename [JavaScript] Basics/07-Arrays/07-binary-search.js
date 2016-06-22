@@ -1,63 +1,49 @@
-var datain = document
-  .getElementById('data-in');
+function solve(args) {
+  var input = (args + '').split('\n').map(Number),
+    find, len, i, j, left, right, found;
 
-var gobtn = document
-  .getElementById('go')
-  .addEventListener('click', function () {
-    var arr = GetInput();
-    arr = SelectionSort(arr);
+  input.splice(0, 1);
+  len = input.length;
+  find = input.splice(len - 1, 1);
+  len -= 1;
 
-    var find = prompt('Value to Search for');
-
-    BinSearch(arr, find);
+  input.sort(function (a, b) {
+    if (+a < +b) {
+      return -1;
+    } else if (+a > +b) {
+      return 1;
+    } else {
+      return 0;
+    }
   });
 
-function BinSearch(arr, find) {
-  var left = 0;
-  var right = arr.length - 1;
-  var mid = 0;
-  while (true) {
-    mid = Math.floor(left + (Math.floor((right - left) / 2)));
-    
-    if (mid == left || mid == right ) {
-      console.log('not found');
-      break;
+  left = 0;
+  right = len - 1;
+
+  function BinarySearch(leftarg, rightarg) {
+    var leftIndex = +leftarg;
+    var rightIndex = +rightarg;
+
+    var mid = ((rightIndex - leftIndex) / 2 + leftIndex) | 0;
+
+    if (leftIndex === rightIndex) {
+      found = -1;
+      return;
     }
 
-    if (find == arr[mid]) {
-      console.log('Success at position : ' + mid);
-      break;
-    }
-
-    if (find < arr[mid]) {
-      right = mid;
-    } else if (find > arr[mid]) {
-      left = mid;
-    }
-  }
-}
-
-function SelectionSort(args) {
-  var input = args;
-
-  var len = input.length;
-  for (var i = 0; i < len; i += 1) {
-    for (var j = i + 1; j < len; j += 1) {
-      if (input[j] < input[i]) {
-        input[j] ^= input[i];
-        input[i] ^= input[j];
-        input[j] ^= input[i];
-      }
+    if (+find === input[mid]) {
+      found = mid;
+      return;
+    } else if (+find < input[mid]) {
+      BinarySearch(leftIndex, mid);
+    } else {
+      BinarySearch(mid + 1, rightIndex);
     }
   }
-  return input;
+
+  BinarySearch(left, right);
+
+  console.log(found);
 }
 
-function GetInput() {
-  var input = String(datain.value)
-    .trim()
-    .replace(/,/g, '')
-    .split(' ');
-
-  return input;
-}
+// solve(['10\n1\n2\n4\n8\n16\n31\n32\n64\n77\n99\n32']);

@@ -1,29 +1,31 @@
-var datain = document
-  .getElementById('data-in');
+function solve(args) {
+  var input = (args + '').split('\n').map(Number),
+    len, i, j, output = [], min, minIndex, temp;
 
-var gobtn = document
-  .getElementById('go')
-  .addEventListener('click', function () {
-    args = datain.value;
-    SelectionSort(args);
-  })
+    input.splice(0, 1);
 
-function SelectionSort(args) {
+  len = input.length;
+  for (i = 0; i < len; i += 1) {
+    min = input[i];
 
-  var input = String(args)
-    .replace(/,/g, '')
-    .split(' ');
+    for (j = i + 1; j < len; j += 1) {
 
-  var len = input.length;
-  for (var i = 0; i < len; i += 1) {
-    for (var j = i + 1; j < len; j += 1) {
-      if (input[j]<input[i]) {
-        input[j] ^= input[i];
-        input[i] ^= input[j];
-        input[j] ^= input[i];
+      if (input[j] < min) {
+
+        min = input[j];
+        minIndex = j;
       }
     }
+
+    temp = input[i];
+    input[i] = input[minIndex];
+    input[minIndex] = temp;
   }
 
-  console.log(input);
+  console.log();
+  for (i = 0; i < len; i += 1) {
+    console.log(input[i]);
+  }
 }
+
+// solve( [ '6\n3\n4\n1\n5\n2\n6' ]);
