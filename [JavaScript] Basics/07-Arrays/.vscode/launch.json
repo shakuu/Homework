@@ -5,7 +5,7 @@
       "name": "Launch",
       "type": "node",
       "request": "launch",
-      "program": "${workspaceRoot}\\08-primes.js",
+      "program": "${workspaceRoot}\\09-primes-again.js",
       "stopOnEntry": false,
       "args": [],
       "cwd": "${workspaceRoot}",
