@@ -1,10 +1,10 @@
-// jshint esversion: 6
+function solve(args) {
+  var output = (args[0] + '')
+    .split(' ')
+    .filter(function (a) {
+      return !(a === output[0]);
+    });
+console.log(output);
+}
 
-Array.prototype.Remove = function (arg) {
-  let len = this.length;
-  for (let index = 0; index < len; index += 1) {
-    let el = String(this[index]);
-    let rem = new RegExp(arg, 'g');
-    el = el.replace(rem, '');
-  }
-};
+solve([ '1', '2', '3', '2', '1', '2', '3', '2' ]);
