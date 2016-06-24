@@ -1,3 +1,3 @@
 function solve(args){
-  console.log('Hello, ' + args + '!');
+  console.log(args);
 }
