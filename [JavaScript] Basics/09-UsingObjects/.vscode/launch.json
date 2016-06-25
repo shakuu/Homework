@@ -5,7 +5,7 @@
       "name": "Launch",
       "type": "node",
       "request": "launch",
-      "program": "${workspaceRoot}\\02-rem-elements.js",
+      "program": "${workspaceRoot}\\01-planar.js",
       "stopOnEntry": false,
       "args": [],
       "cwd": "${workspaceRoot}",
