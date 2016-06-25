@@ -5,7 +5,7 @@
       "name": "Launch",
       "type": "node",
       "request": "launch",
-      "program": "${workspaceRoot}\\01-planar.js",
+      "program": "${workspaceRoot}\\03-youngest-person.js",
       "stopOnEntry": false,
       "args": [],
       "cwd": "${workspaceRoot}",
