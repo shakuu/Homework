@@ -5,7 +5,7 @@
             "name": "Launch",
             "type": "node",
             "request": "launch",
-            "program": "${workspaceRoot}\\03-shaver-parser.js",
+            "program": "${workspaceRoot}\\01-vehicles.js",
             "stopOnEntry": false,
             "args": [],
             "cwd": "${workspaceRoot}",
