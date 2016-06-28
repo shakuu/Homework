@@ -10,5 +10,8 @@
 
         public const int ToothpasteIngredientNameLengthMin = 4;
         public const int ToothpasteIngredientNameLengthMax = 12;
+
+        public const int CategoryNameLengthMin = 2;
+        public const int CategoryNameLengthMax = 15;
     }
 }

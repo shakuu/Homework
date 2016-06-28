@@ -16,9 +16,9 @@ namespace Cosmetics.Categories
         private const string ErrorMsg = "Category name";
         private const string ProductSingle = "product";
         private const string ProductPlural = "products";
-        
-        private const int min = 2;
-        private const int max = 15;
+
+        private const int Min = 2;
+        private const int Max = 15;
 
         private string name;
 
@@ -40,13 +40,15 @@ namespace Cosmetics.Categories
             set
             {
                 Validator.CheckIfStringLengthIsValid(
-                    value, max, min,
+                    value,
+                    GlobalValidationConstants.CategoryNameLengthMax,
+                    GlobalValidationConstants.CategoryNameLengthMin,
                     string.Format(
-                        GlobalErrorMessages.InvalidStringLength, ErrorMsg, min, max));
+                        GlobalErrorMessages.InvalidStringLength, ErrorMsg, Min, Max));
 
                 Validator
                     .CheckIfStringIsNullOrEmpty(
-                    value, 
+                    value,
                     string.Format(
                         GlobalErrorMessages
                         .StringCannotBeNullOrEmpty, ErrorMsg));
@@ -63,13 +65,7 @@ namespace Cosmetics.Categories
 
         public void RemoveCosmetics(IProduct cosmetics)
         {
-            var count =
-                (from c in this.products
-                 where c.Name == cosmetics.Name
-                       && c.Brand == cosmetics.Brand
-                       && c.Price == cosmetics.Price
-                       && c.Gender == cosmetics.Gender
-                 select c).Count();
+            var count = this.CountElementOccurances(cosmetics);
 
             if (count < 1)
             {
@@ -91,9 +87,9 @@ namespace Cosmetics.Categories
                 PrintFormat,
                 this.Name,
                 this.products.Count,
-                this.products.Count > 1 || this.products.Count == 0 ? 
+                this.products.Count > 1 || this.products.Count == 0 ?
                     ProductPlural : ProductSingle);
-            
+
             foreach (var product in this.products)
             {
                 output.Append(Environment.NewLine);
@@ -109,6 +105,17 @@ namespace Cosmetics.Categories
                 (from c in this.products
                  orderby c.Brand ascending, c.Price descending
                  select c).ToList();
+        }
+
+        private int CountElementOccurances(IProduct cosmetics)
+        {
+            return
+                (from c in this.products
+                 where c.Name == cosmetics.Name
+                       && c.Brand == cosmetics.Brand
+                       && c.Price == cosmetics.Price
+                       && c.Gender == cosmetics.Gender
+                 select c).Count();
         }
     }
 }
