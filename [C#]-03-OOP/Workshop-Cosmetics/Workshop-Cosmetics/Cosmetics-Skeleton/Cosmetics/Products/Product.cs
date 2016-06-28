@@ -2,8 +2,13 @@
 {
     using Common;
     using Contracts;
+
     public abstract class Product : IProduct
     {
+        private const string ProductNameErrorMessagePrefix = "Product name";
+        private const string ProductBrandErrorMessagePrefix = "Product brand";
+
+
         private decimal price;
         private string name;
         private string brand;
@@ -30,7 +35,7 @@
                     GlobalValidationConstants.ProductNameLengthMin,
                     string.Format(
                         GlobalErrorMessages.InvalidStringLength,
-                        "Product name",
+                        ProductNameErrorMessagePrefix,
                         GlobalValidationConstants.ProductNameLengthMin,
                         GlobalValidationConstants.ProductNameLengthMax));
 
@@ -38,7 +43,7 @@
                     value,
                     string.Format(
                         GlobalErrorMessages.StringCannotBeNullOrEmpty,
-                        nameof(this.name)));
+                        ProductNameErrorMessagePrefix));
 
                 this.name = value;
             }
@@ -59,7 +64,7 @@
                    GlobalValidationConstants.ProductBrandLengthMin,
                    string.Format(
                        GlobalErrorMessages.InvalidStringLength,
-                       "Product brand",
+                       ProductBrandErrorMessagePrefix,
                        GlobalValidationConstants.ProductBrandLengthMin,
                        GlobalValidationConstants.ProductBrandLengthMax));
 
@@ -67,7 +72,7 @@
                     value,
                     string.Format(
                         GlobalErrorMessages.StringCannotBeNullOrEmpty,
-                        nameof(this.Brand)));
+                        ProductBrandErrorMessagePrefix));
 
                 this.brand = value;
             }
@@ -81,7 +86,7 @@
             }
             protected set
             {
-                Validator.CheckIfPriceIsPositive(
+                Validator.CheckIfNumberIsPositive(
                     value,
                     GlobalErrorMessages.PriceNegativeMessage);
 
@@ -89,7 +94,7 @@
             }
         }
 
-        public GenderType Gender { get; }
+        public GenderType Gender { get; set; }
 
         public abstract string Print();
     }

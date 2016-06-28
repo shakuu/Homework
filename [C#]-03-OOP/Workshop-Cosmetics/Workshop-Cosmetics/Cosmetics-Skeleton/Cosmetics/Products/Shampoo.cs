@@ -11,7 +11,9 @@
         // 3 gender
         // 4 usage
         private const string printFormat =
-            "- {0} – {1}:\r\n  * Price: ${2}\r\n  * For gender: {3}\r\n  * Quantity: {4} ml\r\n  * Usage: {5}";
+            "- {0} - {1}:\r\n  * Price: ${2}\r\n  * For gender: {3}\r\n  * Quantity: {4} ml\r\n  * Usage: {5}";
+
+        private uint milliliters;
 
         public Shampoo(string name, string brand, decimal price, GenderType gender, uint milliliters, UsageType usage)
             : base(name, brand, price, gender)
@@ -27,7 +29,19 @@
             get { return base.Price * this.Milliliters; }
         }
 
-        public uint Milliliters { get; set; }
+        public uint Milliliters
+        {
+            get
+            {
+                return this.milliliters;
+            }
+            set
+            {
+                Validator.CheckIfNumberIsPositive(value);
+
+                this.milliliters = value;
+            }
+        }
 
         public UsageType Usage { get; set; }
 

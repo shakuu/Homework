@@ -28,9 +28,13 @@
             }
         }
 
-        public static void CheckIfPriceIsPositive(decimal price, string message = null)
+        public static void CheckIfNumberIsPositive(object value, string message = null)
         {
-            if (price < 0)
+            Validator.CheckIfNull(value);
+
+            dynamic n = value;
+
+            if (n < 0)
             {
                 throw new ArgumentException(message);
             }

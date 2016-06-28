@@ -1,8 +1,8 @@
 ﻿namespace Cosmetics.Products
 {
-    using System.Collections.Generic;
     using Common;
     using Contracts;
+    using System.Collections.Generic;
 
     public class Toothpaste : Product, IProduct, IToothpaste
     {
@@ -12,7 +12,7 @@
         // 3: gender
         // 4: product ingredients, separated by “, “
         private const string PrintFormat =
-            "- {0} – {1}:\r\n  * Price: ${2}\r\n  * For gender: {3}\r\n  * Ingredients: {4}";
+            "- {0} - {1}:\r\n  * Price: ${2}\r\n  * For gender: {3}\r\n  * Ingredients: {4}";
         
         private ICollection<string> ingredientsLCollection;
 

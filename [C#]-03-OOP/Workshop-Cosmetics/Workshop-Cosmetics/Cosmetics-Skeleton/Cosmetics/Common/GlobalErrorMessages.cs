@@ -9,5 +9,8 @@
 
         public const string IncorrectIngredientNameLength =
             "Each ingredient must be between {0} and {1} symbols long!";
+
+        public const string ProductDoesNotExist =
+            "Product {0} does not exist in category {1}!";
     }
 }

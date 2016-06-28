@@ -11,7 +11,7 @@ CreateToothpaste White+++ C 15.50 men fluor,bqla,golqma
 CreateToothpaste White++++ ColgateColgateColgateColgate 15.50 men fluor,bqla,golqma
 CreateCategory ForMale
 ShowCategory ForMale
-CreateShampoo Cool Nivea 250.00 men 500 everyday
+CreateShampoo Cool Nivea 0.50 men 500 everyday
 CreateToothpaste White+ Colgate 15.50 men fluor,bqla,golqma
 AddToCategory ForMale Cool
 ShowCategory ForMale
@@ -26,7 +26,7 @@ RemoveFromCategory ForMale White+
 ShowCategory ForMale
 CreateCategory ForMale
 ShowCategory ForMale
-CreateShampoo Cool Nivea 250.00 men 500 everyday
+CreateShampoo Cool Nivea 0.50 men 500 everyday
 CreateToothpaste White+ Colgate 15.50 men fluor,bqla,golqma
 AddToCategory ForMale Cool
 ShowCategory ForMale

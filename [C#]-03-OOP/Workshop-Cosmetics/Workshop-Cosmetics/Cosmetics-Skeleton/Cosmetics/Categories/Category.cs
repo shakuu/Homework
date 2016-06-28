@@ -1,24 +1,22 @@
 ﻿
 namespace Cosmetics.Categories
 {
+    using Common;
+    using Contracts;
     using System;
     using System.Collections.Generic;
     using System.Linq;
     using System.Text;
-    using Common;
-    using Contracts;
 
     public class Category : ICategory
     {
         // 0 name, 1 number of products
         // products / product
-        private const string printFormat = 
-            "{0} category – {1} {2} in total";
-
-        private const string errorMsg = "Category name";
-        // 0: prodcut name, 1: category name
-        private const string ProductDoesNotExist = "Product {0} does not exist in category {1}!";
-
+        private const string PrintFormat = "{0} category - {1} {2} in total";
+        private const string ErrorMsg = "Category name";
+        private const string ProductSingle = "product";
+        private const string ProductPlural = "products";
+        
         private const int min = 2;
         private const int max = 15;
 
@@ -44,14 +42,14 @@ namespace Cosmetics.Categories
                 Validator.CheckIfStringLengthIsValid(
                     value, max, min,
                     string.Format(
-                        GlobalErrorMessages.InvalidStringLength, errorMsg, min, max));
+                        GlobalErrorMessages.InvalidStringLength, ErrorMsg, min, max));
 
                 Validator
                     .CheckIfStringIsNullOrEmpty(
                     value, 
                     string.Format(
                         GlobalErrorMessages
-                        .StringCannotBeNullOrEmpty, "Name"));
+                        .StringCannotBeNullOrEmpty, ErrorMsg));
 
                 this.name = value;
             }
@@ -77,7 +75,7 @@ namespace Cosmetics.Categories
             {
                 throw new ArgumentException(
                     string.Format(
-                        ProductDoesNotExist,
+                        GlobalErrorMessages.ProductDoesNotExist,
                         cosmetics.Name,
                         this.Name));
             }
@@ -90,11 +88,11 @@ namespace Cosmetics.Categories
             var output = new StringBuilder();
 
             output.AppendFormat(
-                printFormat,
+                PrintFormat,
                 this.Name,
                 this.products.Count,
                 this.products.Count > 1 || this.products.Count == 0 ? 
-                    "products" : "product");
+                    ProductPlural : ProductSingle);
             
             foreach (var product in this.products)
             {
