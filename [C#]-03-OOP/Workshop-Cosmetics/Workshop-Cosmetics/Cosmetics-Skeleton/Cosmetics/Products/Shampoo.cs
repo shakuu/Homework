@@ -22,6 +22,11 @@
 
         }
 
+        public new decimal Price
+        {
+            get { return base.Price * this.Milliliters; }
+        }
+
         public uint Milliliters { get; set; }
 
         public UsageType Usage { get; set; }
