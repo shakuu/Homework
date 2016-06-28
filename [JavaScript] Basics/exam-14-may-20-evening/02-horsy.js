@@ -16,8 +16,8 @@ function solve(args) {
         }
     }
 
-    function getNumber(row, col) {
-        return Math.pow(2, +row) - (+col);
+    function getNumber(crow, ccol) {
+        return Math.pow(2, +crow) - (+ccol);
     }
 
     while (true) {
