@@ -1,10 +1,14 @@
-//jshint esversion: 6
-'use strict()';
+function solve(args) {
+  var protocolSeparator = '://';
+  var serverSeparator = '/';
+  var parse = args[0] + '';
+  var index = 0;
+  var len = protocolSeparator.length;
 
-function ExtractURL() {
-  let parse = String(input);
-  let index = 0;
-  let len = protocolSeparator.length;
+  var protocol = '';
+  var server = '';
+  var resource = '';
+
 
   index = parse.indexOf(protocolSeparator);
   protocol = parse.substr(0, index);
@@ -16,17 +20,10 @@ function ExtractURL() {
   resource = parse.substr(index);
 
   console.log('protocol: ' + protocol);
-  console.log('server:   ' + server);
+  console.log('server: ' + server);
   console.log('resource: ' + resource);
 }
 
-let input = process.argv[2];
+test1 = ([ 'http://telerikacademy.com/Courses/Courses/Details/212' ]);
 
-let protocolSeparator = '://';
-let serverSeparator = '/';
-
-let protocol = '';
-let server = '';
-let resource = '';
-
-ExtractURL();
+solve(test1);

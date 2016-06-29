@@ -2,6 +2,7 @@
 {
     using System;
     using System.Globalization;
+
     using Logic.Battles;
     using Logic.Specialties;
 

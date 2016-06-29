@@ -5,7 +5,7 @@
       "name": "Launch",
       "type": "node",
       "request": "launch",
-      "program": "${workspaceRoot}\\07-sorting-array.js",
+      "program": "${workspaceRoot}\\06-first-larger-than.js",
       "stopOnEntry": false,
       "args": [],
       "cwd": "${workspaceRoot}",

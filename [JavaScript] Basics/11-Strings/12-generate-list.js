@@ -59,9 +59,4 @@ function stringFormat() {
   return output;
 }
 
-let btngo = document
-  .getElementById('go')
-  .addEventListener('click', function () {
 
-    createList();
-  });

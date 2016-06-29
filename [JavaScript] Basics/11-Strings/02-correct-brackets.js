@@ -1,29 +1,31 @@
-// jshint  esversion: 6
+function solve(str) {
+  var input = str[0] + '',
+    openBracket = 0,
+    closeBracket = 0,
+    brackets = [],
+    counter = 0;
 
-// Simple no correct check.
-function CountBrackets(str) {
-  let input = String(str);
-  let openBracket = 0;
-  let closeBracket = 0;
+  for (var i in input) {
+    var c = input[i];
 
-  // Count open brackets.
-  let index = input.indexOf('(');
-  while (index >= 0) {
-    openBracket += 1;
-    index = input.indexOf('(', index + 1);
-  }
+    if (c === '(') {
+      openBracket += 1;
+    } else if (c === ')') {
+      closeBracket += 1;
+    }
 
-  // Count close brackets.
-  index = input.indexOf(')');
-  while (index >= 0) {
-    closeBracket += 1;
-    index = input.indexOf(')', indes + 1);
+    if (closeBracket > openBracket) {
+      console.log('Incorrect');
+      return;
+    }
   }
 
   // Output
   if (openBracket === closeBracket) {
-    return true;
+    console.log('Correct');
   } else {
-    return false;
+    console.log('Incorrect');
   }
 }
+
+solve([ '((a+b)/5-d)' ]);

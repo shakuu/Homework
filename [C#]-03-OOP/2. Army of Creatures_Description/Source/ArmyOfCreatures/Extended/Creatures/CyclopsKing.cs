@@ -1,7 +1,6 @@
 ﻿namespace ArmyOfCreatures.Extended.Creatures
 {
     using Logic.Creatures;
-    using Logic.Specialties;
     using Specialties;
 
     class CyclopsKing : Creature

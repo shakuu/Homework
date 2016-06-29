@@ -1,31 +1,41 @@
-//jshint esversion: 6
-'use strict()';
+function solve(args) {
+  var input = args,
+    result = '';
 
+  for (var i in input) {
+    var parse = input[i].trim();
+    var len = parse.length;
+    for (var index = 0; index < len; index += 1) {
+      var chr = parse[index];
 
-function RemoveTags(){
-  let parse = String(input);
-  let result = '';
-
-  let len = parse.length;
-  for (let index = 0; index < len; index += 1){
-    let chr = parse[index];
-
-    if (chr === '<') {
-      isTag = true;
-    }
-    else if (chr === '>') {
-      isTag = false;
-    }
-    else if (!isTag) {
-      result += chr;
+      if (chr === '<') {
+        isTag = true;
+      }
+      else if (chr === '>') {
+        isTag = false;
+      }
+      else if (!isTag) {
+        result += chr;
+      }
     }
   }
-
+  
   console.log(result);
 }
 
-let input = process.argv[2]
+var test1 = [
+  '<html>',
+  '  <head>',
+  '    <title>Sample site</title>',
+  '  </head>',
+  '  <body>',
+  '    <div>text',
+  '      <div>more text</div>',
+  '      and more...',
+  '    </div>',
+  '    in body',
+  '  </body>',
+  '</html>'
+];
 
-let isTag= false;
-
-RemoveTags();
+solve(test1);

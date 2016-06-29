@@ -1,11 +1,11 @@
 // jshint  esversion: 6
 
 function ReverseString(str) {
-  let input = String(str);
-  let output = '';
-  let len = input.length;
+  var input = String(str);
+  var output = '';
+  var len = input.length;
 
-  for (let index = len - 1; index >= 0; index -= 1) {
+  for (var index = len - 1; index >= 0; index -= 1) {
     output += input[index];
   }
 

@@ -1,6 +1,5 @@
 function solve(args) {
-  var lines = (args[0] + '')
-    .split('\n')[1]
+  var lines = args[1]
     .split(' ')
     .map(Number);
 
@@ -14,4 +13,4 @@ function solve(args) {
   console.log(lines);
 }
 
-solve(['6\n-26 -25 -28 31 2 27']);
+solve([ '6', '-26 -25 -28 31 2 27' ]);

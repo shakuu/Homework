@@ -1,101 +1,105 @@
-//jshint esversion: 6
-'use strict()';
+function solve(args) {
 
-function ExtractURL() {
-  let parse = curTag;
-  let output = '';
+  var output = '';
 
-  let left = parse.indexOf('"');
-  let right = parse.indexOf('"', left + 1);
-  let URL = parse.substr(left + 1, right - (left + 1));
+  var openTag = String('<a href');
+  var closeTag = String('</a>');
+  var len = openTag.length;
 
-  left = parse.indexOf('>', right + 1);
-  right = parse.indexOf('<', left + 1);
-  let label = parse.substr(left + 1, right - (left + 1));
+  // States
+  var isTag = false;
 
-  output = '[' + label + '](' + URL + ')';
-  return output;
-}
+  var curTag = '';
 
-function ContainsCloseAnchor() {
-  let tag = curTag;
-  let index = tag.indexOf(closeTag);
+  function ExtractURL() {
+    var parse = curTag;
+    var output = '';
 
-  if (index < 0) {
-    return false;
-  } else {
-    return true;
-  }
-}
+    var left = parse.indexOf('"');
+    var right = parse.indexOf('"', left + 1);
+    var URL = parse.substr(left + 1, right - (left + 1));
 
-function IsAnchor() {
-  let tag = curTag;
-  if (tag.length < len) {
-    return false;
+    left = parse.indexOf('>', right + 1);
+    right = parse.indexOf('<', left + 1);
+    var label = parse.substr(left + 1, right - (left + 1));
+
+    output = '[' + label + '](' + URL + ')';
+    return output;
   }
 
-  for (let index = 0; index < len; index += 1) {
-    if (tag[index] != openTag[index]) {
+  function ContainsCloseAnchor() {
+    var tag = curTag;
+    var index = tag.indexOf(closeTag);
+
+    if (index < 0) {
+      return false;
+    } else {
+      return true;
+    }
+  }
+
+  function IsAnchor() {
+    var tag = curTag;
+    if (tag.length < len) {
       return false;
     }
+
+    for (var index = 0; index < len; index += 1) {
+      if (tag[index] != openTag[index]) {
+        return false;
+      }
+    }
+
+    return true;
   }
 
-  return true;
-}
+  function ReplaceTags(str) {
+    var parse = str + '';
 
-function ReplaceTags() {
-  let parse = String(input);
+    var len = parse.length;
+    for (var index = 0; index < len; index += 1) {
+      var chr = parse[index];
 
-  let len = parse.length;
-  for (let index = 0; index < len; index += 1) {
-    let chr = parse[index];
+      if (chr === '<') {
+        isTag = true;
+        curTag += chr;
+      }
+      else if (chr === '>') {
+        curTag += chr;
 
-    if (chr === '<') {
-      isTag = true;
-      curTag += chr;
-    }
-    else if (chr === '>') {
-      curTag += chr;
+        // evaluate tag
+        if (IsAnchor()) {
+          if (ContainsCloseAnchor()) {
+            // Extract
+            output += ExtractURL();
+            isTag = false;
+            curTag = '';
 
-      // evaluate tag
-      if (IsAnchor()) {
-        if (ContainsCloseAnchor()) {
-          // Extract
-          output += ExtractURL();
+          } else {
+            // nothing
+          }
+        }
+        else {
+          output += curTag;
           isTag = false;
           curTag = '';
-
-        } else {
-          // nothing
         }
       }
+      else if (isTag) {
+        curTag += chr;
+      }
       else {
-        output += curTag;
-        isTag = false;
-        curTag = '';
+        output += chr;
       }
     }
-    else if (isTag) {
-      curTag += chr;
-    }
-    else {
-      output += chr;
-    }
+
+    console.log(output);
   }
 
-  console.log(output);
+
+  ReplaceTags(args[0] + '');
 }
 
-let input = process.argv[2];
-let output = '';
+var test1 = ['<p>Please visit <a href="http://academy.telerik.com">our site</a> to choose a training course. Also visit <a href="www.devbg.org">our forum</a> to discuss the courses.</p>'];
 
-let openTag = String('<a href');
-let closeTag = String('</a>');
-let len = openTag.length;
-
-// States
-let isTag = false;
-
-let curTag = '';
-
-ReplaceTags();
+solve(test1);
