@@ -241,3 +241,5 @@ _Pvt_Extensions
 *.doc
 *.doc#
 *.png
+*.pdf
+*.stylecop
