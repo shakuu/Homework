@@ -1,25 +1,31 @@
-String.prototype.format = function (args) {
-  var str = String(this);
-  var options = args;
+function solve(args) {
 
-  var matchPlaceholders = new RegExp('#\{[a-z]*\}', 'g');
-  var matchFields = new RegExp('[a-z]+');
 
-  var matches = this.match(matchPlaceholders);
-  var len = matches.length;
 
-  for (let index = 0; index < len; index += 1) {
-    var replaceWith = String(matches[index]).match(matchFields);
-    str = str.replace(matches[index], options[replaceWith]);
-  }
+  String.prototype.format = function (s) {
+    var matchPlaceholders = new RegExp('#\{[a-z]*\}', 'g');
+    var matchFields = new RegExp('[a-z]+');
 
-  console.log(str);
-};
+    var matches = this.match(matchPlaceholders);
+    var len = matches.length;
 
-var options = {name: 'John'};
-'Hello, there! Are you #{name}?'.format(options);
+    for (let index = 0; index < len; index += 1) {
+      var replaceWith = String(matches[index]).match(matchFields);
+      str = str.replace(matches[index], options[replaceWith[0]]);
+    }
 
-var str = 'My name is #{blah} and I am #{blah}-years-old';
-var options = { blah: 'az', age: '13' };
+    console.log(str);
+  };
 
-str.format(options);
+  var str = args[1];
+  var options = args[0];
+
+  str.format(options);
+}
+
+const test1 = [
+  '{ "name": "John" }',
+  "Hello, there! Are you #{name}?"
+];
+
+solve(test1);
