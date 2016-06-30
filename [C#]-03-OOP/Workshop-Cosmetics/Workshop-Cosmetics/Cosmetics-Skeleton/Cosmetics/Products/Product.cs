@@ -8,6 +8,8 @@
         private const string ProductNameErrorMessagePrefix = "Product name";
         private const string ProductBrandErrorMessagePrefix = "Product brand";
 
+        private const string PrintFormat = "- {0} - {1}:\r\n  * Price: ${2}\r\n  * For gender: {3}\r\n";
+
 
         private decimal price;
         private string name;
@@ -78,7 +80,7 @@
             }
         }
 
-        public decimal Price
+        public virtual decimal Price
         {
             get
             {
@@ -96,6 +98,14 @@
 
         public GenderType Gender { get; set; }
 
-        public abstract string Print();
+        public virtual string Print()
+        {
+            return string.Format(
+                PrintFormat,
+                this.Brand,
+                this.Name,
+                this.Price,
+                this.Gender);
+        }
     }
 }

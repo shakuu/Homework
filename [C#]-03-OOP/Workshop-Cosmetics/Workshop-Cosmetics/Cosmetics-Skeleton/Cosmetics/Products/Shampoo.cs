@@ -5,13 +5,12 @@
 
     public class Shampoo : Product, IShampoo, IProduct
     {
-        // 0 brand
-        // 1 name
-        // 2 price
-        // 3 gender
-        // 4 usage
         private const string printFormat =
             "- {0} - {1}:\r\n  * Price: ${2}\r\n  * For gender: {3}\r\n  * Quantity: {4} ml\r\n  * Usage: {5}";
+
+        private const string PrintFormatLine1 = "  * Quantity: {0} ml\r\n";
+
+        private const string PrintFormatLine2 = "  * Usage: {0}";
 
         private uint milliliters;
 
@@ -24,7 +23,7 @@
 
         }
 
-        public new decimal Price
+        public override decimal Price
         {
             get { return base.Price * this.Milliliters; }
         }
@@ -47,14 +46,9 @@
 
         public override string Print() // override abstract ? 
         {
-            return string.Format(
-                printFormat,
-                this.Brand,
-                this.Name,
-                this.Price,
-                this.Gender,
-                this.Milliliters,
-                this.Usage);
+            return base.Print()
+                   + string.Format(PrintFormatLine1, this.Milliliters)
+                   + string.Format(PrintFormatLine2, this.Usage);
         }
 
     }
