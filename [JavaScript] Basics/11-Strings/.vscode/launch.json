@@ -5,7 +5,7 @@
       "name": "Launch",
       "type": "node",
       "request": "launch",
-      "program": "${workspaceRoot}\\06-extract-text-html.js",
+      "program": "${workspaceRoot}\\04-parse-tags-3.js",
       "stopOnEntry": false,
       "args": ["ABBA baba ABAABA ABBA"],
         "cwd": "${workspaceRoot}",

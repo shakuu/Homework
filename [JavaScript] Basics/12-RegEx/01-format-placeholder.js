@@ -7,8 +7,12 @@ function solve(args) {
     input[0].split(',')
         .map(String)
         .map(str => {
-            let matchProps = /"([\w|\d|\s|.]*)":"?([\w|\d|\s|.]*)"?/i;
+            // let matchProps = /"([\w|\d|\s|.]*)":"?([\w|\d|\s|.]*)"?/i;
+            let matchProps = /"([\w|\d|\s|.]*)":/i;
+            let matchValues = /:(.*)/i;
+            
             let result = str.match(matchProps);
+            let vals = str.match(matchValues);
             if (result !== null) {
                 extractedProperties[result[1]] = (result[2]);
             }
@@ -19,7 +23,7 @@ function solve(args) {
     let res = input[1].match(matchOptions);
 
     while (res) {
-        input[1] = input[1].replace(res[0], extractedProperties[res[1]]);
+        input[1] = input[1].replace(res[0], extractedProperties[res[1]].trim('"'));
         res = input[1].match(matchOptions);
     }
 
