@@ -1,4 +1,5 @@
 const task2 = require('./02-chess-moves.js');
+const task3 = require('./03-cookie-styles.js');
 
 const task2_test1 = [
     '3',
@@ -21,4 +22,33 @@ const task2_test1 = [
     'd1 d3'
 ];
 
-task2.solve(task2_test1);
+// task2.solve(task2_test1);
+
+const task3_test1 = [
+    '#the-big-b{',
+    '  color: yellow;',
+    '  size: big;',
+    '}',
+    '.muppet{',
+    '  powers: all;',
+    '  skin: fluffy;',
+    '}',
+    '     .water-spirit         {',
+    '  powers: water;',
+    '             alignment    : not-good;',
+    '\t\t\t\t}',
+    'all{',
+    '  meant-for: nerdy-children;',
+    '}',
+    '.muppet      {',
+    '\tpowers: everything;',
+    '}',
+    'all              .muppet {',
+    '\talignment             :             good                             ;',
+    '}',
+    '   .muppet+             .water-spirit{',
+    '   power: everything-a-muppet-can-do-and-water;',
+    '}'
+];
+
+task3.solve(task3_test1);

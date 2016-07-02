@@ -19,8 +19,7 @@
             },
             "externalConsole": false,
             "sourceMaps": false,
-            "outDir": null,
-            "internalConsoleOptions": "openOnSessionStart"
+            "outDir": null
         },
         {
             "name": "Attach",
