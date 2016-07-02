@@ -8,7 +8,7 @@ function solve(args) {
         .map(String)
         .map(str => {
             // let matchProps = /"([\w|\d|\s|.]*)":"?([\w|\d|\s|.]*)"?/i;
-            let matchProps = /"([\w|\d|\s|.]*)":/i;
+            let matchProps = /"([\w|\d|\s|.]*)":/g;
             let matchValues = /:(.*)/i;
             
             let result = str.match(matchProps);

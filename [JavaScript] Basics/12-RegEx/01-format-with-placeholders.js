@@ -1,7 +1,5 @@
 function solve(args) {
 
-
-
   String.prototype.format = function (s) {
     var matchPlaceholders = new RegExp('#\{[a-z]*\}', 'g');
     var matchFields = new RegExp('[a-z]+');
@@ -11,6 +9,7 @@ function solve(args) {
 
     for (let index = 0; index < len; index += 1) {
       var replaceWith = String(matches[index]).match(matchFields);
+      console.log(options[replaceWith[0]]);
       str = str.replace(matches[index], options[replaceWith[0]]);
     }
 
@@ -23,9 +22,13 @@ function solve(args) {
   str.format(options);
 }
 
-const test1 = [
-  '{ "name": "John" }',
-  "Hello, there! Are you #{name}?"
-];
+// const test1 = [
+//   '{ "name": "John" }',
+//   "Hello, there! Are you #{name}?"
+// ];
 
-solve(test1);
+// solve(test1);
+
+module.exports = {
+  solve
+};
