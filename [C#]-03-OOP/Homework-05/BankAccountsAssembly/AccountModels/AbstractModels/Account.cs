@@ -40,21 +40,21 @@
 
         protected CustomerType CustomerType { get; private set; }
         
-        public decimal CalculateInterest(int period)
+        public decimal CalculateInterest(int periodInMonths)
         {
             const string format = "Calculate{0}Interest";
             var name = string.Format(format, this.Customer.GetType().Name);
             var method = this.GetType()
                 .GetMethod(name, BindingFlags.NonPublic | BindingFlags.Instance);
 
-            var result = (decimal)method.Invoke(this, new object[] { period });
+            var result = (decimal)method.Invoke(this, new object[] { periodInMonths });
 
             return result;
         }
 
-        protected abstract decimal CalculateIndividualInterest(int period);
+        protected abstract decimal CalculateIndividualInterest(int periodInMonths);
 
-        protected abstract decimal CalculateCompanyInterest(int period);
+        protected abstract decimal CalculateCompanyInterest(int periodInMonths);
 
         public virtual void DepositMoney(decimal amount)
         {

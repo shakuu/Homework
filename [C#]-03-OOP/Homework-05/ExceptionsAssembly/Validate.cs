@@ -15,7 +15,6 @@
             {
                 return true;
             }
-            throw new NotImplementedException();
         }
     }
 }
