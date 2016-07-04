@@ -1,0 +1,63 @@
+Pilot John hired
+Pilot Nelson hired
+Pilot Bender could not be found
+Tank T-72 manufactured - attack: 100; defense: 100
+Fighter Kingcobra manufactured - attack: 150; defense: 90; stealth: ON
+John - no machines
+Pilot John engaged machine T-72
+Pilot John engaged machine Kingcobra
+John - 2 machines
+- T-72
+ *Type: Tank
+ *Health: 100
+ *Attack: 60
+ *Defense: 130
+ *Targets: None
+ *Defense: ON
+- Kingcobra
+ *Type: Fighter
+ *Health: 200
+ *Attack: 150
+ *Defense: 90
+ *Targets: None
+ *Stealth: ON
+Nelson - no machines
+Machine T-72 is already occupied
+Machine Kingcobra is already occupied
+Fighter Boeing manufactured - attack: 180; defense: 90; stealth: OFF
+Pilot Nelson engaged machine Boeing
+Tank T-72 cannot attack stealth fighter Kingcobra
+Machine Boeing was attacked by machine T-72 - current health: 200
+Tank T-72 toggled defense mode
+Machine Kingcobra does not support this operation
+Machine Boeing does not support this operation
+Tank T-72 cannot attack stealth fighter Kingcobra
+Machine Boeing was attacked by machine T-72 - current health: 190
+Fighter Kingcobra toggled stealth mode
+Fighter Boeing toggled stealth mode
+Machine T-72 does not support this operation
+Machine T-72 was attacked by machine Kingcobra - current health: 50
+Machine T-72 was attacked by machine Boeing - current health: 0
+Nelson - 1 machine
+- Boeing
+ *Type: Fighter
+ *Health: 190
+ *Attack: 180
+ *Defense: 90
+ *Targets: T-72
+ *Stealth: ON
+John - 2 machines
+- T-72
+ *Type: Tank
+ *Health: 0
+ *Attack: 100
+ *Defense: 100
+ *Targets: Boeing, Boeing
+ *Defense: OFF
+- Kingcobra
+ *Type: Fighter
+ *Health: 200
+ *Attack: 150
+ *Defense: 90
+ *Targets: T-72
+ *Stealth: OFF
