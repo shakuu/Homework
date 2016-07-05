@@ -120,9 +120,7 @@
         {
             get
             {
-                // TODO: Return copy
-
-                return this.targets;
+                return new Collection<string>(this.targets);
             }
         }
 
