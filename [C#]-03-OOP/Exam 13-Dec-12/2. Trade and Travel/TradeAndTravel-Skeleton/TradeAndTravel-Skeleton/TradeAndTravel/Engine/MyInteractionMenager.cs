@@ -8,7 +8,6 @@ namespace TradeAndTravel
     {
         protected override Item CreateItem(string itemTypeString, string itemNameString, Location itemLocation, Item item)
         {
-
             switch (itemTypeString)
             {
                 case "armor":
@@ -109,6 +108,18 @@ namespace TradeAndTravel
                 && inventory.Any(item => item.GetType() == typeof(Wood)))
             {
                 // TODO: Remove iron ? 
+                //var itemToRemove = inventory
+                //    .Where(item => item.GetType() == typeof(Iron))
+                //    .First();
+
+                //base.RemoveFromPerson(actor, itemToRemove);
+
+                //itemToRemove = inventory
+                //    .Where(item => item.GetType() == typeof(Wood))
+                //    .First();
+
+                //base.RemoveFromPerson(actor, itemToRemove);
+
                 base.AddToPerson(actor, new Weapon(newItemName));
             }
         }
@@ -119,7 +130,12 @@ namespace TradeAndTravel
 
             if (inventory.Any(item => item.GetType() == typeof(Iron)))
             {
-                // TODO: Remove iron and wood ? 
+                // TODO: Remove iron
+                //var itemToRemove = inventory
+                //    .Where(item => item.GetType() == typeof(Iron))
+                //    .First();
+
+                //base.RemoveFromPerson(actor, itemToRemove);
                 base.AddToPerson(actor, new Armor(newItemName));
             }
         }
