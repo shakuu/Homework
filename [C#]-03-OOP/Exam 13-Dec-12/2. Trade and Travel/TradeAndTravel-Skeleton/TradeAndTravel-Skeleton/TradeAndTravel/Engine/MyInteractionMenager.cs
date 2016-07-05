@@ -127,7 +127,7 @@ namespace TradeAndTravel
         private void HandleCraftArmorInteraction(string newItemName, Person actor)
         {
             var inventory = actor.ListInventory();
-
+            
             if (inventory.Any(item => item.GetType() == typeof(Iron)))
             {
                 // TODO: Remove iron
@@ -142,37 +142,19 @@ namespace TradeAndTravel
 
         private void HandleGatherInteraction(string newItemName, Person actor)
         {
-            if (actor.Location.GetType() == typeof(Forest))
+            if (actor.Location is IGatheringLocation)
             {
-                this.HandeGatherInteractionInForest(newItemName, actor);
-            }
-            else if (actor.Location.GetType() == typeof(Mine))
-            {
-                this.HandeGatherInteractionInMine(newItemName, actor);
+                var location = actor.Location as IGatheringLocation;
+                var inventory = actor.ListInventory();
+
+                if (inventory.Any(item => item.ItemType == location.RequiredItem))
+                {
+                    base.AddToPerson(actor, location.ProduceItem(newItemName));
+                }
             }
             else
             {
                 // Nothing.
-            }
-        }
-
-        private void HandeGatherInteractionInMine(string newItemName, Person actor)
-        {
-            var inventory = actor.ListInventory();
-
-            if (inventory.Any(item => item.GetType() == typeof(Armor)))
-            {
-                base.AddToPerson(actor, new Iron(newItemName));
-            }
-        }
-
-        private void HandeGatherInteractionInForest(string newItemName, Person actor)
-        {
-            var inventory = actor.ListInventory();
-
-            if (inventory.Any(item => item.GetType() == typeof(Weapon)))
-            {
-                base.AddToPerson(actor, new Wood(newItemName));
             }
         }
     }

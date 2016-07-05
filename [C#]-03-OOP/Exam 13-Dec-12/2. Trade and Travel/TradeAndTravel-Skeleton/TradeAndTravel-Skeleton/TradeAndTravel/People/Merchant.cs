@@ -1,5 +1,4 @@
-﻿using System;
-
+﻿
 namespace TradeAndTravel
 {
     public class Merchant : Shopkeeper, ITraveller

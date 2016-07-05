@@ -1,7 +1,8 @@
 ﻿namespace TradeAndTravel
 {
     using System;
-    using System.Collections.Generic;
+    using System.Collections.ObjectModel;
+
     public abstract class Item : WorldObject, IItem
     {
         public ItemType ItemType { get; private set; }
@@ -29,9 +30,12 @@
             this.ItemType = type;
         }
 
+        public Collection<string> InteractionHistory { get; protected set; } = new Collection<string>();
+
         public virtual void UpdateWithInteraction(string interaction)
         {
+            this.InteractionHistory.Add(interaction);
         }
-        
+
     }
 }
