@@ -1,0 +1,134 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="TradeAndTravel.WorldObject">
+    <Position X="5.75" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>CAACAAEAAAAAAAAggAAAAAQCAAAAAIAAAAQAAAAAAAA=</HashCode>
+      <FileName>WorldObject.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="TradeAndTravel.Location">
+    <Position X="7" Y="6.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABAAAAAAAAAA=</HashCode>
+      <FileName>Location.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Property Name="LocationType" />
+    </ShowAsAssociation>
+  </Class>
+  <Class Name="TradeAndTravel.Person">
+    <Position X="3.5" Y="6.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AIAAAAAABAAAAAAAAAoAAAAAIAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Person.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Property Name="Location" />
+    </ShowAsAssociation>
+  </Class>
+  <Class Name="TradeAndTravel.Shopkeeper">
+    <Position X="2.5" Y="10" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AACAAAAAAAAAAAAAAAAAAAAAAAAAAgAAAAAAAAAAAAA=</HashCode>
+      <FileName>Shopkeeper.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="TradeAndTravel.Traveller">
+    <Position X="4.75" Y="10" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAABAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Traveller.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="TradeAndTravel.Town">
+    <Position X="7" Y="8.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Town.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="TradeAndTravel.Item">
+    <Position X="9.25" Y="6.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAgAAAAAgA=</HashCode>
+      <FileName>Item.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Property Name="ItemType" />
+    </ShowAsAssociation>
+  </Class>
+  <Class Name="TradeAndTravel.GatheringLocation" Collapsed="true">
+    <Position X="17.75" Y="3" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>GatheringLocation.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="TradeAndTravel.Engine">
+    <Position X="9.25" Y="12.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAACAAAAAAAAAAAAAABAAAAAAAAAgAAAAAAAA=</HashCode>
+      <FileName>Engine.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Field Name="interactionManager" />
+    </ShowAsAssociation>
+  </Class>
+  <Class Name="TradeAndTravel.InteractionManager">
+    <Position X="6.25" Y="12" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAACAAAAAAAAAAAAAAAAAAAAAAAIAAAAAAAAYAAAAAA=</HashCode>
+      <FileName>InteractionManager.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="TradeAndTravel.Armor">
+    <Position X="9.25" Y="8.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAgAAAAAAgAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Armor.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Interface Name="TradeAndTravel.ITraveller" Collapsed="true">
+    <Position X="19.5" Y="4.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAABAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>ITraveller.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="TradeAndTravel.IShopkeeper" Collapsed="true">
+    <Position X="17.75" Y="4.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AACAAAAAAAAAAAAAAAAAAAAAAAAAAgAAAAAAAAAAAAA=</HashCode>
+      <FileName>IShopkeeper.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="TradeAndTravel.IGatheringLocation">
+    <Position X="15.25" Y="6.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAACAAAAAAAAIAAAAAAAAAAAAAAAAAAAAAAAIAAAA=</HashCode>
+      <FileName>IGatheringLocation.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Property Name="GatheredType" />
+      <Property Name="RequiredItem" />
+    </ShowAsAssociation>
+  </Interface>
+  <Enum Name="TradeAndTravel.LocationType">
+    <Position X="8" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAIAIAAAAgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>LocationType.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="TradeAndTravel.ItemType">
+    <Position X="12.25" Y="6.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAEAAAAAAAAAAAAAAAAAAAAAAAAAAAgAEAAgAAAAAAA=</HashCode>
+      <FileName>ItemType.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>
