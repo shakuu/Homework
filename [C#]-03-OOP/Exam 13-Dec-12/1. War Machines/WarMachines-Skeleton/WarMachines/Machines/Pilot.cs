@@ -29,7 +29,10 @@
             }
             set
             {
-                // TODO: Check for null
+                new Validator().CheckIfNull(
+                    value,
+                    this.GetType().Name,
+                    nameof(this.Name));
 
                 this.name = value;
             }
@@ -37,7 +40,10 @@
 
         public void AddMachine(IMachine machine)
         {
-            new Validator().CheckIfNull(machine);
+            new Validator().CheckIfNull(
+                machine,
+                this.GetType().Name,
+                nameof(AddMachine));
 
             this.machines.Add(machine);
 

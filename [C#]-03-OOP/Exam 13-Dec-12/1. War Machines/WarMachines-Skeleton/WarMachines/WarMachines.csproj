@@ -21,6 +21,7 @@
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <NoWarn>CS0414</NoWarn>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
@@ -51,7 +52,6 @@
     <Compile Include="Interfaces\ITank.cs" />
     <Compile Include="Interfaces\IMachineFactory.cs" />
     <Compile Include="Engine\MachineFactory.cs" />
-    <Compile Include="Machines\DeleteMe.cs" />
     <Compile Include="Machines\Fighter.cs" />
     <Compile Include="Machines\Machine.cs" />
     <Compile Include="Machines\Pilot.cs" />

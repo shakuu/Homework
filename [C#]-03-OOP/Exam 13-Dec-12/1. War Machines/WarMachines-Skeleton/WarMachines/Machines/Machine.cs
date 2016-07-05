@@ -11,6 +11,7 @@
     class Machine : IMachine
     {
         private IValidator validator;
+        private IToStringFormatter formatStorage;
 
         private string name;
         private double attackPoints;
@@ -88,7 +89,11 @@
 
             set
             {
-                this.validator.CheckIfNull(value);
+                this.validator.CheckIfNull(
+                    value,
+                    this.GetType().Name,
+                    nameof(Name));
+
                 this.name = value;
             }
         }
@@ -102,7 +107,11 @@
 
             set
             {
-                this.validator.CheckIfNull(value);
+                this.validator.CheckIfNull(
+                    value,
+                    this.GetType().Name,
+                    nameof(this.Pilot));
+
                 this.pilot = value;
             }
         }
@@ -129,8 +138,8 @@
         /// <returns></returns>
         public override string ToString()
         {
-            var formatStorage = new ToStringFormat();
-            
+            this.formatStorage = new ToStringFormat();
+
             var output = new StringBuilder();
 
             output.Append(
@@ -157,7 +166,7 @@
                 string.Format(
                     formatStorage[MachineLineNumberType.Line05], this.DefensePoints)
                     + Environment.NewLine);
-            
+
             output.Append(
                 string.Format(
                     formatStorage[MachineLineNumberType.Line06],

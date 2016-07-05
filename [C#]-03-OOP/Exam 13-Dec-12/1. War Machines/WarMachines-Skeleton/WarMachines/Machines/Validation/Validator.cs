@@ -4,13 +4,23 @@
 
     internal class Validator : IValidator
     {
-        public void CheckIfNull(object obj)
+        // Class: Type.Name, Property: Prop.Name cannot be null
+        private const string IsNullFormat = "Null value in Class: {0}, Property: {1}";
+
+        public void CheckIfNull(
+            object obj,
+            string typeName = "Unknown",
+            string propertyName = "Unknown")
         {
             // TODO: add meaningful message
 
             if (obj == null)
             {
-                throw new ArgumentNullException();
+                throw new ArgumentNullException(
+                    string.Format(
+                        IsNullFormat,
+                        typeName,
+                        propertyName));
             }
         }
 

@@ -35,8 +35,7 @@
         {
             this.machineFormatStrings =
                 new Collection<string>();
-
-
+            
             var fields = this.GetType()
                 .GetFields(
                     BindingFlags.NonPublic | BindingFlags.Instance)
