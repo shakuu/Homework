@@ -13,5 +13,16 @@
                 throw new ArgumentNullException();
             }
         }
+
+        public void CheckIfPositive<T>(T value)
+            where T : struct
+        {
+            dynamic tValue = value;
+
+            if (tValue <= 0)
+            {
+                throw new ArgumentOutOfRangeException("Value must be positive");
+            }
+        }
     }
 }

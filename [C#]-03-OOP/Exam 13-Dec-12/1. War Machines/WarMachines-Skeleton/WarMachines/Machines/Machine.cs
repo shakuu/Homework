@@ -4,20 +4,12 @@
     using System.Collections.Generic;
     using System.Collections.ObjectModel;
     using System.Text;
+    using ToStringFormats;
     using WarMachines.Interfaces;
     using WarMachines.Machines.Validation;
 
     class Machine : IMachine
     {
-        private const string FormatMachineName = "- {0}";
-        private const string FormatMachineType = " *Type: {0}";
-        private const string FormatMachineHealthPoints = " *Health: {0}";
-        private const string FormatMachineAttackPoints = " *Attack: {0}";
-        private const string FormatMachineDefensePoints = " *Defense: {0}";
-        private const string FormatMachineTargets = " *Targets: {0}"; // None / Coma separated
-        //*Defense: (“ON”/”OFF” – when applicable)
-        //*Stealth: (“ON”/”OFF” – when applicable)
-
         private IValidator validator;
 
         private string name;
@@ -29,15 +21,23 @@
 
         public Machine(string name, double attackPoints, double defensePoints)
         {
+            this.validator = new Validator();
+
             this.name = name;
             this.AttackPoints = attackPoints;
             this.DefensePoints = defensePoints;
 
             this.targets = new Collection<string>();
-            this.validator = new Validator();
         }
 
-        // TODO: validation
+        protected IValidator Validator
+        {
+            get
+            {
+                return this.validator;
+            }
+        }
+
         public double AttackPoints
         {
             get
@@ -46,8 +46,7 @@
             }
             protected set
             {
-                //this.validator.CheckIfNull(value);
-
+                //this.validator.CheckIfPositive(value);
                 this.attackPoints = value;
             }
         }
@@ -58,8 +57,10 @@
             {
                 return this.defensePoints;
             }
+
             protected set
             {
+                //this.validator.CheckIfPositive(value);
                 this.defensePoints = value;
             }
         }
@@ -73,8 +74,7 @@
 
             set
             {
-                // TODO: Validate positive
-
+                //this.validator.CheckIfPositive(value);
                 this.healthPoints = value;
             }
         }
@@ -88,6 +88,7 @@
 
             set
             {
+                this.validator.CheckIfNull(value);
                 this.name = value;
             }
         }
@@ -102,7 +103,6 @@
             set
             {
                 this.validator.CheckIfNull(value);
-
                 this.pilot = value;
             }
         }
@@ -121,41 +121,46 @@
         {
             this.Targets.Add(target);
         }
-       
+
+        /// <summary>
+        /// Returns a string for each child to update with it's class 
+        /// specific properties.
+        /// </summary>
+        /// <returns></returns>
         public override string ToString()
         {
-            // TODO:
+            var formatStorage = new ToStringFormat();
+            
             var output = new StringBuilder();
 
             output.Append(
                 string.Format(
-                    FormatMachineName, this.Name)
+                    formatStorage[MachineLineNumberType.Line01], this.Name)
                     + Environment.NewLine);
 
             output.Append(
                 string.Format(
-                    FormatMachineType, this.GetType().Name)
+                    formatStorage[MachineLineNumberType.Line02], this.GetType().Name)
                     + Environment.NewLine);
 
             output.Append(
                 string.Format(
-                    FormatMachineHealthPoints, this.HealthPoints)
+                    formatStorage[MachineLineNumberType.Line03], this.HealthPoints)
                     + Environment.NewLine);
 
             output.Append(
                 string.Format(
-                    FormatMachineAttackPoints, this.AttackPoints)
+                    formatStorage[MachineLineNumberType.Line04], this.AttackPoints)
                     + Environment.NewLine);
 
             output.Append(
                 string.Format(
-                    FormatMachineDefensePoints, this.DefensePoints)
+                    formatStorage[MachineLineNumberType.Line05], this.DefensePoints)
                     + Environment.NewLine);
-
-
+            
             output.Append(
                 string.Format(
-                    FormatMachineTargets,
+                    formatStorage[MachineLineNumberType.Line06],
                         this.Targets.Count == 0
                             ? "None"
                             : string.Join(", ", this.Targets))

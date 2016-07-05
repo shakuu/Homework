@@ -1,6 +1,7 @@
 ﻿namespace WarMachines.Machines
 {
     using System.Text;
+
     using WarMachines.Interfaces;
 
     internal class Tank : Machine, ITank
@@ -12,12 +13,14 @@
         private const double DefenseModeOnDefenseBonus = 30;
         private const double DefenseModeOnAttackBonus = -40;
 
+        private const double TankInitialHealthPoints = 100;
+
         private bool defenseMode;
 
         public Tank(string name, double attackPoints, double defensePoints)
             : base(name, attackPoints, defensePoints)
         {
-            base.HealthPoints = 100;
+            base.HealthPoints = TankInitialHealthPoints;
             this.ToggleDefenseMode();
         }
 
@@ -54,7 +57,9 @@
         public override string ToString()
         {
             var output = new StringBuilder();
+
             output.Append(base.ToString());
+
             output.AppendFormat(FormatDefenseMode, 
                 this.DefenseMode 
                 ? FormatDefenseModeON

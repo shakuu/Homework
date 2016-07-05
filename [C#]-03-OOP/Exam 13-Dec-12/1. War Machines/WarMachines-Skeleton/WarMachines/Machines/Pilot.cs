@@ -10,7 +10,7 @@
 
     internal class Pilot : IPilot
     {
-        private const string FormatPrint = "{0} – {1} {2}";
+        private const string FormatPrint = "{0} - {1} {2}";
 
         private string name;
         private ICollection<IMachine> machines;

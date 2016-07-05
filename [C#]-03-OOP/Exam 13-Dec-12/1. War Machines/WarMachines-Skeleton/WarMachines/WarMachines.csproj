@@ -56,6 +56,9 @@
     <Compile Include="Machines\Machine.cs" />
     <Compile Include="Machines\Pilot.cs" />
     <Compile Include="Machines\Tank.cs" />
+    <Compile Include="Machines\ToStringFormats\IToStringFormatter.cs" />
+    <Compile Include="Machines\ToStringFormats\LineNumberType.cs" />
+    <Compile Include="Machines\ToStringFormats\ToStringFormat.cs" />
     <Compile Include="Machines\Validation\IValidator.cs" />
     <Compile Include="Machines\Validation\Validator.cs" />
     <Compile Include="WarMachinesProgram.cs" />
