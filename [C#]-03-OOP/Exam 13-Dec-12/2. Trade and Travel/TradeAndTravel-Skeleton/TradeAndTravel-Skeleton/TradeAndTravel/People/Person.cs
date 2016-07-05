@@ -3,7 +3,7 @@ namespace TradeAndTravel
 {
     using System.Collections.Generic;
 
-    public class Person : WorldObject
+    public class Person : WorldObject, IPerson
     {
         HashSet<Item> inventoryItems;
 

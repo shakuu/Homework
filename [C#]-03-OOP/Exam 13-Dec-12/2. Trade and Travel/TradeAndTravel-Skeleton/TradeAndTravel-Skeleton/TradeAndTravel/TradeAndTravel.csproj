@@ -59,6 +59,7 @@
     <Compile Include="Locations\Location.cs" />
     <Compile Include="Locations\LocationType.cs" />
     <Compile Include="Locations\Mine.cs" />
+    <Compile Include="People\IPerson.cs" />
     <Compile Include="People\Merchant.cs" />
     <Compile Include="People\Person.cs" />
     <Compile Include="Program.cs" />
