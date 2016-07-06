@@ -54,7 +54,7 @@ namespace FurnitureManufacturer.Models
                 catch (Exception)
                 {
                     // Continue.
-                    //throw;
+                    throw;
                 }
             }
         }
@@ -79,7 +79,7 @@ namespace FurnitureManufacturer.Models
                 catch (Exception)
                 {
                     // Continue.
-                    //throw;
+                    throw;
                 }
             }
         }

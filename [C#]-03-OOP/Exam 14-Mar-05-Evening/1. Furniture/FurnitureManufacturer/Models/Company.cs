@@ -50,7 +50,7 @@
                 catch (Exception)
                 {
                     // Continue;
-                    //throw;
+                    throw;
                 }
             }
         }
@@ -81,7 +81,7 @@
                 catch (Exception)
                 {
                     // Continue;
-                    //throw;
+                    throw;
                 }
 
                 this.validator = null;
@@ -113,13 +113,29 @@
 
         public void Remove(IFurniture furniture)
         {
-            this.furnitures.Remove(furniture);
+            var elementToRemove = this.furnitures.FirstOrDefault(f =>
+            {
+                var result = 0;
+
+                result = f.GetType() == furniture.GetType() ? result + 1 : result;
+                result = f.Material == furniture.Material ? result + 1 : result;
+                result = f.Model == furniture.Model ? result + 1 : result;
+                result = f.Price == furniture.Price ? result + 1 : result;
+
+                return result == 4;
+            }
+            );
+
+            if (elementToRemove != null)
+            {
+                this.furnitures.Remove(elementToRemove);
+            }
         }
 
         public IFurniture Find(string model)
         {
             return this.furnitures
-                .FirstOrDefault(furniture => furniture.Model == model);
+                .FirstOrDefault(furniture => furniture.Model.ToLower() == model.ToLower());
         }
 
         public string Catalog()

@@ -39,7 +39,7 @@ namespace FurnitureManufacturer.Models
                 catch (Exception)
                 {
                     //continue
-                    //throw;
+                    throw;
                 }
             }
         }
