@@ -1,7 +1,6 @@
 ﻿namespace TradeAndTravel
 {
     using System;
-    using System.Collections.ObjectModel;
 
     public abstract class Item : WorldObject, IItem
     {
@@ -33,12 +32,9 @@
         }
 
         public Location Location { get; set; }
-
-        public Collection<string> InteractionHistory { get; protected set; } = new Collection<string>();
-
+        
         public virtual void UpdateWithInteraction(string interaction)
         {
-            this.InteractionHistory.Add(interaction);
         }
 
     }
