@@ -26,7 +26,7 @@
                 attackableUnits
                     .Where(unit => unit.Power <= this.Aggression)
                     .OrderByDescending(unit => unit.Health)
-                    .First();
+                    .FirstOrDefault();
             
             return optimalAttackableUnit;
         }

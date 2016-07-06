@@ -1,6 +1,5 @@
 ﻿namespace Infestation
 {
-    using System;
     using System.Collections.Generic;
     using System.Linq;
 
@@ -49,8 +48,11 @@
         {
             UnitInfo optimalInfestableUnit = new UnitInfo(null, UnitClassification.Unknown, 0, int.MaxValue, 0);
 
-            optimalInfestableUnit = infestableUnits.OrderBy(unit => unit.Health).First();
-
+            if (infestableUnits != null)
+            {
+                optimalInfestableUnit = infestableUnits.OrderBy(unit => unit.Health).FirstOrDefault();
+            }
+           
             return optimalInfestableUnit;
         }
 

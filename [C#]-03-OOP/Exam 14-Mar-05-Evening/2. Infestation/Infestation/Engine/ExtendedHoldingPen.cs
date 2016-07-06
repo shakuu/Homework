@@ -26,6 +26,21 @@
                     case "Weapon":
                         unitToGetSupplement.AddSupplement(new Weapon());
                         break;
+                    case "InfestationSpores":
+                        // do nothing 
+                        break;
+                    case "WeaponrySkill":
+                        // do nothing 
+                        break;
+                    case "AggressionInhibitor":
+                        unitToGetSupplement.AddSupplement(new AggressionCatalyst());
+                        break;
+                    case "HealthInhibitor":
+                        unitToGetSupplement.AddSupplement(new HealthCatalyst());
+                        break;
+                    case "PowerInhibitor":
+                        unitToGetSupplement.AddSupplement(new PowerCatalyst());
+                        break;
                     default:
                         break;
                 }
@@ -37,7 +52,7 @@
             switch (interaction.InteractionType)
             {
                 case InteractionType.Infest:
-                    Unit targetUnit = this.GetUnit(interaction.TargetUnit);
+                    Unit targetUnit = base.GetUnit(interaction.TargetUnit);
 
                     targetUnit.AddSupplement(new InfestationSpores());
                     break;

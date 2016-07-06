@@ -9,8 +9,6 @@
         private int healthEffect = 0;
         private int aggressionEffect = 0;
 
-        private bool WeaponrySkillBonusIsApplied = false;
-
         public int AggressionEffect
         {
             get
@@ -41,12 +39,10 @@
         /// <param name="otherSupplement"></param>
         public void ReactTo(ISupplement otherSupplement)
         {
-            if (otherSupplement is WeaponrySkill && !WeaponrySkillBonusIsApplied)
+            if (otherSupplement is WeaponrySkill)
             {
-                this.powerEffect += Weapon.PowerBonusWithWeaponrySkill;
-                this.aggressionEffect += AggressionBonusWithWeaponrySkill;
-
-                WeaponrySkillBonusIsApplied = true;
+                this.powerEffect = Weapon.PowerBonusWithWeaponrySkill;
+                this.aggressionEffect = AggressionBonusWithWeaponrySkill;
             }
         }
     }
