@@ -1,10 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-
-namespace AcademyRPG
+﻿namespace AcademyRPG
 {
+    using System;
+    using System.Collections.Generic;
+
     public class Engine
     {
         public static readonly char[] separators = new char[] { ' ' };

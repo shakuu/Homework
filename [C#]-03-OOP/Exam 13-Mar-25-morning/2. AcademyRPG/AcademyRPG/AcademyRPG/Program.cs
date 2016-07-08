@@ -1,15 +1,12 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-
-namespace AcademyRPG
+﻿namespace AcademyRPG
 {
+    using System;
+
     class Program
     {
         static Engine GetEngineInstance()
         {
-            return new Engine();
+            return new ExtendedEngine();
         }
 
         static void Main(string[] args)
