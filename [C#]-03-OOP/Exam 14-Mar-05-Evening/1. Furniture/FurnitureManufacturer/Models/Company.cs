@@ -45,11 +45,7 @@
 
                     this.validator.CheckValidString(
                         value,
-                        Company.NameStringMinimumLength,
-                        message: string.Format(
-                                    this.validator.ValidStringErrorMessage,
-                                    nameof(this.Name),
-                                    this.GetType().Name));
+                        Company.NameStringMinimumLength);
 
                     this.name = value;
                 }
@@ -77,11 +73,7 @@
                     this.validator.CheckValidString(
                         value,
                         Company.ReigstrationNumberExactLength,
-                        Company.ReigstrationNumberExactLength,
-                        string.Format(
-                            this.validator.ValidStringErrorMessage,
-                            nameof(this.Name),
-                            this.GetType().Name));
+                        Company.ReigstrationNumberExactLength);
 
                     this.validator.CheckValidCompanyRegistrationNumber(value);
 

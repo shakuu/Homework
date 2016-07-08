@@ -1,0 +1,16 @@
+Lumberjack Jack is now at position (2,2)
+Lumberjack Jack gathered 10 Lumber from Tree
+No targets to attack at Guard Max's position
+Guard Peter attacked Guard Evil and did 30 damage
+Guard Max attacked Guard Evil and did 30 damage
+Guard Peter attacked Guard Evil and did 30 damage
+Guard Peter attacked Guard Evil and did 10 damage
+Knight EvilKnight attacked Guard Peter and did 80 damage
+Knight EvilKnight attacked Guard Peter and did 20 damage
+Knight EvilKnight attacked Guard Max and did 80 damage
+Knight EvilKnight attacked Guard Max and did 20 damage
+Knight EvilKnight is now at position (2,2)
+Knight EvilKnight attacked Lumberjack Jack and did 50 damage
+Giant cecameca gathered 3 Stone from Rock
+Giant cecameca is now at position (2,2)
+Giant cecameca attacked Knight EvilKnight and did 100 damage

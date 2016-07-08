@@ -1,0 +1,25 @@
+create guard Peter (0,0) 1
+create lumberjack Jack (1,1) 1
+create tree 10 (2,2)
+Jack go (2,2)
+Jack gather
+create guard Max (0,0) 1
+Max attack
+create guard Evil (0,0) 2
+Peter attack
+Max attack
+Peter attack
+Peter attack
+create knight EvilKnight (0,0) 2
+EvilKnight attack
+EvilKnight attack
+EvilKnight attack
+EvilKnight attack
+EvilKnight go (2,2)
+EvilKnight attack
+create giant cecameca (10,10)
+create rock 6 (10,10)
+cecameca gather
+cecameca go (2,2)
+cecameca attack
+end
