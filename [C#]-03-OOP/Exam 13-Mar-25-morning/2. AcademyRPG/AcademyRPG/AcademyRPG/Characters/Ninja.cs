@@ -11,13 +11,16 @@ namespace AcademyRPG
 
         private int attackPoints;
         private int defensePoints;
+        private int hitPoints;
 
         public Ninja(string name, Point position, int owner)
             : base(name, position, owner)
         {
-            this.HitPoints = Ninja.HitPointsDefault;
+            this.hitPoints = Ninja.HitPointsDefault;
             this.attackPoints = Ninja.AttackPointsDefault;
             this.defensePoints = Ninja.DefensePointsDefault;
+
+            base.HitPoints = int.MaxValue;
         }
 
         public int AttackPoints
@@ -36,6 +39,25 @@ namespace AcademyRPG
             }
         }
 
+        public new int HitPoints
+        {
+            get
+            {
+                return this.hitPoints;
+            }
+
+            set
+            {
+                // do nothing, unit cannot be killed
+                base.HitPoints = int.MaxValue;
+            }
+        }
+
+        public new bool IsDestroyed
+        {
+            get { return false; }
+        }
+
         /// <summary>
         /// The Ninja should always attack the target,
         /// which is not neutral, does not belong to the same player,
@@ -47,29 +69,28 @@ namespace AcademyRPG
         {
             var potentialTargets = new List<WorldObject>();
 
+            var maxHitPoints = int.MinValue;
+            var maxHitPointsIndex = int.MinValue;
+
             for (int i = 0; i < availableTargets.Count; i++)
             {
-                if (availableTargets[i].Owner != this.Owner && availableTargets[i].Owner != 0)
+                if (availableTargets[i].Owner != this.Owner
+                    && availableTargets[i].Owner != 0
+                    && (availableTargets[i] as Character).Name != this.Name)
                 {
                     potentialTargets.Add(availableTargets[i]);
+
+                    if (availableTargets[i].HitPoints > maxHitPoints)
+                    {
+                        maxHitPoints = availableTargets[i].HitPoints;
+                        maxHitPointsIndex = i;
+                    }
                 }
             }
 
             if (potentialTargets.Count == 0)
             {
                 return -1;
-            }
-
-            var maxHitPoints = potentialTargets[0].HitPoints;
-            var maxHitPointsIndex = 0;
-
-            for (int i = 1; i < potentialTargets.Count; i++)
-            {
-                if (potentialTargets[i].HitPoints > maxHitPoints)
-                {
-                    maxHitPoints = potentialTargets[i].HitPoints;
-                    maxHitPointsIndex = i;
-                }
             }
 
             return maxHitPointsIndex;

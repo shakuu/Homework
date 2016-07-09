@@ -1,19 +1,8 @@
-﻿
-namespace AcademyRPG
+﻿namespace AcademyRPG
 {
-    using System.Collections.Generic;
-
     public class ExtendedEngine : Engine
     {
-        protected List<IGatherer> gatherers;
-        protected List<IFighter> fighters;
-
-        public ExtendedEngine()
-            : base()
-        {
-            this.gatherers = new List<IGatherer>();
-            this.fighters = new List<IFighter>();
-        }
+        private const int CharacterNeutralOwner = 0;
 
         public override void ExecuteCreateObjectCommand(string[] commandWords)
         {
@@ -23,8 +12,7 @@ namespace AcademyRPG
                     {
                         string name = commandWords[2];
                         Point position = Point.Parse(commandWords[3]);
-                        int owner = int.Parse(commandWords[4]);
-                        this.AddObject(new Giant(name, position, owner));
+                        this.AddObject(new Giant(name, position, ExtendedEngine.CharacterNeutralOwner));
                         break;
                     }
                 case "knight":

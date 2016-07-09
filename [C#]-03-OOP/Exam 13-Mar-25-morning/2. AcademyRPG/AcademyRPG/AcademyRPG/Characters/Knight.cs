@@ -39,7 +39,7 @@
         {
             for (int i = 0; i < availableTargets.Count; i++)
             {
-                if (availableTargets[i].Owner != this.Owner && availableTargets[i].Owner != 0)
+                if (availableTargets[i].Owner != this.Owner && availableTargets[i].Owner != 0 && (availableTargets[i] as Character).Name != this.Name)
                 {
                     return i;
                 }
