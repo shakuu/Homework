@@ -1,6 +1,5 @@
 ﻿namespace AcademyRPG
 {
-    using System;
     using System.Collections.Generic;
 
     public class Giant : Character, IFighter, IGatherer
@@ -41,7 +40,7 @@
         {
             for (int i = 0; i < availableTargets.Count; i++)
             {
-                if (availableTargets[i].Owner != 0 && (availableTargets[i] as Character).Name != this.Name)
+                if (availableTargets[i].Owner != 0)
                 {
                     return i;
                 }

@@ -11,16 +11,14 @@ namespace AcademyRPG
 
         private int attackPoints;
         private int defensePoints;
-        private int hitPoints;
 
         public Ninja(string name, Point position, int owner)
             : base(name, position, owner)
         {
-            this.hitPoints = Ninja.HitPointsDefault;
             this.attackPoints = Ninja.AttackPointsDefault;
             this.defensePoints = Ninja.DefensePointsDefault;
 
-            base.HitPoints = int.MaxValue;
+            this.HitPoints = Ninja.HitPointsDefault;
         }
 
         public int AttackPoints
@@ -30,34 +28,15 @@ namespace AcademyRPG
                 return this.attackPoints;
             }
         }
-
+        
         public int DefensePoints
         {
             get
             {
-                return this.defensePoints;
+                return int.MaxValue;
             }
         }
-
-        public new int HitPoints
-        {
-            get
-            {
-                return this.hitPoints;
-            }
-
-            set
-            {
-                // do nothing, unit cannot be killed
-                base.HitPoints = int.MaxValue;
-            }
-        }
-
-        public new bool IsDestroyed
-        {
-            get { return false; }
-        }
-
+        
         /// <summary>
         /// The Ninja should always attack the target,
         /// which is not neutral, does not belong to the same player,
@@ -75,8 +54,7 @@ namespace AcademyRPG
             for (int i = 0; i < availableTargets.Count; i++)
             {
                 if (availableTargets[i].Owner != this.Owner
-                    && availableTargets[i].Owner != 0
-                    && (availableTargets[i] as Character).Name != this.Name)
+                    && availableTargets[i].Owner != 0)
                 {
                     potentialTargets.Add(availableTargets[i]);
 
