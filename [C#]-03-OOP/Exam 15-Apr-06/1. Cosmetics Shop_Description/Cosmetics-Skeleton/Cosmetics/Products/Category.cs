@@ -3,6 +3,7 @@
     using System;
     using System.Collections.Generic;
     using System.Linq;
+    using System.Text;
 
     using Cosmetics.Contracts;
     using Cosmetics.Common;
@@ -14,6 +15,7 @@
     public class Category : ICategory
     {
         private const string ProductNotFoundErrorMessage = "Product {0} does not exist in category {1}!";
+        private const string PrintHeaderLineFormat = "{0} category - {1} {2} in total";
 
         private const int NameMinimumLength = 2;
         private const int NameMaximumLength = 15;
@@ -44,23 +46,11 @@
 
             private set
             {
-                var isNullErrorMessage = string.Format(
-                    GlobalErrorMessages.StringCannotBeNullOrEmpty, "Name");
-
-                Validator.CheckIfStringIsNullOrEmpty(value, isNullErrorMessage);
-
-
-                var invalidStringLengthErrorMessage = string.Format(
-                    GlobalErrorMessages.InvalidStringLength,
-                        "Name",
-                        Category.NameMinimumLength,
-                        Category.NameMaximumLength);
-
-                Validator.CheckIfStringLengthIsValid(
+                ValidateProperties.ValidateStringNames(
                     value,
-                    Category.NameMaximumLength,
                     Category.NameMinimumLength,
-                    invalidStringLengthErrorMessage);
+                    Category.NameMaximumLength,
+                    "Category name");
 
                 this.name = value;
             }
@@ -75,16 +65,30 @@
             this.products = this.SortCollectionOfProducts(this.products);
         }
 
-
         /// <summary>
         /// Category’s print method should return text in the following format:
         /// Included in .DOC file
+        /// {category name} category – {number of products} products/product in total
         /// </summary>
         /// <returns></returns>
         public string Print()
         {
             // TODO: 
-            throw new NotImplementedException();
+            var printBuilder = new StringBuilder();
+
+            printBuilder.AppendFormat(
+                Category.PrintHeaderLineFormat,
+                this.Name,
+                this.products.Count,
+                this.products.Count == 1 ? "product" : "products");
+
+            foreach (var product in this.products)
+            {
+                printBuilder.AppendFormat(Environment.NewLine);
+                printBuilder.Append(product.Print());
+            }
+
+            return printBuilder.ToString();
         }
 
         /// <summary>
@@ -138,18 +142,15 @@
             return sortedProducts;
         }
 
-
         /// <summary>
         /// DRY!
         /// </summary>
         /// <param name="cosmetics"></param>
         private void CheckIfInputParamIsNull(IProduct cosmetics)
         {
-            Validator.CheckIfNull(
-                cosmetics,
-                string.Format(
-                    GlobalErrorMessages.ObjectCannotBeNull,
-                    "cosmetics"));
+            var cosmeticsIsNullErrorMessage = string.Format(GlobalErrorMessages.ObjectCannotBeNull, "cosmetics");
+
+            Validator.CheckIfNull(cosmetics, cosmeticsIsNullErrorMessage);
         }
     }
 }

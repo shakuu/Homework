@@ -57,7 +57,15 @@
     <Compile Include="Engine\Command.cs" />
     <Compile Include="Engine\CosmeticsEngine.cs" />
     <Compile Include="Engine\CosmeticsFactory.cs" />
+    <Compile Include="Products\Product.cs" />
+    <Compile Include="Products\Category.cs">
+      <ExcludeFromStyleCop>True</ExcludeFromStyleCop>
+    </Compile>
     <Compile Include="Products\DoNotDeleteMe!!!.cs" />
+    <Compile Include="Products\Shampoo.cs" />
+    <Compile Include="Products\ShoppingCart.cs" />
+    <Compile Include="Products\Toothpaste.cs" />
+    <Compile Include="Products\ValidateProperties.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
