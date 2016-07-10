@@ -53,8 +53,11 @@
     <Compile Include="Console\Program.cs" />
     <Compile Include="Extended\Creatures\AncientBehemoth.cs" />
     <Compile Include="Extended\Creatures\Goblin.cs" />
+    <Compile Include="Extended\Creatures\Griffin.cs" />
     <Compile Include="Extended\Creatures\WolfRaider.cs" />
     <Compile Include="Extended\DeleteMe.cs" />
+    <Compile Include="Extended\Specialties\AddAttackWhenSkip.cs" />
+    <Compile Include="Extended\Specialties\DoubleAttackWhenAttacking.cs" />
     <Compile Include="Extended\Specialties\DoubleDamage.cs" />
     <Compile Include="Extended\Validator.cs" />
     <Compile Include="Logic\Battles\BattleManager.cs" />
