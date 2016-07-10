@@ -1,10 +1,13 @@
-﻿namespace AcademyEcosystem
+﻿
+namespace AcademyEcosystem
 {
+    using System;
+    
     /// <summary>
     /// Implement a command to create a Lion.
     /// The Lion should be an animal and should have a Size of 6.
     /// </summary>
-    public class Lion : Animal, ICarnivore
+    public class Lion : CarnivoreAnimal
     {
         private const int InitialSize = 6;
 
@@ -15,6 +18,11 @@
         {
         }
 
+        protected override int GetMaximumSizeOfPrey(bool preyIsSleeping)
+        {
+            return this.Size * 2;
+        }
+
         /// <summary>
         /// The Lion should be able to eat any animal, 
         /// which is at most twice larger than him (inclusive). 
@@ -22,22 +30,21 @@
         /// </summary>
         /// <param name="animal"></param>
         /// <returns></returns>
-        public int TryEatAnimal(Animal animal)
+        public override int TryEatAnimal(Animal animal)
         {
-            if (animal == null)
-            {
-                return 0;
-            }
+            var quantitiyEaten = CarnivoreAnimal.CouldNotEatMeat;
 
-            var quantityOfMeatEaten = 0;
-
-            if (animal.Size <= this.Size * 2)
+            try
             {
-                quantityOfMeatEaten = animal.GetMeatFromKillQuantity();
+                quantitiyEaten = base.TryEatAnimal(animal);
                 this.GrowWhenEating(Lion.GrowWithAmount);
             }
+            catch (ArgumentException)
+            {
+                return CarnivoreAnimal.CouldNotEatMeat;
+            }
 
-            return quantityOfMeatEaten;
+            return quantitiyEaten;
         }
 
         /// <summary>
@@ -48,5 +55,7 @@
         {
             this.Size += increaseSizeWithAmount;
         }
+
+        
     }
 }

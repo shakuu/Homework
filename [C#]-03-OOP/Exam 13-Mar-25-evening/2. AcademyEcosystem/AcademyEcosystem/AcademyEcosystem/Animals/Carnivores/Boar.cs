@@ -1,5 +1,7 @@
 ﻿namespace AcademyEcosystem
 {
+    using System;
+
     /// <summary>
     /// Implement a command to create a Boar.
     /// The Boar should be an animal and should have a Size of 4.
@@ -25,19 +27,19 @@
         /// <returns></returns>
         public int TryEatAnimal(Animal animal)
         {
-            if (animal == null)
+            try
+            {
+                MealValidation.CheckIfMealIsNull(animal);
+                MealValidation.CheckIfMealIsOfSuitableSize(this.Size, animal.Size);
+
+                var quantityOfMeatEaten = animal.GetMeatFromKillQuantity();
+                return quantityOfMeatEaten;
+
+            }
+            catch (Exception)
             {
                 return 0;
             }
-
-            var quantityOfMeatEaten = 0;
-
-            if (animal.Size <= this.Size)
-            {
-                quantityOfMeatEaten = animal.GetMeatFromKillQuantity();
-            }
-
-            return quantityOfMeatEaten;
         }
 
         /// <summary>
@@ -50,16 +52,20 @@
         /// <returns></returns>
         public int EatPlant(Plant plant)
         {
-            if (plant == null)
+            try
+            {
+                MealValidation.CheckIfMealIsNull(plant);
+
+                var quantityEaten = plant.GetEatenQuantity(Boar.BiteSize);
+
+                this.GrowWhenEating(Boar.GrowWhenEatingPlantsWithAmount);
+
+                return quantityEaten;
+            }
+            catch (Exception)
             {
                 return 0;
             }
-
-            var quantityEaten = plant.GetEatenQuantity(Boar.BiteSize);
-
-            this.GrowWhenEating(Boar.GrowWhenEatingPlantsWithAmount);
-
-            return quantityEaten;
         }
 
         /// <summary>

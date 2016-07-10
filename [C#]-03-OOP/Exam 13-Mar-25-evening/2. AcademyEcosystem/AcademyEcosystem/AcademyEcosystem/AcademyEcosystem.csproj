@@ -44,9 +44,10 @@
     <Compile Include="Animals\Animal.cs" />
     <Compile Include="Animals\AnimalState.cs" />
     <Compile Include="Animals\Carnivores\Boar.cs" />
+    <Compile Include="Animals\Carnivores\CarnivoreAnimal.cs" />
     <Compile Include="Animals\Carnivores\Lion.cs" />
     <Compile Include="Animals\Carnivores\Wolf.cs" />
-    <Compile Include="Animals\Eatery.cs" />
+    <Compile Include="Animals\MealValidation.cs" />
     <Compile Include="Animals\Zombie.cs" />
     <Compile Include="ExtendedEngine.cs" />
     <Compile Include="Plants\Bush.cs" />

@@ -1,17 +1,35 @@
 ﻿namespace AcademyEcosystem
 {
+    using System;
+
     /// <summary>
     /// The Wolf should be able to eat any animal
     /// smaller than or as big as him, 
     /// or any animal which is sleeping.
     /// </summary>
-    public class Wolf : Animal, ICarnivore
+    public class Wolf : CarnivoreAnimal
     {
         private const int InitialSize = 4;
 
         public Wolf(string name, Point location)
             : base(name, location, Wolf.InitialSize)
         {
+        }
+
+        protected override int GetMaximumSizeOfPrey(bool preyIsSleeping)
+        {
+            var maximumPreySize = CarnivoreAnimal.CouldNotEatMeat;
+
+            if (preyIsSleeping)
+            {
+                maximumPreySize = int.MaxValue;
+            }
+            else
+            {
+                maximumPreySize = this.Size;
+            }
+
+            return maximumPreySize;
         }
 
         /// <summary>
@@ -21,21 +39,20 @@
         /// </summary>
         /// <param name="animal"></param>
         /// <returns></returns>
-        public int TryEatAnimal(Animal animal)
+        public override int TryEatAnimal(Animal animal)
         {
-            if (animal == null)
+            var quantitiyEaten = CarnivoreAnimal.CouldNotEatMeat;
+
+            try
             {
-                return 0;
+                quantitiyEaten = base.TryEatAnimal(animal);
+            }
+            catch (ArgumentException)
+            {
+                return CarnivoreAnimal.CouldNotEatMeat;
             }
 
-            var quantityOfMeatEaten = 0;
-
-            if (animal.Size <= this.Size || animal.State == AnimalState.Sleeping)
-            {
-                quantityOfMeatEaten = animal.GetMeatFromKillQuantity();
-            }
-
-            return quantityOfMeatEaten;
+            return quantitiyEaten;
         }
     }
 }
