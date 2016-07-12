@@ -1,18 +1,38 @@
-let myCanvas = document.getElementById('the-canvas');
-console.log(myCanvas);
-let context = myCanvas.getContext('2d');
+window.onload = function () {
 
-context.fillStyle = 'rgb(107, 187, 201)';
+    var kineticStage = new Kinetic.Stage({
+        container: 'kinetic-div',
+        width: 640,
+        height: 360
+    });
 
-let rectanglePosition = {
-    'x': 0,
-    'y': 0
+    var layer = new Kinetic.Layer();
+
+    var rect = new Kinetic.Rect({
+        x: 0,
+        y: 0,
+        width: 100,
+        height: 100,
+        fill: 'black',
+        stroke: 'black',
+        lineWidth: 5
+    });
+
+    layer.add(rect);
+    kineticStage.add(layer);
+
+    var rect2 = new Kinetic.Rect({
+        x: 150,
+        y: 0,
+        width: 100,
+        height: 100,
+        fill: 'green',
+        stroke: 'black',
+        lineWidth: 5
+    });
+
+    layer.add(rect2);
+    kineticStage.add(layer);
+
+    
 };
-
-function anim() {
-    context.fillRect(0, 0, 100, 100);
-    rectanglePosition.x += 1;
-    rectanglePosition.y += 1;
-}
-
-context.
