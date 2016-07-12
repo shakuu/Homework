@@ -18,27 +18,28 @@
     /// 
     /// Example: “DoubleAttackWhenAttacking(4)”
     /// </summary>
-    internal class DoubleAttackWhenAttacking : DoubleDefenseWhenDefending
+    internal class DoubleAttackWhenAttacking : ExtendedSpecialty
     {
+        private const int CurrentAttackBonusModifier = 2;
+
         private int rounds;
 
-        public DoubleAttackWhenAttacking(int rounds) 
+        public DoubleAttackWhenAttacking(int rounds)
             : base(rounds)
         {
-            this.rounds = rounds;
         }
 
         public override void ApplyWhenAttacking(ICreaturesInBattle attackerWithSpecialty, ICreaturesInBattle defender)
         {
-            if (this.rounds <= 0)
-            {
-                return;
-            }
+            base.CheckInputCreatures(attackerWithSpecialty, "attackerWithSpecialty");
+            base.CheckInputCreatures(defender, "defender");
 
-            base.ApplyWhenDefending(attackerWithSpecialty, defender);
-            attackerWithSpecialty.CurrentDefense /= 2;
-            attackerWithSpecialty.CurrentAttack *= 2;
-            this.rounds--;
+            var hasAvailableRounds = base.DecrementRoundsCounter();
+            if (hasAvailableRounds)
+            {
+                attackerWithSpecialty.CurrentAttack *=
+                    DoubleAttackWhenAttacking.CurrentAttackBonusModifier;
+            }
         }
     }
 }

@@ -1,10 +1,6 @@
 ﻿namespace ArmyOfCreatures.Extended.Specialties
 {
-    using System;
-    using System.Globalization;
-
     using Logic.Battles;
-    using Logic.Specialties;
 
     /// <summary>
     /// Add class DoubleDamage. The DoubleDamage is a specialty that doubles the
@@ -16,7 +12,7 @@
     /// Hint: The class Hate (specialty) also changes the damage during the battle.
     /// Hint: The class DoubleDefenseWhenDefending also has fixed rounds of effectiveness.
     /// </summary>
-    internal class DoubleDamage : DoubleDefenseWhenDefending
+    internal class DoubleDamage : ExtendedSpecialty
     {
         private const int MinimumTurns = 1;
         private const int MaximumTurns = 10;
@@ -34,24 +30,8 @@
         /// </summary>
         /// <param name="rounds"></param>
         internal DoubleDamage(int rounds)
-            : base(rounds)
+            : base(rounds, DoubleDamage.MinimumTurns, DoubleDamage.MaximumTurns)
         {
-            Validator.CheckValidRange(
-                rounds, DoubleDamage.MinimumTurns, DoubleDamage.MaximumTurns);
-
-            this.rounds = rounds;
-        }
-
-        /// <summary>
-        /// Do NOT apply the original effect.
-        /// </summary>
-        /// <param name="defenderWithSpecialty"></param>
-        /// <param name="attacker"></param>
-        public override void ApplyWhenDefending(
-            ICreaturesInBattle defenderWithSpecialty,
-            ICreaturesInBattle attacker)
-        {
-            // Do nothing.
         }
 
         public override decimal ChangeDamageWhenAttacking(
@@ -59,19 +39,13 @@
             ICreaturesInBattle defender,
             decimal currentDamage)
         {
-            Validator.CheckCreaturesForNull(
-                attackerWithSpecialty, "attackerWithSpecialty",
-                defender, "defender");
+            base.CheckInputCreatures(attackerWithSpecialty, "attackerWithSpecialty");
+            base.CheckInputCreatures(defender, "defender");
 
-            // TODO: Method
-            if (this.rounds <= 0)
-            {
-                // Effect expires after fixed number of rounds
-                return currentDamage;
-            }
-
-            this.rounds--;
-            return currentDamage * 2;
+            var hasAvailableRounds = base.DecrementRoundsCounter();
+            return hasAvailableRounds
+                ? currentDamage * 2
+                : currentDamage;
         }
     }
 }

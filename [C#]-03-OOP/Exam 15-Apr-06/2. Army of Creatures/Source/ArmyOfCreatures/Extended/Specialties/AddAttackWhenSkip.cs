@@ -20,26 +20,20 @@
     /// 
     /// Hint: The class AddAttackWhenSkip is similar to AddDefenseWhenSkip.
     /// </summary>
-    internal class AddAttackWhenSkip : AddDefenseWhenSkip
+    internal class AddAttackWhenSkip : ExtendedSpecialty
     {
         private const int MinimumAttackToAdd = 1;
         private const int MaximumAttackToAdd = 10;
 
-        private readonly int attackToAdd;
-
         internal AddAttackWhenSkip(int attackToAdd)
-            : base(attackToAdd)
+            : base(attackToAdd, AddAttackWhenSkip.MinimumAttackToAdd, AddAttackWhenSkip.MaximumAttackToAdd)
         {
-            Validator.CheckValidRange(attackToAdd, AddAttackWhenSkip.MinimumAttackToAdd, AddAttackWhenSkip.MaximumAttackToAdd);
-            this.attackToAdd = attackToAdd;
         }
 
         public override void ApplyOnSkip(ICreaturesInBattle skipCreature)
         {
-            base.ApplyOnSkip(skipCreature);
-
-            skipCreature.PermanentDefense -= this.attackToAdd;
-            skipCreature.PermanentAttack += this.attackToAdd;
+            base.CheckInputCreatures(skipCreature, "skipCreature");
+            skipCreature.PermanentAttack += this.Specialty;
         }
     }
 }

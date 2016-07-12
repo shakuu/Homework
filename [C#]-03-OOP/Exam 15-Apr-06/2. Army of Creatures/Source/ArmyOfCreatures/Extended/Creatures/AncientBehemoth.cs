@@ -19,7 +19,7 @@
         private const decimal InitialDamage = 40m;
 
         internal AncientBehemoth()
-            : base(AncientBehemoth.InitialAttack, AncientBehemoth.InitialDefense, AncientBehemoth.InitialHealthPoints, AncientBehemoth.InitialDefense)
+            : base(AncientBehemoth.InitialAttack, AncientBehemoth.InitialDefense, AncientBehemoth.InitialHealthPoints, AncientBehemoth.InitialDamage)
         {
             this.AddSpecialty(new ReduceEnemyDefenseByPercentage(80));
             this.AddSpecialty(new DoubleDefenseWhenDefending(5));
