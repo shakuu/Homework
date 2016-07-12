@@ -26,6 +26,10 @@ rectSpeed = {
     y: 1
 };
 
+// Pacman
+var mouthOpenDegrees = 1;
+var mouthCloseSpeed = 1;
+
 function moveRect() {
 
     // Update the gradient before each draw;
@@ -42,6 +46,13 @@ function moveRect() {
     context.fillRect(rectPosition.x, rectPosition.y, 20, 20);
     context.strokeRect(rectPosition.x, rectPosition.y, 20, 20);
 
+    // Testing Arc
+    context.beginPath();
+    context.arc(300, 120, 30, (30 - mouthOpenDegrees) * Math.PI / 180, 180 * Math.PI / 180);
+    context.arc(300, 120, 30, 180 * Math.PI / 180, (330 + mouthOpenDegrees) * Math.PI / 180);
+    context.lineTo(300, 120);
+    context.fill();
+
     // Adjust horizontal speed
     if (rectPosition.x === canvas.width - 20 || rectPosition.x === 0) {
         rectSpeed.x = -rectSpeed.x;
@@ -52,9 +63,17 @@ function moveRect() {
         rectSpeed.y = -rectSpeed.y;
     }
 
+    // Adjsut Pacman Mouth
+    if (mouthOpenDegrees === 0 || mouthOpenDegrees ===30){
+        mouthCloseSpeed = -mouthCloseSpeed;
+    }
+
     // Update current postion.
     rectPosition.x += rectSpeed.x;
     rectPosition.y += rectSpeed.y;
+
+    // Update Mouth
+    mouthOpenDegrees += mouthCloseSpeed;
 
     // Request a new frame.
     window.requestAnimationFrame(moveRect);
