@@ -48,12 +48,9 @@ function getPlayerToken() {
             yawAcceleration: 2,
             yawDeceleration: 0.05,
             yawVelocity: 0,
-            maxYawVelocity: 10,
+            maxYawVelocity: 5,
             angleOfRotation: 0,
-            direction: {
-                x: 0,
-                y: 0
-            }
+            forwardDirections: []
         },
         lives: 5,
         score: 0
@@ -66,7 +63,7 @@ function adjustPlayerTokenAngle(currentValue) {
     // angle must be between 0 - 360
     if (+currentValue > 360) {
         currentValue -= 360;
-    } else if (+currentValue < 360) {
+    } else if (+currentValue < 0) {
         currentValue += 360;
     }
     return currentValue;
@@ -75,9 +72,16 @@ function adjustPlayerTokenAngle(currentValue) {
 var playerToken = getPlayerToken();
 
 function nextPlayerFrame() {
-    // Ship Movement
-    playerToken.token.setX(playerToken.token.getX() + (playerToken.movement.direction.x * playerToken.movement.forwardVelocity));
-    playerToken.token.setY(playerToken.token.getY() + (playerToken.movement.direction.y * playerToken.movement.forwardVelocity));
+    // Apply each forward motion to the ship
+    for (let index = 0; index < playerToken.movement.forwardDirections.length; index += 1) {
+        let currentMotion = playerToken.movement.forwardDirections[index];
+
+        playerToken.token.setX(playerToken.token.getX() + (currentMotion.deltaX * currentMotion.velocity));
+        playerToken.token.setY(playerToken.token.getY() + (currentMotion.deltaY * currentMotion.velocity));
+    }
+
+    // Decelerate each forwar motion
+
 
     // Ship Rotation
     playerToken.token.rotate(playerToken.movement.yawVelocity);
@@ -96,6 +100,7 @@ function getGameOver() {
     gameOver = true;
 }
 
+// Rotation the Ship
 function getRotateLeft() {
     playerToken.movement.yawVelocity = playerToken.movement.yawVelocity < -playerToken.movement.maxYawVelocity
         ? -playerToken.movement.maxYawVelocity
@@ -123,6 +128,47 @@ function decelerateYawVelocity() {
             playerToken.movement.yawVelocity -= modifier;
         }
     }
+}
+
+function getCurrentDirection() {
+    let directionOfMovement = {
+        deltaX: ((((shipSize.height / 2) * Math.sin(playerToken.movement.angleOfRotation * Math.PI / 180))) / 10),
+        deltaY: -((((shipSize.height / 2) * Math.cos(playerToken.movement.angleOfRotation * Math.PI / 180))) / 10),
+        velocity: playerToken.movement.forwardAcceleration
+    };
+
+    return directionOfMovement;
+}
+// X = xcircle + (r * sin(angle))
+// Y = ycircle + (r * cos(angle))
+// Moving the Ship
+function createNewForwardMotion() {
+    // Get direction
+    let currentDirection = getCurrentDirection();
+    console.log(currentDirection); // DELETE THIS LINE
+    console.log(playerToken.movement.angleOfRotation);
+    // If old direction -> accelerate
+    if (playerToken.movement.forwardDirections.length > 0) {
+        // Adjust existing motion
+        let length = playerToken.movement.forwardDirections.length;
+
+        if (playerToken.movement.forwardDirections[length - 1].deltaX === currentDirection.deltaX &&
+            playerToken.movement.forwardDirections[length - 1].deltaY === currentDirection.deltaY) {
+
+            playerToken.movement.forwardDirections[length - 1].velocity += playerToken.movement.forwardAcceleration;
+
+            // Stay within maxForwardVelocity limit
+            if (playerToken.movement.forwardDirections[length - 1].velocity > playerToken.movement.maxForwardVelocity) {
+                playerToken.movement.forwardDirections[length - 1].velocity = playerToken.movement.maxForwardVelocity;
+            }
+
+            // Exit function
+            return;
+        }
+    }
+
+    // If new direction push to the stack of forward motion
+    playerToken.movement.forwardDirections.push(currentDirection);
 }
 
 function createNewShot() {
@@ -167,6 +213,8 @@ document.getElementById('controls')
             getRotateRight();
         } else if (input.key === ' ') {
             console.log('space');
+        } else if (input.key === 'ArrowUp') {
+            createNewForwardMotion();
         }
     });
 
