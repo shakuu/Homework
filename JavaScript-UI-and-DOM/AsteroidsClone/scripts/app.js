@@ -41,14 +41,14 @@ function getPlayerToken() {
         token: playerShip,
         shots: [],
         movement: {
-            forwardAcceleration: 1.5,
+            forwardAcceleration: 1.2,
             forwardDeceleration: 0.01,
             forwardVelocity: 0,
-            maxForwardVelocity: 4,
-            yawAcceleration: 1.5,
+            maxForwardVelocity: 3,
+            yawAcceleration: 2.0,
             yawDeceleration: 0.01,
             yawVelocity: 0,
-            maxYawVelocity: 3,
+            maxYawVelocity: 4,
             angleOfRotation: 0,
             forwardDirections: []
         },
@@ -71,13 +71,37 @@ function adjustPlayerTokenAngle(currentValue) {
 
 var playerToken = getPlayerToken();
 
+function keepObjectOnCanvas(object, sizeOfObject) {
+    // Left - Right
+    if (object.token.getX() + sizeOfObject.width / 2 < 0) {
+        object.token.setX(asteroidsKineticStage.getWidth() - sizeOfObject.width / 2);
+    } else if (object.token.getX() - sizeOfObject.width / 2 > asteroidsKineticStage.getWidth()) {
+        object.token.setX(sizeOfObject.width / 2);
+    }
+    // Up - Down
+    if (object.token.getY() + sizeOfObject.height / 2 < 0) {
+        object.token.setY(asteroidsKineticStage.getHeight() - sizeOfObject.height / 2);
+    } else if (object.token.getY() - sizeOfObject.height / 2 > asteroidsKineticStage.height()) {
+        object.token.setY(sizeOfObject.height / 2);
+    }
+}
+
 function nextPlayerFrame() {
     // Apply each forward motion to the ship
-    for (let index = 0; index < playerToken.movement.forwardDirections.length; index += 1) {
+    let motionsArrayLength = playerToken.movement.forwardDirections.length;
+    let totalSpeed = {
+        x: 0,
+        y: 0
+    };
+
+    for (let index = motionsArrayLength - 1; index >= 0; index -= 1) {
         let currentMotion = playerToken.movement.forwardDirections[index];
 
         playerToken.token.setX(playerToken.token.getX() + (currentMotion.deltaX * currentMotion.velocity));
         playerToken.token.setY(playerToken.token.getY() + (currentMotion.deltaY * currentMotion.velocity));
+
+        totalSpeed.x += (currentMotion.deltaX * currentMotion.velocity);
+        totalSpeed.y += (currentMotion.deltaY * currentMotion.velocity);
 
         // Decelerate
         playerToken.movement.forwardDirections[index].velocity -= playerToken.movement.forwardDeceleration;
@@ -86,7 +110,17 @@ function nextPlayerFrame() {
         if (playerToken.movement.forwardDirections[index].velocity < 0) {
             playerToken.movement.forwardDirections[index].velocity = 0;
         }
+
+        keepObjectOnCanvas(playerToken, shipSize);
+        // Bug with ship shooting too far
+        // Break if total speed is too high
+        // if (totalSpeed.x > 3 * playerToken.movement.maxForwardVelocity ||
+        //     totalSpeed.y > 3 * playerToken.movement.maxForwardVelocity) {
+        //     break;
+        // }
     }
+
+    // If the entire ship is outside of the bounds of the canvas - reappear on the opposite end
 
     // Ship Rotation
     playerToken.token.rotate(playerToken.movement.yawVelocity);
@@ -150,8 +184,8 @@ function getCurrentDirection() {
 function createNewForwardMotion() {
     // Get direction
     let currentDirection = getCurrentDirection();
-    // console.log(currentDirection); // DELETE THIS LINE
-    // console.log(playerToken.movement.angleOfRotation);
+    console.log(currentDirection); // DELETE THIS LINE
+    console.log(playerToken.movement.angleOfRotation);
     // If old direction -> accelerate
     if (playerToken.movement.forwardDirections.length > 0) {
         // Adjust existing motion
