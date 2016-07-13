@@ -48,7 +48,7 @@ function getPlayerToken() {
             yawAcceleration: 2.4,
             yawDeceleration: 0.01,
             yawVelocity: 0,
-            maxYawVelocity: 4,
+            maxYawVelocity: 5,
             angleOfRotation: 0,
             forwardDirections: []
         },
@@ -130,6 +130,30 @@ function nextPlayerFrame() {
 
 function nextAsteroidsFrame() {
     // TODO:
+}
+
+// Move shots -> Constant velocity
+// Destroy shot when out of canvas
+// Check for collision - > when asteroids are implemented
+function nextShotsFrame() {
+    console.log(playerToken.shots);
+
+    let velocity = 8.5;
+    let numberOfShots = playerToken.shots.length;
+
+    for (let index in playerToken.shots) {
+        // Move
+        playerToken.shots[index].token.setX(playerToken.shots[index].token.getX() + playerToken.shots[index].direction.deltaX * velocity);
+        playerToken.shots[index].token.setY(playerToken.shots[index].token.getY() + playerToken.shots[index].direction.deltaY * velocity);
+
+        // Destroy if needed
+        if (playerToken.shots[index].token.getX() < -10 || playerToken.shots[index].token.getX() > asteroidsKineticStage.getWidth() + 10) {
+            // playLayer.remove(playerToken.shots[index].token);
+            delete playerToken.shots[index];
+        } else if (playerToken.shots[index].token.getY() < -10 || playerToken.shots[index].token.getY() > asteroidsKineticStage.getHeight() + 10) {
+            delete playerToken.shots[index];
+        }
+    }
 }
 
 // Controls functions
@@ -235,6 +259,8 @@ function createNewShot() {
         direction: shotDirection
     };
 
+    playerToken.shots.push(shot);
+
     shot.token.setX(playerToken.token.getX() + shot.direction.deltaX * 10);
     shot.token.setY(playerToken.token.getY() + shot.direction.deltaY * 10);
 
@@ -242,8 +268,9 @@ function createNewShot() {
     playLayer.add(shotToken);
     playLayer.draw();
 
-    playerToken.shots.push(shot);
 }
+
+
 
 // Get Next Frame
 var gameOver = false;
@@ -252,6 +279,9 @@ function nextFrame() {
     nextPlayerFrame();
 
     // Asteroids
+
+    // Update shots
+    nextShotsFrame();
 
     // Decelerate Ship
     decelerateYawVelocity();
