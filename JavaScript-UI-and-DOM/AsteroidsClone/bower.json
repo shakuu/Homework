@@ -1,0 +1,25 @@
+{
+  "name": "AsteroidsClone",
+  "homepage": "https://github.com/shakuu/Homework",
+  "authors": [
+    "shakuu"
+  ],
+  "description": "Asteroids Arcade Clone",
+  "main": "index.html",
+  "keywords": [
+    "Asteroids",
+    "Arcade",
+    "Game"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "KineticJS": "kineticjs#^5.1.0"
+  }
+}

@@ -1,0 +1,12 @@
+* {
+  font-family: consolas;
+  font-size: 16px;
+  padding: 0;
+  margin: 0;
+}
+body div#kinetic-canvas {
+  width: 960px;
+  height: 540px;
+  background-color: #333;
+  border: 5px solid #9acd32;
+}
