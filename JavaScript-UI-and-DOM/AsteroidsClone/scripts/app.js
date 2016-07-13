@@ -45,7 +45,7 @@ function getPlayerToken() {
             forwardDeceleration: 0.01,
             forwardVelocity: 0,
             maxForwardVelocity: 3,
-            yawAcceleration: 2.0,
+            yawAcceleration: 2.4,
             yawDeceleration: 0.01,
             yawVelocity: 0,
             maxYawVelocity: 4,
@@ -182,27 +182,29 @@ function getCurrentDirection() {
 function createNewForwardMotion() {
     // Get direction
     let currentDirection = getCurrentDirection();
+    
     console.log(currentDirection); // DELETE THIS LINE
     console.log(playerToken.movement.angleOfRotation);
+
     // If old direction -> accelerate
-    if (playerToken.movement.forwardDirections.length > 0) {
-        // Adjust existing motion
-        let length = playerToken.movement.forwardDirections.length;
+    // if (playerToken.movement.forwardDirections.length > 0) {
+    //     // Adjust existing motion
+    //     let length = playerToken.movement.forwardDirections.length;
 
-        if (playerToken.movement.forwardDirections[length - 1].deltaX === currentDirection.deltaX &&
-            playerToken.movement.forwardDirections[length - 1].deltaY === currentDirection.deltaY) {
+    //     if (playerToken.movement.forwardDirections[length - 1].deltaX === currentDirection.deltaX &&
+    //         playerToken.movement.forwardDirections[length - 1].deltaY === currentDirection.deltaY) {
 
-            playerToken.movement.forwardDirections[length - 1].velocity += playerToken.movement.forwardAcceleration;
+    //         playerToken.movement.forwardDirections[length - 1].velocity += playerToken.movement.forwardAcceleration;
 
-            // Stay within maxForwardVelocity limit
-            if (playerToken.movement.forwardDirections[length - 1].velocity > playerToken.movement.maxForwardVelocity) {
-                playerToken.movement.forwardDirections[length - 1].velocity = playerToken.movement.maxForwardVelocity;
-            }
+    //         // Stay within maxForwardVelocity limit
+    //         if (playerToken.movement.forwardDirections[length - 1].velocity > playerToken.movement.maxForwardVelocity) {
+    //             playerToken.movement.forwardDirections[length - 1].velocity = playerToken.movement.maxForwardVelocity;
+    //         }
 
-            // Exit function
-            return;
-        }
-    }
+    //         // Exit function
+    //         return;
+    //     }
+    // }
 
     // If new direction push to the stack of forward motion
     playerToken.movement.forwardDirections.push(currentDirection);
