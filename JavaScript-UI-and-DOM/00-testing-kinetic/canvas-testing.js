@@ -1,3 +1,5 @@
+var rotation = 0;
+
 var kineticStage = new Kinetic.Stage({
     container: 'kinetic-div',
     width: 640,
@@ -28,9 +30,7 @@ var ship = new Kinetic.Line({
     closed: true
 });
 
-layer.add(rect2);
-layer.add(ship);
-layer.draw();
+var mouthOpenDegrees = 1;
 
 var pacman = new Kinetic.Shape({
     x: 250,
@@ -46,25 +46,71 @@ var pacman = new Kinetic.Shape({
     offset: { x: 0, y: 0 },
 });
 
+layer.add(rect2);
+layer.add(ship);
 layer.add(pacman);
+layer.draw();
 
 var currentRotationAngle = 0.5;
-var mouthOpenDegrees = 1;
 var mouthCloseSpeed = 2;
 
+var toRotate = true;
+
+
 function rotate() {
+    rotation += currentRotationAngle;
     rect2.rotate(currentRotationAngle);
     ship.rotate(currentRotationAngle);
     pacman.rotate(currentRotationAngle);
-    pacman.drawFunc();
-    // pacman.drawFunc(layer, currentRotationAngle);
+
     // Adjsut Pacman Mouth
     if (mouthOpenDegrees <= 0 || mouthOpenDegrees >= 30) {
         mouthCloseSpeed = -mouthCloseSpeed;
     }
     mouthOpenDegrees += mouthCloseSpeed;
-    window.requestAnimationFrame(rotate);
     layer.draw();
+
+    window.requestAnimationFrame(rotate);
+
+}
+// X = xcircle + (r * sin(angle))
+// Y = ycircle + (r * cos(angle))
+function getDelta() {
+    console.log(rotation);
+    let radius = 50;
+    
+    console.log((radius * Math.sin(rotation * Math.PI / 180)));
+    console.log((radius * Math.cos(rotation * Math.PI / 180)));
+
+
+    // delta.x /= 10;
+    // delta.y /= 10;
+
 }
 
+var docbody = document.getElementById('wrapper')
+    .addEventListener('keydown', function (args) {
+        console.log(args.key);
+
+        if (args.key === 'ArrowLeft') {
+
+            currentRotationAngle -= 0.5;
+
+        } else if (args.key === 'ArrowRight') {
+
+            currentRotationAngle += 0.5;
+
+        } else if (args.key === 'a') {
+            start();
+        } else if (args.key === 'ArrowDown') {
+            currentRotationAngle = 0;
+        } else if (args.key === 'ArrowUp') {
+            getDelta();
+        }
+    });
+
+
 rotate();
+
+
+// rotate();
