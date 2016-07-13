@@ -41,14 +41,14 @@ function getPlayerToken() {
         token: playerShip,
         shots: [],
         movement: {
-            forwardAcceleration: 1,
-            forwardDeceleration: 0.1,
+            forwardAcceleration: 1.5,
+            forwardDeceleration: 0.01,
             forwardVelocity: 0,
-            maxForwardVelocity: 5,
-            yawAcceleration: 2,
-            yawDeceleration: 0.05,
+            maxForwardVelocity: 4,
+            yawAcceleration: 1.5,
+            yawDeceleration: 0.01,
             yawVelocity: 0,
-            maxYawVelocity: 5,
+            maxYawVelocity: 3,
             angleOfRotation: 0,
             forwardDirections: []
         },
@@ -78,10 +78,15 @@ function nextPlayerFrame() {
 
         playerToken.token.setX(playerToken.token.getX() + (currentMotion.deltaX * currentMotion.velocity));
         playerToken.token.setY(playerToken.token.getY() + (currentMotion.deltaY * currentMotion.velocity));
+
+        // Decelerate
+        playerToken.movement.forwardDirections[index].velocity -= playerToken.movement.forwardDeceleration;
+
+        // Remove the motion if it no longer applies
+        if (playerToken.movement.forwardDirections[index].velocity < 0) {
+            playerToken.movement.forwardDirections[index].velocity = 0;
+        }
     }
-
-    // Decelerate each forwar motion
-
 
     // Ship Rotation
     playerToken.token.rotate(playerToken.movement.yawVelocity);
