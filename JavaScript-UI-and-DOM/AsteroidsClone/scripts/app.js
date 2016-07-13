@@ -150,8 +150,8 @@ function getCurrentDirection() {
 function createNewForwardMotion() {
     // Get direction
     let currentDirection = getCurrentDirection();
-    console.log(currentDirection); // DELETE THIS LINE
-    console.log(playerToken.movement.angleOfRotation);
+    // console.log(currentDirection); // DELETE THIS LINE
+    // console.log(playerToken.movement.angleOfRotation);
     // If old direction -> accelerate
     if (playerToken.movement.forwardDirections.length > 0) {
         // Adjust existing motion
