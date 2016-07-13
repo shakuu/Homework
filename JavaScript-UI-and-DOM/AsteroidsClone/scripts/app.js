@@ -182,7 +182,7 @@ function getCurrentDirection() {
 function createNewForwardMotion() {
     // Get direction
     let currentDirection = getCurrentDirection();
-    
+
     console.log(currentDirection); // DELETE THIS LINE
     console.log(playerToken.movement.angleOfRotation);
 
@@ -210,10 +210,39 @@ function createNewForwardMotion() {
     playerToken.movement.forwardDirections.push(currentDirection);
 }
 
+// Direction of movement
+// All shots have the same speed
+// build a Visual token ( line ? dot ? square ? )
 function createNewShot() {
     // Starts at current location
     // Direction is current angle
     // Destroyed on out of player area
+    console.log('called');
+
+    let shotToken = new Kinetic.Rect({
+        x: 20,
+        y: 20,
+        width: 4,
+        height: 4,
+        offset: { x: 2, y: 2 },
+        fill: 'limegreen'
+    }).rotate(playerToken.movement.angleOfRotation);
+
+    let shotDirection = getCurrentDirection();
+
+    let shot = {
+        token: shotToken,
+        direction: shotDirection
+    };
+
+    shot.token.setX(playerToken.token.getX() + shot.direction.deltaX * 10);
+    shot.token.setY(playerToken.token.getY() + shot.direction.deltaY * 10);
+
+    // Testing 
+    playLayer.add(shotToken);
+    playLayer.draw();
+
+    playerToken.shots.push(shot);
 }
 
 // Get Next Frame
@@ -252,6 +281,7 @@ document.getElementById('controls')
             getRotateRight();
         } else if (input.key === ' ') {
             console.log('space');
+            createNewShot();
         } else if (input.key === 'ArrowUp') {
             createNewForwardMotion();
         }
