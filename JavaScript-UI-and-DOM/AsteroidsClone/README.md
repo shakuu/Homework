@@ -10,7 +10,12 @@
   - Triangle
     - white
   - Movement
-  - Rotate
+    - forward movement
+    - array of forward motions - direction + speed
+    - each separate motion is decelerated independently 
+  - Rotation
+    - kept within maximum yawSpeedLimit
+    - inertia and deceleration
   - Shoot
     - Starts at current ship location
     - Direction is current angle
@@ -19,7 +24,7 @@
     - ArrowLeft: rotate left
     - ArrowRight: rotate right
     - ArrowUp: thrust forward
-    - ArrowDown: stop rotation
+    - ArrowDown: stop rotation - too easy ? 
     - Space: shoot 
   
 ## Asteroids
@@ -38,3 +43,5 @@
     - shoots in a random direction
   - Small
     - shoots at player's ship
+
+## Wishlist

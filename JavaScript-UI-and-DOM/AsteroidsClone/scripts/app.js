@@ -120,8 +120,6 @@ function nextPlayerFrame() {
         // }
     }
 
-    // If the entire ship is outside of the bounds of the canvas - reappear on the opposite end
-
     // Ship Rotation
     playerToken.token.rotate(playerToken.movement.yawVelocity);
     playerToken.movement.angleOfRotation += playerToken.movement.yawVelocity;
