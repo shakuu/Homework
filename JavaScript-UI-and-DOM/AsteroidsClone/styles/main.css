@@ -4,17 +4,45 @@
   margin: auto;
 }
 body {
-  background-image: url("http://wallpapercave.com/wp/pEeUsp1.jpg");
+  background-image: url("../imgs/pEeUsp1.jpg");
 }
 body > h1 {
+  text-align: center;
+  padding: 10px 0 5px 0;
+}
+body > h1 > a {
+  text-decoration: none;
+  color: #fff;
+  font-size: 48;
+}
+body > h1 > a:hover {
+  text-decoration: underline;
+}
+body > h1 > a:visited {
+  color: #fff;
+}
+body section#instructions {
   color: #fff;
   text-align: center;
-  font-size: 48;
-  padding: 20px 0 20px 0;
+  padding: 0 0 10px 0;
+  font-size: 20px;
 }
 body div#kinetic-canvas {
   width: 960px;
   height: 540px;
-  background-color: #333;
   border: 5px solid #9acd32;
+}
+body section#list-controls {
+  color: #fff;
+  padding: 10px 0 0 0;
+}
+body section#list-controls h2 {
+  text-align: center;
+}
+body section#list-controls ul {
+  list-style: none;
+  text-align: center;
+}
+body section#list-controls ul li {
+  display: inline-block;
 }

@@ -1,4 +1,4 @@
-bg-img = url('http://wallpapercave.com/wp/pEeUsp1.jpg')
+bg-img = url('../imgs/pEeUsp1.jpg')
 
 *
     font-family: consolas
@@ -9,13 +9,44 @@ body
     background-image: bg-img
 
     > h1
+        text-align center
+        padding 10px 0 5px 0
+
+        > a
+            text-decoration none
+            color white
+            font-size: 48
+
+            &:hover
+                text-decoration underline
+        
+            &:visited
+                color white
+
+    section#instructions
         color white
         text-align: center
-        font-size: 48
-        padding 20px 0 20px 0
+        padding 0 0 10px 0
+        font-size 20px
 
     div#kinetic-canvas
         width 960px
         height 540px
-        background-color #333333
+        // background-color #222222
         border 5px solid yellowgreen 
+
+    section#list-controls
+        color white
+        padding 10px 0 0 0 
+
+        h2
+            text-align center
+
+        ul
+            list-style none
+            text-align center
+
+            li
+                display inline-block
+
+        
