@@ -48,8 +48,8 @@ function getPlayerToken() {
             forwardAcceleration: 1.1,
             forwardDeceleration: 0.006,
             forwardVelocity: 0,
-            maxForwardVelocity: 3,
-            yawAcceleration: 2.0,
+            maxForwardVelocity: 2.7,
+            yawAcceleration: 1.6,
             yawDeceleration: 0.01,
             yawVelocity: 0,
             maxYawVelocity: 5,
@@ -272,10 +272,88 @@ function createNewShot() {
     shotsLayer.draw();
 }
 
+function getRandomInt(min, max) {
+    return Math.floor(Math.random() * (max - min + 1)) + min;
+}
+
+function createSmallerAsteroids(size, amount) {
+    let output = [];
+
+    for (let i = 0; i < amount; i += 1) {
+        let newAsteroid = new Kinetic.Rect({
+            x: 0,
+            y: 0,
+            width: size,
+            height: size,
+            offset: { x: size / 2, y: size / 2 },
+            stroke: 'white',
+        });
+
+        output[i] = newAsteroid;
+    }
+
+    return output;
+}
+
+function getSmallerAsteroidsPositions(position, size) {
+    let newPositions = [
+        { x: position.x - size, y: position.y - size },
+        { x: position.x - size, y: position.y },
+        { x: position.x, y: position.y - size },
+        { x: position.x, y: position.y }
+    ];
+
+    return newPositions;
+}
+
+function splitAsteroid(indexInAsteroids) {
+    // Split into 4 equal parts
+    let newSize = asteroids[indexInAsteroids].token.getWidth() / 2;
+
+    if (asteroids[indexInAsteroids].token.getWidth() === 25) {
+        // Destroy and return
+        return;
+    }
+
+    let newAsteroids = createSmallerAsteroids(newSize, 4);
+    let newAsteroidsPosition = getSmallerAsteroidsPositions(asteroids[indexInAsteroids].token.position());
+
+    // Set new Asteroids Direction/ Velocity
+}
+
+function checkForShotsCollision(arrayOfShots) {
+    for (let index in arrayOfShots) {
+
+        if (asteroidsLayer.getIntersection(arrayOfShots[index].token.position())) {
+            // Find the asteroid
+            for (let asteroidIndex in asteroids) {
+                // Find the asteroid to break up
+                if (asteroids[asteroidIndex].token.intersects(arrayOfShots[index].token.position())) {
+                    console.log(asteroids[asteroidIndex].token.getRotation());
+                    splitAsteroid(asteroidIndex);
+                }
+            }
+
+            console.log('hit');
+
+            // Destroy the shot
+            arrayOfShots[index].token.remove();
+            delete arrayOfShots[index];
+        }
+    }
+}
+
+// TODO: Game over
+function checkForPlayerCollision(player) {
+    if (asteroidsLayer.getIntersection(player.token.position())) {
+        gameOver = true;
+    }
+}
+
 function createNewAsteroid() {
     // kinetic token
     // constant speed
-    let angle = 45; // TODO: Generate random angle
+    let angle = getRandomInt(0, 360); // TODO: Generate random angle
 
     let directionOfMovement = {
         deltaX: ((((shipSize.height / 2) * Math.sin(angle * Math.PI / 180))) / 10),
@@ -289,7 +367,7 @@ function createNewAsteroid() {
         width: 200,
         height: 200,
         offset: { x: 100, y: 100 },
-        stroke: 'white'
+        stroke: 'white',
     }).rotate(angle);
 
     let newAsteroid = {
@@ -317,7 +395,10 @@ function nextFrame() {
 
     // Collisions
     // Shots with asteroids
+    checkForShotsCollision(playerToken.shots);
+
     // Ship with asteroids
+    checkForPlayerCollision(playerToken);
 
     // Player Ship
     nextPlayerFrame();
