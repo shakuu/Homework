@@ -12,9 +12,16 @@ var asteroidsKineticStage = new Kinetic.Stage({
 
 var bgLayer = new Kinetic.Layer();
 var playLayer = new Kinetic.Layer();
+var asteroidsLayer = new Kinetic.Layer();
+var shotsLayer = new Kinetic.Layer();
 
 asteroidsKineticStage.add(bgLayer);
 asteroidsKineticStage.add(playLayer);
+asteroidsKineticStage.add(shotsLayer);
+asteroidsKineticStage.add(asteroidsLayer);
+
+// Asteroids
+var asteroids = [];
 
 // Prep Player Ship
 var shipSize = {
@@ -32,9 +39,6 @@ var playerShip = new Kinetic.Line({
 });
 
 playLayer.add(playerShip);
-playLayer.draw();
-
-console.log(playerShip.getX(), playerShip.getY());
 
 function getPlayerToken() {
     let playerToken = {
@@ -45,7 +49,7 @@ function getPlayerToken() {
             forwardDeceleration: 0.006,
             forwardVelocity: 0,
             maxForwardVelocity: 3,
-            yawAcceleration: 2.4,
+            yawAcceleration: 2.0,
             yawDeceleration: 0.01,
             yawVelocity: 0,
             maxYawVelocity: 5,
@@ -72,17 +76,18 @@ function adjustPlayerTokenAngle(currentValue) {
 var playerToken = getPlayerToken();
 
 function keepObjectOnCanvas(object, sizeOfObject) {
+    const sizeMod = 0.8;
     // Left - Right
-    if (object.token.getX() + sizeOfObject.width / 2 < 0) {
-        object.token.setX(asteroidsKineticStage.getWidth() - sizeOfObject.width / 2);
-    } else if (object.token.getX() - sizeOfObject.width / 2 > asteroidsKineticStage.getWidth()) {
-        object.token.setX(sizeOfObject.width / 2);
+    if (object.token.getX() + sizeOfObject.width * sizeMod < 0) {
+        object.token.setX(asteroidsKineticStage.getWidth() + sizeOfObject.width * sizeMod);
+    } else if (object.token.getX() - sizeOfObject.width * sizeMod > asteroidsKineticStage.getWidth()) {
+        object.token.setX(-sizeOfObject.width * sizeMod);
     }
     // Up - Down
-    if (object.token.getY() + sizeOfObject.height / 2 < 0) {
-        object.token.setY(asteroidsKineticStage.getHeight() - sizeOfObject.height / 2);
-    } else if (object.token.getY() - sizeOfObject.height / 2 > asteroidsKineticStage.height()) {
-        object.token.setY(sizeOfObject.height / 2);
+    if (object.token.getY() + sizeOfObject.height * sizeMod < 0) {
+        object.token.setY(asteroidsKineticStage.getHeight() + sizeOfObject.height * sizeMod);
+    } else if (object.token.getY() - sizeOfObject.height * sizeMod > asteroidsKineticStage.height()) {
+        object.token.setY(-sizeOfObject.height * sizeMod);
     }
 }
 
@@ -126,10 +131,6 @@ function nextPlayerFrame() {
     playerToken.movement.angleOfRotation = adjustPlayerTokenAngle(playerToken.movement.angleOfRotation);
 }
 
-function nextAsteroidsFrame() {
-    // TODO:
-}
-
 // Move shots -> Constant velocity
 // Destroy shot when out of canvas
 // Check for collision - > when asteroids are implemented
@@ -149,6 +150,14 @@ function nextShotsFrame() {
         } else if (playerToken.shots[index].token.getY() < -10 || playerToken.shots[index].token.getY() > asteroidsKineticStage.getHeight() + 10) {
             delete playerToken.shots[index];
         }
+    }
+}
+
+function nextAsteroidsFrame() {
+    for (let asteroid in asteroids) {
+        asteroids[asteroid].token.setX(asteroids[asteroid].token.getX() + asteroids[asteroid].direction.deltaX * asteroids[asteroid].direction.velocity);
+        asteroids[asteroid].token.setY(asteroids[asteroid].token.getY() + asteroids[asteroid].direction.deltaY * asteroids[asteroid].direction.velocity);
+        keepObjectOnCanvas(asteroids[asteroid], asteroids[asteroid].size);
     }
 }
 
@@ -259,19 +268,62 @@ function createNewShot() {
     shot.token.setY(playerToken.token.getY() + shot.direction.deltaY * 10);
 
     // Testing 
-    playLayer.add(shotToken);
-    playLayer.draw();
+    shotsLayer.add(shotToken);
+    shotsLayer.draw();
 }
 
+function createNewAsteroid() {
+    // kinetic token
+    // constant speed
+    let angle = 45; // TODO: Generate random angle
 
+    let directionOfMovement = {
+        deltaX: ((((shipSize.height / 2) * Math.sin(angle * Math.PI / 180))) / 10),
+        deltaY: -((((shipSize.height / 2) * Math.cos(angle * Math.PI / 180))) / 10),
+        velocity: 1
+    };
+
+    let largeAsteroid = new Kinetic.Rect({
+        x: 0,
+        y: 0,
+        width: 200,
+        height: 200,
+        offset: { x: 100, y: 100 },
+        stroke: 'white'
+    }).rotate(angle);
+
+    let newAsteroid = {
+        token: largeAsteroid,
+        size: {
+            width: 200,
+            height: 200
+        },
+        direction: directionOfMovement
+    };
+
+    // Adjust position and direction of travel
+    // origin ( off canvas ) - affected by stay on canvas ?
+    // direction of travel
+    newAsteroid.token.setX(150);
+    newAsteroid.token.setY(150);
+
+    asteroidsLayer.add(newAsteroid.token);
+    asteroids.push(newAsteroid);
+}
 
 // Get Next Frame
 var gameOver = false;
 function nextFrame() {
+
+    // Collisions
+    // Shots with asteroids
+    // Ship with asteroids
+
     // Player Ship
     nextPlayerFrame();
 
     // Asteroids
+    nextAsteroidsFrame();
 
     // Update shots
     nextShotsFrame();
@@ -281,6 +333,8 @@ function nextFrame() {
 
     // ReDraw
     playLayer.draw();
+    shotsLayer.draw();
+    asteroidsLayer.draw();
 
     // End condition
     if (gameOver) {
@@ -288,6 +342,17 @@ function nextFrame() {
     }
 
     requestAnimationFrame(nextFrame);
+}
+
+function startGame() {
+    // prep ui etc.
+
+    // create player ship
+
+    // create asteroids
+    createNewAsteroid();
+
+    nextFrame();
 }
 
 // Read input when available
@@ -305,7 +370,7 @@ document.getElementById('controls')
             createNewShot();
         } else if (input.key === 'ArrowUp') {
             createNewForwardMotion();
+        } else if (input.key === 's') {
+            startGame();
         }
     });
-
-nextFrame();
