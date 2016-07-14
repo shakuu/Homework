@@ -41,8 +41,8 @@ function getPlayerToken() {
         token: playerShip,
         shots: [],
         movement: {
-            forwardAcceleration: 1.2,
-            forwardDeceleration: 0.01,
+            forwardAcceleration: 1.1,
+            forwardDeceleration: 0.006,
             forwardVelocity: 0,
             maxForwardVelocity: 3,
             yawAcceleration: 2.4,
@@ -109,16 +109,14 @@ function nextPlayerFrame() {
         // Remove the motion if it no longer applies
         if (playerToken.movement.forwardDirections[index].velocity < 0) {
             playerToken.movement.forwardDirections[index].velocity = 0;
+            // delete playerToken.movement.forwardDirections[index];
         }
 
+
         keepObjectOnCanvas(playerToken, shipSize);
-        // Bug with ship shooting too far
-        // Break if total speed is too high
-        // if (totalSpeed.x > 3 * playerToken.movement.maxForwardVelocity ||
-        //     totalSpeed.y > 3 * playerToken.movement.maxForwardVelocity) {
-        //     break;
-        // }
     }
+
+    playerToken.movement.forwardDirections.filter(x => x.velocity !== 0);
 
     // Ship Rotation
     playerToken.token.rotate(playerToken.movement.yawVelocity);
@@ -136,8 +134,6 @@ function nextAsteroidsFrame() {
 // Destroy shot when out of canvas
 // Check for collision - > when asteroids are implemented
 function nextShotsFrame() {
-    console.log(playerToken.shots);
-
     let velocity = 8.5;
     let numberOfShots = playerToken.shots.length;
 
@@ -207,8 +203,8 @@ function createNewForwardMotion() {
     // Get direction
     let currentDirection = getCurrentDirection();
 
-    console.log(currentDirection); // DELETE THIS LINE
-    console.log(playerToken.movement.angleOfRotation);
+    // console.log(currentDirection); // DELETE THIS LINE
+    // console.log(playerToken.movement.angleOfRotation);
 
     // If old direction -> accelerate
     // if (playerToken.movement.forwardDirections.length > 0) {
@@ -241,8 +237,6 @@ function createNewShot() {
     // Starts at current location
     // Direction is current angle
     // Destroyed on out of player area
-    console.log('called');
-
     let shotToken = new Kinetic.Rect({
         x: 20,
         y: 20,
@@ -267,7 +261,6 @@ function createNewShot() {
     // Testing 
     playLayer.add(shotToken);
     playLayer.draw();
-
 }
 
 
@@ -300,8 +293,6 @@ function nextFrame() {
 // Read input when available
 document.getElementById('controls')
     .addEventListener('keydown', function (input) {
-        console.log(input.key);
-
         // GameOver = true;
         if (input.key === 'Escape') {
             getGameOver();
