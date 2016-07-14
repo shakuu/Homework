@@ -295,41 +295,95 @@ function createSmallerAsteroids(size, amount) {
     return output;
 }
 
+// Top left, Bot left, Bot right, Top right ( counter clockwise )
 function getSmallerAsteroidsPositions(position, size) {
     let newPositions = [
         { x: position.x - size, y: position.y - size },
         { x: position.x - size, y: position.y },
-        { x: position.x, y: position.y - size },
-        { x: position.x, y: position.y }
+        { x: position.x, y: position.y },
+        { x: position.x, y: position.y - size }
     ];
 
+    console.log(newPositions);
     return newPositions;
+}
+
+// Top left, Bot left, Bot right, Top right ( counter clockwise )
+function getSmallerAsteroidsDirectionOfTravel(oldAngleOfRotation, oldVelocity, amount) {
+    console.log(oldAngleOfRotation);
+    // 360 - 45; 360-45-90, 360 - 45 - 90 - 90
+    let output = [];
+    for (let i = 0; i < amount; i += 1) {
+        let directionOfMovement = {
+            deltaX: ((((shipSize.height / 2) * Math.sin((oldAngleOfRotation - 45 - i * 90) * Math.PI / 180))) / 10),
+            deltaY: -((((shipSize.height / 2) * Math.cos((oldAngleOfRotation - 45 - i * 90) * Math.PI / 180))) / 10),
+            velocity: 1
+        };
+
+        output[i] = directionOfMovement;
+        output[i].velocity = oldVelocity + 1;
+    }
+
+    return output;
 }
 
 function splitAsteroid(indexInAsteroids) {
     // Split into 4 equal parts
+    const amount = 4;
     let newSize = asteroids[indexInAsteroids].token.getWidth() / 2;
 
     if (asteroids[indexInAsteroids].token.getWidth() === 25) {
-        // Destroy and return
+
+        asteroids[indexInAsteroids].token.remove();
+        delete asteroids[indexInAsteroids];
         return;
     }
 
-    let newAsteroids = createSmallerAsteroids(newSize, 4);
-    let newAsteroidsPosition = getSmallerAsteroidsPositions(asteroids[indexInAsteroids].token.position());
+    let newAsteroids = createSmallerAsteroids(newSize, amount);
+    
+    let newAsteroidsPosition = getSmallerAsteroidsPositions(
+        asteroids[indexInAsteroids].token.position(),
+        newSize);
+
+    let newAsteroidsDirectionOfTravel = getSmallerAsteroidsDirectionOfTravel(
+        asteroids[indexInAsteroids].token.getRotation(),
+        asteroids[indexInAsteroids].direction.velocity,
+        amount);
+
+    // Delete old asteroid
+    asteroids[indexInAsteroids].token.remove();
+    delete asteroids[indexInAsteroids];
 
     // Set new Asteroids Direction/ Velocity
+    for (let i = 0; i < amount; i += 1) {
+
+        newAsteroids[i].setX(newAsteroidsPosition[i].x);
+        newAsteroids[i].setY(newAsteroidsPosition[i].y);
+
+        let newAsteroid = {
+            token: newAsteroids[i],
+            size: {
+                width: newAsteroids[i].getWidth(),
+                height: newAsteroids[i].getHeight()
+            },
+            direction: newAsteroidsDirectionOfTravel[i]
+        };
+
+        asteroids.push(newAsteroid);
+        asteroidsLayer.add(newAsteroid.token);
+    }
 }
 
 function checkForShotsCollision(arrayOfShots) {
     for (let index in arrayOfShots) {
 
         if (asteroidsLayer.getIntersection(arrayOfShots[index].token.position())) {
+
             // Find the asteroid
             for (let asteroidIndex in asteroids) {
+
                 // Find the asteroid to break up
                 if (asteroids[asteroidIndex].token.intersects(arrayOfShots[index].token.position())) {
-                    console.log(asteroids[asteroidIndex].token.getRotation());
                     splitAsteroid(asteroidIndex);
                 }
             }
