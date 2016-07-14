@@ -1,8 +1,16 @@
 * {
   font-family: consolas;
-  font-size: 16px;
   padding: 0;
-  margin: 0;
+  margin: auto;
+}
+body {
+  background-image: url("http://wallpapercave.com/wp/pEeUsp1.jpg");
+}
+body > h1 {
+  color: #fff;
+  text-align: center;
+  font-size: 48;
+  padding: 20px 0 20px 0;
 }
 body div#kinetic-canvas {
   width: 960px;

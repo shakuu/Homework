@@ -3,22 +3,32 @@ const maximumAllowedRotationSpeed = 5,
     canvasWidth = 960,
     canvasHeight = 540;
 
+var asteroidsKineticStage,
+    bgLayer,
+    playLayer,
+    asteroidsLayer,
+    shotsLayer;
+
 // Prep Kinetic.Stage and layers
-var asteroidsKineticStage = new Kinetic.Stage({
-    container: 'kinetic-canvas',
-    width: canvasWidth,
-    height: canvasHeight
-});
+function initStage() {
+    asteroidsKineticStage = new Kinetic.Stage({
+        container: 'kinetic-canvas',
+        width: canvasWidth,
+        height: canvasHeight
+    });
 
-var bgLayer = new Kinetic.Layer();
-var playLayer = new Kinetic.Layer();
-var asteroidsLayer = new Kinetic.Layer();
-var shotsLayer = new Kinetic.Layer();
+    bgLayer = new Kinetic.Layer();
+    playLayer = new Kinetic.Layer();
+    asteroidsLayer = new Kinetic.Layer();
+    shotsLayer = new Kinetic.Layer();
 
-asteroidsKineticStage.add(bgLayer);
-asteroidsKineticStage.add(playLayer);
-asteroidsKineticStage.add(shotsLayer);
-asteroidsKineticStage.add(asteroidsLayer);
+    asteroidsKineticStage.add(bgLayer);
+    asteroidsKineticStage.add(playLayer);
+    asteroidsKineticStage.add(shotsLayer);
+    asteroidsKineticStage.add(asteroidsLayer);
+}
+
+
 
 // Asteroids
 var asteroids = [];
@@ -29,18 +39,17 @@ var shipSize = {
     height: 20
 };
 
-var playerShip = new Kinetic.Line({
-    points: [0, shipSize.height, shipSize.width / 2, 0, shipSize.width, shipSize.height],
-    x: (asteroidsKineticStage.getWidth() - shipSize.width) / 2,
-    y: (asteroidsKineticStage.getHeight() - shipSize.height) / 2,
-    stroke: 'white',
-    offset: { x: 5, y: 10 },
-    closed: true
-});
-
-playLayer.add(playerShip);
-
 function getPlayerToken() {
+
+    var playerShip = new Kinetic.Line({
+        points: [0, shipSize.height, shipSize.width / 2, 0, shipSize.width, shipSize.height],
+        x: (asteroidsKineticStage.getWidth() - shipSize.width) / 2,
+        y: (asteroidsKineticStage.getHeight() - shipSize.height) / 2,
+        stroke: 'white',
+        offset: { x: 5, y: 10 },
+        closed: true
+    });
+
     let playerToken = {
         token: playerShip,
         shots: [],
@@ -60,6 +69,7 @@ function getPlayerToken() {
         score: 0
     };
 
+    playLayer.add(playerShip);
     return playerToken;
 }
 
@@ -73,7 +83,6 @@ function adjustPlayerTokenAngle(currentValue) {
     return currentValue;
 }
 
-var playerToken = getPlayerToken();
 
 function keepObjectOnCanvas(object, sizeOfObject) {
     const sizeMod = 0.8;
@@ -303,14 +312,11 @@ function getSmallerAsteroidsPositions(position, size) {
         { x: position.x, y: position.y },
         { x: position.x, y: position.y - size }
     ];
-
-    console.log(newPositions);
     return newPositions;
 }
 
 // Top left, Bot left, Bot right, Top right ( counter clockwise )
 function getSmallerAsteroidsDirectionOfTravel(oldAngleOfRotation, oldVelocity, amount) {
-    console.log(oldAngleOfRotation);
     // 360 - 45; 360-45-90, 360 - 45 - 90 - 90
     let output = [];
     for (let i = 0; i < amount; i += 1) {
@@ -340,7 +346,7 @@ function splitAsteroid(indexInAsteroids) {
     }
 
     let newAsteroids = createSmallerAsteroids(newSize, amount);
-    
+
     let newAsteroidsPosition = getSmallerAsteroidsPositions(
         asteroids[indexInAsteroids].token.position(),
         newSize);
@@ -387,9 +393,6 @@ function checkForShotsCollision(arrayOfShots) {
                     splitAsteroid(asteroidIndex);
                 }
             }
-
-            console.log('hit');
-
             // Destroy the shot
             arrayOfShots[index].token.remove();
             delete arrayOfShots[index];
@@ -443,6 +446,11 @@ function createNewAsteroid() {
     asteroids.push(newAsteroid);
 }
 
+function handleGameOver() {
+    initStage();
+    asteroids = [];
+}
+
 // Get Next Frame
 var gameOver = false;
 function nextFrame() {
@@ -473,6 +481,7 @@ function nextFrame() {
 
     // End condition
     if (gameOver) {
+        handleGameOver();
         return;
     }
 
@@ -480,9 +489,11 @@ function nextFrame() {
 }
 
 function startGame() {
+    gameOver = false;
     // prep ui etc.
-
+    initStage();
     // create player ship
+    playerToken = getPlayerToken();
 
     // create asteroids
     createNewAsteroid();
@@ -501,7 +512,6 @@ document.getElementById('controls')
         } else if (input.key === 'ArrowRight') {
             getRotateRight();
         } else if (input.key === ' ') {
-            console.log('space');
             createNewShot();
         } else if (input.key === 'ArrowUp') {
             createNewForwardMotion();
