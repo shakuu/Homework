@@ -82,7 +82,7 @@ function getDelta() {
     console.log((radius * Math.sin(rotation * Math.PI / 180)));
     console.log((radius * Math.cos(rotation * Math.PI / 180)));
 
-
+    
     // delta.x /= 10;
     // delta.y /= 10;
 

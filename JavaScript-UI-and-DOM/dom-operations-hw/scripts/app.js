@@ -3,10 +3,32 @@
 // Add divs to the element
 // Each div's content must be one of the items from the contents array
 // The function must remove all previous content from the DOM element provided
-
 function populateElelemnt(element, contentArray) {
-    var selectedElement;
+    var selectedElement,
+        outputContent = '';
 
+    validateInput(element, contentArray);
+
+    console.log(element);
+
+    if (typeof element === 'string') {
+        element = (element + '').slice(1);
+        selectedElement = document.getElementById(element);
+    } else {
+        selectedElement = element;
+    }
+    debugger;
+    for (let i in contentArray) {
+        outputContent += `<div>${contentArray[i]}</div>`;
+    }
+    debugger;
+
+    selectedElement.innerHTML = outputContent;
+
+    return selectedElement;
+}
+
+function validateInput(element, contentArray) {
     if (!element) {
         throw Error('parameter [element] must be present');
     }
@@ -32,6 +54,7 @@ function populateElelemnt(element, contentArray) {
     }
 
     for (let i in contentArray) {
+
         if (typeof contentArray[i] !== 'string' && typeof contentArray[i] !== 'number') {
             throw Error('content must be of type string or number');
         }

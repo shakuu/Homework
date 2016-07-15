@@ -59,4 +59,10 @@ describe('testing DOM element', function () {
         }).to.throw(/content must be of type string or number/);
     });
 
+    it('should work', function () {
+        let element = populateElelemnt('#test-div', [1, 'a', 123]);
+
+        chai.assert.equal(element.innerHTML, '<div>1</div><div>a</div>');
+    });
+
 }); 
