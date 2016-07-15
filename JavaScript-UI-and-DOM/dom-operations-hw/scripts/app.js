@@ -17,11 +17,10 @@ function populateElelemnt(element, contentArray) {
     } else {
         selectedElement = element;
     }
-    debugger;
+    
     for (let i in contentArray) {
         outputContent += `<div>${contentArray[i]}</div>`;
     }
-    debugger;
 
     selectedElement.innerHTML = outputContent;
 
