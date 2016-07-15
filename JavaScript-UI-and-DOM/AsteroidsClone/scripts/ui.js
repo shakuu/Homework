@@ -19,7 +19,7 @@ function showGame() {
 }
 
 function hideGame() {
-     $('body > h1').animate({
+    $('body > h1').animate({
         padding: '200px 0 0 0'
     }, 3000);
     $('#game').slideUp(3000);
@@ -27,3 +27,4 @@ function hideGame() {
     setTimeout(3000);
     $('#list-controls').slideDown(3000);
 }
+
