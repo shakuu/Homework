@@ -5,30 +5,35 @@
     <meta charset="UTF-8">
     <title>Asteroids</title>
     <link rel="stylesheet" type="" href="styles/main.css">
-    <script src="bower_components/KineticJS/kinetic.js"></script>
 </head>
 
 <body id="controls">
 
     <h1><a href="https://github.com/shakuu/Homework/tree/master/JavaScript-UI-and-DOM/AsteroidsClone" title="Project on GitHub">Asteroids</a></h1>
-    
+
     <section id="instructions">
         <p>Press S to start</p>
     </section>
 
-    <div id="kinetic-canvas"></div>
+    <section id="game">
+        <div id="kinetic-canvas"></div>
+    </section>
 
     <section id="list-controls">
-         <h2>Controls</h2>
+        <h2>Controls</h2>
 
-         <ul id="list-buttons">
-             <li>Left / Right Arrow: Yaw,</li>
-             <li>Up Arrow: Thrust,</li>
-             <li>Space: Cannon</li>
-         </ul>
+        <ul id="list-buttons">
+            <li>Left / Right Arrow: Yaw,</li>
+            <li>Up Arrow: Thrust,</li>
+            <li>Space: Cannon</li>
+        </ul>
 
     </section>
 
+
+    <script src="bower_components/KineticJS/kinetic.js"></script>
+    <script src="scripts/jquery-3.1.0.js"></script>
+    <script src="scripts/ui.js"></script>
     <script src="scripts/app.js"></script>
 </body>
 

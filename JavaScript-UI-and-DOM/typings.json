@@ -1,0 +1,6 @@
+{
+  "globalDependencies": {
+    "jquery": "registry:dt/jquery#1.10.0+20160704162008",
+    "stylus": "registry:dt/stylus#0.0.0+20160317120654"
+  }
+}

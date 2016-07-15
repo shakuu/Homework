@@ -1,3 +1,4 @@
+
 // Constants
 const maximumAllowedRotationSpeed = 5,
     canvasWidth = 960,
@@ -54,14 +55,14 @@ function getPlayerToken() {
         token: playerShip,
         shots: [],
         movement: {
-            forwardAcceleration: 1.1,
+            forwardAcceleration: 0.9,
             forwardDeceleration: 0.006,
             forwardVelocity: 0,
-            maxForwardVelocity: 2.7,
-            yawAcceleration: 1.6,
+            maxForwardVelocity: 2,
+            yawAcceleration: 1.8,
             yawDeceleration: 0.01,
             yawVelocity: 0,
-            maxYawVelocity: 5,
+            maxYawVelocity: 3,
             angleOfRotation: 0,
             forwardDirections: []
         },
@@ -321,8 +322,8 @@ function getSmallerAsteroidsDirectionOfTravel(oldAngleOfRotation, oldVelocity, a
     let output = [];
     for (let i = 0; i < amount; i += 1) {
         let directionOfMovement = {
-            deltaX: ((((shipSize.height / 2) * Math.sin((oldAngleOfRotation - 45 - i * 90) * Math.PI / 180))) / 10),
-            deltaY: -((((shipSize.height / 2) * Math.cos((oldAngleOfRotation - 45 - i * 90) * Math.PI / 180))) / 10),
+            deltaX: ((((shipSize.height / 2) * Math.sin((+oldAngleOfRotation - 45 - i * 90) * Math.PI / 180))) / 10),
+            deltaY: -((((shipSize.height / 2) * Math.cos((+oldAngleOfRotation - 45 - i * 90) * Math.PI / 180))) / 10),
             velocity: 1
         };
 

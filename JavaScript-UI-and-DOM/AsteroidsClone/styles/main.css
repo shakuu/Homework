@@ -8,7 +8,7 @@ body {
 }
 body > h1 {
   text-align: center;
-  padding: 10px 0 5px 0;
+  padding: 200px 0 5px 0;
 }
 body > h1 > a {
   text-decoration: none;
@@ -42,7 +42,4 @@ body section#list-controls h2 {
 body section#list-controls ul {
   list-style: none;
   text-align: center;
-}
-body section#list-controls ul li {
-  display: inline-block;
 }
