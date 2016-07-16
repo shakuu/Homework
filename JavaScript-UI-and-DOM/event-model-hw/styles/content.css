@@ -10,10 +10,11 @@ body section#testing-content {
   font-size: 16px;
 }
 body section#testing-content div.button {
-  margin: 1% auto;
+  box-sizing: border-box;
+  margin: 15px auto;
   padding: 7px 10px 5px 10px;
   width: 90%;
-  border: 1px solid #b0e0e6;
+  border: 3px solid #b0e0e6;
   background-color: #9acd32;
   text-align: center;
   text-transform: capitalize;
@@ -22,11 +23,18 @@ body section#testing-content div.button {
 body section#testing-content div.button:hover {
   background-color: #c2e184;
 }
+body section#testing-content div.button + div.content {
+  display: none;
+  border: 3px solid #b0e0e6;
+}
 body section#testing-content div.content {
+  box-sizing: border-box;
   padding: 20px 100px 20px 100px;
+  border: 3px solid transparent;
   text-indent: 50px;
   text-align: left;
-  display: none;
+  margin: auto;
+  width: 90%;
 }
 body section#testing-content div.content:first-letter {
   text-transform: capitalize;

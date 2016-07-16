@@ -10,10 +10,11 @@ body
         font-size: 16px
 
         div.button
-            margin 1% auto
+            box-sizing border-box
+            margin 15px auto
             padding 7px 10px 5px 10px
             width 90%
-            border 1px solid powderblue
+            border 3px solid powderblue
             background-color yellowgreen
             text-align center
             text-transform capitalize
@@ -22,11 +23,18 @@ body
             &:hover
                 background-color lighten(yellowgreen, 20)
 
+            & + div.content
+                display none
+                border 3px solid powderblue       
+
         div.content
+            box-sizing: border-box
             padding 20px 100px 20px 100px
+            border 3px solid transparent
             text-indent: 50px
             text-align left
-            display none
+            margin auto
+            width 90%
 
             &:first-letter
                 text-transform: capitalize

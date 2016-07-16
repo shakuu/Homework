@@ -13,6 +13,8 @@ describe('Event model homework', function () {
     });
 
     it('should work', function () {
-        eventModel('test-div');
+        let element = document.getElementById('test-div');
+
+        eventModel(element);
     });
 });
