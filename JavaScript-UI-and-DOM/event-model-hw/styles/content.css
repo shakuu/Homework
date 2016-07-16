@@ -1,0 +1,29 @@
+body {
+  margin: auto;
+}
+body header {
+  text-align: center;
+}
+body section#testing-content {
+  display: flex;
+  justify-content: center;
+  font-family: verdana, sans-serif;
+  font-size: 16px;
+}
+body section#testing-content div.button {
+  margin: 10px 0 10px 0;
+  padding: 10px 10px 5px 10px;
+  width: 100px;
+  height: 20px;
+  border: 1px solid #b0e0e6;
+  background-color: #9acd32;
+  text-align: center;
+  text-transform: capitalize;
+  color: #fff;
+}
+body section#testing-content div.button:hover {
+  background-color: #c2e184;
+}
+body section#testing-content div.content {
+  text-align: center;
+}

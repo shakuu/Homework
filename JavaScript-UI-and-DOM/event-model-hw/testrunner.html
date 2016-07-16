@@ -4,34 +4,37 @@
 <head>
     <title>Mocha Tests</title>
     <link rel="stylesheet" href="node_modules/mocha/mocha.css">
+    <link rel="stylesheet" type="text/css" href="styles/content.css">
 </head>
 
 <body>
-    <div id="test-div">test
-        <div class="button">
-            button
-        </div>
-
-        <div class="button">
-            button
-        </div>
-
-        <div class="content">
-            content
-        </div>
-
-        <div class="button">
-            button 2
-        </div>
-
-        <div class="content">
-            content 2
-        </div>
-
-    </div>
-
-
     <div id="mocha"></div>
+
+    <section id="testing-content">
+
+        <div id="test-div">
+            <div class="button">
+                button
+            </div>
+
+            <div class="button">
+                button
+            </div>
+
+            <div class="content">
+                content
+            </div>
+
+            <div class="button">
+                button 2
+            </div>
+
+            <div class="content">
+                content 2
+            </div>
+        </div>
+    </section>
+
     <script src="node_modules/mocha/mocha.js"></script>
     <script src="node_modules/chai/chai.js"></script>
     <script>mocha.setup('bdd')</script>
