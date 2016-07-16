@@ -9,15 +9,14 @@ function populateElelemnt(element, contentArray) {
 
     validateInput(element, contentArray);
 
-    console.log(element);
-
     if (typeof element === 'string') {
-        element = (element + '').slice(1);
+
         selectedElement = document.getElementById(element);
     } else {
+        
         selectedElement = element;
     }
-    
+
     for (let i in contentArray) {
         outputContent += `<div>${contentArray[i]}</div>`;
     }
@@ -28,6 +27,7 @@ function populateElelemnt(element, contentArray) {
 }
 
 function validateInput(element, contentArray) {
+
     if (!element) {
         throw Error('parameter [element] must be present');
     }
@@ -41,15 +41,15 @@ function validateInput(element, contentArray) {
     }
 
     if (typeof element !== 'string' && !element.tagName) {
-        throw Error('element not a string or DOM element');
+        throw Error('element must be a string or DOM element');
     }
 
     if (element.tagName && !document.getElementById('#' + element.getAttribute('id'))) {
-        throw Error('not an existing DOM element');
+        throw Error('element must already exist');
     }
 
-    if ($(element).length === 0) {
-        throw Error('element with this ID does not exist');
+    if (!document.getElementById(element)) {
+        throw Error('element id must be of an existing DOM element');
     }
 
     for (let i in contentArray) {
