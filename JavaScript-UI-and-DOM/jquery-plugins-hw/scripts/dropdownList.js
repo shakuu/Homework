@@ -2,6 +2,7 @@
 jQuery.fn.dropdownList = function () {
     let select = $(this).css('display', 'none');
     let parent = select.parent();
+    
     // Step 1: div class dropdown wrapper
     let wrapper = $('<div>')
         .addClass('dropdown-list')
