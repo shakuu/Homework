@@ -10,6 +10,13 @@ $.getJSON('http://baconipsum.com/api/?callback=?',
             }
         }
 
-        let contentDivs = $('.content').html(baconContent.slice(2, 6).join(''));
+        let contentDivs = $('#test-div').children('.content');
+
+        for (let i = 0; i < contentDivs.length; i += 1) {
+            $(contentDivs[i]).html(baconContent.slice(getRandomInt(0, 5), getRandomInt(5, 10)).join(''));
+        }
     });
 
+function getRandomInt(min, max) {
+    return Math.floor(Math.random() * (max - min + 1)) + min;
+}
