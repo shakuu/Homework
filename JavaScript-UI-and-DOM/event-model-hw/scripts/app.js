@@ -56,7 +56,7 @@ function eventModel(element) {
         .getElementsByClassName('button');
 
     for (let i = 0; i < buttonElements.length; i += 1) {
-        buttonElements[i].innerText = 'hide';
+        buttonElements[i].innerText = 'show';
 
         buttonElements[i].addEventListener('click', function () {
             toggleVisibilityOfContent(this);
