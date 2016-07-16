@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Mocha Tests</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/mocha/3.0.0-1/mocha.min.css">
+    <link rel="stylesheet" type="text/css" href="styles/content.css">
+</head>
+
+<body>
+    <div id="mocha"></div>
+
+    <section id="task-one-content">
+        <h1>Task 1</h1>
+
+        <div id="task1-div">
+
+        </div>
+    </section>
+
+    <section id="task-two-content">
+        <h1>Task 2</h1>
+        <div id="test-div">
+            <div class="button">
+                button
+            </div>
+
+            <div class="button">
+                button
+            </div>
+
+            <div class="content">
+                content ssssssssad ssssssssad ssssssssad ssssssssad ssssssssad ssssssssad ssssssssad ssssssssad ssssssssad ssssssssad ssssssssad
+                ssssssssad ssssssssad ssssssssad ssssssssad ssssssssad
+            </div>
+
+            <div class="content">
+                content ssssssssad ssssssssad ssssssssad ssssssssad ssssssssad ssssssssad ssssssssad ssssssssad ssssssssad ssssssssad ssssssssad
+                ssssssssad ssssssssad ssssssssad ssssssssad ssssssssad
+            </div>
+
+            <div class="button">
+                button 2
+            </div>
+
+            <div class="content">
+                content 2
+            </div>
+        </div>
+    </section>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mocha/3.0.0-1/mocha.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/chai/3.5.0/chai.min.js"></script>
+    <script>mocha.setup('bdd')</script>
+    <script src="https://code.jquery.com/jquery-3.1.0.min.js" integrity="sha256-cCueBR6CsyA4/9szpPfrX3s49M9vUU5BgtiJj06wt/s="
+        crossorigin="anonymous"></script>
+
+    <!-- load code you want to test here -->
+    <script src="scripts/getBacon.js"></script>
+
+    <script src="scripts/task1.js"></script>
+    <script src="scripts/task2.js"></script>
+
+    <!-- load your test files here -->
+    <script src="./test/task1-tests.js">
+    <script src="./test/task2-tests.js">
+        
+    </script>
+
+    <script>
+      mocha.run();
+    </script>
+</body>
+
+</html>
