@@ -1,37 +1,27 @@
-function getElement(element) {
+function validateElement(element) {
     let outputElement;
 
-    if (!element.tagName) {
+    if (!(element instanceof jQuery)) {
         if (typeof element !== 'string') {
-            throw Error('Input parameter must be a string or a DOM element.');
+            throw Error('Input parameter must be a string or a jQuery object.');
         }
-
-        outputElement = element;
-    } else {
-        outputElement = element.id;
     }
-
-    if (!document.getElementById(outputElement)) {
-        throw Error('Provided element must already exist.');
-    }
-
-    return outputElement;
 }
 
 function eventModel(element) {
+    validateElement(element);
 
-    $('#' + getElement(element))
-        .on('click', '.button', function (args) {
-            let button = $(this);
+    $(element).on('click', '.button', function (args) {
+        let button = $(this);
 
-            button.next('.content').slideToggle(1200);
+        button.next('.content').slideToggle(1200);
 
-            if (button.text() !== 'show') {
-                button.text('show');
-            } else {
-                button.text('hide');
-            }
-        })
+        if (button.text() !== 'show') {
+            button.text('show');
+        } else {
+            button.text('hide');
+        }
+    })
         .children('.button')
         .text('show');
 }
