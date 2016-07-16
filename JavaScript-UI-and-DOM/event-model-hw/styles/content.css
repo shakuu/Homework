@@ -36,6 +36,9 @@ body section#testing-content div.content {
   margin: auto;
   width: 90%;
 }
+body section#testing-content div.content:last-child {
+  margin-bottom: 1%;
+}
 body section#testing-content div.content:first-letter {
   text-transform: capitalize;
 }
