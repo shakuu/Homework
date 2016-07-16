@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Dropdown List</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/mocha/3.0.0-1/mocha.min.css">
+    <link rel="stylesheet" type="text/css" href="styles/content.css">
+</head>
+
+<body>
+    <div id="mocha"></div>
+
+    <select id="the-select">
+        <option value="value-1">Option 1</option>
+        <option value="value-2">Option 2</option>
+        <option value="value-3">Option 3</option>
+        <option value="value-4">Option 4</option>
+        <option value="value-5">Option 5</option>
+        <option value="value-5">Option 5</option>
+        <option value="value-5">Option 5</option>
+        <option value="value-5">Option 5</option>
+        <option value="value-5">Option 5</option>
+        <option value="value-5">Option 5</option>
+        <option value="value-5">Option 5</option>
+        <option value="value-5">Option 5</option>
+        <option value="value-5">Option 5</option>
+        
+    </select>
+
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mocha/3.0.0-1/mocha.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/chai/3.5.0/chai.min.js"></script>
+    <script>mocha.setup('bdd')</script>
+    <script src="https://code.jquery.com/jquery-3.1.0.min.js" integrity="sha256-cCueBR6CsyA4/9szpPfrX3s49M9vUU5BgtiJj06wt/s="
+        crossorigin="anonymous"></script>
+
+    <!-- load code you want to test here -->
+    <script src="scripts/dropdownList.js"></script>
+    <!-- load your test files here -->
+    <!--<script src="test/ta-test.js"></script>-->
+    <script>
+      mocha.run();
+    </script>
+</body>
+
+</html>

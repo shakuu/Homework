@@ -1,0 +1,55 @@
+body
+    width 100%
+    margin auto
+
+    header
+        text-align: center
+
+    section#task-one-content
+        font-family verdana, sans-serif
+        font-size: 16px
+        margin-bottom 20px
+        border-bottom 3px solid powderblue
+
+        h1
+            text-align: center
+
+    section#task-two-content
+        font-family verdana, sans-serif
+        font-size: 16px
+
+        h1
+            text-align: center
+
+        div.button
+            box-sizing border-box
+            margin 15px auto
+            padding 7px 10px 5px 10px
+            width 90%
+            border 3px solid powderblue
+            background-color yellowgreen
+            text-align center
+            text-transform capitalize
+            color white
+
+            &:hover
+                background-color lighten(yellowgreen, 20)
+
+            & + div.content
+                display none
+                border 3px solid powderblue       
+
+        div.content
+            box-sizing: border-box
+            padding 20px 100px 20px 100px
+            border 3px solid transparent
+            text-indent: 50px
+            text-align left
+            margin auto
+            width 90%
+
+            &:last-child
+                margin-bottom 1%
+
+            &:first-letter
+                text-transform: capitalize
