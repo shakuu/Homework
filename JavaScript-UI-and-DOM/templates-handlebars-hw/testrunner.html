@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Handlebars Template</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/mocha/3.0.0-1/mocha.min.css">
+    <link rel="stylesheet" type="text/css" href="styles/content.css">
+</head>
+
+<body>
+    <div id="mocha"></div>
+
+    <section id="output">
+
+    </section>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mocha/3.0.0-1/mocha.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/chai/3.5.0/chai.min.js"></script>
+    <script>mocha.setup('bdd')</script>
+    <script src="https://code.jquery.com/jquery-3.1.0.min.js" integrity="sha256-cCueBR6CsyA4/9szpPfrX3s49M9vUU5BgtiJj06wt/s="
+        crossorigin="anonymous"></script>
+    <script src="node_modules/handlebars/handlebars-v4.0.5.js"></script>
+
+    <script id="table-template" type="text/x-handlebars-template">
+        <table class="items-table"> 
+            <thead>
+                <tr>
+                    <th>#</th>
+                    <th>Vendor</th>
+                    <th>Model</th>
+                    <th>OS</th>
+                   </tr>
+            </thead>
+            <tbody>
+                {{#items}}
+                <tr>
+                    <td>{{index}}</td>
+                    <td>{{col1}}</td> 
+                    <td>{{col2}}</td>
+                    <td>{{col3}}</td>
+                </tr>
+                {{/items}}
+            </tbody>
+   	    </table>
+    </script>
+
+    <!-- load code you want to test here -->
+    <script src="scripts/task1.js"></script>
+
+    <!-- load your test files here -->
+    <script src="test/task1.js"></script>
+
+    <script>
+      mocha.run();
+    </script>
+</body>
+
+</html>

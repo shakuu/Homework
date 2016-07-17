@@ -1,0 +1,56 @@
+body {
+  width: 100%;
+  margin: auto;
+}
+body header {
+  text-align: center;
+}
+body section#task-one-content {
+  font-family: verdana, sans-serif;
+  font-size: 16px;
+  margin-bottom: 20px;
+  border-bottom: 3px solid #b0e0e6;
+}
+body section#task-one-content h1 {
+  text-align: center;
+}
+body section#task-two-content {
+  font-family: verdana, sans-serif;
+  font-size: 16px;
+}
+body section#task-two-content h1 {
+  text-align: center;
+}
+body section#task-two-content div.button {
+  box-sizing: border-box;
+  margin: 15px auto;
+  padding: 7px 10px 5px 10px;
+  width: 90%;
+  border: 3px solid #b0e0e6;
+  background-color: #9acd32;
+  text-align: center;
+  text-transform: capitalize;
+  color: #fff;
+}
+body section#task-two-content div.button:hover {
+  background-color: #c2e184;
+}
+body section#task-two-content div.button + div.content {
+  display: none;
+  border: 3px solid #b0e0e6;
+}
+body section#task-two-content div.content {
+  box-sizing: border-box;
+  padding: 20px 100px 20px 100px;
+  border: 3px solid transparent;
+  text-indent: 50px;
+  text-align: left;
+  margin: auto;
+  width: 90%;
+}
+body section#task-two-content div.content:last-child {
+  margin-bottom: 1%;
+}
+body section#task-two-content div.content:first-letter {
+  text-transform: capitalize;
+}
