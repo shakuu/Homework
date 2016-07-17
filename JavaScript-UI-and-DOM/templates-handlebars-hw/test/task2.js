@@ -19,5 +19,6 @@ describe('Task 2: Build a list of Animals', function () {
 
     it('should build a list of anchor tags', function () {
         buildAnimals(data);
+        addThumbs();
     });
 });
