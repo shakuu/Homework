@@ -14,6 +14,17 @@
 
     </section>
 
+    <section id="task3">
+        <ul id="books-list" data-template="book-item-template"></ul>
+        <script id="book-item-template" type="text/x-handlebars-template">
+        <li class="book-item">
+            <a href="/#books/{{id}}">
+                <strong>{{title}}</strong>
+            </a>
+        </li> 
+    </script>
+    </section>
+
     <script src="https://cdnjs.cloudflare.com/ajax/libs/mocha/3.0.0-1/mocha.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/chai/3.5.0/chai.min.js"></script>
     <script>mocha.setup('bdd')</script>
@@ -44,11 +55,28 @@
    	    </table>
     </script>
 
+    <script id="task2-table-template" type="text/x-handlebars-template">
+        <div class="container">
+            <h1>Animals</h1>
+            <ul class="animals-list">    
+                {{#animals}}
+                <li>
+                    <a href="{{url}}">See a {{name}}</a>                
+                </li>
+                {{/animals}}
+            </ul>
+        </div>
+    </script>
+
     <!-- load code you want to test here -->
     <script src="scripts/task1.js"></script>
+    <script src="scripts/task2.js"></script>
+    <script src="scripts/task3.js"></script>
 
     <!-- load your test files here -->
     <script src="test/task1.js"></script>
+    <script src="test/task2.js"></script>
+    <script src="test/task3.js"></script>
 
     <script>
       mocha.run();
