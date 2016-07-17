@@ -11,7 +11,6 @@ function buildAnimals(data) {
 
 function checkAnimals(data) {
     for (let i in data.animals) {
-        console.log(data.animals[i]);
         if (!data.animals[i].url) {
             data.animals[i] = {
                 name: data.animals[i].name,
