@@ -29,8 +29,7 @@ function addThumbs() {
                     'position': 'absolute',
                     'left': '0',
                     'top': '0',
-                    'background-color': 'rgba(33,33,33,0.8)',
-                    'padding': '10%'
+                    'background-color': 'rgba(33,33,33,0.8)'
                 }).on('click', function () {
                     $(this)
                         .fadeToggle(1000)
@@ -54,27 +53,33 @@ function addThumbs() {
                     },
                     drag: function (event, ui) {
                         if ($(this).position().left > originalPosition.left
-                            && $(this).position().left - originalPosition.left >= 150) {
+                            && $(this).position().left - originalPosition.left >= 200) {
 
                             moveLeft = false;
                             moveRight = true;
 
                             $(this).draggable({
                                 revert: false
-                            })
-                            .hide('slide', { direction: 'right' }, 1000);
+                            }).hide('slide', { direction: 'right' }, 1000);
+
+                            setTimeout(function () {
+                                $(this).remove();
+                            }, 1000);
 
                             console.log('display prev');
                         } else if ($(this).position().left < originalPosition.left
-                            && originalPosition.left - $(this).position().left >= 150) {
+                            && originalPosition.left - $(this).position().left >= 200) {
 
                             moveLeft = true;
                             moveRight = false;
 
                             $(this).draggable({
                                 revert: false
-                            })
-                                .hide('slide', { direction: 'left' }, 1000);
+                            }).hide('slide', { direction: 'left' }, 750);
+
+                            setTimeout(function () {
+                                $(this).remove();
+                            }, 1000);
 
                             console.log('display next');
                         } else {
@@ -84,7 +89,8 @@ function addThumbs() {
                     }
                 })
                 .css({
-                    'width': '80%'
+                    'width': '80%',
+                    'padding': '10%'
                 })
                 .appendTo(display);
 
