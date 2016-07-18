@@ -58,26 +58,28 @@ function addThumbs() {
 
                             moveLeft = false;
                             moveRight = true;
+
+                            $(this).draggable({
+                                revert: false
+                            })
+                            .hide('slide', { direction: 'right' }, 1000);
+
+                            console.log('display prev');
                         } else if ($(this).position().left < originalPosition.left
                             && originalPosition.left - $(this).position().left >= 150) {
 
                             moveLeft = true;
                             moveRight = false;
+
+                            $(this).draggable({
+                                revert: false
+                            })
+                                .hide('slide', { direction: 'left' }, 1000);
+
+                            console.log('display next');
                         } else {
                             moveLeft = false;
                             moveRight = false;
-                        }
-                    },
-                    stop: function () {
-                        if (moveLeft) {
-                            // display next photo
-                            console.log('left');
-                        } else if (moveRight) {
-                            // display prev photo
-                            console.log('right');
-                        } else {
-                            // nothing
-                            console.log('do not move');
                         }
                     }
                 })
