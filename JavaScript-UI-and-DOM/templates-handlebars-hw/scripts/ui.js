@@ -10,7 +10,7 @@ function addThumbs() {
             }).attr('src', $(booksList.children()[i]).children('a').first().attr('href'))
             .prependTo($(booksList.children()[i]));
     }
-
+    
     booksList.css('list-style', 'none')
         .children('li')
         .css('display', 'inline-block')
