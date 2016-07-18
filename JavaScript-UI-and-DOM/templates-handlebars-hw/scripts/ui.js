@@ -32,8 +32,9 @@ function addThumbs() {
                     'background-color': 'rgba(33,33,33,0.8)'
                 }).on('click', function () {
                     $(this)
-                        .fadeToggle(1000)
-                        .remove();
+                        .fadeToggle(1000);
+
+                    removeElement(this, 1000);
                 });
 
             var moveLeft = false,
@@ -53,38 +54,58 @@ function addThumbs() {
                     },
                     drag: function (event, ui) {
                         if ($(this).position().left > originalPosition.left
-                            && $(this).position().left - originalPosition.left >= 200) {
+                            && $(this).position().left - originalPosition.left > 0) {
 
                             moveLeft = false;
                             moveRight = true;
 
-                            $(this).draggable({
-                                revert: false
-                            }).hide('slide', { direction: 'right' }, 1000);
-
-                            setTimeout(function () {
-                                $(this).remove();
-                            }, 1000);
+                            // slideElementOffTheScreen(this, 'right');
+                            // removeElement($(this), 1000);
 
                             console.log('display prev');
                         } else if ($(this).position().left < originalPosition.left
-                            && originalPosition.left - $(this).position().left >= 200) {
+                            && originalPosition.left - $(this).position().left > 0) {
 
                             moveLeft = true;
                             moveRight = false;
 
-                            $(this).draggable({
-                                revert: false
-                            }).hide('slide', { direction: 'left' }, 750);
-
-                            setTimeout(function () {
-                                $(this).remove();
-                            }, 1000);
+                            // slideElementOffTheScreen(this, 'left');
+                            // removeElement(this, 1000);
 
                             console.log('display next');
                         } else {
                             moveLeft = false;
                             moveRight = false;
+                        }
+                    },
+                    stop: function () {
+                        var side = '';
+                        if (moveRight) {
+                            side = 'right';
+                        } else {
+                            side = 'left';
+                        }
+
+                        if (moveLeft || moveRight) {
+                            $(this).draggable({
+                                revert: false
+                            }).hide('slide', { direction: side + '' }, 750, function () {
+                                let newSrc = '',
+                                    direction = '';
+
+                                if (moveLeft) {
+                                    clicked = $(clicked).parent().next().children('img').first();
+                                    direction = 'right';
+                                } else if (moveRight) {
+                                    clicked = $(clicked).parent().prev().children('img').first();
+                                    direction = 'left';
+                                }
+
+                                newSrc = clicked.attr('src');
+
+                                slideElementOnTheScreen(this, direction);
+                                $(this).attr('src', newSrc);
+                            });
                         }
                     }
                 })
@@ -94,10 +115,26 @@ function addThumbs() {
                 })
                 .appendTo(display);
 
-
             display
                 .hide()
                 .appendTo('body')
                 .fadeIn(1000);
+
+            function slideElementOnTheScreen(element, side) {
+                $(element).draggable({
+                    revert: true
+                }).show('slide', { direction: side + '' }, 750, function () {
+
+                });
+            }
         });
+
+}
+
+
+
+function removeElement(element, timeout) {
+    setTimeout(function () {
+        $(element).remove();
+    }, +timeout);
 }

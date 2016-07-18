@@ -9,7 +9,7 @@ function solve(args) {
             .replace(new RegExp(`#{${item}}`, 'g'), options[item]);
 
     }
-
+    
     console.log(inputString);
 }
 
