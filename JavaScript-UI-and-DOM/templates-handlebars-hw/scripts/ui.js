@@ -39,7 +39,8 @@ function addThumbs() {
 
             var moveLeft = false,
                 moveRight = false,
-                originalPosition;
+                originalPosition,
+                originalOffset;
 
             let img = $('<img>')
                 .attr('src', clicked.attr('src'))
@@ -49,6 +50,7 @@ function addThumbs() {
                     scroll: false,
                     start: function (event, ui) {
                         originalPosition = $(this).position();
+                        originalOffset = $(this).offset();
                     },
                     drag: function (event, ui) {
                         if ($(this).position().left > originalPosition.left
