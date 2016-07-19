@@ -1,13 +1,17 @@
-function getdata(data) {
-    console.log(data);
-}
-
 // prefix -> function to handle the data
 var urlAPI = 'http://api.worldbank.org/indicators?format=jsonP&prefix=getdata';
+var inputData;
 
-$.ajax({
-    url: urlAPI,
+function getdata(data) {
+    console.log(data);
+    inputData = data;
+}
 
-    // Tell jQuery we're expecting JSONP
-    dataType: "jsonp",
-});
+function getDataFromApi(apiUrl) {
+    $.ajax({
+        url: apiUrl,
+
+        // Tell jQuery we're expecting JSONP
+        dataType: "jsonp",
+    });
+}
