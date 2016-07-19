@@ -1,0 +1,18 @@
+* {
+  padding: 0;
+  margin: auto;
+}
+body section#data article#content div.data-table {
+  color: #000;
+  border: 1px solid #000;
+}
+body section#data article#content div.data-table div.data-row div.data-cell {
+  display: inline-block;
+  padding: 5px;
+  border: 1px solid #000;
+}
+body section#data footer div.data-row div.data-cell {
+  display: inline-block;
+  padding: 5px;
+  border: 1px solid #000;
+}
