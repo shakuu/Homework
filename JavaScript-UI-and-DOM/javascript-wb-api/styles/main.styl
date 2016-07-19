@@ -5,6 +5,7 @@
 data-cell()
     display inline-block
     padding 5px
+    margin 5px
     border 1px solid black
 
 body
@@ -16,11 +17,27 @@ body
             div.data-table
                 color black
                 border 1px solid black
+                font-size 12px
+
+                div.header-row
+                    width 960px
+                    
+                    div.header-cell
+                        data-cell()
+                        width 40%
+                        
+                        &:first-child
+                            width 5%
 
                 div.data-row
-                
+                    width 960px
+
                     div.data-cell
                         data-cell()
+                        width 40%
+
+                        &:first-child
+                            width 5%
 
         footer
 

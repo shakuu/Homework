@@ -9,12 +9,19 @@ function buildTemplateTable(object, tableId = '') {
     let table = $('<div>')
         .attr('id', tableId)
         .addClass('data-table')
-        .html('\{\{#items\}\}');
+
+    let headerRow = $('<div>')
+        .addClass('header-row');
 
     let row = $('<div>')
         .addClass('data-row');
 
     for (let item in object) {
+        $('<div>')
+            .addClass('header-cell')
+            .html(`${item}`)
+            .appendTo(headerRow);
+
         $('<div>')
             .addClass('data-cell')
             .html(`\{\{${item}\}\}`)
@@ -22,6 +29,8 @@ function buildTemplateTable(object, tableId = '') {
     }
 
     table
+        .append(headerRow)
+        .html(table.html() + '\{\{#items\}\}')
         .append(row)
         .html(table.html() + '\{\{/items\}\}');
 

@@ -5,14 +5,37 @@
 body section#data article#content div.data-table {
   color: #000;
   border: 1px solid #000;
+  font-size: 12px;
+}
+body section#data article#content div.data-table div.header-row {
+  width: 960px;
+}
+body section#data article#content div.data-table div.header-row div.header-cell {
+  display: inline-block;
+  padding: 5px;
+  margin: 5px;
+  border: 1px solid #000;
+  width: 40%;
+}
+body section#data article#content div.data-table div.header-row div.header-cell:first-child {
+  width: 5%;
+}
+body section#data article#content div.data-table div.data-row {
+  width: 960px;
 }
 body section#data article#content div.data-table div.data-row div.data-cell {
   display: inline-block;
   padding: 5px;
+  margin: 5px;
   border: 1px solid #000;
+  width: 40%;
+}
+body section#data article#content div.data-table div.data-row div.data-cell:first-child {
+  width: 5%;
 }
 body section#data footer div.data-row div.data-cell {
   display: inline-block;
   padding: 5px;
+  margin: 5px;
   border: 1px solid #000;
 }
