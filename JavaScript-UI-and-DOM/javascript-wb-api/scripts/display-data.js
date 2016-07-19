@@ -5,21 +5,14 @@ function displayFooterInfo(footerInput) {
     // per_page:"50"
     // total:16844
 
-    // DELETE
-    console.log(footerInput);
-    
-    let data = {
-        items: footerInput
-    };
+    let data = { items: footerInput };
 
     let templateScript = buildTemplateBasedOnObject(footerInput);
-
     let sourceTemplate = $(templateScript).html();
     let template = Handlebars.compile(sourceTemplate);
     let outputHtml = template(data);
 
     $('#data footer').html(outputHtml);
-
     $(templateScript).remove();
 }
 
@@ -32,18 +25,13 @@ function displayData(inputArrayOfObjects) {
     // sourceOrganization
     // topics: Array
 
-    // DELETE
-    console.log(inputArrayOfObjects);
-
-    let data = {
-        items: inputArrayOfObjects
-    };
+    let data = { items: inputArrayOfObjects };
 
     let templateScript = buildTemplateBasedOnObject(inputArrayOfObjects[0]);
     let sourceTemplate = $(templateScript).html();
     let template = Handlebars.compile(sourceTemplate);
     let outputHtml = template(data);
 
-    $(templateScript).remove();  
+    $(templateScript).remove();
     $('#data article#content').html(outputHtml);
 }
