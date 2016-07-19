@@ -1,13 +1,8 @@
 function displayFooterInfo(footerInput) {
-    // Object
-    // page:1
-    // pages:337
-    // per_page:"50"
-    // total:16844
 
     let data = { items: footerInput };
 
-    let templateScript = buildTemplateBasedOnObject(footerInput);
+    let templateScript = buildTemplateSingleRow(footerInput);
     let sourceTemplate = $(templateScript).html();
     let template = Handlebars.compile(sourceTemplate);
     let outputHtml = template(data);
@@ -17,21 +12,14 @@ function displayFooterInfo(footerInput) {
 }
 
 function displayData(inputArrayOfObjects) {
-    // Indeces
-    // id
-    // name
-    // source ( object )
-    // sourceNote:
-    // sourceOrganization
-    // topics: Array
 
     let data = { items: inputArrayOfObjects };
 
-    let templateScript = buildTemplateBasedOnObject(inputArrayOfObjects[0]);
+    let templateScript = buildTemplateTable(inputArrayOfObjects[0]);
     let sourceTemplate = $(templateScript).html();
     let template = Handlebars.compile(sourceTemplate);
     let outputHtml = template(data);
 
-    $(templateScript).remove();
     $('#data article#content').html(outputHtml);
+    $(templateScript).remove();
 }
