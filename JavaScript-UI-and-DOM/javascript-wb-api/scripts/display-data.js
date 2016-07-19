@@ -22,4 +22,6 @@ function displayData(inputArrayOfObjects) {
 
     $('#data article#content').html(outputHtml);
     $(templateScript).remove();
+
+    $('#data-table-output').DataTable();
 }

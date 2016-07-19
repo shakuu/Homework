@@ -1,42 +1,43 @@
-// div - row
-//     div - cell
-//     div - cell
+// div - table
+//      div - row
+//           div - cell
+//           div - cell
 
 // Build Handlebars template for a table  with rows of items.
-function buildTemplateTable(object, tableId = '') {
+function buildTemplateTable(object, tableId = 'data-table-output') {
     let newScriptId = 'data-table-template';
 
-    let table = $('<div>')
+    let table = $('<table>')
         .attr('id', tableId)
-        .addClass('data-table');
+        .addClass('data-table')
+        .addClass('display')
+        .append($('<thead>'))
+        .append($('<tfoot>'))
+        .append($('<tbody>').html('\{\{#items\}\}'));
 
-    let headerRow = $('<div>')
+    let headerRow = $('<tr>')
         .addClass('header-row');
 
-    let row = $('<div>')
+    let row = $('<tr>')
         .addClass('data-row');
 
     let cellWidth = Math.floor((100 / Object.keys(object).length) - 2);
-    
+
     for (let item in object) {
-        $('<div>')
+        $('<th>')
             .addClass('header-cell')
             .html(`<p>${item}</p>`)
-            .css({ 'width': cellWidth + '%' })
             .appendTo(headerRow);
 
-        $('<div>')
+        $('<td>')
             .addClass('data-cell')
             .html(`<p>\{\{${item}\}\}</p>`)
-            .css({ 'width': cellWidth + '%' })
             .appendTo(row);
     }
 
-    table
-        .append(headerRow)
-        .html(table.html() + '\{\{#items\}\}')
-        .append(row)
-        .html(table.html() + '\{\{/items\}\}');
+    table.children('thead').first().append(headerRow);
+    table.children('tbody').first().append(row);
+    table.children('tbody').first().append('\{\{/items\}\}');
 
     $('<script>')
         .attr('id', 'data-table-template')
