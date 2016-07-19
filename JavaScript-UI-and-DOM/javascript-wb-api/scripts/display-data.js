@@ -8,18 +8,24 @@ function displayFooterInfo(footerInput) {
     // DELETE
     console.log(footerInput);
 
-    let container = $('<div>')
-        .addClass('footer-info');
+    // let container = $('<div>')
+    //     .addClass('footer-info');
 
-    for (let item in footerInput) {
-        $('<div>')
-            .text(`${item}: ${footerInput[item]}`)
-            .appendTo(container);
-    }
+    // for (let item in footerInput) {
+    //     $('<div>')
+    //         .text(`${item}: ${footerInput[item]}`)
+    //         .appendTo(container);
+    // }
 
-    $('#data footer')
-        .html('')
-        .append(container);
+    // $('#data footer')
+    //     .html('')
+    //     .append(container);
+
+    let sourceTemplate = $('#footer-template').html();
+    let template = Handlebars.compile(sourceTemplate);
+    let outputHtml = template(footerInput);
+
+    $('#data footer').html(outputHtml);
 }
 
 function displayData(inputArrayOfObjects) {
@@ -34,23 +40,33 @@ function displayData(inputArrayOfObjects) {
     // DELETE
     console.log(inputArrayOfObjects);
 
-    let arrayInfo = [].slice.call(inputArrayOfObjects, 0);
+    let arrayInfo = {
+        indeces: inputArrayOfObjects
+    };
 
-    for (let i in arrayInfo) {
-        let newItem = $('<div>')
-            .addClass('item')
-            .appendTo($('#data article#content'));
+    console.log(arrayInfo.indec);
 
-        $('<div>')
-            .text(`id: ${arrayInfo[i].id}`)
-            .appendTo(newItem);
+    // for (let i in arrayInfo) {
+    //     let newItem = $('<div>')
+    //         .addClass('item')
+    //         .appendTo($('#data article#content'));
 
-        $('<div>')
-            .text(`Name: ${arrayInfo[i].name}`)
-            .appendTo(newItem);
+    //     $('<div>')
+    //         .text(`id: ${arrayInfo[i].id}`)
+    //         .appendTo(newItem);
 
-        $('<div>')
-            .text(`Note: ${arrayInfo[i].sourceNote}`)
-            .appendTo(newItem);
-    }
+    //     $('<div>')
+    //         .text(`Name: ${arrayInfo[i].name}`)
+    //         .appendTo(newItem);
+
+    //     $('<div>')
+    //         .text(`Note: ${arrayInfo[i].sourceNote}`)
+    //         .appendTo(newItem);
+    // }
+
+    let sourceTemplate = $('#data-template').html();
+    let template = Handlebars.compile(sourceTemplate);
+    let outputHtml = template(arrayInfo);
+
+    $('#data article#content').html(outputHtml);
 }

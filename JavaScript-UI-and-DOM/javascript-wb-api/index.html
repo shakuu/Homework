@@ -14,7 +14,7 @@
         </header>
 
         <article id="content">
-            
+
         </article>
 
         <footer>
@@ -24,7 +24,26 @@
 
     <button id="get-data">Get Data</button>
     <button id="display-footer">Display Footer</button>
-    <button id="display-data">Display Data</button>    
+    <button id="display-data">Display Data</button>
+
+    <!-- Handlebars.js templates -->
+    <script id="footer-template" type="text/x-handlebars-template">
+        <div id="page-number">{{page}}</div>
+        <div id="page-count">{{pages}}</div>
+        <div id="items-per-page">{{per_page}}</div>    
+   	    <div id="items-total">{{total}}</div>
+    </script>
+
+    <script id="data-template" type="text/x-handlebars-template">    
+        {{#indeces}}
+        <div id="item">
+            <div id="id">{{id}}</div>
+            <div id="name">{{name}}</div>
+            <div id="source-note">{{sourceNote}}</div>
+        </div>
+        {{/indeces}}
+    </script>
+    <!---->
 
     <script src="https://code.jquery.com/jquery-3.1.0.min.js" integrity="sha256-cCueBR6CsyA4/9szpPfrX3s49M9vUU5BgtiJj06wt/s="
         crossorigin="anonymous"></script>
