@@ -7,25 +7,20 @@ function displayFooterInfo(footerInput) {
 
     // DELETE
     console.log(footerInput);
+    
+    let data = {
+        items: footerInput
+    };
 
-    // let container = $('<div>')
-    //     .addClass('footer-info');
+    let templateScript = buildTemplateBasedOnObject(footerInput);
 
-    // for (let item in footerInput) {
-    //     $('<div>')
-    //         .text(`${item}: ${footerInput[item]}`)
-    //         .appendTo(container);
-    // }
-
-    // $('#data footer')
-    //     .html('')
-    //     .append(container);
-
-    let sourceTemplate = $('#footer-template').html();
+    let sourceTemplate = $(templateScript).html();
     let template = Handlebars.compile(sourceTemplate);
-    let outputHtml = template(footerInput);
+    let outputHtml = template(data);
 
     $('#data footer').html(outputHtml);
+
+    $(templateScript).remove();
 }
 
 function displayData(inputArrayOfObjects) {
@@ -40,33 +35,15 @@ function displayData(inputArrayOfObjects) {
     // DELETE
     console.log(inputArrayOfObjects);
 
-    let arrayInfo = {
-        indeces: inputArrayOfObjects
+    let data = {
+        items: inputArrayOfObjects
     };
 
-    console.log(arrayInfo.indec);
-
-    // for (let i in arrayInfo) {
-    //     let newItem = $('<div>')
-    //         .addClass('item')
-    //         .appendTo($('#data article#content'));
-
-    //     $('<div>')
-    //         .text(`id: ${arrayInfo[i].id}`)
-    //         .appendTo(newItem);
-
-    //     $('<div>')
-    //         .text(`Name: ${arrayInfo[i].name}`)
-    //         .appendTo(newItem);
-
-    //     $('<div>')
-    //         .text(`Note: ${arrayInfo[i].sourceNote}`)
-    //         .appendTo(newItem);
-    // }
-
-    let sourceTemplate = $('#data-template').html();
+    let templateScript = buildTemplateBasedOnObject(inputArrayOfObjects[0]);
+    let sourceTemplate = $(templateScript).html();
     let template = Handlebars.compile(sourceTemplate);
-    let outputHtml = template(arrayInfo);
+    let outputHtml = template(data);
 
+    $(templateScript).remove();  
     $('#data article#content').html(outputHtml);
 }
