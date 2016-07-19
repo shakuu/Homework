@@ -8,7 +8,7 @@ function buildTemplateTable(object, tableId = '') {
 
     let table = $('<div>')
         .attr('id', tableId)
-        .addClass('data-table')
+        .addClass('data-table');
 
     let headerRow = $('<div>')
         .addClass('header-row');
@@ -54,10 +54,13 @@ function buildTemplateSingleRow(object, rowId = '') {
         .addClass('data-row')
         .html('\{\{#items\}\}');
 
+    let cellWidth = Math.floor((100 / Object.keys(object).length) - 2);
+
     for (let item in object) {
         $('<div>')
             .addClass('data-cell')
             .html(`<p>\{\{${item}\}\}</p>`)
+            .css({ 'width': cellWidth + '%' })
             .appendTo(row);
     }
 
