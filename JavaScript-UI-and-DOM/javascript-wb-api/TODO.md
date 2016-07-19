@@ -1,0 +1,1 @@
+1. Add header row to each table template
