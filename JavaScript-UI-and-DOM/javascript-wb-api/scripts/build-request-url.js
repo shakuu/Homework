@@ -1,12 +1,22 @@
+// countries
+// regions
+// indicators
+
 // var urlAPI = 'http://api.worldbank.org/countries?page=1&format=jsonP&prefix=getdata';
 // 1. Base URL: http://api.worldbank.org
 // 2. Request: ex. /counries 
 // 3. Options: ex ?page=1
 // 4. Prefix MUST HAVE !: ex.  &prefix=(function name) 
 
-// countries
-// regions
-// indicators
+var currentRequestUrl = {
+    base: '',
+    request: [],
+    options: {
+        page: 0,
+        format: '',
+        prefix: ''
+    }
+};
 
 var urlRequestOptionsTemplate = {
     page: 1,
@@ -47,9 +57,9 @@ function buildOptions(options) {
 function initializeDefaultRequestURLObject() {
     const baseUrl = 'http://api.worldbank.org';
 
-    var output = {
+    let output = {
         base: baseUrl,
-        request: ['regions'],
+        request: ['countries'],
         options: {
             page: 1,
             format: 'jsonP',

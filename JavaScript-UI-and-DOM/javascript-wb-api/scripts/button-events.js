@@ -23,4 +23,20 @@ function initButtonEvents() {
         console.log(optionsString);
         console.log(currentRequestUrl);
     });
+
+    // DELETE
+    $('#test-url-increment-page').on('click', function () {
+        currentRequestUrl.options.page = changePageNumber(
+            currentRequestUrl.options.page + 1,
+            currentRequestUrl
+        );
+    });
+
+    // DELETE
+    $('#test-url-decrement-page').on('click', function () {
+        currentRequestUrl.options.page = changePageNumber(
+            currentRequestUrl.options.page - 1,
+            currentRequestUrl
+        );
+    });
 }
