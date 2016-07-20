@@ -4,11 +4,11 @@
   - http://api.worldbank.org/request?suffix
   - Array of commands.
   - Dynamically update on new api request.
-
-2. Select by Country/ Region -> Display all Countries/ Region.
 3. Select specific Country/ Region - > Display data for selection.
 4. Display information about a selected country
-  - Predetermined list of indicators
+  - Reset table view
+  - Add country view
+  - Add predetermined list of indicators
   - GDP
   - Population
   - Capital City
