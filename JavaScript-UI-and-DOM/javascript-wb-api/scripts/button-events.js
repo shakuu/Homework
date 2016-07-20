@@ -1,6 +1,7 @@
 function initButtonEvents() {
     // Send request to the worldbank.org API and store the result
     $('#get-data').on('click', function () {
+        let urlAPI = buildRequestUrl();
         getDataFromApi(urlAPI);
     });
 
@@ -16,7 +17,8 @@ function initButtonEvents() {
     });
 
     $('#test-url-builder').on('click', function(){
-        let optionsString = buildOptions(null);
+        let optionsString = buildRequestUrl();
         console.log(optionsString);
+        console.log(currentRequestUrl);
     });
 }

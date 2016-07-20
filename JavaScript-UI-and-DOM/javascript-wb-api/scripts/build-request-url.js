@@ -5,19 +5,47 @@
 // 4. Prefix MUST HAVE !: ex.  &prefix=(function name) 
 
 // countries
-// region
+// regions
 // indicators
-const baseUrl = 'http://api.worldbank.org';
 
-function buildRequestUrl(request = '', options = null) {
+var currentRequestUrl = {
+    base: null,
+    request: null,
+    options: null
+};
 
+var urlRequestOptionsTemplate = {
+    page: 1,
+    format: 'jsonP',
+    prefix: 'getdata'
+};
+
+function buildRequestUrl(base = null, request = null, options = null) {
+    const baseUrl = 'http://api.worldbank.org';
+
+    if (!base) { base = baseUrl; }
+
+    currentRequestUrl.base = base;
+
+    request = buildRequest(request);
     options = buildOptions(options);
 
-    return `${baseUrl}${request}${options}`;
+    return `${base}${request}${options}`;
 }
 
-function buildRequest() {
+function buildRequest(request) {
+    if (!request) {
+        request = [];
+        request[0] = 'regions';
+    }
 
+    currentRequestUrl.request = request;
+
+    let output = '';
+    for (const item in request) {
+        output += `/${request[item]}`;
+    }
+    return output;
 }
 
 function buildOptions(options) {
@@ -25,9 +53,11 @@ function buildOptions(options) {
         options = {
             page: 1,
             format: 'jsonP',
-            func: 'getdata'
+            prefix: 'getdata'
         };
     }
+
+    currentRequestUrl.options = options;
 
     let output = '?';
     for (const item in options) {

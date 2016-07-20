@@ -1,6 +1,6 @@
 // prefix -> function to handle the data
 
-var urlAPI = 'http://api.worldbank.org/region?page=1&format=jsonP&prefix=getdata&';
+// var urlAPI = 'http://api.worldbank.org/region?page=1&format=jsonP&prefix=getdata&';
 var inputData;
 
 function getdata(data) {
