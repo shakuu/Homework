@@ -7,7 +7,6 @@
 function solve() {
     function task1(el, content) {
 
-
         if (typeof el === 'string') {
             el = document.getElementById(el);
 
