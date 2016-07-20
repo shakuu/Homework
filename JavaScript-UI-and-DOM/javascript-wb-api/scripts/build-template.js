@@ -35,9 +35,14 @@ function buildTemplateTable(object, tableId = 'data-table-output') {
             .appendTo(row);
     }
 
-    table.children('thead').first().append(headerRow);
-    table.children('tbody').first().append(row);
-    table.children('tbody').first().append('\{\{/items\}\}');
+    table.children('thead')
+        .first()
+        .append(headerRow)
+        .parent()
+        .children('tbody')
+        .first()
+        .append(row)
+        .append('\{\{/items\}\}');
 
     $('<script>')
         .attr('id', 'data-table-template')
