@@ -8,60 +8,54 @@
 // regions
 // indicators
 
-var currentRequestUrl = {
-    base: null,
-    request: null,
-    options: null
-};
-
 var urlRequestOptionsTemplate = {
     page: 1,
     format: 'jsonP',
     prefix: 'getdata'
 };
 
-function buildRequestUrl(base = null, request = null, options = null) {
-    const baseUrl = 'http://api.worldbank.org';
+function buildRequestUrl(objUrl) {
+    request = buildRequest(objUrl.request);
+    options = buildOptions(objUrl.options);
 
-    if (!base) { base = baseUrl; }
-
-    currentRequestUrl.base = base;
-
-    request = buildRequest(request);
-    options = buildOptions(options);
-
-    return `${base}${request}${options}`;
+    return `${objUrl.base}${request}${options}`;
 }
 
+// Returns a string containing the data request in the requiered format.
 function buildRequest(request) {
-    if (!request) {
-        request = [];
-        request[0] = 'regions';
-    }
-
-    currentRequestUrl.request = request;
-
     let output = '';
+
     for (const item in request) {
         output += `/${request[item]}`;
     }
+
     return output;
 }
 
+// Returns a string containing options in the required format.
 function buildOptions(options) {
-    if (!options) {
-        options = {
-            page: 1,
-            format: 'jsonP',
-            prefix: 'getdata'
-        };
-    }
-
-    currentRequestUrl.options = options;
-
     let output = '?';
+
     for (const item in options) {
         output += `${item}=${options[item]}&`;
     }
+
+    return output;
+}
+
+// Initialize url object with default values on window.load.
+function initializeDefaultRequestURLObject() {
+    const baseUrl = 'http://api.worldbank.org';
+
+    var output = {
+        base: baseUrl,
+        request: ['regions'],
+        options: {
+            page: 1,
+            format: 'jsonP',
+            prefix: 'getdata'
+        }
+    };
+
     return output;
 }
