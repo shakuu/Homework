@@ -4,6 +4,7 @@
     "dynatable": "registry:dt/dynatable#0.3.1+20160316171810",
     "handlebars": "registry:dt/handlebars#3.0.3+20160317120654",
     "jquery": "registry:dt/jquery#1.10.0+20160704162008",
+    "kineticjs": "registry:dt/kineticjs#0.0.0+20160317120654",
     "mocha": "registry:dt/mocha#2.2.5+20160619032855",
     "stylus": "registry:dt/stylus#0.0.0+20160317120654"
   }
