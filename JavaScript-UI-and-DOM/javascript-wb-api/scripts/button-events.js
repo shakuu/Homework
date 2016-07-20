@@ -39,4 +39,9 @@ function initButtonEvents() {
             currentRequestUrl
         );
     });
+
+    // DELETE
+    $('#test-url-remove-iso').on('click', function () {
+        currentRequestUrl = removeCountryCodeFromUrl(currentRequestUrl);
+    });
 }

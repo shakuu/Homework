@@ -32,6 +32,7 @@ function buildTemplateTable(object, tableId = 'data-table-output') {
 
         $('<td>')
             .addClass('data-cell')
+            .addClass(`${item}`)
             .html(`<p>\{\{${item}\}\}</p>`)
             .appendTo(row);
     }

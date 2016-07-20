@@ -23,11 +23,11 @@ function displayData(inputArrayOfObjects) {
     $('#data section#content').html(outputHtml);
     $(templateScript).remove();
 
-    // let myTable = $('#data-table-output').dynatable();
-
     $('#data-table-output').DataTable({
         'paging': false,
         'searching': false,
         'ordering': false
     });
+
+    attachTableEvent('#data-table-output');
 }
