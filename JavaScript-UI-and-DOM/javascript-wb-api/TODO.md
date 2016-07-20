@@ -1,4 +1,7 @@
 1. API url builder 
+  - Page numbers
+  - request builder + suffix builder 
+  - http://api.worldbank.org/request?suffix
   - Array of commands.
   - Dynamically update on new api request.
 
