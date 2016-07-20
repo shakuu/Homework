@@ -11,6 +11,7 @@ function buildTemplateTable(object, tableId = 'data-table-output') {
         .attr('id', tableId)
         .addClass('data-table')
         .addClass('display')
+        .addClass('compact')
         .append($('<thead>'))
         .append($('<tfoot>'))
         .append($('<tbody>').html('\{\{#items\}\}'));

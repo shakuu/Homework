@@ -20,8 +20,14 @@ function displayData(inputArrayOfObjects) {
     let template = Handlebars.compile(sourceTemplate);
     let outputHtml = template(data);
 
-    $('#data article#content').html(outputHtml);
+    $('#data section#content').html(outputHtml);
     $(templateScript).remove();
 
-    $('#data-table-output').DataTable();
+    // let myTable = $('#data-table-output').dynatable();
+
+    $('#data-table-output').DataTable({
+        'paging': false,
+        'searching': false,
+        'ordering': false
+    });
 }

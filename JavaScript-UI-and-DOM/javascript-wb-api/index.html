@@ -3,33 +3,37 @@
 
 <head>
     <title>WorldBank.org API Testing</title>
-    <!--<link rel="stylesheet" type="text/css" href="styles/main.css">-->
+
     <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.12/css/jquery.dataTables.min.css">
-</head>
 
-<body>
-
-    <section id="data">
-        <header></header>
-
-        <article id="content"></article>
-
-        <footer></footer>
-    </section>
-
-    <button id="get-data">Get Data</button>
-    <button id="display-footer">Display Footer</button>
-    <button id="display-data">Display Data</button>
-    
+    <!-- Libraries -->
     <script src="https://code.jquery.com/jquery-3.1.0.min.js" integrity="sha256-cCueBR6CsyA4/9szpPfrX3s49M9vUU5BgtiJj06wt/s="
         crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.0.5/handlebars.min.js"></script>
     <script src="https://cdn.datatables.net/1.10.12/js/jquery.dataTables.min.js"></script>
 
-    <script src="scripts/app.js"></script>
+    <!-- My scripts -->
+    <script src="scripts/build-request-url.js"></script>    
+    <script src="scripts/request-data.js"></script>
     <script src="scripts/build-template.js"></script>
     <script src="scripts/display-data.js"></script>
     <script src="scripts/button-events.js"></script>
+    <script src="scripts/initialize.js"></script>
+</head>
+
+<body>
+    <section id="button-controls">
+        <button id="get-data">Get Data</button>
+        <button id="display-footer">Display Footer</button>
+        <button id="display-data">Display Data</button>
+        <button id="test-url-builder">Display Data</button>
+    </section>
+
+    <section id="data">
+        <header></header>
+        <section id="content"></section>
+        <footer></footer>
+    </section>
 </body>
 
 </html>

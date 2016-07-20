@@ -1,15 +1,22 @@
-// Send request to the worldbank.org API and store the result
-$('#get-data').on('click', function () {
-    getDataFromApi(urlAPI);
-});
+function initButtonEvents() {
+    // Send request to the worldbank.org API and store the result
+    $('#get-data').on('click', function () {
+        getDataFromApi(urlAPI);
+    });
 
-// Display the footer info ( input [0] )
-$('#display-footer').on('click', function () {
-    displayFooterInfo(inputData[0]);
-});
+    // Display the footer info ( input [0] )
+    $('#display-footer').on('click', function () {
+        displayFooterInfo(inputData[0]);
+    });
 
-// Displpay input data.
-// Input data [1] contains an array of objects.
-$('#display-data').on('click', function () {
-    displayData(inputData[1]);
-});
+    // Displpay input data.
+    // Input data [1] contains an array of objects.
+    $('#display-data').on('click', function () {
+        displayData(inputData[1]);
+    });
+
+    $('#test-url-builder').on('click', function(){
+        let optionsString = buildOptions(null);
+        console.log(optionsString);
+    });
+}
