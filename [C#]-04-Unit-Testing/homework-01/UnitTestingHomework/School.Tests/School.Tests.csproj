@@ -54,6 +54,7 @@
   <ItemGroup>
     <Compile Include="IdGeneratorTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="CoursesTests.cs" />
     <Compile Include="ValidationTests.cs" />
   </ItemGroup>
   <ItemGroup>

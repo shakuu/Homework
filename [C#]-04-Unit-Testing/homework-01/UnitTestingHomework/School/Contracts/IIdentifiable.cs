@@ -1,6 +1,6 @@
 ﻿namespace School.Contracts
 {
-    interface IIdentifiable
+    public interface IIdentifiable
     {
         int ID { get; }
     }

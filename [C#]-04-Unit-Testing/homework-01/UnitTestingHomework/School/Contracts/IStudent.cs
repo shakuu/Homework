@@ -1,13 +1,9 @@
 ﻿namespace School.Contracts
 {
-    using System.Collections.Generic;
-
-    interface IStudent : IName, IIdentifiable
+    public interface IStudent : IName, IIdentifiable
     {
-        ICollection<ICourse> Courses { get; }
+        bool JoinCourse(ICourse course);
 
-        bool SignUpForCourse(ICourse course);
-
-        bool SignOutOfCourse(ICourse course);
+        bool LeaveCourse(ICourse course);
     }
 }

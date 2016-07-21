@@ -6,6 +6,6 @@
     {
         ICollection<ICourse> Courses { get; }
 
-        int AssignStudentID();
+        int AssignUniqueStudentID();
     }
 }

@@ -2,7 +2,9 @@
 {
     using System.Threading;
 
-    public class GenerateId
+    using School.Contracts;
+
+    public class GenerateId : IGenerateId
     {
         private int currentId;
         private int minimumValue;
