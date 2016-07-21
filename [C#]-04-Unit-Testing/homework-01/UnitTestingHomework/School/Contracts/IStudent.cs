@@ -1,6 +1,6 @@
 ﻿namespace School.Contracts
 {
-    public interface IStudent : IName, IIdentifiable
+    public interface IStudent : INameable, IIdentifiable
     {
         bool JoinCourse(ICourse course);
 

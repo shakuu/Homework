@@ -4,11 +4,11 @@
     using System.Collections.Generic;
 
     using School.Contracts;
-    using School.Models.Abstract;
+    using School.Models.Base;
     using School.Exceptions;
     using School.Utils;
 
-    public class Course : BaseObject, ICourse
+    public class Course : BaseNameableObject, ICourse
     {
         private int maximumCapacityInStudents;
 

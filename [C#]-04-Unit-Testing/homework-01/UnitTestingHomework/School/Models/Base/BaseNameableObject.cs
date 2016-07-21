@@ -1,15 +1,15 @@
-﻿namespace School.Models.Abstract
+﻿namespace School.Models.Base
 {
     using System;
 
     using School.Contracts;
     using School.Utils;
 
-    public abstract class BaseObject : IName
+    public class BaseNameableObject : INameable
     {
         private string name;
 
-        public BaseObject(string name)
+        public BaseNameableObject(string name)
         {
             this.Name = name;
         }

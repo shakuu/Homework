@@ -1,6 +1,6 @@
 ﻿namespace School.Contracts
 {
-    public interface IName
+    public interface INameable
     {
         string Name { get; }
     }

@@ -5,19 +5,18 @@
     using Microsoft.VisualStudio.TestTools.UnitTesting;
 
     using School.Contracts;
-    using School.Models;
+    using School.Models.Base;
 
     [TestClass]
-    public class BaseObjectTests
+    public class BaseNameableObjectTests
     {
         [TestMethod]
         [ExpectedException(typeof(ArgumentNullException), AllowDerivedTypes = false)]
         public void NameSetter_shouldThrow_ifPassedValueIsANullString()
         {
             string testNameValue = null;
-            var testIntValue = 100;
 
-            IName testBaseObject = new Course(testNameValue, testIntValue);
+            INameable testBaseObject = new BaseNameableObject(testNameValue);
         }
 
         [TestMethod]
@@ -25,18 +24,16 @@
         public void NameSetter_shouldThrow_ifPassedValueIsAnEmptyString()
         {
             string testNameValue = string.Empty;
-            var testIntValue = 100;
 
-            IName testBaseObject = new Course(testNameValue, testIntValue);
+            INameable testBaseObject = new BaseNameableObject(testNameValue);
         }
 
         [TestMethod]
         public void NameSetter_objectNamePropertyShouldBeTheSameAsInput_ifThePassedStringIsNotNullOrEmpty()
         {
             string expectedNameValue = "course name";
-            var testIntValue = 100;
 
-            IName testBaseObject = new Course(expectedNameValue, testIntValue);
+            INameable testBaseObject = new BaseNameableObject(expectedNameValue);
 
             var actualNameValue = testBaseObject.Name;
 

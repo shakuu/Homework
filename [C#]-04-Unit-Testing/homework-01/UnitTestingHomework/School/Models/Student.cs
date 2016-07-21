@@ -2,9 +2,9 @@
 {
     using System;
     using School.Contracts;
-    using School.Models.Abstract;
+    using School.Models.Base;
 
-    public class Student : BaseObject, IStudent
+    public class Student : BaseNameableObject, IStudent
     {
         private int id;
 

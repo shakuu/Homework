@@ -65,5 +65,30 @@
 
             Assert.IsTrue(actual);
         }
+
+        [TestMethod]
+        [ExpectedException(typeof(ArgumentNullException), AllowDerivedTypes = false)]
+        public void LeaveCourse_shouldThrow_ifPassedCourseObjectIsNull()
+        {
+            this.testInputCourse = null;
+
+            this.testInputStudent.LeaveCourse(testInputCourse);
+        }
+
+        [TestMethod]
+        [ExpectedException(typeof(ArgumentException), AllowDerivedTypes = true)]
+        public void LeaveCourse_shouldThrow_ifThisStudentIsNotOnTheListOfStudentsForThePassedCourse()
+        {
+            this.testInputStudent.LeaveCourse(this.testInputCourse);
+        }
+
+        [TestMethod]
+        public void LeaveCourse_shouldReturnTrue_ififStudentAndCourseAreBothValid()
+        {
+            this.testInputStudent.JoinCourse(this.testInputCourse);
+            var actual = this.testInputStudent.LeaveCourse(this.testInputCourse);
+
+            Assert.IsTrue(actual);
+        }
     }
 }

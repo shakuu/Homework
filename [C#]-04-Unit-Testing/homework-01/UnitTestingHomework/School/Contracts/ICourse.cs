@@ -2,7 +2,7 @@
 {
     using System.Collections.Generic;
 
-    public interface ICourse : IName
+    public interface ICourse : INameable
     {
         ICollection<IStudent> Students { get; }
 
