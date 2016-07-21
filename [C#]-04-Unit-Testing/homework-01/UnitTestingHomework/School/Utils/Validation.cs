@@ -25,5 +25,15 @@
                 throw new ArgumentOutOfRangeException();
             }
         }
+
+        public static bool CheckIfObjectIsNull(object obj)
+        {
+            if(obj == null)
+            {
+                throw new ArgumentNullException();
+            }
+
+            return true;
+        }
     }
 }

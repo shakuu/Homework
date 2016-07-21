@@ -70,27 +70,54 @@
         [TestMethod]
         public void AddStudentToCourse_shouldReturnTrue_ifPassedAValidArgument()
         {
-            throw new NotImplementedException();
+            var id = new GenerateId(0, 100).Generate();
+            var name = "student name";
+            IStudent testInputStudent = new Student(name, id);
+
+            ICourse testCourse = new Course(courseName, courseMaximumCapacity);
+
+            var actual = testCourse.AddStudentToCourse(testInputStudent);
+
+            Assert.IsTrue(actual);
         }
 
         [TestMethod]
         [ExpectedException(typeof(CourseException), AllowDerivedTypes = true)]
         public void RemoveStudentFromCourse_shouldThrow_ifPassedStudentIsNotFound()
         {
-            throw new NotImplementedException();
+            var id = new GenerateId(0, 100).Generate();
+            var name = "student name";
+            IStudent testInputStudent = new Student(name, id);
+
+            ICourse testCourse = new Course(courseName, courseMaximumCapacity);
+
+            testCourse.RemoveStudentFromCourse(testInputStudent);
         }
 
         [TestMethod]
         [ExpectedException(typeof(ArgumentNullException), AllowDerivedTypes = true)]
         public void RemoveStudentFromCourse_shouldReturnTrue_ifPassedANullArgument()
         {
-            throw new NotImplementedException();
+            IStudent testInputStudent = null;
+
+            ICourse testCourse = new Course(courseName, courseMaximumCapacity);
+
+            testCourse.RemoveStudentFromCourse(testInputStudent);
         }
 
         [TestMethod]
         public void RemoveStudentFromCourse_shouldReturnTrue_ifPassedAValidArgument()
         {
-            throw new NotImplementedException();
+            var id = new GenerateId(0, 100).Generate();
+            var name = "student name";
+            IStudent testInputStudent = new Student(name, id);
+
+            ICourse testCourse = new Course(courseName, courseMaximumCapacity);
+
+            testCourse.AddStudentToCourse(testInputStudent);
+            var actual = testCourse.RemoveStudentFromCourse(testInputStudent);
+
+            Assert.IsTrue(actual);
         }
     }
 }

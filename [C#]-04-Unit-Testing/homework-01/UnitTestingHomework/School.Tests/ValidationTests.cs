@@ -95,5 +95,24 @@
 
             Assert.IsTrue(actualOutput);
         }
+
+        [TestMethod]
+        [ExpectedException(typeof(ArgumentNullException), AllowDerivedTypes = false)]
+        public void CheckIfObjectIsNull_shouldThrow_ifPassedParameterIsNull()
+        {
+            object testInput = null;
+
+            Validation.CheckIfObjectIsNull(testInput);
+        }
+
+        [TestMethod]
+        public void CheckIfObjectIsNull_shouldReturnTrue_ifPassedParameterIsNotNull()
+        {
+            var testInput = new Object();
+
+            var actualResult= Validation.CheckIfObjectIsNull(testInput);
+
+            Assert.IsTrue(actualResult);
+        }
     }
 }
