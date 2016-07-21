@@ -42,7 +42,7 @@
   <ItemGroup>
     <Compile Include="Contracts\ICourse.cs" />
     <Compile Include="Contracts\IIdentifiable.cs" />
-    <Compile Include="Contracts\IName.cs" />
+    <Compile Include="Contracts\INameable.cs" />
     <Compile Include="Contracts\ISchool.cs" />
     <Compile Include="Contracts\IStudent.cs" />
     <Compile Include="Exceptions\ArgumentNotUniqueException.cs" />
