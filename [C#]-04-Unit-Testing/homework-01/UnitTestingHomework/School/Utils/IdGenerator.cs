@@ -5,7 +5,7 @@
 
     public static class IdGenerator
     {
-        public static void GenerateUniqueIdInRange(IEnumerable<int> existingIds, int minimumValue, int maximumValue)
+        public static int GenerateUniqueIdInRange(IEnumerable<int> existingIds, int minimumValue, int maximumValue)
         {
             // TODO: 
 
