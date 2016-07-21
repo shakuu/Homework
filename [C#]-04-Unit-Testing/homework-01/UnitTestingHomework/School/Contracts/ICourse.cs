@@ -1,6 +1,6 @@
 ﻿namespace School.Contracts
 {
-    interface IGenerateId
+    public interface ICourse : IName
     {
     }
 }
