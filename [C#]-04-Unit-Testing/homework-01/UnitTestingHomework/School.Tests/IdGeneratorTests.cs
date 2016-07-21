@@ -3,37 +3,26 @@
     using System;
     using System.Collections.ObjectModel;
 
-    using NUnit.Framework;
+    using Microsoft.VisualStudio.TestTools.UnitTesting;
 
     using School.Exceptions;
     using School.Utils;
 
-    [TestFixture]
+    [TestClass]
     public class IdGeneratorTests
     {
-        [Test]
-        public void GenerateUniqueIdInRange_shouldThrow_ifThereIsNoAvailableUniqueIdWithinTheGivenRange()
-        {
-            var testInputExistingIds = new Collection<int>() { 1, 2, 3, 4, 5 };
-            var testInputMinimumValue = 1;
-            var testInputMaximumValue = 5;
-
-            var ouputException = Assert.Throws<Exception>(() =>
-                IdGenerator.GenerateUniqueIdInRange(testInputExistingIds, testInputMinimumValue, testInputMaximumValue));
-        }
-
-        [Test]
+        [TestMethod]
+        [ExpectedException(typeof(ArgumentNotUniqueException), AllowDerivedTypes = false)]
         public void GenerateUniqueIdInRange_shouldThrowArgumentNotUniqueException_ifThereIsNoAvailableUniqueIdWithinTheGivenRange()
         {
             var testInputExistingIds = new Collection<int>() { 1, 2, 3, 4, 5 };
             var testInputMinimumValue = 1;
             var testInputMaximumValue = 5;
 
-            Assert.Catch<ArgumentNotUniqueException>(() =>
-                IdGenerator.GenerateUniqueIdInRange(testInputExistingIds, testInputMinimumValue, testInputMaximumValue));
+            IdGenerator.GenerateUniqueIdInRange(testInputExistingIds, testInputMinimumValue, testInputMaximumValue);
         }
 
-        [Test]
+        [TestMethod]
         public void GenerateUniqueIdInRange_shouldReturnAUniqueIntValue()
         {
             var testInputExistingIds = new Collection<int>() { 1, 4, 5 };
@@ -45,7 +34,7 @@
             CollectionAssert.DoesNotContain(testInputExistingIds, actual);
         }
 
-        [Test]
+        [TestMethod]
         public void GenerateUniqueIdInRange_shouldReturnIntGreaterThanOrEqualToMinimumValue()
         {
             var testInputExistingIds = new Collection<int>() { 1, 4, 5 };
@@ -54,10 +43,10 @@
 
             var actual = IdGenerator.GenerateUniqueIdInRange(testInputExistingIds, testInputMinimumValue, testInputMaximumValue);
 
-            Assert.GreaterOrEqual(actual, testInputMinimumValue);
+            Assert.IsTrue(testInputMinimumValue <= actual);
         }
 
-        [Test]
+        [TestMethod]
         public void GenerateUniqueIdInRange_shouldReturnIntlessThanOrEqualToMaximumValue()
         {
             var testInputExistingIds = new Collection<int>() { 1, 4, 5 };
@@ -66,7 +55,20 @@
 
             var actual = IdGenerator.GenerateUniqueIdInRange(testInputExistingIds, testInputMinimumValue, testInputMaximumValue);
 
-            Assert.GreaterOrEqual(testInputMaximumValue, actual);
+            Assert.IsTrue(actual <= testInputMaximumValue);
+        }
+
+        [TestMethod]
+        public void GenerateUniqueIdInRange_shouldReturnTheSmallestUniqueValue()
+        {
+            var testInputExistingIds = new Collection<int>() { 1, 4, 5 };
+            var testInputMinimumValue = 1;
+            var testInputMaximumValue = 5;
+
+            var expectedValue = 2;
+            var actual = IdGenerator.GenerateUniqueIdInRange(testInputExistingIds, testInputMinimumValue, testInputMaximumValue);
+
+            Assert.AreEqual(expectedValue, actual);
         }
     }
 }

@@ -2,32 +2,32 @@
 {
     using System;
 
-    using NUnit.Framework;
+    using Microsoft.VisualStudio.TestTools.UnitTesting;
+
     using School.Utils;
 
-    /// <summary>
-    /// Summary description for ValidationTests
-    /// </summary>
-    [TestFixture]
+    [TestClass]
     public class ValidationTests
     {
-        [Test]
+        [TestMethod]
+        [ExpectedException(typeof(ArgumentNullException), AllowDerivedTypes = false)]
         public void CheckIfStringIsNullOrEmpty_shouldThrow_ifPassedAnEmptyString()
         {
             var testInputEmptyString = string.Empty;
 
-            Assert.Throws<ArgumentNullException>(() => Validation.CheckIfStringIsNullOrEmpty(testInputEmptyString));
+            Validation.CheckIfStringIsNullOrEmpty(testInputEmptyString);
         }
 
-        [Test]
+        [TestMethod]
+        [ExpectedException(typeof(ArgumentNullException), AllowDerivedTypes = false)]
         public void CheckIfStringIsNullOrEmpty_shouldThrow_ifPassedNullValue()
         {
             string testInputNullString = null;
 
-            Assert.Throws<ArgumentNullException>(() => Validation.CheckIfStringIsNullOrEmpty(testInputNullString));
+            Validation.CheckIfStringIsNullOrEmpty(testInputNullString);
         }
 
-        [Test]
+        [TestMethod]
         public void CheckIfStringIsNullOrEmpty_shouldReturnTrue_ifPassedNotNullOrEmptyString()
         {
             var testInputStudentNameString = "student name";
@@ -38,27 +38,29 @@
             Assert.AreEqual(expectedOutput, actualOutput);
         }
 
-        [Test]
+        [TestMethod]
+        [ExpectedException(typeof(ArgumentOutOfRangeException), AllowDerivedTypes = false)]
         public void CheckIfNumberIsInRange_shouldThrow_ifNumberIsBelowMinimumValue()
         {
             var minimumRangeValue = 1;
             var maximumRangeValue = 100;
             var testInputValue = 0;
 
-            Assert.Throws<ArgumentOutOfRangeException>(() => Validation.CheckIfNumberIsInRange(testInputValue, minimumRangeValue, maximumRangeValue));
+            Validation.CheckIfNumberIsInRange(testInputValue, minimumRangeValue, maximumRangeValue);
         }
 
-        [Test]
+        [TestMethod]
+        [ExpectedException(typeof(ArgumentOutOfRangeException), AllowDerivedTypes = false)]
         public void CheckIfNumberIsInRange_shouldThrow_ifNumberIsAboveMaximumValue()
         {
             var minimumRangeValue = 1;
             var maximumRangeValue = 100;
             var testInputValue = 999999;
 
-            Assert.Throws<ArgumentOutOfRangeException>(() => Validation.CheckIfNumberIsInRange(testInputValue, minimumRangeValue, maximumRangeValue));
+            Validation.CheckIfNumberIsInRange(testInputValue, minimumRangeValue, maximumRangeValue);
         }
 
-        [Test]
+        [TestMethod]
         public void CheckIfNumberIsInRange_shouldReturnTrue_ifPassedANumberWithinTheGivenRange()
         {
             var minimumRangeValue = 1;
