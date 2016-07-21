@@ -11,20 +11,24 @@
     [TestClass]
     public class CoursesTests
     {
+        private string courseName;
+        private int courseMaximumCapacity;
+
         public IGenerateId GenerateID { get; private set; }
 
         [TestInitialize]
         public void InitializeIdGenerator()
         {
             this.GenerateID = new GenerateId(int.MinValue, int.MaxValue);
+            
+            courseName = "course name";
+            courseMaximumCapacity = 10;
         }
 
         [TestMethod]
         [ExpectedException(typeof(CourseException), AllowDerivedTypes = false)]
         public void AddStudentToCourse_shouldThrow_ifCourseHasMaximumAllowedStudentsEnrolled()
         {
-            var courseName = "course name";
-            var courseMaximumCapacity = 10;
             ICourse testCourse = new Course(courseName, courseMaximumCapacity);
 
             for (int i = 0; i < courseMaximumCapacity + 1; i++)
@@ -44,9 +48,9 @@
         {
             var id = new GenerateId(0, 100).Generate();
             var name = "student name";
-
             IStudent testInputStudent = new Student(name, id);
-            ICourse testCourse = new Course();
+            
+            ICourse testCourse = new Course(courseName, courseMaximumCapacity);
 
             testCourse.AddStudentToCourse(testInputStudent);
             testCourse.AddStudentToCourse(testInputStudent);
@@ -56,7 +60,11 @@
         [ExpectedException(typeof(ArgumentNullException), AllowDerivedTypes = true)]
         public void AddStudentToCourse_shouldThrow_ifPassedANullArgument()
         {
-            throw new NotImplementedException();
+            IStudent testInputStudent = null;
+            
+            ICourse testCourse = new Course(courseName, courseMaximumCapacity);
+
+            testCourse.AddStudentToCourse(testInputStudent);
         }
 
         [TestMethod]
