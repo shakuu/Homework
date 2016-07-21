@@ -18,12 +18,15 @@
         {
             get
             {
-                throw new NotImplementedException();
+                return this.name;
             }
 
             private set
             {
-                Validation.CheckIfStringIsNullOrEmpty(value);
+                if (Validation.CheckIfStringIsNullOrEmpty(value))
+                {
+                    throw new ArgumentNullException();
+                }
 
                 this.name = value;
             }

@@ -5,6 +5,8 @@
 
     using School.Contracts;
     using School.Models.Abstract;
+    using School.Exceptions;
+    using School.Utils;
 
     public class Course : BaseObject, ICourse
     {
@@ -36,14 +38,54 @@
             }
         }
 
+        /// <summary>
+        /// Validate the input, throw appropriate exception 
+        /// or add the student to this course.
+        /// </summary>
+        /// <param name="student"></param>
+        /// <returns></returns>
         public bool AddStudentToCourse(IStudent student)
         {
-            throw new NotImplementedException();
-        }
+            if (Validation.CheckIfObjectIsNull(student))
+            {
+                throw new ArgumentNullException();
+            }
 
+            if (this.students.Count == this.maximumCapacityInStudents)
+            {
+                throw new CourseException(CourseException.CourseOverCapacityErrorMessage);
+            }
+
+            if (this.students.Contains(student))
+            {
+                throw new CourseException(CourseException.DuplicateStudentErrorMessage);
+            }
+
+            this.students.Add(student);
+
+            return true;
+        }
+        
+        /// <summary>
+        /// Should throw on Null or not existing input
+        /// </summary>
+        /// <param name="student"></param>
+        /// <returns></returns>
         public bool RemoveStudentFromCourse(IStudent student)
         {
-            throw new NotImplementedException();
+            if (Validation.CheckIfObjectIsNull(student))
+            {
+                throw new ArgumentNullException();
+            }
+
+            if (!this.students.Contains(student))
+            {
+                throw new CourseException(CourseException.StudentNotFoundErrorMessage);
+            }
+
+            this.students.Remove(student);
+
+            return true;
         }
     }
 }

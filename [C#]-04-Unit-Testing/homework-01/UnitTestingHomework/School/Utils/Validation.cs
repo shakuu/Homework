@@ -8,10 +8,10 @@
         {
             if (string.IsNullOrEmpty(value))
             {
-                throw new ArgumentNullException();
+                return true;
             }
 
-            return true;
+            return false;
         }
 
         public static bool CheckIfNumberIsInRange(int value, int minimumValue, int maximumValue)
@@ -22,18 +22,18 @@
             }
             else
             {
-                throw new ArgumentOutOfRangeException();
+                return false;
             }
         }
 
         public static bool CheckIfObjectIsNull(object obj)
         {
-            if(obj == null)
+            if (obj == null)
             {
-                throw new ArgumentNullException();
+                return true;
             }
 
-            return true;
+            return false;
         }
     }
 }

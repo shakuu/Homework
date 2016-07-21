@@ -46,11 +46,14 @@
     <Compile Include="Contracts\ISchool.cs" />
     <Compile Include="Contracts\IStudent.cs" />
     <Compile Include="Exceptions\ArgumentNotUniqueException.cs" />
+    <Compile Include="Exceptions\CourseException.cs" />
     <Compile Include="Models\Abstract\GlobalObject.cs" />
+    <Compile Include="Models\Course.cs" />
     <Compile Include="Models\Student.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Utils\GenerateId.cs" />
     <Compile Include="Utils\IdGenerator.cs" />
+    <Compile Include="Contracts\IGenerateId.cs" />
     <Compile Include="Utils\Validation.cs" />
   </ItemGroup>
   <ItemGroup />

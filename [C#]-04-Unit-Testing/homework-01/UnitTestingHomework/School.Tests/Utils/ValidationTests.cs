@@ -1,6 +1,6 @@
-﻿namespace School.Tests
+﻿namespace School.Tests.Utils
 {
-    using System;
+    using System.Collections.Generic;
 
     using Microsoft.VisualStudio.TestTools.UnitTesting;
 
@@ -10,54 +10,57 @@
     public class ValidationTests
     {
         [TestMethod]
-        [ExpectedException(typeof(ArgumentNullException), AllowDerivedTypes = false)]
-        public void CheckIfStringIsNullOrEmpty_shouldThrow_ifPassedAnEmptyString()
+        public void CheckIfStringIsNullOrEmpty_shouldReturnTrue_ifPassedAnEmptyString()
         {
             var testInputEmptyString = string.Empty;
 
-            Validation.CheckIfStringIsNullOrEmpty(testInputEmptyString);
+            var actual = Validation.CheckIfStringIsNullOrEmpty(testInputEmptyString);
+
+            Assert.IsTrue(actual);
         }
 
         [TestMethod]
-        [ExpectedException(typeof(ArgumentNullException), AllowDerivedTypes = false)]
-        public void CheckIfStringIsNullOrEmpty_shouldThrow_ifPassedNullValue()
+        public void CheckIfStringIsNullOrEmpty_shouldReturnTrue_ifPassedNullValue()
         {
             string testInputNullString = null;
 
-            Validation.CheckIfStringIsNullOrEmpty(testInputNullString);
+            var actual = Validation.CheckIfStringIsNullOrEmpty(testInputNullString);
+
+            Assert.IsTrue(actual);
         }
 
         [TestMethod]
-        public void CheckIfStringIsNullOrEmpty_shouldReturnTrue_ifPassedNotNullOrEmptyString()
+        public void CheckIfStringIsNullOrEmpty_shouldReturnFalse_ifPassedNotNullOrEmptyString()
         {
             var testInputStudentNameString = "student name";
-            var expectedOutput = true;
 
-            var actualOutput = Validation.CheckIfStringIsNullOrEmpty(testInputStudentNameString);
+            var actual = Validation.CheckIfStringIsNullOrEmpty(testInputStudentNameString);
 
-            Assert.AreEqual(expectedOutput, actualOutput);
+            Assert.IsFalse(actual);
         }
 
         [TestMethod]
-        [ExpectedException(typeof(ArgumentOutOfRangeException), AllowDerivedTypes = false)]
-        public void CheckIfNumberIsInRange_shouldThrow_ifNumberIsBelowMinimumValue()
+        public void CheckIfNumberIsInRange_shouldReturnFalse_ifNumberIsBelowMinimumValue()
         {
             var minimumRangeValue = 1;
             var maximumRangeValue = 100;
             var testInputValue = 0;
 
-            Validation.CheckIfNumberIsInRange(testInputValue, minimumRangeValue, maximumRangeValue);
+            var actual = Validation.CheckIfNumberIsInRange(testInputValue, minimumRangeValue, maximumRangeValue);
+
+            Assert.IsFalse(actual);
         }
 
         [TestMethod]
-        [ExpectedException(typeof(ArgumentOutOfRangeException), AllowDerivedTypes = false)]
-        public void CheckIfNumberIsInRange_shouldThrow_ifNumberIsAboveMaximumValue()
+        public void CheckIfNumberIsInRange_shouldReturnFalse_ifNumberIsAboveMaximumValue()
         {
             var minimumRangeValue = 1;
             var maximumRangeValue = 100;
             var testInputValue = 999999;
 
-            Validation.CheckIfNumberIsInRange(testInputValue, minimumRangeValue, maximumRangeValue);
+            var actual = Validation.CheckIfNumberIsInRange(testInputValue, minimumRangeValue, maximumRangeValue);
+
+            Assert.IsFalse(actual);
         }
 
         [TestMethod]
@@ -97,22 +100,23 @@
         }
 
         [TestMethod]
-        [ExpectedException(typeof(ArgumentNullException), AllowDerivedTypes = false)]
-        public void CheckIfObjectIsNull_shouldThrow_ifPassedParameterIsNull()
+        public void CheckIfObjectIsNull_shouldReturnTrue_ifPassedParameterIsNull()
         {
             object testInput = null;
 
-            Validation.CheckIfObjectIsNull(testInput);
+            var actualResult = Validation.CheckIfObjectIsNull(testInput);
+
+            Assert.IsTrue(actualResult);
         }
 
         [TestMethod]
-        public void CheckIfObjectIsNull_shouldReturnTrue_ifPassedParameterIsNotNull()
+        public void CheckIfObjectIsNull_shouldReturnFalse_ifPassedParameterIsNotNull()
         {
-            var testInput = new Object();
+            var testInput = new List<string>() { "test" };
 
-            var actualResult= Validation.CheckIfObjectIsNull(testInput);
+            var actualResult = Validation.CheckIfObjectIsNull(testInput);
 
-            Assert.IsTrue(actualResult);
+            Assert.IsFalse(actualResult);
         }
     }
 }

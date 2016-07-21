@@ -1,4 +1,4 @@
-﻿namespace School.Tests
+﻿namespace School.Tests.Utils
 {
     using System;
     using System.Collections.ObjectModel;
