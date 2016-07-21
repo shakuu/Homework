@@ -4,11 +4,8 @@
 
     public class ArgumentNotUniqueException : ArgumentException
     {
-        public ArgumentNotUniqueException(string message)
-            : base(message)
+        public ArgumentNotUniqueException()
         {
-            // TODO:
-            throw new NotImplementedException();
         }
     }
 }

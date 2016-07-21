@@ -67,10 +67,33 @@
             var maximumRangeValue = 100;
             var testInputValue = 10;
 
-            var expectedOutput = true;
             var actualOutput = Validation.CheckIfNumberIsInRange(testInputValue, minimumRangeValue, maximumRangeValue);
 
-            Assert.AreEqual(expectedOutput, actualOutput);
+            Assert.IsTrue(actualOutput);
+        }
+
+        [TestMethod]
+        public void CheckIfNumberIsInRange_shouldReturnTrue_ifPassedANumberIsEqualToMinimumValue()
+        {
+            var minimumRangeValue = 1;
+            var maximumRangeValue = 100;
+            var testInputValue = minimumRangeValue;
+
+            var actualOutput = Validation.CheckIfNumberIsInRange(testInputValue, minimumRangeValue, maximumRangeValue);
+
+            Assert.IsTrue(actualOutput);
+        }
+
+        [TestMethod]
+        public void CheckIfNumberIsInRange_shouldReturnTrue_ifPassedANumberIsEqualToMaximumValue()
+        {
+            var minimumRangeValue = 1;
+            var maximumRangeValue = 100;
+            var testInputValue = maximumRangeValue;
+
+            var actualOutput = Validation.CheckIfNumberIsInRange(testInputValue, minimumRangeValue, maximumRangeValue);
+
+            Assert.IsTrue(actualOutput);
         }
     }
 }

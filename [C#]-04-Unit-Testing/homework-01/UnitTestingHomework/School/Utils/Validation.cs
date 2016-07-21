@@ -6,14 +6,24 @@
     {
         public static bool CheckIfStringIsNullOrEmpty(string value)
         {
-            // TODO: 
-            throw new NotImplementedException();
+            if (string.IsNullOrEmpty(value))
+            {
+                throw new ArgumentNullException();
+            }
+
+            return true;
         }
 
         public static bool CheckIfNumberIsInRange(int value, int minimumValue, int maximumValue)
         {
-            // TODO:
-            throw new NotImplementedException();
+            if (minimumValue <= value && value <= maximumValue)
+            {
+                return true;
+            }
+            else
+            {
+                throw new ArgumentOutOfRangeException();
+            }
         }
     }
 }
