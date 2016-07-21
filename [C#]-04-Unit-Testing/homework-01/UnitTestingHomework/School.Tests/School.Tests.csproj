@@ -52,11 +52,12 @@
     </Otherwise>
   </Choose>
   <ItemGroup>
-    <Compile Include="Models\BaseObjectTests.cs" />
+    <Compile Include="Models\BaseNameableObjectTests.cs" />
     <Compile Include="Models\StudentTests.cs" />
+    <Compile Include="Models\SchoolTests.cs" />
     <Compile Include="Utils\IdGeneratorTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Models\CoursesTests.cs" />
+    <Compile Include="Models\CourseTests.cs" />
     <Compile Include="Utils\ValidationTests.cs" />
   </ItemGroup>
   <ItemGroup>

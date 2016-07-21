@@ -12,7 +12,7 @@
         private ICourse testInputCourse;
         private IStudent testInputStudent;
 
-        [ClassInitialize]
+        [TestInitialize]
         public void InitializeStudentTests()
         {
             var testInputStudentName = "test student";
@@ -30,7 +30,7 @@
         {
             this.testInputCourse = null;
 
-            this.testInputStudent.JoinCourse(testInputCourse);
+            this.testInputStudent.JoinCourse(this.testInputCourse);
         }
 
         [TestMethod]

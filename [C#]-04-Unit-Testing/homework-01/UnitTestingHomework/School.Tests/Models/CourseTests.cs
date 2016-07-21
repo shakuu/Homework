@@ -9,7 +9,7 @@
     using School.Utils;
 
     [TestClass]
-    public class CoursesTests
+    public class CourseTests
     {
         private string courseName;
         private int courseMaximumCapacity;

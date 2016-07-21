@@ -47,7 +47,7 @@
     <Compile Include="Contracts\IStudent.cs" />
     <Compile Include="Exceptions\ArgumentNotUniqueException.cs" />
     <Compile Include="Exceptions\CourseException.cs" />
-    <Compile Include="Models\Abstract\BaseObject.cs" />
+    <Compile Include="Models\Base\BaseNameableObject.cs" />
     <Compile Include="Models\Course.cs" />
     <Compile Include="Models\Student.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
