@@ -43,7 +43,7 @@
         [ExpectedException(typeof(ArgumentNotUniqueException), AllowDerivedTypes = false)]
         public void AdmitStudent_shouldThrow_ifTheIdGeneratorWasNotAbleToGenerateAUniqueIdForTheNewlyAdmittedStudent()
         {
-            // TODO: testing School with smaller number of possible ids ? 
+            // TODO: 
             throw new NotImplementedException();
         }
 
@@ -53,6 +53,32 @@
             var actual = this.testInputSchool.AdmitStudent(this.testInputStudent);
 
             Assert.IsTrue(actual);
+        }
+
+        [TestMethod]
+        public void GenerateUniqueStudentID_shouldGenerateIdValueGreaterThanSchoolMinimumIdValue()
+        {
+            var testInputSchoolMinimumIdValue = 1;
+            var testInputSchoolMaximumValue = 100;
+
+            // init testInputSchool
+
+            var actual = this.testInputSchool.GenerateUniqueStudentID();
+
+            Assert.IsTrue(testInputSchoolMinimumIdValue <= actual);
+        }
+
+        [TestMethod]
+        public void GenerateUniqueStudentID_shouldGenerateIdValueLessThanSchoolMaximumIdValue()
+        {
+            var testInputSchoolMinimumIdValue = 1;
+            var testInputSchoolMaximumValue = 100;
+
+            // init testInputSchool
+
+            var actual = this.testInputSchool.GenerateUniqueStudentID();
+
+            Assert.IsTrue(actual <= testInputSchoolMaximumValue);
         }
     }
 }
