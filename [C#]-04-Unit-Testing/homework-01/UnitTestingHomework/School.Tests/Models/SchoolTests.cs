@@ -1,6 +1,8 @@
 ﻿namespace School.Tests.Models
 {
     using System;
+    using System.Collections.Generic;
+
     using Microsoft.VisualStudio.TestTools.UnitTesting;
 
     using School.Contracts;
@@ -21,6 +23,10 @@
             this.testInputStudent = new Student(testInputStudentName, testInputStudentId);
 
             // TODO: Init testing school.
+            var testInputSchoolName = "test school";
+            var testInputSchoolMinimumIdValue = 1;
+            var testInputSchoolMaximumIdValue = 10;
+            this.testInputSchool = new Schools(testInputSchoolName, testInputSchoolMinimumIdValue, testInputSchoolMaximumIdValue);
         }
 
         [TestMethod]
@@ -43,8 +49,22 @@
         [ExpectedException(typeof(ArgumentNotUniqueException), AllowDerivedTypes = false)]
         public void AdmitStudent_shouldThrow_ifTheIdGeneratorWasNotAbleToGenerateAUniqueIdForTheNewlyAdmittedStudent()
         {
-            // TODO: 
-            throw new NotImplementedException();
+            var testInputSchoolName = "test school";
+            var testInputSchoolMinimumIdValue = 1;
+            var testInputSchoolMaximumIdValue = 2;
+            this.testInputSchool = new Schools(testInputSchoolName, testInputSchoolMinimumIdValue, testInputSchoolMaximumIdValue);
+
+            var students = new List<IStudent>()
+            {
+                new Student("1", 1),
+                new Student("2", 1),
+                new Student("3", 1)
+            };
+
+            for (int i = 0; i < students.Count; i++)
+            {
+                this.testInputSchool.AdmitStudent(students[i]);
+            }
         }
 
         [TestMethod]
@@ -60,12 +80,12 @@
         {
             var testInputSchoolMinimumIdValue = 1;
             var testInputSchoolMaximumValue = 100;
+            
+            this.testInputSchool = new Schools("school", testInputSchoolMinimumIdValue, testInputSchoolMaximumValue);
 
-            // init testInputSchool
+            this.testInputSchool.AdmitStudent(this.testInputStudent);
 
-            var actual = this.testInputSchool.GenerateUniqueStudentID();
-
-            Assert.IsTrue(testInputSchoolMinimumIdValue <= actual);
+            Assert.IsTrue(testInputSchoolMinimumIdValue <= this.testInputStudent.ID);
         }
 
         [TestMethod]
@@ -73,12 +93,12 @@
         {
             var testInputSchoolMinimumIdValue = 1;
             var testInputSchoolMaximumValue = 100;
+            
+            this.testInputSchool = new Schools("school", testInputSchoolMinimumIdValue, testInputSchoolMaximumValue);
 
-            // init testInputSchool
+            this.testInputSchool.AdmitStudent(this.testInputStudent);
 
-            var actual = this.testInputSchool.GenerateUniqueStudentID();
-
-            Assert.IsTrue(actual <= testInputSchoolMaximumValue);
+            Assert.IsTrue(this.testInputStudent.ID <= testInputSchoolMaximumValue);
         }
     }
 }

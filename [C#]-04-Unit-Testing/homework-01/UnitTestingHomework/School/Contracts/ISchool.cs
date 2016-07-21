@@ -9,7 +9,5 @@
         ICollection<ICourse> Courses { get; }
 
         bool AdmitStudent(IStudent student);
-
-        int GenerateUniqueStudentID();
     }
 }
