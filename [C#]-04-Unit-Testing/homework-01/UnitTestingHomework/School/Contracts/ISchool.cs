@@ -4,8 +4,10 @@
 
     public interface ISchool : IName
     {
+        ICollection<IStudent> Students { get; }
+
         ICollection<ICourse> Courses { get; }
 
-        int AssignUniqueStudentID();
+        int GenerateUniqueStudentID();
     }
 }
