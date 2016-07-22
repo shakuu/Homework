@@ -12,22 +12,14 @@
         private ICourse testInputCourse;
         private IStudent testInputStudent;
 
-        [TestInitialize]
-        public void InitializeStudentTests()
+        [TestMethod]
+        [ExpectedException(typeof(ArgumentNullException), AllowDerivedTypes = false)]
+        public void JoinCourse_shouldThrow_ifPassedCourseObjectIsNull()
         {
             var testInputStudentName = "test student";
             var testInputStudentId = 10000;
             this.testInputStudent = new Student(testInputStudentName, testInputStudentId);
 
-            var testInputCourseName = "test course";
-            var testInputCourseMaximumCapacity = 30;
-            this.testInputCourse = new Course(testInputCourseName, testInputCourseMaximumCapacity);
-        }
-
-        [TestMethod]
-        [ExpectedException(typeof(ArgumentNullException), AllowDerivedTypes = false)]
-        public void JoinCourse_shouldThrow_ifPassedCourseObjectIsNull()
-        {
             this.testInputCourse = null;
 
             this.testInputStudent.JoinCourse(this.testInputCourse);
@@ -40,6 +32,10 @@
             var testInputCourseName = "test course";
             var testInputCourseMaximumCapacity = 1;
             this.testInputCourse = new Course(testInputCourseName, testInputCourseMaximumCapacity);
+
+            var testInputStudentName = "test student";
+            var testInputStudentId = 10000;
+            this.testInputStudent = new Student(testInputStudentName, testInputStudentId);
 
             this.testInputStudent.JoinCourse(testInputCourse);
 
@@ -54,6 +50,14 @@
         [ExpectedException(typeof(ArgumentException), AllowDerivedTypes = true)]
         public void JoinCourse_shouldThrow_ifTheStudentCallerIsAlreadySignedUpForThePassedCourse()
         {
+            var testInputStudentName = "test student";
+            var testInputStudentId = 10000;
+            this.testInputStudent = new Student(testInputStudentName, testInputStudentId);
+
+            var testInputCourseName = "test course";
+            var testInputCourseMaximumCapacity = 30;
+            this.testInputCourse = new Course(testInputCourseName, testInputCourseMaximumCapacity);
+
             this.testInputStudent.JoinCourse(this.testInputCourse);
             this.testInputStudent.JoinCourse(this.testInputCourse);
         }
@@ -61,6 +65,14 @@
         [TestMethod]
         public void JoinCourse_shouldReturnTrue_ifStudentAndCourseAreBothValid()
         {
+            var testInputStudentName = "test student";
+            var testInputStudentId = 10000;
+            this.testInputStudent = new Student(testInputStudentName, testInputStudentId);
+
+            var testInputCourseName = "test course";
+            var testInputCourseMaximumCapacity = 30;
+            this.testInputCourse = new Course(testInputCourseName, testInputCourseMaximumCapacity);
+
             var actual = this.testInputStudent.JoinCourse(this.testInputCourse);
 
             Assert.IsTrue(actual);
@@ -70,6 +82,10 @@
         [ExpectedException(typeof(ArgumentNullException), AllowDerivedTypes = false)]
         public void LeaveCourse_shouldThrow_ifPassedCourseObjectIsNull()
         {
+            var testInputStudentName = "test student";
+            var testInputStudentId = 10000;
+            this.testInputStudent = new Student(testInputStudentName, testInputStudentId);
+
             this.testInputCourse = null;
 
             this.testInputStudent.LeaveCourse(testInputCourse);
@@ -79,12 +95,28 @@
         [ExpectedException(typeof(ArgumentException), AllowDerivedTypes = true)]
         public void LeaveCourse_shouldThrow_ifThisStudentIsNotOnTheListOfStudentsForThePassedCourse()
         {
+            var testInputStudentName = "test student";
+            var testInputStudentId = 10000;
+            this.testInputStudent = new Student(testInputStudentName, testInputStudentId);
+
+            var testInputCourseName = "test course";
+            var testInputCourseMaximumCapacity = 30;
+            this.testInputCourse = new Course(testInputCourseName, testInputCourseMaximumCapacity);
+
             this.testInputStudent.LeaveCourse(this.testInputCourse);
         }
 
         [TestMethod]
         public void LeaveCourse_shouldReturnTrue_ififStudentAndCourseAreBothValid()
         {
+            var testInputStudentName = "test student";
+            var testInputStudentId = 10000;
+            this.testInputStudent = new Student(testInputStudentName, testInputStudentId);
+
+            var testInputCourseName = "test course";
+            var testInputCourseMaximumCapacity = 30;
+            this.testInputCourse = new Course(testInputCourseName, testInputCourseMaximumCapacity);
+
             this.testInputStudent.JoinCourse(this.testInputCourse);
             var actual = this.testInputStudent.LeaveCourse(this.testInputCourse);
 

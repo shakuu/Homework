@@ -15,25 +15,17 @@
         private IStudent testInputStudent;
         private ISchool testInputSchool;
 
-        [TestInitialize]
-        public void InitializeSchoolTests()
-        {
-            var testInputStudentName = "test student";
-            var testInputStudentId = 10000;
-            this.testInputStudent = new Student(testInputStudentName, testInputStudentId);
-
-            // TODO: Init testing school.
-            var testInputSchoolName = "test school";
-            var testInputSchoolMinimumIdValue = 1;
-            var testInputSchoolMaximumIdValue = 10;
-            this.testInputSchool = new Schools(testInputSchoolName, testInputSchoolMinimumIdValue, testInputSchoolMaximumIdValue);
-        }
-
         [TestMethod]
         [ExpectedException(typeof(ArgumentNullException), AllowDerivedTypes = false)]
         public void AdmitStudent_shouldThrow_ifPassedStudentIsNull()
         {
             this.testInputStudent = null;
+
+            var testInputSchoolName = "test school";
+            var testInputSchoolMinimumIdValue = 1;
+            var testInputSchoolMaximumIdValue = 10;
+            this.testInputSchool = new Schools(testInputSchoolName, testInputSchoolMinimumIdValue, testInputSchoolMaximumIdValue);
+
             this.testInputSchool.AdmitStudent(this.testInputStudent);
         }
 
@@ -41,6 +33,15 @@
         [ExpectedException(typeof(ArgumentNotUniqueException), AllowDerivedTypes = false)]
         public void AdmitStudent_shouldThrow_ifThePassedStudentAlreadyExistsInStudentsICollection()
         {
+            var testInputStudentName = "test student";
+            var testInputStudentId = 10000;
+            this.testInputStudent = new Student(testInputStudentName, testInputStudentId);
+
+            var testInputSchoolName = "test school";
+            var testInputSchoolMinimumIdValue = 1;
+            var testInputSchoolMaximumIdValue = 10;
+            this.testInputSchool = new Schools(testInputSchoolName, testInputSchoolMinimumIdValue, testInputSchoolMaximumIdValue);
+
             this.testInputSchool.AdmitStudent(this.testInputStudent);
             this.testInputSchool.AdmitStudent(this.testInputStudent);
         }
@@ -70,6 +71,15 @@
         [TestMethod]
         public void AdmitStudent_shouldReturnTrue_ifStudentWasSuccessfullyAddedToICollection()
         {
+            var testInputStudentName = "test student";
+            var testInputStudentId = 10000;
+            this.testInputStudent = new Student(testInputStudentName, testInputStudentId);
+
+            var testInputSchoolName = "test school";
+            var testInputSchoolMinimumIdValue = 1;
+            var testInputSchoolMaximumIdValue = 10;
+            this.testInputSchool = new Schools(testInputSchoolName, testInputSchoolMinimumIdValue, testInputSchoolMaximumIdValue);
+
             var actual = this.testInputSchool.AdmitStudent(this.testInputStudent);
 
             Assert.IsTrue(actual);
@@ -78,9 +88,12 @@
         [TestMethod]
         public void GenerateUniqueStudentID_shouldGenerateIdValueGreaterThanSchoolMinimumIdValue()
         {
+            var testInputStudentName = "test student";
+            var testInputStudentId = 10000;
+            this.testInputStudent = new Student(testInputStudentName, testInputStudentId);
+
             var testInputSchoolMinimumIdValue = 1;
             var testInputSchoolMaximumValue = 100;
-            
             this.testInputSchool = new Schools("school", testInputSchoolMinimumIdValue, testInputSchoolMaximumValue);
 
             this.testInputSchool.AdmitStudent(this.testInputStudent);
@@ -91,10 +104,14 @@
         [TestMethod]
         public void GenerateUniqueStudentID_shouldGenerateIdValueLessThanSchoolMaximumIdValue()
         {
+            var testInputStudentName = "test student";
+            var testInputStudentId = 10000;
+            this.testInputStudent = new Student(testInputStudentName, testInputStudentId);
+
             var testInputSchoolMinimumIdValue = 1;
             var testInputSchoolMaximumValue = 100;
-            
-            this.testInputSchool = new Schools("school", testInputSchoolMinimumIdValue, testInputSchoolMaximumValue);
+            var testInputSchoolName = "school";
+            this.testInputSchool = new Schools(testInputSchoolName, testInputSchoolMinimumIdValue, testInputSchoolMaximumValue);
 
             this.testInputSchool.AdmitStudent(this.testInputStudent);
 
