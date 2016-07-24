@@ -4,6 +4,7 @@
 
     using Poker;
 
+    // https://github.com/shakuu/Unit-Testing/tree/master/Topics/02.%20Test-Driven%20Development/homewrok
     public class HandTypePresetsFakeHand : IHand
     {
         public HandTypePresetsFakeHand(HandType type)

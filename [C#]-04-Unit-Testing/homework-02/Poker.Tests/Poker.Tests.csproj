@@ -73,8 +73,12 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Fakes\ConstantStringFakeCard.cs" />
+    <Compile Include="Fakes\FakeCard.cs" />
     <Compile Include="Fakes\FakeHand.cs" />
-    <Compile Include="Logic\PokerHandCheckerTests.cs" />
+    <Compile Include="Fakes\HandType.cs" />
+    <Compile Include="Fakes\HandTypePresetsFakeHand.cs" />
+    <Compile Include="PokerHandsChecker\IsFlushTests.cs" />
+    <Compile Include="PokerHandsChecker\IsValidHandTests.cs" />
     <Compile Include="Models\CardTests.cs" />
     <Compile Include="Models\HandTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
