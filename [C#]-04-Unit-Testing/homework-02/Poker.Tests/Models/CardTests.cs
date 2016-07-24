@@ -9,7 +9,7 @@
     {
         [Test]
         [TestCase(14, 3, ExpectedResult = "A♥")]
-        [TestCase(10, 2, ExpectedResult = "T♦")]
+        [TestCase(10, 2, ExpectedResult = "10♦")]
         [TestCase(2, 4, ExpectedResult = "2♠")]
         public string ToString_ShouldReturnACorrectString(int cardFace, int cardSuit)
         {

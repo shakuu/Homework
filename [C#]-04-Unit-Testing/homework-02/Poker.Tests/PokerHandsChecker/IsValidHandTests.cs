@@ -1,4 +1,4 @@
-﻿namespace Poker.Tests.Logic
+﻿namespace Poker.Tests.PokerHandsChecker
 {
     using System.Collections.Generic;
 
@@ -8,7 +8,7 @@
     using Poker.Tests.Fakes;
 
     [TestFixture]
-    public class PokerHandsCheckerTests
+    public class IsValidHandTests
     {
         // A hand is valid when it consists of exactly 5 different cards.
         [Test]

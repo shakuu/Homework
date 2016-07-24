@@ -24,8 +24,8 @@
                 "♠"
             };
 
-            var cardFaceToString = (int)this.Face < 10 
-                ? ((int)this.Face).ToString() 
+            var cardFaceToString = (int)this.Face <= 10
+                ? ((int)this.Face).ToString()
                 : this.Face.ToString()[0].ToString();
 
             var thisToString = cardFaceToString + suitSymbols[(int)this.Suit];
