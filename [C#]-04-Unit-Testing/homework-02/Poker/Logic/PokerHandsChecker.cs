@@ -2,7 +2,7 @@
 {
     using System;
     using System.Linq;
-    using System.Collections.Generic;
+    using System.Reflection;
 
     public class PokerHandsChecker : IPokerHandsChecker
     {
@@ -60,31 +60,14 @@
                 return false;
             }
 
-            var cardValues = hand.Cards
-                .Select(card => (int)card.Face)
-                .OrderBy(value => value);
-            var sequentialRangeFromSmallestCardValue = 
-                Enumerable.Range(cardValues.First(), cardValues.Count());
-
-            var enumerateCardValue = cardValues.GetEnumerator();
-            var enumerateRange = sequentialRangeFromSmallestCardValue.GetEnumerator();
-
-            while (enumerateCardValue.MoveNext() && enumerateRange.MoveNext())
-            {
-                var currentCardValue = enumerateCardValue.Current;
-                var currentRangeValue = enumerateRange.Current;
-
-                if (currentCardValue != currentRangeValue)
-                {
-                    return true;
-                }
-            }
-            return false;
+            var hasStraight = CheckIfHandHasFiveSequentialFaceValues(hand);
+            return !hasStraight;
         }
 
         public bool IsStraight(IHand hand)
         {
-            throw new NotImplementedException();
+            var isStraight = this.CheckIfHandHasFiveSequentialFaceValues(hand);
+            return isStraight;
         }
 
         public bool IsThreeOfAKind(IHand hand)
@@ -104,12 +87,54 @@
 
         public bool IsHighCard(IHand hand)
         {
-            throw new NotImplementedException();
+            var allPokerHandChckerMethods =
+                typeof(PokerHandsChecker)
+                    .GetMethods(BindingFlags.Instance | BindingFlags.Public | BindingFlags.CreateInstance)
+                    .Where(method =>
+                        method.ReturnType == typeof(bool)
+                        && method.Name != "IsHighCard"
+                        && method.Name != "IsValidHand"
+                        && typeof(object).GetMethods().All(objMethod => objMethod.Name != method.Name));
+
+            foreach (var method in allPokerHandChckerMethods)
+            {
+                var isPositiveMatch = (bool)method.Invoke(this, new object[] { hand });
+
+                if (isPositiveMatch)
+                {
+                    return false;
+                }
+            }
+            return true;
         }
 
         public int CompareHands(IHand firstHand, IHand secondHand)
         {
             throw new NotImplementedException();
+        }
+
+        private bool CheckIfHandHasFiveSequentialFaceValues(IHand hand)
+        {
+            var cardValues = hand.Cards
+                .Select(card => (int)card.Face)
+                .OrderBy(value => value);
+            var sequentialRangeFromSmallestCardValue =
+                Enumerable.Range(cardValues.First(), cardValues.Count());
+
+            var enumerateCardValue = cardValues.GetEnumerator();
+            var enumerateRange = sequentialRangeFromSmallestCardValue.GetEnumerator();
+
+            while (enumerateCardValue.MoveNext() && enumerateRange.MoveNext())
+            {
+                var currentCardValue = enumerateCardValue.Current;
+                var currentRangeValue = enumerateRange.Current;
+
+                if (currentCardValue != currentRangeValue)
+                {
+                    return false;
+                }
+            }
+            return true;
         }
     }
 }

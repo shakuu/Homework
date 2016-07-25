@@ -33,6 +33,7 @@
                     newListOfCards = this.GetFlush();
                     break;
                 case HandType.IsStraight:
+                    newListOfCards = this.GetStraight();
                     break;
                 case HandType.IsThreeOfAKind:
                     newListOfCards = this.GetThreeOfAKind();
@@ -49,6 +50,20 @@
             }
 
             return newListOfCards;
+        }
+
+        private List<ICard> GetStraight()
+        {
+            var straight = new List<ICard>()
+            {
+                new FakeCard(CardFace.Ace, CardSuit.Clubs),
+                new FakeCard(CardFace.King, CardSuit.Diamonds),
+                new FakeCard(CardFace.Queen, CardSuit.Hearts),
+                new FakeCard(CardFace.Ten, CardSuit.Spades),
+                new FakeCard(CardFace.Jack, CardSuit.Clubs)
+            };
+
+            return straight;
         }
 
         private List<ICard> GetThreeOfAKind()
