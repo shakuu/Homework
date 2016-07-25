@@ -10,7 +10,7 @@
     public class IsFlushTests
     {
         [Test]
-        [TestCaseSource(typeof(PokerHandsCheckerTestsData), "IsFlushAllSuitsCases")]
+        [TestCaseSource(typeof(PokerHandsCheckerTestsData), PokerHandsCheckerTestsData.IsFlushAllSuitsCasesAsString)]
         public bool IsFlush_HandHasFiveCardsOfTheSameSuit_ShouldReturnTrue(IHand hand)
         {
             var pokerHandChecker = new PokerHandsChecker();

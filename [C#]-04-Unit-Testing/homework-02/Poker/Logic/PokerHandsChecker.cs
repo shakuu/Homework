@@ -2,6 +2,7 @@
 {
     using System;
     using System.Linq;
+    using System.Collections.Generic;
 
     public class PokerHandsChecker : IPokerHandsChecker
     {
@@ -33,7 +34,15 @@
 
         public bool IsFourOfAKind(IHand hand)
         {
-            throw new NotImplementedException();
+            var groupsOfCardsWithTheSameFaceValue =
+                from card in hand.Cards
+                group card by card.Face into groups
+                orderby groups.Count()
+                select groups;
+
+            var result = groupsOfCardsWithTheSameFaceValue
+                .Any(group => group.Count() == 4);
+            return result;
         }
 
         public bool IsFullHouse(IHand hand)

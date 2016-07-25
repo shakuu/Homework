@@ -25,6 +25,7 @@
                     newListOfCards = this.GetStraightFlush();
                     break;
                 case HandType.IsFourOfAKind:
+                    newListOfCards = this.GetFourOfAKind();
                     break;
                 case HandType.IsFullHouse:
                     break;
@@ -34,6 +35,7 @@
                 case HandType.IsStraight:
                     break;
                 case HandType.IsThreeOfAKind:
+                    newListOfCards = this.GetThreeOfAKind();
                     break;
                 case HandType.IsTwoPair:
                     break;
@@ -47,6 +49,34 @@
             }
 
             return newListOfCards;
+        }
+
+        private List<ICard> GetThreeOfAKind()
+        {
+            var threeOfAKind = new List<ICard>()
+            {
+                new FakeCard(CardFace.Ace, CardSuit.Clubs),
+                new FakeCard(CardFace.Ace, CardSuit.Diamonds),
+                new FakeCard(CardFace.Ace, CardSuit.Hearts),
+                new FakeCard(CardFace.Two, CardSuit.Spades),
+                new FakeCard(CardFace.Jack, CardSuit.Clubs)
+            };
+
+            return threeOfAKind;
+        }
+
+        private List<ICard> GetFourOfAKind()
+        {
+            var fourOfAKind = new List<ICard>()
+            {
+                new FakeCard(CardFace.Ace, CardSuit.Clubs),
+                new FakeCard(CardFace.Ace, CardSuit.Diamonds),
+                new FakeCard(CardFace.Ace, CardSuit.Hearts),
+                new FakeCard(CardFace.Ace, CardSuit.Spades),
+                new FakeCard(CardFace.Jack, CardSuit.Clubs)
+            };
+
+            return fourOfAKind;
         }
 
         private List<ICard> GetHighCard()

@@ -9,6 +9,9 @@
 
     public class PokerHandsCheckerTestsData
     {
+        public const string IsFlushAllSuitsCasesAsString = "IsFlushAllSuitsCases";
+        public const string IsFourOfAKindAllFacesCasesAsString = "IsFourOfAKindAllFacesCases";
+
         public static IEnumerable IsFlushAllSuitsCases
         {
             get
@@ -72,6 +75,25 @@
                     new FakeCard(CardFace.Ten, CardSuit.Spades)
 
                 })).Returns(false);
+            }
+        }
+
+        public static IEnumerable IsFourOfAKindAllFacesCases
+        {
+            get
+            {
+                for (int faceValueAsInt = 2; faceValueAsInt <= 14; faceValueAsInt++)
+                {
+                    yield return new TestCaseData(new FakeHand(new List<ICard>()
+                    {
+                        new FakeCard((CardFace)faceValueAsInt, CardSuit.Clubs),
+                        new FakeCard((CardFace)faceValueAsInt, CardSuit.Diamonds),
+                        new FakeCard((CardFace)faceValueAsInt, CardSuit.Hearts),
+                        new FakeCard((CardFace)faceValueAsInt, CardSuit.Spades),
+                        new FakeCard(faceValueAsInt == 10 ? CardFace.Four : CardFace.Ten, CardSuit.Clubs)
+
+                    })).Returns(true);
+                }
             }
         }
     }
