@@ -29,7 +29,11 @@
 
         public bool IsStraightFlush(IHand hand)
         {
-            throw new NotImplementedException();
+            var isStraghtHand = this.CheckIfHandHasFiveSequentialFaceValues(hand);
+            var isFlushHand = this.CheckIfHandHasFiveIdenticalSuits(hand);
+
+            var isStraightFlush = isStraghtHand && isFlushHand;
+            return isStraightFlush;
         }
 
         public bool IsFourOfAKind(IHand hand)
@@ -52,10 +56,8 @@
 
         public bool IsFlush(IHand hand)
         {
-            var suitToMatch = hand.Cards[0].Suit;
-
-            var hasCardsOfDifferentSuit = hand.Cards.Any(card => card.Suit != suitToMatch);
-            if (hasCardsOfDifferentSuit)
+            var allCardsHaveTheSameSuit = this.CheckIfHandHasFiveIdenticalSuits(hand);
+            if (!allCardsHaveTheSameSuit)
             {
                 return false;
             }
@@ -135,6 +137,13 @@
                 }
             }
             return true;
+        }
+
+        private bool CheckIfHandHasFiveIdenticalSuits(IHand hand)
+        {
+            var suitToMatch = hand.Cards[0].Suit;
+            var allCardsAreOfTheSameSuit = hand.Cards.All(card => card.Suit == suitToMatch);
+            return allCardsAreOfTheSameSuit;
         }
     }
 }
