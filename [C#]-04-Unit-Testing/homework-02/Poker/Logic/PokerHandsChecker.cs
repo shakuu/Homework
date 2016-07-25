@@ -14,7 +14,7 @@
 
             foreach (var card in hand.Cards)
             {
-                var numberOfCardWithTheSameString = 
+                var numberOfCardWithTheSameString =
                     hand.Cards.Where(c => c.ToString() == card.ToString()).Count();
 
                 if (numberOfCardWithTheSameString > 1)
@@ -43,7 +43,34 @@
 
         public bool IsFlush(IHand hand)
         {
-            throw new NotImplementedException();
+            var suitToMatch = hand.Cards[0].Suit;
+
+            var hasCardsOfDifferentSuit = hand.Cards.Any(card => card.Suit != suitToMatch);
+            if (hasCardsOfDifferentSuit)
+            {
+                return false;
+            }
+
+            var cardValues = hand.Cards
+                .Select(card => (int)card.Face)
+                .OrderBy(value => value);
+            var sequentialRangeFromSmallestCardValue = 
+                Enumerable.Range(cardValues.First(), cardValues.Count());
+
+            var enumerateCardValue = cardValues.GetEnumerator();
+            var enumerateRange = sequentialRangeFromSmallestCardValue.GetEnumerator();
+
+            while (enumerateCardValue.MoveNext() && enumerateRange.MoveNext())
+            {
+                var currentCardValue = enumerateCardValue.Current;
+                var currentRangeValue = enumerateRange.Current;
+
+                if (currentCardValue != currentRangeValue)
+                {
+                    return true;
+                }
+            }
+            return false;
         }
 
         public bool IsStraight(IHand hand)

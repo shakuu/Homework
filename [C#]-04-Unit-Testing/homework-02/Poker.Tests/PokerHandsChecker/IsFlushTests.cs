@@ -9,6 +9,17 @@
     public class IsFlushTests
     {
         [Test]
+        public void IsFlush_HandHasAtLeastOneCardOfADifferentSuitComparedToTheRest_ShouldReturnFalse()
+        {
+            var flushHand = new HandTypePresetsFakeHand(HandType.IsHighCard);
+            var pokerHandsChecker = new PokerHandsChecker();
+
+            var actualResult = pokerHandsChecker.IsFlush(flushHand);
+
+            Assert.IsFalse(actualResult);
+        }
+
+        [Test]
         public void IsFlush_HandHasFiveCardsOfTheSameSuitWhichAreSequential_ShouldReturnFalse()
         {
             var flushHand = new HandTypePresetsFakeHand(HandType.IsStraightFlush);

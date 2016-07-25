@@ -72,11 +72,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Fakes\ConstantStringFakeCard.cs" />
-    <Compile Include="Fakes\FakeCard.cs" />
-    <Compile Include="Fakes\FakeHand.cs" />
+    <Compile Include="Fakes\Card\ConstantStringFakeCard.cs" />
+    <Compile Include="Fakes\Card\FakeCard.cs" />
+    <Compile Include="Fakes\Hand\FakeHand.cs" />
     <Compile Include="Fakes\HandType.cs" />
-    <Compile Include="Fakes\HandTypePresetsFakeHand.cs" />
+    <Compile Include="Fakes\Hand\HandTypePresetsFakeHand.cs" />
     <Compile Include="PokerHandsChecker\IsFlushTests.cs" />
     <Compile Include="PokerHandsChecker\IsValidHandTests.cs" />
     <Compile Include="Models\CardTests.cs" />
