@@ -9,18 +9,19 @@
     {
         public HandTypePresetsFakeHand(HandType type)
         {
-            this.initializeCards(type);
+             this.Cards = this.initializeCards(type);
         }
 
         public IList<ICard> Cards { get; private set; }
 
-        private void initializeCards(HandType type)
+        private IList<ICard> initializeCards(HandType type)
         {
             var newListOfCards = new List<ICard>();
 
             switch (type)
             {
                 case HandType.IsStraightFlush:
+
                     break;
                 case HandType.IsFourOfAKind:
                     break;
@@ -42,8 +43,10 @@
                 default:
                     break;
             }
-        }
 
+            return newListOfCards();
+        }
+        
         private List<ICard> GetFlush()
         {
             var flush = new List<ICard>()
