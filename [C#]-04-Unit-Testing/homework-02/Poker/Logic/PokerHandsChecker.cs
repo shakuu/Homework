@@ -49,7 +49,18 @@
 
         public bool IsFullHouse(IHand hand)
         {
-            throw new NotImplementedException();
+            var groupsOfCardsWithTheSameFaceValue =
+                this.SplitTheHandIntoGroupsOfCardsWithTheSameFaceValue(hand);
+
+            var numberOfGroups = groupsOfCardsWithTheSameFaceValue.Count();
+            var hasThreeOfAKind = groupsOfCardsWithTheSameFaceValue.Any(groupCount => groupCount == 3);
+            var hasOnePair = groupsOfCardsWithTheSameFaceValue.Any(groupCount => groupCount == 2);
+
+            if (numberOfGroups == 2 && hasThreeOfAKind && hasOnePair)
+            {
+                return true;
+            }
+            return false;
         }
 
         public bool IsFlush(IHand hand)

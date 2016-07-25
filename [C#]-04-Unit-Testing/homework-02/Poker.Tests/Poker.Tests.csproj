@@ -80,6 +80,7 @@
     <Compile Include="Fakes\Hand\HandTypePresetsFakeHand.cs" />
     <Compile Include="PokerHandsChecker\IsFlushTests.cs" />
     <Compile Include="PokerHandsChecker\IsFourOfAKindTests.cs" />
+    <Compile Include="PokerHandsChecker\IsFullHouseTests.cs" />
     <Compile Include="PokerHandsChecker\IsHighCardTests.cs" />
     <Compile Include="PokerHandsChecker\IsOnePairTests.cs" />
     <Compile Include="PokerHandsChecker\IsStraightFlushTests.cs" />
