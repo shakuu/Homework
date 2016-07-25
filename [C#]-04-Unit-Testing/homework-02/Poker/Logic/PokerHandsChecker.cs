@@ -222,9 +222,22 @@
             }
             else
             {
-                // TODO: Further evaluation needed
-                throw new NotImplementedException();
+                if (firstHandValue == 0 && secondHandValue == 0)
+                {
+                    var result = this.EvaluateTwoHighCardHands(firstHand, secondHand);
+                }
+                else
+                {
+                    // TODO: Further evaluation needed
+                    throw new NotImplementedException();
+                }
             }
+            throw new ArgumentException($"{firstHand.ToString()} {secondHand.ToString()}");
+        }
+
+        private int EvaluateTwoHighCardHands(IHand firstHand, IHand secondHand)
+        {
+            throw new NotImplementedException();
         }
 
         private int GetIntValueOfHand(IHand hand)
