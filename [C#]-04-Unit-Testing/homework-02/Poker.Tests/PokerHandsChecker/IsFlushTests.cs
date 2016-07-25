@@ -3,11 +3,23 @@
     using NUnit.Framework;
 
     using Poker;
+    using Poker.Tests.Data;
     using Poker.Tests.Fakes;
 
     [TestFixture]
     public class IsFlushTests
     {
+        [Test]
+        [TestCaseSource(typeof(PokerHandsCheckerTestsData), "IsFlushAllSuitsCases")]
+        public bool IsFlush_HandHasFiveCardsOfTheSameSuit_ShouldReturnTrue(IHand hand)
+        {
+            var pokerHandChecker = new PokerHandsChecker();
+
+            var actualResult = pokerHandChecker.IsFlush(hand);
+
+            return actualResult;
+        }
+
         [Test]
         public void IsFlush_HandHasAtLeastOneCardOfADifferentSuitComparedToTheRest_ShouldReturnFalse()
         {
