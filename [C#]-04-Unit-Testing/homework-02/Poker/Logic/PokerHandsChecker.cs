@@ -9,6 +9,11 @@
     {
         public bool IsValidHand(IHand hand)
         {
+            if (hand == null)
+            {
+                throw new ArgumentNullException(nameof(hand));
+            }
+
             if (hand.Cards.Count != 5)
             {
                 return false;
@@ -30,6 +35,11 @@
 
         public bool IsStraightFlush(IHand hand)
         {
+            if (hand == null)
+            {
+                throw new ArgumentNullException(nameof(hand));
+            }
+
             var isStraghtHand = this.CheckIfHandHasFiveSequentialFaceValues(hand);
             var isFlushHand = this.CheckIfHandHasFiveIdenticalSuits(hand);
 
@@ -39,6 +49,11 @@
 
         public bool IsFourOfAKind(IHand hand)
         {
+            if (hand == null)
+            {
+                throw new ArgumentNullException(nameof(hand));
+            }
+
             var groupsOfCardsWithTheSameFaceValue =
                 this.SplitTheHandIntoGroupsOfCardsWithTheSameFaceValue(hand);
 
@@ -49,6 +64,11 @@
 
         public bool IsFullHouse(IHand hand)
         {
+            if (hand == null)
+            {
+                throw new ArgumentNullException(nameof(hand));
+            }
+
             var groupsOfCardsWithTheSameFaceValue =
                 this.SplitTheHandIntoGroupsOfCardsWithTheSameFaceValue(hand);
 
@@ -65,6 +85,11 @@
 
         public bool IsFlush(IHand hand)
         {
+            if (hand == null)
+            {
+                throw new ArgumentNullException(nameof(hand));
+            }
+
             var allCardsHaveTheSameSuit = this.CheckIfHandHasFiveIdenticalSuits(hand);
             if (!allCardsHaveTheSameSuit)
             {
@@ -77,12 +102,22 @@
 
         public bool IsStraight(IHand hand)
         {
+            if (hand == null)
+            {
+                throw new ArgumentNullException(nameof(hand));
+            }
+
             var isStraight = this.CheckIfHandHasFiveSequentialFaceValues(hand);
             return isStraight;
         }
 
         public bool IsThreeOfAKind(IHand hand)
         {
+            if (hand == null)
+            {
+                throw new ArgumentNullException(nameof(hand));
+            }
+
             var groupsOfCardsWithTheSameFaceValue =
                 this.SplitTheHandIntoGroupsOfCardsWithTheSameFaceValue(hand);
 
@@ -98,6 +133,11 @@
 
         public bool IsTwoPair(IHand hand)
         {
+            if (hand == null)
+            {
+                throw new ArgumentNullException(nameof(hand));
+            }
+
             var groupsOfCardsWithTheSameFaceValue =
                 this.SplitTheHandIntoGroupsOfCardsWithTheSameFaceValue(hand);
 
@@ -115,6 +155,11 @@
 
         public bool IsOnePair(IHand hand)
         {
+            if (hand == null)
+            {
+                throw new ArgumentNullException(nameof(hand));
+            }
+
             var groupsOfCardsWithTheSameFaceValue =
                 this.SplitTheHandIntoGroupsOfCardsWithTheSameFaceValue(hand);
 
@@ -130,6 +175,11 @@
 
         public bool IsHighCard(IHand hand)
         {
+            if (hand == null)
+            {
+                throw new ArgumentNullException(nameof(hand));
+            }
+
             var allPokerHandChckerMethods =
                 typeof(PokerHandsChecker)
                     .GetMethods(BindingFlags.Instance | BindingFlags.Public | BindingFlags.CreateInstance)
