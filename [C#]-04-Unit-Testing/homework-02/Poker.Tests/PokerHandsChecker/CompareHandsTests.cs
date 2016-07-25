@@ -11,7 +11,7 @@
     {
         [Test]
         [TestCaseSource(typeof(PokerHandsCheckerTestsData), PokerHandsCheckerTestsData.ComapreHandsAllHandTypesButStraightFlushEnumerable)]
-        public void CompareHandsTests_FirstHandStraightFlushAndAnyOtherSecondHand_ShouldReturnPlusOne(IHand handWhichIsNotAStraightFlush)
+        public void CompareHands_FirstHandStraightFlushAndAnyOtherSecondHand_ShouldReturnPlusOne(IHand handWhichIsNotAStraightFlush)
         {
             // Arrange
             var firstHand = new HandTypePresetsFakeHand(HandType.IsStraightFlush);

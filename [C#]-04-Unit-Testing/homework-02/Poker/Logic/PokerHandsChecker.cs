@@ -123,7 +123,7 @@
 
             var numberOfGroups = groupsOfCardsWithTheSameFaceValue.Count();
             var hasThreeOfAKind = groupsOfCardsWithTheSameFaceValue.Any(groupCount => groupCount == 3);
-            
+
             if (numberOfGroups == 3 && hasThreeOfAKind)
             {
                 return true;
@@ -180,14 +180,8 @@
                 throw new ArgumentNullException(nameof(hand));
             }
 
-            var allPokerHandChckerMethods =
-                typeof(PokerHandsChecker)
-                    .GetMethods(BindingFlags.Instance | BindingFlags.Public | BindingFlags.CreateInstance)
-                    .Where(method =>
-                        method.ReturnType == typeof(bool)
-                        && method.Name != "IsHighCard"
-                        && method.Name != "IsValidHand"
-                        && typeof(object).GetMethods().All(objMethod => objMethod.Name != method.Name));
+            var allPokerHandChckerMethods = this.GetAllHandTypeEvaluatingMethods()
+                .Where(method => method.Name != "IsHighCard");
 
             foreach (var method in allPokerHandChckerMethods)
             {
@@ -203,7 +197,68 @@
 
         public int CompareHands(IHand firstHand, IHand secondHand)
         {
-            throw new NotImplementedException();
+            if (firstHand == null)
+            {
+                throw new ArgumentNullException(nameof(firstHand));
+            }
+
+            if (secondHand == null)
+            {
+                throw new ArgumentNullException(nameof(secondHand));
+            }
+
+            var firstHandValue = this.GetIntValueOfHand(firstHand);
+            var secondHandValue = this.GetIntValueOfHand(secondHand);
+
+            var handComparisonAsInt = firstHandValue - secondHandValue;
+
+            if (handComparisonAsInt > 0)
+            {
+                return 1;
+            }
+            else if (handComparisonAsInt < 0)
+            {
+                return -1;
+            }
+            else
+            {
+                // TODO: Further evaluation needed
+                throw new NotImplementedException();
+            }
+        }
+
+        private int GetIntValueOfHand(IHand hand)
+        {
+            var allPokerHandChckerMethods = this.GetAllHandTypeEvaluatingMethods();
+            var handValue = allPokerHandChckerMethods.Count();
+
+            foreach (var method in allPokerHandChckerMethods)
+            {
+                var successfulMatch = (bool)method.Invoke(this, new object[] { hand });
+                if (successfulMatch)
+                {
+                    return handValue;
+                }
+                else
+                {
+                    handValue--;
+                    continue;
+                }
+            }
+            throw new ArgumentException($"Could not evaluate {hand.ToString()}");
+        }
+
+        private IEnumerable<MethodInfo> GetAllHandTypeEvaluatingMethods()
+        {
+            var allPokerHandChckerMethods =
+                typeof(PokerHandsChecker)
+                    .GetMethods(BindingFlags.Instance | BindingFlags.Public | BindingFlags.CreateInstance)
+                    .Where(method =>
+                        method.ReturnType == typeof(bool)
+                        && method.Name != "IsValidHand"
+                        && typeof(object).GetMethods().All(objMethod => objMethod.Name != method.Name));
+
+            return allPokerHandChckerMethods;
         }
 
         private IEnumerable<int> SplitTheHandIntoGroupsOfCardsWithTheSameFaceValue(IHand hand)
