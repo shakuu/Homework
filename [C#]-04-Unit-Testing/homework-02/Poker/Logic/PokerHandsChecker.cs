@@ -222,22 +222,77 @@
             }
             else
             {
-                if (firstHandValue == 0 && secondHandValue == 0)
+                if (firstHandValue == 1 && secondHandValue == 1)
                 {
                     var result = this.EvaluateTwoHighCardHands(firstHand, secondHand);
+                    return result;
                 }
                 else
                 {
-                    // TODO: Further evaluation needed
-                    throw new NotImplementedException();
+                    var result = this.EvaluateEqualHands(firstHand, secondHand);
+                    return result;
                 }
             }
             throw new ArgumentException($"{firstHand.ToString()} {secondHand.ToString()}");
         }
 
+        private int CompareOrderedHands(IEnumerable<ICard> orderedFirstHand, IEnumerable<ICard> orderedSecondHand)
+        {
+            var enumerateFirstHand = orderedFirstHand.GetEnumerator();
+            var enumerateSecondHand = orderedSecondHand.GetEnumerator();
+
+            while (enumerateFirstHand.MoveNext() && enumerateSecondHand.MoveNext())
+            {
+                var firstHandCurrent = (int)enumerateFirstHand.Current.Face;
+                var secondHandCurrent = (int)enumerateSecondHand.Current.Face;
+
+                if (firstHandCurrent > secondHandCurrent)
+                {
+                    return 1;
+                }
+                else if (firstHandCurrent < secondHandCurrent)
+                {
+                    return -1;
+                }
+            }
+            return 0;
+        }
+
+        private int EvaluateEqualHands(IHand firstHand, IHand secondHand)
+        {
+            var orderedFirstHand = this.OrderCardsByGroupSizeThenByFaceValue(firstHand);
+            var orderedSecondHand = this.OrderCardsByGroupSizeThenByFaceValue(secondHand);
+
+            var result = this.CompareOrderedHands(orderedFirstHand, orderedSecondHand);
+            return result;
+        }
+
+        private IEnumerable<ICard> OrderCardsByGroupSizeThenByFaceValue(IHand hand)
+        {
+            var orderedHand =
+                from card in hand.Cards
+                orderby card.Face descending
+                group card by card.Face into groups
+                orderby groups.Count() descending
+                from card in groups
+                select card;
+
+            return orderedHand;
+        }
+
         private int EvaluateTwoHighCardHands(IHand firstHand, IHand secondHand)
         {
-            throw new NotImplementedException();
+            var orderedFirstHand = this.OrderCardsByFaceValue(firstHand);
+            var orderedSecondHand = this.OrderCardsByFaceValue(secondHand);
+
+            var result = this.CompareOrderedHands(orderedFirstHand, orderedSecondHand);
+            return result;
+        }
+
+        private IEnumerable<ICard> OrderCardsByFaceValue(IHand hand)
+        {
+            var orderedHand = hand.Cards.OrderBy(card => (int)card.Face);
+            return orderedHand;
         }
 
         private int GetIntValueOfHand(IHand hand)
