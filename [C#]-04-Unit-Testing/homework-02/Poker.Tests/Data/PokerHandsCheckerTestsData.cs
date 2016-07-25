@@ -1,5 +1,6 @@
 ﻿namespace Poker.Tests.Data
 {
+    using System;
     using System.Collections;
     using System.Collections.Generic;
 
@@ -13,6 +14,7 @@
         public const string IsFourOfAKindAllFacesEnumerable = "IsFourOfAKindAllFacesCases";
         public const string IsStraightAllFacesCasesEnumerable = "IsStraightAllFacesCases";
         public const string IsStraightFlushAllFacesCasesEnumerable = "IsStraightFlushAllFacesCases";
+        public const string ComapreHandsAllHandTypesButStraightFlushEnumerable = "ComapreHandsAllHandTypesButStraightFlush";
 
         public static IEnumerable IsFlushAllSuitsCases
         {
@@ -142,6 +144,19 @@
                         var handToReturn = new FakeHand(cards);
                         yield return new TestCaseData(handToReturn).Returns(true);
                     }
+                }
+            }
+        }
+
+        public static IEnumerable ComapreHandsAllHandTypesButStraightFlush
+        {
+            get
+            {
+                var numberOfHandTypes = Enum.GetValues(typeof(HandType)).Length;
+                for (int handTypeAsInt = 1; handTypeAsInt < numberOfHandTypes; handTypeAsInt++)
+                {
+                    var handToPassAsArgument = new HandTypePresetsFakeHand((HandType)handTypeAsInt);
+                    yield return new TestCaseData( handToPassAsArgument);
                 }
             }
         }

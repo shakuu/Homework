@@ -2,7 +2,7 @@
 {
     public enum HandType
     {
-        IsStraightFlush,
+        IsStraightFlush = 0 ,
         IsFourOfAKind,
         IsFullHouse,
         IsFlush,
