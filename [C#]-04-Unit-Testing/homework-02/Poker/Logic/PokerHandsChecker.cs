@@ -72,12 +72,34 @@
 
         public bool IsThreeOfAKind(IHand hand)
         {
-            throw new NotImplementedException();
+            var groupsOfCardsWithTheSameFaceValue =
+                this.SplitTheHandIntoGroupsOfCardsWithTheSameFaceValue(hand);
+
+            var numberOfGroups = groupsOfCardsWithTheSameFaceValue.Count();
+            var hasThreeOfAKind = groupsOfCardsWithTheSameFaceValue.Any(groupCount => groupCount == 3);
+            
+            if (numberOfGroups == 3 && hasThreeOfAKind)
+            {
+                return true;
+            }
+            return false;
         }
 
         public bool IsTwoPair(IHand hand)
         {
-            throw new NotImplementedException();
+            var groupsOfCardsWithTheSameFaceValue =
+                this.SplitTheHandIntoGroupsOfCardsWithTheSameFaceValue(hand);
+
+            var numberOfGroups = groupsOfCardsWithTheSameFaceValue.Count();
+            var numberOfPairs = groupsOfCardsWithTheSameFaceValue
+                .Where(groupCount => groupCount == 2)
+                .Count();
+
+            if (numberOfGroups == 3 && numberOfPairs == 2)
+            {
+                return true;
+            }
+            return false;
         }
 
         public bool IsOnePair(IHand hand)

@@ -84,6 +84,8 @@
     <Compile Include="PokerHandsChecker\IsOnePairTests.cs" />
     <Compile Include="PokerHandsChecker\IsStraightFlushTests.cs" />
     <Compile Include="PokerHandsChecker\IsStraightTests.cs" />
+    <Compile Include="PokerHandsChecker\IsThreeOfAKindTests.cs" />
+    <Compile Include="PokerHandsChecker\IsTwoPairTests.cs" />
     <Compile Include="PokerHandsChecker\IsValidHandTests.cs" />
     <Compile Include="Models\CardTests.cs" />
     <Compile Include="Models\HandTests.cs" />
