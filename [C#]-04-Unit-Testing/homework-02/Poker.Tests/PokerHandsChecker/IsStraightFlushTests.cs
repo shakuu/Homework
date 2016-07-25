@@ -9,7 +9,7 @@
     public class IsStraightFlushTests
     {
         [Test]
-        [TestCaseSource(typeof(PokerHandsCheckerTestsData), PokerHandsCheckerTestsData.IsStraightFlushAllFacesCasesAsString)]
+        [TestCaseSource(typeof(PokerHandsCheckerTestsData), PokerHandsCheckerTestsData.IsStraightFlushAllFacesCasesEnumerable)]
         public bool IsStraightFlush_HandHasFiveCardsOfSequentialFaceValueAndOftheSameSuit_ShouldReturnTrue(IHand hand)
         {
             // Arrange

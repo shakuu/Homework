@@ -24,7 +24,7 @@
         }
 
         [Test]
-        [TestCaseSource(typeof(PokerHandsCheckerTestsData), PokerHandsCheckerTestsData.IsFourOfAKindAllFacesCasesAsString)]
+        [TestCaseSource(typeof(PokerHandsCheckerTestsData), PokerHandsCheckerTestsData.IsFourOfAKindAllFacesEnumerable)]
         public bool IsFourOfAKind_HandHasFourCardsOfTheSameFaceValue_ShouldReturnTrue(IHand hand)
         {
             // Arrange

@@ -9,10 +9,10 @@
 
     public class PokerHandsCheckerTestsData
     {
-        public const string IsFlushAllSuitsCasesAsString = "IsFlushAllSuitsCases";
-        public const string IsFourOfAKindAllFacesCasesAsString = "IsFourOfAKindAllFacesCases";
-        public const string IsStraightAllFacesCasesAsString = "IsStraightAllFacesCases";
-        public const string IsStraightFlushAllFacesCasesAsString = "IsStraightFlushAllFacesCases";
+        public const string IsFlushAllSuitsCasesEnumerable = "IsFlushAllSuitsCases";
+        public const string IsFourOfAKindAllFacesEnumerable = "IsFourOfAKindAllFacesCases";
+        public const string IsStraightAllFacesCasesEnumerable = "IsStraightAllFacesCases";
+        public const string IsStraightFlushAllFacesCasesEnumerable = "IsStraightFlushAllFacesCases";
 
         public static IEnumerable IsFlushAllSuitsCases
         {

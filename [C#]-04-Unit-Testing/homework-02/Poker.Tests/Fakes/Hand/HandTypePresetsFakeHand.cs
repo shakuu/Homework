@@ -10,7 +10,7 @@
     {
         public HandTypePresetsFakeHand(HandType type)
         {
-             this.Cards = this.initializeCards(type);
+            this.Cards = this.initializeCards(type);
         }
 
         public IList<ICard> Cards { get; private set; }
@@ -28,6 +28,7 @@
                     newListOfCards = this.GetFourOfAKind();
                     break;
                 case HandType.IsFullHouse:
+                    newListOfCards = this.GetFullHouse();
                     break;
                 case HandType.IsFlush:
                     newListOfCards = this.GetFlush();
@@ -39,17 +40,61 @@
                     newListOfCards = this.GetThreeOfAKind();
                     break;
                 case HandType.IsTwoPair:
+                    newListOfCards = this.GetTwoPair();
                     break;
                 case HandType.IsOnePair:
+                    newListOfCards = this.GetOnePair();
                     break;
                 case HandType.IsHighCard:
                     newListOfCards = this.GetHighCard();
                     break;
                 default:
-                    break;
+                    throw new ArgumentException("Invalid FakeHand Input");
             }
 
             return newListOfCards;
+        }
+
+        private List<ICard> GetFullHouse()
+        {
+            var fullHouse = new List<ICard>()
+            {
+                new FakeCard(CardFace.Ace, CardSuit.Clubs),
+                new FakeCard(CardFace.Ace, CardSuit.Diamonds),
+                new FakeCard(CardFace.Two, CardSuit.Hearts),
+                new FakeCard(CardFace.Two, CardSuit.Spades),
+                new FakeCard(CardFace.Two, CardSuit.Clubs)
+            };
+
+            return fullHouse;
+        }
+
+        private List<ICard> GetTwoPair()
+        {
+            var twoPair = new List<ICard>()
+            {
+                new FakeCard(CardFace.Ace, CardSuit.Clubs),
+                new FakeCard(CardFace.Ace, CardSuit.Diamonds),
+                new FakeCard(CardFace.Two, CardSuit.Hearts),
+                new FakeCard(CardFace.Two, CardSuit.Spades),
+                new FakeCard(CardFace.Ten, CardSuit.Clubs)
+            };
+
+            return twoPair;
+        }
+
+        private List<ICard> GetOnePair()
+        {
+            var onePair = new List<ICard>()
+            {
+                new FakeCard(CardFace.Ace, CardSuit.Clubs),
+                new FakeCard(CardFace.Ace, CardSuit.Diamonds),
+                new FakeCard(CardFace.Two, CardSuit.Hearts),
+                new FakeCard(CardFace.Seven, CardSuit.Spades),
+                new FakeCard(CardFace.Ten, CardSuit.Clubs)
+            };
+
+            return onePair;
         }
 
         private List<ICard> GetStraight()
