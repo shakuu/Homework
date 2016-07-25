@@ -11,6 +11,7 @@
     {
         public const string IsFlushAllSuitsCasesAsString = "IsFlushAllSuitsCases";
         public const string IsFourOfAKindAllFacesCasesAsString = "IsFourOfAKindAllFacesCases";
+        public const string IsStraightAllFacesCasesAsString = "IsStraightAllFacesCases";
 
         public static IEnumerable IsFlushAllSuitsCases
         {
@@ -93,6 +94,26 @@
                         new FakeCard(faceValueAsInt == 10 ? CardFace.Four : CardFace.Ten, CardSuit.Clubs)
 
                     })).Returns(true);
+                }
+            }
+        }
+
+        public static IEnumerable IsStraightAllFacesCases
+        {
+            get
+            {
+                for (int faceValueAsInt = 2; faceValueAsInt <= 10; faceValueAsInt++)
+                {
+                    var cards = new List<ICard>();
+
+                    for (int delta = 0; delta < 5; delta++)
+                    {
+                        var newCard = new FakeCard((CardFace)faceValueAsInt + delta, (CardSuit)(delta % 4));
+                        cards.Add(newCard);
+                    }
+
+                    var handToReturn = new FakeHand(cards);
+                    yield return new TestCaseData(handToReturn).Returns(true);
                 }
             }
         }

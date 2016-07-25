@@ -3,23 +3,23 @@
     using NUnit.Framework;
 
     using Poker;
-    using Poker.Tests.Fakes;
+    using Poker.Tests.Data;
 
     [TestFixture]
     public class IsStraightTests
     {
         [Test]
-        public void IsStraight_HandHasFiveCardsOfSequentialFaceValue_ShouldReturnTrue()
+        [TestCaseSource(typeof(PokerHandsCheckerTestsData), PokerHandsCheckerTestsData.IsStraightAllFacesCasesAsString)]
+        public bool IsStraight_HandHasFiveCardsOfSequentialFaceValue_ShouldReturnTrue(IHand hand)
         {
             // Arrange
-            var hand = new HandTypePresetsFakeHand(HandType.IsStraight);
             var pokerHandChecker = new PokerHandsChecker();
 
             // Act
             var actualResult = pokerHandChecker.IsStraight(hand);
 
             // Assert
-            Assert.IsTrue(actualResult);
+            return actualResult;
         }
     }
 }
