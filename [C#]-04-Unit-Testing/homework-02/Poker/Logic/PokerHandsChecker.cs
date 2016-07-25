@@ -1,6 +1,7 @@
 ﻿namespace Poker
 {
     using System;
+    using System.Collections.Generic;
     using System.Linq;
     using System.Reflection;
 
@@ -39,13 +40,10 @@
         public bool IsFourOfAKind(IHand hand)
         {
             var groupsOfCardsWithTheSameFaceValue =
-                from card in hand.Cards
-                group card by card.Face into groups
-                orderby groups.Count()
-                select groups;
+                this.SplitTheHandIntoGroupsOfCardsWithTheSameFaceValue(hand);
 
             var result = groupsOfCardsWithTheSameFaceValue
-                .Any(group => group.Count() == 4);
+                .Any(groupCount => groupCount == 4);
             return result;
         }
 
@@ -84,7 +82,17 @@
 
         public bool IsOnePair(IHand hand)
         {
-            throw new NotImplementedException();
+            var groupsOfCardsWithTheSameFaceValue =
+                this.SplitTheHandIntoGroupsOfCardsWithTheSameFaceValue(hand);
+
+            var numberOfGroups = groupsOfCardsWithTheSameFaceValue.Count();
+            var containsAPair = groupsOfCardsWithTheSameFaceValue.Any(groupCount => groupCount == 2);
+
+            if (numberOfGroups == 4 && containsAPair)
+            {
+                return true;
+            }
+            return false;
         }
 
         public bool IsHighCard(IHand hand)
@@ -113,6 +121,17 @@
         public int CompareHands(IHand firstHand, IHand secondHand)
         {
             throw new NotImplementedException();
+        }
+
+        private IEnumerable<int> SplitTheHandIntoGroupsOfCardsWithTheSameFaceValue(IHand hand)
+        {
+            var groupsOfCardsWithTheSameFaceValue =
+                from card in hand.Cards
+                group card by card.Face into groups
+                orderby groups.Count() descending
+                select groups.Count();
+
+            return groupsOfCardsWithTheSameFaceValue;
         }
 
         private bool CheckIfHandHasFiveSequentialFaceValues(IHand hand)
