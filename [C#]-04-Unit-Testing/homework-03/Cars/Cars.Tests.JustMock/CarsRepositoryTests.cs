@@ -38,6 +38,42 @@
         }
 
         [Test]
+        public void Add_ShouldThrow_IfCarParameterIsNull()
+        {
+            // Arrange
+            Car car = null;
+            var carRepo = new CarsRepository();
+
+            var ex = Assert.Throws<ArgumentException>(() => carRepo.Add(car));
+            Assert.IsTrue(ex.Message.Contains("Null car cannot be added"));
+        }
+
+        [Test]
+        public void Remove_ShouldThrow_IfCarParameterIsNull()
+        {
+            // Arrange
+            Car car = null;
+            var carRepo = new CarsRepository();
+
+            var ex = Assert.Throws<ArgumentException>(() => carRepo.Remove(car));
+            Assert.IsTrue(ex.Message.Contains("Null car cannot be removed"));
+        }
+
+        [Test]
+        public void GetById_ShouldThrow_IfIdCannotBeFound()
+        {
+            // Arrange
+            var fakeDb = new Mock<IDatabase>();
+            fakeDb.SetupGet(cp => cp.Cars).Returns(new List<Car>() { });
+
+            var carRepo = new CarsRepository(fakeDb.Object);
+
+            // Act 
+            var ex = Assert.Throws<ArgumentException>(() => carRepo.GetById(10));
+            Assert.IsTrue(ex.Message.Contains("Car with such Id could not be found"));
+        }
+
+        [Test]
         public void SortedByMake_ShouldReturnACollectionSortedInAlphabeticalOrder()
         {
             // Arrange 
