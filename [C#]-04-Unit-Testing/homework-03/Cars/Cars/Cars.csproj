@@ -47,6 +47,7 @@
     <Compile Include="Data\CarsRepository.cs" />
     <Compile Include="Data\Database.cs" />
     <Compile Include="Contracts\IDatabase.cs" />
+    <Compile Include="Contracts\ICar.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup />

@@ -68,7 +68,8 @@
 
         public ICollection<Car> SortedByMake()
         {
-            return this.Data.Cars.OrderBy(c => c.Make).ToList();
+            var returnValue = this.Data.Cars.OrderBy(c => c.Make).ToList();
+            return returnValue;
         }
 
         public ICollection<Car> SortedByYear()
