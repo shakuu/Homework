@@ -25,7 +25,7 @@
             {
                 base.AddCreaturesByIdentifier(creatureIdentifier, creaturesInBattle);
             }
-            catch (ArgumentException ex)
+            catch (ArgumentException)
             {
                 if (creatureIdentifier.ArmyNumber == ExtendedBattleManager.ThirdArmyCreaturesIdentifier)
                 {
