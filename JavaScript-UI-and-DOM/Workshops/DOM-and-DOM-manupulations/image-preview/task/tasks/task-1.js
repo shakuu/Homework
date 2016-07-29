@@ -65,7 +65,7 @@ function solve() {
         imageList.addEventListener('click', onImageListClick);
         imageList.addEventListener('mouseover', onMoustEnterChangeBackgroundColor, true);
         imageList.addEventListener('mouseout', onMouseOutRevertBackgroundColor, true);
-        // imageListInput.addEventListener('input', filterImageContainers);
+        imageListInput.addEventListener('input', filterImageContainers);
 
         // Populate the List
         length = items.length;
@@ -81,6 +81,7 @@ function solve() {
 
         // Create ImagePreview
         imagePreviewContainer = document.createElement('div');
+        imagePreviewContainer.className = 'image-preview';
         imagePreviewContainer.style.float = 'left';
         imagePreviewContainer.style.width = '400px';
 
@@ -97,8 +98,8 @@ function solve() {
         container.style.width = '960px';
 
         // Set initial Value to ImagePreview
-        imagePreviewText.innerHTML = allImageContainers[0].querySelector('strong').innerHTML;
-        imagePreviewImage.src = allImageContainers[0].querySelector('img').src;
+        imagePreviewText.innerHTML = items[0].title;
+        imagePreviewImage.src = items[0].url;
 
         // EVENTS
         function onImageListClick(event) {
@@ -129,7 +130,7 @@ function solve() {
         function onMoustEnterChangeBackgroundColor(event) {
             var clicked = event.target,
                 parent;
-                
+
             parent = findParentImageContainer(clicked);
             if (!parent) {
                 return;
@@ -144,6 +145,24 @@ function solve() {
                 parent = parent.parentNode;
             }
             return parent;
+        }
+
+        function filterImageContainers(event) {
+            var filterText = imageListInput.value,
+                len, i;
+
+            len = allImageContainers.length;
+            for (i = 0; i < len; i += 1) {
+                var containerText = allImageContainers[i]
+                    .querySelector('strong')
+                    .innerHTML;
+
+                if (containerText.indexOf(filterText) < 0) {
+                    allImageContainers[i].style.display = 'none';
+                } else {
+                    allImageContainers[i].style.display = '';
+                }
+            }
         }
     };
 }
