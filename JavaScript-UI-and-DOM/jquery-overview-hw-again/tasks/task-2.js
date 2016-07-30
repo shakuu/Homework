@@ -18,9 +18,52 @@ Create a function that takes a selector and:
 
 */
 function solve() {
-  return function (selector) {
-    
-  };
-};
+    return function (selector) {
+        var allButtons;
+
+        if (typeof selector !== 'string' || !selector.length || $(selector).length === 0) {
+            throw new Error();
+        }
+
+        allButtons = $(selector).children('.button');
+        allButtons.html('hide');
+
+        $(selector).on('click', function (event) {
+            var clicked = $(event.target);
+
+            if (clicked.hasClass('button')) {
+                toggleContentVisibility(clicked);
+            }
+        });
+
+        function toggleContentVisibility(button) {
+            var $button = $(button),
+                content;
+
+            content = $button;
+
+            while (!content.hasClass('content')) {
+                content = content.next();
+
+                if (content.hasClass('button')) {
+                    return;
+                }
+            }
+
+
+            if ($button.html() === 'hide') {
+                $button.html('show');
+                content.css({
+                    'display': 'none'
+                });
+            } else {
+                $button.html('hide');
+                content.css({
+                    'display': ''
+                });
+            }
+        }
+    };
+}
 
 module.exports = solve;
