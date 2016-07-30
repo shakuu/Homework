@@ -255,5 +255,5 @@ _Pvt_Extensions
 *.exe
 
 typings/
-prepros.
-typings.
+prepros.*
+typings.*
