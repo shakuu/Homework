@@ -253,3 +253,7 @@ _Pvt_Extensions
 *.pdf
 *.stylecop
 *.exe
+
+typings/
+prepros.
+typings.
