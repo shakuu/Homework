@@ -11,6 +11,22 @@
             return WEEK_DAY_NAMES[this.getDay()];
         };
 
+        //  var inputDatePicker,
+        //     datePickerWrapper,
+
+        //     picker;
+
+        // inputDatePicker = $(this)
+        //     .addClass('datepicker');
+        // datePickerWrapper = $('<div />')
+        //     .addClass('datepicker-wrapper')
+        //     .appendTo(inputDatepicker.parents().first())
+        //     .append(inputDatePicker);
+
+        // picker = $('<div />')
+        //     .addClass('picker')
+        //     .addClass('picker-visible');
+
         // // you are welcome :)
         var date = new Date();
         // console.log(date.getDayName());
@@ -35,16 +51,18 @@
 
             currentDates = [],
             week, day,
-            currentDisplayDate;
+            currentDisplayDate,
+            currentDisplayMonth,
+            currentDisplayYear = 2016;
 
         inputDatepicker = $(this)
             .addClass('datepicker');
 
-         var parent = inputDatepicker.parents().first(); 
+        var parent = inputDatepicker.parents().first();
 
         datepickerWraper = $('<div />')
             .addClass('datepicker-wrapper')
-            .appendTo($(parent))
+            .appendTo( inputDatepicker.parents().first())
             .append(inputDatepicker);
 
         picker = $('<div />')
@@ -64,8 +82,8 @@
 
         currentMonth = $('<div />')
             .addClass('current-month')
-            .appendTo(controls)
-            .html(date.getMonthName());
+            .appendTo(controls);
+        // .html();
 
         btnNext = $('<a />')
             .addClass('btn')
@@ -81,7 +99,7 @@
             .addClass('current-date')
             .appendTo(picker);
 
-        currentDateLin = $('<a />')
+        currentDateLink = $('<a />')
             .addClass('current-date-link')
             .appendTo(currentDate);
 
@@ -145,8 +163,9 @@
             return current;
         }
 
-        function getDates(startDate) {
-            var currentDates = [];
+        function getDates(Date) {
+            var currentDates = [],
+                startDate = Date;
 
             for (week = 0; week < 6; week += 1) {
                 currentDates[week] = [];
@@ -164,11 +183,24 @@
         // Events
         inputDatepicker.on('click', function () {
             picker.toggleClass('picker-visible');
+
             currentDisplayDate = getStartDate(new Date());
             currentDates = getDates(currentDisplayDate);
             populateCalendarTableCells(currentDates);
-            currentMonth
-                .html(currentDisplayDate.getMonthName());
+
+            var month = new Date();
+            currentDisplayMonth = month.getMonth();
+            currentMonth.html(MONTH_NAMES[Math.abs(currentDisplayMonth % 12)] + ' ' + (currentDisplayYear + Math.floor(currentDisplayMonth / 12)));
+
+            currentDateLink.html(month.getDate() + ' ' + month.getMonthName() + ' ' + month.getFullYear());
+
+            $('.current-month').on('click', function () {
+                picker.removeClass('picker-visible');
+                var date = $(this).html();
+                inputDatepicker.attr('value', date + '/' + (Math.abs(currentDisplayMonth % 12) + 1) + '/' + (currentDisplayYear + Math.floor(currentDisplayMonth / 12)));
+            });
+
+
         });
 
         btnPrev.on('click', function () {
@@ -177,11 +209,11 @@
 
             currentDisplayDate.setMonth(currentDisplayDate.getMonth() - 2);
             start = getStartDate(currentDisplayDate);
-            currentDates = getDates(currentDisplayDate);
+            currentDates = getDates(start);
             populateCalendarTableCells(currentDates);
 
-            currentMonth
-                .html(currentDisplayDate.getMonthName());
+            currentDisplayMonth -= 1;
+            currentMonth.html(MONTH_NAMES[Math.abs(currentDisplayMonth % 12)] + ' ' + (currentDisplayYear + Math.floor(currentDisplayMonth / 12)));
         });
 
         btnNext.on('click', function () {
@@ -190,11 +222,16 @@
 
             currentDisplayDate.setMonth(currentDisplayDate.getMonth() + 0.5);
             start = getStartDate(currentDisplayDate);
-            currentDates = getDates(currentDisplayDate);
+            currentDates = getDates(start);
             populateCalendarTableCells(currentDates);
 
-            currentMonth
-                .html(currentDisplayDate.getMonthName());
+            currentDisplayMonth += 1;
+            currentMonth.html(MONTH_NAMES[Math.abs(currentDisplayMonth % 12)] + ' ' + (currentDisplayYear + Math.floor(currentDisplayMonth / 12)));
+        });
+
+        currentDateLink.on('click', function(){
+            var date = new Date();
+            inputDatepicker.attr('value', date.getDate() + '/' + (date.getMonth() + 1 )+ '/' + date.getFullYear());
         });
 
         return datepickerWraper;
