@@ -237,7 +237,7 @@
         });
 
         // Chaining 
-        return inputDatePicker;
+        return $(this);
     };
 }
 
