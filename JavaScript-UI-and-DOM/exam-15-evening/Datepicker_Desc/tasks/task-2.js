@@ -62,6 +62,7 @@
             prevButton = $('<a />')
                 .css('padding', '5px 10px')
                 .addClass('btn')
+                .addClass('prev')
                 .html('<');
 
             currentMonth = $('<div />')
@@ -71,6 +72,7 @@
             nextButton = $('<a />')
                 .css('padding', '5px 10px')
                 .addClass('btn')
+                .addClass('next')
                 .html('>');
 
             controls = $('<div />')
@@ -180,18 +182,41 @@
         initializeAllElements();
         initializeCalendarTable();
 
+
+        $('html').addClass('controls');
         // events
-        inputDatePicker.on('click', function () {
+        $('.controls').on('click', function (event) {
+            var clicked = $(event.target);
+            var parents = clicked.parents('.datepicker-wrapper');
+
+            if (clicked.hasClass('datepicker-wrapper') || parents.length > 0) {
+                return;
+            }
+
+            picker.removeClass('picker-visible');
+        });
+
+        $('.datepicker').on('focus', function () {
             populateCalendarWithDates(initialDateAsObject);
             currentMonth.html(MONTH_NAMES[initialDateAsObject.month] + ' ' + initialDateAsObject.year);
-            picker.toggleClass('picker-visible');
+            picker.addClass('picker-visible');
 
             currentDateAsObject.year = initialDateAsObject.year;
             currentDateAsObject.month = initialDateAsObject.month;
             currentDateAsObject.date = 1;
         });
 
-        prevButton.on('click', function () {
+        // $('.datepicker').on('click', function () {
+        //     populateCalendarWithDates(initialDateAsObject);
+        //     currentMonth.html(MONTH_NAMES[initialDateAsObject.month] + ' ' + initialDateAsObject.year);
+        //     picker.toggleClass('picker-visible');
+
+        //     currentDateAsObject.year = initialDateAsObject.year;
+        //     currentDateAsObject.month = initialDateAsObject.month;
+        //     currentDateAsObject.date = 1;
+        // });
+
+        $('.prev').on('click', function () {
             currentDateAsObject.month -= 1;
             if (currentDateAsObject.month < 0) {
                 currentDateAsObject.month = 11;
@@ -201,7 +226,7 @@
             currentMonth.html(MONTH_NAMES[currentDateAsObject.month] + ' ' + currentDateAsObject.year);
         });
 
-        nextButton.on('click', function () {
+        $('.next').on('click', function () {
             currentDateAsObject.month += 1;
             if (currentDateAsObject.month > 11) {
                 currentDateAsObject.month = 0;
@@ -211,7 +236,7 @@
             currentMonth.html(MONTH_NAMES[currentDateAsObject.month] + ' ' + currentDateAsObject.year);
         });
 
-        currentDateLink.on('click', function () {
+        $('.current-date-link').on('click', function () {
             var inputValue,
                 date;
 
@@ -221,7 +246,7 @@
             picker.removeClass('picker-visible');
         });
 
-        calendar.on('click', function (event) {
+        $('.calendar').on('click', function (event) {
             var clicked = $(event.target),
                 inputValue,
                 date;
