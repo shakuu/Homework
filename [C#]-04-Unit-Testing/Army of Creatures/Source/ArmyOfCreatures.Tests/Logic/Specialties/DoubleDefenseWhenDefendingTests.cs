@@ -118,7 +118,7 @@
         }
 
         [Test]
-        public void AppleWhenDefending_ShouldApplyEffectToICreaturesInBattleDefenderWithSpecialtyCurrentDefense()
+        public void ApplyWhenDefending_ShouldApplyEffectToICreaturesInBattleDefenderWithSpecialtyCurrentDefense()
         {
             var defenderWithSpecilty = new Mock<ICreaturesInBattle>();
             var attacker = new Mock<ICreaturesInBattle>();
@@ -132,6 +132,23 @@
             doubleDefenseWhenDefending.ApplyWhenDefending(defenderWithSpecilty.Object, attacker.Object);
 
             defenderWithSpecilty.VerifySet(mock => mock.CurrentDefense = It.IsAny<int>(), Times.Once());
+        }
+
+        [Test]
+        public void ApplyWhenDefending_ShouldNotApplyEffectToAttacker()
+        {
+            var defenderWithSpecilty = new Mock<ICreaturesInBattle>();
+            var attacker = new Mock<ICreaturesInBattle>(MockBehavior.Strict);
+
+            var rounds = 5;
+            var doubleDefenseWhenDefending = new DoubleDefenseWhenDefending(rounds);
+
+            defenderWithSpecilty.SetupGet(mock => mock.CurrentDefense).Returns(0);
+            defenderWithSpecilty.SetupSet(mock => mock.CurrentDefense = It.IsAny<int>());
+
+            doubleDefenseWhenDefending.ApplyWhenDefending(defenderWithSpecilty.Object, attacker.Object);
+
+            attacker.Verify();
         }
     }
 }
