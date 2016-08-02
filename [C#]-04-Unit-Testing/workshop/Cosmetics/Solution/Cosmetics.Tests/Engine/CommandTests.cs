@@ -18,7 +18,9 @@
             var input = "ShowCategory ForMale";
             var command = Command.Parse(input);
 
-            Assert.IsTrue(command != null);
+            var actual = command.GetType().GetInterface("ICommand");
+            
+            Assert.IsNotNull(actual);
         }
 
         //- **Parse** should set correct values to the newly returned Command object's Properties ("Name" & "Parameters"), when the "input" string is in the valid required format.  
