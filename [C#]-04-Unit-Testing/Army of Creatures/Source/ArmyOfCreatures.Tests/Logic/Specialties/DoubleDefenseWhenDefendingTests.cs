@@ -91,7 +91,47 @@
             var doubleDefenseWhenDefending = new DoubleDefenseWhenDefending(rounds);
 
             var doubleDefenseWhenDefendingAsPrivateObject = new MSTest.PrivateObject(doubleDefenseWhenDefending);
-            //var numberOfRoundsInit = double
+            var initialNumberOfRounds = doubleDefenseWhenDefendingAsPrivateObject.GetField("rounds");
+            doubleDefenseWhenDefending.ApplyWhenDefending(defenderWithSpecialty.Object, attacker.Object);
+            var actualNumberOfRounds = doubleDefenseWhenDefendingAsPrivateObject.GetField("rounds");
+
+            Assert.AreEqual(rounds - 1, actualNumberOfRounds);
+        }
+
+        [Test]
+        public void ApplyWhenDefending_ShouldNotDecrementFieldRounds_WhenRoundsIsEqualToZero()
+        {
+            var defenderWithSpecialty = new Mock<ICreaturesInBattle>();
+            var attacker = new Mock<ICreaturesInBattle>();
+
+            var rounds = 1;
+            var doubleDefenseWhenDefending = new DoubleDefenseWhenDefending(rounds);
+
+            var doubleDefenseWhenDefendingAsPrivateObject = new MSTest.PrivateObject(doubleDefenseWhenDefending);
+            var initialNumberOfRounds = doubleDefenseWhenDefendingAsPrivateObject.GetField("rounds");
+            doubleDefenseWhenDefending.ApplyWhenDefending(defenderWithSpecialty.Object, attacker.Object);
+            doubleDefenseWhenDefending.ApplyWhenDefending(defenderWithSpecialty.Object, attacker.Object);
+            doubleDefenseWhenDefending.ApplyWhenDefending(defenderWithSpecialty.Object, attacker.Object);
+            var actualNumberOfRounds = doubleDefenseWhenDefendingAsPrivateObject.GetField("rounds");
+
+            Assert.AreEqual(0, actualNumberOfRounds);
+        }
+
+        [Test]
+        public void AppleWhenDefending_ShouldApplyEffectToICreaturesInBattleDefenderWithSpecialtyCurrentDefense()
+        {
+            var defenderWithSpecilty = new Mock<ICreaturesInBattle>();
+            var attacker = new Mock<ICreaturesInBattle>();
+
+            var rounds = 5;
+            var doubleDefenseWhenDefending = new DoubleDefenseWhenDefending(rounds);
+
+            defenderWithSpecilty.SetupGet(mock => mock.CurrentDefense).Returns(0);
+            defenderWithSpecilty.SetupSet(mock => mock.CurrentDefense = It.IsAny<int>());
+
+            doubleDefenseWhenDefending.ApplyWhenDefending(defenderWithSpecilty.Object, attacker.Object);
+
+            defenderWithSpecilty.VerifySet(mock => mock.CurrentDefense = It.IsAny<int>(), Times.Once());
         }
     }
 }
