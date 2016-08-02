@@ -88,6 +88,7 @@
     <Compile Include="Extended\ExtendedCreatureFactoryTests.cs" />
     <Compile Include="Logic\CreaturesFactoryTests.cs" />
     <Compile Include="Logic\Specialties\AddDefenseWhenSkipTests.cs" />
+    <Compile Include="Logic\Specialties\DoubleDefenseWhenDefendingTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

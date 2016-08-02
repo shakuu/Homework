@@ -7,11 +7,14 @@
 
     public class AddDefenseWhenSkip : Specialty
     {
+        private const int MinimumDefenseToAdd = 1;
+        private const int MaximumDefenseToAdd = 20;
+
         private readonly int defenseToAdd;
 
         public AddDefenseWhenSkip(int defenseToAdd)
         {
-            if (defenseToAdd < 1 || defenseToAdd > 20)
+            if (defenseToAdd < AddDefenseWhenSkip.MinimumDefenseToAdd || defenseToAdd > AddDefenseWhenSkip.MaximumDefenseToAdd)
             {
                 throw new ArgumentOutOfRangeException("defenseToAdd", "defenseToAdd should be between 1 and 20, inclusive");
             }
