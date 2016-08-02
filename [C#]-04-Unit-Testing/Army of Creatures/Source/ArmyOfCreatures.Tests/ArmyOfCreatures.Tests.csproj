@@ -93,6 +93,7 @@
     <Compile Include="Logic\Specialties\DoubleDefenseWhenDefendingTests.cs" />
     <Compile Include="Logic\Specialties\HateTests.cs" />
     <Compile Include="Logic\Specialties\ReduceEnemyDefenseByPercentageTests.cs" />
+    <Compile Include="Logic\Specialties\ResurrectionTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
