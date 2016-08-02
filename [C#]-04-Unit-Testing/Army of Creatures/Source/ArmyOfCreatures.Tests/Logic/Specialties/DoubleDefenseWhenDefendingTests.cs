@@ -59,5 +59,39 @@
             var resultingException = Assert.Throws<ArgumentNullException>(() => doubleDefenseWhenDefending.ApplyWhenDefending(defenderWithSpecialty.Object, attacker));
             Assert.IsTrue(resultingException.Message.Contains("attacker"));
         }
+
+        [Test]
+        [TestCase(1)]
+        [TestCase(5)]
+        public void AppleWhenDefending_ShouldApplyEffect_AsManyTimesAsSPecifiedByTheRoundsParameter(int rounds)
+        {
+            var defenderWithSpecialty = new Mock<ICreaturesInBattle>();
+            var attacker = new Mock<ICreaturesInBattle>();
+
+            defenderWithSpecialty.SetupGet(creature => creature.CurrentDefense).Returns(0);
+            defenderWithSpecialty.SetupSet(creature => creature.CurrentDefense = 0);
+
+            var doubleDefenseWhenDefending = new DoubleDefenseWhenDefending(rounds);
+
+            for (var i = 0; i <= rounds * 2; i++)
+            {
+                doubleDefenseWhenDefending.ApplyWhenDefending(defenderWithSpecialty.Object, attacker.Object);
+            }
+
+            defenderWithSpecialty.VerifySet(creature => creature.CurrentDefense = It.IsAny<int>(), Times.Exactly(rounds));
+        }
+
+        [Test]
+        public void ApplyWhenDefending_ShouldDecrementFieldRounds_WhenRoundsIsLargerThanZero()
+        {
+            var defenderWithSpecialty = new Mock<ICreaturesInBattle>();
+            var attacker = new Mock<ICreaturesInBattle>();
+
+            var rounds = 5;
+            var doubleDefenseWhenDefending = new DoubleDefenseWhenDefending(rounds);
+
+            var doubleDefenseWhenDefendingAsPrivateObject = new MSTest.PrivateObject(doubleDefenseWhenDefending);
+            //var numberOfRoundsInit = double
+        }
     }
 }
