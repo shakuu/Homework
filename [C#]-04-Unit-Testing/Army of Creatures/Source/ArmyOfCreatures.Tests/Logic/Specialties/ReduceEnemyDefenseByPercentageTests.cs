@@ -53,5 +53,33 @@
             var exception = Assert.Throws<ArgumentNullException>(() => specialty.ApplyWhenAttacking(attackerWithSpecialty, defender.Object));
             StringAssert.Contains("attackerWithSpecialty", exception.Message);
         }
+
+        [Test]
+        public void ApplyWhenAttacking_ShouldThrowWithCorrectMessage_IfDefenderParameterIsNull()
+        {
+            var attackerWithSpecialty = new Mock<ICreaturesInBattle>();
+            ICreaturesInBattle defender = null;
+            var percentage = 50m;
+            var specialty = new ReduceEnemyDefenseByPercentage(percentage);
+
+            var exception = Assert.Throws<ArgumentNullException>(() => specialty.ApplyWhenAttacking(attackerWithSpecialty.Object, defender));
+            StringAssert.Contains("defender", exception.Message);
+        }
+
+        [Test]
+        public void ApplyWhenAttacking_ShouldSetDefenderCurrentDefense()
+        {
+            var attackerWithSpecialty = new Mock<ICreaturesInBattle>();
+            var defender = new Mock<ICreaturesInBattle>();
+            var percentage = 50m;
+            var specialty = new ReduceEnemyDefenseByPercentage(percentage);
+
+            defender.SetupGet(mock => mock.CurrentDefense).Returns(100);
+            defender.SetupSet(mock => mock.CurrentDefense = It.IsAny<int>());
+
+            specialty.ApplyWhenAttacking(attackerWithSpecialty.Object, defender.Object);
+
+            defender.VerifySet(mock => mock.CurrentDefense = It.IsAny<int>(), Times.Once());
+        }
     }
 }
