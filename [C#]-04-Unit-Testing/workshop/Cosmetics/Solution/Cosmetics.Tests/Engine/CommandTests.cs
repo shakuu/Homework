@@ -28,6 +28,8 @@
             var input = "Name Param1 Param2 Param3";
             var command = Command.Parse(input);
 
+            // STRING JOIN
+
             Assert.AreEqual(command.Name, "Name");
             Assert.AreEqual(command.Parameters[0], "Param1");
             Assert.AreEqual(command.Parameters[1], "Param2");
@@ -38,7 +40,7 @@
         [Test]
         public void Parse_ShouldThrow_WhenInputNameIsNull()
         {
-            var input = string.Empty;
+            string input = string.Empty;
 
             var exception = Assert.Throws<ArgumentNullException>(() => Command.Parse(input));
             Assert.IsTrue(exception.Message.Contains("Name"));

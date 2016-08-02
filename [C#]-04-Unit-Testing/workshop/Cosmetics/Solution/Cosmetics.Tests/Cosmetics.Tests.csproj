@@ -86,6 +86,7 @@
     <Compile Include="Engine\CosmeticsFactoryTests.cs" />
     <Compile Include="Fakes\FakeCosmeticsEngine.cs" />
     <Compile Include="Products\ShampooTests.cs" />
+    <Compile Include="Products\ToothpasteTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

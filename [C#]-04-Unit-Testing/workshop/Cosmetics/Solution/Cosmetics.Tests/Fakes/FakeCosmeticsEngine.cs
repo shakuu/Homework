@@ -21,6 +21,7 @@
                 return base.categories;
             }
         }
+
         internal IDictionary<string, IProduct> BaseProducts
         {
             get
