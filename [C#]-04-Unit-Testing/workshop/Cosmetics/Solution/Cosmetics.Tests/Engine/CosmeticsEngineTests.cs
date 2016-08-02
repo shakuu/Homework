@@ -140,10 +140,11 @@
                 It.IsAny<GenderType>(),
                 It.IsAny<uint>(),
                 It.IsAny<UsageType>())).Returns(mockShampoo.Object);
-          
+
             engine.Start();
 
-            mockFactory.Verify(mock => mock.CreateShampoo(It.IsAny<string>(),
+            mockFactory.Verify(mock => mock.CreateShampoo(
+                It.IsAny<string>(),
                 It.IsAny<string>(),
                 It.IsAny<decimal>(),
                 It.IsAny<GenderType>(),

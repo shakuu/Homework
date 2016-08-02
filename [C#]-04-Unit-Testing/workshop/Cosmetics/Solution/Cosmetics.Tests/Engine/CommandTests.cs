@@ -1,6 +1,7 @@
 ﻿namespace Cosmetics.Tests.Engine
 {
     using System;
+    using System.Collections.Generic;
 
     using NUnit.Framework;
 
@@ -25,15 +26,24 @@
         public void Parse_ShouldSetCorrectValues_ToNameAndParametersProperties_WhenInputIsValid()
         {
             // Name Param1 Param2 Param3
-            var input = "Name Param1 Param2 Param3";
-            var command = Command.Parse(input);
+            var input = new List<string>()
+            {
+                "Name",
+                "Param1",
+                "Param2",
+                "Param3"
+            };
 
-            // STRING JOIN
+            var command = Command.Parse(string.Join(" ", input));
+            var actual = new List<string>();
+            actual.Add(command.Name);
+            actual.AddRange(command.Parameters);
 
-            Assert.AreEqual(command.Name, "Name");
-            Assert.AreEqual(command.Parameters[0], "Param1");
-            Assert.AreEqual(command.Parameters[1], "Param2");
-            Assert.AreEqual(command.Parameters[2], "Param3");
+            CollectionAssert.AreEqual(input, actual);
+            //Assert.AreEqual(command.Name, "Name");
+            //Assert.AreEqual(command.Parameters[0], "Param1");
+            //Assert.AreEqual(command.Parameters[1], "Param2");
+            //Assert.AreEqual(command.Parameters[2], "Param3");
         }
 
         //- **Parse** should throw **ArgumentNullException** with a message that contains the string "Name", when the "input" string that represents the Command Name is Null Or Empty.
@@ -43,7 +53,7 @@
             string input = string.Empty;
 
             var exception = Assert.Throws<ArgumentNullException>(() => Command.Parse(input));
-            Assert.IsTrue(exception.Message.Contains("Name"));
+            StringAssert.Contains("Name", exception.Message);
         }
 
         //- **Parse** should throw **ArgumentNullException** with a message that contains the string "List", when the "input" string that represents the Command Parameters is Null or Empty.
@@ -53,7 +63,7 @@
             var input = "Name ";
 
             var exception = Assert.Throws<ArgumentNullException>(() => Command.Parse(input));
-            Assert.IsTrue(exception.Message.Contains("List"));
+            StringAssert.Contains("List", exception.Message);
         }
     }
 }
