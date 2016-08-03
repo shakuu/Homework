@@ -104,5 +104,29 @@
 
             fakeFactory.Verify(mock => mock.CreateCreature(expectedCreatureName), Times.Once());
         }
+
+        [Test]
+        public void AddCreature_ShouldAddACreatureToFirstArmyCreatures_WhenCreatureIdentifierArmyNumberIsOne()
+        {
+            var creatureName = "fake";
+            var armyNr = "1";
+
+            var fakeFactory = new Mock<ICreaturesFactory>();
+            fakeFactory.Setup(moch => moch.CreateCreature(It.IsAny<string>())).Returns(new FakeCreature());
+
+            var fakeLogger = new Mock<ILogger>();
+
+            var identifier = CreatureIdentifier.CreatureIdentifierFromString(string.Format("{0}({1})", creatureName, armyNr));
+            var count = 1;
+
+            var manager = new BattleManager(fakeFactory.Object, fakeLogger.Object);
+            var managerPO = new MSTest.PrivateObject(manager);
+
+            var firstArmy = (ICollection<ICreaturesInBattle>)managerPO.GetField("firstArmyCreatures");
+
+            manager.AddCreatures(identifier, count);
+
+            Assert.AreEqual(1, firstArmy.Count);
+        }
     }
 }
