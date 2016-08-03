@@ -9,6 +9,7 @@
 
     using ArmyOfCreatures.Logic;
     using ArmyOfCreatures.Logic.Battles;
+    using ArmyOfCreatures.Tests.Fakes;
 
     [TestFixture]
     public class BattleManagerTests
@@ -67,6 +68,41 @@
             var actualLogger = battleManagerAsPrivateObject.GetField("logger");
 
             Assert.IsTrue(actualLogger is ILogger);
+        }
+
+        [Test]
+        public void AddCreature_ShouldThrowWithCorrectMessage_WhenCreatureIdentifierParameterIsNull()
+        {
+            var fakeFactory = new Mock<ICreaturesFactory>();
+            var fakeLogger = new Mock<ILogger>();
+
+            CreatureIdentifier creatureIdentifier = null;
+            var count = 1;
+
+            var battleManager = new BattleManager(fakeFactory.Object, fakeLogger.Object);
+
+            var actualException = Assert.Throws<ArgumentNullException>(() => battleManager.AddCreatures(creatureIdentifier, count));
+            StringAssert.Contains("creatureIdentifier", actualException.Message);
+        }
+
+        [Test]
+        public void AddCreature_ShouldCallICreaturesFactoryCreateCreatureWithCorrectCreatureNameString_WhenParametersAreValid()
+        {
+            var expectedCreatureName = "fake";
+
+            var fakeFactory = new Mock<ICreaturesFactory>();
+            fakeFactory.Setup(mock => mock.CreateCreature(expectedCreatureName)).Returns(new FakeCreature());
+
+            var fakeLogger = new Mock<ILogger>();
+
+            var creatureIdentifier = CreatureIdentifier.CreatureIdentifierFromString(expectedCreatureName + "(1)");
+            var count = 1;
+
+            var battleManager = new BattleManager(fakeFactory.Object, fakeLogger.Object);
+
+            battleManager.AddCreatures(creatureIdentifier, count);
+
+            fakeFactory.Verify(mock => mock.CreateCreature(expectedCreatureName), Times.Once());
         }
     }
 }
