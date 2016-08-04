@@ -88,7 +88,8 @@
     <Compile Include="Extended\ExtendedCreatureFactoryTests.cs" />
     <Compile Include="Fakes\DifferentFakeCreature.cs" />
     <Compile Include="Fakes\FakeCreature.cs" />
-    <Compile Include="Logic\Battles\BattleManagerTests.cs" />
+    <Compile Include="Logic\BattleManagerTests\AddCreature_Should.cs" />
+    <Compile Include="Logic\BattleManagerTests\Constructor_Should.cs" />
     <Compile Include="Logic\CreaturesFactoryTests.cs" />
     <Compile Include="Logic\Specialties\AddDefenseWhenSkipTests.cs" />
     <Compile Include="Logic\Specialties\DoubleDefenseWhenDefendingTests.cs" />
