@@ -108,7 +108,8 @@
             }
 
             var isStraight = this.CheckIfHandHasFiveSequentialFaceValues(hand);
-            return isStraight;
+            var isFlush = this.CheckIfHandHasFiveIdenticalSuits(hand);
+            return isStraight && !isFlush;
         }
 
         public bool IsThreeOfAKind(IHand hand)
