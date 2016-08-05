@@ -2,5 +2,9 @@
 {
     public class DifferentFakeCreature : FakeCreature
     {
+        public DifferentFakeCreature()
+        {
+            this.AddSpecialty(new FakeSpecialty());
+        }
     }
 }

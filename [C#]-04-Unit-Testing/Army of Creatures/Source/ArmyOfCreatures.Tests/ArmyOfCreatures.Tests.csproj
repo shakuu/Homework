@@ -87,7 +87,9 @@
   <ItemGroup>
     <Compile Include="Extended\ExtendedCreatureFactoryTests.cs" />
     <Compile Include="Fakes\DifferentFakeCreature.cs" />
+    <Compile Include="Fakes\FakeBattleManager.cs" />
     <Compile Include="Fakes\FakeCreature.cs" />
+    <Compile Include="Fakes\FakeSpecialty.cs" />
     <Compile Include="Logic\BattleManagerTests\AddCreature_Should.cs" />
     <Compile Include="Logic\BattleManagerTests\Attack_Should.cs" />
     <Compile Include="Logic\BattleManagerTests\Constructor_Should.cs" />

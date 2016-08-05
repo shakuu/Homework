@@ -13,7 +13,7 @@
     using ArmyOfCreatures.Tests.Fakes;
 
     [TestFixture]
-    class AddCreature_Should
+    class BattleManagerAddCreature_Should
     {
         [Test]
         public void ThrowWithCorrectMessage_WhenCreatureIdentifierParameterIsNull()

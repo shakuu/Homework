@@ -10,7 +10,7 @@
     using ArmyOfCreatures.Logic.Battles;
 
     [TestFixture]
-    public class Constructor_Should
+    public class BattleManagerConstructor_Should
     {
         [Test]
         public void InitializeFirstArmyCreaturesCorrectly()

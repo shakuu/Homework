@@ -7,6 +7,7 @@
         public FakeCreature()
             : base(5, 5, 5, 5)
         {
+            this.AddSpecialty(new FakeSpecialty());
         }
     }
 }
