@@ -83,6 +83,7 @@
     <Compile Include="Common\ValidatorTests.cs" />
     <Compile Include="Engine\CommandTests.cs" />
     <Compile Include="Engine\CosmeticsEngineTests.cs" />
+    <Compile Include="Engine\CosmeticsFactoryTests.cs" />
     <Compile Include="Engine\Mocks\ExposedCategoriesAndProductsMockCosmeticsEngine.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
