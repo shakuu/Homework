@@ -1,11 +1,9 @@
 ﻿namespace Cosmetics.Tests.Engine
 {
     using System.Collections.Generic;
-    using System.Linq;
 
     using Cosmetics.Common;
     using Cosmetics.Contracts;
-    using Cosmetics.Products;
     using Cosmetics.Tests.Engine.Mocks;
 
     using NUnit.Framework;
