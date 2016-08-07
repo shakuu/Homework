@@ -87,6 +87,7 @@
   <ItemGroup>
     <Compile Include="Console\Commands\AddCommandTests.cs" />
     <Compile Include="Console\Commands\AttackCommandTests.cs" />
+    <Compile Include="Console\Commands\SkipCommandTests.cs" />
     <Compile Include="Extended\ExtendedCreatureFactoryTests.cs" />
     <Compile Include="Fakes\DifferentFakeCreature.cs" />
     <Compile Include="Fakes\OverriddenGetByIdentifierBattleManager.cs" />
