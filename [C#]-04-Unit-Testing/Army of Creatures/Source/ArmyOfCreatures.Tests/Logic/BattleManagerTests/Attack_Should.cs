@@ -62,9 +62,8 @@
             battleManager.AddCreatures(attackerCreatureIndentifier, 10);
             battleManager.AddCreatures(defenderCreatureIdentifier, 100);
 
-            var actualException = Assert.Throws<ArgumentException>(() =>
-                battleManager.Attack(incorrectAttackerCreatureIdentifier, defenderCreatureIdentifier));
-            StringAssert.Contains("Invalid ArmyNumber: 3", actualException.Message);
+            Assert.That(() => battleManager.Attack(incorrectAttackerCreatureIdentifier, defenderCreatureIdentifier),
+                Throws.ArgumentException.With.Message.Contains("Invalid ArmyNumber: 3"));
         }
 
         [Test]
@@ -83,9 +82,8 @@
             battleManager.AddCreatures(attackerCreatureIndentifier, 10);
             battleManager.AddCreatures(defenderCreatureIdentifier, 100);
 
-            var actualException = Assert.Throws<ArgumentException>(() =>
-                battleManager.Attack(incorrectAttackerCreatureIdentifier, defenderCreatureIdentifier));
-            StringAssert.Contains("Attacker not found: FakeCreature(1)", actualException.Message);
+            Assert.That(() => battleManager.Attack(incorrectAttackerCreatureIdentifier, defenderCreatureIdentifier),
+                Throws.ArgumentException.With.Message.Contains("Attacker not found: FakeCreature(1)"));
         }
 
         [Test]
@@ -104,9 +102,9 @@
             battleManager.AddCreatures(attackerCreatureIndentifier, 10);
             battleManager.AddCreatures(defenderCreatureIdentifier, 100);
 
-            var actualException = Assert.Throws<ArgumentException>(() =>
-                battleManager.Attack(attackerCreatureIndentifier, incorrectDefenderCreatureIdentifier));
-            StringAssert.Contains("Defender not found: FakeCreature(2)", actualException.Message);
+
+            Assert.That(() => battleManager.Attack(attackerCreatureIndentifier, incorrectDefenderCreatureIdentifier),
+                Throws.ArgumentException.With.Message.Contains("Defender not found: FakeCreature(2)"));
         }
 
         [Test]
