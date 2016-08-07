@@ -85,6 +85,12 @@
     <Compile Include="Engine\CosmeticsEngineTests.cs" />
     <Compile Include="Engine\CosmeticsFactoryTests.cs" />
     <Compile Include="Engine\Mocks\ExposedCategoriesAndProductsMockCosmeticsEngine.cs" />
+    <Compile Include="Products\CategoryTests.cs" />
+    <Compile Include="Products\Mocks\ExposedIListProductsMockedCategory.cs" />
+    <Compile Include="Products\Mocks\ExposedIListProductsMockShoppingCart.cs" />
+    <Compile Include="Products\ShampooTests.cs" />
+    <Compile Include="Products\ShoppingCartTests.cs" />
+    <Compile Include="Products\ToothpasteTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
