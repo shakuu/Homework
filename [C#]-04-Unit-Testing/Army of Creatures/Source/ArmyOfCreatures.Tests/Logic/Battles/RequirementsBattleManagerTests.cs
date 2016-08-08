@@ -151,7 +151,7 @@
         //(two Behemoths attack 1 Behemoth and the expected result is 56) -
         //could be tried with all the other creatures
         [Test]
-        public void Attack_TwoBehemothsAttackingOneBehemothShouldResultInFiftySixDamageDone()
+        public void Attack_TwoBehemothsAttackingOneBehemothShouldResultInDefenderHavingFiftySixHitPointsLeft()
         {
             var mockFactory = new Mock<ICreaturesFactory>();
             var mockLogger = new Mock<ILogger>();
