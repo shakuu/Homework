@@ -157,14 +157,13 @@
             var creature = new FakeCreature();
             var count = 20;
             var creaturesInBattle = new CreaturesInBattle(creature, count);
-            var creaturesInBattleAsPrivateObject = new MSTest.PrivateObject(creaturesInBattle);
 
             creaturesInBattle.DealDamage(mockDefender.Object);
-            var actualLastDamage = creaturesInBattleAsPrivateObject.GetField("lastDamage");
             var expectedLastDamage = (decimal)(count * creature.Damage);
 
             mockDefender.VerifySet(
-                mock => mock.TotalHitPoints = It.Is<int>(i => i == -((int)expectedLastDamage)), Times.Once());
+                mock => mock.TotalHitPoints = It.Is<int>(i => i == -((int)expectedLastDamage)), 
+                Times.Once());
         }
     }
 }
