@@ -1,6 +1,7 @@
 ﻿namespace ArmyOfCreatures.Tests.Logic.Battles
 {
     using System;
+    using System.Linq;
 
     using ArmyOfCreatures.Logic.Battles;
     using ArmyOfCreatures.Tests.Fakes;
@@ -162,8 +163,94 @@
             var expectedLastDamage = (decimal)(count * creature.Damage);
 
             mockDefender.VerifySet(
-                mock => mock.TotalHitPoints = It.Is<int>(i => i == -((int)expectedLastDamage)), 
+                mock => mock.TotalHitPoints = It.Is<int>(i => i == -((int)expectedLastDamage)),
                 Times.Once());
+        }
+
+        [Test]
+        public void DealDamage_ShouldAccessCreatureSpeciltiesChangeDamageWhenAttacking()
+        {
+            var mockDefender = new Mock<ICreaturesInBattle>();
+            mockDefender.SetupGet(mock => mock.CurrentDefense).Returns(FakeCreature.FakeAttack);
+
+            var creature = new FakeCreature();
+            var count = 20;
+            var creaturesInBattle = new CreaturesInBattle(creature, count);
+
+            creaturesInBattle.DealDamage(mockDefender.Object);
+            var actualSpecialty = (FakeSpecialty)creature.Specialties.First();
+
+            Assert.That(actualSpecialty.MethodsAccessedWhenDealDamageAreCalled, Is.True);
+        }
+
+        [Test]
+        public void Skip_ShouldIncrementPermanentDefenseWithThree()
+        {
+            var creature = new FakeCreature();
+            var count = 10;
+            var creaturesInBattle = new CreaturesInBattle(creature, count);
+
+            var initialPermanentDefense = creaturesInBattle.PermanentDefense;
+            creaturesInBattle.Skip();
+            var afterSkipPermanentDefense = creaturesInBattle.PermanentDefense;
+
+            Assert.That(afterSkipPermanentDefense - initialPermanentDefense, Is.EqualTo(3));
+        }
+
+        [Test]
+        public void Skip_ShouldAccessCreatureSpecialtyApplyOnSkip()
+        {
+            var creature = new FakeCreature();
+            var count = 10;
+            var creaturesInBattle = new CreaturesInBattle(creature, count);
+
+            creaturesInBattle.Skip();
+            var actualSpecialty = (FakeSpecialty)creature.Specialties.First();
+
+            Assert.That(actualSpecialty.MethodsAccessedWhenSkipAreCalled, Is.True);
+        }
+
+        [Test]
+        public void StartNewTurn_ShouldSetCorrectValueToCurrentAttack_WhenCalled()
+        {
+            var creature = new FakeCreature();
+            var count = 10;
+            var creaturesInBattle = new CreaturesInBattle(creature, count);
+
+            var expectedValue = int.MaxValue;
+            creaturesInBattle.PermanentAttack = expectedValue;
+            creaturesInBattle.StartNewTurn();
+
+            Assert.That(creaturesInBattle.CurrentAttack, Is.EqualTo(expectedValue));
+        }
+
+        [Test]
+        public void StartNewTurn_ShouldSetCorrectValueToCurrentDefense_WhenCalled()
+        {
+            var creature = new FakeCreature();
+            var count = 10;
+            var creaturesInBattle = new CreaturesInBattle(creature, count);
+
+            var expectedValue = int.MaxValue;
+            creaturesInBattle.PermanentDefense = expectedValue;
+            creaturesInBattle.StartNewTurn();
+
+            Assert.That(creaturesInBattle.CurrentDefense, Is.EqualTo(expectedValue));
+        }
+
+        [Test]
+        public void StartNewTurn_ShouldSetCorrectValueToLastDamage_WhenCalled()
+        {
+            var creature = new FakeCreature();
+            var count = 10;
+            var creaturesInBattle = new CreaturesInBattle(creature, count);
+
+            creaturesInBattle.StartNewTurn();
+
+            var creaturesInBattleAsPrivateObject = new MSTest.PrivateObject(creaturesInBattle);
+            var actualLastDamage = creaturesInBattleAsPrivateObject.GetField("lastDamage");
+
+            Assert.That(actualLastDamage, Is.EqualTo((decimal)0));
         }
     }
 }
