@@ -151,5 +151,71 @@
 
             attacker.Verify();
         }
+
+        //ApplyWhenDefending should throw ArgumentNullException,
+        //when the "ICreaturesInBattle defenderWithSpecialty" is null.
+        [Test]
+        public void ApplyWhenDefending_ShouldThrowArgumentNullException_WhenICreaturesInBattleDefenderWithSpecialtyParameterIsNull()
+        {
+            ICreaturesInBattle defender = null;
+            var attacker = new Mock<ICreaturesInBattle>();
+            var rounds = 5;
+
+            var specialty = new DoubleDefenseWhenDefending(rounds);
+
+            Assert.That(() => specialty.ApplyWhenDefending(defender, attacker.Object),
+                Throws.ArgumentNullException.With.Message.Contains("defenderWithSpecialty"));
+        }
+
+        //ApplyWhenDefending should throw ArgumentNullException, 
+        //when the "ICreaturesInBattle attacker" is null.
+        [Test]
+        public void ApplyWhenDefending_ShouldThrowArgumentNullException_WhenICreaturesInBattleAttackerParameterIsNull()
+        {
+            var defender = new Mock<ICreaturesInBattle>();
+            ICreaturesInBattle attacker = null;
+            var rounds = 5;
+
+            var specialty = new DoubleDefenseWhenDefending(rounds);
+
+            Assert.That(() => specialty.ApplyWhenDefending(defender.Object, attacker),
+                Throws.ArgumentNullException.With.Message.Contains("attacker"));
+        }
+
+        //ApplyWhenDefending should return and not change the CurrentDefense property 
+        // of "defenderWithSpecialty", when the effect is expired.
+        [Test]
+        public void AppleWhenDefending_ShouldReturnAndNotChangeTheCurrentDefensePropertyOfDefenderWithSpecialyuP_WhenRoundsAreLessThanOrEqualToZero()
+        {
+            var rounds = 5;
+            var defender = new Mock<ICreaturesInBattle>();
+            var attacker = new Mock<ICreaturesInBattle>();
+
+            var specialty = new DoubleDefenseWhenDefending(rounds);
+            var specialtyAsPrivateObject = new MSTest.PrivateObject(specialty);
+            specialtyAsPrivateObject.SetField("rounds", 0);
+
+            specialty.ApplyWhenDefending(defender.Object, attacker.Object);
+
+            defender.VerifySet(mock => mock.CurrentDefense = It.IsAny<int>(), Times.Never());
+        }
+
+        //ApplyWhenDefending should multiply by 2 the CurrentDefense property of 
+        //"defenderWithSpecialty", when the effect has not expired.
+        [Test]
+        public void ApplyWhenDefending_ShouldDoubleTheCurrentDefensePropertyOfDefenderWithSpecialty_WhenRoundsFieldIsLargerThanZero()
+        {
+            var defense = 10;
+            var rounds = 5;
+            var mockDefenderWithSpecialty = new Mock<ICreaturesInBattle>();
+            var mockAttacker = new Mock<ICreaturesInBattle>();
+
+            mockDefenderWithSpecialty.SetupGet(mock => mock.CurrentDefense).Returns(defense);
+
+            var specialy = new DoubleDefenseWhenDefending(rounds);
+            specialy.ApplyWhenDefending(mockDefenderWithSpecialty.Object, mockAttacker.Object);
+
+            mockDefenderWithSpecialty.VerifySet(mock => mock.CurrentDefense = It.Is<int>(i => i == defense * 2), Times.Once());
+        }
     }
 }
