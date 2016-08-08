@@ -1,5 +1,6 @@
 ﻿namespace ArmyOfCreatures.Tests.Extended
 {
+    using System.Collections.Generic;
     using System.Reflection;
 
     using ArmyOfCreatures.Logic;
@@ -24,14 +25,24 @@
 
             var actualFirstArmy = manager.GetType()
                 .BaseType.GetField("firstArmyCreatures", BindingFlags.NonPublic | BindingFlags.Instance)
-                .GetValue((BattleManager)manager);
+                .GetValue(manager);
 
             var actualSecondArmy = manager.GetType()
                 .BaseType.GetField("secondArmyCreatures", BindingFlags.NonPublic | BindingFlags.Instance)
-                .GetValue((BattleManager)manager);
-            
-            Assert.That(actualFirstArmy, Is.Not.Null);
-            Assert.That(actualSecondArmy, Is.Not.Null);
+                .GetValue(manager);
+
+            var actualICreaturesFactory = manager.GetType()
+                .BaseType.GetField("creaturesFactory", BindingFlags.NonPublic | BindingFlags.Instance)
+                .GetValue(manager);
+
+            var actualILogger = manager.GetType()
+                .BaseType.GetField("logger", BindingFlags.NonPublic | BindingFlags.Instance)
+                .GetValue(manager);
+
+            Assert.That(actualFirstArmy, Is.Not.Null.And.InstanceOf<ICollection<ICreaturesInBattle>>());
+            Assert.That(actualSecondArmy, Is.Not.Null.And.InstanceOf<ICollection<ICreaturesInBattle>>());
+            Assert.That(actualICreaturesFactory, Is.Not.Null.And.InstanceOf<ICreaturesFactory>());
+            Assert.That(actualILogger, Is.Not.Null.And.InstanceOf<ILogger>());
         }
     }
 }
