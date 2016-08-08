@@ -126,12 +126,13 @@
             var rounds = 5;
             var doubleDefenseWhenDefending = new DoubleDefenseWhenDefending(rounds);
 
-            defenderWithSpecilty.SetupGet(mock => mock.CurrentDefense).Returns(0);
+            var defense = 1;
+            defenderWithSpecilty.SetupGet(mock => mock.CurrentDefense).Returns(defense);
             defenderWithSpecilty.SetupSet(mock => mock.CurrentDefense = It.IsAny<int>());
 
             doubleDefenseWhenDefending.ApplyWhenDefending(defenderWithSpecilty.Object, attacker.Object);
 
-            defenderWithSpecilty.VerifySet(mock => mock.CurrentDefense = It.IsAny<int>(), Times.Once());
+            defenderWithSpecilty.VerifySet(mock => mock.CurrentDefense = It.Is<int>(i => i == defense * 2), Times.Once());
         }
 
         [Test]
