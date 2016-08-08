@@ -59,5 +59,57 @@
                 It.Is<string[]>(args => args.Length == 2 && args[0] == "50" && args[1] == "Griffin(2)")),
                 Times.Once());
         }
+
+        [Test]
+        public void CommandsDictionary_ShouldContainKeyAddCorrespondingToAddCommandType()
+        {
+            var manager = new CommandManager();
+            var managetAsPrivateObject = new MSTest.PrivateObject(manager);
+            var existingDictionary = (Dictionary<string, ICommand>)managetAsPrivateObject.GetField("commands");
+
+            var key = "add";
+            var actualValue = existingDictionary[key];
+
+            Assert.That(actualValue, Is.InstanceOf<AddCommand>());
+        }
+
+        [Test]
+        public void CommandsDictionary_ShouldContainKeyAttackCorrespondingToAttackCommandType()
+        {
+            var manager = new CommandManager();
+            var managetAsPrivateObject = new MSTest.PrivateObject(manager);
+            var existingDictionary = (Dictionary<string, ICommand>)managetAsPrivateObject.GetField("commands");
+
+            var key = "attack";
+            var actualValue = existingDictionary[key];
+
+            Assert.That(actualValue, Is.InstanceOf<AttackCommand>());
+        }
+
+        [Test]
+        public void CommandsDictionary_ShouldContainKeySkipCorrespondingToSkipCommandType()
+        {
+            var manager = new CommandManager();
+            var managetAsPrivateObject = new MSTest.PrivateObject(manager);
+            var existingDictionary = (Dictionary<string, ICommand>)managetAsPrivateObject.GetField("commands");
+
+            var key = "skip";
+            var actualValue = existingDictionary[key];
+
+            Assert.That(actualValue, Is.InstanceOf<SkipCommand>());
+        }
+
+        [Test]
+        public void CommandsDictionary_ShouldContainKeyExitCorrespondingToExitCommandType()
+        {
+            var manager = new CommandManager();
+            var managetAsPrivateObject = new MSTest.PrivateObject(manager);
+            var existingDictionary = (Dictionary<string, ICommand>)managetAsPrivateObject.GetField("commands");
+
+            var key = "exit";
+            var actualValue = existingDictionary[key];
+
+            Assert.That(actualValue, Is.InstanceOf<ExitCommand>());
+        }
     }
 }
