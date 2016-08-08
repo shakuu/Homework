@@ -5,6 +5,7 @@
     using ArmyOfCreatures.Logic.Battles;
     using ArmyOfCreatures.Tests.Fakes;
 
+    using Moq;
     using MSTest = Microsoft.VisualStudio.TestTools.UnitTesting;
     using NUnit.Framework;
 
@@ -76,6 +77,94 @@
             var actualCount = creaturesInBattle.Count;
 
             Assert.That(actualCount, Is.EqualTo(0));
+        }
+
+        [Test]
+        public void DealDamage_ShouldThrowArgumentNullException_WhenDefenderParametereIsNull()
+        {
+            ICreaturesInBattle defender = null;
+
+            var creature = new FakeCreature();
+            var count = 10;
+            var creaturesInBattle = new CreaturesInBattle(creature, count);
+
+            Assert.That(() => creaturesInBattle.DealDamage(defender),
+                Throws.ArgumentNullException.With.Message.Contains("defender"));
+        }
+
+        [Test]
+        public void DealDamage_ShouldApplyAttackBonusCorrectly_WhenCreaturesInBattleCurrentAttackIsLargerThanDefenderParameterCurrentDefense()
+        {
+            var mockDefender = new Mock<ICreaturesInBattle>();
+            mockDefender.SetupGet(mock => mock.CurrentDefense).Returns(0);
+
+            var creature = new FakeCreature();
+            var count = 20;
+            var creaturesInBattle = new CreaturesInBattle(creature, count);
+            var creaturesInBattleAsPrivateObject = new MSTest.PrivateObject(creaturesInBattle);
+
+            creaturesInBattle.DealDamage(mockDefender.Object);
+            var actualLastDamage = creaturesInBattleAsPrivateObject.GetField("lastDamage");
+            var expectedBonusDamage = (decimal)(creature.Attack * 0.05) + 1;
+            var expectedLastDamage = (decimal)(count * creature.Damage) * expectedBonusDamage;
+
+            Assert.That(actualLastDamage, Is.EqualTo(expectedLastDamage));
+        }
+
+        [Test]
+        public void DealDamage_ShouldNotApplyDamageBonusOrReduction_WhenCreaturesInBattleCurrentAttackIsEqualToThanDefenderParameterCurrentDefense()
+        {
+            var mockDefender = new Mock<ICreaturesInBattle>();
+            mockDefender.SetupGet(mock => mock.CurrentDefense).Returns(FakeCreature.FakeAttack);
+
+            var creature = new FakeCreature();
+            var count = 20;
+            var creaturesInBattle = new CreaturesInBattle(creature, count);
+            var creaturesInBattleAsPrivateObject = new MSTest.PrivateObject(creaturesInBattle);
+
+            creaturesInBattle.DealDamage(mockDefender.Object);
+            var actualLastDamage = creaturesInBattleAsPrivateObject.GetField("lastDamage");
+            var expectedLastDamage = (decimal)(count * creature.Damage);
+
+            Assert.That(actualLastDamage, Is.EqualTo(expectedLastDamage));
+        }
+
+        [Test]
+        public void DealDamage_ShouldApplyAttackReductionCorrectly_WhenCreaturesInBattleCurrentAttackIsLessThanDefenderParameterCurrentDefense()
+        {
+            var mockDefender = new Mock<ICreaturesInBattle>();
+            mockDefender.SetupGet(mock => mock.CurrentDefense).Returns(10);
+
+            var creature = new FakeCreature();
+            var count = 20;
+            var creaturesInBattle = new CreaturesInBattle(creature, count);
+            var creaturesInBattleAsPrivateObject = new MSTest.PrivateObject(creaturesInBattle);
+
+            creaturesInBattle.DealDamage(mockDefender.Object);
+            var actualLastDamage = creaturesInBattleAsPrivateObject.GetField("lastDamage");
+            var expectedBonusReduction = 1m - (decimal)(creature.Attack * 0.025);
+            var expectedLastDamage = (decimal)(count * creature.Damage) * expectedBonusReduction;
+
+            Assert.That(actualLastDamage, Is.EqualTo(expectedLastDamage));
+        }
+
+        [Test]
+        public void DealDamage_ShouldSetDefenderParameterTotalHitPointsWithCorrectValue()
+        {
+            var mockDefender = new Mock<ICreaturesInBattle>();
+            mockDefender.SetupGet(mock => mock.CurrentDefense).Returns(FakeCreature.FakeAttack);
+
+            var creature = new FakeCreature();
+            var count = 20;
+            var creaturesInBattle = new CreaturesInBattle(creature, count);
+            var creaturesInBattleAsPrivateObject = new MSTest.PrivateObject(creaturesInBattle);
+
+            creaturesInBattle.DealDamage(mockDefender.Object);
+            var actualLastDamage = creaturesInBattleAsPrivateObject.GetField("lastDamage");
+            var expectedLastDamage = (decimal)(count * creature.Damage);
+
+            mockDefender.VerifySet(
+                mock => mock.TotalHitPoints = It.Is<int>(i => i == -((int)expectedLastDamage)), Times.Once());
         }
     }
 }
