@@ -99,6 +99,7 @@
     <Compile Include="Logic\Battles\BattleManagerTests\Constructor_Should.cs" />
     <Compile Include="Logic\Battles\BattleManagerTests\Skip_Should.cs" />
     <Compile Include="Logic\Battles\CreatureIdentifierTests.cs" />
+    <Compile Include="Logic\Battles\CreaturesInBattleTests.cs" />
     <Compile Include="Logic\CreaturesFactoryTests.cs" />
     <Compile Include="Logic\Specialties\AddDefenseWhenSkipTests.cs" />
     <Compile Include="Logic\Specialties\DoubleDefenseWhenDefendingTests.cs" />
