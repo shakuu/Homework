@@ -4,6 +4,7 @@
 
     using ArmyOfCreatures.Logic;
     using ArmyOfCreatures.Logic.Battles;
+    using ArmyOfCreatures.Logic.Creatures;
     using ArmyOfCreatures.Tests.Fakes;
 
     using Moq;
@@ -149,5 +150,26 @@
         //Attacking with two Behemoths should return right result
         //(two Behemoths attack 1 Behemoth and the expected result is 56) -
         //could be tried with all the other creatures
+        [Test]
+        public void Attack_TwoBehemothsAttackingOneBehemothShouldResultInFiftySixDamageDone()
+        {
+            var mockFactory = new Mock<ICreaturesFactory>();
+            var mockLogger = new Mock<ILogger>();
+
+            var creatureIdentifierConstructor = typeof(CreatureIdentifier)
+                   .GetConstructor(BindingFlags.NonPublic | BindingFlags.Instance, null, new[] { typeof(string), typeof(int) }, null);
+            var defender = (CreatureIdentifier)creatureIdentifierConstructor.Invoke(new object[] { "creature", 1 });
+            var attacker = (CreatureIdentifier)creatureIdentifierConstructor.Invoke(new object[] { "different", 2 });
+
+            var attackerCreaturesInBattle = new CreaturesInBattle(new Behemoth(), 2);
+            var defenderCreaturesInBattle = new CreaturesInBattle(new Behemoth(), 1);
+
+            var manager = new OverriddenGetByIdentifierBattleManager(
+                mockFactory.Object, mockLogger.Object, attackerCreaturesInBattle, defenderCreaturesInBattle);
+
+            manager.Attack(attacker, defender);
+
+            Assert.That(defenderCreaturesInBattle.TotalHitPoints, Is.EqualTo(56));
+        }
     }
 }
