@@ -1,4 +1,4 @@
-﻿namespace ArmyOfCreatures.Tests.Logic.BattleManagerTests
+﻿namespace ArmyOfCreatures.Tests.Logic.Battles.BattleManagerTests
 {
     using System;
     using System.Linq;

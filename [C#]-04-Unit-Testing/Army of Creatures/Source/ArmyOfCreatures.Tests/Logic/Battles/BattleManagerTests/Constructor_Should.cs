@@ -1,4 +1,4 @@
-﻿namespace ArmyOfCreatures.Tests.Logic.Battles
+﻿namespace ArmyOfCreatures.Tests.Logic.Battles.BattleManagerTests
 {
     using System.Collections.Generic;
 

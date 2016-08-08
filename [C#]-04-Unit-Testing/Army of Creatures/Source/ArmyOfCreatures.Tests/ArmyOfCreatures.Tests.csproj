@@ -94,10 +94,11 @@
     <Compile Include="Fakes\OverriddenGetByIdentifierBattleManager.cs" />
     <Compile Include="Fakes\FakeCreature.cs" />
     <Compile Include="Fakes\FakeSpecialty.cs" />
-    <Compile Include="Logic\BattleManagerTests\AddCreature_Should.cs" />
-    <Compile Include="Logic\BattleManagerTests\Attack_Should.cs" />
-    <Compile Include="Logic\BattleManagerTests\Constructor_Should.cs" />
-    <Compile Include="Logic\BattleManagerTests\Skip_Should.cs" />
+    <Compile Include="Logic\Battles\BattleManagerTests\AddCreature_Should.cs" />
+    <Compile Include="Logic\Battles\BattleManagerTests\Attack_Should.cs" />
+    <Compile Include="Logic\Battles\BattleManagerTests\Constructor_Should.cs" />
+    <Compile Include="Logic\Battles\BattleManagerTests\Skip_Should.cs" />
+    <Compile Include="Logic\Battles\CreatureIdentifierTests.cs" />
     <Compile Include="Logic\CreaturesFactoryTests.cs" />
     <Compile Include="Logic\Specialties\AddDefenseWhenSkipTests.cs" />
     <Compile Include="Logic\Specialties\DoubleDefenseWhenDefendingTests.cs" />
