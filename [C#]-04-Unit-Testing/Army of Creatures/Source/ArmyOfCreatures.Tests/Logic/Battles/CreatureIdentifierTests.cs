@@ -2,11 +2,11 @@
 {
     using System;
     using System.Reflection;
+    using System.Runtime.Serialization;
 
     using ArmyOfCreatures.Logic.Battles;
 
     using NUnit.Framework;
-    using System.Runtime.Serialization;
 
     [TestFixture]
     public class CreatureIdentifierTests
@@ -106,8 +106,10 @@
         {
             var creatureIdentifier = (CreatureIdentifier)FormatterServices
                 .GetUninitializedObject(typeof(CreatureIdentifier));
-            creatureIdentifier.GetType().GetProperty("CreatureType").SetValue(creatureIdentifier, "creature");
-            creatureIdentifier.GetType().GetProperty("ArmyNumber").SetValue(creatureIdentifier, 1);
+            creatureIdentifier.GetType().GetProperty("CreatureType")
+                .SetValue(creatureIdentifier, "creature");
+            creatureIdentifier.GetType().GetProperty("ArmyNumber")
+                .SetValue(creatureIdentifier, 1);
 
             var expectedToString = "creature(1)";
             var actualToString = creatureIdentifier.ToString();
