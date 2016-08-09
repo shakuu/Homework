@@ -2,6 +2,7 @@
 {
     using System;
     using System.Linq;
+    using System.Reflection;
 
     using ArmyOfCreatures.Logic.Battles;
     using ArmyOfCreatures.Tests.Fakes;
@@ -252,5 +253,34 @@
 
             Assert.That(actualLastDamage, Is.EqualTo((decimal)0));
         }
+
+        //Deal Damage with null defender should throw ArgumentNullException
+        [Test]
+        public void DealDamage_ShouldThrowArgumentNullException_WhenICreaturesInBattleDefenderParameterIsNull()
+        {
+            ICreaturesInBattle defender = null;
+            var creaturesInBattle = new CreaturesInBattle(new FakeCreature(), 10);
+
+            Assert.That(() => creaturesInBattle.DealDamage(defender),
+                Throws.ArgumentNullException.With.Message.Contains("defender"));
+        }
+
+        //Deal Damage should return expected result
+        [Test]
+        public void DealDamger_ShouldReturnTheExpectedResult_WhenAttackerCurrentAttackIsEqualToDefenderCurrentDefense()
+        {
+            var defender = new Mock<ICreaturesInBattle>();
+            defender.SetupGet(mock => mock.CurrentDefense).Returns(FakeCreature.FakeAttack);
+
+            var attacker = new CreaturesInBattle(new FakeCreature(), 1);
+            attacker.DealDamage(defender.Object);
+            var actualLastDamage = attacker.GetType().GetField("lastDamage", BindingFlags.NonPublic | BindingFlags.Instance).GetValue(attacker);
+
+            Assert.That(actualLastDamage, Is.EqualTo(FakeCreature.FakeDamage));
+        }
+
+        //Skip should call ApplyOnSkip the count of the specialties times(think about how to make it)
+
+        //ToString should output expected result
     }
 }
