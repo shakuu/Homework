@@ -1,6 +1,7 @@
 ﻿namespace ArmyOfCreatures.Tests.Logic.Battles
 {
     using System;
+    using System.Collections.Generic;
     using System.Linq;
     using System.Reflection;
 
@@ -274,13 +275,49 @@
 
             var attacker = new CreaturesInBattle(new FakeCreature(), 1);
             attacker.DealDamage(defender.Object);
-            var actualLastDamage = attacker.GetType().GetField("lastDamage", BindingFlags.NonPublic | BindingFlags.Instance).GetValue(attacker);
+
+            var actualLastDamage = attacker.GetType()
+                .GetField("lastDamage", BindingFlags.NonPublic | BindingFlags.Instance)
+                .GetValue(attacker);
 
             Assert.That(actualLastDamage, Is.EqualTo(FakeCreature.FakeDamage));
         }
 
         //Skip should call ApplyOnSkip the count of the specialties times(think about how to make it)
+        [Test]
+        public void Skip_ShouldCallApplyOnSkipForEachSpecialy()
+        {
+            var creaturesInBattle = new CreaturesInBattle(new DifferentFakeCreature(), 1);
+            creaturesInBattle.Skip();
+
+            var actual = new List<bool>();
+            foreach (var specialty in creaturesInBattle.Creature.Specialties)
+            {
+                var fakeSpecialty = (FakeSpecialty)specialty;
+                actual.Add(fakeSpecialty.MethodsAccessedWhenSkipAreCalled);
+            }
+
+            Assert.That(actual, Is.All.EqualTo(true));
+        }
 
         //ToString should output expected result
+        [Test]
+        public void ToString_ShouldReturnAStringInTheRequiredFormat()
+        {
+            var creatures = new FakeCreature();
+            var expected = string.Format(
+                "{0} {1} (ATT:{2}; DEF:{3}; THP:{4}; LDMG:{5:0.####})",
+                2,
+                creatures.GetType().Name,
+                creatures.Attack,
+                creatures.Defense,
+                creatures.HealthPoints * 2,
+                0m);
+
+            var creaturesInBattle = new CreaturesInBattle(creatures, 2);
+            var actual = creaturesInBattle.ToString();
+
+            Assert.That(actual, Is.EqualTo(expected));
+        }
     }
 }

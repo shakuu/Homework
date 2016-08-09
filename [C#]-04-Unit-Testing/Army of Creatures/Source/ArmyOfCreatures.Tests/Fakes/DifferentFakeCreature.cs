@@ -5,6 +5,10 @@
         public DifferentFakeCreature()
         {
             this.AddSpecialty(new FakeSpecialty());
+            this.AddSpecialty(new FakeSpecialty());
+            this.AddSpecialty(new FakeSpecialty());
+            this.AddSpecialty(new FakeSpecialty());
+            this.AddSpecialty(new FakeSpecialty());
         }
     }
 }
