@@ -106,8 +106,10 @@
         {
             var creatureIdentifier = (CreatureIdentifier)FormatterServices
                 .GetUninitializedObject(typeof(CreatureIdentifier));
+
             creatureIdentifier.GetType().GetProperty("CreatureType")
                 .SetValue(creatureIdentifier, "creature");
+
             creatureIdentifier.GetType().GetProperty("ArmyNumber")
                 .SetValue(creatureIdentifier, 1);
 
