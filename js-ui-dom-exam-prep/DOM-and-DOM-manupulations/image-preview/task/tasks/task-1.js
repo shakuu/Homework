@@ -15,7 +15,9 @@ function solve() {
 
             templateImageContainer,
             templateImageTitle,
-            templateImage;
+            templateImage,
+
+            allImageContainers;
 
         element = document.querySelector(selector);
 
@@ -63,10 +65,27 @@ function solve() {
             imageList.appendChild(newImage);
         }
         element.appendChild(imageList);
+        allImageContainers = document.getElementsByClassName('image-container');
 
         imageList.addEventListener('mouseenter', applyBackgroundColor, true);
         imageList.addEventListener('mouseout', resetBackgroundColor, true);
         imageList.addEventListener('click', changeImagePreview, true);
+        imageListInput.addEventListener('input', filterImageList);
+
+        function filterImageList(event) {
+            var query = imageListInput.value;
+
+            for (var index = 0, len = allImageContainers.length; index < len; index += 1) {
+                var headingContent;
+
+                headingContent = allImageContainers[index].querySelector('h2').innerHTML;
+                if (headingContent.indexOf(query) < 0) {
+                    allImageContainers[index].style.display = 'none';
+                } else {
+                    allImageContainers[index].style.display = '';
+                }
+            }
+        }
 
         function changeImagePreview(event) {
             var clicked,
