@@ -59,9 +59,18 @@ function initializeTabTemplate() {
     var output = {
         'idProvider': getId,
         'tabButton': null,
+        'removeButton': null,
+        'tabName': null,
         'tabContent': null
     };
-    output.tabButton = $('<a />').addClass('tab');
+    output.tabButton = $('<div />').addClass('tab');
+    output.tabName = $('<strong />')
+        .addClass('tab-name')
+        .appendTo(output.tabButton);
+    output.removeButton = $('<a />')
+        .addClass('btn-remove')
+        .html('X')
+        .appendTo(output.tabButton);
     output.tabContent = $('<div />').addClass('tab-content');
     return output;
 }
@@ -84,8 +93,11 @@ function createNewTab(options) {
         'tabContent': tabTemplate.tabContent.clone()
     };
     newTab.tabButton
+        .children('.tab-name')
+        .first()
+        .html(options.tabName);
+    newTab.tabButton
         .data('tab-id', newTab.id)
-        .html(options.tabName)
         .appendTo(controls.tabMenu);
     newTab.tabContent
         .data('tab-id', newTab.id)
