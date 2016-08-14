@@ -22,6 +22,7 @@ body .colorpicker .colorpicker-window .colorpicker-canvas {
   margin: auto;
   border-radius: 50px;
   display: block;
+  cursor: url("./imgs/cursor.png") 0 28, auto;
 }
 body .colorpicker .colorpicker-window .rgb-input {
   width: 120px;
