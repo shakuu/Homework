@@ -81,9 +81,6 @@ $.fn.lists = function (lists) {
     sectionContainer.on('dragstart', 'li', function (event) {
         dragged = $(this);
     });
-    sectionContainer.on('dragend', 'li', function (event) {
-        console.log(event);
-    });
 
     function dropItem(event) {
         var target = $(event.target);
