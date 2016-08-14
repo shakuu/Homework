@@ -8,6 +8,7 @@ body #root .tab-control-container #tabs-list {
 body #root .tab-control-container #tabs-list .tab {
   display: inline-block;
   padding: 5px 10px;
+  cursor: pointer;
 }
 body #root .tab-control-container #tabs-container .tab-content {
   display: none;

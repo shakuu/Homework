@@ -117,7 +117,7 @@ function initializeButtonAdd() {
     var output = $('<a />')
         .addClass('tab')
         .addClass('btn-add')
-        .html('New Tab');
+        .html('+');
     output.on('click', createNewTab);
     return output;
 }
