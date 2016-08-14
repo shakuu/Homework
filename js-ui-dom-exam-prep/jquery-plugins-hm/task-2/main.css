@@ -1,0 +1,61 @@
+body .colorpicker .colorpicker-button {
+  background-image: url("./imgs/icon.jpg");
+  background-size: 40px 40px;
+  width: 40px;
+  height: 40px;
+  display: block;
+  border: 2px solid #000;
+  border-radius: 5px;
+  box-shadow: 1px 1px 5px #000;
+}
+body .colorpicker .colorpicker-window {
+  display: none;
+  border-radius: 15px;
+  background-color: #333;
+  width: 360px;
+  height: 400px;
+  padding: 10px;
+  position: relative;
+  box-shadow: 5px 5px 5px rgba(0,0,0,0.5);
+}
+body .colorpicker .colorpicker-window .colorpicker-canvas {
+  margin: auto;
+  border-radius: 50px;
+  display: block;
+}
+body .colorpicker .colorpicker-window .rgb-input {
+  width: 120px;
+  position: absolute;
+  left: 35px;
+  top: 360px;
+}
+body .colorpicker .colorpicker-window .hex-input {
+  width: 120px;
+  position: absolute;
+  left: 35px;
+  top: 330px;
+}
+body .colorpicker .colorpicker-window .color-preview {
+  background-color: #fff;
+  width: 120px;
+  height: 50px;
+  position: absolute;
+  left: 220px;
+  top: 330px;
+}
+body .colorpicker .colorpicker-window .close-button {
+  background-image: url("./imgs/close.png");
+  background-size: 40px 40px;
+  width: 40px;
+  height: 40px;
+  display: block;
+}
+body .colorpicker .colorpicker-window .colorpicker-image {
+  display: none;
+}
+body .colorpicker .visible {
+  display: block;
+}
+body .colorpicker .hidden {
+  display: none;
+}

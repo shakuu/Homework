@@ -4,7 +4,6 @@ $(function () {
 
         insertTag = document.createElement('strong');
         insertNewTag(insertTag);
-
     });
 });
 
@@ -12,5 +11,6 @@ function insertNewTag(tag) {
     window
         .getSelection()
         .getRangeAt(0)
+        
         .surroundContents(tag);
 }

@@ -1,0 +1,68 @@
+btn-icon-img = url("./imgs/icon.jpg")
+colorpicker-image = url("./imgs/color-picker.png")
+close-btn-img = url("./imgs/close.png")
+
+body
+
+    .colorpicker
+
+        .colorpicker-button
+            background-image: btn-icon-img
+            background-size: 40px 40px
+            width 40px
+            height: 40px
+            display: block
+            border 2px solid black
+            border-radius 5px
+            box-shadow: 1px 1px 5px black
+
+        .colorpicker-window
+            display none
+            border-radius: 15px
+            background-color: #333333
+            width 360px
+            height 400px
+            padding 10px
+            position relative
+            box-shadow: 5px 5px 5px rgba(0,0,0,0.5)
+
+            .colorpicker-canvas
+                margin auto
+                border-radius: 50px
+                display block
+
+            .rgb-input
+                width 120px
+                position absolute
+                left 35px
+                top 360px
+
+            .hex-input 
+                width 120px   
+                position absolute
+                left 35px
+                top 330px
+
+            .color-preview
+                background-color: white
+                width 120px
+                height 50px
+                position absolute    
+                left 220px
+                top 330px            
+
+            .close-button
+                background-image close-btn-img
+                background-size 40px 40px
+                width 40px
+                height 40px
+                display: block
+
+            .colorpicker-image
+                display none
+
+        .visible
+            display block
+
+        .hidden
+            display none
