@@ -75,6 +75,35 @@ $.fn.lists = function (lists) {
     }
 
     sectionContainer.on('click', displayInputElement);
+    $('li').on('drop', test);
+
+    function test(event) {
+        console.log(this);
+        console.log(event);
+
+        var dragged = $(this),
+            target = $(event.target);
+
+        if (target.is('ul')) {
+
+        } else if (target.parents('ul').length > 0) {
+            target = target.parents('ul').first();
+        } else {
+            return;
+        }
+        console.log(dragged);
+        console.log(target);
+        debugger;
+        dragged.remove();
+        dragged.appendTo(target);
+    }
+
+    $('li').on('dragenter', function (event) {
+        event.preventDefault();
+    });
+    $('li').on('dragover', function (event) {
+        event.preventDefault();
+    });
 
     function displayInputElement(event) {
         var clicked = $(event.target);
