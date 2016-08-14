@@ -99,7 +99,8 @@ function initializeTabTemplate() {
         'tabButton': null,
         'removeButton': null,
         'tabName': null,
-        'tabContent': null
+        'tabContent': null,
+        'tabEditable': null
     };
     output.tabButton = $('<li />').addClass('tab');
     output.tabName = $('<strong />')
@@ -110,6 +111,10 @@ function initializeTabTemplate() {
         .html('X')
         .appendTo(output.tabButton);
     output.tabContent = $('<div />').addClass('tab-content');
+    output.tabEditable = $('<div />')
+        .addClass('user-input')
+        .attr('contenteditable', 'true')
+        .appendTo(output.tabContent);
     return output;
 }
 
@@ -139,7 +144,7 @@ function createNewTab(options) {
         .appendTo(controls.tabMenu);
     newTab.tabContent
         .data('tab-id', newTab.id)
-        .html(newTab.id)
+        .prepend(newTab.id)
         .appendTo(controls.tabContainer);
     // push Add Button right 
     // btnAdd.remove().appendTo(controls.tabMenu).on('click', createNewTab);
