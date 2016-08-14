@@ -18,7 +18,9 @@ $.fn.lists = function (lists) {
         numberOfItems,
         list, item,
         newListArticle,
-        newItem;
+        newItem,
+
+        dragged;
 
     // Element wrapper
     sectionContainer = $('<section />')
@@ -76,14 +78,12 @@ $.fn.lists = function (lists) {
 
     sectionContainer.on('click', displayInputElement);
     $('li').on('drop', test);
+    $('li').on('dragstart', function (event) {
+        dragged = $(this);
+    });
 
     function test(event) {
-        console.log(this);
-        console.log(event);
-
-        var dragged = $(this),
-            target = $(event.target);
-
+        var target = $(event.target);
         if (target.is('ul')) {
 
         } else if (target.parents('ul').length > 0) {
@@ -91,9 +91,6 @@ $.fn.lists = function (lists) {
         } else {
             return;
         }
-        console.log(dragged);
-        console.log(target);
-        debugger;
         dragged.remove();
         dragged.appendTo(target);
     }
