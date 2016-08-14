@@ -76,18 +76,21 @@ $.fn.lists = function (lists) {
         newListArticle.appendTo(sectionContainer);
     }
 
-    sectionContainer.on('click', displayInputElement);
-    $('li').on('drop', test);
-    $('li').on('dragstart', function (event) {
+    sectionContainer.on('click', '.add-btn', displayInputElement);
+    sectionContainer.on('drop', dropItem);
+    sectionContainer.on('dragstart', 'li', function (event) {
         dragged = $(this);
     });
+    sectionContainer.on('dragend', 'li', function (event) {
+        console.log(event);
+    });
 
-    function test(event) {
+    function dropItem(event) {
         var target = $(event.target);
         if (target.is('ul')) {
 
-        } else if (target.parents('ul').length > 0) {
-            target = target.parents('ul').first();
+        } else if (target.parents('.items-section').length > 0) {
+            target = target.parents('.items-section').children('ul').first();
         } else {
             return;
         }
@@ -95,18 +98,17 @@ $.fn.lists = function (lists) {
         dragged.appendTo(target);
     }
 
-    $('li').on('dragenter', function (event) {
+    sectionContainer.on('dragenter', function (event) {
         event.preventDefault();
+        event.stopPropagation();
     });
-    $('li').on('dragover', function (event) {
+    sectionContainer.on('dragover', function (event) {
         event.preventDefault();
+        event.stopPropagation();
     });
 
     function displayInputElement(event) {
         var clicked = $(event.target);
-        if (!clicked.hasClass('add-btn')) {
-            return;
-        }
         clicked.removeClass('visible');
         clicked.siblings('input').first().addClass('visible');
     }
