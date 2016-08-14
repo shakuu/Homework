@@ -1,0 +1,17 @@
+* {
+  padding: 0;
+  margin: auto;
+}
+body #root .tab-control-container #tabs-list {
+  list-style: none;
+}
+body #root .tab-control-container #tabs-list .tab {
+  display: inline-block;
+  padding: 5px 10px;
+}
+body #root .tab-control-container #tabs-container .tab-content {
+  display: none;
+}
+body #root .tab-control-container #tabs-container .visible {
+  display: block;
+}

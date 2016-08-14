@@ -35,24 +35,62 @@ function initiazlizeContainers(options) {
         .append(output.tabMenu)
         .append(output.tabContainer);
 
-    output.tabMenu.on('click', switchTabs)
+    output.tabMenu.on('click', switchTabs);
     return output;
 }
 
 function switchTabs(event) {
-    var clicked = $(event.target);
+    var clicked = $(event.target),
+        clickedId,
+        toRemove = false;
 
     if (clicked.hasClass('btn-add') || clicked.parents('.btn-add').length > 0) {
         return;
+    }
+    if (clicked.hasClass('btn-remove')) {
+        toRemove = true;
     }
 
     if (clicked.hasClass('tab')) {
 
     } else if (clicked.parents('.tab').length > 0) {
         clicked = clicked.parents('.tab').first();
+    } else {
+        return;
     }
 
-    console.log(clicked.data('tab-id'));
+    clickedId = clicked.data('tab-id');
+    console.log(clickedId);
+    if (toRemove) {
+        removeTabWithId(clickedId);
+        clicked.remove();
+    } else {
+        displayTabWithId(clickedId);
+    }
+}
+
+function removeTabWithId(id) {
+    var allTabs = controls.tabContainer.children('.tab-content');
+    for (var i = 0, len = allTabs.length; i < len; i += 1) {
+        var current = $(allTabs[i]),
+            currentId = current.data('tab-id');
+        if (currentId === id) {
+            current.remove();
+        }
+    }
+}
+
+function displayTabWithId(id) {
+    var allTabs = controls.tabContainer.children('.tab-content');
+    for (var i = 0, len = allTabs.length; i < len; i += 1) {
+        var current = $(allTabs[i]),
+            currentId = current.data('tab-id');
+        if (currentId === id) {
+            current.addClass('visible');
+        } else {
+            current.removeClass('visible');
+        }
+    }
 }
 
 function initializeTabTemplate() {
@@ -63,7 +101,7 @@ function initializeTabTemplate() {
         'tabName': null,
         'tabContent': null
     };
-    output.tabButton = $('<div />').addClass('tab');
+    output.tabButton = $('<li />').addClass('tab');
     output.tabName = $('<strong />')
         .addClass('tab-name')
         .appendTo(output.tabButton);
@@ -101,7 +139,10 @@ function createNewTab(options) {
         .appendTo(controls.tabMenu);
     newTab.tabContent
         .data('tab-id', newTab.id)
+        .html(newTab.id)
         .appendTo(controls.tabContainer);
+    // push Add Button right 
+    // btnAdd.remove().appendTo(controls.tabMenu).on('click', createNewTab);
     return newTab;
 }
 
