@@ -4,7 +4,6 @@ function createCalendar(selector, events) {
         WEEKS = 5,
         WEEK_DAYS = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
 
-
     var root = document.querySelector(selector),
 
         month, week, day, fragment, allDays,
