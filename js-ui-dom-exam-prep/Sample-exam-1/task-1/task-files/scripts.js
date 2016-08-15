@@ -115,12 +115,20 @@ function createCalendar(selector, events) {
             return;
         }
 
+        if (changedColorElement === clicked) {
+            if (changedColorElement.style.backgroundColor === 'pink') {
+                changedColorElement.style.backgroundColor = '';
+            } else {
+                changedColorElement.style.backgroundColor = 'pink';
+            }
+            return;
+        }
         if (changedColorElement) {
             changedColorElement.style.backgroundColor = '';
         }
-
         changedColorElement = clicked;
         changedColorElement.style.backgroundColor = 'pink';
+
     }, true);
 
     // HELPERS
