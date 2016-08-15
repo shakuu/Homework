@@ -11,8 +11,25 @@
 	<div id="book-details-container">
 	</div>
 	<script id="books-list-template" type='text/x-handlebars-template'>
+	<ul class="books-list">	
+		{{#each books}}		
+			<li class="book-item">
+				<a href="#" data-id="{{this.id}}">
+					<strong class="book-title">{{this.title}}</strong><span class="author">by {{this.author}}</span>
+				</a>
+			</li>
+		{{/each}}	
+	</ul>
 	</script>
 	<script id="book-details-template" type='text/x-handlebars-template'>
+		<div class="book-details">
+			<h2 class="book-title">
+				{{this.title}}
+			</h2>
+			<p><span class="isbn">{{this.isbn}}</span></p>
+			<p>Published on <span class="publish-date">{{this.publicationDate}}</span> by <strong class="author">{{this.author}}</strong></p>
+			<p class="description">{{this.description}}</p>
+		</div>
 	</script>
 	<script src="handlebars.min.js"></script>
 	<script src="scripts.js"></script>
