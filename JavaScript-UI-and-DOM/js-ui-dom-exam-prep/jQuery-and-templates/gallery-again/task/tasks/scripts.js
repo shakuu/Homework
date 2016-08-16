@@ -16,7 +16,7 @@ function solve() {
 
         optional = optional || 4;
         root.addClass('gallery');
-        
+
         galleryList = root.children('.gallery-list');
         allImageContainers = galleryList.find('.image-container');
 
