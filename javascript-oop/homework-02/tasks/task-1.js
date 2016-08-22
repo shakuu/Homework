@@ -21,17 +21,72 @@
 			*	If something is not valid - throw Error
 */
 function solve() {
+	'use strict';
 	var library = (function () {
-		var books = [];
-		var categories = [];
-		function listBooks() {
+		var books = [],
+			categories = [];
+
+		function listBooks(args) {
+			if (args && args.category) {
+				return books.filter(function (el) {
+					return el.category === args.category;
+				});
+			}
+
+			if (args && args.author) {
+				return books.filter(function (el) {
+					return el.author === args.author;
+				});
+			}
+
 			return books;
 		}
 
 		function addBook(book) {
 			book.ID = books.length + 1;
+
+			if (!book.title || book.title.length < 2 || book.title.length > 100) {
+				throw new Error();
+			}
+
+			if (book.isbn.length !== 10 && book.isbn.length !== 13) {
+				throw new Error();
+			}
+
+			if (!book.author) {
+				throw new Error();
+			}
+
+			if (validateUniqueISBN(book)) {
+				throw new Error();
+			}
+
+			if (validateUniqueTitle(book)) {
+				throw new Error();
+			}
+
+			if (!categories.some(function (el) { return book.category === el; })) {
+				categories.push(book.category);
+			}
+
 			books.push(book);
 			return book;
+		}
+
+		function validateUniqueISBN(book) {
+			var books = listBooks();
+
+			return books.some(function (el) {
+				return el.isbn === book.isbn;
+			});
+		}
+
+		function validateUniqueTitle(book) {
+			var books = listBooks();
+
+			return books.some(function (el) {
+				return el.title === book.title;
+			});
 		}
 
 		function listCategories() {
