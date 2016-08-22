@@ -1,6 +1,7 @@
 (function () {
     var Cat = (function () {
         var Animal = require('./animal')(),
+        
             ALLOWED_COLORS = ['red', 'white', 'purple'],
 
             _color;
@@ -23,8 +24,6 @@
             set: function (color) {
                 if (validateColor(color)) {
                     _color = color;
-                } else {
-                    throw new Error();
                 }
             }
         });
@@ -32,6 +31,8 @@
         function validateColor(color) {
             if (ALLOWED_COLORS.indexOf(color) >= 0) {
                 return true;
+            } else {
+                throw new Error();
             }
         }
 
