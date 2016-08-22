@@ -1,19 +1,17 @@
-(function () {
-    var Cat = (function () {
-        var Animal = require('./animal')(),
-        
-            ALLOWED_COLORS = ['red', 'white', 'purple'],
+(function (parent) {
+    var Cat = (function (parent) {
+        var ALLOWED_COLORS = ['red', 'white', 'purple'],
 
             _color;
 
         function Constructor(name, age, color) {
-            Animal.call(this, name, age);
+            parent.call(this, name, age);
             this.color = color;
         }
 
-        Constructor.prototype = Object.create(Animal.prototype);
+        Constructor.prototype = Object.create(parent.prototype);
         Constructor.prototype.toString = function () {
-            var result = Animal.prototype.toString.call(this);
+            var result = parent.prototype.toString.call(this);
             return result + ' ' + _color;
         };
 
@@ -37,10 +35,10 @@
         }
 
         return Constructor;
-    } ());
+    } (parent));
 
     module.exports = Cat;
-} ());
+} (require('./animal')()));
 
 (function () {
     var Cat = require('./cat');
