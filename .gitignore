@@ -257,3 +257,4 @@ _Pvt_Extensions
 typings/
 prepros.*
 typings.*
+.vscode/
