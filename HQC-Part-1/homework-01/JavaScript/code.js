@@ -34,7 +34,7 @@ var myModule = (function () {
 	}
 
 	function onMouseMove(ev) {
-		var TOOLTIP_NAME = 'ToolTip', 
+		var TOOLTIP_NAME = 'ToolTip',
 			offsetX = 5,
 			toolTip;
 
@@ -46,9 +46,9 @@ var myModule = (function () {
 			positionY = event.y;
 		}
 
-		toolTip = document.layers.ToolTip || document.all.ToolTip.style;
-		if (toolTip.visibility === VISIBILITY_STRINGS.NETSCAPE.VISIBLE ||
-				toolTip.visibility === VISIBILITY_STRINGS.OTHER.VISIBLE) {
+		toolTipVisibility = document.layers.ToolTip.visibility || document.all.ToolTip.style.visibility;
+		if (toolTipVisibility === VISIBILITY_STRINGS.NETSCAPE.VISIBLE ||
+				toolTipVisibility === VISIBILITY_STRINGS.OTHER.VISIBLE) {
 			showTooltip(TOOLTIP_NAME);
 		}
 	}
@@ -58,7 +58,9 @@ var myModule = (function () {
 			windowWidth,
 			offsetPositionX = 150,
 			offsetLeft = 10,
-			offsetTop = 15;
+			offsetTop = 15,
+			layerLeft,
+			layerTop;
 
 		if (!layer) {
 			return;
@@ -67,18 +69,16 @@ var myModule = (function () {
 		documentWidth = window.innerWidth || document.body.clientWidth;
 		positionX = keepElementInVisibleSpace(positionX, elementWidth, documentWidth);
 
-		if (browserName === NETSCAPE) {
-			layer.left = positionX + offsetLeft;
-			layer.top = positionY + offsetTop;
-		} else {
-			if (addScroll) {
-				positionX = positionX + document.body.scrollLeft;
-				positionY = positionY + document.body.scrollTop;
-			}
-
-			layer.style.pixelLeft = positionX + offsetLeft;
-			layer.style.pixelTop = positionY + offsetTop;
+		if (browserName !== NETSCAPE && addScroll) {
+			positionX = positionX + document.body.scrollLeft;
+			positionY = positionY + document.body.scrollTop;
 		}
+
+		layerLeft = layer.left || layer.style.pixelLeft;
+		layerTop = layer.top || layer.style.pixelTop;
+
+		layerLeft = positionX + offsetLeft;
+		layerTop = positionY + offsetTop;
 
 		setLayerVisibility(layer, true);
 
@@ -128,5 +128,14 @@ var myModule = (function () {
 			document.all[layer].style.visibility = visibility;
 		}
 	}
+
+	return {
+		showTooltip: showTooltip,
+		hideTooltip: hideTooltip,
+		hideMenu1: hideMenu1,
+		showMenu1: showMenu1,
+		hideMenu2: hideMenu2,
+		showMenu2: showMenu2
+	};
 } ());
 
