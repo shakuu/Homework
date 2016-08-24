@@ -132,10 +132,10 @@ var myModule = (function () {
 	return {
 		showTooltip: showTooltip,
 		hideTooltip: hideTooltip,
+		showMenu1: showMenu1,		
 		hideMenu1: hideMenu1,
-		showMenu1: showMenu1,
-		hideMenu2: hideMenu2,
-		showMenu2: showMenu2
+		showMenu2: showMenu2,		
+		hideMenu2: hideMenu2
 	};
 } ());
 
