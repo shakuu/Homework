@@ -1,0 +1,32 @@
+Bunny name: Leonid
+Bunny age: 1
+Bunny fur: Not Fluffy
+
+Bunny name: Rasputin
+Bunny age: 2
+Bunny fur: A Little Fluffy
+
+Bunny name: Tiberii
+Bunny age: 3
+Bunny fur: A Little Fluffy
+
+Bunny name: Neron
+Bunny age: 1
+Bunny fur: A Little Fluffy
+
+Bunny name: Klavdii
+Bunny age: 3
+Bunny fur: Fluffy
+
+Bunny name: Vespasian
+Bunny age: 3
+Bunny fur: Fluffy
+
+Bunny name: Domician
+Bunny age: 4
+Bunny fur: Fluffy To The Limit
+
+Bunny name: Tit
+Bunny age: 2
+Bunny fur: Fluffy To The Limit
+

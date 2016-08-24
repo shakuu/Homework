@@ -7,28 +7,30 @@
 		throws if any of the elements is not convertible to Number	
 
 */
+function solve() {
 
-function sum(array) {
-	var sum;
+	function sum(array) {
+		var sum;
 
-	if (!Array.isArray(array)) {
-		throw new Error();
-	}
-
-	if (array.length === 0) {
-		return null;
-	}
-
-	sum = 0;
-	array.forEach(function (element) {
-		if (+element) {
-			sum += +element;
-		} else {
+		if (!Array.isArray(array)) {
 			throw new Error();
 		}
-	});
 
-	return sum;
+		if (array.length === 0) {
+			return null;
+		}
+
+		sum = 0;
+		array.forEach(function (element) {
+			if (+element) {
+				sum += +element;
+			} else {
+				throw new Error();
+			}
+		});
+
+		return sum;
+	}
+
+	module.exports = sum;
 }
-
-module.exports = sum;

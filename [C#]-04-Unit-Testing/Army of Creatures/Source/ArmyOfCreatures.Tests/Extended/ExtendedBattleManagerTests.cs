@@ -22,6 +22,8 @@
             var mockFactory = new Mock<ICreaturesFactory>();
             var mockLogger = new Mock<ILogger>();
             var manager = new ExtendedBattleManager(mockFactory.Object, mockLogger.Object);
+            
+            //var actualFirstArmy = new Microsoft.VisualStudio.TestTools.UnitTesting.PrivateObject(manager.get).GetField("firstArmyCreatures");
 
             var actualFirstArmy = manager.GetType()
                 .BaseType.GetField("firstArmyCreatures", BindingFlags.NonPublic | BindingFlags.Instance)
