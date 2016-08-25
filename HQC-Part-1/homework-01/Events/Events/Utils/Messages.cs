@@ -1,9 +1,9 @@
 ﻿namespace Events.Utils
 {
+    using System;
     using System.Text;
 
     using Events.Contracts;
-    using System;
 
     public class Messages : ILogger
     {
@@ -31,7 +31,7 @@
             }
             else
             {
-                output.AppendFormat("{0} events deleted", numberOfEvents);
+                this.output.AppendFormat("{0} events deleted", numberOfEvents);
                 this.AppendNewLine();
             }
         }

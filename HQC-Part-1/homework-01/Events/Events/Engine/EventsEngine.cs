@@ -1,6 +1,7 @@
 ﻿namespace Events.Engine
 {
     using System;
+
     using Events.Contracts;
 
     public class EventsEngine : IEngine
@@ -35,13 +36,13 @@
             switch (commandFirstLetter)
             {
                 case 'A':
-                    AddEvent(command);
+                    this.AddEvent(command);
                     break;
                 case 'D':
-                    DeleteEvents(command);
+                    this.DeleteEvents(command);
                     break;
                 case 'L':
-                    ListEvents(command);
+                    this.ListEvents(command);
                     break;
                 case 'E':
                     status = false;
@@ -56,11 +57,12 @@
         private void ListEvents(string command)
         {
             var separatorIndex = command.IndexOf(EventsEngine.CommandsSeparator);
-            var date = GetDate(command, EventsEngine.ListCommand);
+            var date = this.GetDate(command, EventsEngine.ListCommand);
+
             var countString = command.Substring(separatorIndex + 1);
             var count = int.Parse(countString);
 
-            var eventsDisplayed = events.ListEvents(date, count);
+            var eventsDisplayed = this.events.ListEvents(date, count);
 
             var numberOfEventsDisplayed = 0;
             foreach (var eventToPrint in eventsDisplayed)
@@ -69,9 +71,9 @@
                 numberOfEventsDisplayed++;
             }
 
-            if(numberOfEventsDisplayed == 0)
+            if (numberOfEventsDisplayed == 0)
             {
-                logger.NoEventsFound();
+                this.logger.NoEventsFound();
             }
         }
 
@@ -80,7 +82,7 @@
             var length = EventsEngine.DeleteCommand.Length;
             var title = command.Substring(length + 1);
 
-            var numberOfEventsDeleted = events.DeleteEvents(title);
+            var numberOfEventsDeleted = this.events.DeleteEvents(title);
             this.logger.EventDeleted(numberOfEventsDeleted);
         }
 
@@ -90,7 +92,7 @@
             string title;
             string location;
 
-            GetParameters(command, EventsEngine.AddCommand, out date, out title, out location);
+            this.GetParameters(command, EventsEngine.AddCommand, out date, out title, out location);
 
             var isSuccessfull = this.events.AddEvent(date, title, location);
             if (isSuccessfull)
@@ -101,7 +103,7 @@
 
         private void GetParameters(string commandForExecution, string commandType, out DateTime dateAndTime, out string eventTitle, out string eventLocation)
         {
-            dateAndTime = GetDate(commandForExecution, commandType);
+            dateAndTime = this.GetDate(commandForExecution, commandType);
 
             int firstSeparatorIndex = commandForExecution.IndexOf(EventsEngine.CommandsSeparator);
             int lastSeparatorInex = commandForExecution.LastIndexOf(EventsEngine.CommandsSeparator);
@@ -109,7 +111,7 @@
             if (firstSeparatorIndex == lastSeparatorInex)
             {
                 eventTitle = commandForExecution.Substring(firstSeparatorIndex + 1).Trim();
-                eventLocation = "";
+                eventLocation = string.Empty;
             }
             else
             {

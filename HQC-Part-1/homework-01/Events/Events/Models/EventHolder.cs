@@ -18,10 +18,9 @@
         {
             var newEvent = new Event(date, title, location);
 
-            eventsListedByTitle.Add(title.ToLower(), newEvent);
-            eventsListedByDate.Add(newEvent);
+            this.eventsListedByTitle.Add(title.ToLower(), newEvent);
+            this.eventsListedByDate.Add(newEvent);
 
-            //messages.EventAdded();
             return true;
         }
 
@@ -29,15 +28,14 @@
         {
             var removed = 0;
             var title = titleToDelete.ToLower();
-            foreach (var eventToRemove in eventsListedByTitle[title])
+            foreach (var eventToRemove in this.eventsListedByTitle[title])
             {
                 removed++;
-                eventsListedByDate.Remove(eventToRemove);
+                this.eventsListedByDate.Remove(eventToRemove);
             }
 
-            eventsListedByTitle.Remove(title);
+            this.eventsListedByTitle.Remove(title);
 
-            //messages.EventDeleted(removed);
             return removed;
         }
 
@@ -46,7 +44,7 @@
             var eventsToList = new List<IEvent>();
 
             OrderedBag<Event>.View eventsToShow =
-                eventsListedByDate.RangeFrom(new Event(date, "", ""), true);
+               this.eventsListedByDate.RangeFrom(new Event(date, string.Empty, string.Empty), true);
 
             var displayedEvents = 0;
             foreach (var eventToShow in eventsToShow)
@@ -56,17 +54,11 @@
                     break;
                 }
 
-                //messages.PrintEvent(eventToShow);
                 eventsToList.Add(eventToShow);
                 displayedEvents++;
             }
 
             return eventsToList;
-
-            //if (displayedEvents == 0)
-            //{
-            //    messages.NoEventsFound();
-            //}
         }
     }
 }

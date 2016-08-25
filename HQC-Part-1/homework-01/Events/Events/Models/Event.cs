@@ -11,7 +11,7 @@
         private string title;
         private string location;
 
-        public Event(DateTime date, String title, String location)
+        public Event(DateTime date, string title, string location)
         {
             this.Date = date;
             this.Title = title;
@@ -32,21 +32,21 @@
                 throw new ArgumentException();
             }
 
-            int byDate = this.Date.CompareTo(other.Date);
-            if (byDate != 0)
+            int comaparisonByDate = this.Date.CompareTo(other.Date);
+            if (comaparisonByDate != 0)
             {
-                return byDate;
+                return comaparisonByDate;
             }
 
-            int byTitle = this.Title.CompareTo(other.Title);
-            if (byTitle != 0)
+            int comparisonByTitle = this.Title.CompareTo(other.Title);
+            if (comparisonByTitle != 0)
             {
-                return byTitle;
+                return comparisonByTitle;
             }
 
-            int byLocation = this.Location.CompareTo(other.Location);
+            int comparisonByLocation = this.Location.CompareTo(other.Location);
 
-            return byLocation;
+            return comparisonByLocation;
         }
 
         public override string ToString()
@@ -55,9 +55,10 @@
 
             stringBuilder.Append(this.date.ToString("yyyy-MM-ddTHH:mm:ss"));
             stringBuilder.Append(" | " + this.title);
+
             if (!string.IsNullOrEmpty(this.location))
             {
-                stringBuilder.Append(" | " + location);
+                stringBuilder.Append(" | " + this.location);
             }
 
             return stringBuilder.ToString();

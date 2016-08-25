@@ -11,14 +11,13 @@
     {
         public static void Main()
         {
-            var status = true;
             var engine = CreateEngine();
 
-            var nextCommand = string.Empty;
-            while (status)
+            var engineIsRunning = true;
+            while (engineIsRunning)
             {
-                nextCommand = Console.ReadLine();
-                status = engine.ExecuteNextCommand(nextCommand);
+                var nextCommand = Console.ReadLine();
+                engineIsRunning = engine.ExecuteNextCommand(nextCommand);
             }
 
             Console.WriteLine(engine.Log);
