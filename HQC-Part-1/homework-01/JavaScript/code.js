@@ -46,9 +46,9 @@ var myModule = (function () {
 			positionY = event.y;
 		}
 
-		toolTipVisibility = document.layers.ToolTip.visibility || document.all.ToolTip.style.visibility;
-		if (toolTipVisibility === VISIBILITY_STRINGS.NETSCAPE.VISIBLE ||
-				toolTipVisibility === VISIBILITY_STRINGS.OTHER.VISIBLE) {
+		toolTip = document.layers.ToolTip || document.all.ToolTip.style;
+		if (toolTip.visibility === VISIBILITY_STRINGS.NETSCAPE.VISIBLE ||
+				toolTip.visibility === VISIBILITY_STRINGS.OTHER.VISIBLE) {
 			showTooltip(TOOLTIP_NAME);
 		}
 	}
