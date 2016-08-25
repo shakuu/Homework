@@ -5,7 +5,7 @@
 
     using Events.Contracts;
 
-    public class Messages : ILogger
+    public class MessageLogger : ILogger
     {
         private StringBuilder output = new StringBuilder();
 

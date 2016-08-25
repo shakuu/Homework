@@ -13,11 +13,11 @@
         {
             var engine = CreateEngine();
 
-            var engineIsRunning = true;
-            while (engineIsRunning)
+            var continueExecuion = true;
+            while (continueExecuion)
             {
                 var nextCommand = Console.ReadLine();
-                engineIsRunning = engine.ExecuteNextCommand(nextCommand);
+                continueExecuion = engine.ExecuteNextCommand(nextCommand);
             }
 
             Console.WriteLine(engine.Log);
@@ -25,7 +25,7 @@
 
         private static IEngine CreateEngine()
         {
-            var logger = new Messages();
+            var logger = new MessageLogger();
             var events = new EventHolder();
             var engine = new EventsEngine(logger, events);
 
