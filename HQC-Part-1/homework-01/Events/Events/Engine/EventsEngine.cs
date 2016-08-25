@@ -21,6 +21,16 @@
 
         public EventsEngine(ILogger logger, IEventHolder events)
         {
+            if (logger == null)
+            {
+                throw new ArgumentException("ILogger");
+            }
+
+            if (events == null)
+            {
+                throw new ArgumentException("IEventHolder");
+            }
+
             this.logger = logger;
             this.events = events;
         }
@@ -106,10 +116,10 @@
         }
 
         private void GetParameters(
-            string commandForExecution, 
-            string commandType, 
+            string commandForExecution,
+            string commandType,
             out DateTime dateAndTime,
-            out string eventTitle, 
+            out string eventTitle,
             out string eventLocation)
         {
             dateAndTime = this.GetDate(commandForExecution, commandType);

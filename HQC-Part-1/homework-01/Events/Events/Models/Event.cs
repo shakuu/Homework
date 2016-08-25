@@ -7,10 +7,6 @@
 
     public class Event : IEvent, IComparable
     {
-        private DateTime date;
-        private string title;
-        private string location;
-
         public Event(DateTime date, string title, string location)
         {
             this.Date = date;
@@ -53,12 +49,12 @@
         {
             var stringBuilder = new StringBuilder();
 
-            stringBuilder.Append(this.date.ToString("yyyy-MM-ddTHH:mm:ss"));
-            stringBuilder.Append(" | " + this.title);
+            stringBuilder.Append(this.Date.ToString("yyyy-MM-ddTHH:mm:ss"));
+            stringBuilder.Append(" | " + this.Title);
 
-            if (!string.IsNullOrEmpty(this.location))
+            if (!string.IsNullOrEmpty(this.Location))
             {
-                stringBuilder.Append(" | " + this.location);
+                stringBuilder.Append(" | " + this.Location);
             }
 
             return stringBuilder.ToString();
