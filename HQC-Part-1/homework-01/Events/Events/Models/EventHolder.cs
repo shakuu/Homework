@@ -1,6 +1,7 @@
 ﻿namespace Events.Models
 {
     using System;
+    using System.Collections.Generic;
 
     using Events.Contracts;
 
@@ -13,24 +14,18 @@
 
         private OrderedBag<Event> eventsListedByDate = new OrderedBag<Event>();
 
-        private ILogger messages;
-
-        public EventHolder(ILogger logger)
-        {
-            this.messages = logger;
-        }
-
-        public void AddEvent(DateTime date, string title, string location)
+        public bool AddEvent(DateTime date, string title, string location)
         {
             var newEvent = new Event(date, title, location);
 
             eventsListedByTitle.Add(title.ToLower(), newEvent);
             eventsListedByDate.Add(newEvent);
 
-            messages.EventAdded();
+            //messages.EventAdded();
+            return true;
         }
 
-        public void DeleteEvents(string titleToDelete)
+        public int DeleteEvents(string titleToDelete)
         {
             var removed = 0;
             var title = titleToDelete.ToLower();
@@ -42,11 +37,14 @@
 
             eventsListedByTitle.Remove(title);
 
-            messages.EventDeleted(removed);
+            //messages.EventDeleted(removed);
+            return removed;
         }
 
-        public void ListEvents(DateTime date, int count)
+        public IEnumerable<IEvent> ListEvents(DateTime date, int count)
         {
+            var eventsToList = new List<IEvent>();
+
             OrderedBag<Event>.View eventsToShow =
                 eventsListedByDate.RangeFrom(new Event(date, "", ""), true);
 
@@ -58,14 +56,17 @@
                     break;
                 }
 
-                messages.PrintEvent(eventToShow);
+                //messages.PrintEvent(eventToShow);
+                eventsToList.Add(eventToShow);
                 displayedEvents++;
             }
 
-            if (displayedEvents == 0)
-            {
-                messages.NoEventsFound();
-            }
+            return eventsToList;
+
+            //if (displayedEvents == 0)
+            //{
+            //    messages.NoEventsFound();
+            //}
         }
     }
 }

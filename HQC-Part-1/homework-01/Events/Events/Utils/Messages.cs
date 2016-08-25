@@ -3,6 +3,7 @@
     using System.Text;
 
     using Events.Contracts;
+    using System;
 
     public class Messages : ILogger
     {
@@ -18,27 +19,41 @@
 
         public void EventAdded()
         {
-            output.Append("Event added\n");
+            this.output.Append("Event added");
+            this.AppendNewLine();
         }
 
         public void EventDeleted(int numberOfEvents)
         {
-            if (x == 0) NoEventsFound();
-
-            else output.AppendFormat("{0} events deleted\n", x);
+            if (numberOfEvents == 0)
+            {
+                this.NoEventsFound();
+            }
+            else
+            {
+                output.AppendFormat("{0} events deleted", numberOfEvents);
+                this.AppendNewLine();
+            }
         }
 
         public void NoEventsFound()
         {
-            output.Append("No events found\n");
+            this.output.Append("No events found");
+            this.AppendNewLine();
         }
 
         public void PrintEvent(IEvent eventToPrint)
         {
             if (eventToPrint != null)
             {
-                output.Append(eventToPrint + "\n");
+                this.output.Append(eventToPrint);
+                this.AppendNewLine();
             }
+        }
+
+        private void AppendNewLine()
+        {
+            this.output.Append(Environment.NewLine);
         }
     }
 }

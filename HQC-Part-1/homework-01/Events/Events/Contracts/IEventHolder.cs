@@ -1,13 +1,16 @@
 ﻿namespace Events.Contracts
 {
     using System;
+    using System.Collections.Generic;
 
-    interface IEventHolder
+    using Events.Contracts;
+
+    public interface IEventHolder
     {
-        void AddEvent(DateTime date, string title, string location);
+        bool AddEvent(DateTime date, string title, string location);
 
-        void DeleteEvents(string titleToDelete);
+        int DeleteEvents(string titleToDelete);
 
-        void ListEvents(DateTime date, int count);
+        IEnumerable<IEvent> ListEvents(DateTime date, int count);
     }
 }
