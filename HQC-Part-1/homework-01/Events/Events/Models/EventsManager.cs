@@ -7,7 +7,7 @@
 
     using Wintellect.PowerCollections;
 
-    public class EventHolder : IEventHolder
+    public class EventsManager : IEventsManager
     {
         private MultiDictionary<string, Event> eventsListedByTitle =
              new MultiDictionary<string, Event>(true);

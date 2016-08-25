@@ -5,7 +5,7 @@
 
     using Events.Contracts;
 
-    public interface IEventHolder
+    public interface IEventsManager
     {
         bool AddEvent(DateTime date, string title, string location);
 

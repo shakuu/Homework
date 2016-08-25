@@ -17,18 +17,18 @@
         private const char CommandsSeparator = '|';
 
         private ILogger logger;
-        private IEventHolder events;
+        private IEventsManager events;
 
-        public EventsEngine(ILogger logger, IEventHolder events)
+        public EventsEngine(ILogger logger, IEventsManager events)
         {
             if (logger == null)
             {
-                throw new ArgumentException("ILogger");
+                throw new ArgumentNullException("ILogger");
             }
 
             if (events == null)
             {
-                throw new ArgumentException("IEventHolder");
+                throw new ArgumentNullException("IEventHolder");
             }
 
             this.logger = logger;
@@ -77,12 +77,12 @@
 
             var date = this.GetDate(command, EventsEngine.ListCommand);
 
-            var eventsDisplayed = this.events.ListEvents(date, count);
+            var eventsToDisplay = this.events.ListEvents(date, count);
 
             var numberOfEventsDisplayed = 0;
-            foreach (var eventToPrint in eventsDisplayed)
+            foreach (var eventToDisplay in eventsToDisplay)
             {
-                this.logger.PrintEvent(eventToPrint);
+                this.logger.PrintEvent(eventToDisplay);
                 numberOfEventsDisplayed++;
             }
 
