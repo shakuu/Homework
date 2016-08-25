@@ -105,7 +105,12 @@
             }
         }
 
-        private void GetParameters(string commandForExecution, string commandType, out DateTime dateAndTime, out string eventTitle, out string eventLocation)
+        private void GetParameters(
+            string commandForExecution, 
+            string commandType, 
+            out DateTime dateAndTime,
+            out string eventTitle, 
+            out string eventLocation)
         {
             dateAndTime = this.GetDate(commandForExecution, commandType);
 
