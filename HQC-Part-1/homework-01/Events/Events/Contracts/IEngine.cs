@@ -1,6 +1,6 @@
 ﻿namespace Events.Contracts
 {
-   public interface IEngine
+    public interface IEngine
     {
         string Log { get; }
 
