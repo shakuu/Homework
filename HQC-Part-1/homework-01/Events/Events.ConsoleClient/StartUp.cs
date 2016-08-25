@@ -13,11 +13,11 @@
         {
             var engine = CreateEngine();
 
-            var continueExecuion = true;
-            while (continueExecuion)
+            var continueExecution = true;
+            while (continueExecution)
             {
                 var nextCommand = Console.ReadLine();
-                continueExecuion = engine.ExecuteNextCommand(nextCommand);
+                continueExecution = engine.ExecuteNextCommand(nextCommand);
             }
 
             Console.WriteLine(engine.Log);
