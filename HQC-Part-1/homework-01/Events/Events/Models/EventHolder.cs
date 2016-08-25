@@ -26,39 +26,39 @@
 
         public int DeleteEvents(string titleToDelete)
         {
-            var removed = 0;
+            var removedEventsCount = 0;
             var title = titleToDelete.ToLower();
             foreach (var eventToRemove in this.eventsListedByTitle[title])
             {
-                removed++;
+                removedEventsCount++;
                 this.eventsListedByDate.Remove(eventToRemove);
             }
 
             this.eventsListedByTitle.Remove(title);
 
-            return removed;
+            return removedEventsCount;
         }
 
         public IEnumerable<IEvent> ListEvents(DateTime date, int count)
         {
-            var eventsToList = new List<IEvent>();
+            var eventsToDisplay = new List<IEvent>();
 
             OrderedBag<Event>.View eventsToShow =
                this.eventsListedByDate.RangeFrom(new Event(date, string.Empty, string.Empty), true);
 
-            var displayedEvents = 0;
+            var displayedEventsCount = 0;
             foreach (var eventToShow in eventsToShow)
             {
-                if (displayedEvents == count)
+                if (displayedEventsCount == count)
                 {
                     break;
                 }
 
-                eventsToList.Add(eventToShow);
-                displayedEvents++;
+                eventsToDisplay.Add(eventToShow);
+                displayedEventsCount++;
             }
 
-            return eventsToList;
+            return eventsToDisplay;
         }
     }
 }
