@@ -10,7 +10,6 @@
         private const string ToStringSeparator = " | ";
         private const string ToStringDateFormat = "yyyy-MM-ddTHH:mm:ss";
 
-
         public Event(DateTime date, string title, string location)
         {
             this.Date = date;
