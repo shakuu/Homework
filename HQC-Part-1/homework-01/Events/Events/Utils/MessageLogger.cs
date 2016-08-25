@@ -9,6 +9,9 @@
     {
         private StringBuilder output = new StringBuilder();
 
+        /// <summary>
+        /// Returns all logged strings.
+        /// </summary>
         public string Log
         {
             get
@@ -17,12 +20,19 @@
             }
         }
 
+        /// <summary>
+        /// Logs "Event added".
+        /// </summary>
         public void EventAdded()
         {
             this.output.Append("Event added");
             this.AppendNewLine();
         }
 
+        /// <summary>
+        /// Logs events deleted.
+        /// </summary>
+        /// <param name="numberOfEvents">The number of deleted events.</param>
         public void EventDeleted(int numberOfEvents)
         {
             if (numberOfEvents == 0)
@@ -36,12 +46,19 @@
             }
         }
 
+        /// <summary>
+        /// Logs "No events found".
+        /// </summary>
         public void NoEventsFound()
         {
             this.output.Append("No events found");
             this.AppendNewLine();
         }
 
+        /// <summary>
+        /// Logs the provided IEvent.toString().
+        /// </summary>
+        /// <param name="eventToPrint">IEvent object to log.</param>
         public void PrintEvent(IEvent eventToPrint)
         {
             if (eventToPrint != null)

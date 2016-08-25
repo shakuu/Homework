@@ -4,6 +4,9 @@
 
     using Events.Contracts;
 
+    /// <summary>
+    /// Provides command parser for managing IEvent objects.
+    /// </summary>
     public class EventsEngine : IEngine
     {
         private const string AddCommand = "AddEvent";
@@ -35,6 +38,9 @@
             this.events = events;
         }
 
+        /// <summary>
+        /// Returns a string with the result of all executed operations.
+        /// </summary>
         public string Log
         {
             get
@@ -43,6 +49,11 @@
             }
         }
 
+        /// <summary>
+        /// Parses and executes the provided command string.
+        /// </summary>
+        /// <param name="command">Input command to parse and execute.</param>
+        /// <returns>Returns False when End command is executed, returns True otherwise.</returns>
         public bool ExecuteNextCommand(string command)
         {
             var status = true;

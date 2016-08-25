@@ -9,11 +9,18 @@
 
     public class EventsManager : IEventsManager
     {
-        private MultiDictionary<string, Event> eventsListedByTitle =
-             new MultiDictionary<string, Event>(true);
+        private MultiDictionary<string, IEvent> eventsListedByTitle =
+             new MultiDictionary<string, IEvent>(true);
 
-        private OrderedBag<Event> eventsListedByDate = new OrderedBag<Event>();
+        private OrderedBag<IEvent> eventsListedByDate = new OrderedBag<IEvent>();
 
+        /// <summary>
+        /// Add a new IEvent with the provided parameters to the EventsManager.
+        /// </summary>
+        /// <param name="date">Date and Time for the new IEvent.</param>
+        /// <param name="title">Title string for the new IEvent.</param>
+        /// <param name="location">Location string, it can be an empty string.</param>
+        /// <returns>Whether the operation was completed successfully.</returns>
         public bool AddEvent(DateTime date, string title, string location)
         {
             var newEvent = new Event(date, title, location);
@@ -24,6 +31,11 @@
             return true;
         }
 
+        /// <summary>
+        /// Remove all IEvent objects with a matching Title property.
+        /// </summary>
+        /// <param name="titleToDelete">Title string to match.</param>
+        /// <returns>The number of IEvent objects removed.</returns>
         public int DeleteEvents(string titleToDelete)
         {
             var removedEventsCount = 0;
@@ -39,11 +51,17 @@
             return removedEventsCount;
         }
 
+        /// <summary>
+        /// Returns count number of IEvent objects, with a matching date.
+        /// </summary>
+        /// <param name="date">Date to match.</param>
+        /// <param name="count">Maximum number of objects to return.</param>
+        /// <returns>Collection of IEvent objects matching the criteria.</returns>
         public IEnumerable<IEvent> ListEvents(DateTime date, int count)
         {
             var eventsToDisplay = new List<IEvent>();
 
-            OrderedBag<Event>.View eventsToShow =
+            OrderedBag<IEvent>.View eventsToShow =
                this.eventsListedByDate.RangeFrom(new Event(date, string.Empty, string.Empty), true);
 
             var displayedEventsCount = 0;

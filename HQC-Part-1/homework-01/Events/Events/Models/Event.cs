@@ -17,10 +17,19 @@
             this.Location = location;
         }
 
+        /// <summary>
+        /// The date and time of the event.
+        /// </summary>
         public DateTime Date { get; set; }
-
+        
+        /// <summary>
+        /// Title of this event.
+        /// </summary>
         public string Title { get; set; }
-
+        
+        /// <summary>
+        /// Location for this event.
+        /// </summary>
         public string Location { get; set; }
 
         public int CompareTo(object obj)
