@@ -10,7 +10,9 @@
 
     public class Startup
     {
-        public static void Main()
+        private const string BunniesFilePath = @"..\..\bunnies.txt";
+
+        public static void Main(string[] args)
         {
             var bunnies = CreateListOfBunnies();
 
@@ -20,11 +22,8 @@
                 bunny.Introduce(consoleWriter);
             }
 
-            var bunniesFilePath = @"..\..\bunnies.txt";
-            var file = File.Create(bunniesFilePath);
-            file.Close();
-
-            using (var streamWriter = new StreamWriter(bunniesFilePath))
+            var fileName = GetFileName(args);
+            using (var streamWriter = new StreamWriter(fileName))
             {
                 foreach (var bunny in bunnies)
                 {
@@ -33,6 +32,27 @@
 
                 streamWriter.Close();
             }
+        }
+
+        private static string GetFileName(string[] commandLineArguments)
+        {
+            string fileName;
+            FileStream fileStream;
+
+            try
+            {
+                fileName = commandLineArguments[0];
+                fileStream = File.Create(fileName);
+            }
+            catch (IOException)
+            {
+                fileName = Startup.BunniesFilePath;
+                fileStream = File.Create(fileName);
+            }
+
+            fileStream.Close();
+
+            return fileName;
         }
 
         private static IEnumerable<IBunny> CreateListOfBunnies()
