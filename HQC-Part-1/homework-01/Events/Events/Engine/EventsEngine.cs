@@ -9,7 +9,12 @@
         private const string AddCommand = "AddEvent";
         private const string ListCommand = "ListEvents";
         private const string DeleteCommand = "DeleteEvents";
-        private const string CommandsSeparator = "|";
+
+        private const char AddCommandFirstLetter = 'A';
+        private const char ListCommandFirstLetter = 'L';
+        private const char DeleteCommandFirstLetter = 'D';
+        private const char EndCommandFirstLetter = 'E';
+        private const char CommandsSeparator = '|';
 
         private ILogger logger;
         private IEventHolder events;
@@ -30,21 +35,21 @@
 
         public bool ExecuteNextCommand(string command)
         {
-            var commandFirstLetter = command[0];
             var status = true;
 
+            var commandFirstLetter = command[0];
             switch (commandFirstLetter)
             {
-                case 'A':
+                case EventsEngine.AddCommandFirstLetter:
                     this.AddEvent(command);
                     break;
-                case 'D':
+                case EventsEngine.DeleteCommandFirstLetter:
                     this.DeleteEvents(command);
                     break;
-                case 'L':
+                case EventsEngine.ListCommandFirstLetter:
                     this.ListEvents(command);
                     break;
-                case 'E':
+                case EventsEngine.EndCommandFirstLetter:
                     status = false;
                     break;
                 default:
@@ -57,10 +62,10 @@
         private void ListEvents(string command)
         {
             var separatorIndex = command.IndexOf(EventsEngine.CommandsSeparator);
-            var date = this.GetDate(command, EventsEngine.ListCommand);
-
             var countString = command.Substring(separatorIndex + 1);
             var count = int.Parse(countString);
+
+            var date = this.GetDate(command, EventsEngine.ListCommand);
 
             var eventsDisplayed = this.events.ListEvents(date, count);
 
@@ -91,7 +96,6 @@
             DateTime date;
             string title;
             string location;
-
             this.GetParameters(command, EventsEngine.AddCommand, out date, out title, out location);
 
             var isSuccessfull = this.events.AddEvent(date, title, location);
@@ -105,21 +109,12 @@
         {
             dateAndTime = this.GetDate(commandForExecution, commandType);
 
-            int firstSeparatorIndex = commandForExecution.IndexOf(EventsEngine.CommandsSeparator);
-            int lastSeparatorInex = commandForExecution.LastIndexOf(EventsEngine.CommandsSeparator);
+            var commandWords = commandForExecution
+                .Split(new[] { EventsEngine.CommandsSeparator }, StringSplitOptions.RemoveEmptyEntries);
 
-            if (firstSeparatorIndex == lastSeparatorInex)
-            {
-                eventTitle = commandForExecution.Substring(firstSeparatorIndex + 1).Trim();
-                eventLocation = string.Empty;
-            }
-            else
-            {
-                eventTitle = commandForExecution
-                    .Substring(firstSeparatorIndex + 1, lastSeparatorInex - firstSeparatorIndex - 1)
-                    .Trim();
-                eventLocation = commandForExecution.Substring(lastSeparatorInex + 1).Trim();
-            }
+            eventTitle = commandWords[1].Trim();
+            eventLocation = commandWords.Length == 3 ?
+                  commandWords[2].Trim() : string.Empty;
         }
 
         private DateTime GetDate(string command, string commandType)
