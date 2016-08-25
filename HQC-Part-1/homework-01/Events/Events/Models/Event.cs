@@ -7,6 +7,10 @@
 
     public class Event : IEvent, IComparable
     {
+        private const string ToStringSeparator = " | ";
+        private const string ToStringDateFormat = "yyyy-MM-ddTHH:mm:ss";
+
+
         public Event(DateTime date, string title, string location)
         {
             this.Date = date;
@@ -49,12 +53,12 @@
         {
             var stringBuilder = new StringBuilder();
 
-            stringBuilder.Append(this.Date.ToString("yyyy-MM-ddTHH:mm:ss"));
-            stringBuilder.Append(" | " + this.Title);
+            stringBuilder.Append(this.Date.ToString(Event.ToStringDateFormat));
+            stringBuilder.Append(Event.ToStringSeparator + this.Title);
 
             if (!string.IsNullOrEmpty(this.Location))
             {
-                stringBuilder.Append(" | " + this.Location);
+                stringBuilder.Append(Event.ToStringSeparator + this.Location);
             }
 
             return stringBuilder.ToString();
