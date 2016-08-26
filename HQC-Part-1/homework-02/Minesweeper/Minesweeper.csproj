@@ -41,12 +41,13 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Contracts\IEngine.cs" />
+    <Compile Include="Contracts\IGame.cs" />
     <Compile Include="Contracts\IGameBoard.cs" />
     <Compile Include="Contracts\IScoreBoard.cs" />
     <Compile Include="Contracts\IScoreCard.cs" />
     <Compile Include="Contracts\IUserInterface.cs" />
     <Compile Include="Engine\MinesweeperEngine.cs" />
+    <Compile Include="Models\MinesweeperBoard.cs" />
     <Compile Include="Models\ScoreCard.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
