@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 
 using Minesweeper.Contracts;
-using Minesweeper.Enums;
 
 namespace Minesweeper.Models
 {

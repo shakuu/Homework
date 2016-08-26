@@ -1,7 +1,6 @@
 ﻿using System;
 
 using Minesweeper.Contracts;
-using Minesweeper.Enums;
 
 namespace Minesweeper.Engine
 {
