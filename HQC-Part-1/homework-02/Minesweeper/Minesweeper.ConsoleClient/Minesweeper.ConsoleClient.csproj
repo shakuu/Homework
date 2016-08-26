@@ -50,7 +50,7 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\Minesweeper\Minesweeper.csproj">
+    <ProjectReference Include="..\Minesweeper\Minesweeper.csproj">
       <Project>{71cf9839-79b9-405d-9473-932bdef46622}</Project>
       <Name>Minesweeper</Name>
     </ProjectReference>

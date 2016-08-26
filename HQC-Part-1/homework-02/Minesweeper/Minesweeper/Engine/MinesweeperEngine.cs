@@ -1,6 +1,7 @@
 ﻿using System;
 
 using Minesweeper.Contracts;
+using Minesweeper.Enums;
 
 namespace Minesweeper.Engine
 {
@@ -20,6 +21,8 @@ namespace Minesweeper.Engine
         private const string ExitCommand = "exit";
 
         private readonly int WinConditionSuccsessfulTurns = 35;
+
+        private int numberOfSuccessfulTurns = 0;
 
         private IGameBoard gameBoard;
         private IScoreBoard scoreBoard;
@@ -103,6 +106,7 @@ namespace Minesweeper.Engine
         private void HandleRestartCommand()
         {
             this.gameBoard.GenerateGameBoard();
+            this.numberOfSuccessfulTurns = 0;
         }
 
         private void HandleClickCommand(string row, string col)
@@ -117,7 +121,6 @@ namespace Minesweeper.Engine
             {
                 // TODO: Invalid input
                 throw new NotImplementedException();
-
             }
 
             var isEmptyGameBoardCell = this.gameBoard.IsCellAtCoordinatesEmpty(rowCoordinate, colCoordinate);
@@ -128,7 +131,8 @@ namespace Minesweeper.Engine
             }
             else
             {
-                throw new NotImplementedException();
+                this.numberOfSuccessfulTurns++;
+                this.gameBoard.SetContentAtCoordinates((int)MinesweeperBoardCellContentType.Empty, rowCoordinate, colCoordinate);
             }
         }
 

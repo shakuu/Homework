@@ -217,22 +217,22 @@ namespace mini4ki
                 }
             }
 
-            List<int> r3 = new List<int>();
-            while (r3.Count < 15)
+            List<int> mines = new List<int>();
+            while (mines.Count < 15)
             {
                 Random random = new Random();
-                int asfd = random.Next(50);
-                if (!r3.Contains(asfd))
+                int randomeNumber = random.Next(50);
+                if (!mines.Contains(randomeNumber))
                 {
-                    r3.Add(asfd);
+                    mines.Add(randomeNumber);
                 }
             }
 
-            foreach (int i2 in r3)
+            foreach (int number in mines)
             {
-                int kol = (i2 / Колони);
-                int red = (i2 % Колони);
-                if (red == 0 && i2 != 0)
+                int kol = (number / Колони);
+                int red = (number % Колони);
+                if (red == 0 && number != 0)
                 {
                     kol--;
                     red = Колони;

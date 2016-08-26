@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 
 using Minesweeper.Contracts;
+using Minesweeper.Enums;
 
 namespace Minesweeper.Models
 {
@@ -18,8 +19,8 @@ namespace Minesweeper.Models
         private int cols;
         private int numberOfMines;
 
-        private List<List<string>> visibleGrid;
-        private List<List<string>> minesGrid;
+        private IList<IList<string>> visibleGrid;
+        private IList<IList<string>> minesGrid;
 
         /// <summary>
         /// Creates a new instance with the sepcified parameters.
@@ -68,7 +69,7 @@ namespace Minesweeper.Models
         {
             get
             {
-                var copyOfVisibleGrid = new List<List<string>>(this.visibleGrid);
+                var copyOfVisibleGrid = new List<IList<string>>(this.visibleGrid);
                 return copyOfVisibleGrid;
             }
         }
@@ -96,19 +97,17 @@ namespace Minesweeper.Models
         /// <param name="content"> The new content of the specified cell. </param>
         /// <param name="row"> Row coordinate. </param>
         /// <param name="column"> Column coordinate. </param>
-        /// <exception cref="ArgumentNullException"></exception>
         /// <exception cref="ArgumentOutOfRangeException"></exception>
-        public void SetContentAtCoordinates(string content, int row, int column)
+        public void SetContentAtCoordinates(int contentTypeAsInt, int row, int column)
         {
-            this.CheckIfStringIsNullOrEmpty(content);
-
             this.CheckIfIntegerIsLargerThanZero(row);
             this.CheckIfIntegerIsLargerThanZero(column);
 
             this.CheckIfCoordinateIsLargerThanBoardSize(row, this.NumberOfRows);
             this.CheckIfCoordinateIsLargerThanBoardSize(column, this.NumberOfColumns);
 
-            this.visibleGrid[row][column] = content;
+            var newCellContent = this.TranslateTypeIndexToString(contentTypeAsInt);
+            this.visibleGrid[row][column] = newCellContent;
         }
 
         /// <summary>
@@ -117,11 +116,77 @@ namespace Minesweeper.Models
         public void GenerateGameBoard()
         {
             this.GenerateVisibleGrid();
+            this.GenereateMinesGrid();
         }
 
         private void GenerateVisibleGrid()
         {
-            this.visibleGrid = new List<List<string>>();
+            this.visibleGrid = new List<IList<string>>();
+            this.SetAllCellsInAGridToSymbol(this.visibleGrid, MinesweeperBoard.UncheckedCellSymbol);
+        }
+
+        private void GenereateMinesGrid()
+        {
+            this.minesGrid = new List<IList<string>>();
+            this.SetAllCellsInAGridToSymbol(this.minesGrid, MinesweeperBoard.EmptyCellSymbol);
+
+            var minesPositionsModifiers
+                = this.RandomizeMinesPositions(this.numberOfMines, this.NumberOfRows, this.NumberOfColumns);
+
+            foreach (var mineModifier in minesPositionsModifiers)
+            {
+                var row = mineModifier % this.NumberOfColumns;
+                var column = mineModifier / this.NumberOfRows;
+
+                // TODO: Double check original algorithm
+                this.minesGrid[row - 1][column - 1] = MinesweeperBoard.MineCellSymbol;
+            }
+        }
+
+        private IEnumerable<int> RandomizeMinesPositions(int numberOfMines, int rowsSize, int columnsSize)
+        {
+            var minesPositionsModifiers = new HashSet<int>();
+
+            var randomNumberGenerator = new Random();
+            var maximumRandomNumber = rowsSize * columnsSize;
+            while (minesPositionsModifiers.Count < numberOfMines)
+            {
+                var nextRandomNumber = randomNumberGenerator.Next(0, maximumRandomNumber);
+                minesPositionsModifiers.Add(nextRandomNumber);
+            }
+
+            return minesPositionsModifiers;
+        }
+
+        private void SetAllCellsInAGridToSymbol(IList<IList<string>> grid, string symbol)
+        {
+            for (int row = 0; row < this.NumberOfRows; row++)
+            {
+                grid[row] = new List<string>();
+                for (int col = 0; col < this.NumberOfColumns; col++)
+                {
+                    grid[row].Add(symbol);
+                }
+            }
+        }
+
+        private string TranslateTypeIndexToString(int index)
+        {
+            var result = string.Empty;
+
+            switch (index)
+            {
+                case (int)MinesweeperBoardCellContentType.Empty:
+                    result = MinesweeperBoard.EmptyCellSymbol;
+                    break;
+                case (int)MinesweeperBoardCellContentType.Mine:
+                    result = MinesweeperBoard.MineCellSymbol;
+                    break;
+                default:
+                    throw new ArgumentOutOfRangeException("Invalid Type int value.");
+            }
+
+            return result;
         }
 
         private void CheckIfIntegerIsLargerThanZero(int value)
@@ -137,14 +202,6 @@ namespace Minesweeper.Models
             if (boardSize < value)
             {
                 throw new ArgumentOutOfRangeException("Coordinate outside GameBoard dimensions.");
-            }
-        }
-
-        private void CheckIfStringIsNullOrEmpty(string stringToValidate)
-        {
-            if (string.IsNullOrEmpty(stringToValidate))
-            {
-                throw new ArgumentNullException();
             }
         }
     }
