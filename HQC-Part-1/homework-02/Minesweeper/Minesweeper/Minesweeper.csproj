@@ -47,6 +47,7 @@
     <Compile Include="Contracts\IScoreCard.cs" />
     <Compile Include="Contracts\IUserInterface.cs" />
     <Compile Include="Engine\MinesweeperEngine.cs" />
+    <Compile Include="Enums\MinesweeperBoardCellContentType.cs" />
     <Compile Include="Models\MinesweeperBoard.cs" />
     <Compile Include="Models\ScoreCard.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

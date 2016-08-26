@@ -7,6 +7,19 @@ namespace Minesweeper.Contracts
     /// </summary>
     public interface IUserInterface
     {
+
+        /// <summary>
+        /// Returns the User Nickname.
+        /// </summary>
+        /// <returns></returns>
+        string ReadUserNickname();
+
+        /// <summary>
+        /// Read input from the user and return it as string.
+        /// </summary>
+        /// <returns></returns>
+        string ReadUserInput();
+
         /// <summary>
         /// Display the IGameBoard for the user.
         /// </summary>

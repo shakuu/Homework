@@ -94,7 +94,7 @@ namespace Minesweeper.Models
         /// <summary>
         /// Sets the content of the cell at the specified position on the visible grid to the specified symbol.
         /// </summary>
-        /// <param name="content"> The new content of the specified cell. </param>
+        /// <param name="contentTypeAsInt"> The new content of the specified cell as MinesweeperBoardCellContentType int value. </param>
         /// <param name="row"> Row coordinate. </param>
         /// <param name="column"> Column coordinate. </param>
         /// <exception cref="ArgumentOutOfRangeException"></exception>

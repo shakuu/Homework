@@ -9,11 +9,9 @@ namespace Minesweeper.ConsoleClient
         public static void Main(string[] args)
         {
             var game = CreateGame();
-
             while(game.IsRunning)
             {
-                var nextCommand = Console.ReadLine();
-                game.ExecuteNextCommand(nextCommand);
+                game.ExecuteNextCommand();
             }
         }
 
