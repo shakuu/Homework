@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Reflection;
 
 using Minesweeper.Contracts;
@@ -62,7 +63,12 @@ namespace Minesweeper.Models
         /// <returns> IEnumerable containg the number of scores requested. </returns>
         public IEnumerable<IScoreCard> GetTopScores(int number)
         {
-            throw new NotImplementedException();
+            var topScoresToReturn = this.scores
+                .OrderBy(score => score.Score)
+                .ThenBy(score => score.Name)
+                .Take(number);
+
+            return topScoresToReturn;
         }
 
         private ConstructorInfo GetConstructorToUse(Type type)
