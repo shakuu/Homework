@@ -246,25 +246,7 @@ namespace mini4ki
 
             return игрално_поле;
         }
-
-        private static void smetki(char[,] pole)
-        {
-            int kol = pole.GetLength(0);
-            int red = pole.GetLength(1);
-
-            for (int i = 0; i < kol; i++)
-            {
-                for (int j = 0; j < red; j++)
-                {
-                    if (pole[i, j] != '*')
-                    {
-                        char kolkoo = kolko(pole, i, j);
-                        pole[i, j] = kolkoo;
-                    }
-                }
-            }
-        }
-
+        
         private static char kolko(char[,] r, int rr, int rrr)
         {
             int brojkata = 0;

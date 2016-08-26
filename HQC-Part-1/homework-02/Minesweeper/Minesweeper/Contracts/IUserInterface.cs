@@ -11,25 +11,25 @@ namespace Minesweeper.Contracts
         /// <summary>
         /// Returns the User Nickname.
         /// </summary>
-        /// <returns></returns>
+        /// <returns> Return a string containing the user name. </returns>
         string GetUserNickname();
 
         /// <summary>
         /// Read input from the user and return it as string.
         /// </summary>
-        /// <returns></returns>
+        /// <returns> Return a string with a user command. </returns>
         string ReadUserInput();
 
         /// <summary>
         /// Display the IGameBoard for the user.
         /// </summary>
-        /// <param name="gameBoard"></param>
+        /// <param name="gameBoard"> IGameBoard object to display. </param>
         void DisplayGameBoard(IGameBoard gameBoard);
 
         /// <summary>
         /// Display High Score List to the user.
         /// </summary>
-        /// <param name="scoreList"></param>
+        /// <param name="scoreList"> List of IScoreCard objects to display. </param>
         void DisplayHighScore(IEnumerable<IScoreCard> scoreList);
 
         /// <summary>
