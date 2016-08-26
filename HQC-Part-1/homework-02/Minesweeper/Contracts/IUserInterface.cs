@@ -18,5 +18,11 @@ namespace Minesweeper.Contracts
         /// </summary>
         /// <param name="scoreList"></param>
         void DisplayHighScore(IEnumerable<IScoreCard> scoreList);
+
+        /// <summary>
+        /// Display a message to the user.
+        /// </summary>
+        /// <param name="message"> Message to display. </param>
+        void DisplayMessage(string message);
     }
 }

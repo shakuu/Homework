@@ -1,8 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+
+using Minesweeper.Contracts;
 
 namespace Minesweeper.ConsoleClient
 {
@@ -10,6 +8,18 @@ namespace Minesweeper.ConsoleClient
     {
         public static void Main(string[] args)
         {
+            var game = CreateGame();
+
+            while(game.IsRunning)
+            {
+                var nextCommand = Console.ReadLine();
+                game.ExecuteNextCommand(nextCommand);
+            }
+        }
+
+        private static IGameEngine CreateGame()
+        {
+            throw new NotImplementedException();
         }
     }
 }

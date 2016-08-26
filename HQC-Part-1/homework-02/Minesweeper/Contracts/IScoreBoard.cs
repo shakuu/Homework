@@ -4,7 +4,7 @@ namespace Minesweeper.Contracts
 {
     public interface IScoreBoard
     {
-        void AddScoreCard(IScoreCard scoreCard);
+        void AddScoreCard(string name, int score);
 
         IEnumerable<IScoreCard> GetTopScores(int number);
 

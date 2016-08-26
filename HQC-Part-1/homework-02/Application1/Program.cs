@@ -29,7 +29,7 @@ namespace mini4ki
                 {
                     Console.WriteLine("Hajde da igraem na “Mini4KI”. Probvaj si kasmeta da otkriesh poleteta bez mini4ki." +
                     " Komanda 'top' pokazva klasiraneto, 'restart' po4va nova igra, 'exit' izliza i hajde 4ao!");
-                    dumpp(poleto);
+                    PrintTheMinefield(poleto);
                     flag = false;
                 }
 
@@ -53,7 +53,7 @@ namespace mini4ki
                     case "restart":
                         poleto = create_igralno_pole();
                         bombite = slojibombite();
-                        dumpp(poleto);
+                        PrintTheMinefield(poleto);
                         grum = false;
                         flag = false;
                         break;
@@ -74,7 +74,7 @@ namespace mini4ki
                             }
                             else
                             {
-                                dumpp(poleto);
+                                PrintTheMinefield(poleto);
                             }
                         }
                         else
@@ -89,7 +89,7 @@ namespace mini4ki
 
                 if (grum)
                 {
-                    dumpp(bombite);
+                    PrintTheMinefield(bombite);
                     Console.Write("\nHrrrrrr! Umria gerojski s {0} to4ki. " +
                         "Daj si niknejm: ", broya4);
                     string niknejm = Console.ReadLine();
@@ -123,7 +123,7 @@ namespace mini4ki
                 if (flag2)
                 {
                     Console.WriteLine("\nBRAVOOOS! Otvri 35 kletki bez kapka kryv.");
-                    dumpp(bombite);
+                    PrintTheMinefield(bombite);
                     Console.WriteLine("Daj si imeto, batka: ");
                     string imeee = Console.ReadLine();
                     ScoreCard to4kii = new ScoreCard(imeee, broya4);
@@ -168,7 +168,7 @@ namespace mini4ki
             POLE[RED, KOLONA] = kolkoBombi;
         }
 
-        private static void dumpp(char[,] board)
+        private static void PrintTheMinefield(char[,] board)
         {
             int RRR = board.GetLength(0);
             int KKK = board.GetLength(1);

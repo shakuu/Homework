@@ -6,6 +6,10 @@ namespace Minesweeper.Contracts
     {
         IEnumerable<IEnumerable<string>> GameBoard { get; }
 
-        bool CheckIfCoordinatesAreEmpty(int row, int col);
+        string GetContentAtCoordinates(int row, int col);
+
+        void SetContentAtCoordinates(string content, int row, int col);
+
+        void ResetGameBoard();
     }
 }
