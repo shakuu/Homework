@@ -2,6 +2,9 @@
 {
     using System;
 
+    /// <summary>
+    /// Interface for Event objects defining their properties.
+    /// </summary>
     public interface IEvent : IComparable
     {
         /// <summary>

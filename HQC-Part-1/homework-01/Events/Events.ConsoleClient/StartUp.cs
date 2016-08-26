@@ -11,23 +11,23 @@
     {
         public static void Main()
         {
-            var engine = CreateEngine();
+            var eventsEngine = CreateEngine();
 
             var continueExecution = true;
             while (continueExecution)
             {
                 var nextCommand = Console.ReadLine();
-                continueExecution = engine.ExecuteNextCommand(nextCommand);
+                continueExecution = eventsEngine.ExecuteNextCommand(nextCommand);
             }
 
-            Console.WriteLine(engine.Log);
+            Console.WriteLine(eventsEngine.Log);
         }
 
         private static IEngine CreateEngine()
         {
             var factory = new EventsFactory(typeof(Event));
-            var logger = new MessageLogger();
             var events = new EventsManager(factory);
+            var logger = new MessageLogger();
             var engine = new EventsEngine(logger, events);
 
             return engine;

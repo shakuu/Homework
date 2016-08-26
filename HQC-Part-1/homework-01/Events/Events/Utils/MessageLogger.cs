@@ -5,6 +5,9 @@
 
     using Events.Contracts;
 
+    /// <summary>
+    /// Implements ILogger using a StringBuilder().
+    /// </summary>
     public class MessageLogger : ILogger
     {
         private StringBuilder output = new StringBuilder();

@@ -5,11 +5,20 @@
 
     using Events.Contracts;
 
+    /// <summary>
+    /// Implements IEvent without any additions.
+    /// </summary>
     public class Event : IEvent, IComparable
     {
         private const string ToStringSeparator = " | ";
         private const string ToStringDateFormat = "yyyy-MM-ddTHH:mm:ss";
 
+        /// <summary>
+        /// Create a new instance.
+        /// </summary>
+        /// <param name="date"> Sets Date property. </param>
+        /// <param name="title"> Sets Title property. </param>
+        /// <param name="location"> Sets Location property. It can be an empty string. </param>
         public Event(DateTime date, string title, string location)
         {
             this.Date = date;
@@ -32,9 +41,15 @@
         /// </summary>
         public string Location { get; set; }
 
+        /// <summary>
+        /// Compares this Event object to another IEvent object in the following order: Date, Title, Location.
+        /// </summary>
+        /// <param name="obj"></param>
+        /// <returns> Integer value representing the result. </returns>
+        /// <exception cref="ArgumentException"> Throws if obj parameter type does not implement IEvent interface. </exception>
         public int CompareTo(object obj)
         {
-            Event other = obj as Event;
+            var other = obj as IEvent;
             if (other == null)
             {
                 throw new ArgumentException();
@@ -57,6 +72,10 @@
             return comparisonByLocation;
         }
 
+        /// <summary>
+        /// Generates a string in the following format: "{Date} | {Title} | {Location}"
+        /// </summary>
+        /// <returns> "{Date} | {Title} | {Location}" </returns>
         public override string ToString()
         {
             var stringBuilder = new StringBuilder();

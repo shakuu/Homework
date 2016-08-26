@@ -1,5 +1,8 @@
 ﻿namespace Events.Contracts
 {
+    /// <summary>
+    /// Interface for Engine objects parsing string input commands and executing them.
+    /// </summary>
     public interface IEngine
     {
         /// <summary>

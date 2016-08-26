@@ -7,6 +7,9 @@
 
     using Wintellect.PowerCollections;
 
+    /// <summary>
+    /// Implements IEventManager without any additions.
+    /// </summary>
     public class EventsManager : IEventsManager
     {
         private MultiDictionary<string, IEvent> eventsListedByTitle =
@@ -16,6 +19,11 @@
 
         private IEventsFactory eventsFactory;
 
+        /// <summary>
+        /// Create a new EventsManager instance.
+        /// </summary>
+        /// <param name="factory"> IEventsFactory to instantiate new IEvent objects. </param>
+        /// <exception cref="ArgumentNullException"> Throws when factory parameter is null. </exception>
         public EventsManager(IEventsFactory factory)
         {
             if (factory == null)

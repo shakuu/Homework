@@ -22,6 +22,12 @@
         private ILogger logger;
         private IEventsManager events;
 
+        /// <summary>
+        /// Create a new EventsEngine instance.
+        /// </summary>
+        /// <param name="logger"> ILogger object logging all executed commands. </param>
+        /// <param name="events"> IEventsManager object to use when executing commands. </param>
+        /// <exception cref="ArgumentNullException"> Throws when one of the parameters are null. </exception>
         public EventsEngine(ILogger logger, IEventsManager events)
         {
             if (logger == null)

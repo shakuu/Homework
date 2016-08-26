@@ -1,10 +1,14 @@
 ﻿namespace Events.Models
 {
     using System;
+    using System.Linq;
     using System.Reflection;
 
     using Events.Contracts;
 
+    /// <summary>
+    /// Provide a Type implementing IEvent in the constructor and use CreateEvent() to instantiate new objects of that type.
+    /// </summary>
     public class EventsFactory : IEventsFactory
     {
         private Type typeToCreate;
@@ -74,14 +78,8 @@
 
         private Type[] GetConstructorParametersTypes(object[] constructorParameters)
         {
-            var numberOfParameters = constructorParameters.Length;
-            var constructorParametersTypes = new Type[numberOfParameters];
-
-            for (int i = 0; i < numberOfParameters; i++)
-            {
-                constructorParametersTypes[i] = constructorParameters[i].GetType();
-            }
-
+            var constructorParametersTypes = constructorParameters.Select(param => param.GetType()).ToArray();
+            
             return constructorParametersTypes;
         }
     }

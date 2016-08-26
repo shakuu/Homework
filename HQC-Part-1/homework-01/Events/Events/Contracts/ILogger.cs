@@ -1,5 +1,8 @@
 ﻿namespace Events.Contracts
 {
+    /// <summary>
+    /// Interface for logging operations with IEvent objects.
+    /// </summary>
     public interface ILogger
     {
         /// <summary>

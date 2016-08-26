@@ -5,6 +5,9 @@
 
     using Events.Contracts;
 
+    /// <summary>
+    /// Interface for classes managing IEvent objects. Inludes AddEvent(), DeleteEvents(), ListEvents().
+    /// </summary>
     public interface IEventsManager
     {
         /// <summary>

@@ -2,6 +2,9 @@
 {
     using System;
 
+    /// <summary>
+    /// Provides CreateEvent() method.
+    /// </summary>
     public interface IEventsFactory
     {
         /// <summary>
