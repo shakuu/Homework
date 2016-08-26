@@ -14,6 +14,18 @@
 
         private OrderedBag<IEvent> eventsListedByDate = new OrderedBag<IEvent>();
 
+        private IEventsFactory eventsFactory;
+
+        public EventsManager(IEventsFactory factory)
+        {
+            if(factory == null)
+            {
+                throw new ArgumentNullException("factory");
+            }
+
+            this.eventsFactory = factory;
+        }
+
         /// <summary>
         /// Add a new IEvent with the provided parameters to the EventsManager.
         /// </summary>
@@ -23,7 +35,7 @@
         /// <returns>Whether the operation was completed successfully.</returns>
         public bool AddEvent(DateTime date, string title, string location)
         {
-            var newEvent = new Event(date, title, location);
+            var newEvent = this.eventsFactory.CreateEvent(date, title, location);
 
             this.eventsListedByTitle.Add(title.ToLower(), newEvent);
             this.eventsListedByDate.Add(newEvent);
@@ -52,7 +64,7 @@
         }
 
         /// <summary>
-        /// Returns count number of IEvent objects, with a matching date.
+        /// Returns count number of IEvent objects with a matching date.
         /// </summary>
         /// <param name="date">Date to match.</param>
         /// <param name="count">Maximum number of objects to return.</param>

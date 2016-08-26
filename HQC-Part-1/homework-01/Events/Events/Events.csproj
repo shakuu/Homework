@@ -45,12 +45,14 @@
   <ItemGroup>
     <Compile Include="Contracts\IEngine.cs" />
     <Compile Include="Contracts\IEvent.cs" />
+    <Compile Include="Contracts\IEventsFactory.cs" />
     <Compile Include="Contracts\IEventsManager.cs" />
     <Compile Include="Contracts\ILogger.cs" />
     <Compile Include="Engine\EventsEngine.cs" />
     <Compile Include="Models\Event.cs">
       <ExcludeFromStyleCop>False</ExcludeFromStyleCop>
     </Compile>
+    <Compile Include="Models\EventsFactory.cs" />
     <Compile Include="Models\EventsManager.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Utils\MessageLogger.cs" />

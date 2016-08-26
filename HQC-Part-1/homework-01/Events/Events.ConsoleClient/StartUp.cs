@@ -25,8 +25,9 @@
 
         private static IEngine CreateEngine()
         {
+            var factory = new EventsFactory(typeof(Event));
             var logger = new MessageLogger();
-            var events = new EventsManager();
+            var events = new EventsManager(factory);
             var engine = new EventsEngine(logger, events);
 
             return engine;
