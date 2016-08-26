@@ -61,12 +61,13 @@ namespace Minesweeper.Models
         /// </summary>
         /// <param name="number"> The number of scores to return. </param>
         /// <returns> IEnumerable containg the number of scores requested. </returns>
-        public IEnumerable<IScoreCard> GetTopScores(int number)
+        public IList<IScoreCard> GetTopScores(int number)
         {
             var topScoresToReturn = this.scores
                 .OrderBy(score => score.Score)
                 .ThenBy(score => score.Name)
-                .Take(number);
+                .Take(number)
+                .ToList();
 
             return topScoresToReturn;
         }

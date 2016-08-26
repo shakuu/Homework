@@ -21,7 +21,7 @@ namespace Minesweeper.Contracts
         /// <summary>
         /// Provides the IGameBoard to display.
         /// </summary>
-        IEnumerable<IEnumerable<string>> GameBoardToDisplay { get; }
+        IList<IList<string>> GameBoardToDisplay { get; }
 
         /// <summary>
         /// Return whether the specified position is empty or not.

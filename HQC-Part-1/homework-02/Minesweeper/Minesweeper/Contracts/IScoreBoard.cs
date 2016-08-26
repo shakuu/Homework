@@ -20,7 +20,7 @@ namespace Minesweeper.Contracts
         /// </summary>
         /// <param name="number"> The number of scores to return. </param>
         /// <returns> IEnumerable containg the number of scores requested. </returns>
-        IEnumerable<IScoreCard> GetTopScores(int number);
+        IList<IScoreCard> GetTopScores(int number);
 
     }
 }

@@ -64,7 +64,7 @@ namespace Minesweeper.Models
         /// <summary>
         /// Provides the IGameBoard to display.
         /// </summary>
-        public IEnumerable<IEnumerable<string>> GameBoardToDisplay
+        public IList<IList<string>> GameBoardToDisplay
         {
             get
             {
@@ -133,11 +133,11 @@ namespace Minesweeper.Models
 
             foreach (var mineModifier in minesPositionsModifiers)
             {
-                var row = mineModifier % this.NumberOfColumns;
+                var row = mineModifier % this.NumberOfRows;
                 var column = mineModifier / this.NumberOfRows;
 
-                // TODO: Double check original algorithm
-                this.minesGrid[row - 1][column - 1] = MinesweeperBoard.MineCellSymbol;
+                column = column == 0 ? column + 1 : column;
+                this.minesGrid[row][column - 1] = MinesweeperBoard.MineCellSymbol;
             }
         }
 
@@ -160,7 +160,7 @@ namespace Minesweeper.Models
         {
             for (int row = 0; row < this.NumberOfRows; row++)
             {
-                grid[row] = new List<string>();
+                grid.Add(new List<string>());
                 for (int col = 0; col < this.NumberOfColumns; col++)
                 {
                     grid[row].Add(symbol);
@@ -170,9 +170,10 @@ namespace Minesweeper.Models
 
         private string DetermineCellContentBasedOnSurroundingMines(int row, int col)
         {
-            throw new NotImplementedException();
+            // TODO: 
+            return "5";
         }
-        
+
         private void CheckIfIntegerIsLargerThanZero(int value)
         {
             if (value <= 0)

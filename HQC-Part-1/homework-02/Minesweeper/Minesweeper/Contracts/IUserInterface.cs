@@ -30,7 +30,7 @@ namespace Minesweeper.Contracts
         /// Display High Score List to the user.
         /// </summary>
         /// <param name="scoreList"> List of IScoreCard objects to display. </param>
-        void DisplayHighScore(IEnumerable<IScoreCard> scoreList);
+        void DisplayHighScore(IList<IScoreCard> scoreList);
 
         /// <summary>
         /// Display a message to the user.

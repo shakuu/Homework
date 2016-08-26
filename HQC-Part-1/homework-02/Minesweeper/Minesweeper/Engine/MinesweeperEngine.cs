@@ -54,6 +54,8 @@ namespace Minesweeper.Engine
             this.isRunning = true;
             this.isGameOver = false;
             this.isWon = false;
+
+            this.gameBoard.GenerateGameBoard();
         }
 
         /// <summary>
@@ -144,6 +146,14 @@ namespace Minesweeper.Engine
                 return;
             }
 
+            var coordinateIsOutOfBounds = this.CheckCoordinatesOutOfGameBoardSize(rowCoordinate, colCoordinate);
+            if (coordinateIsOutOfBounds)
+            {
+                this.userInterface.DisplayMessage(MinesweeperEngine.PlayInvalidInput);
+
+                return;
+            }
+
             var isEmptyGameBoardCell = this.gameBoard.IsCellAtCoordinatesEmpty(rowCoordinate, colCoordinate);
             if (isEmptyGameBoardCell)
             {
@@ -155,6 +165,22 @@ namespace Minesweeper.Engine
             {
                 this.isGameOver = true;
             }
+        }
+        
+        private bool CheckCoordinatesOutOfGameBoardSize(int rowCoordinateToCheck, int columnCoordinateToCheck)
+        {
+            var isOutOfBounds = false;
+            if (this.gameBoard.NumberOfRows <= rowCoordinateToCheck)
+            {
+                isOutOfBounds = true;
+            }
+
+            if (this.gameBoard.NumberOfColumns <= columnCoordinateToCheck)
+            {
+                isOutOfBounds = true;
+            }
+
+            return isOutOfBounds;
         }
 
         private bool CheckIfGameIsWon(int numberOfSuccessfulTurns, int winConditionSuccsessfulTurns)
