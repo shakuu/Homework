@@ -4,14 +4,12 @@
 
     public interface IEventsFactory
     {
-
         /// <summary>
-        /// Create a new IEvent object based on the input parameters.
+        /// Instantiate a new IEvent object of the type passed in the constructor with the provided constructor parameters.
         /// </summary>
-        /// <param name="date"></param>
-        /// <param name="title"></param>
-        /// <param name="location"></param>
+        /// <param name="constructorParameters"></param>
         /// <returns>A new IEvent object.</returns>
-        IEvent CreateEvent(DateTime date, string title, string location);
+        /// <exception cref = "ArgumentException" > Throws If constructor with the provided parameters was not found. </ exception >
+        IEvent CreateEvent(object[] contructorParameters);
     }
 }

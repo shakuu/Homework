@@ -18,7 +18,7 @@
 
         public EventsManager(IEventsFactory factory)
         {
-            if(factory == null)
+            if (factory == null)
             {
                 throw new ArgumentNullException("factory");
             }
@@ -35,7 +35,7 @@
         /// <returns>Whether the operation was completed successfully.</returns>
         public bool AddEvent(DateTime date, string title, string location)
         {
-            var newEvent = this.eventsFactory.CreateEvent(date, title, location);
+            var newEvent = this.eventsFactory.CreateEvent(new object[] { date, title, location });
 
             this.eventsListedByTitle.Add(title.ToLower(), newEvent);
             this.eventsListedByDate.Add(newEvent);
