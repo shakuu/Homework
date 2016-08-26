@@ -34,11 +34,10 @@ namespace Minesweeper.Contracts
         /// <summary>
         /// Sets the content of the cell at the specified position on the visible grid to the specified symbol.
         /// </summary>
-        /// <param name="gameBoardContentType"> The new content of the specified cell as int enum value. </param>
         /// <param name="row"> Row coordinate. </param>
         /// <param name="col"> Column coordinate. </param>
         /// <exception cref="ArgumentOutOfRangeException"></exception>
-        void SetContentAtCoordinates(int gameBoardContentType, int row, int col);
+        void SetContentAtCoordinates(int row, int col);
 
         /// <summary>
         /// Generate a new grid with the specified size and number of mines.

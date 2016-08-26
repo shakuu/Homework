@@ -41,7 +41,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Contracts\IGame.cs" />
+    <Compile Include="Contracts\IGameEngine.cs" />
     <Compile Include="Contracts\IGameBoard.cs" />
     <Compile Include="Contracts\IScoreBoard.cs" />
     <Compile Include="Contracts\IScoreCard.cs" />
@@ -49,12 +49,12 @@
     <Compile Include="Engine\MinesweeperEngine.cs" />
     <Compile Include="Enums\MinesweeperBoardCellContentType.cs" />
     <Compile Include="Models\MinesweeperBoard.cs" />
+    <Compile Include="Models\ScoreBoard.cs" />
     <Compile Include="Models\ScoreCard.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="UI\ConsoleUserInterface.cs" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="UI\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

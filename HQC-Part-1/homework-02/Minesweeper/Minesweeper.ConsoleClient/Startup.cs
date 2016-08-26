@@ -13,6 +13,8 @@ namespace Minesweeper.ConsoleClient
             {
                 game.ExecuteNextGameCycle();
             }
+
+            Console.Read();
         }
 
         private static IGameEngine CreateGame()

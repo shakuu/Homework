@@ -65,17 +65,16 @@ namespace mini4ki
                         {
                             if (bombite[red, kolona] == '-')
                             {
-                                tisinahod(poleto, bombite, red, kolona);
+                                tisinahod(poleto, bombite, red, kolona);// TODO:
                                 broya4++;
                             }
                             if (maks == broya4)
                             {
                                 flag2 = true;
                             }
-                            else
-                            {
-                                PrintTheMinefield(poleto);
-                            }
+
+                            PrintTheMinefield(poleto);
+
                         }
                         else
                         {
@@ -246,7 +245,7 @@ namespace mini4ki
 
             return игрално_поле;
         }
-        
+
         private static char kolko(char[,] r, int rr, int rrr)
         {
             int brojkata = 0;
@@ -256,57 +255,57 @@ namespace mini4ki
             if (rr - 1 >= 0)
             {
                 if (r[rr - 1, rrr] == '*')
-                { 
-                    brojkata++; 
+                {
+                    brojkata++;
                 }
             }
             if (rr + 1 < reds)
             {
                 if (r[rr + 1, rrr] == '*')
-                { 
-                    brojkata++; 
+                {
+                    brojkata++;
                 }
             }
             if (rrr - 1 >= 0)
             {
                 if (r[rr, rrr - 1] == '*')
-                { 
+                {
                     brojkata++;
                 }
             }
             if (rrr + 1 < kols)
             {
                 if (r[rr, rrr + 1] == '*')
-                { 
+                {
                     brojkata++;
                 }
             }
             if ((rr - 1 >= 0) && (rrr - 1 >= 0))
             {
                 if (r[rr - 1, rrr - 1] == '*')
-                { 
-                    brojkata++; 
+                {
+                    brojkata++;
                 }
             }
             if ((rr - 1 >= 0) && (rrr + 1 < kols))
             {
                 if (r[rr - 1, rrr + 1] == '*')
-                { 
-                    brojkata++; 
+                {
+                    brojkata++;
                 }
             }
             if ((rr + 1 < reds) && (rrr - 1 >= 0))
             {
                 if (r[rr + 1, rrr - 1] == '*')
-                { 
-                    brojkata++; 
+                {
+                    brojkata++;
                 }
             }
             if ((rr + 1 < reds) && (rrr + 1 < kols))
             {
                 if (r[rr + 1, rrr + 1] == '*')
-                { 
-                    brojkata++; 
+                {
+                    brojkata++;
                 }
             }
             return char.Parse(brojkata.ToString());

@@ -75,6 +75,7 @@ namespace Minesweeper.Engine
         /// <returns> Returns False when command is 'Exit'. </returns>
         public void ExecuteNextGameCycle()
         {
+            this.userInterface.DisplayGameBoard(this.gameBoard);
             var continueGameExecution = true;
 
             var command = this.userInterface.ReadUserInput();
@@ -99,6 +100,15 @@ namespace Minesweeper.Engine
 
             if (this.isWon || this.isGameOver)
             {
+                if (isWon)
+                {
+                    this.userInterface.DisplayMessage(MinesweeperEngine.GameIsWonMessage);
+                }
+                else
+                {
+                    this.userInterface.DisplayMessage(MinesweeperEngine.EndGameMessage);
+                }
+
                 this.AddNewScoreCardToScoreBoard(this.numberOfSuccessfulTurns);
                 this.HandleRestartCommand();
             }
@@ -140,19 +150,11 @@ namespace Minesweeper.Engine
             {
                 this.numberOfSuccessfulTurns++;
                 this.isWon = this.CheckIfGameIsWon(this.numberOfSuccessfulTurns, this.WinConditionSuccsessfulTurns);
-                this.gameBoard.SetContentAtCoordinates((int)MinesweeperBoardCellContentType.Empty, rowCoordinate, colCoordinate);
-                this.userInterface.DisplayMessage(string.Format(
-                    MinesweeperEngine.PlayEmptyMessageTemplate,
-                    rowCoordinate,
-                    colCoordinate));
+                this.gameBoard.SetContentAtCoordinates(rowCoordinate, colCoordinate);
             }
             else
             {
                 this.isGameOver = true;
-                this.userInterface.DisplayMessage(string.Format(
-                    MinesweeperEngine.PlayMineMessageTemplate,
-                    rowCoordinate,
-                    colCoordinate));
             }
         }
 

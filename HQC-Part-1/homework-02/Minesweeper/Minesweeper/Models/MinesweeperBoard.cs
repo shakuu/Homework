@@ -94,11 +94,10 @@ namespace Minesweeper.Models
         /// <summary>
         /// Sets the content of the cell at the specified position on the visible grid to the specified symbol.
         /// </summary>
-        /// <param name="contentTypeAsInt"> The new content of the specified cell as MinesweeperBoardCellContentType int value. </param>
         /// <param name="row"> Row coordinate. </param>
         /// <param name="column"> Column coordinate. </param>
         /// <exception cref="ArgumentOutOfRangeException"></exception>
-        public void SetContentAtCoordinates(int contentTypeAsInt, int row, int column)
+        public void SetContentAtCoordinates(int row, int column)
         {
             this.CheckIfIntegerIsLargerThanZero(row);
             this.CheckIfIntegerIsLargerThanZero(column);
@@ -106,8 +105,8 @@ namespace Minesweeper.Models
             this.CheckIfCoordinateIsLargerThanBoardSize(row, this.NumberOfRows);
             this.CheckIfCoordinateIsLargerThanBoardSize(column, this.NumberOfColumns);
 
-            var newCellContent = this.TranslateTypeIndexToString(contentTypeAsInt);
-            this.visibleGrid[row][column] = newCellContent;
+            var content = this.DetermineCellContentBasedOnSurroundingMines(row, column);
+            this.visibleGrid[row][column] = content;
         }
 
         /// <summary>
@@ -170,25 +169,11 @@ namespace Minesweeper.Models
             }
         }
 
-        private string TranslateTypeIndexToString(int index)
+        private string DetermineCellContentBasedOnSurroundingMines(int row, int col)
         {
-            var result = string.Empty;
-
-            switch (index)
-            {
-                case (int)MinesweeperBoardCellContentType.Empty:
-                    result = MinesweeperBoard.EmptyCellSymbol;
-                    break;
-                case (int)MinesweeperBoardCellContentType.Mine:
-                    result = MinesweeperBoard.MineCellSymbol;
-                    break;
-                default:
-                    throw new ArgumentOutOfRangeException("Invalid Type int value.");
-            }
-
-            return result;
+            throw new NotImplementedException();
         }
-
+        
         private void CheckIfIntegerIsLargerThanZero(int value)
         {
             if (value <= 0)
