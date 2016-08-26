@@ -9,7 +9,7 @@
         /// </summary>
         /// <param name="constructorParameters"></param>
         /// <returns>A new IEvent object.</returns>
-        /// <exception cref = "ArgumentException" > Throws If constructor with the provided parameters was not found. </ exception >
-        IEvent CreateEvent(object[] contructorParameters);
+        /// <exception cref = "ArgumentException" > Throws If constructor with the provided parameters was not found. </exception >
+        IEvent CreateEvent(object[] constructorParameters);
     }
 }

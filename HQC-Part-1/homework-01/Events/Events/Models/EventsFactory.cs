@@ -13,8 +13,8 @@
         /// Instantiates a new EventsFactory object.
         /// </summary>
         /// <param name="type">The type must be implementing IEvent interface and specifies the type of objects CreateEvent() should instantiate.</param>
-        /// <exception cref = "ArgumentNullException" > Throws If type parameter is null. </ exception >
-        /// <exception cref = "ArgumentException" > Throws If type does not implement IEvent. </ exception >
+        /// <exception cref = "ArgumentNullException" > Throws If type parameter is null. </exception >
+        /// <exception cref = "ArgumentException" > Throws If type does not implement IEvent. </exception >
         public EventsFactory(Type type)
         {
             if (type == null)
@@ -29,7 +29,6 @@
             }
 
             this.typeToCreate = type;
-            this.CreateEvent(new object[] { new DateTime(), "str", "str" });
         }
 
         /// <summary>
@@ -37,11 +36,11 @@
         /// </summary>
         /// <param name="constructorParameters"></param>
         /// <returns>A new IEvent object.</returns>
-        /// <exception cref = "ArgumentException" > Throws If constructor with the provided parameters was not found. </ exception >
-        public IEvent CreateEvent(object[] contructorParameters)
+        /// <exception cref = "ArgumentException" > Throws If constructor with the provided parameters was not found. </exception >
+        public IEvent CreateEvent(object[] constructorParameters)
         {
-            var constructorToInvoke = this.GetTypeToCreateConstructor(this.typeToCreate, contructorParameters);
-            var newlyCreatedEvent = (IEvent)constructorToInvoke.Invoke(contructorParameters);
+            var constructorToInvoke = this.GetTypeToCreateConstructor(this.typeToCreate, constructorParameters);
+            var newlyCreatedEvent = (IEvent)constructorToInvoke.Invoke(constructorParameters);
 
             return newlyCreatedEvent;
         }
