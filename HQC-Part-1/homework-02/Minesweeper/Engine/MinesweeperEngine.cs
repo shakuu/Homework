@@ -9,8 +9,9 @@ namespace Minesweeper.Engine
     /// </summary>
     public class MinesweeperEngine : IGameEngine
     {
-        private const string PlayEmptyMessageTemplate = "Success! Position row: {0}, col: {1} is empty!";
-        private const string PlayMineMessageTemplate = "BOOM! There is a mine at row: {0}, col: {1}! Play again?";
+        private const string PlayEmptyMessageTemplate = "Success! Position row: {0}, column: {1} is empty!";
+        private const string PlayMineMessageTemplate = "BOOM! There is a mine at row: {0}, column: {1}! Play again?";
+        private const string PlayInvalidInput = "Coordinates row: {0}, column: {1} are outside the play field!";
         private const string EndGameMessage = "Seeya later aligator!";
 
         private const string TopScoreCommand = "top";
@@ -18,21 +19,24 @@ namespace Minesweeper.Engine
         private const string ClickCommand = "click";
         private const string ExitCommand = "exit";
 
-        private const int WinConditionSuccsessfulTurns = 35;
+        private readonly int WinConditionSuccsessfulTurns = 35;
 
         private IGameBoard gameBoard;
         private IScoreBoard scoreBoard;
         private IUserInterface userInterface;
 
         private bool isRunning;
+        private bool isWon;
 
         /// <summary>
         /// Create a new GameCommandsEngine.
         /// </summary>
+        /// <param name="winCondition"> The number of successful turns required to win the game. </param>
         /// <param name="gameBoard"> Required to check against. </param>
         /// <param name="scoreBoard"> Required to keep track of score history. </param>
         /// <param name="userInterface"> Required to display the game to the user. </param>
-        public MinesweeperEngine(IGameBoard gameBoard, IScoreBoard scoreBoard, IUserInterface userInterface)
+        /// <exception cref="ArgumentNullException"></exception>
+        public MinesweeperEngine(int winCondition, IGameBoard gameBoard, IScoreBoard scoreBoard, IUserInterface userInterface)
         {
             this.CheckIfConstructorObjectIsNull(gameBoard);
             this.CheckIfConstructorObjectIsNull(scoreBoard);
@@ -41,6 +45,10 @@ namespace Minesweeper.Engine
             this.gameBoard = gameBoard;
             this.scoreBoard = scoreBoard;
             this.userInterface = userInterface;
+            this.WinConditionSuccsessfulTurns = winCondition;
+
+            this.isRunning = true;
+            this.isWon = false;
         }
 
         /// <summary>
@@ -74,13 +82,12 @@ namespace Minesweeper.Engine
                     this.HandleRestartCommand();
                     break;
                 case MinesweeperEngine.ClickCommand:
-                    // TODO:
+                    this.HandleClickCommand(commandWords[1], commandWords[2]);
                     break;
                 case MinesweeperEngine.ExitCommand:
                     continueGameExecution = false;
                     break;
                 default:
-                    // TODO: 
                     break;
             }
 
@@ -95,12 +102,51 @@ namespace Minesweeper.Engine
 
         private void HandleRestartCommand()
         {
-            this.gameBoard.ResetGameBoard();
+            this.gameBoard.GenerateGameBoard();
+        }
+
+        private void HandleClickCommand(string row, string col)
+        {
+            int rowCoordinate;
+            var isRowConverted = this.ConvertStringToNumber(row, out rowCoordinate);
+
+            int colCoordinate;
+            var isColConverted = this.ConvertStringToNumber(col, out colCoordinate);
+
+            if (!isRowConverted || !isColConverted)
+            {
+                // TODO: Invalid input
+                throw new NotImplementedException();
+
+            }
+
+            var isEmptyGameBoardCell = this.gameBoard.IsCellAtCoordinatesEmpty(rowCoordinate, colCoordinate);
+            if (!isEmptyGameBoardCell)
+            {
+                // TODO: Game Over
+                throw new NotImplementedException();
+            }
+            else
+            {
+                throw new NotImplementedException();
+            }
         }
 
         private void AddNewScoreCardToScoreBoard(string name, int score)
         {
+            throw new NotImplementedException();
+        }
 
+        private bool ConvertStringToNumber(string number, out int convertedNumber)
+        {
+            var isSuccessfullyConverted = false;
+
+            if (int.TryParse(number, out convertedNumber))
+            {
+                isSuccessfullyConverted = true;
+            }
+
+            return isSuccessfullyConverted;
         }
 
         private string[] ConvertCommandString(string command)
