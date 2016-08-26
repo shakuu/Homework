@@ -1,5 +1,8 @@
 ﻿namespace Minesweeper.Contracts
 {
+    /// <summary>
+    /// Exposes next game cycle method and IsRunning parameter.
+    /// </summary>
     public interface IGameEngine
     {
         /// <summary>
@@ -10,6 +13,6 @@
         /// <summary>
         /// Execute next User command.
         /// </summary>
-        void ExecuteNextCommand();
+        void ExecuteNextGameCycle();
     }
 }

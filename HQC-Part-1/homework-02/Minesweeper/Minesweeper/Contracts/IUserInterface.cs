@@ -12,7 +12,7 @@ namespace Minesweeper.Contracts
         /// Returns the User Nickname.
         /// </summary>
         /// <returns></returns>
-        string ReadUserNickname();
+        string GetUserNickname();
 
         /// <summary>
         /// Read input from the user and return it as string.

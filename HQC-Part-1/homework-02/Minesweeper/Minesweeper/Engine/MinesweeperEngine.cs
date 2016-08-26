@@ -13,6 +13,7 @@ namespace Minesweeper.Engine
         private const string PlayEmptyMessageTemplate = "Success! Position row: {0}, column: {1} is empty!";
         private const string PlayMineMessageTemplate = "BOOM! There is a mine at row: {0}, column: {1}! Play again?";
         private const string PlayInvalidInput = "Coordinates row: {0}, column: {1} are outside the play field!";
+        private const string GameIsWonMessage = "Congrats! You won!";
         private const string EndGameMessage = "Seeya later aligator!";
 
         private const string TopScoreCommand = "top";
@@ -72,7 +73,7 @@ namespace Minesweeper.Engine
         /// Commands : 'top', 'restart', 'exit', '{row} {col}'
         /// </summary>
         /// <returns> Returns False when command is 'Exit'. </returns>
-        public void ExecuteNextCommand()
+        public void ExecuteNextGameCycle()
         {
             var continueGameExecution = true;
 
@@ -140,6 +141,10 @@ namespace Minesweeper.Engine
                 this.numberOfSuccessfulTurns++;
                 this.isWon = this.CheckIfGameIsWon(this.numberOfSuccessfulTurns, this.WinConditionSuccsessfulTurns);
                 this.gameBoard.SetContentAtCoordinates((int)MinesweeperBoardCellContentType.Empty, rowCoordinate, colCoordinate);
+                this.userInterface.DisplayMessage(string.Format(
+                    MinesweeperEngine.PlayEmptyMessageTemplate,
+                    rowCoordinate,
+                    colCoordinate));
             }
             else
             {
@@ -155,13 +160,17 @@ namespace Minesweeper.Engine
         {
             var isWon = winConditionSuccsessfulTurns <= numberOfSuccessfulTurns;
 
+            if (isWon)
+            {
+                this.userInterface.DisplayMessage(MinesweeperEngine.GameIsWonMessage);
+            }
+
             return isWon;
         }
 
         private void AddNewScoreCardToScoreBoard(int score)
         {
-            this.userInterface.DisplayMessage("Enter nickname.");
-            var userNickname = this.userInterface.ReadUserNickname();
+            var userNickname = this.userInterface.GetUserNickname();
 
             this.scoreBoard.AddScoreCard(userNickname, score);
         }

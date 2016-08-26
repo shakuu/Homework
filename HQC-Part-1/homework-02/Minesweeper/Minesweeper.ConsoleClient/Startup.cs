@@ -11,7 +11,7 @@ namespace Minesweeper.ConsoleClient
             var game = CreateGame();
             while(game.IsRunning)
             {
-                game.ExecuteNextCommand();
+                game.ExecuteNextGameCycle();
             }
         }
 
