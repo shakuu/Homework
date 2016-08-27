@@ -98,7 +98,7 @@ namespace Minesweeper.UI
         /// Read input from the user and return it as string.
         /// </summary>
         /// <returns> Return a string with a user command. </returns>
-        public string ReadUserInput()
+        public string GetUserInput()
         {
             var userInput = Console.ReadLine().Trim();
             return userInput;

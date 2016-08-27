@@ -9,12 +9,12 @@ namespace Minesweeper.Engine
     /// </summary>
     public class MinesweeperEngine : IGameEngine
     {
-        private const string StartGameMessage = "Minesweeper! Available commands: top, restart, play, exit.";
-        private const string PlayEmptyMessageTemplate = "Success! Position row: {0}, column: {1} is empty!";
-        private const string PlayMineMessageTemplate = "BOOM! There is a mine at row: {0}, column: {1}!";
-        private const string PlayInvalidInput = "Coordinates row: {0}, column: {1} are outside the play field!";
+        private const string StartGameInstructionMessage = "Minesweeper! Available commands: top, restart, play, exit.";
+        private const string PlaySelectedEmptyCellSuccessMessageTemplate = "Success! Position row: {0}, column: {1} is empty!";
+        private const string PLaySekectedMineCellBoomMessageTemplate = "BOOM! There is a mine at row: {0}, column: {1}!";
+        private const string PlayInvalidUserInputCoordinatesMessageTemplate = "Coordinates row: {0}, column: {1} are outside the play field!";
         private const string GameIsWonMessage = "Congrats! You won!";
-        private const string EndGameMessage = "Seeya later aligator!";
+        private const string ExitGameMessage = "Seeya later aligator!";
 
         private const string TopScoreCommand = "top";
         private const string RestartCommand = "restart";
@@ -56,7 +56,7 @@ namespace Minesweeper.Engine
             this.isGameOver = false;
             this.isWon = false;
 
-            this.gameBoard.GenerateGameBoard();
+            this.gameBoard.GenerateNewGameBoard();
         }
 
         /// <summary>
@@ -75,9 +75,9 @@ namespace Minesweeper.Engine
         /// </summary>
         public void StartNewGame()
         {
-            this.userInterface.DisplayMessage(MinesweeperEngine.StartGameMessage);
+            this.userInterface.DisplayMessage(MinesweeperEngine.StartGameInstructionMessage);
 
-            this.gameBoard.GenerateGameBoard();
+            this.gameBoard.GenerateNewGameBoard();
             this.numberOfSuccessfulTurns = 0;
             this.isRunning = true;
             this.isGameOver = false;
@@ -95,7 +95,7 @@ namespace Minesweeper.Engine
         {
             var continueGameExecution = true;
 
-            var command = this.userInterface.ReadUserInput();
+            var command = this.userInterface.GetUserInput();
             var commandWords = this.ConvertCommandString(command);
             switch (commandWords[0])
             {
@@ -136,7 +136,7 @@ namespace Minesweeper.Engine
             if (!continueGameExecution)
             {
                 this.isRunning = continueGameExecution;
-                this.userInterface.DisplayMessage(MinesweeperEngine.EndGameMessage);
+                this.userInterface.DisplayMessage(MinesweeperEngine.ExitGameMessage);
             }
         }
 
@@ -162,7 +162,7 @@ namespace Minesweeper.Engine
             if (!isRowConverted || !isColConverted)
             {
                 this.userInterface.DisplayMessage(string.Format(
-                    MinesweeperEngine.PlayInvalidInput, row, col));
+                    MinesweeperEngine.PlayInvalidUserInputCoordinatesMessageTemplate, row, col));
 
                 return;
             }
@@ -171,7 +171,7 @@ namespace Minesweeper.Engine
             if (coordinateIsOutOfBounds)
             {
                 this.userInterface.DisplayMessage(string.Format(
-                    MinesweeperEngine.PlayInvalidInput, row, col));
+                    MinesweeperEngine.PlayInvalidUserInputCoordinatesMessageTemplate, row, col));
 
                 return;
             }
@@ -182,13 +182,13 @@ namespace Minesweeper.Engine
                 this.numberOfSuccessfulTurns++;
                 this.isWon = this.CheckIfGameIsWon(this.numberOfSuccessfulTurns, this.winConditionSuccsessfulTurns);
                 this.userInterface.DisplayMessage(string.Format(
-                    MinesweeperEngine.PlayEmptyMessageTemplate, row, col));
+                    MinesweeperEngine.PlaySelectedEmptyCellSuccessMessageTemplate, row, col));
             }
             else
             {
                 this.isGameOver = true;
                 this.userInterface.DisplayMessage(string.Format(
-                    MinesweeperEngine.PlayMineMessageTemplate, row, col));
+                    MinesweeperEngine.PLaySekectedMineCellBoomMessageTemplate, row, col));
             }
 
             this.gameBoard.UpdateCellContentAtCoordinates(rowCoordinate, colCoordinate);

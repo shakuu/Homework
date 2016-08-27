@@ -17,7 +17,7 @@ namespace Minesweeper.Contracts
         /// Read input from the user and return it as string.
         /// </summary>
         /// <returns> Return a string with a user command. </returns>
-        string ReadUserInput();
+        string GetUserInput();
 
         /// <summary>
         /// Display the IGameBoard for the user.

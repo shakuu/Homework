@@ -122,7 +122,7 @@ namespace Minesweeper.Models
         /// <summary>
         /// Generate a new grid with the specified size and number of mines.
         /// </summary>
-        public void GenerateGameBoard()
+        public void GenerateNewGameBoard()
         {
             this.GenerateVisibleGrid();
             this.GenereateMinesGrid();

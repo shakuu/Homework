@@ -36,7 +36,7 @@ namespace Minesweeper.Models
                 return this.name;
             }
 
-            set
+            private set
             {
                 if (string.IsNullOrEmpty(value))
                 {
@@ -58,7 +58,7 @@ namespace Minesweeper.Models
                 return this.score;
             }
 
-            set
+            private set
             {
                 if (value < 0)
                 {

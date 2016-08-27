@@ -8,11 +8,11 @@
         /// <summary>
         /// Player name associated with this score.
         /// </summary>
-        string Name { get; set; }
+        string Name { get; }
 
         /// <summary>
         /// Score represented by points.
         /// </summary>
-        int Score { get; set; }
+        int Score { get; }
     }
 }

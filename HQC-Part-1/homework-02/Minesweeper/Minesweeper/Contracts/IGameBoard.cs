@@ -27,21 +27,21 @@ namespace Minesweeper.Contracts
         /// Return whether the specified position is empty or not.
         /// </summary>
         /// <param name="row"> Row coordinate. </param>
-        /// <param name="col"> Column coordinate. </param>
+        /// <param name="column"> Column coordinate. </param>
         /// <returns> Return True if the specified coordinate is empty. </returns>
-        bool IsCellAtCoordinatesEmpty(int row, int col);
+        bool IsCellAtCoordinatesEmpty(int row, int column);
 
         /// <summary>
         /// Sets the content of the cell at the specified position on the visible grid to the specified symbol.
         /// </summary>
         /// <param name="row"> Row coordinate. </param>
-        /// <param name="col"> Column coordinate. </param>
+        /// <param name="column"> Column coordinate. </param>
         /// <exception cref="ArgumentOutOfRangeException"></exception>
-        void UpdateCellContentAtCoordinates(int row, int col);
+        void UpdateCellContentAtCoordinates(int row, int column);
 
         /// <summary>
         /// Generate a new grid with the specified size and number of mines.
         /// </summary>
-        void GenerateGameBoard();
+        void GenerateNewGameBoard();
     }
 }
