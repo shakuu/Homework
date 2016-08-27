@@ -6,7 +6,7 @@ using Minesweeper.Contracts;
 namespace Minesweeper.UI
 {
     /// <summary>
-    /// Implements IUserInterface using System.Console
+    /// Implements IUserInterface through System.Console.
     /// </summary>
     public class ConsoleUserInterface : IUserInterface
     {
@@ -14,7 +14,7 @@ namespace Minesweeper.UI
         private int gameBoardColumns;
 
         /// <summary>
-        /// Creates a new ConsoleUserInterface.
+        /// Creates a new ConsoleUserInterface, utilizes System.Console. 
         /// </summary>
         /// <param name="gameBoardRows"></param>
         /// <param name="gameBoardColumns"></param>
