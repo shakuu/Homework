@@ -11,7 +11,16 @@ namespace Minesweeper.ConsoleClient
     {
         public static void Main(string[] args)
         {
-            var game = CreateGame();
+            var successfulTurnsToWin = 35;
+            var numberOfGameBoardRows = 5;
+            var numberOfGameBoardColumns = 10;
+            var numberOfGameBoardMines = 15;
+
+            var game = CreateGame(
+                successfulTurnsToWin,
+                numberOfGameBoardRows,
+                numberOfGameBoardColumns,
+                numberOfGameBoardMines);
 
             game.StartNewGame();
             while (game.IsRunning)
@@ -22,13 +31,17 @@ namespace Minesweeper.ConsoleClient
             Console.Read();
         }
 
-        private static IGameEngine CreateGame()
+        private static IGameEngine CreateGame(
+            int successfulTurnsToWin,
+            int numberOfRows,
+            int numberOfColumns,
+            int numberOfMines)
         {
-            var userInterFace = new ConsoleUserInterface(5, 10);
             var scoreBoard = new ScoreBoard(typeof(ScoreCard));
-            var gameBoard = new MinesweeperBoard(5, 10, 15);
-            var minesweeper = new MinesweeperEngine(35, gameBoard, scoreBoard, userInterFace);
-            
+            var userInterFace = new ConsoleUserInterface(numberOfRows, numberOfColumns);
+            var gameBoard = new MinesweeperBoard(numberOfRows, numberOfColumns, numberOfMines);
+            var minesweeper = new MinesweeperEngine(successfulTurnsToWin, gameBoard, scoreBoard, userInterFace);
+
             return minesweeper;
         }
     }
