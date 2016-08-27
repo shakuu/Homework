@@ -22,20 +22,20 @@ namespace Minesweeper.Models
         private IList<IList<string>> minesGrid;
 
         /// <summary>
-        /// Creates a new instance with the sepcified parameters.
+        /// Creates a new MinesweeperBoard with sizeRows Rows, sizeColumns Columns and numberOfMines Mines.
         /// </summary>
         /// <param name="sizeRows"> Specifies the number of rows in the grid. </param>
-        /// <param name="sizeCols"> Specifies the number of columns in the grid. </param>
+        /// <param name="sizeColumns"> Specifies the number of columns in the grid. </param>
         /// <param name="numberOfMines"> Specifies the number of mines in the grid. </param>
         /// <exception cref="ArgumentOutOfRangeException"> Throws when any of the parameters are less than or equal to 0. </exception>
-        public MinesweeperBoard(int sizeRows, int sizeCols, int numberOfMines)
+        public MinesweeperBoard(int sizeRows, int sizeColumns, int numberOfMines)
         {
             this.CheckIfIntegerIsLessThanZero(sizeRows);
-            this.CheckIfIntegerIsLessThanZero(sizeCols);
+            this.CheckIfIntegerIsLessThanZero(sizeColumns);
             this.CheckIfIntegerIsLessThanZero(numberOfMines);
 
             this.rows = sizeRows;
-            this.cols = sizeCols;
+            this.cols = sizeColumns;
             this.numberOfMines = numberOfMines;
         }
 

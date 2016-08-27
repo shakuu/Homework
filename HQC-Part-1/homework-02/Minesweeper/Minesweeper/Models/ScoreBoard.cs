@@ -8,7 +8,7 @@ using Minesweeper.Contracts;
 namespace Minesweeper.Models
 {
     /// <summary>
-    /// Stores scores associated with names.
+    /// Base implementation of IScoreBoard.
     /// </summary>
     public class ScoreBoard : IScoreBoard
     {
@@ -17,7 +17,7 @@ namespace Minesweeper.Models
         private ICollection<IScoreCard> scores;
 
         /// <summary>
-        /// Create a new ScoreBoard.
+        /// Creates a new ScoreBoard storing data in the format provided with Type parameter.
         /// </summary>
         /// <param name="typeOfScoreCardToUse"> Type of IScoreCard to use. </param>
         /// <exception cref="ArgumentNullException"></exception>

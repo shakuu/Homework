@@ -34,7 +34,7 @@ namespace Minesweeper.Engine
         private bool isWon;
 
         /// <summary>
-        /// Create a new GameCommandsEngine.
+        /// Create a new MinesweeperEngine with the provided winCondition, IGameBoard, IScoreBoard and IUserInterface.
         /// </summary>
         /// <param name="winCondition"> The number of successful turns required to win the game. </param>
         /// <param name="gameBoard"> Required to check against. </param>

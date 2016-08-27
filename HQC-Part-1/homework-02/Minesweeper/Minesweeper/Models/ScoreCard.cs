@@ -5,7 +5,7 @@ using Minesweeper.Contracts;
 namespace Minesweeper.Models
 {
     /// <summary>
-    /// Creates a ScoreCard containing the Name of the player and the points score achieved.
+    /// Base implementation of IScoreCard.
     /// </summary>
     public class ScoreCard : IScoreCard
     {
@@ -13,7 +13,7 @@ namespace Minesweeper.Models
         private int score;
 
         /// <summary>
-        /// Create a new ScoreCard instance.
+        /// Create a new ScoreCard instance with the provided parameters.
         /// </summary>
         /// <param name="name"></param>
         /// <param name="score"></param>
