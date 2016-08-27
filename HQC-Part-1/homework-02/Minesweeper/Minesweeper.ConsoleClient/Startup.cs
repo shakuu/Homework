@@ -17,8 +17,8 @@ namespace Minesweeper.ConsoleClient
             var numberOfGameBoardMines = 15;
 
             var game = CreateGame(
-                successfulTurnsToWin,
-                numberOfGameBoardRows,
+                successfulTurnsToWin, 
+                numberOfGameBoardRows, 
                 numberOfGameBoardColumns,
                 numberOfGameBoardMines);
 

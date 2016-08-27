@@ -66,9 +66,9 @@ namespace Minesweeper.UI
             Console.WriteLine("Top Scores List: ");
             for (int i = 0; i < scoreList.Count; i++)
             {
-                Console.WriteLine("{0}. {1} --> {2} cells.",
-                    i + 1, scoreList[i].Name, scoreList[i].Score);
+                Console.WriteLine("{0}. {1} --> {2} cells.", i + 1, scoreList[i].Name, scoreList[i].Score);
             }
+
             Console.WriteLine();
         }
 
