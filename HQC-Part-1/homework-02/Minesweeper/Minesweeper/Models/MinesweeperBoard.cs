@@ -201,8 +201,7 @@ namespace Minesweeper.Models
 
             return surroundingMinesCount.ToString();
         }
-
-
+        
         private void CheckIfIntegerIsLessThanZero(int value)
         {
             if (value < 0)

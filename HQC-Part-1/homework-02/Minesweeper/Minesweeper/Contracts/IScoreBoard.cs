@@ -7,7 +7,6 @@ namespace Minesweeper.Contracts
     /// </summary>
     public interface IScoreBoard
     {
-
         /// <summary>
         /// Add a new element to the IScoreBoard.
         /// </summary>
@@ -21,6 +20,5 @@ namespace Minesweeper.Contracts
         /// <param name="number"> The number of scores to return. </param>
         /// <returns> IEnumerable containg the number of scores requested. </returns>
         IList<IScoreCard> GetTopScores(int number);
-
     }
 }

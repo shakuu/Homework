@@ -14,7 +14,7 @@ namespace Minesweeper.ConsoleClient
             var game = CreateGame();
 
             game.StartNewGame();
-            while(game.IsRunning)
+            while (game.IsRunning)
             {
                 game.ExecuteNextGameCycle();
             }
@@ -28,8 +28,7 @@ namespace Minesweeper.ConsoleClient
             var scoreBoard = new ScoreBoard(typeof(ScoreCard));
             var gameBoard = new MinesweeperBoard(5, 10, 15);
             var minesweeper = new MinesweeperEngine(35, gameBoard, scoreBoard, userInterFace);
-
-
+            
             return minesweeper;
         }
     }

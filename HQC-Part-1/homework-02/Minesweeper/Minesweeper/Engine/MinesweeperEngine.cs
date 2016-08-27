@@ -21,7 +21,7 @@ namespace Minesweeper.Engine
         private const string ClickCommand = "play";
         private const string ExitCommand = "exit";
 
-        private readonly int WinConditionSuccsessfulTurns = 35;
+        private readonly int winConditionSuccsessfulTurns = 35;
 
         private int numberOfSuccessfulTurns = 0;
 
@@ -50,7 +50,7 @@ namespace Minesweeper.Engine
             this.gameBoard = gameBoard;
             this.scoreBoard = scoreBoard;
             this.userInterface = userInterface;
-            this.WinConditionSuccsessfulTurns = winCondition;
+            this.winConditionSuccsessfulTurns = winCondition;
 
             this.isRunning = true;
             this.isGameOver = false;
@@ -116,6 +116,7 @@ namespace Minesweeper.Engine
                     {
                         this.HandleClickCommand(commandWords[0], commandWords[1]);
                     }
+
                     break;
             }
 
@@ -179,7 +180,7 @@ namespace Minesweeper.Engine
             if (isEmptyGameBoardCell)
             {
                 this.numberOfSuccessfulTurns++;
-                this.isWon = this.CheckIfGameIsWon(this.numberOfSuccessfulTurns, this.WinConditionSuccsessfulTurns);
+                this.isWon = this.CheckIfGameIsWon(this.numberOfSuccessfulTurns, this.winConditionSuccsessfulTurns);
                 this.userInterface.DisplayMessage(string.Format(
                     MinesweeperEngine.PlayEmptyMessageTemplate, row, col));
             }

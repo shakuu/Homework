@@ -9,8 +9,8 @@ namespace Minesweeper.Models
     /// </summary>
     public class ScoreCard : IScoreCard
     {
-        string name;
-        int score;
+        private string name;
+        private int score;
 
         /// <summary>
         /// Create a new ScoreCard instance.
@@ -62,7 +62,7 @@ namespace Minesweeper.Models
             {
                 if (value < 0)
                 {
-                    throw new ArgumentException();
+                    throw new ArgumentException("ScoreCard.Score");
                 }
 
                 this.score = value;

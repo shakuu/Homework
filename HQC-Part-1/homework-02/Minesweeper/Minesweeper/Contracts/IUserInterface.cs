@@ -7,7 +7,6 @@ namespace Minesweeper.Contracts
     /// </summary>
     public interface IUserInterface
     {
-
         /// <summary>
         /// Returns the User Nickname.
         /// </summary>
