@@ -37,7 +37,7 @@ namespace Minesweeper.Contracts
         /// <param name="row"> Row coordinate. </param>
         /// <param name="col"> Column coordinate. </param>
         /// <exception cref="ArgumentOutOfRangeException"></exception>
-        void SetContentAtCoordinates(int row, int col);
+        void UpdateCellContentAtCoordinates(int row, int col);
 
         /// <summary>
         /// Generate a new grid with the specified size and number of mines.

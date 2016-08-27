@@ -246,64 +246,64 @@ namespace mini4ki
             return игрално_поле;
         }
 
-        private static char kolko(char[,] r, int rr, int rrr)
+        private static char kolko(char[,] mines, int row, int col)
         {
             int brojkata = 0;
-            int reds = r.GetLength(0);
-            int kols = r.GetLength(1);
+            int reds = mines.GetLength(0);
+            int kols = mines.GetLength(1);
 
-            if (rr - 1 >= 0)
+            if (row - 1 >= 0)
             {
-                if (r[rr - 1, rrr] == '*')
+                if (mines[row - 1, col] == '*')
                 {
                     brojkata++;
                 }
             }
-            if (rr + 1 < reds)
+            if (row + 1 < reds)
             {
-                if (r[rr + 1, rrr] == '*')
+                if (mines[row + 1, col] == '*')
                 {
                     brojkata++;
                 }
             }
-            if (rrr - 1 >= 0)
+            if (col - 1 >= 0)
             {
-                if (r[rr, rrr - 1] == '*')
+                if (mines[row, col - 1] == '*')
                 {
                     brojkata++;
                 }
             }
-            if (rrr + 1 < kols)
+            if (col + 1 < kols)
             {
-                if (r[rr, rrr + 1] == '*')
+                if (mines[row, col + 1] == '*')
                 {
                     brojkata++;
                 }
             }
-            if ((rr - 1 >= 0) && (rrr - 1 >= 0))
+            if ((row - 1 >= 0) && (col - 1 >= 0))
             {
-                if (r[rr - 1, rrr - 1] == '*')
+                if (mines[row - 1, col - 1] == '*')
                 {
                     brojkata++;
                 }
             }
-            if ((rr - 1 >= 0) && (rrr + 1 < kols))
+            if ((row - 1 >= 0) && (col + 1 < kols))
             {
-                if (r[rr - 1, rrr + 1] == '*')
+                if (mines[row - 1, col + 1] == '*')
                 {
                     brojkata++;
                 }
             }
-            if ((rr + 1 < reds) && (rrr - 1 >= 0))
+            if ((row + 1 < reds) && (col - 1 >= 0))
             {
-                if (r[rr + 1, rrr - 1] == '*')
+                if (mines[row + 1, col - 1] == '*')
                 {
                     brojkata++;
                 }
             }
-            if ((rr + 1 < reds) && (rrr + 1 < kols))
+            if ((row + 1 < reds) && (col + 1 < kols))
             {
-                if (r[rr + 1, rrr + 1] == '*')
+                if (mines[row + 1, col + 1] == '*')
                 {
                     brojkata++;
                 }

@@ -30,9 +30,9 @@ namespace Minesweeper.Models
         /// <exception cref="ArgumentOutOfRangeException"> Throws when any of the parameters are less than or equal to 0. </exception>
         public MinesweeperBoard(int sizeRows, int sizeCols, int numberOfMines)
         {
-            this.CheckIfIntegerIsLargerThanZero(sizeRows);
-            this.CheckIfIntegerIsLargerThanZero(sizeCols);
-            this.CheckIfIntegerIsLargerThanZero(numberOfMines);
+            this.CheckIfIntegerIsLessThanZero(sizeRows);
+            this.CheckIfIntegerIsLessThanZero(sizeCols);
+            this.CheckIfIntegerIsLessThanZero(numberOfMines);
 
             this.rows = sizeRows;
             this.cols = sizeCols;
@@ -96,16 +96,27 @@ namespace Minesweeper.Models
         /// <param name="row"> Row coordinate. </param>
         /// <param name="column"> Column coordinate. </param>
         /// <exception cref="ArgumentOutOfRangeException"></exception>
-        public void SetContentAtCoordinates(int row, int column)
+        public void UpdateCellContentAtCoordinates(int row, int column)
         {
-            this.CheckIfIntegerIsLargerThanZero(row);
-            this.CheckIfIntegerIsLargerThanZero(column);
+            this.CheckIfIntegerIsLessThanZero(row);
+            this.CheckIfIntegerIsLessThanZero(column);
 
             this.CheckIfCoordinateIsLargerThanBoardSize(row, this.NumberOfRows);
             this.CheckIfCoordinateIsLargerThanBoardSize(column, this.NumberOfColumns);
 
-            var content = this.DetermineCellContentBasedOnSurroundingMines(row, column);
-            this.visibleGrid[row][column] = content;
+            var cellContent = string.Empty;
+
+            var isMinsAtPosition = this.minesGrid[row][column] == MinesweeperBoard.MineCellSymbol;
+            if (isMinsAtPosition)
+            {
+                cellContent = MinesweeperBoard.MineCellSymbol;
+            }
+            else
+            {
+                cellContent = this.DetermineCellContentBasedOnSurroundingMines(row, column);
+            }
+
+            this.visibleGrid[row][column] = cellContent;
         }
 
         /// <summary>
@@ -168,15 +179,33 @@ namespace Minesweeper.Models
             }
         }
 
-        private string DetermineCellContentBasedOnSurroundingMines(int row, int col)
+        private string DetermineCellContentBasedOnSurroundingMines(int rowCoordinate, int colCoordinate)
         {
-            // TODO: 
-            return "5";
+            var startRow = Math.Max(rowCoordinate - 1, 0);
+            var endRow = Math.Min(rowCoordinate + 1, this.NumberOfRows - 1);
+
+            var startCol = Math.Max(colCoordinate - 1, 0);
+            var endCol = Math.Min(colCoordinate + 1, this.NumberOfColumns - 1);
+
+            var surroundingMinesCount = 0;
+            for (int row = startRow; row <= endRow; row++)
+            {
+                for (int col = startCol; col <= endCol; col++)
+                {
+                    if (this.minesGrid[row][col] == MinesweeperBoard.MineCellSymbol)
+                    {
+                        surroundingMinesCount++;
+                    }
+                }
+            }
+
+            return surroundingMinesCount.ToString();
         }
 
-        private void CheckIfIntegerIsLargerThanZero(int value)
+
+        private void CheckIfIntegerIsLessThanZero(int value)
         {
-            if (value <= 0)
+            if (value < 0)
             {
                 throw new ArgumentOutOfRangeException("MinesweeperBoard constructor.");
             }

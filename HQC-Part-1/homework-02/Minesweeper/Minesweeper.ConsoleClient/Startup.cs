@@ -11,10 +11,9 @@ namespace Minesweeper.ConsoleClient
     {
         public static void Main(string[] args)
         {
-            Console.WriteLine("Hajde da igraem na “Mini4KI”. Probvaj si kasmeta da otkriesh poleteta bez mini4ki." +
-                   " Komanda 'top' pokazva klasiraneto, 'restart' po4va nova igra, 'exit' izliza i hajde 4ao!");
-
             var game = CreateGame();
+
+            game.StartNewGame();
             while(game.IsRunning)
             {
                 game.ExecuteNextGameCycle();

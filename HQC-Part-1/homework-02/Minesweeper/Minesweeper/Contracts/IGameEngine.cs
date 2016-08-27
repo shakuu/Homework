@@ -11,6 +11,11 @@
         bool IsRunning { get; }
 
         /// <summary>
+        /// Prepare a new game.
+        /// </summary>
+        void StartNewGame();
+
+        /// <summary>
         /// Execute next User command.
         /// </summary>
         void ExecuteNextGameCycle();

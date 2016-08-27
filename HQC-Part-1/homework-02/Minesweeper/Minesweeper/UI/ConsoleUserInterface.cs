@@ -57,20 +57,19 @@ namespace Minesweeper.UI
         /// <param name="scoreList"> List of IScoreCard objects to display. </param>
         public void DisplayHighScore(IList<IScoreCard> scoreList)
         {
-            Console.WriteLine("Top Scores List: ");
-            if (scoreList.Count > 0)
-            {
-                for (int i = 0; i < scoreList.Count; i++)
-                {
-                    Console.WriteLine("{0}. {1} --> {2} cells.",
-                        i + 1, scoreList[i].Name, scoreList[i].Score);
-                }
-                Console.WriteLine();
-            }
-            else
+            if (scoreList.Count == 0)
             {
                 Console.WriteLine("List is empty.");
+                return;
             }
+
+            Console.WriteLine("Top Scores List: ");
+            for (int i = 0; i < scoreList.Count; i++)
+            {
+                Console.WriteLine("{0}. {1} --> {2} cells.",
+                    i + 1, scoreList[i].Name, scoreList[i].Score);
+            }
+            Console.WriteLine();
         }
 
         /// <summary>
