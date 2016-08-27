@@ -3,6 +3,7 @@
 using Minesweeper.Contracts;
 using Minesweeper.Engine;
 using Minesweeper.Models;
+using Minesweeper.Models.GameBoards;
 using Minesweeper.UI;
 
 namespace Minesweeper.ConsoleClient
@@ -17,8 +18,8 @@ namespace Minesweeper.ConsoleClient
             var numberOfGameBoardMines = 15;
 
             var game = CreateGame(
-                successfulTurnsToWin, 
-                numberOfGameBoardRows, 
+                successfulTurnsToWin,
+                numberOfGameBoardRows,
                 numberOfGameBoardColumns,
                 numberOfGameBoardMines);
 
@@ -37,9 +38,9 @@ namespace Minesweeper.ConsoleClient
             int numberOfColumns,
             int numberOfMines)
         {
+            var gameBoard = new DemoFixedSizeMinesweeperBoard();
             var scoreBoard = new ScoreBoard(typeof(ScoreCard));
             var userInterFace = new ConsoleUserInterface(numberOfRows, numberOfColumns);
-            var gameBoard = new MinesweeperBoard(numberOfRows, numberOfColumns, numberOfMines);
             var minesweeper = new MinesweeperEngine(successfulTurnsToWin, gameBoard, scoreBoard, userInterFace);
 
             return minesweeper;

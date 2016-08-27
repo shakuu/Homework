@@ -51,12 +51,6 @@ namespace Minesweeper.Engine
             this.scoreBoard = scoreBoard;
             this.userInterface = userInterface;
             this.winConditionSuccsessfulTurns = winCondition;
-
-            this.isRunning = true;
-            this.isGameOver = false;
-            this.isWon = false;
-
-            this.gameBoard.GenerateNewGameBoard();
         }
 
         /// <summary>
@@ -121,7 +115,7 @@ namespace Minesweeper.Engine
             }
 
             this.userInterface.DisplayGameBoard(this.gameBoard);
-            
+
             if (this.isWon || this.isGameOver)
             {
                 if (this.isWon)

@@ -47,6 +47,7 @@
     <Compile Include="Contracts\IScoreCard.cs" />
     <Compile Include="Contracts\IUserInterface.cs" />
     <Compile Include="Engine\MinesweeperEngine.cs" />
+    <Compile Include="Models\GameBoards\DemoFixedSizeMinesweeperBoard.cs" />
     <Compile Include="Models\MinesweeperBoard.cs" />
     <Compile Include="Models\ScoreBoard.cs" />
     <Compile Include="Models\ScoreCard.cs" />
