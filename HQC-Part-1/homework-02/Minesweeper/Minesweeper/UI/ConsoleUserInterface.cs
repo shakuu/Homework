@@ -22,6 +22,8 @@ namespace Minesweeper.UI
         {
             this.gameBoardRows = gameBoardRows;
             this.gameBoardColumns = gameBoardColumns;
+
+            this.SetUpConsoleSettings();
         }
 
         /// <summary>
@@ -102,6 +104,17 @@ namespace Minesweeper.UI
         {
             var userInput = Console.ReadLine().Trim();
             return userInput;
+        }
+
+        private void SetUpConsoleSettings()
+        {
+            Console.Title = "Minesweeper!";
+
+            Console.WindowWidth = (this.gameBoardColumns * 2) + 6;
+            Console.BufferWidth = Console.WindowWidth;
+
+            Console.WindowHeight = (this.gameBoardRows * 2) + 5;
+            Console.BufferHeight = Console.WindowHeight;
         }
     }
 }
