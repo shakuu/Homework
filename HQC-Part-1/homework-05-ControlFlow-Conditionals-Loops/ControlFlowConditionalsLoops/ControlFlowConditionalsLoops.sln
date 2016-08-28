@@ -5,6 +5,10 @@ VisualStudioVersion = 14.0.25420.1
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Task1.ClassChef", "Task1.ClassChef\Task1.ClassChef.csproj", "{DFD8F913-B1C1-406D-8E77-24B582039266}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Task2.RefactorIfStatements", "Task2.RefactorIfStatements\Task2.RefactorIfStatements.csproj", "{A9322FE6-4682-4C56-9E4A-C2517740F1A5}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Task3.RefactorLoop", "Task3.RefactorLoop\Task3.RefactorLoop.csproj", "{372769D5-1C8E-43D6-AB08-F694376DA272}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +19,14 @@ Global
 		{DFD8F913-B1C1-406D-8E77-24B582039266}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{DFD8F913-B1C1-406D-8E77-24B582039266}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{DFD8F913-B1C1-406D-8E77-24B582039266}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A9322FE6-4682-4C56-9E4A-C2517740F1A5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A9322FE6-4682-4C56-9E4A-C2517740F1A5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A9322FE6-4682-4C56-9E4A-C2517740F1A5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A9322FE6-4682-4C56-9E4A-C2517740F1A5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{372769D5-1C8E-43D6-AB08-F694376DA272}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{372769D5-1C8E-43D6-AB08-F694376DA272}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{372769D5-1C8E-43D6-AB08-F694376DA272}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{372769D5-1C8E-43D6-AB08-F694376DA272}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

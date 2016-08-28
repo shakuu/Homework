@@ -43,6 +43,9 @@
     <Compile Include="Chef.cs" />
     <Compile Include="Contracts\IBowl.cs" />
     <Compile Include="Contracts\ICarrot.cs" />
+    <Compile Include="Contracts\IChef.cs" />
+    <Compile Include="Contracts\IMeal.cs" />
+    <Compile Include="Contracts\IMicrowave.cs" />
     <Compile Include="Contracts\IPotato.cs" />
     <Compile Include="Contracts\IVegetable.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
