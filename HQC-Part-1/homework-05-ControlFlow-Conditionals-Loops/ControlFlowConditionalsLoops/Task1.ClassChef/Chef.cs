@@ -1,4 +1,6 @@
-﻿using Task1.ClassChef.Contracts;
+﻿using System;
+
+using Task1.ClassChef.Contracts;
 
 namespace Task1.ClassChef
 {
@@ -24,37 +26,27 @@ namespace Task1.ClassChef
 
         private IVegetable Cut(IVegetable vegetable)
         {
-            vegetable.IsCut = true;
-
-            return vegetable;
+            throw new NotImplementedException();
         }
 
         private IVegetable Peel(IVegetable vegetable)
         {
-            vegetable.IsPealed = true;
-
-            return vegetable;
+            throw new NotImplementedException();
         }
 
         private IPotato GetPotato()
         {
-            IPotato potato = null;
-
-            return potato;
+            throw new NotImplementedException();
         }
 
         private ICarrot GetCarrot()
         {
-            ICarrot carrot = null;
-
-            return carrot;
+            throw new NotImplementedException();
         }
 
         private IBowl GetBowl()
         {
-            IBowl bowl = null;
-
-            return bowl;
+            throw new NotImplementedException();
         }
     }
 }

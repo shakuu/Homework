@@ -17,8 +17,7 @@ namespace Task3.RefactorLoop
                     break;
                 }
             }
-
-            // More code here
+            
             if (expectedValueIsFound)
             {
                 Console.WriteLine("Value Found");
