@@ -2,33 +2,29 @@
 
 namespace Feathers
 {
-    class Feathers
+    public class Feathers
     {
-        static void Main()
+        public static void Main()
         {
-            //input 
-            // birds 0 - 80 000, feathers 0 2 000 000 000
-            int numBirds = int.Parse(Console.ReadLine());
-            int numFeathers = int.Parse(Console.ReadLine());
+            const long EvenAverageFeathersModifier = 123123123123;
+            const int OddAverageFeathersModifier = 317;
 
-            // get average
-            double AvgFeathers = (double)numFeathers / (double)numBirds;
+            var numberOfBirds = int.Parse(Console.ReadLine());
+            var numberOfFeathers = int.Parse(Console.ReadLine());
 
-            // modify
-            // even * 123 123 123 123
-            double evenResult = 0;
+            double averageFeathersPerBird = (double)numberOfFeathers / (double)numberOfBirds;
 
-            if (numBirds%2 == 0)
+            double result = 0;
+            if (numberOfBirds % 2 == 0)
             {
-                evenResult =AvgFeathers * 123123123123;
+                result = averageFeathersPerBird * EvenAverageFeathersModifier;
             }
-            else if (numBirds%2!=0)
+            else
             {
-                evenResult = AvgFeathers / 317;
+                result = averageFeathersPerBird / OddAverageFeathersModifier;
             }
 
-            //output
-            Console.WriteLine(evenResult.ToString("0.0000"));
+            Console.WriteLine(result.ToString("0.0000"));
         }
     }
 }

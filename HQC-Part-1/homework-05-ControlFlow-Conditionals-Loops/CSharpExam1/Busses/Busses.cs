@@ -1,51 +1,32 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Busses
 {
-    class Busses
+    public class Busses
     {
-        static void Main()
+        public static void Main()
         {
-
-            //input 
-            int NumOfBusses = int.Parse(Console.ReadLine());
-
-            //variables
-            int currSpeed = 0;
-            int prevSpeed = 0;
-
-            // Busses - contains speeds
-            List<int> Busses = new List<int>();
-
-            int GroupsCounter = 1;
-
-            //first bus
-            prevSpeed = int.Parse(Console.ReadLine());
-
-            //second bus
-            for (int Bus = 1; Bus < NumOfBusses; Bus++)
+            var numberOfLinesTorRead = int.Parse(Console.ReadLine());
+            
+            var groupsCounter = 1;
+            var previousBusSpeed = int.Parse(Console.ReadLine());
+            for (int Bus = 1; Bus < numberOfLinesTorRead; Bus++)
             {
-                // Step 1: read current speed
-                currSpeed = int.Parse(Console.ReadLine());
-                
-                //Step 2: Compare to previous
-                if (currSpeed > prevSpeed)
+                // If the current bus is travelling faster than the one in front 
+                // then it will catch up to it. Otherwise it will start a new group of busses.
+                var nextBusSpeed = int.Parse(Console.ReadLine());
+                if (nextBusSpeed > previousBusSpeed)
                 {
-                    currSpeed = prevSpeed;
+                    nextBusSpeed = previousBusSpeed;
                 }
                 else
                 {
-                    GroupsCounter++;
-
-                    prevSpeed = currSpeed;
+                    groupsCounter++;
+                    previousBusSpeed = nextBusSpeed;
                 }
             }
-            //output
-            Console.WriteLine(GroupsCounter);
+
+            Console.WriteLine(groupsCounter);
         }
     }
 }
