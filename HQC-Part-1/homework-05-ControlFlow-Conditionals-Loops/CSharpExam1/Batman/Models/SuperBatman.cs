@@ -34,16 +34,16 @@ namespace Batman.Models
             {
                 for (int column = 0; column < this.horizontalSize; column++)
                 {
-                    var isTopLeftPartOfBatman = this.CheckIfWritingTopLeftPartOfBatman(row, column);
-                    var isTopRightPartOfBatman = this.CheckIfWritingTopRightPartOfBatman(row, column);
+                    var isTopLeftSection = this.CheckIfWritingTopLeftSection(row, column);
+                    var isTopRightSection = this.CheckIfWritingTopRightSection(row, column);
                     var isBateyes = this.CheckIfWritingBateyes(row, column);
-                    var isMidlePart = this.ChackIfWritingMiddlePart(row, column);
-                    var isBottomPart = this.CheckIfWritingBottomPart(row, column);
+                    var isMidleSection = this.ChackIfWritingMiddleSection(row, column);
+                    var isBottomSection = this.CheckIfWritingBottomSection(row, column);
 
-                    var shouldPrint = isTopLeftPartOfBatman ||
-                        isTopRightPartOfBatman ||
-                        isBottomPart ||
-                        isMidlePart ||
+                    var shouldPrint = isTopLeftSection ||
+                        isTopRightSection ||
+                        isBottomSection ||
+                        isMidleSection ||
                         isBateyes;
 
                     if (shouldPrint)
@@ -62,47 +62,76 @@ namespace Batman.Models
             return batmanBuilder.ToString();
         }
 
-        private bool CheckIfWritingBottomPart(int row, int column)
+        private bool CheckIfWritingBottomSection(int row, int column)
         {
-            var isBottomPart = row >= this.topAndBottomSize + this.middleSize &&
-                column > this.size + (row - (this.topAndBottomSize + this.middleSize)) &&
-                column < this.horizontalSize - 1 - this.size - (row - (this.topAndBottomSize + this.middleSize));
+            var bottomSectionStartRowNumber = this.topAndBottomSize + this.middleSize;
+
+            var isCorrectRow = row >= bottomSectionStartRowNumber;
+
+            var columnConstraintLeft = this.size + (row - bottomSectionStartRowNumber);
+            var columnConstraintRight = this.horizontalSize - 1 - this.size - (row - bottomSectionStartRowNumber);
+            var isColumnWithinConstraintsLeftSide = column > columnConstraintLeft;
+            var isColumnWithinConstraintsRightSide = column < columnConstraintRight;
+            var isCorrectColumn = isColumnWithinConstraintsLeftSide && isColumnWithinConstraintsRightSide;
+
+            var isBottomPart = isCorrectRow && isCorrectColumn;
 
             return isBottomPart;
         }
 
-        private bool ChackIfWritingMiddlePart(int row, int column)
+        private bool ChackIfWritingMiddleSection(int row, int column)
         {
-            var isMiddlePart = row >= this.topAndBottomSize &&
-                row < this.topAndBottomSize + this.middleSize &&
-                column >= (this.size - 1) / 2 &&
-                column <= this.horizontalSize - ((this.size + 1) / 2);
+            var rowConstraintTop = this.topAndBottomSize;
+            var rowConstraintBottom = this.topAndBottomSize + this.middleSize;
+            var isRowWithinConstraintsTop = row >= rowConstraintTop;
+            var isRowWithinConstraintsBottom = row < rowConstraintBottom;
+            var isCorrectRow = isRowWithinConstraintsTop && isRowWithinConstraintsBottom;
+
+            var columnConstraintLeft = (this.size - 1) / 2;
+            var columnConstraintRight = this.horizontalSize - ((this.size + 1) / 2);
+            var isColumnWithinConstraintLeft = column >= columnConstraintLeft;
+            var isColumnWithinConstraintRight = column <= columnConstraintRight;
+            var isCorrectColumn = isColumnWithinConstraintLeft && isColumnWithinConstraintRight;
+
+            var isMiddlePart = isCorrectRow && isCorrectColumn;
 
             return isMiddlePart;
         }
 
         private bool CheckIfWritingBateyes(int row, int column)
         {
-            var isBateyes = row == this.topAndBottomSize - 1 &&
-                (column == this.horizontalMiddlePoint - 1 || column == this.horizontalMiddlePoint + 1);
+            var isCorrectRow = row == this.topAndBottomSize - 1;
+
+            var isCorrectColumnLeft = column == this.horizontalMiddlePoint - 1;
+            var isCorrectColumnRight = column == this.horizontalMiddlePoint + 1;
+            var isCorrectColumn = isCorrectColumnLeft || isCorrectColumnRight;
+
+            var isBateyes = isCorrectRow && isCorrectColumn;
 
             return isBateyes;
         }
 
-        private bool CheckIfWritingTopRightPartOfBatman(int row, int column)
+        private bool CheckIfWritingTopRightSection(int row, int column)
         {
-            var isTopRightPartOfBatman = row < this.topAndBottomSize
-                && column > (this.horizontalSize - 1 - this.size)
-                && column <= this.horizontalSize - 1 - row;
+            var isCorrectRow = row < this.topAndBottomSize;
+
+            var columnLeftConstraint = this.horizontalSize - 1 - this.size;
+            var columnRightConstraint = this.horizontalSize - 1 - row;
+            var isColumnWithinLeftConstraint = column > columnLeftConstraint;
+            var isColumnWithinRightConstraint = column <= columnRightConstraint;
+            var isCorrectColumn = isColumnWithinLeftConstraint && isColumnWithinRightConstraint;
+
+            var isTopRightPartOfBatman = isCorrectRow && isCorrectColumn;
 
             return isTopRightPartOfBatman;
         }
 
-        private bool CheckIfWritingTopLeftPartOfBatman(int row, int column)
+        private bool CheckIfWritingTopLeftSection(int row, int column)
         {
-            var isTopLeftPartOfBatman = row < this.topAndBottomSize &&
-                column < this.size &&
-                column >= row;
+            var isCorrectRow = row < this.topAndBottomSize;
+            var isCorrectColumn = column < this.size && column >= row;
+
+            var isTopLeftPartOfBatman = isCorrectRow && isCorrectColumn;
 
             return isTopLeftPartOfBatman;
         }
