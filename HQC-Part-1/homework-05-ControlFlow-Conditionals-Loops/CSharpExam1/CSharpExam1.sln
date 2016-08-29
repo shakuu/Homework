@@ -3,15 +3,15 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 14
 VisualStudioVersion = 14.0.25420.1
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Feathers", "Feathers\Feathers.csproj", "{3191031B-6294-410C-805D-8707130E7406}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CSharpExam1.Task2", "CSharpExam1.Task2\CSharpExam1.Task2.csproj", "{3191031B-6294-410C-805D-8707130E7406}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Busses", "Busses\Busses.csproj", "{C760CBB5-63A5-4D47-8A63-EE8150FBF537}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CSharpExam1.Task1", "CSharpExam1.Task1\CSharpExam1.Task1.csproj", "{C760CBB5-63A5-4D47-8A63-EE8150FBF537}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Batman", "Batman\Batman.csproj", "{269E1288-CF63-40E3-BD9D-423EE4C14F13}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CSharpExam1.Task4", "CSharpExam1.Task4\CSharpExam1.Task4.csproj", "{269E1288-CF63-40E3-BD9D-423EE4C14F13}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BobyAvocado", "BobyAvocado\BobyAvocado.csproj", "{515F3F0B-8D3B-4612-B383-4910CEC7822C}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CSharpExam1.Task5", "CSharpExam1.Task5\CSharpExam1.Task5.csproj", "{515F3F0B-8D3B-4612-B383-4910CEC7822C}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NumberOfPages", "NumberOfPages\NumberOfPages.csproj", "{640C1966-EAF5-404F-B05F-CFAF6827B2E6}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CSharpExam1.Task3", "CSharpExam1.Task3\CSharpExam1.Task3.csproj", "{640C1966-EAF5-404F-B05F-CFAF6827B2E6}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
