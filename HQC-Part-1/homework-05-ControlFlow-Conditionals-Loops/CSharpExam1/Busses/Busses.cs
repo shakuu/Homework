@@ -10,7 +10,7 @@ namespace Busses
             
             var groupsCounter = 1;
             var previousBusSpeed = int.Parse(Console.ReadLine());
-            for (int Bus = 1; Bus < numberOfLinesTorRead; Bus++)
+            for (int busIndex = 1; busIndex < numberOfLinesTorRead; busIndex++)
             {
                 // If the current bus is travelling faster than the one in front 
                 // then it will catch up to it. Otherwise it will start a new group of busses.

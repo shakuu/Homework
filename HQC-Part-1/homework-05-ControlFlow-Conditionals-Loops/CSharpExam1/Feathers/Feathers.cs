@@ -12,7 +12,7 @@ namespace Feathers
             var numberOfBirds = int.Parse(Console.ReadLine());
             var numberOfFeathers = int.Parse(Console.ReadLine());
 
-            double averageFeathersPerBird = (double)numberOfFeathers / (double)numberOfBirds;
+            var averageFeathersPerBird = (double)numberOfFeathers / (double)numberOfBirds;
 
             double result = 0;
             if (numberOfBirds % 2 == 0)

@@ -1,44 +1,35 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace NumberOfPages
 {
-    class NumOfPages
+    public class NumOfPages
     {
-        static void Main()
+        public static void Main()
         {
+            var digitsCount = int.Parse(Console.ReadLine());
 
-            //input 
-            int numOfDigits = int.Parse(Console.ReadLine());
+            var digitsPerPageNumber = 1;
+            var maximumPagesWithDigitsPerPageNumber = 9;
 
-            //variables
-            int pagesPerDigit = 1;
-            int maxPages = 9;
-
-            int pageCount = 0;
-
-            while (numOfDigits > 0)
+            var pagesCount = 0;
+            while (digitsCount > 0)
             {
-                if (numOfDigits <= maxPages * pagesPerDigit)
+                if (digitsCount <= maximumPagesWithDigitsPerPageNumber * digitsPerPageNumber)
                 {
-                    pageCount += numOfDigits / pagesPerDigit;
-                    numOfDigits -= numOfDigits;
+                    pagesCount += digitsCount / digitsPerPageNumber;
+                    digitsCount -= digitsCount;
                 }
-                else if (numOfDigits > maxPages * pagesPerDigit)
+                else if (digitsCount > maximumPagesWithDigitsPerPageNumber * digitsPerPageNumber)
                 {
-
-                    pageCount += maxPages;
-                    numOfDigits -= maxPages * pagesPerDigit;
+                    pagesCount += maximumPagesWithDigitsPerPageNumber;
+                    digitsCount -= maximumPagesWithDigitsPerPageNumber * digitsPerPageNumber;
                 }
 
-                pagesPerDigit++;
-                maxPages *= 10;
+                digitsPerPageNumber++;
+                maximumPagesWithDigitsPerPageNumber *= 10;
             }
 
-            Console.WriteLine(pageCount);
+            Console.WriteLine(pagesCount);
         }
     }
 }
