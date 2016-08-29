@@ -1,17 +1,17 @@
 ﻿using System;
 
-using Batman.Models;
+using CSharpExam1.Task4.Models;
 
-namespace Batman
+namespace CSharpExam1.Task4
 {
-    public class Startup
+    public class BatConsoleSignal
     {
         public static void Main()
         {
             var batmanSize = int.Parse(Console.ReadLine());
             var batmanCharacterToPrint = Console.ReadLine();
 
-            var batman = new SuperBatman(batmanSize, batmanCharacterToPrint[0]);
+            var batman = new Batman(batmanSize, batmanCharacterToPrint[0]);
             Console.WriteLine(batman.ToString());
         }
     }

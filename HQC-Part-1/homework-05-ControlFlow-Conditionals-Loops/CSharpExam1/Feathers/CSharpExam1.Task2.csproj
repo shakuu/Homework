@@ -7,8 +7,8 @@
     <ProjectGuid>{3191031B-6294-410C-805D-8707130E7406}</ProjectGuid>
     <OutputType>Exe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Feathers</RootNamespace>
-    <AssemblyName>Feathers</AssemblyName>
+    <RootNamespace>CSharpExam1.Task2</RootNamespace>
+    <AssemblyName>CSharpExam1.Task2</AssemblyName>
     <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>

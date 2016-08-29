@@ -1,8 +1,8 @@
 ﻿using System;
 
-namespace NumberOfPages
+namespace CSharpExam1.Task3
 {
-    public class NumOfPages
+    public class NumberOfPages
     {
         public static void Main()
         {

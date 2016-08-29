@@ -1,8 +1,8 @@
 ﻿using System.Text;
 
-namespace Batman.Models
+namespace CSharpExam1.Task4.Models
 {
-    public class SuperBatman
+    public class Batman
     {
         private const char EmptySpace = ' ';
 
@@ -18,7 +18,7 @@ namespace Batman.Models
 
         private int distanceBetweenEyes;
 
-        public SuperBatman(int size, char symbolToPrint)
+        public Batman(int size, char symbolToPrint)
         {
             this.size = size;
             this.symbol = symbolToPrint;
@@ -52,7 +52,7 @@ namespace Batman.Models
                     }
                     else
                     {
-                        batmanBuilder.Append(SuperBatman.EmptySpace);
+                        batmanBuilder.Append(Batman.EmptySpace);
                     }
                 }
 

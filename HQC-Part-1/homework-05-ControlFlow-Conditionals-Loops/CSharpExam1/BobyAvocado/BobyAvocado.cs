@@ -1,89 +1,59 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
-namespace BobyAvocado // 93/ 100 
+namespace CSharpExam1.Task5
 {
-    class BobyAvocado
+    public class BobyAvocado
     {
-        static void Main()
+        public static void Main()
         {
+            var bobbysHead = uint.Parse(Console.ReadLine());
+            var bobbysHeadBitValues = GetBobbysHeadBitValues(bobbysHead);
+            var numberOfCombsToEvaluate = int.Parse(Console.ReadLine());
 
-            //input
-            uint BobbysHead = uint.Parse(Console.ReadLine());
-
-            int NumbOfCombs = int.Parse(Console.ReadLine());
-
-            //vars
-            uint currBobby = 0;
-            int OnesCounter = 0;
-            int HighOnes = 0;
-            uint BestComb = 0;
-
-            uint currBobbyBit = 0;
-            uint currCombBit = 0;
-
-            int endPos = 0;
-
-            bool canUse = true;
-
-            // get comb Length
-            for (int i = 0; i < 32; i++)
+            uint bestCombValue = 0;
+            int bestCombTeethCount = 0;
+            for (int combNumber = 0; combNumber < numberOfCombsToEvaluate; combNumber++)
             {
-                currBobby = (BobbysHead & (uint)(1 << 31 - i)) >> 31 - i;
+                var nextCombValue = uint.Parse(Console.ReadLine());
 
-                if (currBobby == 1)
+                var combTeethCount = 0;
+                var combFitsBobbysHairstyle = true;
+                for (int bitIndex = 0; bitIndex < 32; bitIndex++)
                 {
-                    endPos = 31 - i;
-                    break;
-                }
-            }
-
-
-
-            for (int comb = 0; comb < NumbOfCombs; comb++)
-            {
-                // Read a New comb
-                uint currComb = uint.Parse(Console.ReadLine());
-
-                //reset
-                OnesCounter = 0;
-                canUse = true;
-
-                // Compare to Bobbys Head
-                for (int col = 0; col < 32; col++)
-                {
-                    // get bits 
-                    currBobbyBit = (BobbysHead & (uint)(1 << col)) >> col;
-                    currCombBit = (currComb & (uint)(1 << col)) >> col;
-
-                    if (currBobbyBit == 1 &&
-                        currCombBit == currBobbyBit)
+                    var currCombBit = (nextCombValue & (uint)(1 << bitIndex)) >> bitIndex;
+                    if (bobbysHeadBitValues[bitIndex] == 1 && currCombBit == bobbysHeadBitValues[bitIndex])
                     {
-                        canUse = false;
+                        combFitsBobbysHairstyle = false;
+                        break;
                     }
 
                     if (currCombBit == 1)
                     {
-                        OnesCounter++;
+                        combTeethCount++;
                     }
                 }
 
-                // check if best
-                if (canUse)
+                // The best comb is the comb with the most teeth ( 1 bits ), 
+                // its value is the expected result.
+                if (combFitsBobbysHairstyle && combTeethCount > bestCombTeethCount)
                 {
-                    if (OnesCounter > HighOnes)
-                    {
-                        BestComb = currComb;
-                        HighOnes = OnesCounter;
-                    }
+                    bestCombValue = nextCombValue;
+                    bestCombTeethCount = combTeethCount;
                 }
-
             }
 
-            Console.WriteLine(BestComb);
+            Console.WriteLine(bestCombValue);
+        }
+
+        private static uint[] GetBobbysHeadBitValues(uint value)
+        {
+            var bitValues = new uint[32];
+            for (int bitIndex = 0; bitIndex < bitValues.Length; bitIndex++)
+            {
+                bitValues[bitIndex] = (value & (uint)(1 << bitIndex)) >> bitIndex;
+            }
+
+            return bitValues;
         }
     }
 }

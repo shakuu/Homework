@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Feathers
+namespace CSharpExam1.Task2
 {
     public class Feathers
     {

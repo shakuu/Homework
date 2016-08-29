@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Busses
+namespace CSharpExam1.Task1
 {
     public class Busses
     {

@@ -7,8 +7,8 @@
     <ProjectGuid>{269E1288-CF63-40E3-BD9D-423EE4C14F13}</ProjectGuid>
     <OutputType>Exe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Batman</RootNamespace>
-    <AssemblyName>Batman</AssemblyName>
+    <RootNamespace>CSharpExam1.Task4</RootNamespace>
+    <AssemblyName>CSharpExam1.Task4</AssemblyName>
     <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
