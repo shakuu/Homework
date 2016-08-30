@@ -10,12 +10,12 @@ namespace NestedTypesDemo
         /// <summary>
         /// Create an instance of the nested type and invoke its method.
         /// </summary>
-        /// <param name="nestedClassMethodInputParameter"> Example parameter passed to the nested type's method. </param>
-        internal static void InvokeNestedTypeMethod(object nestedClassMethodInputParameter)
+        /// <param name="nestedTypeMethodInputParameter"> Example parameter passed to the nested type's method. </param>
+        internal static void InvokeNestedTypeMethod(object nestedTypeMethodInputParameter)
         {
-            Container.Nested instanceOfTheNestedClass = new Container.Nested();
+            Container.Nested instanceOfTheNestedType = new Container.Nested();
 
-            instanceOfTheNestedClass.NestedClassMethod(nestedClassMethodInputParameter);
+            instanceOfTheNestedType.NestedTypeMethod(nestedTypeMethodInputParameter);
         }
 
         /// <summary>
@@ -27,7 +27,7 @@ namespace NestedTypesDemo
             /// Example nested type method.
             /// </summary>
             /// <param name="exampleParameter"> Parameter to print on the console. </param>
-            internal void NestedClassMethod(object exampleParameter)
+            internal void NestedTypeMethod(object exampleParameter)
             {
                 var exampleParameterAsString = exampleParameter.ToString();
                 Console.WriteLine(exampleParameterAsString);
