@@ -52,8 +52,6 @@ function solve() {
 
     var title,
         homework,
-        presentations = [],
-        // students = [],
         lastId = 0;
 
     var student = {
@@ -75,25 +73,29 @@ function solve() {
     };
 
     var Course = {
-        init: function (title, presentations) {
-            if (!presentations) {
+        init: function (title, inputPresentation) {
+            if (!inputPresentation) {
                 throw new Error();
             }
 
-            if (presentations.length === 0) {
+            if (!Array.isArray(inputPresentation)) {
                 throw new Error();
             }
 
-            presentations.forEach(function (presentation) {
+            if (inputPresentation.length === 0) {
+                throw new Error();
+            }
+
+            inputPresentation.forEach(function (presentation) {
                 validateString(presentation);
             });
 
             validateString(title);
 
             this.title = title;
-            this.presentations = presentations;
+            this.presentations = inputPresentation;
             this.students = [];
-            
+
             return this;
         },
         addStudent: function (name) {
@@ -136,6 +138,30 @@ function solve() {
             return allStudents;
         },
         submitHomework: function (studentID, homeworkID) {
+            var validStudentID = this.students.some(function (student) {
+                return student.id === studentID;
+            });
+
+            if (!validStudentID) {
+                throw new Error();
+            }
+
+            if ((homeworkID | 0) !== homeworkID) {
+                throw new Error();
+            }
+
+            homeworkID -= 1;
+            if (homeworkID < 0) {
+                throw new Error();
+            }
+
+            if (this.presentations.length <= homeworkID) {
+                throw new Error();
+            }
+
+            if (!this.presentations[homeworkID]) {
+                this.presentations[homeworkID] = [];
+            }
         },
         pushExamResults: function (results) {
         },
@@ -170,6 +196,6 @@ function solve() {
 var Course = solve();
 var course = Object.create(Course).init('Ar', ['Moulds detonate tunnel', 'Miners handed cabbages to the delight of children']);
 course.addStudent('Az Sym');
-console.log(course.getAllStudents());
+console.log(course.submitHomework(0, 1));
 
 module.exports = solve;
