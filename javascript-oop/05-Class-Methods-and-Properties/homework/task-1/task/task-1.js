@@ -62,8 +62,21 @@ class LinkedList {
             node.data = value;
             return this;
         } else {
-            return node;
+            return node.data;
         }
+    }
+
+    removeAt(index) {
+        const node = this._getNodeAtIndex(index);
+
+        if (index === 0) {
+            this._first = node.next;
+        } else {
+            const previousNode = this._getNodeAtIndex(index - 1);
+            previousNode.next = node.next;
+        }
+
+        return node.data;
     }
 
     prepend(...elements) {
@@ -185,9 +198,9 @@ class LinkedList {
 
 
 const values = [5, 6, 38],
-            list = new LinkedList().append(...values);
+    list = new LinkedList().append(...values);
 
-        for(const val of list) {
-            console.log(val);
-        }
+for (const val of list) {
+    console.log(val);
+}
 module.exports = LinkedList;
