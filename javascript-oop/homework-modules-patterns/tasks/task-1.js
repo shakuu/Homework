@@ -53,7 +53,7 @@ function solve() {
     var title,
         homework,
         presentations = [],
-        students = [],
+        // students = [],
         lastId = 0;
 
     var student = {
@@ -61,10 +61,6 @@ function solve() {
             this.firstname = firstname;
             this.lastname = lastname;
             this.id = id;
-
-            this.submitHomework = function (course, homework) {
-
-            };
 
             return this;
         }
@@ -96,6 +92,8 @@ function solve() {
 
             this.title = title;
             this.presentations = presentations;
+            this.students = [];
+            
             return this;
         },
         addStudent: function (name) {
@@ -128,13 +126,13 @@ function solve() {
             });
 
             var newId = lastId++;
-            var newStudent = Object.create(student).init(newID, studentNames[0], studentNames[1]);
-            students.push(newStudent);
+            var newStudent = Object.create(student).init(newId, studentNames[0], studentNames[1]);
+            this.students.push(newStudent);
 
             return newId;
         },
         getAllStudents: function () {
-            var allStudents = JSON.parse(JSON.stringify(students));
+            var allStudents = JSON.parse(JSON.stringify(this.students));
             return allStudents;
         },
         submitHomework: function (studentID, homeworkID) {
@@ -169,6 +167,9 @@ function solve() {
 
     return Course;
 }
-// var Course = solve();
-// var course = Object.create(Course).init('', ['Moulds detonate tunnel', 'Miners handed cabbages to the delight of children']);
+var Course = solve();
+var course = Object.create(Course).init('Ar', ['Moulds detonate tunnel', 'Miners handed cabbages to the delight of children']);
+course.addStudent('Az Sym');
+console.log(course.getAllStudents());
+
 module.exports = solve;
