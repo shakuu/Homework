@@ -408,10 +408,10 @@ describe('Test for Modules and Patterns in JavaScript', function () {
         it('expect pushExamResults to not throw if given valid students and scores', function () {
             var jsoop = Object.create(Course)
                 .init(getValidTitle(), [getValidTitle()]);
-            jsoop.addStudent(getValidName() + ' ' + getValidName());
-            jsoop.addStudent(getValidName() + ' ' + getValidName());
+            jsoop.addStudent('Az' + ' ' + 'Sym');
+            jsoop.addStudent('AzSym' + ' ' + 'Pak');
             function test() {
-                jsoop.pushExamResults([{StudentID: 1, score: 4}, {StudentID: 2, score: 5}])
+                jsoop.pushExamResults([{ StudentID: 1, score: 4 }, { StudentID: 2, score: 5 }]);
             }
 
             expect(test).to.not.throw();
