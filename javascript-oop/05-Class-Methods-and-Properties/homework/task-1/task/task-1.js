@@ -46,7 +46,12 @@ class LinkedList {
     }
 
     insert(...elements) {
-        this._addElementsAtIndex(elements.slice(1), elements[0]);
+        if (elements[0] === 0) {
+            this.prepend(...elements.slice(1));
+        } else {
+            this._addElementsAtIndex(elements.slice(1), elements[0]);
+        }
+
         return this;
     }
 
@@ -101,13 +106,19 @@ class LinkedList {
         let node = this._first;
 
         while (node) {
-            yield node;
+            yield node.data;
             node = node.next;
         }
     }
 
     _addElementsAtIndex(elements, index) {
-        let previousNode = this._getNodeAtIndex(index - 1);
+        let previousNode;
+        if (index === this.length - 1) {
+            previousNode = this._last;
+        } else {
+            previousNode = this._getNodeAtIndex(index - 1);
+        }
+
         for (let i = 0; i < elements.length; i += 1) {
             const newNode = this._createNewElement(elements[i]);
 
@@ -173,12 +184,10 @@ class LinkedList {
 }
 
 
-const list = new LinkedList()
-    .append(1, 2)
-    .append(3, 4)
-    .append(5)
-    .append(6);
+const values = [5, 6, 38],
+            list = new LinkedList().append(...values);
 
-console.log(list.toString());
-console.log(list.last);
+        for(const val of list) {
+            console.log(val);
+        }
 module.exports = LinkedList;
