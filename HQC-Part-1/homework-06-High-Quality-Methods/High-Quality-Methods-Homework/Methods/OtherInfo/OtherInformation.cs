@@ -79,9 +79,9 @@ namespace Methods.OtherInfo
             }
         }
 
-        private IEnumerable<string> SplitStringIntoWords(string info, char[] separators)
+        private IEnumerable<string> SplitStringIntoWords(string value, char[] separators)
         {
-            var infoWords = info
+            var infoWords = value
                 .Trim()
                 .Split(separators, StringSplitOptions.RemoveEmptyEntries)
                 .Select(section => section.Trim());
