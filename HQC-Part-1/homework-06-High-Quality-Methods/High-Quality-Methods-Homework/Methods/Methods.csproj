@@ -21,6 +21,7 @@
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <DocumentationFile>bin\Debug\Methods.XML</DocumentationFile>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
@@ -30,6 +31,9 @@
     <DefineConstants>TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup>
+    <StartupObject />
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
@@ -41,12 +45,13 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="OtherInfo\Contracts\IOtherInfo.cs" />
+    <Compile Include="OtherInfo\Contracts\IPersonalnformation.cs" />
     <Compile Include="Utils\CalculationHelpers.cs" />
-    <Compile Include="OtherInfo\OtherInformation.cs" />
+    <Compile Include="OtherInfo\Personalnformation.cs" />
     <Compile Include="Startup.cs" />
     <Compile Include="Students\Contracts\IStudent.cs" />
     <Compile Include="Students\Student.cs" />
+    <Compile Include="Utils\ConsoleWriter.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Properties\" />

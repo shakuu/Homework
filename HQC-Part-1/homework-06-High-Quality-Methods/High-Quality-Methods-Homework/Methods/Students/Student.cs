@@ -3,22 +3,45 @@ using Methods.Students.Contracts;
 
 namespace Methods.Students
 {
-    internal class Student : IStudent
+    /// <summary>
+    /// Student class.
+    /// </summary>
+    public class Student : IStudent
     {
-        public Student(string firstName, string lastName, IOtherInformation otherInfo)
+        /// <summary>
+        /// Creates a new Student with the provided parameters.
+        /// </summary>
+        /// <param name="firstName"></param>
+        /// <param name="lastName"></param>
+        /// <param name="otherInfo"></param>
+        public Student(string firstName, string lastName, IPersonalInformation otherInfo)
         {
             this.FirstName = firstName;
             this.LastName = lastName;
             this.OtherInfo = otherInfo;
         }
 
+        /// <summary>
+        /// Student's first name.
+        /// </summary>
         public string FirstName { get; set; }
 
+        /// <summary>
+        /// Student's last name.
+        /// </summary>
         public string LastName { get; set; }
 
-        public IOtherInformation OtherInfo { get; set; }
+        /// <summary>
+        /// Contains birth place, birth date and a list of characteristics.
+        /// </summary>
+        public IPersonalInformation OtherInfo { get; set; }
 
-        public bool IsOlderThan(Student other)
+        /// <summary>
+        /// Compare two IStudent objects by IStudent.BirthDate value.
+        /// </summary>
+        /// <param name="other"></param>
+        /// <returns></returns>
+        public bool IsOlderThan(IStudent other)
         {
             var thisBirthDate = this.OtherInfo.BirthDate;
             var otherBirthDate = other.OtherInfo.BirthDate;

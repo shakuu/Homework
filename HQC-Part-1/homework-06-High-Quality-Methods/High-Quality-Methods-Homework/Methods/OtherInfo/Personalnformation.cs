@@ -7,7 +7,10 @@ using Methods.OtherInfo.Contracts;
 
 namespace Methods.OtherInfo
 {
-    public class OtherInformation : IOtherInformation
+    /// <summary>
+    /// Provides personal information extracted from a string.
+    /// </summary>
+    public class PersonalInformation : IPersonalInformation
     {
         private const string BirthplaceCommand = "from";
         private const string BirthDateCommand = "born";
@@ -19,7 +22,14 @@ namespace Methods.OtherInfo
         private DateTime birthDate;
         private ICollection<string> characteristics;
 
-        public OtherInformation(string info)
+        /// <summary>
+        /// Parse a string containing information fields separated by comma.
+        /// "from" field describes birth place.
+        /// "born" field describes birth date.
+        /// All other strings are treated as characteristics.
+        /// </summary>
+        /// <param name="info"> Information string to parse. </param>
+        public PersonalInformation(string info)
         {
             if (string.IsNullOrEmpty(info))
             {
@@ -31,6 +41,9 @@ namespace Methods.OtherInfo
             this.ParseInputInfo(info);
         }
 
+        /// <summary>
+        /// Date of birth.
+        /// </summary>
         public DateTime BirthDate
         {
             get
@@ -44,10 +57,18 @@ namespace Methods.OtherInfo
             }
         }
 
+        /// <summary>
+        /// Place of birth.
+        /// </summary>
         public string Birthplace
         {
             get
             {
+                if (this.birthPlace == null)
+                {
+                    this.birthPlace = "not available";
+                }
+
                 return this.birthPlace;
             }
 
@@ -57,6 +78,9 @@ namespace Methods.OtherInfo
             }
         }
 
+        /// <summary>
+        /// Comma separated list of a person's characteristics.
+        /// </summary>
         public string Characteristics
         {
             get
@@ -92,6 +116,11 @@ namespace Methods.OtherInfo
                 var infoSectionWords = this.SplitStringIntoWords(section, sectionSeparators);
                 this.ParseInfoSectionWords(infoSectionWords);
             }
+
+            if (this.birthDate == default(DateTime))
+            {
+                throw new ArgumentException("Personal Information string must contain a birth date.");
+            }
         }
 
         private IEnumerable<string> SplitStringIntoWords(string value, char[] separators)
@@ -106,36 +135,36 @@ namespace Methods.OtherInfo
 
         private void ParseInfoSectionWords(IEnumerable<string> sectionWords)
         {
-            Action<string> action;
-            string actionParameters;
+            Action<string> commandHandler;
+            string commandHandlerParameters;
 
             var commandWord = sectionWords.FirstOrDefault().ToLower();
             if (this.infoCommandHandlers.ContainsKey(commandWord))
             {
-                action = this.infoCommandHandlers[commandWord];
-                actionParameters = sectionWords.LastOrDefault();
+                commandHandler = this.infoCommandHandlers[commandWord];
+                commandHandlerParameters = sectionWords.LastOrDefault();
             }
             else
             {
-                action = this.infoCommandHandlers[OtherInformation.DefaultCommand];
-                actionParameters = string.Join(" ", sectionWords);
+                commandHandler = this.infoCommandHandlers[PersonalInformation.DefaultCommand];
+                commandHandlerParameters = string.Join(" ", sectionWords);
             }
 
-            action.Invoke(actionParameters);
+            commandHandler.Invoke(commandHandlerParameters);
         }
 
-        private void HandleBirthplaceCommand(string value)
+        private void HandleBirthplaceCommand(string birthplace)
         {
-            if (this.CheckIfValueIsValid(value))
+            if (this.CheckIfValueIsValid(birthplace))
             {
-                this.Birthplace = value;
+                this.Birthplace = birthplace;
             }
         }
 
-        private void HandleBirthDateCommand(string value)
+        private void HandleBirthDateCommand(string date)
         {
             DateTime birthDate;
-            var isParsed = DateTime.TryParseExact(value, "dd.MM.yyyy", null, DateTimeStyles.None, out birthDate);
+            var isParsed = DateTime.TryParseExact(date, "dd.MM.yyyy", null, DateTimeStyles.None, out birthDate);
             if (isParsed)
             {
                 this.BirthDate = birthDate;
@@ -171,9 +200,9 @@ namespace Methods.OtherInfo
         {
             var dictionary = new Dictionary<string, Action<string>>()
             {
-                { OtherInformation.BirthplaceCommand, this.HandleBirthplaceCommand },
-                { OtherInformation.BirthDateCommand, this.HandleBirthDateCommand },
-                { OtherInformation.DefaultCommand, this.HandleDefaultCommand }
+                { PersonalInformation.BirthplaceCommand, this.HandleBirthplaceCommand },
+                { PersonalInformation.BirthDateCommand, this.HandleBirthDateCommand },
+                { PersonalInformation.DefaultCommand, this.HandleDefaultCommand }
             };
 
             return dictionary;

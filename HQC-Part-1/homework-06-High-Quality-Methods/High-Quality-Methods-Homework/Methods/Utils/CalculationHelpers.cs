@@ -72,45 +72,13 @@ namespace Methods.Utils
             return maximumValue;
         }
 
-        internal static void PrintToConsoleAsNumberInFormat(object number, string format)
-        {
-            if (number == null || format == null)
-            {
-                throw new ArgumentNullException("Null input.");
-            }
-
-            decimal parsedNumber;
-            var isParsed = decimal.TryParse(number.ToString(), out parsedNumber);
-            if (!isParsed)
-            {
-                throw new ArgumentException("Invalid number.");
-            }
-
-            if (format == "f")
-            {
-                Console.WriteLine("{0:f2}", number);
-            }
-            else if (format == "%")
-            {
-                Console.WriteLine("{0:p0}", number);
-            }
-            else if (format == "r")
-            {
-                Console.WriteLine("{0,8}", number);
-            }
-            else
-            {
-                throw new ArgumentException("Invalid format string.");
-            }
-        }
-
         internal static double CalculateDistance(
-            double pointOneCoordinateX,
-            double pointOneCoordinateY,
-            double pointTwoCoordinateX,
-            double pointTwoCoordinateY,
-            out bool isHorizontal,
-            out bool isVertical)
+        double pointOneCoordinateX,
+        double pointOneCoordinateY,
+        double pointTwoCoordinateX,
+        double pointTwoCoordinateY,
+        out bool isHorizontal,
+        out bool isVertical)
         {
             isHorizontal = pointOneCoordinateY == pointTwoCoordinateY;
             isVertical = pointOneCoordinateX == pointTwoCoordinateX;
