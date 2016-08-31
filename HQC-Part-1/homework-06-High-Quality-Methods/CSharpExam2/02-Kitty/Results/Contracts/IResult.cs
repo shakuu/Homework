@@ -4,8 +4,6 @@ namespace _02_Kitty.Results.Contracts
 {
     public interface IResult
     {
-        string GetResultLog();
-
         bool EvaluateCell(IPathCell pathCell);
     }
 }

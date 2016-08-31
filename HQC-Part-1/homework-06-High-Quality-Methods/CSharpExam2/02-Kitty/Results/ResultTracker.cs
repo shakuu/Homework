@@ -9,10 +9,10 @@ namespace _02_Kitty.Results
     public class ResultTracker : IResult
     {
         private bool isDeadlocked;
-        private int food;
-        private int coderSouls;
-        private int deadlocks;
-        private int jumps;
+        private int collectedFoodCount;
+        private int collectedCoderSoulsCount;
+        private int encounteredDeadlocksCount;
+        private int jumpsMadeCount;
 
         public ResultTracker()
         {
@@ -31,25 +31,25 @@ namespace _02_Kitty.Results
 
             if (!this.isDeadlocked)
             {
-                this.jumps++;
+                this.jumpsMadeCount++;
             }
 
             return this.isDeadlocked;
         }
-
-        public string GetResultLog()
+        
+        public override string ToString()
         {
             var result = new StringBuilder();
             if (this.isDeadlocked)
             {
                 result.AppendLine("You are deadlocked, you greedy kitty!");
-                result.AppendFormat(string.Format("Jumps before deadlock: {0}", this.jumps));
+                result.AppendFormat(string.Format("Jumps before deadlock: {0}", this.jumpsMadeCount));
             }
             else
             {
-                result.AppendLine(string.Format("Coder souls collected: {0}", this.coderSouls));
-                result.AppendLine(string.Format("Food collected: {0}", this.food));
-                result.AppendLine(string.Format("Deadlocks: {0}", this.deadlocks));
+                result.AppendLine(string.Format("Coder souls collected: {0}", this.collectedCoderSoulsCount));
+                result.AppendLine(string.Format("Food collected: {0}", this.collectedFoodCount));
+                result.AppendLine(string.Format("Deadlocks: {0}", this.encounteredDeadlocksCount));
             }
 
             return result.ToString();
@@ -57,16 +57,16 @@ namespace _02_Kitty.Results
 
         private bool EvaluateDeadlock(IPathCell pathCell)
         {
-            this.deadlocks++;
+            this.encounteredDeadlocksCount++;
 
             var isDeadlocked = false;
             if (pathCell.IsOddPosition)
             {
-                isDeadlocked = this.ResolveDeadlock(pathCell, CellConentType.Food, this.food);
+                isDeadlocked = this.ResolveDeadlock(pathCell, CellConentType.Food, this.collectedFoodCount);
             }
             else
             {
-                isDeadlocked = this.ResolveDeadlock(pathCell, CellConentType.CoderSoul, this.coderSouls);
+                isDeadlocked = this.ResolveDeadlock(pathCell, CellConentType.CoderSoul, this.collectedCoderSoulsCount);
             }
 
             return isDeadlocked;
@@ -93,11 +93,11 @@ namespace _02_Kitty.Results
         {
             if (typeToPayWith == CellConentType.Food)
             {
-                this.food--;
+                this.collectedFoodCount--;
             }
             else
             {
-                this.coderSouls--;
+                this.collectedCoderSoulsCount--;
             }
         }
 
@@ -106,10 +106,10 @@ namespace _02_Kitty.Results
             switch (pathCell.ContentType)
             {
                 case CellConentType.CoderSoul:
-                    this.coderSouls++;
+                    this.collectedCoderSoulsCount++;
                     break;
                 case CellConentType.Food:
-                    this.food++;
+                    this.collectedFoodCount++;
                     break;
                 default:
                     break;

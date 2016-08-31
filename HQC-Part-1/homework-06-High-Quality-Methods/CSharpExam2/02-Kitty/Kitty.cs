@@ -9,17 +9,17 @@ namespace _02_Kitty
     {
         static void Main()
         {
-            var path = Console.ReadLine();
-            var jumps = Console.ReadLine();
+            var inputPath = Console.ReadLine();
+            var inputJumpsLengths = Console.ReadLine();
 
-            var pathCells = KittyPathCell.GenerateSequenceOfPathCells(path);
             var sequenceGenerator = new JumpSequenceGenerator();
+            var pathCells = KittyPathCell.GenerateSequenceOfPathCells(inputPath);
             var kittyPath = new KittyPath(pathCells, sequenceGenerator);
 
             var resultTracker = new ResultTracker();
-            var result = kittyPath.EvaluteSequenceOfJumps(jumps, resultTracker);
+            var result = kittyPath.EvaluteSequenceOfJumps(inputJumpsLengths, resultTracker);
 
-            Console.WriteLine(result.GetResultLog());
+            Console.WriteLine(result);
         }
     }
 }
