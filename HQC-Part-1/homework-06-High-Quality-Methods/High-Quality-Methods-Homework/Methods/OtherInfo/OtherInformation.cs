@@ -1,12 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
 
 using Methods.OtherInfo.Contracts;
 
 namespace Methods.OtherInfo
 {
-    internal class OtherInfo : IOtherInfo
+    public class OtherInformation : IOtherInformation
     {
         private const string BirthplaceCommand = "from";
         private const string BirthDateCommand = "born";
@@ -18,7 +19,7 @@ namespace Methods.OtherInfo
         private DateTime birthDate;
         private ICollection<string> characteristics;
 
-        public OtherInfo(string info)
+        public OtherInformation(string info)
         {
             if (string.IsNullOrEmpty(info))
             {
@@ -34,12 +35,12 @@ namespace Methods.OtherInfo
         {
             get
             {
-                throw new NotImplementedException();
+                return this.birthDate;
             }
 
             private set
             {
-
+                this.birthDate = value;
             }
         }
 
@@ -47,25 +48,21 @@ namespace Methods.OtherInfo
         {
             get
             {
-                throw new NotImplementedException();
+                return this.birthPlace;
             }
 
             private set
             {
-
+                this.birthPlace = value;
             }
         }
 
-        public ICollection<string> Characteristics
+        public string Characteristics
         {
             get
             {
-                throw new NotImplementedException();
-            }
-
-            private set
-            {
-
+                var characteristics = string.Join(", ", this.characteristics);
+                return characteristics;
             }
         }
 
@@ -81,41 +78,44 @@ namespace Methods.OtherInfo
 
         private IEnumerable<string> SplitStringIntoWords(string info, char[] separators)
         {
-            var infoSections = info
+            var infoWords = info
                 .Trim()
                 .Split(separators, StringSplitOptions.RemoveEmptyEntries)
                 .Select(section => section.Trim())
                 .ToList();
 
-            return infoSections;
+            return infoWords;
         }
 
         private void ParseInfoSectionWords(IEnumerable<String> sectionWords)
         {
             Action<string> action;
 
-            var commandWord = sectionWords.First().ToLower();
+            var commandWord = sectionWords.FirstOrDefault().ToLower();
             if (this.infoCommandHandlers.ContainsKey(commandWord))
             {
                 action = this.infoCommandHandlers[commandWord];
             }
             else
             {
-                action = this.infoCommandHandlers[OtherInfo.DefaultCommand];
+                action = this.infoCommandHandlers[OtherInformation.DefaultCommand];
             }
 
-            action.Invoke(sectionWords.Last());
+            action.Invoke(sectionWords.LastOrDefault());
         }
 
         private void HandleBirthplaceCommand(string value)
         {
-            this.Birthplace = value;
+            if (this.CheckIfValueIsValid(value))
+            {
+                this.Birthplace = value;
+            }
         }
 
         private void HandleBirthDateCommand(string value)
         {
             DateTime birthDate;
-            var isParsed = DateTime.TryParse(value, out birthDate);
+            var isParsed = DateTime.TryParseExact(value, "dd.MM.yyyy", null, DateTimeStyles.None, out birthDate);
             if (isParsed)
             {
                 this.BirthDate = birthDate;
@@ -128,16 +128,32 @@ namespace Methods.OtherInfo
 
         private void HandleDefaultCommand(string value)
         {
-            this.characteristics.Add(value);
+            if (this.CheckIfValueIsValid(value))
+            {
+                this.characteristics.Add(value);
+            }
+        }
+
+        private bool CheckIfValueIsValid(object value)
+        {
+            var isNull = value == null;
+            if (isNull)
+            {
+                throw new ArgumentNullException();
+            }
+            else
+            {
+                return true;
+            }
         }
 
         private IDictionary<string, Action<string>> BuildHandlersDictionary()
         {
             var dictionary = new Dictionary<string, Action<string>>()
             {
-                { OtherInfo.BirthplaceCommand, this.HandleBirthplaceCommand },
-                { OtherInfo.BirthDateCommand, this.HandleBirthDateCommand   },
-                { OtherInfo.DefaultCommand, this.HandleDefaultCommand       },
+                { OtherInformation.BirthplaceCommand, this.HandleBirthplaceCommand },
+                { OtherInformation.BirthDateCommand, this.HandleBirthDateCommand   },
+                { OtherInformation.DefaultCommand, this.HandleDefaultCommand       },
             };
 
             return dictionary;

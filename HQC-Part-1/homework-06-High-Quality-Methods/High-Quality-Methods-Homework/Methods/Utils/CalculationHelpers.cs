@@ -1,9 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace Methods
+namespace Methods.Utils
 {
-    internal class Utilities
+    internal class CalculationHelpers
     {
         internal static double CalculateTriangleArea(double a, double b, double c)
         {

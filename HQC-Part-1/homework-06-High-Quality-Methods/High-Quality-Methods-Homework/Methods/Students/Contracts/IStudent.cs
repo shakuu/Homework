@@ -6,6 +6,6 @@ namespace Methods.Students.Contracts
     {
         string FirstName { get; set; }
         string LastName { get; set; }
-        IOtherInfo OtherInfo { get; set; }
+        IOtherInformation OtherInfo { get; set; }
     }
 }
