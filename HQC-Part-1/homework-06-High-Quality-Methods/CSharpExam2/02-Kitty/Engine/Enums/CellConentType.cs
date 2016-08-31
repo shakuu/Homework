@@ -2,6 +2,7 @@
 {
     public enum CellConentType
     {
+        Empty,
         CoderSoul,
         Deadlock,
         Food

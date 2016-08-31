@@ -5,10 +5,8 @@ namespace _02_Kitty.Results.Contracts
 {
     public interface IResult
     {
-        bool IsDeadlocked { get; }
-
         string WriteResult(IWriter writer);
 
-        bool EvaluateCellContent(IPathCell contentType);
+        bool EvaluateCell(IPathCell pathCell);
     }
 }

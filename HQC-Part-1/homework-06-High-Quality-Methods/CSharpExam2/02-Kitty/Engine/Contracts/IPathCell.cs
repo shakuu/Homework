@@ -4,7 +4,7 @@ namespace _02_Kitty.Engine.Contracts
 {
     public interface IPathCell
     {
-        CellConentType ContentType { get; }
+        CellConentType ContentType { get; set; }
 
         bool IsOddPosition { get; set; }
 

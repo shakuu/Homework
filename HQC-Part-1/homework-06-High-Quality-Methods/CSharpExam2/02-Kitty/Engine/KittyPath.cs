@@ -36,7 +36,7 @@ namespace _02_Kitty.Engine
             foreach (var jumpPosition in jumpsPositionsSequence)
             {
                 var nextPathCell = this.pathCells[jumpPosition];
-                var isDeadlocked = resultTracker.EvaluateCellContent(nextPathCell);
+                var isDeadlocked = resultTracker.EvaluateCell(nextPathCell);
                 if (isDeadlocked)
                 {
                     break;

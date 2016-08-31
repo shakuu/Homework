@@ -29,6 +29,11 @@ namespace _02_Kitty.Engine
             {
                 return this.contentType;
             }
+
+            set
+            {
+                this.contentType = value;
+            }
         }
 
         public bool IsCollected

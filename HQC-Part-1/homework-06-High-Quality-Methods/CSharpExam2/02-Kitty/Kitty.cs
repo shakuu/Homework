@@ -2,6 +2,9 @@
 using System.Linq;
 using System.Text;
 
+using _02_Kitty.Engine;
+using _02_Kitty.Results;
+
 namespace _02_Kitty
 {
 
@@ -142,9 +145,18 @@ namespace _02_Kitty
 
         static void Main()
         {
-            Input();
-            CatMove();
-            Output();
+            var path = Console.ReadLine();
+            var jumps = Console.ReadLine();
+
+            var pathCells = KittyPathCell.GenerateSequenceOfPathCells(path);
+            var sequenceGEnerator = new JumpSequenceGenerator();
+            var score = new ResultTracker();
+            var kittyPath = new KittyPath(pathCells, sequenceGEnerator);
+            var result = kittyPath.EvaluteSequenceOfJumps(jumps, score);
+
+            //Input();
+            //CatMove();
+            //Output();
         }
     }
 }

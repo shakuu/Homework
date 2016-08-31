@@ -43,12 +43,23 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Engine\Contracts\IPath.cs" />
+    <Compile Include="Engine\Contracts\IPathCell.cs" />
+    <Compile Include="Engine\Contracts\ISequenceGenerator.cs" />
+    <Compile Include="Engine\JumpSequenceGenerator.cs" />
+    <Compile Include="Engine\KittyPath.cs" />
+    <Compile Include="Engine\KittyPathCell.cs" />
+    <Compile Include="Results\Contracts\IResult.cs" />
     <Compile Include="Kitty.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Engine\Enums\CellConentType.cs" />
+    <Compile Include="Results\ResultTracker.cs" />
+    <Compile Include="Utils\Contracts\IWriter.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
