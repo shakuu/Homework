@@ -1,17 +1,15 @@
-﻿
+﻿using System;
+using System.Linq;
+using System.Text;
+
 namespace _02_Kitty
 {
-    using System;
-    using System.Collections.Generic;
-    using System.Linq;
-    using System.Text;
-    using System.Threading.Tasks;
 
-    class Kitty // 100
+    public class Kitty
     {
-        const char Soul = '@';
-        const char Food = '*';
-        const char Deadlock = 'x';
+        private const char Soul = '@';
+        private const char Food = '*';
+        private const char Deadlock = 'x';
 
 
         private static int[] moves;

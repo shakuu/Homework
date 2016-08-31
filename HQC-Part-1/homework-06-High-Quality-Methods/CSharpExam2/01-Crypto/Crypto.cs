@@ -38,9 +38,9 @@ namespace _01_Crypto
             string alphabet = "abcdefghijklmnopqrstuvwxyz";
 
             BigInteger convertedValue = 0;
-            foreach (var ltr in number)
+            foreach (var symbol in number)
             {
-                var digit = alphabet.IndexOf(ltr);
+                var digit = alphabet.IndexOf(symbol);
                 convertedValue = digit + (convertedValue * anotherBase);
             }
 
@@ -58,7 +58,7 @@ namespace _01_Crypto
             {
                 while (number > 0)
                 {
-                    var digit = number % 9;
+                    var digit = number % anotherBase;
                     number /= anotherBase;
 
                     convertedValue.Insert(0, digit);
