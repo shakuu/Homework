@@ -62,7 +62,7 @@ namespace _02_Kitty.Results
             var isDeadlocked = false;
             if (value > 0)
             {
-                this.food--;
+                this.PayToResolveDeadlock(typeToPayWith);
                 pathCell.ContentType = typeToPayWith;
                 pathCell.IsCollected = false;
             }
@@ -72,6 +72,18 @@ namespace _02_Kitty.Results
             }
 
             return isDeadlocked;
+        }
+
+        private void PayToResolveDeadlock(CellConentType typeToPayWith)
+        {
+            if (typeToPayWith == CellConentType.Food)
+            {
+                this.food--;
+            }
+            else
+            {
+                this.coderSouls--;
+            }
         }
 
         private void CollectCellContents(IPathCell pathCell)

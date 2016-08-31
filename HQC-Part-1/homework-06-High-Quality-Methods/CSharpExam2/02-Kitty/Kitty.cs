@@ -149,10 +149,11 @@ namespace _02_Kitty
             var jumps = Console.ReadLine();
 
             var pathCells = KittyPathCell.GenerateSequenceOfPathCells(path);
-            var sequenceGEnerator = new JumpSequenceGenerator();
-            var score = new ResultTracker();
-            var kittyPath = new KittyPath(pathCells, sequenceGEnerator);
-            var result = kittyPath.EvaluteSequenceOfJumps(jumps, score);
+            var sequenceGenerator = new JumpSequenceGenerator();
+            var kittyPath = new KittyPath(pathCells, sequenceGenerator);
+
+            var resultTracker = new ResultTracker();
+            var result = kittyPath.EvaluteSequenceOfJumps(jumps, resultTracker);
 
             //Input();
             //CatMove();
