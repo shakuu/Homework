@@ -251,7 +251,6 @@ _Pvt_Extensions
 *.doc#
 *.png
 *.pdf
-*.stylecop
 *.exe
 
 typings/
