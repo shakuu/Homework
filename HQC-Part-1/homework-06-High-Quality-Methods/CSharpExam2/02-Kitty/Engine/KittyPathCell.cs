@@ -22,8 +22,7 @@ namespace _02_Kitty.Engine
             this.isOddPosition = isOddPosition;
             this.isCollected = false;
         }
-
-
+        
         public CellConentType ContentType
         {
             get
