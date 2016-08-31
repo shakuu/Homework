@@ -26,7 +26,7 @@ namespace Methods.PersonalInfo
         /// Parse a string containing information fields separated by comma.
         /// "from" field describes birth place.
         /// "born" field describes birth date.
-        /// All other strings are treated as characteristics.
+        /// All other fields are treated as characteristics.
         /// </summary>
         /// <param name="info"> Information string to parse. </param>
         public PersonalInformation(string info)
