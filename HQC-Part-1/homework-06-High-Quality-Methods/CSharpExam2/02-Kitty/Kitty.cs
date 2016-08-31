@@ -17,9 +17,9 @@ namespace _02_Kitty
             var kittyPath = new KittyPath(pathCells, sequenceGenerator);
 
             var resultTracker = new ResultTracker();
-            var result = kittyPath.EvaluteSequenceOfJumps(inputJumpsLengths, resultTracker);
+            var evaluatedResult = kittyPath.EvaluteSequenceOfJumps(inputJumpsLengths, resultTracker);
 
-            Console.WriteLine(result);
+            Console.WriteLine(evaluatedResult);
         }
     }
 }
