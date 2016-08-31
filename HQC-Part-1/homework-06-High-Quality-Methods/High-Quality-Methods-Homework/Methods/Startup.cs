@@ -8,7 +8,7 @@ namespace Methods
 {
     public class Startup
     {
-        static void Main()
+        public static void Main()
         {
             Console.WriteLine(CalculationHelpers.CalculateTriangleArea(3, 4, 5));
 

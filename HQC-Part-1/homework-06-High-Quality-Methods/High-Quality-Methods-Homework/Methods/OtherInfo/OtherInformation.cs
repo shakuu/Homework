@@ -61,9 +61,24 @@ namespace Methods.OtherInfo
         {
             get
             {
-                var characteristics = string.Join(", ", this.characteristics);
+                var characteristics = this.BuildCharacteristicsString(this.characteristics);
                 return characteristics;
             }
+        }
+
+        private string BuildCharacteristicsString(IEnumerable<string> characteristics)
+        {
+            string result;
+            if (characteristics.Count() == 0)
+            {
+                result = "not available";
+            }
+            else
+            {
+                result = string.Join(", ", this.characteristics);
+            }
+
+            return result;
         }
 
         private void ParseInputInfo(string info)
@@ -157,8 +172,8 @@ namespace Methods.OtherInfo
             var dictionary = new Dictionary<string, Action<string>>()
             {
                 { OtherInformation.BirthplaceCommand, this.HandleBirthplaceCommand },
-                { OtherInformation.BirthDateCommand, this.HandleBirthDateCommand   },
-                { OtherInformation.DefaultCommand, this.HandleDefaultCommand       },
+                { OtherInformation.BirthDateCommand, this.HandleBirthDateCommand },
+                { OtherInformation.DefaultCommand, this.HandleDefaultCommand }
             };
 
             return dictionary;

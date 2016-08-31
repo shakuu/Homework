@@ -28,16 +28,16 @@ namespace Methods.Utils
         {
             var digitTranslations = new Dictionary<int, string>()
             {
-                { 0, "zero"  },
-                { 1, "one"   },
-                { 2, "two"   },
+                { 0, "zero" },
+                { 1, "one" },
+                { 2, "two" },
                 { 3, "three" },
-                { 4, "four"  },
-                { 5, "five"  },
-                { 6, "six"   },
+                { 4, "four" },
+                { 5, "five" },
+                { 6, "six" },
                 { 7, "sevem" },
                 { 8, "eight" },
-                { 9, "nine"  }
+                { 9, "nine" }
             };
 
             string result;
@@ -104,15 +104,19 @@ namespace Methods.Utils
             }
         }
 
-
-        internal static double CalculateDistance(double xPointA, double yPointA, double xPointB, double yPointB,
-            out bool isHorizontal, out bool isVertical)
+        internal static double CalculateDistance(
+            double pointOneCoordinateX,
+            double pointOneCoordinateY,
+            double pointTwoCoordinateX,
+            double pointTwoCoordinateY,
+            out bool isHorizontal,
+            out bool isVertical)
         {
-            isHorizontal = (yPointA == yPointB);
-            isVertical = (xPointA == xPointB);
+            isHorizontal = pointOneCoordinateY == pointTwoCoordinateY;
+            isVertical = pointOneCoordinateX == pointTwoCoordinateX;
 
-            var distanceX = xPointB - xPointA;
-            var distanceY = yPointB - yPointA;
+            var distanceX = pointTwoCoordinateX - pointOneCoordinateX;
+            var distanceY = pointTwoCoordinateY - pointOneCoordinateY;
 
             var distance = Math.Sqrt((distanceX * distanceX) + (distanceY * distanceY));
             return distance;

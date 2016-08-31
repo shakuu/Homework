@@ -2,7 +2,7 @@
 
 namespace Methods.OtherInfo.Contracts
 {
-    internal interface IOtherInformation
+    public interface IOtherInformation
     {
         string Birthplace { get; }
 

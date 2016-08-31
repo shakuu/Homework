@@ -13,7 +13,9 @@ namespace Methods.Students
         }
 
         public string FirstName { get; set; }
+
         public string LastName { get; set; }
+
         public IOtherInformation OtherInfo { get; set; }
 
         public bool IsOlderThan(Student other)
