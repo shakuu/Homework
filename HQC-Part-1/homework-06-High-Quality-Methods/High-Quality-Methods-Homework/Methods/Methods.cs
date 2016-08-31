@@ -1,52 +1,59 @@
 ﻿using System;
+using System.Collections.Generic;
 
 namespace Methods
 {
-    class Methods
+    internal class Methods
     {
-        static double CalculateTriangleArea(double a, double b, double c)
+        internal static double CalculateTriangleArea(double a, double b, double c)
         {
             if (a <= 0 || b <= 0 || c <= 0)
             {
-                Console.Error.WriteLine("Sides should be positive.");
                 throw new ArgumentOutOfRangeException("Sides should be positive.");
             }
 
-            double s = (a + b + c) / 2;
-            double area = Math.Sqrt(s * (s - a) * (s - b) * (s - c));
+            var isValidTriangle = CheckIfSideLengthsCanComposeAValidTriangle(a, b, c);
+            if (!isValidTriangle)
+            {
+                throw new ArgumentException("Sides are of invalid length.");
+            }
+
+            double halfPerimeter = (a + b + c) / 2;
+            double areaSqr = halfPerimeter * (halfPerimeter - a) * (halfPerimeter - b) * (halfPerimeter - c);
+            double area = Math.Sqrt(areaSqr);
             return area;
         }
 
-        static string NumberToDigit(int number)
+        internal static string DigitToWord(int number)
         {
-            switch (number)
+            var digitTranslations = new Dictionary<int, string>()
             {
-                case 0:
-                    return "zero";
-                case 1:
-                    return "one";
-                case 2:
-                    return "two";
-                case 3:
-                    return "three";
-                case 4:
-                    return "four";
-                case 5:
-                    return "five";
-                case 6:
-                    return "six";
-                case 7:
-                    return "seven";
-                case 8:
-                    return "eight";
-                case 9:
-                    return "nine";
+                { 0, "zero"  },
+                { 1, "one"   },
+                { 2, "two"   },
+                { 3, "three" },
+                { 4, "four"  },
+                { 5, "five"  },
+                { 6, "six"   },
+                { 7, "sevem" },
+                { 8, "eight" },
+                { 9, "nine"  }
+            };
+
+            string result;
+            if (digitTranslations.ContainsKey(number))
+            {
+                result = digitTranslations[number];
+            }
+            else
+            {
+                throw new ArgumentException("Number is not a digit.");
             }
 
-            throw new ArgumentException("Value not found");
+            return result;
         }
 
-        static int FindMax(params int[] elements)
+        internal static int FindMax(params int[] elements)
         {
             if (elements == null || elements.Length == 0)
             {
@@ -60,10 +67,11 @@ namespace Methods
                     elements[0] = elements[i];
                 }
             }
+
             return elements[0];
         }
 
-        static void PrintAsNumber(object number, string format)
+        internal static void PrintAsNumber(object number, string format)
         {
             if (format == "f")
             {
@@ -80,7 +88,7 @@ namespace Methods
         }
 
 
-        static double CalcDistance(double x1, double y1, double x2, double y2,
+        internal static double CalcDistance(double x1, double y1, double x2, double y2,
             out bool isHorizontal, out bool isVertical)
         {
             isHorizontal = (y1 == y2);
@@ -90,31 +98,14 @@ namespace Methods
             return distance;
         }
 
-        static void Main()
+        private static bool CheckIfSideLengthsCanComposeAValidTriangle(double sideA, double sideB, double sideC)
         {
-            Console.WriteLine(CalculateTriangleArea(3, 4, 5));
+            var isSideAValid = sideA < (sideB + sideC);
+            var isSideBValid = sideB < (sideA + sideC);
+            var isSideCValid = sideC < (sideA + sideB);
+            var isValidTriangle = isSideAValid && isSideBValid && isSideCValid;
 
-            Console.WriteLine(NumberToDigit(5));
-
-            Console.WriteLine(FindMax(5, -1, 3, 2, 14, 2, 3));
-
-            PrintAsNumber(1.3, "f");
-            PrintAsNumber(0.75, "%");
-            PrintAsNumber(2.30, "r");
-
-            bool horizontal, vertical;
-            Console.WriteLine(CalcDistance(3, -1, 3, 2.5, out horizontal, out vertical));
-            Console.WriteLine("Horizontal? " + horizontal);
-            Console.WriteLine("Vertical? " + vertical);
-
-            Student peter = new Student() { FirstName = "Peter", LastName = "Ivanov" };
-            peter.OtherInfo = "From Sofia, born at 17.03.1992";
-
-            Student stella = new Student() { FirstName = "Stella", LastName = "Markova" };
-            stella.OtherInfo = "From Vidin, gamer, high results, born at 03.11.1993";
-
-            Console.WriteLine("{0} older than {1} -> {2}",
-                peter.FirstName, stella.FirstName, peter.IsOlderThan(stella));
+            return isValidTriangle;
         }
     }
 }
