@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using System.Globalization;
 using System.Linq;
 
-using Methods.OtherInfo.Contracts;
+using Methods.PersonalInfo.Contracts;
 
-namespace Methods.OtherInfo
+namespace Methods.PersonalInfo
 {
     /// <summary>
     /// Provides personal information extracted from a string.

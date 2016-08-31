@@ -1,4 +1,4 @@
-﻿using Methods.OtherInfo.Contracts;
+﻿using Methods.PersonalInfo.Contracts;
 using Methods.Students.Contracts;
 
 namespace Methods.Students

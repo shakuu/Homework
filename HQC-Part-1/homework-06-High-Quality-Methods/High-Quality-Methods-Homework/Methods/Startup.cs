@@ -1,6 +1,6 @@
 ﻿using System;
 
-using Methods.OtherInfo;
+using Methods.PersonalInfo;
 using Methods.Students;
 using Methods.Utils;
 
@@ -26,10 +26,10 @@ namespace Methods
             Console.WriteLine("Horizontal? " + horizontal);
             Console.WriteLine("Vertical? " + vertical);
 
-            var peterOtherInfo = new PersonalInformation("From Sofia, born on 17.03.1992");
+            var peterOtherInfo = new PersonalInfo.PersonalInformation("From Sofia, born on 17.03.1992");
             Student peter = new Student("Peter", "Ivanov", peterOtherInfo);
 
-            var stellaOtherInfo = new PersonalInformation("From Vidin, gamer, high results, born on 03.11.1993");
+            var stellaOtherInfo = new PersonalInfo.PersonalInformation("From Vidin, gamer, high results, born on 03.11.1993");
             Student stella = new Student("Stella", "Markova", stellaOtherInfo);
 
             Console.WriteLine("{0} older than {1} -> {2}", peter.FirstName, stella.FirstName, peter.IsOlderThan(stella));

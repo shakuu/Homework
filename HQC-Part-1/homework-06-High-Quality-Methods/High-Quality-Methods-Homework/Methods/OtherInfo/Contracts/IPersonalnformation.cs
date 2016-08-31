@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Methods.OtherInfo.Contracts
+namespace Methods.PersonalInfo.Contracts
 {
     /// <summary>
     /// Provides personal information extracted from a string.
