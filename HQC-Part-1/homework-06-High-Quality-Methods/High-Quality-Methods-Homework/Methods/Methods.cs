@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 namespace Methods
 {
-    internal class Methods
+    internal class Utilities
     {
         internal static double CalculateTriangleArea(double a, double b, double c)
         {
@@ -53,48 +53,68 @@ namespace Methods
             return result;
         }
 
-        internal static int FindMax(params int[] elements)
+        internal static int FindMaximumValue(params int[] elements)
         {
             if (elements == null || elements.Length == 0)
             {
-                return -1;
+                throw new ArgumentException("No elements to evaluate.");
             }
 
+            var maximumValue = elements[0];
             for (int i = 1; i < elements.Length; i++)
             {
-                if (elements[i] > elements[0])
+                if (maximumValue < elements[i])
                 {
-                    elements[0] = elements[i];
+                    maximumValue = elements[i];
                 }
             }
 
-            return elements[0];
+            return maximumValue;
         }
 
-        internal static void PrintAsNumber(object number, string format)
+        internal static void PrintToConsoleAsNumberInFormat(object number, string format)
         {
+            if (number == null || format == null)
+            {
+                throw new ArgumentNullException("Null input.");
+            }
+
+            decimal parsedNumber;
+            var isParsed = decimal.TryParse(number.ToString(), out parsedNumber);
+            if (!isParsed)
+            {
+                throw new ArgumentException("Invalid number.");
+            }
+
             if (format == "f")
             {
                 Console.WriteLine("{0:f2}", number);
             }
-            if (format == "%")
+            else if (format == "%")
             {
                 Console.WriteLine("{0:p0}", number);
             }
-            if (format == "r")
+            else if (format == "r")
             {
                 Console.WriteLine("{0,8}", number);
+            }
+            else
+            {
+                throw new ArgumentException("Invalid format string.");
             }
         }
 
 
-        internal static double CalcDistance(double x1, double y1, double x2, double y2,
+        internal static double CalculateDistance(double xPointA, double yPointA, double xPointB, double yPointB,
             out bool isHorizontal, out bool isVertical)
         {
-            isHorizontal = (y1 == y2);
-            isVertical = (x1 == x2);
+            isHorizontal = (yPointA == yPointB);
+            isVertical = (xPointA == xPointB);
 
-            double distance = Math.Sqrt((x2 - x1) * (x2 - x1) + (y2 - y1) * (y2 - y1));
+            var distanceX = xPointB - xPointA;
+            var distanceY = yPointB - yPointA;
+
+            var distance = Math.Sqrt((distanceX * distanceX) + (distanceY * distanceY));
             return distance;
         }
 

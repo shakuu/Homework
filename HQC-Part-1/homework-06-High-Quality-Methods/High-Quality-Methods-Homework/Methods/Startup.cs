@@ -1,34 +1,33 @@
 ﻿using System;
 
+using Methods.Students;
+
 namespace Methods
 {
-   public class Startup
+    public class Startup
     {
         static void Main()
         {
-            Console.WriteLine(Methods.CalculateTriangleArea(3, 4, 5));
+            Console.WriteLine(Utilities.CalculateTriangleArea(3, 4, 5));
 
-            Console.WriteLine(Methods.DigitToWord(5));
+            Console.WriteLine(Utilities.DigitToWord(5));
 
-            Console.WriteLine(Methods.FindMax(5, -1, 3, 2, 14, 2, 3));
+            Console.WriteLine(Utilities.FindMaximumValue(5, -1, 3, 2, 14, 2, 3));
 
-            Methods. PrintAsNumber(1.3, "f");
-            Methods. PrintAsNumber(0.75, "%");
-            Methods. PrintAsNumber(2.30, "r");
+            Utilities.PrintToConsoleAsNumberInFormat(1.3, "f");
+            Utilities.PrintToConsoleAsNumberInFormat(0.75, "%");
+            Utilities.PrintToConsoleAsNumberInFormat(2.30, "r");
 
-            bool horizontal, vertical;
-            Console.WriteLine(Methods.CalcDistance(3, -1, 3, 2.5, out horizontal, out vertical));
+            bool horizontal;
+            bool vertical;
+            Console.WriteLine(Utilities.CalculateDistance(3, -1, 3, 2.5, out horizontal, out vertical));
             Console.WriteLine("Horizontal? " + horizontal);
             Console.WriteLine("Vertical? " + vertical);
 
-            Student peter = new Student() { FirstName = "Peter", LastName = "Ivanov" };
-            peter.OtherInfo = "From Sofia, born at 17.03.1992";
+            //Student peter = new Student("Peter", "Ivanov", "From Sofia, born on 17.03.1992");
+            //Student stella = new Student("Stella", "Markova", "From Vidin, gamer, high results, born on 03.11.1993");
 
-            Student stella = new Student() { FirstName = "Stella", LastName = "Markova" };
-            stella.OtherInfo = "From Vidin, gamer, high results, born at 03.11.1993";
-
-            Console.WriteLine("{0} older than {1} -> {2}",
-                peter.FirstName, stella.FirstName, peter.IsOlderThan(stella));
+            //Console.WriteLine("{0} older than {1} -> {2}", peter.FirstName, stella.FirstName, peter.IsOlderThan(stella));
         }
     }
 }
