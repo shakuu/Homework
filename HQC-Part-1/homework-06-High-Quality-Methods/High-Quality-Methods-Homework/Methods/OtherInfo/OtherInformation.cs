@@ -68,10 +68,13 @@ namespace Methods.OtherInfo
 
         private void ParseInputInfo(string info)
         {
-            var infoSections = this.SplitStringIntoWords(info, new[] { ',' });
+            var infoSeparators = new[] { ',' };
+            var sectionSeparators = new[] { ' ' };
+
+            var infoSections = this.SplitStringIntoWords(info, infoSeparators);
             foreach (var section in infoSections)
             {
-                var infoSectionWords = this.SplitStringIntoWords(section, new[] { ' ' });
+                var infoSectionWords = this.SplitStringIntoWords(section, sectionSeparators);
                 this.ParseInfoSectionWords(infoSectionWords);
             }
         }
@@ -81,8 +84,7 @@ namespace Methods.OtherInfo
             var infoWords = info
                 .Trim()
                 .Split(separators, StringSplitOptions.RemoveEmptyEntries)
-                .Select(section => section.Trim())
-                .ToList();
+                .Select(section => section.Trim());
 
             return infoWords;
         }
