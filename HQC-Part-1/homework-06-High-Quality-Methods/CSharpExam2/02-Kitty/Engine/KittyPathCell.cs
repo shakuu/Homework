@@ -23,6 +23,7 @@ namespace _02_Kitty.Engine
             this.isCollected = false;
         }
 
+
         public CellConentType ContentType
         {
             get
@@ -64,7 +65,7 @@ namespace _02_Kitty.Engine
 
         public static IList<IPathCell> GenerateSequenceOfPathCells(string path)
         {
-            var isOdd = true;
+            var isOdd = false;
             var sequence = new List<IPathCell>();
             foreach (var symbol in path)
             {

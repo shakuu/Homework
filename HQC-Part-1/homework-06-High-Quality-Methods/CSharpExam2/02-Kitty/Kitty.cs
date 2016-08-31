@@ -155,9 +155,7 @@ namespace _02_Kitty
             var resultTracker = new ResultTracker();
             var result = kittyPath.EvaluteSequenceOfJumps(jumps, resultTracker);
 
-            //Input();
-            //CatMove();
-            //Output();
+            Console.WriteLine(result.GetResultLog());
         }
     }
 }

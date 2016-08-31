@@ -1,9 +1,8 @@
-﻿using System;
+﻿using System.Text;
 
 using _02_Kitty.Engine.Contracts;
 using _02_Kitty.Engine.Enums;
 using _02_Kitty.Results.Contracts;
-using _02_Kitty.Utils.Contracts;
 
 namespace _02_Kitty.Results
 {
@@ -21,23 +20,39 @@ namespace _02_Kitty.Results
 
         public bool EvaluateCell(IPathCell pathCell)
         {
-            this.jumps++;
-
             if (pathCell.ContentType == CellConentType.Deadlock)
             {
                 this.isDeadlocked = this.EvaluateDeadlock(pathCell);
             }
             else if (!pathCell.IsCollected)
             {
-                this.CollectCellContents(pathCell);
+                this.CollectCellContent(pathCell);
+            }
+
+            if (!this.isDeadlocked)
+            {
+                this.jumps++;
             }
 
             return this.isDeadlocked;
         }
 
-        public string WriteResult(IWriter writer)
+        public string GetResultLog()
         {
-            throw new NotImplementedException();
+            var result = new StringBuilder();
+            if (this.isDeadlocked)
+            {
+                result.AppendLine("You are deadlocked, you greedy kitty!");
+                result.AppendFormat(string.Format("Jumps before deadlock: {0}", this.jumps));
+            }
+            else
+            {
+                result.AppendLine(string.Format("Coder souls collected: {0}", this.coderSouls));
+                result.AppendLine(string.Format("Food collected: {0}", this.food));
+                result.AppendLine(string.Format("Deadlocks: {0}", this.deadlocks));
+            }
+
+            return result.ToString();
         }
 
         private bool EvaluateDeadlock(IPathCell pathCell)
@@ -86,7 +101,7 @@ namespace _02_Kitty.Results
             }
         }
 
-        private void CollectCellContents(IPathCell pathCell)
+        private void CollectCellContent(IPathCell pathCell)
         {
             switch (pathCell.ContentType)
             {

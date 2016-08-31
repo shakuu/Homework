@@ -11,7 +11,8 @@ namespace _02_Kitty.Engine
         public IEnumerable<int> GenerateSequenceOfPostions(string sequence, int pathSize)
         {
             var nextPosition = 0;
-            var jumpSequence = new List<int>(nextPosition);
+            var jumpSequence = new List<int>();
+            jumpSequence.Add(nextPosition);
 
             var jumpLengths = this.ParseJumpLengthsInput(sequence);
             foreach (var jumpLength in jumpLengths)
