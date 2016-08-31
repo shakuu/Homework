@@ -28,6 +28,7 @@ namespace Methods
 
             var peterOtherInfo = new OtherInformation("From Sofia, born on 17.03.1992");
             Student peter = new Student("Peter", "Ivanov", peterOtherInfo);
+
             var stellaOtherInfo = new OtherInformation("From Vidin, gamer, high results, born on 03.11.1993");
             Student stella = new Student("Stella", "Markova", stellaOtherInfo);
 

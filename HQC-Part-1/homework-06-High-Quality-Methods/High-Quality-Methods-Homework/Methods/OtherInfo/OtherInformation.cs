@@ -87,21 +87,24 @@ namespace Methods.OtherInfo
             return infoWords;
         }
 
-        private void ParseInfoSectionWords(IEnumerable<String> sectionWords)
+        private void ParseInfoSectionWords(IEnumerable<string> sectionWords)
         {
             Action<string> action;
+            string actionParameters;
 
             var commandWord = sectionWords.FirstOrDefault().ToLower();
             if (this.infoCommandHandlers.ContainsKey(commandWord))
             {
                 action = this.infoCommandHandlers[commandWord];
+                actionParameters = sectionWords.LastOrDefault();
             }
             else
             {
                 action = this.infoCommandHandlers[OtherInformation.DefaultCommand];
+                actionParameters = string.Join(" ", sectionWords);
             }
 
-            action.Invoke(sectionWords.LastOrDefault());
+            action.Invoke(actionParameters);
         }
 
         private void HandleBirthplaceCommand(string value)

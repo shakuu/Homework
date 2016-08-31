@@ -21,7 +21,7 @@ namespace Methods.Students
             var thisBirthDate = this.OtherInfo.BirthDate;
             var otherBirthDate = other.OtherInfo.BirthDate;
 
-            return thisBirthDate > otherBirthDate;
+            return thisBirthDate < otherBirthDate;
         }
     }
 }
