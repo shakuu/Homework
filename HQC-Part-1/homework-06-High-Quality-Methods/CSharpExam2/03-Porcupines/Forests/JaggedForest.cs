@@ -53,11 +53,11 @@ namespace _03_Porcupines.Forests
             switch (movement.MovementType)
             {
                 case Animals.Enums.MovementType.Jump:
-                    newPosition = this.HandleCrawlMovement(newPosition, movement.Delta.Clone(), animal);
+                    newPosition = this.HandleMovement(newPosition, movement.Delta.Clone(), animal);
                     this.SetContentAtPosition(newPosition, ForestCellContentType.Rabbit);
                     break;
                 case Animals.Enums.MovementType.Crawl:
-                    newPosition = this.HandleCrawlMovement(newPosition, movement.Delta.Clone(), animal);
+                    newPosition = this.HandleMovement(newPosition, movement.Delta.Clone(), animal);
                     this.SetContentAtPosition(newPosition, ForestCellContentType.Porcupine);
                     break;
                 default:
@@ -69,7 +69,7 @@ namespace _03_Porcupines.Forests
             return newPosition;
         }
 
-        private IPosition HandleCrawlMovement(IPosition currentPosition, IPosition delta, IAnimal animal)
+        private IPosition HandleMovement(IPosition currentPosition, IPosition delta, IAnimal animal)
         {
             // TODO: FIX THIS CRAP
             var collectedPoints = 0;
@@ -95,16 +95,22 @@ namespace _03_Porcupines.Forests
 
             if (animal.MovementType == MovementType.Jump)
             {
-                if (this.forest[currentPosition.Row][currentPosition.Column].ContentType != ForestCellContentType.Points)
-                {
-                    currentPosition = currentPosition.Subtract(delta);
-                    currentPosition = this.ValidateWithinLimits(currentPosition, delta);
-                }
-
+                currentPosition = this.ValidateCellIsEmpty(currentPosition, delta);
                 collectedPoints += this.CollectPoints(currentPosition);
             }
 
             animal.PointsCollected += collectedPoints;
+
+            return currentPosition;
+        }
+
+        private IPosition ValidateCellIsEmpty(IPosition currentPosition, IPosition delta)
+        {
+            if (this.forest[currentPosition.Row][currentPosition.Column].ContentType != ForestCellContentType.Points)
+            {
+                currentPosition = currentPosition.Subtract(delta);
+                currentPosition = this.ValidateWithinLimits(currentPosition, delta);
+            }
 
             return currentPosition;
         }
