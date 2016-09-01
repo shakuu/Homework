@@ -164,7 +164,15 @@ namespace _03_Porcupines.Forests
 
             while (this.forest.Count - (nextPosition.Column / this.baseColumnsCount) <= nextPosition.Row)
             {
-                nextPosition.Row %= this.forest.Count - ((nextPosition.Column / this.baseColumnsCount) * 2);
+                var mod = this.forest.Count - ((nextPosition.Column / this.baseColumnsCount) * 2);
+                if (this.baseColumnsCount % 2 == 0)
+                {
+                    nextPosition.Row /= mod;
+                }
+                else
+                {
+                    nextPosition.Row %= mod;
+                }
             }
 
             return nextPosition;
