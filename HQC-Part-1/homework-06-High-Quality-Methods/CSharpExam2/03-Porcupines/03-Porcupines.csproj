@@ -65,7 +65,7 @@
     <Compile Include="Forests\ForestCell.cs" />
     <Compile Include="Forests\ForestCellFactory.cs" />
     <Compile Include="Forests\JaggedForest.cs" />
-    <Compile Include="PorkVRabbit.cs" />
+    <Compile Include="AnimalPlanet.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

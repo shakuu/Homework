@@ -8,11 +8,12 @@ using _03_Porcupines.Forests;
 
 namespace _03_Porcupines
 {
-    class AnimalPlanet
+    public class AnimalPlanet
     {
-        static void Main()
+        public static void Main()
         {
             var engine = CreateEngine();
+
             var isRunning = true;
             while (isRunning)
             {
