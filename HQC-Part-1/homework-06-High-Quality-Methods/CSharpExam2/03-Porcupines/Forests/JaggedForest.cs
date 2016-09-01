@@ -42,7 +42,53 @@ namespace _03_Porcupines.Forests
 
         private IPosition HandleCrawlMovement(IPosition startPosition, IMovement movement, out int pointsCollected)
         {
+            var movesCount = this.GetMovesCount(movement);
+            for (int move = 0; move < movesCount; move++)
+            {
+
+            }
+
             throw new NotImplementedException();
+        }
+
+        private IPosition HandleMovemenet(IPosition startPosition, IPosition delta)
+        {
+            var nextPosition = startPosition.Add(delta);
+            nextPosition = this.ValidateNextPosition(nextPosition);
+
+            throw new NotImplementedException();
+        }
+
+        private IPosition ValidateNextPosition(IPosition nextPosition)
+        {
+            while (nextPosition.Row < 0)
+            {
+                nextPosition.Row += this.forest.Count;
+            }
+
+            while (this.forest.Count <= nextPosition.Row)
+            {
+                nextPosition.Row %= this.forest.Count;
+            }
+
+            throw new NotImplementedException();
+        }
+
+        private int GetMovesCount(IMovement movement)
+        {
+            var movesCount = 0;
+            if (movement.Delta.Row != 0)
+            {
+                movesCount = Math.Abs(movement.Delta.Row);
+                movement.Delta.Row /= movesCount;
+            }
+            else
+            {
+                movesCount = Math.Abs(movement.Delta.Column);
+                movement.Delta.Column /= movesCount;
+            }
+
+            return movesCount;
         }
 
         private IList<IList<IForestCell>> BuildTheForest(int rowsCount, int baseColumnsCount)
