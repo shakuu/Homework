@@ -92,8 +92,17 @@ namespace _03_Porcupines.Forests
 
             if (this.forest[currentPosition.Row][currentPosition.Column].ContentType != ForestCellContentType.Points)
             {
-                currentPosition.Subtract(delta);
-                currentPosition = this.ValidateNextVerticalPositionWithinForestLimit(currentPosition);
+                currentPosition = currentPosition.Subtract(delta);
+                if (delta.Column != 0)
+                {
+                    currentPosition = this.ValidateNextHorizontalPositionWithinForestLimit(currentPosition.Clone());
+
+                }
+                else
+                {
+                    currentPosition = this.ValidateNextVerticalPositionWithinForestLimit(currentPosition.Clone());
+
+                }
             }
 
             collectedPoints += this.CollectPoints(currentPosition);
@@ -124,8 +133,17 @@ namespace _03_Porcupines.Forests
 
                 if (this.forest[currentPosition.Row][currentPosition.Column].ContentType != ForestCellContentType.Points)
                 {
-                    currentPosition.Subtract(delta);
-                    currentPosition = this.ValidateNextVerticalPositionWithinForestLimit(currentPosition);
+                    currentPosition = currentPosition.Subtract(delta);
+                    if (delta.Column != 0)
+                    {
+                        currentPosition = this.ValidateNextHorizontalPositionWithinForestLimit(currentPosition.Clone());
+
+                    }
+                    else
+                    {
+                        currentPosition = this.ValidateNextVerticalPositionWithinForestLimit(currentPosition.Clone());
+
+                    }
                     break;
                 }
 
