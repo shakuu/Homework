@@ -9,5 +9,7 @@
         IPosition Add(IPosition delta);
 
         IPosition Subtract(IPosition delta);
+
+        IPosition Clone();
     }
 }

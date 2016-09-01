@@ -44,9 +44,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Animals\Animal.cs" />
     <Compile Include="Animals\Contracts\IAnimal.cs" />
     <Compile Include="Animals\Contracts\IPorcupine.cs" />
     <Compile Include="Animals\Contracts\IRabbit.cs" />
+    <Compile Include="Animals\Porcupine.cs" />
+    <Compile Include="Animals\Rabbit.cs" />
     <Compile Include="Engine\AnimalMovement.cs" />
     <Compile Include="Engine\AnimalPlanetEngine.cs" />
     <Compile Include="Engine\Contracts\IEngine.cs" />
@@ -54,10 +57,14 @@
     <Compile Include="Engine\Contracts\IPosition.cs" />
     <Compile Include="Engine\Enums\DirectionType.cs" />
     <Compile Include="Animals\Enums\MovementType.cs" />
+    <Compile Include="Engine\Position.cs" />
     <Compile Include="Forests\Contracts\IForest.cs" />
     <Compile Include="Forests\Contracts\IForestCell.cs" />
     <Compile Include="Forests\Contracts\IForestCellFactory.cs" />
     <Compile Include="Forests\Enums\ForestCellContentType.cs" />
+    <Compile Include="Forests\ForestCell.cs" />
+    <Compile Include="Forests\ForestCellFactory.cs" />
+    <Compile Include="Forests\JaggedForest.cs" />
     <Compile Include="PorkVRabbit.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

@@ -17,16 +17,33 @@ namespace _03_Porcupines.Forests
             this.forest = this.FillTheForest(this.forest, ForestCellContentType.Points, forestCellFactory);
         }
 
-        public IPosition EvaluateMovement(IPosition startPosition, IMovement movement, out int pointsCollected)
+        public int CollectPoints(int row, int column)
         {
-            IPosition newPosition;
+            throw new NotImplementedException();
+        }
+
+        public void SetContentAtPosition(IPosition position, ForestCellContentType contentType)
+        {
+            if (position == null)
+            {
+                throw new ArgumentException("position");
+            }
+
+            this.forest[position.Row][position.Column].ContentType = contentType;
+        }
+
+        public IPosition EvaluateMovement(IPosition startPosition, IMovement movement)
+        {
+            var newPosition = startPosition.Clone();
             switch (movement.MovementType)
             {
                 case Animals.Enums.MovementType.Jump:
-                    newPosition = this.HandleJumpMovement(startPosition, movement, out pointsCollected);
+                    newPosition = this.HandleJumpMovement(newPosition, movement.Delta.Clone());
+                    this.SetContentAtPosition(newPosition, ForestCellContentType.Rabbit);
                     break;
                 case Animals.Enums.MovementType.Crawl:
-                    newPosition = this.HandleCrawlMovement(startPosition, movement, out pointsCollected);
+                    newPosition = this.HandleCrawlMovement(newPosition, movement.Delta.Clone());
+                    this.SetContentAtPosition(newPosition, ForestCellContentType.Porcupine);
                     break;
                 default:
                     throw new ArgumentException("movement.MovementType");
@@ -35,23 +52,28 @@ namespace _03_Porcupines.Forests
             return newPosition;
         }
 
-        private IPosition HandleJumpMovement(IPosition startPosition, IMovement movement, out int pointsCollected)
+        private IPosition HandleJumpMovement(IPosition startPosition, IPosition delta)
         {
             throw new NotImplementedException();
         }
 
-        private IPosition HandleCrawlMovement(IPosition currentPosition, IMovement movement, out int pointsCollected)
+        private IPosition HandleCrawlMovement(IPosition currentPosition, IPosition delta)
         {
-            var movesCount = this.GetMovesCount(movement);
+            var movesCount = this.GetMovesCount(delta);
+            delta = this.AdjustDeltaForCrawling(delta, movesCount);
             for (int move = 0; move < movesCount; move++)
             {
-                var nextPosition = currentPosition.Add(movement.Delta);
-                currentPosition = this.ValidateNextPositionWithinForestLimit(nextPosition);
-
-                // TODO: Check if position is free
+                var nextPosition = currentPosition.Add(delta);
+                currentPosition = this.ValidateNextPositionWithinForestLimit(nextPosition.Clone());
+                if (this.forest[currentPosition.Row][currentPosition.Column].ContentType != ForestCellContentType.Points)
+                {
+                    currentPosition.Subtract(delta);
+                    currentPosition = this.ValidateNextPositionWithinForestLimit(currentPosition);
+                    break;
+                }
             }
 
-            throw new NotImplementedException();
+            return currentPosition;
         }
 
         private IPosition ValidateNextPositionWithinForestLimit(IPosition nextPosition)
@@ -80,18 +102,25 @@ namespace _03_Porcupines.Forests
             return nextPosition;
         }
 
-        private int GetMovesCount(IMovement movement)
+        private IPosition AdjustDeltaForCrawling(IPosition delta, int movesCount)
+        {
+            var newDelta = delta.Clone();
+            newDelta.Row /= movesCount;
+            newDelta.Column /= movesCount;
+
+            return newDelta;
+        }
+
+        private int GetMovesCount(IPosition delta)
         {
             var movesCount = 0;
-            if (movement.Delta.Row != 0)
+            if (delta.Row != 0)
             {
-                movesCount = Math.Abs(movement.Delta.Row);
-                movement.Delta.Row /= movesCount;
+                movesCount = Math.Abs(delta.Row);
             }
             else
             {
-                movesCount = Math.Abs(movement.Delta.Column);
-                movement.Delta.Column /= movesCount;
+                movesCount = Math.Abs(delta.Column);
             }
 
             return movesCount;

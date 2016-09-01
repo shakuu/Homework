@@ -8,7 +8,7 @@ namespace _03_Porcupines.Engine
 {
     public class AnimalMovement : IMovement
     {
-        private const string DirectionUp = "U";
+        private const string DirectionUp = "T";
         private const string DirectionDown = "D";
         private const string DirectionLeft = "L";
         private const string DirectionRight = "R";
@@ -25,7 +25,7 @@ namespace _03_Porcupines.Engine
             }
 
             this.delta = delta;
-            this.movementType = MovementType;
+            this.movementType = movementType;
             this.directionType = directionType;
         }
 

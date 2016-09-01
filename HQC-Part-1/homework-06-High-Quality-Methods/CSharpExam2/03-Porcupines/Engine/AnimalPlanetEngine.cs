@@ -39,6 +39,12 @@ namespace _03_Porcupines.Engine
                 throw new ArgumentNullException("movementCreator");
             }
 
+            if (forest == null)
+            {
+                throw new ArgumentNullException("forest");
+            }
+
+            this.forest = forest;
             this.rabbit = rabbit;
             this.porcupine = porcupine;
             this.movementCreator = movementCreator;
@@ -80,8 +86,8 @@ namespace _03_Porcupines.Engine
             var movementToEvaluate = this.movementCreator.Invoke(commandWords[1], commandWords[2], animal.MovementType);
             var startingPosition = animal.Position;
 
-            int pointsToAdd;
-            var newAnimalPosition = this.forest.EvaluateMovement(startingPosition, movementToEvaluate, out pointsToAdd);
+            var newAnimalPosition = this.forest.EvaluateMovement(startingPosition, movementToEvaluate);
+            var pointsToAdd = this.forest.CollectPoints(newAnimalPosition.Row, newAnimalPosition.Column);
 
             animal.Position = newAnimalPosition;
             animal.PointsCollected += pointsToAdd;

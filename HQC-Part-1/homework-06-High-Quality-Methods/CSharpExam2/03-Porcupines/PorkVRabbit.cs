@@ -7,6 +7,9 @@ namespace _03_Porcupines
     using System.Text;
     using System.Threading.Tasks;
     using System.Numerics;
+    using Animals;
+    using Engine;
+    using Forests;
 
     // 88 / 100
 
@@ -323,7 +326,7 @@ namespace _03_Porcupines
         {
             if (rabbitScore > porcupineScore)
             {
-                Console.WriteLine("The rabbit WON with {0} points. The porcupine scored {1} points only.", 
+                Console.WriteLine("The rabbit WON with {0} points. The porcupine scored {1} points only.",
                     rabbitScore, porcupineScore);
             }
             else if (porcupineScore > rabbitScore)
@@ -339,9 +342,44 @@ namespace _03_Porcupines
 
         static void Main()
         {
-            Input();
-            Play();
-            Output();
+            //Input();
+            //Play();
+            //Output();
+
+            var baseColsCount = int.Parse(Console.ReadLine());
+            var numberOfRows = int.Parse(Console.ReadLine());
+
+            var position = Console.ReadLine()
+                .Trim()
+                .Split(new[] { ' ', ',' }, StringSplitOptions.RemoveEmptyEntries)
+                .Select(int.Parse)
+                .ToArray();
+
+            porcupineRow = position[0];
+            porcupineCol = position[1];
+
+            position = Console.ReadLine()
+                .Trim()
+                .Split(new[] { ' ', ',' }, StringSplitOptions.RemoveEmptyEntries)
+                .Select(int.Parse)
+                .ToArray();
+
+            rabbitRow = position[0];
+            rabbitCol = position[1];
+
+            var rabbitPosition = new Position(rabbitRow, rabbitCol);
+            var rabbit = new Rabbit(rabbitPosition);
+
+            var porcPosition = new Position(porcupineRow, porcupineCol);
+            var porc = new Porcupine(porcPosition);
+
+            var cellFactory = new ForestCellFactory(typeof(ForestCell));
+            var forest = new JaggedForest(numberOfRows, baseColsCount, cellFactory);
+
+            AnimalMovement.PositionGenerator = Position.CreatePosition;
+            var engine = new AnimalPlanetEngine(rabbit, porc, forest, AnimalMovement.CreateMovement);
+
+            engine.EvaluateNextCommand("P T 3");
         }
     }
 }
