@@ -19,6 +19,29 @@ namespace _03_Porcupines.Forests
 
         public IPosition EvaluateMovement(IPosition startPosition, IMovement movement, out int pointsCollected)
         {
+            IPosition newPosition;
+            switch (movement.MovementType)
+            {
+                case Animals.Enums.MovementType.Jump:
+                    newPosition = this.HandleJumpMovement(startPosition, movement, out pointsCollected);
+                    break;
+                case Animals.Enums.MovementType.Crawl:
+                    newPosition = this.HandleCrawlMovement(startPosition, movement, out pointsCollected);
+                    break;
+                default:
+                    throw new ArgumentException("movement.MovementType");
+            }
+
+            return newPosition;
+        }
+
+        private IPosition HandleJumpMovement(IPosition startPosition, IMovement movement, out int pointsCollected)
+        {
+            throw new NotImplementedException();
+        }
+
+        private IPosition HandleCrawlMovement(IPosition startPosition, IMovement movement, out int pointsCollected)
+        {
             throw new NotImplementedException();
         }
 

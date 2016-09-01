@@ -13,13 +13,18 @@ namespace _03_Porcupines.Engine
         private const string DirectionLeft = "L";
         private const string DirectionRight = "R";
 
-        private int distance;
+        private IPosition delta;
         private MovementType movementType;
         private DirectionType directionType;
 
-        public AnimalMovement(int distance, MovementType movementType, DirectionType directionType)
+        public AnimalMovement(IPosition delta, MovementType movementType, DirectionType directionType)
         {
-            this.distance = distance;
+            if (delta == null)
+            {
+                throw new ArgumentException("delta");
+            }
+
+            this.delta = delta;
             this.movementType = MovementType;
             this.directionType = directionType;
         }
@@ -32,11 +37,11 @@ namespace _03_Porcupines.Engine
             }
         }
 
-        public int Distance
+        public IPosition Delta
         {
             get
             {
-                return this.distance;
+                return this.delta;
             }
         }
 
@@ -48,16 +53,18 @@ namespace _03_Porcupines.Engine
             }
         }
 
+        public static Func<int, int, IPosition> PositionGenerator { get; set; }
+
         public static IMovement CreateMovement(string directionCommand, string distanceCommand, MovementType movementType)
         {
-            var distance = ParseDistanceCommand(distanceCommand);
             var directionType = ParseDirectionCommand(directionCommand);
-            var movement = new AnimalMovement(distance, movementType, directionType);
+            var delta = ParseDistanceCommand(distanceCommand, directionType);
+            var movement = new AnimalMovement(delta, movementType, directionType);
 
             return movement;
         }
 
-        private static int ParseDistanceCommand(string distanceToParse)
+        private static IPosition ParseDistanceCommand(string distanceToParse, DirectionType directionType)
         {
             int distance;
             var isParsed = int.TryParse(distanceToParse, out distance);
@@ -66,7 +73,31 @@ namespace _03_Porcupines.Engine
                 throw new ArgumentException("distance");
             }
 
-            return distance;
+            if (PositionGenerator == null)
+            {
+                throw new ArgumentException("PositionGenerator");
+            }
+
+            IPosition delta = null;
+            switch (directionType)
+            {
+                case DirectionType.Up:
+                    delta = PositionGenerator.Invoke(-distance, 0);
+                    break;
+                case DirectionType.Down:
+                    delta = PositionGenerator.Invoke(+distance, 0);
+                    break;
+                case DirectionType.Left:
+                    delta = PositionGenerator.Invoke(0, -distance);
+                    break;
+                case DirectionType.Right:
+                    delta = PositionGenerator.Invoke(0, +distance);
+                    break;
+                default:
+                    throw new ArgumentException();
+            }
+
+            return delta;
         }
 
         private static DirectionType ParseDirectionCommand(string directionToParse)

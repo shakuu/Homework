@@ -9,6 +9,6 @@ namespace _03_Porcupines.Engine.Contracts
 
         MovementType MovementType { get; }
 
-        int Distance { get; }
+        IPosition Delta { get; }
     }
 }
