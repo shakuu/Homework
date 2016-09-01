@@ -40,26 +40,21 @@ namespace _03_Porcupines.Forests
             throw new NotImplementedException();
         }
 
-        private IPosition HandleCrawlMovement(IPosition startPosition, IMovement movement, out int pointsCollected)
+        private IPosition HandleCrawlMovement(IPosition currentPosition, IMovement movement, out int pointsCollected)
         {
             var movesCount = this.GetMovesCount(movement);
             for (int move = 0; move < movesCount; move++)
             {
+                var nextPosition = currentPosition.Add(movement.Delta);
+                currentPosition = this.ValidateNextPositionWithinForestLimit(nextPosition);
 
+                // TODO: Check if position is free
             }
 
             throw new NotImplementedException();
         }
 
-        private IPosition HandleMovemenet(IPosition startPosition, IPosition delta)
-        {
-            var nextPosition = startPosition.Add(delta);
-            nextPosition = this.ValidateNextPosition(nextPosition);
-
-            throw new NotImplementedException();
-        }
-
-        private IPosition ValidateNextPosition(IPosition nextPosition)
+        private IPosition ValidateNextPositionWithinForestLimit(IPosition nextPosition)
         {
             while (nextPosition.Row < 0)
             {
@@ -71,7 +66,18 @@ namespace _03_Porcupines.Forests
                 nextPosition.Row %= this.forest.Count;
             }
 
-            throw new NotImplementedException();
+            var forestRow = this.forest[nextPosition.Row];
+            while (nextPosition.Column < 0)
+            {
+                nextPosition.Column += forestRow.Count;
+            }
+
+            while (forestRow.Count <= nextPosition.Column)
+            {
+                nextPosition.Column %= forestRow.Count;
+            }
+
+            return nextPosition;
         }
 
         private int GetMovesCount(IMovement movement)

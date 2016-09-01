@@ -1,6 +1,4 @@
-﻿using _03_Porcupines.Engine.Enums;
-
-namespace _03_Porcupines.Engine.Contracts
+﻿namespace _03_Porcupines.Engine.Contracts
 {
     public interface IPosition
     {
@@ -8,6 +6,8 @@ namespace _03_Porcupines.Engine.Contracts
 
         int Column { get; set; }
 
-        IPosition Add(IPosition amount);
+        IPosition Add(IPosition delta);
+
+        IPosition Subtract(IPosition delta);
     }
 }
