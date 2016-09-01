@@ -1,4 +1,5 @@
-﻿using _03_Porcupines.Engine.Enums;
+﻿using _03_Porcupines.Animals.Enums;
+using _03_Porcupines.Engine.Enums;
 
 namespace _03_Porcupines.Engine.Contracts
 {

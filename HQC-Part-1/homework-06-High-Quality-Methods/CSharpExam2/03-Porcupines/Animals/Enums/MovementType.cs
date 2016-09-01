@@ -1,4 +1,4 @@
-﻿namespace _03_Porcupines.Engine.Enums
+﻿namespace _03_Porcupines.Animals.Enums
 {
     public enum MovementType
     {
