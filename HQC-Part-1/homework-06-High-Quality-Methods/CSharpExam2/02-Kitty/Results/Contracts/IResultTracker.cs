@@ -2,8 +2,10 @@
 
 namespace _02_Kitty.Results.Contracts
 {
-    public interface IResult
+    public interface IResultTracker
     {
         bool EvaluateCell(IPathCell pathCell);
+
+        string CreateReport();
     }
 }

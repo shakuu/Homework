@@ -1,25 +1,32 @@
 ﻿using System;
 
 using _02_Kitty.Engine;
+using _02_Kitty.Engine.Contracts;
 using _02_Kitty.Results;
 
 namespace _02_Kitty
 {
     public class Kitty
     {
-        static void Main()
+        public static void Main()
         {
             var inputPath = Console.ReadLine();
             var inputJumpsLengths = Console.ReadLine();
 
+            var kittyEngine = CreateKittyEngine();
+            var report = kittyEngine.EvaluteSequenceOfJumps(inputPath, inputJumpsLengths);
+
+            Console.WriteLine(report);
+        }
+
+        private static IEngine CreateKittyEngine()
+        {
+            var pathGenerator = new KittyPathGenerator(typeof(KittyPathCell));
             var sequenceGenerator = new JumpSequenceGenerator();
-            var pathCells = KittyPathCell.GenerateSequenceOfPathCells(inputPath);
-            var kittyPath = new KittyPath(pathCells, sequenceGenerator);
-
             var resultTracker = new ResultTracker();
-            var evaluatedResult = kittyPath.EvaluteSequenceOfJumps(inputJumpsLengths, resultTracker);
+            var kittyEngine = new KittyEngine(pathGenerator, resultTracker, sequenceGenerator);
 
-            Console.WriteLine(evaluatedResult);
+            return kittyEngine;
         }
     }
 }

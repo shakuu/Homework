@@ -1,4 +1,5 @@
-﻿using System.Text;
+﻿using System;
+using System.Text;
 
 using _02_Kitty.Engine.Contracts;
 using _02_Kitty.Engine.Enums;
@@ -6,7 +7,7 @@ using _02_Kitty.Results.Contracts;
 
 namespace _02_Kitty.Results
 {
-    public class ResultTracker : IResult
+    public class ResultTracker : IResultTracker
     {
         private bool isDeadlocked;
         private int collectedFoodCount;
@@ -16,6 +17,12 @@ namespace _02_Kitty.Results
 
         public ResultTracker()
         {
+        }
+
+        public string CreateReport()
+        {
+            var report = this.ToString();
+            return report;
         }
 
         public bool EvaluateCell(IPathCell pathCell)
@@ -36,7 +43,7 @@ namespace _02_Kitty.Results
 
             return this.isDeadlocked;
         }
-        
+
         public override string ToString()
         {
             var result = new StringBuilder();
