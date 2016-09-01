@@ -86,11 +86,9 @@ namespace _03_Porcupines.Engine
             var movementToEvaluate = this.movementCreator.Invoke(commandWords[1], commandWords[2], animal.MovementType);
             var startingPosition = animal.Position;
 
-            var newAnimalPosition = this.forest.EvaluateMovement(startingPosition, movementToEvaluate);
-            var pointsToAdd = this.forest.CollectPoints(newAnimalPosition.Row, newAnimalPosition.Column);
+            var newAnimalPosition = this.forest.EvaluateMovement(startingPosition, movementToEvaluate, animal);
 
-            animal.Position = newAnimalPosition;
-            animal.PointsCollected += pointsToAdd;
+            animal.Position = newAnimalPosition.Clone();
         }
 
         private IList<string> GetCommandWords(string command)

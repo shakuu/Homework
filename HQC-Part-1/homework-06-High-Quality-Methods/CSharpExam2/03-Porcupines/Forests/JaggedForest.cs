@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 
+using _03_Porcupines.Animals.Contracts;
 using _03_Porcupines.Engine.Contracts;
 using _03_Porcupines.Forests.Contracts;
 using _03_Porcupines.Forests.Enums;
@@ -10,16 +11,27 @@ namespace _03_Porcupines.Forests
     public class JaggedForest : IForest
     {
         private IList<IList<IForestCell>> forest;
+        private int baseColumnsCount;
 
         public JaggedForest(int rowsCount, int baseColumnsCount, IForestCellFactory forestCellFactory)
         {
+            this.baseColumnsCount = baseColumnsCount;
             this.forest = this.BuildTheForest(rowsCount, baseColumnsCount);
             this.forest = this.FillTheForest(this.forest, ForestCellContentType.Points, forestCellFactory);
         }
 
-        public int CollectPoints(int row, int column)
+        private int CollectPoints(IPosition position)
         {
-            throw new NotImplementedException();
+            var collectedPoints = 0;
+
+            var forestCell = this.forest[position.Row][position.Column];
+            if (!forestCell.IsCollected)
+            {
+                forestCell.IsCollected = true;
+                collectedPoints = forestCell.Points;
+            }
+
+            return collectedPoints;
         }
 
         public void SetContentAtPosition(IPosition position, ForestCellContentType contentType)
@@ -32,62 +44,116 @@ namespace _03_Porcupines.Forests
             this.forest[position.Row][position.Column].ContentType = contentType;
         }
 
-        public IPosition EvaluateMovement(IPosition startPosition, IMovement movement)
+        public IPosition EvaluateMovement(IPosition startPosition, IMovement movement, IAnimal animal)
         {
+            animal.PointsCollected += this.CollectPoints(startPosition);
+
             var newPosition = startPosition.Clone();
             switch (movement.MovementType)
             {
                 case Animals.Enums.MovementType.Jump:
-                    newPosition = this.HandleJumpMovement(newPosition, movement.Delta.Clone());
+                    newPosition = this.HandleJumpMovement(newPosition, movement.Delta.Clone(), animal);
                     this.SetContentAtPosition(newPosition, ForestCellContentType.Rabbit);
                     break;
                 case Animals.Enums.MovementType.Crawl:
-                    newPosition = this.HandleCrawlMovement(newPosition, movement.Delta.Clone());
+                    newPosition = this.HandleCrawlMovement(newPosition, movement.Delta.Clone(), animal);
                     this.SetContentAtPosition(newPosition, ForestCellContentType.Porcupine);
                     break;
                 default:
                     throw new ArgumentException("movement.MovementType");
             }
 
+            this.SetContentAtPosition(startPosition, ForestCellContentType.Points);
+
             return newPosition;
         }
 
-        private IPosition HandleJumpMovement(IPosition startPosition, IPosition delta)
+        private IPosition HandleJumpMovement(IPosition currentPosition, IPosition delta, IAnimal animal)
         {
-            throw new NotImplementedException();
-        }
 
-        private IPosition HandleCrawlMovement(IPosition currentPosition, IPosition delta)
-        {
+            // TODO: FIX THIS CRAP
+            var collectedPoints = 0;
             var movesCount = this.GetMovesCount(delta);
             delta = this.AdjustDeltaForCrawling(delta, movesCount);
             for (int move = 0; move < movesCount; move++)
             {
                 var nextPosition = currentPosition.Add(delta);
-                currentPosition = this.ValidateNextPositionWithinForestLimit(nextPosition.Clone());
-                if (this.forest[currentPosition.Row][currentPosition.Column].ContentType != ForestCellContentType.Points)
+
+                if (delta.Column != 0)
                 {
-                    currentPosition.Subtract(delta);
-                    currentPosition = this.ValidateNextPositionWithinForestLimit(currentPosition);
-                    break;
+                    currentPosition = this.ValidateNextHorizontalPositionWithinForestLimit(nextPosition.Clone());
+                }
+                else
+                {
+                    currentPosition = this.ValidateNextVerticalPositionWithinForestLimit(nextPosition.Clone());
                 }
             }
+
+
+            if (this.forest[currentPosition.Row][currentPosition.Column].ContentType != ForestCellContentType.Points)
+            {
+                currentPosition.Subtract(delta);
+                currentPosition = this.ValidateNextVerticalPositionWithinForestLimit(currentPosition);
+            }
+
+            collectedPoints += this.CollectPoints(currentPosition);
+
+            animal.PointsCollected += collectedPoints;
 
             return currentPosition;
         }
 
-        private IPosition ValidateNextPositionWithinForestLimit(IPosition nextPosition)
+        private IPosition HandleCrawlMovement(IPosition currentPosition, IPosition delta, IAnimal animal)
         {
-            while (nextPosition.Row < 0)
+            // TODO: FIX THIS CRAP
+            var collectedPoints = 0;
+            var movesCount = this.GetMovesCount(delta);
+            delta = this.AdjustDeltaForCrawling(delta, movesCount);
+            for (int move = 0; move < movesCount; move++)
             {
-                nextPosition.Row += this.forest.Count;
+                var nextPosition = currentPosition.Add(delta);
+
+                if (delta.Column != 0)
+                {
+                    currentPosition = this.ValidateNextHorizontalPositionWithinForestLimit(nextPosition.Clone());
+                }
+                else
+                {
+                    currentPosition = this.ValidateNextVerticalPositionWithinForestLimit(nextPosition.Clone());
+                }
+
+                if (this.forest[currentPosition.Row][currentPosition.Column].ContentType != ForestCellContentType.Points)
+                {
+                    currentPosition.Subtract(delta);
+                    currentPosition = this.ValidateNextVerticalPositionWithinForestLimit(currentPosition);
+                    break;
+                }
+
+                collectedPoints += this.CollectPoints(currentPosition);
             }
 
-            while (this.forest.Count <= nextPosition.Row)
+            animal.PointsCollected += collectedPoints;
+
+            return currentPosition;
+        }
+
+        private IPosition ValidateNextVerticalPositionWithinForestLimit(IPosition nextPosition)
+        {
+            while (nextPosition.Row < (nextPosition.Column / this.baseColumnsCount))
             {
-                nextPosition.Row %= this.forest.Count;
+                nextPosition.Row += this.forest.Count - ((nextPosition.Column / this.baseColumnsCount) * 2);
             }
 
+            while (this.forest.Count - (nextPosition.Column / this.baseColumnsCount) <= nextPosition.Row)
+            {
+                nextPosition.Row %= this.forest.Count - ((nextPosition.Column / this.baseColumnsCount) * 2);
+            }
+
+            return nextPosition;
+        }
+
+        private IPosition ValidateNextHorizontalPositionWithinForestLimit(IPosition nextPosition)
+        {
             var forestRow = this.forest[nextPosition.Row];
             while (nextPosition.Column < 0)
             {
