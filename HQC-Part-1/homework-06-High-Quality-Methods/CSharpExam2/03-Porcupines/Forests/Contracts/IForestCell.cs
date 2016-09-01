@@ -6,6 +6,8 @@ namespace _03_Porcupines.Forests.Contracts
     {
         ForestCellContentType ContentType { get; set; }
 
-        int Points { get; set; }
+        int Points { get; }
+
+        bool IsCollected { get; set; }
     }
 }
