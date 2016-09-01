@@ -150,8 +150,8 @@ function solve() {
                 if (!(+result.StudentID || result.StudentID === 0)) {
                     throw new Error();
                 }
-
-                if (!self.studentsById[+result.StudentID]) {
+                
+                if (self.students.length < result.StudentID) {
                     throw new Error();
                 }
 

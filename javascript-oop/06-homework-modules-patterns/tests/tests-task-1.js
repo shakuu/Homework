@@ -409,7 +409,7 @@ describe('Test for Modules and Patterns in JavaScript', function () {
             var jsoop = Object.create(Course)
                 .init(getValidTitle(), [getValidTitle()]);
             jsoop.addStudent('Az' + ' ' + 'Sym');
-            jsoop.addStudent('AzSym' + ' ' + 'Pak');
+            jsoop.addStudent('Azsym' + ' ' + 'Pak');
             function test() {
                 jsoop.pushExamResults([{ StudentID: 1, score: 4 }, { StudentID: 2, score: 5 }]);
             }
