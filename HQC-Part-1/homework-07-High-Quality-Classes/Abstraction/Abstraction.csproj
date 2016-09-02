@@ -35,10 +35,10 @@
     <Reference Include="System" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Circle.cs" />
-    <Compile Include="Figure.cs" />
+    <Compile Include="Models\Circle.cs" />
+    <Compile Include="Models\Figure.cs" />
     <Compile Include="FiguresExample.cs" />
-    <Compile Include="Rectangle.cs" />
+    <Compile Include="Models\Rectangle.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Properties\" />
