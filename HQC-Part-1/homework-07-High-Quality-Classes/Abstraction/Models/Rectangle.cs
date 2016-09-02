@@ -1,17 +1,57 @@
 ﻿using System;
+
 using Abstraction.Contracts;
 
 namespace Abstraction.Models
 {
     public class Rectangle : Figure, IRectangle
     {
+        private double width;
+        private double height;
+
         public Rectangle(double width, double height)
         {
+            this.Width = width;
+            this.Height = height;
         }
 
-        public double Width { get; set; }
+        public double Width
+        {
+            get
+            {
+                return this.width;
+            }
 
-        public double Height { get; set; }
+            set
+            {
+                var isValid = base.CheckIfInputValueIsValid(value);
+                if (!isValid)
+                {
+                    throw new ArgumentException("Width");
+                }
+
+                this.width = value;
+            }
+        }
+
+        public double Height
+        {
+            get
+            {
+                return this.height;
+            }
+
+            set
+            {
+                var isValid = base.CheckIfInputValueIsValid(value);
+                if (!isValid)
+                {
+                    throw new ArgumentException("Height");
+                }
+
+                this.height = value;
+            }
+        }
 
         public override double CalcPerimeter()
         {

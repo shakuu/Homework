@@ -6,12 +6,31 @@ namespace Abstraction.Models
 {
     public class Circle : Figure, ICircle
     {
+        private double radius;
+
         public Circle(double radius)
         {
             this.Radius = radius;
         }
 
-        public double Radius { get; set; }
+        public double Radius
+        {
+            get
+            {
+                return this.radius;
+            }
+
+            set
+            {
+                var isValid = base.CheckIfInputValueIsValid(value);
+                if (!isValid)
+                {
+                    throw new ArgumentException("Radius");
+                }
+
+                this.radius = value;
+            }
+        }
 
         public override double CalcPerimeter()
         {

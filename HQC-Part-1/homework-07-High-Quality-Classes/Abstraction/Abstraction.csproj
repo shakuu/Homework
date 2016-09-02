@@ -35,6 +35,9 @@
     <Reference Include="System" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Contracts\ICircle.cs" />
+    <Compile Include="Contracts\IFigure.cs" />
+    <Compile Include="Contracts\IRectangle.cs" />
     <Compile Include="Models\Circle.cs" />
     <Compile Include="Models\Figure.cs" />
     <Compile Include="FiguresExample.cs" />

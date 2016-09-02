@@ -4,6 +4,8 @@ namespace Abstraction.Models
 {
     public abstract class Figure : IFigure
     {
+        private const string ToStringTemplate = "I am a {2}. My perimeter is {0:f2}. My surface is {1:f2}.";
+
         protected Figure()
         {
         }
@@ -15,11 +17,23 @@ namespace Abstraction.Models
         public override string ToString()
         {
             var output = string.Format(
-                "I am a circle. My perimeter is {0:f2}. My surface is {1:f2}.",
+                 Figure.ToStringTemplate,
                  this.CalcPerimeter(),
-                 this.CalcSurface());
+                 this.CalcSurface(),
+                 this.GetType().Name);
 
             return output;
+        }
+
+        protected virtual bool CheckIfInputValueIsValid(double value)
+        {
+            var valueIsValid = true;
+            if (value <= 0)
+            {
+                valueIsValid = false;
+            }
+
+            return valueIsValid;
         }
     }
 }
