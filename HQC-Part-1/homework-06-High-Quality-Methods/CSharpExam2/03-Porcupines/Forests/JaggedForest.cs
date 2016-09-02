@@ -67,7 +67,7 @@ namespace _03_Porcupines.Forests
             for (int move = 0; move < movesCount; move++)
             {
                 var nextPosition = currentPosition.Add(crawlDelta);
-                nextPosition = this.ValidateWithinLimits(nextPosition, crawlDelta);
+                nextPosition = this.ValidateIndecesWithinForrestLimits(nextPosition, crawlDelta);
 
                 if (animal.MovementType == MovementType.Crawl)
                 {
@@ -75,7 +75,7 @@ namespace _03_Porcupines.Forests
                     if (forestCellContent == ForestCellContentType.Rabbit)
                     {
                         nextPosition = nextPosition.Subtract(crawlDelta);
-                        nextPosition = this.ValidateWithinLimits(nextPosition, crawlDelta);
+                        nextPosition = this.ValidateIndecesWithinForrestLimits(nextPosition, crawlDelta);
                         break;
                     }
 
@@ -91,7 +91,7 @@ namespace _03_Porcupines.Forests
                 if (forestCellContent == ForestCellContentType.Porcupine)
                 {
                     currentPosition = currentPosition.Subtract(crawlDelta);
-                    currentPosition = this.ValidateWithinLimits(currentPosition, crawlDelta);
+                    currentPosition = this.ValidateIndecesWithinForrestLimits(currentPosition, crawlDelta);
                 }
 
                 collectedPoints += this.CollectPoints(currentPosition);
@@ -102,7 +102,7 @@ namespace _03_Porcupines.Forests
             return currentPosition;
         }
 
-        private IPosition ValidateWithinLimits(IPosition nextPosition, IPosition delta)
+        private IPosition ValidateIndecesWithinForrestLimits(IPosition nextPosition, IPosition delta)
         {
             IPosition validatedPosition;
             if (delta.Column != 0)
