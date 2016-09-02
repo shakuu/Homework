@@ -82,7 +82,7 @@ namespace _03_Porcupines.Forests
 
                 if (animal.MovementType == MovementType.Crawl)
                 {
-                    if (this.forest[currentPosition.Row][currentPosition.Column].ContentType != ForestCellContentType.Points)
+                    if (this.forest[currentPosition.Row][currentPosition.Column].ContentType == ForestCellContentType.Rabbit)
                     {
                         currentPosition = currentPosition.Subtract(delta);
                         currentPosition = this.ValidateWithinLimits(currentPosition, delta);
@@ -95,7 +95,7 @@ namespace _03_Porcupines.Forests
 
             if (animal.MovementType == MovementType.Jump)
             {
-                currentPosition = this.ValidateCellIsEmpty(currentPosition, delta);
+                currentPosition = this.ValidateCellDoesNotHaveAPorcupine(currentPosition, delta);
                 collectedPoints += this.CollectPoints(currentPosition);
             }
 
@@ -104,9 +104,10 @@ namespace _03_Porcupines.Forests
             return currentPosition;
         }
 
-        private IPosition ValidateCellIsEmpty(IPosition currentPosition, IPosition delta)
+        private IPosition ValidateCellDoesNotHaveAPorcupine(IPosition currentPosition, IPosition delta)
         {
-            if (this.forest[currentPosition.Row][currentPosition.Column].ContentType != ForestCellContentType.Points)
+            var cellContent = this.forest[currentPosition.Row][currentPosition.Column].ContentType;
+            if (cellContent == ForestCellContentType.Porcupine)
             {
                 currentPosition = currentPosition.Subtract(delta);
                 currentPosition = this.ValidateWithinLimits(currentPosition, delta);
@@ -132,22 +133,17 @@ namespace _03_Porcupines.Forests
 
         private IPosition ValidateNextVerticalPositionWithinForestLimit(IPosition nextPosition)
         {
-            while (nextPosition.Row < (nextPosition.Column / this.baseColumnsCount))
+            var verticalSize = this.forest.Count - ((nextPosition.Column / this.baseColumnsCount) * 2);
+
+            var firstRowIndex = (nextPosition.Column / this.baseColumnsCount);
+            while (nextPosition.Row < firstRowIndex)
             {
-                nextPosition.Row += this.forest.Count - ((nextPosition.Column / this.baseColumnsCount) * 2);
+                nextPosition.Row += verticalSize;
             }
 
-            while (this.forest.Count - (nextPosition.Column / this.baseColumnsCount) <= nextPosition.Row)
+            while (this.forest.Count - firstRowIndex <= nextPosition.Row)
             {
-                var mod = this.forest.Count - ((nextPosition.Column / this.baseColumnsCount) * 2);
-                if (this.baseColumnsCount % 2 == 0)
-                {
-                    nextPosition.Row /= mod;
-                }
-                else
-                {
-                    nextPosition.Row %= mod;
-                }
+                nextPosition.Row -= verticalSize;
             }
 
             return nextPosition;
@@ -155,15 +151,15 @@ namespace _03_Porcupines.Forests
 
         private IPosition ValidateNextHorizontalPositionWithinForestLimit(IPosition nextPosition)
         {
-            var forestRow = this.forest[nextPosition.Row];
+            var horizontalSize = this.forest[nextPosition.Row].Count;
             while (nextPosition.Column < 0)
             {
-                nextPosition.Column += forestRow.Count;
+                nextPosition.Column += horizontalSize;
             }
 
-            while (forestRow.Count <= nextPosition.Column)
+            while (horizontalSize <= nextPosition.Column)
             {
-                nextPosition.Column %= forestRow.Count;
+                nextPosition.Column -= horizontalSize;
             }
 
             return nextPosition;
