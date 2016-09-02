@@ -64,20 +64,22 @@ namespace _03_Porcupines.Forests
             for (int move = 0; move < movesCount; move++)
             {
                 var nextPosition = currentPosition.Add(delta);
-                currentPosition = this.ValidateWithinLimits(nextPosition, delta);
+                nextPosition = this.ValidateWithinLimits(nextPosition, delta);
 
                 if (animal.MovementType == MovementType.Crawl)
                 {
-                    var forestCellContent = this.forest[currentPosition.Row][currentPosition.Column].ContentType;
+                    var forestCellContent = this.forest[nextPosition.Row][nextPosition.Column].ContentType;
                     if (forestCellContent == ForestCellContentType.Rabbit)
                     {
-                        currentPosition = currentPosition.Subtract(delta);
-                        currentPosition = this.ValidateWithinLimits(currentPosition, delta);
+                        nextPosition = nextPosition.Subtract(delta);
+                        nextPosition = this.ValidateWithinLimits(nextPosition, delta);
                         break;
                     }
 
-                    collectedPoints += this.CollectPoints(currentPosition);
+                    collectedPoints += this.CollectPoints(nextPosition);
                 }
+
+                currentPosition = nextPosition.Clone();
             }
 
             if (animal.MovementType == MovementType.Jump)
