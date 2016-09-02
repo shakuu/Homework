@@ -12,7 +12,7 @@ namespace _03_Porcupines
     {
         public static void Main()
         {
-            var engine = CreateEngine();
+            var engine = CreateEngineFromConsoleInput();
 
             var isRunning = true;
             while (isRunning)
@@ -25,7 +25,7 @@ namespace _03_Porcupines
             Console.WriteLine(commandsResult);
         }
 
-        private static IEngine CreateEngine()
+        private static IEngine CreateEngineFromConsoleInput()
         {
             var baseColsCount = int.Parse(Console.ReadLine());
             var numberOfRows = int.Parse(Console.ReadLine());
