@@ -21,7 +21,7 @@ namespace _03_Porcupines
                 isRunning = engine.EvaluateNextCommand(nextCommand);
             }
 
-            // TODO: LOG RESULT
+            Console.WriteLine(engine.GetResult());
         }
 
         private static IEngine CreateEngine()

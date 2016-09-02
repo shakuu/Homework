@@ -113,60 +113,60 @@ namespace _03_Porcupines.Forests
 
         private IPosition ValidateWithinLimits(IPosition nextPosition, IPosition delta)
         {
-            IPosition currentPosition;
+            IPosition validatedPosition;
             if (delta.Column != 0)
             {
-                currentPosition = this.ValidateNextHorizontalPositionWithinForestLimit(nextPosition.Clone());
+                validatedPosition = this.ValidateNextHorizontalPositionWithinForestLimit(nextPosition.Clone());
             }
             else
             {
-                currentPosition = this.ValidateNextVerticalPositionWithinForestLimit(nextPosition.Clone());
+                validatedPosition = this.ValidateNextVerticalPositionWithinForestLimit(nextPosition.Clone());
             }
 
-            return currentPosition;
+            return validatedPosition;
         }
 
-        private IPosition ValidateNextVerticalPositionWithinForestLimit(IPosition nextPosition)
+        private IPosition ValidateNextVerticalPositionWithinForestLimit(IPosition positionToValidate)
         {
-            var verticalSize = this.forest.Count - ((nextPosition.Column / this.baseColumnsCount) * 2);
+            var verticalSize = this.forest.Count - ((positionToValidate.Column / this.baseColumnsCount) * 2);
 
-            var firstRowIndex = (nextPosition.Column / this.baseColumnsCount);
-            while (nextPosition.Row < firstRowIndex)
+            var firstRowIndex = (positionToValidate.Column / this.baseColumnsCount);
+            while (positionToValidate.Row < firstRowIndex)
             {
-                nextPosition.Row += verticalSize;
+                positionToValidate.Row += verticalSize;
             }
 
-            while (this.forest.Count - firstRowIndex <= nextPosition.Row)
+            while (this.forest.Count - firstRowIndex <= positionToValidate.Row)
             {
-                nextPosition.Row -= verticalSize;
+                positionToValidate.Row -= verticalSize;
             }
 
-            return nextPosition;
+            return positionToValidate;
         }
 
-        private IPosition ValidateNextHorizontalPositionWithinForestLimit(IPosition nextPosition)
+        private IPosition ValidateNextHorizontalPositionWithinForestLimit(IPosition positionToValidate)
         {
-            var horizontalSize = this.forest[nextPosition.Row].Count;
-            while (nextPosition.Column < 0)
+            var horizontalSize = this.forest[positionToValidate.Row].Count;
+            while (positionToValidate.Column < 0)
             {
-                nextPosition.Column += horizontalSize;
+                positionToValidate.Column += horizontalSize;
             }
 
-            while (horizontalSize <= nextPosition.Column)
+            while (horizontalSize <= positionToValidate.Column)
             {
-                nextPosition.Column -= horizontalSize;
+                positionToValidate.Column -= horizontalSize;
             }
 
-            return nextPosition;
+            return positionToValidate;
         }
 
         private IPosition AdjustDeltaForCrawling(IPosition delta, int movesCount)
         {
-            var newDelta = delta.Clone();
-            newDelta.Row /= movesCount;
-            newDelta.Column /= movesCount;
+            var adjustedDelta = delta.Clone();
+            adjustedDelta.Row /= movesCount;
+            adjustedDelta.Column /= movesCount;
 
-            return newDelta;
+            return adjustedDelta;
         }
 
         private int GetMovesCount(IPosition delta)

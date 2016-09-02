@@ -78,7 +78,30 @@ namespace _03_Porcupines.Engine
 
         public string GetResult()
         {
-            throw new NotImplementedException();
+            string outcomeMessage;
+            if (this.rabbit.PointsCollected > this.porcupine.PointsCollected)
+            {
+                outcomeMessage = string.Format(
+                    "The rabbit WON with {0} points. The porcupine scored {1} points only.",
+                    this.rabbit.PointsCollected,
+                    this.porcupine.PointsCollected);
+
+            }
+            else if (this.rabbit.PointsCollected < this.porcupine.PointsCollected)
+            {
+                outcomeMessage = string.Format(
+                    "The porcupine destroyed the rabbit with {0} points. The rabbit must work harder. He scored {1} points only.",
+                    this.porcupine.PointsCollected,
+                    this.rabbit.PointsCollected);
+            }
+            else
+            {
+                outcomeMessage = string.Format(
+                    "Both units scored {0} points. Maybe we should play again?",
+                    this.rabbit.PointsCollected);
+            }
+
+            return outcomeMessage;
         }
 
         private void Move(IList<string> commandWords, IAnimal animal)
