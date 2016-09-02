@@ -52,11 +52,11 @@ namespace _03_Porcupines.Forests
             var newPosition = startPosition.Clone();
             switch (movement.MovementType)
             {
-                case Animals.Enums.MovementType.Jump:
+                case MovementType.Jump:
                     newPosition = this.HandleMovement(newPosition, movement.Delta.Clone(), animal);
                     this.SetContentAtPosition(newPosition, ForestCellContentType.Rabbit);
                     break;
-                case Animals.Enums.MovementType.Crawl:
+                case MovementType.Crawl:
                     newPosition = this.HandleMovement(newPosition, movement.Delta.Clone(), animal);
                     this.SetContentAtPosition(newPosition, ForestCellContentType.Porcupine);
                     break;
@@ -71,7 +71,7 @@ namespace _03_Porcupines.Forests
 
         private IPosition HandleMovement(IPosition currentPosition, IPosition delta, IAnimal animal)
         {
-            // TODO: FIX THIS CRAP
+            // Works - do not touch! 
             var collectedPoints = 0;
             var movesCount = this.GetMovesCount(delta);
             delta = this.AdjustDeltaForCrawling(delta, movesCount);
