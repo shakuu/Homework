@@ -85,7 +85,6 @@ namespace _03_Porcupines.Engine
                     "The rabbit WON with {0} points. The porcupine scored {1} points only.",
                     this.rabbit.PointsCollected,
                     this.porcupine.PointsCollected);
-
             }
             else if (this.rabbit.PointsCollected < this.porcupine.PointsCollected)
             {

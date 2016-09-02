@@ -21,20 +21,6 @@ namespace _03_Porcupines.Forests
             this.forest = this.FillTheForest(this.forest, ForestCellContentType.Points, forestCellFactory);
         }
 
-        private int CollectPoints(IPosition position)
-        {
-            var collectedPoints = 0;
-
-            var forestCell = this.forest[position.Row][position.Column];
-            if (!forestCell.IsCollected)
-            {
-                forestCell.IsCollected = true;
-                collectedPoints = forestCell.Points;
-            }
-
-            return collectedPoints;
-        }
-
         public void SetContentAtPosition(IPosition position, ForestCellContentType contentType)
         {
             if (position == null)
@@ -130,7 +116,7 @@ namespace _03_Porcupines.Forests
         {
             var verticalSize = this.forest.Count - ((positionToValidate.Column / this.baseColumnsCount) * 2);
 
-            var firstRowIndex = (positionToValidate.Column / this.baseColumnsCount);
+            var firstRowIndex = positionToValidate.Column / this.baseColumnsCount;
             while (positionToValidate.Row < firstRowIndex)
             {
                 positionToValidate.Row += verticalSize;
@@ -182,6 +168,20 @@ namespace _03_Porcupines.Forests
             }
 
             return movesCount;
+        }
+
+        private int CollectPoints(IPosition position)
+        {
+            var collectedPoints = 0;
+
+            var forestCell = this.forest[position.Row][position.Column];
+            if (!forestCell.IsCollected)
+            {
+                forestCell.IsCollected = true;
+                collectedPoints = forestCell.Points;
+            }
+
+            return collectedPoints;
         }
 
         private IList<IList<IForestCell>> BuildTheForest(int rowsCount, int baseColumnsCount)

@@ -12,7 +12,6 @@ namespace _03_Porcupines.Animals
         private IPosition position;
         private MovementType movementType;
 
-
         protected Animal(IPosition position, MovementType movementType)
         {
             if (position == null)

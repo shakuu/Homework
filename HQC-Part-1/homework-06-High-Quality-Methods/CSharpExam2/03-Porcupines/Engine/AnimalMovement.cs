@@ -29,6 +29,8 @@ namespace _03_Porcupines.Engine
             this.directionType = directionType;
         }
 
+        public static Func<int, int, IPosition> PositionGenerator { get; set; }
+
         public DirectionType DirectionType
         {
             get
@@ -52,8 +54,6 @@ namespace _03_Porcupines.Engine
                 return this.movementType;
             }
         }
-
-        public static Func<int, int, IPosition> PositionGenerator { get; set; }
 
         public static IMovement CreateMovement(string directionCommand, string distanceCommand, MovementType movementType)
         {

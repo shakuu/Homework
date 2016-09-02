@@ -39,6 +39,11 @@ namespace _03_Porcupines.Engine
             }
         }
 
+        public static IPosition CreatePosition(int row, int column)
+        {
+            return new Position(row, column);
+        }
+
         public IPosition Add(IPosition delta)
         {
             var row = this.Row + delta.Row;
@@ -61,11 +66,6 @@ namespace _03_Porcupines.Engine
         {
             var clonedPostion = new Position(this.Row, this.Column);
             return clonedPostion;
-        }
-
-        public static IPosition CreatePosition(int row, int column)
-        {
-            return new Position(row, column);
         }
     }
 }
