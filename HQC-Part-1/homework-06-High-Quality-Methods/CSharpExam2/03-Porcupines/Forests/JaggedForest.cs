@@ -82,7 +82,8 @@ namespace _03_Porcupines.Forests
 
                 if (animal.MovementType == MovementType.Crawl)
                 {
-                    if (this.forest[currentPosition.Row][currentPosition.Column].ContentType == ForestCellContentType.Rabbit)
+                    var forestCellContent = this.forest[currentPosition.Row][currentPosition.Column].ContentType;
+                    if (forestCellContent == ForestCellContentType.Rabbit)
                     {
                         currentPosition = currentPosition.Subtract(delta);
                         currentPosition = this.ValidateWithinLimits(currentPosition, delta);
@@ -95,23 +96,17 @@ namespace _03_Porcupines.Forests
 
             if (animal.MovementType == MovementType.Jump)
             {
-                currentPosition = this.ValidateCellDoesNotHaveAPorcupine(currentPosition, delta);
+                var forestCellContent = this.forest[currentPosition.Row][currentPosition.Column].ContentType;
+                if (forestCellContent == ForestCellContentType.Porcupine)
+                {
+                    currentPosition = currentPosition.Subtract(delta);
+                    currentPosition = this.ValidateWithinLimits(currentPosition, delta);
+                }
+
                 collectedPoints += this.CollectPoints(currentPosition);
             }
 
             animal.PointsCollected += collectedPoints;
-
-            return currentPosition;
-        }
-
-        private IPosition ValidateCellDoesNotHaveAPorcupine(IPosition currentPosition, IPosition delta)
-        {
-            var cellContent = this.forest[currentPosition.Row][currentPosition.Column].ContentType;
-            if (cellContent == ForestCellContentType.Porcupine)
-            {
-                currentPosition = currentPosition.Subtract(delta);
-                currentPosition = this.ValidateWithinLimits(currentPosition, delta);
-            }
 
             return currentPosition;
         }
