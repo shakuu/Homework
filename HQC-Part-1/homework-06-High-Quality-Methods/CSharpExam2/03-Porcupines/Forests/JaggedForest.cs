@@ -55,24 +55,27 @@ namespace _03_Porcupines.Forests
             return newPosition;
         }
 
-        private IPosition HandleMovement(IPosition currentPosition, IPosition delta, IAnimal animal)
+        private IPosition HandleMovement(IPosition startPosition, IPosition delta, IAnimal animal)
         {
             // Works - do not touch! 
             var collectedPoints = 0;
+
+            var currentPosition = startPosition.Clone();
             var movesCount = this.GetMovesCount(delta);
-            delta = this.AdjustDeltaForCrawling(delta, movesCount);
+            var crawlDelta = this.AdjustDeltaForCrawling(delta, movesCount);
+
             for (int move = 0; move < movesCount; move++)
             {
-                var nextPosition = currentPosition.Add(delta);
-                nextPosition = this.ValidateWithinLimits(nextPosition, delta);
+                var nextPosition = currentPosition.Add(crawlDelta);
+                nextPosition = this.ValidateWithinLimits(nextPosition, crawlDelta);
 
                 if (animal.MovementType == MovementType.Crawl)
                 {
                     var forestCellContent = this.forest[nextPosition.Row][nextPosition.Column].ContentType;
                     if (forestCellContent == ForestCellContentType.Rabbit)
                     {
-                        nextPosition = nextPosition.Subtract(delta);
-                        nextPosition = this.ValidateWithinLimits(nextPosition, delta);
+                        nextPosition = nextPosition.Subtract(crawlDelta);
+                        nextPosition = this.ValidateWithinLimits(nextPosition, crawlDelta);
                         break;
                     }
 
@@ -87,8 +90,8 @@ namespace _03_Porcupines.Forests
                 var forestCellContent = this.forest[currentPosition.Row][currentPosition.Column].ContentType;
                 if (forestCellContent == ForestCellContentType.Porcupine)
                 {
-                    currentPosition = currentPosition.Subtract(delta);
-                    currentPosition = this.ValidateWithinLimits(currentPosition, delta);
+                    currentPosition = currentPosition.Subtract(crawlDelta);
+                    currentPosition = this.ValidateWithinLimits(currentPosition, crawlDelta);
                 }
 
                 collectedPoints += this.CollectPoints(currentPosition);
