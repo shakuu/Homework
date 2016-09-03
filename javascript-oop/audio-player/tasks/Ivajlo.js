@@ -33,7 +33,8 @@
                 else if (first[firstParameter] > second[firstParameter]) {
                     return 1;
                 }
-
+console.log(first[firstParameter]);     
+console.log(second[firstParameter]);
                 if (first[secondParameter] < second[secondParameter]) {
                     return -1;
                 }
@@ -53,7 +54,7 @@
                     throw new Error(name + ' cannot be undefined');
                 }
             },
-            validateIfObject: function(val, name) {
+            validateIfObject: function (val, name) {
                 name = name || 'Value';
                 if (typeof val !== 'object') {
                     throw new Error(name + ' must be an object');
@@ -254,7 +255,7 @@
             })
 
             return player;
-        }());
+        } ());
 
         playlist = (function () {
             var currentPlaylistId = 0,
@@ -352,7 +353,7 @@
             });
 
             return playlist;
-        }());
+        } ());
 
         playable = (function () {
             var currentPlayableId = 0,
@@ -400,7 +401,7 @@
             });
 
             return playable;
-        }());
+        } ());
 
         audio = (function (parent) {
             var audio = Object.create(parent);
@@ -430,7 +431,7 @@
             });
 
             return audio;
-        }(playable));
+        } (playable));
 
         video = (function (parent) {
             var video = Object.create(parent);
@@ -460,7 +461,7 @@
             });
 
             return video;
-        }(playable));
+        } (playable));
 
         return {
             getPlayer: function (name) {
@@ -476,18 +477,18 @@
                 return Object.create(video).init(title, author, imdbRating);
             }
         };
-    }());
+    } ());
 
     return module;
 }
 
-var module = solve();
+module.exports = solve;
 
-player = module.getPlayer('pesho');
-playlist = module.getPlaylist('gosho');
-player.addPlaylist(playlist);
-var audio = module.getAudio('ivan', 'ivanov', 4);
-playlist.addPlayable(audio);
+// player = module.getPlayer('pesho');
+// playlist = module.getPlaylist('gosho');
+// player.addPlaylist(playlist);
+// var audio = module.getAudio('ivan', 'ivanov', 4);
+// playlist.addPlayable(audio);
 
-console.log(player.search('van'));
+// console.log(player.search('van'));
 

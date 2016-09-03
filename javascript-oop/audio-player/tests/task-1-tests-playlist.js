@@ -58,7 +58,7 @@ describe('Sample exam tests', function () {
                 var returnedPlayable,
                     name = 'Rock and roll',
                     playlist = result.getPlaylist(name),
-                    playable = {id: 1, name: 'Banana Rock', author: 'Wombles'};
+                    playable = {id: 1, title: 'Banana Rock', author: 'Wombles'};
 
                 returnedPlayable = playlist.addPlayable(playable).getPlayableById(1);
                 expect(returnedPlayable.id).to.equal(playable.id);
