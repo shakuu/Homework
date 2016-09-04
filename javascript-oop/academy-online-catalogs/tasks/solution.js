@@ -227,14 +227,15 @@ function solve() {
                 throw new Error();
             }
 
+            console.log(pattern);
             let matches = this.items.filter(item => {
                 let nameIsMatch = false;
-                if (item.name.toLowerCase().indexOf(pattern.toLowerCase) >= 0) {
+                if (item.name.toLowerCase().indexOf(pattern.toLowerCase()) >= 0) {
                     nameIsMatch = true;
                 }
 
                 let descriptionIsMatch = false;
-                if (item.description.toLowerCase().indexOf(pattern.toLowerCase) >= 0) {
+                if (item.description.toLowerCase().indexOf(pattern.toLowerCase()) >= 0) {
                     descriptionIsMatch = true;
                 }
 
