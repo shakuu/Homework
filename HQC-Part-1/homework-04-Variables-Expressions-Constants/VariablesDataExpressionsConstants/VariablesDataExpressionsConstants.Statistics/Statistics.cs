@@ -37,8 +37,8 @@ namespace VariablesDataExpressionsConstants.Statistics
                 dataToEvaluate = data;
             }
 
-            var maximumValue = dataToEvaluate.Max();
             var minimumValue = dataToEvaluate.Min();
+            var maximumValue = dataToEvaluate.Max();
             var averageValue = dataToEvaluate.Average();
 
             this.printer.Print("Minimum Value: ", minimumValue);
