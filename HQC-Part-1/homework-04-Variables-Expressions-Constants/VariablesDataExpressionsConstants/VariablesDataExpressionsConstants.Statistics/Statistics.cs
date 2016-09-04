@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 
 using VariablesDataExpressionsConstants.Statistics.Contracts;
@@ -16,6 +17,11 @@ namespace VariablesDataExpressionsConstants.Statistics
 
         public void PrintStatistics(IEnumerable<double> data, int elementsToEvaluateCount)
         {
+            if (data == null)
+            {
+                throw new ArgumentNullException("data");
+            }
+
             if (data.Count() == 0)
             {
                 return;
