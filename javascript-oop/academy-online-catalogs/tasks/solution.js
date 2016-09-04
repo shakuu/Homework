@@ -157,6 +157,162 @@ function solve() {
     class Catalog {
         constructor(name) {
             this.id = catalogIdGenerator.next().value;
+
+            this.name = name;
+            this.items = [];
+        }
+
+        get name() {
+            return this._name;
+        }
+
+        set name(value) {
+            if (!checkIfValueIsString(value)) {
+                throw new Error();
+            }
+
+            let len = value.length;
+            if (!checkNumberInRange(len, 2, 40)) {
+                throw new Error();
+            }
+
+            this._name = value;
+        }
+
+        add(...newItems) {
+            if (newItems.length === 1 && Array.isArray(newItems[0])) {
+                newItems = newItems[0];
+            }
+
+            if (newItems.length === 0) {
+                throw new Error();
+            }
+
+            newItems.forEach(item => {
+                if (!item.id || !item.name || !item.description) {
+                    throw new Error();
+                }
+            });
+
+            this.items.push(...newItems);
+        }
+
+        find(options) {
+            if (!options) {
+                throw new Error();
+            }
+
+            let result;
+            if (options.id || options.name) {
+                result = findByOptions(options, this.items);
+            } else if (!isNaN(options)) {
+                result = findById(options, this.items);
+            } else {
+                throw new Error();
+            }
+
+            return result;
+        }
+
+        search(pattern) {
+            if (typeof pattern !== 'string') {
+                throw new Error();
+            }
+
+            if (pattern.length < 1) {
+                throw new Error();
+            }
+
+            let matches = this.items.filter(item => {
+                let nameIsMatch = false;
+                if (item.name.toLowerCase().indexOf(pattern.toLowerCase) >= 0) {
+                    nameIsMatch = true;
+                }
+
+                let descriptionIsMatch = false;
+                if (item.description.toLowerCase().indexOf(pattern.toLowerCase) >= 0) {
+                    descriptionIsMatch = true;
+                }
+
+                return nameIsMatch || descriptionIsMatch;
+            });
+
+            return matches;
+        }
+    }
+
+    function findByOptions(options, arr) {
+        let matches = arr.filter(item => {
+            let isMatch = false;
+            if (options.id) {
+                if (item.id === options.id) {
+                    isMatch = true;
+                } else {
+                    return false;
+                }
+            }
+
+            if (options.name) {
+                if (options.name.toLowerCase() === item.name.toLowerCase()) {
+                    isMatch = true;
+                } else {
+                    return false;
+                }
+            }
+
+            return isMatch;
+        });
+
+        return matches;
+    }
+
+    function findById(id, arr) {
+        id = Number(id);
+        if (isNaN(id)) {
+            throw new Error();
+        }
+
+        let matches = arr.filter(item => item.id === id);
+        if (matches.length === 0) {
+            return null;
+        } else {
+            return matches[0];
+        }
+    }
+
+    class BookCatalog extends Catalog {
+        constructor(name) {
+            super(name);
+        }
+
+        add(...newItems) {
+            if (newItems.length === 1 && Array.isArray(newItems[0])) {
+                newItems = newItems[0];
+            }
+
+            if (newItems.length === 0) {
+                throw new Error();
+            }
+
+            newItems.forEach(item => {
+                if (!item.isbn || !item.genre) {
+                    throw new Error();
+                }
+            });
+
+            super.add(newItems);
+        }
+
+        find(options) {
+            let matches = super.find(options);
+
+            if (options.genre) {
+                matches = matches.filter(item => {
+                    return item.genre.toLowerCase() === options.genre.toLowerCase();
+                });
+            }
+
+            return matches;
         }
     }
 
@@ -168,7 +324,7 @@ function solve() {
             return new Media(name, rating, duration, description);
         },
         getBookCatalog: function (name) {
-            //return a book catalog instance
+            return new BookCatalog(name);
         },
         getMediaCatalog: function (name) {
             //return a media catalog instance
