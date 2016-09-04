@@ -27,6 +27,11 @@ namespace VariablesDataExpressionsConstants.Statistics
                 return;
             }
 
+            if (elementsToEvaluateCount < 0)
+            {
+                throw new ArgumentOutOfRangeException("elementsToEvaluateCount");
+            }
+
             IEnumerable<double> dataToEvaluate;
             if (elementsToEvaluateCount < data.Count())
             {
