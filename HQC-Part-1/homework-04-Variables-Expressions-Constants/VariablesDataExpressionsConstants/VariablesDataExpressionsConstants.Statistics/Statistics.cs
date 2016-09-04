@@ -39,7 +39,7 @@ namespace VariablesDataExpressionsConstants.Statistics
             }
             else
             {
-                dataToEvaluate = data;
+                dataToEvaluate = data.Take(data.Count());
             }
 
             var minimumValue = dataToEvaluate.Min();
