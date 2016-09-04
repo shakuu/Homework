@@ -207,7 +207,11 @@ function solve() {
                 result = findByOptions(options, this.items);
             } else if (!isNaN(options)) {
                 result = findById(options, this.items);
-            } else {
+            } else if (options.genre) {
+                result = this.items;
+            } else if (options.rating) {
+                result = this.items;
+            } else if (isNaN(options)) {
                 throw new Error();
             }
 
@@ -283,6 +287,8 @@ function solve() {
     class BookCatalog extends Catalog {
         constructor(name) {
             super(name);
+
+            this.genres = [];
         }
 
         add(...newItems) {
@@ -301,6 +307,7 @@ function solve() {
             });
 
             super.add(newItems);
+            return this;
         }
 
         find(options) {
@@ -309,6 +316,91 @@ function solve() {
             if (options.genre) {
                 matches = matches.filter(item => {
                     return item.genre.toLowerCase() === options.genre.toLowerCase();
+                });
+            }
+
+            return matches;
+        }
+
+        getGenres() {
+            let genres = [];
+            for (let i = 0; i < this.items.length; i += 1) {
+                if (genres.indexOf(this.items[i].genre) < 0) {
+                    genres.push(this.items[i].genre);
+                }
+            }
+            return genres;
+        }
+    }
+
+    class MediaCatalog extends Catalog {
+        constructor(name) {
+            super(name);
+        }
+
+        add(...newItems) {
+            if (newItems.length === 1 && Array.isArray(newItems[0])) {
+                newItems = newItems[0];
+            }
+
+            if (newItems.length === 0) {
+                throw new Error();
+            }
+
+            newItems.forEach(item => {
+                if (!item.rating || !item.duration) {
+                    throw new Error();
+                }
+            });
+
+            super.add(newItems);
+            return this;
+        }
+
+        getTop(count) {
+            count = Number(count);
+            if (isNaN(count)) {
+                throw new Error();
+            }
+
+            if (count === 0) {
+                throw new Error();
+            }
+
+            this.items.sort((itemA, itemB) => {
+                return itemB.rating - itemA.rating;
+            });
+
+            let result = [];
+            for (let i = 0; i < Math.min(count, this.items.length); i += 1) {
+                result.push({
+                    id: this.items[i].id,
+                    name: this.items[i].name
+                });
+            }
+            return result;
+        }
+
+        getSortedByDuration() {
+            this.items.sort((itemA, itemB) => {
+                let compareByDuration = itemB.duration - itemA.duration;
+
+                if (compareByDuration === 0) {
+                    return itemA.id - itemB.id;
+                } else {
+                    return compareByDuration;
+                }
+            });
+
+            return this.items;
+        }
+
+        find(options) {
+            let matches = super.find(options);
+
+            if (options.rating) {
+                matches = matches.filter(item => {
+                    return item.rating === options.rating;
                 });
             }
 
@@ -327,7 +419,7 @@ function solve() {
             return new BookCatalog(name);
         },
         getMediaCatalog: function (name) {
-            //return a media catalog instance
+            return new MediaCatalog(name);
         }
     };
 }

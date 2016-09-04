@@ -132,7 +132,7 @@ var utils = (function () {
     };
 
     return utils;
-}());
+} ());
 /* beforeach: end */
 
 describe('Academy Catalogs', function () {
@@ -445,7 +445,6 @@ describe('Academy Catalogs', function () {
                 duration = utils.valid.getDuration();
                 description = utils.valid.getDescription();
                 media = result.getMedia(name, rating, duration, description);
-                // console.log(media);
                 expect(media).to.be.a('object');
                 expect(media.name).to.be.a('string');
                 expect(media.name).to.equal(name);
@@ -786,7 +785,7 @@ describe('Academy Catalogs', function () {
     describe('BookCatalog tests', function () {
         describe('Valid tests', function () {
             // test 11
-            beforeEach(function(done) {
+            beforeEach(function (done) {
                 result = require('../tasks/solution')();
                 done();
             });
@@ -878,6 +877,7 @@ describe('Academy Catalogs', function () {
                     description: utils.valid.getDescription()
                 };
                 catalog.items.push(book);
+                catalog.add(book);
                 findResult = catalog.getGenres();
                 expect(findResult).to.exits;
                 expect(findResult.length).to.equal(1);
@@ -991,10 +991,10 @@ describe('Academy Catalogs', function () {
                 }
 
                 expect(testFindById_Undefined).to.throw();
-                expect(catalog.find({name: 'nonexistent'})).to.exits;
-                expect(Array.isArray(catalog.find({name: 'nonexistent'}))).to.be.true;
-                expect(catalog.find({name: 'nonexistent'}).length).to.exits; // it is an array-like object
-                expect(catalog.find({name: 'nonexistent'}).length).to.equal(0);
+                expect(catalog.find({ name: 'nonexistent' })).to.exits;
+                expect(Array.isArray(catalog.find({ name: 'nonexistent' }))).to.be.true;
+                expect(catalog.find({ name: 'nonexistent' }).length).to.exits; // it is an array-like object
+                expect(catalog.find({ name: 'nonexistent' }).length).to.equal(0);
 
                 // test with one book
                 book = {
@@ -1005,7 +1005,7 @@ describe('Academy Catalogs', function () {
                     description: utils.valid.getDescription()
                 };
                 catalog.items.push(book);
-                findResult = catalog.find({id: id});
+                findResult = catalog.find({ id: id });
                 expect(findResult).to.exits;
                 expect(findResult.length).to.equal(1);
                 expect(findResult[0]).to.equal(book);
@@ -1024,17 +1024,17 @@ describe('Academy Catalogs', function () {
                     catalog.items.push(book);
                 }
 
-                findResult = catalog.find({name: 'myName'});
+                findResult = catalog.find({ name: 'myName' });
                 expect(findResult).to.exits;
                 expect(findResult.length).to.equal(len);
 
-                findResult = catalog.find({id: 2 + len, name: 'myName'});
+                findResult = catalog.find({ id: 2 + len, name: 'myName' });
                 expect(findResult).to.exits;
                 expect(findResult.length).to.equal(1);
                 expect(findResult[0]).to.equal(books[2]);
 
                 // test search by genre
-                findResult = catalog.find({genre: 'generic1'});
+                findResult = catalog.find({ genre: 'generic1' });
                 expect(findResult).to.exits;
                 expect(findResult.length).to.equal(1);
             });
@@ -1104,7 +1104,7 @@ describe('Academy Catalogs', function () {
         });
         describe('Invalid tests', function () {
             // test 18
-            beforeEach(function(done) {
+            beforeEach(function (done) {
                 result = require('../tasks/solution')();
                 done();
             });
@@ -1256,7 +1256,7 @@ describe('Academy Catalogs', function () {
     describe('MediaCatalog tests', function () {
         describe('Valid tests', function () {
             // test 21
-            beforeEach(function(done) {
+            beforeEach(function (done) {
                 result = require('../tasks/solution')();
                 done();
             });
@@ -1459,7 +1459,7 @@ describe('Academy Catalogs', function () {
 
                 expect(testFindID_undefined).to.throw();
                 expect(testFindID_null).to.throw();
-                expect(testFindID_string).to.throw();//*/
+                expect(testFindID_string).to.throw();
             });
             // test 25
             it('expect mediaCatalog.find() by options to find an array of media in the items array or return null', function () {
@@ -1478,10 +1478,10 @@ describe('Academy Catalogs', function () {
                 }
 
                 expect(testFindById_Undefined).to.throw();
-                expect(catalog.find({name: 'nonexistent'})).to.exits;
-                expect(Array.isArray(catalog.find({name: 'nonexistent'}))).to.be.true;
-                expect(catalog.find({name: 'nonexistent'}).length).to.exits; // it is an array-like object
-                expect(catalog.find({name: 'nonexistent'}).length).to.equal(0);
+                expect(catalog.find({ name: 'nonexistent' })).to.exits;
+                expect(Array.isArray(catalog.find({ name: 'nonexistent' }))).to.be.true;
+                expect(catalog.find({ name: 'nonexistent' }).length).to.exits; // it is an array-like object
+                expect(catalog.find({ name: 'nonexistent' }).length).to.equal(0);
 
                 // test with one book
                 media = {
@@ -1492,7 +1492,7 @@ describe('Academy Catalogs', function () {
                     description: utils.valid.getDescription()
                 };
                 catalog.items.push(media);
-                findResult = catalog.find({id: id});
+                findResult = catalog.find({ id: id });
                 expect(findResult).to.exits;
                 expect(findResult.length).to.equal(1);
                 expect(findResult[0]).to.equal(media);
@@ -1511,17 +1511,17 @@ describe('Academy Catalogs', function () {
                     catalog.items.push(media);
                 }
 
-                findResult = catalog.find({name: 'myName'});
+                findResult = catalog.find({ name: 'myName' });
                 expect(findResult).to.exits;
                 expect(findResult.length).to.equal(len);
 
-                findResult = catalog.find({id: 2 + len, name: 'myName'});
+                findResult = catalog.find({ id: 2 + len, name: 'myName' });
                 expect(findResult).to.exits;
                 expect(findResult.length).to.equal(1);
                 expect(findResult[0]).to.equal(medias[2]);
 
                 // test search by genre
-                findResult = catalog.find({rating: 4});
+                findResult = catalog.find({ rating: 4 });
                 expect(findResult).to.exits;
                 expect(findResult.length).to.equal(1);
             });
@@ -1592,7 +1592,7 @@ describe('Academy Catalogs', function () {
         });
         describe('Invalid tests', function () {
             // test 28
-            beforeEach(function(done) {
+            beforeEach(function (done) {
                 result = require('../tasks/solution')();
                 done();
             });
