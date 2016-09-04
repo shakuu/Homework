@@ -15,7 +15,7 @@ namespace VariablesDataExpressionsConstants.Statistics
             this.printer = printer;
         }
 
-        public void PrintStatistics(IEnumerable<double> data, int elementsToEvaluateCount)
+        public void PrintStatistics(IEnumerable<double> data, int elementsToEvaluateCount = int.MaxValue)
         {
             if (data == null)
             {
