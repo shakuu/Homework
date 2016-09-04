@@ -445,6 +445,7 @@ describe('Academy Catalogs', function () {
                 duration = utils.valid.getDuration();
                 description = utils.valid.getDescription();
                 media = result.getMedia(name, rating, duration, description);
+                // console.log(media);
                 expect(media).to.be.a('object');
                 expect(media.name).to.be.a('string');
                 expect(media.name).to.equal(name);
