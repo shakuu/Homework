@@ -87,7 +87,7 @@ namespace Minesweeper.Engine
         /// <returns> Returns False when command is 'Exit'. </returns>
         public void ExecuteNextGameCycle()
         {
-            var stopGameExecution = true;
+            var stopGameExecution = false;
 
             var command = this.userInterface.GetUserInput();
             var commandWords = this.ConvertCommandString(command);
