@@ -30,8 +30,7 @@ class LinkedList {
     }
 
     get length() {
-        // TODO:
-        return 0;
+        return this._getLength();
     }
 
     append(...values) {
@@ -63,7 +62,7 @@ class LinkedList {
     insert(index, ...values) {
         if (index === 0) {
             this.prepend(...values);
-        } else if (index === this.length) {
+        } else if (index === this.length - 1) {
             this.append(...values);
         } else {
             const newNodes = this._buildNodesList(values);
@@ -86,7 +85,7 @@ class LinkedList {
 
     at(index, value) {
         const node = this._getNodeAtIndex(index + 1);
-        if (value) {
+        if (value || value === 0) {
             node.value = value;
         } else {
             return node.value;
@@ -132,6 +131,10 @@ class LinkedList {
             yield currentNode.value;
             currentNode = currentNode.next;
         }
+    }
+
+    _getLength() {
+        return this.toArray().length;
     }
 
     _getNodeAtIndex(index) {
