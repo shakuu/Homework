@@ -308,12 +308,52 @@ function solve() {
             return this;
         }
 
-        getTop(count) {
+        find(options) {
+            let filtered = super.find(options);
 
+            if (options.rating) {
+                filtered = filtered.filter(item => {
+                    const isMatch = item.rating === options.rating;
+                    return isMatch;
+                });
+            }
+
+            return filtered;
+        }
+
+        getTop(count) {
+            validator.validateIsNumberInRange(count, 1);
+            const sorted = this.items.sort((a, b) => {
+                const comparison = b.rating - a.rating;
+            });
+
+            let result = [];
+            for (let i = 0; i < count; i += 1) {
+                if (sorted[i]) {
+                    result.push({
+                        id: sorted[i].id,
+                        name: sorted[i].name
+                    });
+                } else {
+                    break;
+                }
+            }
+
+            return result;
         }
 
         getSortedByDuration() {
+            let sorted = this.items.sort((a, b) => {
+                const compareDuration = b.duration - a.duration;
+                if (compareDuration !== 0) {
+                    return compareDuration;
+                } else {
+                    const compareId = a.id - b.id;
+                    return compareId;
+                }
+            });
 
+            return sorted;
         }
     }
 
