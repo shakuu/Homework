@@ -59,7 +59,7 @@ function solve() {
 
 				return list;
 			}
-		}
+		};
 	})();
 
 	function* IdProvider() {
@@ -141,11 +141,28 @@ function solve() {
 		}
 
 		contains(playable, playlist) {
-
+			const playableFromPlaylist = playlist.getPlayableById(playable.id);
+			const result = playableFromPlaylist ? true : false;
+			return result;
 		}
 
 		search(pattern) {
+			pattern = pattern.toLowerCase();
 
+			const list = [];
+			this._playlists.forEach((item) => {
+				const isMatch = item.some((playable) => {
+					const title = playable.title.toLowerCase();
+					const isTitleMatch = title.indexOf(pattern) >= 0;
+					return isTitleMatch;
+				});
+
+				if (isMatch) {
+					list.push(item);
+				}
+			});
+
+			return list;
 		}
 	}
 
