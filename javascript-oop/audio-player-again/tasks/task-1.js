@@ -44,6 +44,24 @@ function solve() {
 		};
 	})();
 
+	const utils = (() => {
+		return {
+			extractPage(data, page, size) {
+				let list = [];
+				for (let i = 0; i < size; i += 1) {
+					const nextIndex = (page * size) + i;
+					if (data[nextIndex]) {
+						list.push(data[nextIndex]);
+					} else {
+						break;
+					}
+				}
+
+				return list;
+			}
+		}
+	})();
+
 	function* IdProvider() {
 		let lastId = 0;
 		while (true) {
@@ -116,17 +134,9 @@ function solve() {
 		listPlaylists(page, size) {
 			page = Number(page);
 			size = Number(size);
-			validator.validatePagingInput(this._playables.length, page, size);
-			let list = [];
-			for (let i = 0; i < size; i += 1) {
-				const nextIndex = (page * size) + i;
-				if (this._playlists[nextIndex]) {
-					list.push(this._playlists[nextIndex]);
-				} else {
-					break;
-				}
-			}
+			validator.validatePagingInput(this._playlists.length, page, size);
 
+			const list = utils.extractPage(this._playlists, page, size);
 			return list;
 		}
 
@@ -200,16 +210,7 @@ function solve() {
 			size = Number(size);
 			validator.validatePagingInput(this._playables.length, page, size);
 
-			let list = [];
-			for (let i = 0; i < size; i += 1) {
-				const nextIndex = (page * size) + i;
-				if (this._playables[nextIndex]) {
-					list.push(this._playables[nextIndex]);
-				} else {
-					break;
-				}
-			}
-
+			const list = utils.extractPage(this._playables, page, size);
 			return list;
 		}
 	}
