@@ -85,7 +85,7 @@ function solve() {
 				if (isMatch) {
 					isRemoved = true;
 				}
-				
+
 				return !isMatch;
 			});
 
@@ -97,7 +97,35 @@ function solve() {
 		}
 
 		listPlaylists(page, size) {
+			page = Number(page);
+			size = Number(size);
+			if (isNaN(page) || isNaN(size)) {
+				throw new Error();
+			}
 
+			if (this._playables.length < page * size) {
+				throw new Error();
+			}
+
+			if (page < 0) {
+				throw new Error();
+			}
+
+			if (size <= 0) {
+				throw new Error();
+			}
+
+			let list = [];
+			for (let i = 0; i < size; i += 1) {
+				const nextIndex = (page * size) + i;
+				if (this._playlists[nextIndex]) {
+					list.push(this._playlists[nextIndex]);
+				} else {
+					break;
+				}
+			}
+
+			return list;
 		}
 
 		contains(playable, playlist) {
@@ -116,6 +144,85 @@ function solve() {
 			this.name = name;
 
 			this._playables = [];
+		}
+
+		get name() {
+			return this._name;
+		}
+
+		set name(value) {
+			validator.validateName(value);
+			this._name = value;
+		}
+
+		addPlayable(playable) {
+			this._playables.push(playable);
+			return this;
+		}
+
+		getPlayableById(id) {
+			const matches = this._playables.filter((item) => {
+				const isMatch = item.id === id;
+				return isMatch;
+			});
+
+			let matchingPlayable = null;
+			if (matches.length > 0) {
+				matchingPlayable = matches[0];
+			}
+
+			return matchingPlayable;
+		}
+
+		removePlayable(playable) {
+			let id = playable.id || playable;
+			let isRemoved = false;
+			this._playables = this._playables.filter((item) => {
+				const isMatch = item.id === id;
+				if (isMatch) {
+					isRemoved = true;
+				}
+
+				return !isMatch;
+			});
+
+			if (!isRemoved) {
+				throw new Error('Playlist with id not found');
+			}
+
+			return this;
+		}
+
+		listPlayables(page, size) {
+			page = Number(page);
+			size = Number(size);
+			if (isNaN(page) || isNaN(size)) {
+				throw new Error();
+			}
+
+			if (this._playables.length < page * size) {
+				throw new Error();
+			}
+
+			if (page < 0) {
+				throw new Error();
+			}
+
+			if (size <= 0) {
+				throw new Error();
+			}
+
+			let list = [];
+			for (let i = 0; i < size; i += 1) {
+				const nextIndex = (page * size) + i;
+				if (this._playables[nextIndex]) {
+					list.push(this._playables[nextIndex]);
+				} else {
+					break;
+				}
+			}
+
+			return list;
 		}
 	}
 
