@@ -284,6 +284,37 @@ function solve() {
         constructor(name) {
             super(name);
         }
+
+        add(...media) {
+            if (media.length === 0) {
+                throw new Error();
+            }
+
+            if (media.length === 1 && Array.isArray(media[0])) {
+                media = media[0];
+            }
+
+            media.forEach(medium => {
+                if (!medium.rating) {
+                    throw new Error();
+                }
+
+                if (!medium.duration) {
+                    throw new Error();
+                }
+            });
+
+            super.add(media);
+            return this;
+        }
+
+        getTop(count) {
+
+        }
+
+        getSortedByDuration() {
+
+        }
     }
 
     const module = {
@@ -297,7 +328,7 @@ function solve() {
             return new BookCatalog(name);
         },
         getMediaCatalog: function (name) {
-            //return a media catalog instance
+            return new MediaCatalog(name);
         }
     };
 
