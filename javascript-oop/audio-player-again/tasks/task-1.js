@@ -23,6 +23,23 @@ function solve() {
 				if (!(NAME_LENGTH.MIN <= name.length && name.length <= NAME_LENGTH.MAX)) {
 					throw new Error('incorrect name length');
 				}
+			},
+			validatePagingInput(dataLength, page, size) {
+				if (isNaN(page) || isNaN(size)) {
+					throw new Error();
+				}
+
+				if (dataLength < page * size) {
+					throw new Error();
+				}
+
+				if (page < 0) {
+					throw new Error();
+				}
+
+				if (size <= 0) {
+					throw new Error();
+				}
 			}
 		};
 	})();
@@ -99,22 +116,7 @@ function solve() {
 		listPlaylists(page, size) {
 			page = Number(page);
 			size = Number(size);
-			if (isNaN(page) || isNaN(size)) {
-				throw new Error();
-			}
-
-			if (this._playables.length < page * size) {
-				throw new Error();
-			}
-
-			if (page < 0) {
-				throw new Error();
-			}
-
-			if (size <= 0) {
-				throw new Error();
-			}
-
+			validator.validatePagingInput(this._playables.length, page, size);
 			let list = [];
 			for (let i = 0; i < size; i += 1) {
 				const nextIndex = (page * size) + i;
@@ -196,21 +198,7 @@ function solve() {
 		listPlayables(page, size) {
 			page = Number(page);
 			size = Number(size);
-			if (isNaN(page) || isNaN(size)) {
-				throw new Error();
-			}
-
-			if (this._playables.length < page * size) {
-				throw new Error();
-			}
-
-			if (page < 0) {
-				throw new Error();
-			}
-
-			if (size <= 0) {
-				throw new Error();
-			}
+			validator.validatePagingInput(this._playables.length, page, size);
 
 			let list = [];
 			for (let i = 0; i < size; i += 1) {
