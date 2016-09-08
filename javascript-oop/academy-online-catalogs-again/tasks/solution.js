@@ -6,7 +6,7 @@ function solve() {
             yield lastId += 1;
         }
     }
-
+    
     const validator = (() => {
         const ISBN_PATTERN = /^[0-9]+$/;
 
