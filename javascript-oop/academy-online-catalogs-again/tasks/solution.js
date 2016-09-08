@@ -139,7 +139,7 @@ function solve() {
     const catalogIdGenerator = IdGenerator();
     class Catalog {
         constructor(name, items) {
-            this.id = catalogIdGenerator.next().vale;
+            this.id = catalogIdGenerator.next().value;
 
             this.name = name;
             this.items = items || [];
@@ -164,7 +164,9 @@ function solve() {
             }
 
             items.forEach(item => {
-                validator.validateIsItem(item);
+                if (!validator.validateIsItem(item)) {
+                    throw new Error();
+                }
             });
 
             this.items.push(...items);
@@ -182,11 +184,11 @@ function solve() {
                     let isMatch = true;
                     if (options.id && options.id !== item.id) {
                         return false;
-                    } 
+                    }
 
                     if (options.name && options.name !== item.name) {
                         return false;
-                    } 
+                    }
 
                     return isMatch;
                 });
@@ -234,7 +236,7 @@ function solve() {
                 throw new Error();
             }
 
-            if (books.length === 1) {
+            if (books.length === 1 && Array.isArray(books[0])) {
                 books = books[0];
             }
 
@@ -263,6 +265,25 @@ function solve() {
 
             return genres;
         }
+
+        find(options) {
+            let filtered = super.find(options);
+
+            if (options.genre) {
+                filtered = filtered.filter(item => {
+                    const isMatch = item.genre.toLowerCase() === options.genre.toLowerCase();
+                    return isMatch;
+                });
+            }
+
+            return filtered;
+        }
+    }
+
+    class MediaCatalog extends Catalog {
+        constructor(name) {
+            super(name);
+        }
     }
 
     const module = {
@@ -273,7 +294,7 @@ function solve() {
             return new Media(name, rating, duration, description);
         },
         getBookCatalog: function (name) {
-            return new Catalog(name);
+            return new BookCatalog(name);
         },
         getMediaCatalog: function (name) {
             //return a media catalog instance
