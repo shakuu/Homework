@@ -170,6 +170,99 @@ function solve() {
             this.items.push(...items);
             return this;
         }
+
+        find(options) {
+            if (options === undefined) {
+                throw new Error();
+            }
+
+            let result;
+            if (typeof options === 'object') {
+                const matches = this.items.filter(item => {
+                    let isMatch = true;
+                    if (options.id && options.id !== item.id) {
+                        return false;
+                    } 
+
+                    if (options.name && options.name !== item.name) {
+                        return false;
+                    } 
+
+                    return isMatch;
+                });
+
+                result = matches;
+            } else {
+                const id = Number(options);
+                if (isNaN(id)) {
+                    throw new Error();
+                }
+
+                const matches = this.items.filter(item => {
+                    const isMatch = item.id === id;
+                    return isMatch;
+                });
+
+                result = matches[0] || null;
+            }
+
+            return result;
+        }
+
+        search(pattern) {
+            validator.validateIsStringWithLength(pattern, 1);
+            pattern = pattern.toLowerCase();
+
+            const matches = this.items.filter(item => {
+                const isMatchingName = item.name.toLowerCase().indexOf(pattern) >= 0;
+                const isMatchingDescription = item.description.toLowerCase().indexOf(pattern) >= 0;
+
+                return isMatchingName || isMatchingDescription;
+            });
+
+            return matches;
+        }
+    }
+
+    class BookCatalog extends Catalog {
+        constructor(name) {
+            super(name);
+        }
+
+        add(...books) {
+            if (books.length === 0) {
+                throw new Error();
+            }
+
+            if (books.length === 1) {
+                books = books[0];
+            }
+
+            books.forEach(book => {
+                if (!book.isbn) {
+                    throw new Error();
+                }
+
+                if (!book.genre) {
+                    throw new Error();
+                }
+            });
+
+            super.add(books);
+            return this;
+        }
+
+        getGenres() {
+            const genres = [];
+            this.items.forEach(book => {
+                const genre = book.genre.toLowerCase();
+                if (genres.indexOf(genre) < 0) {
+                    genres.push(genre);
+                }
+            });
+
+            return genres;
+        }
     }
 
     const module = {
