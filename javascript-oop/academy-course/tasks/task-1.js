@@ -1,66 +1,167 @@
-/* Task Description */
-/* 
-* Create a module for a Telerik Academy course
-  * The course has a title and presentations
-    * Each presentation also has a title
-    * There is a homework for each presentation
-  * There is a set of students listed for the course
-    * Each student has firstname, lastname and an ID
-      * IDs must be unique integer numbers which are at least 1
-  * Each student can submit a homework for each presentation in the course
-  * Create method init
-    * Accepts a string - course title
-    * Accepts an array of strings - presentation titles
-    * Throws if there is an invalid title
-      * Titles do not start or end with spaces
-      * Titles do not have consecutive spaces
-      * Titles have at least one character
-    * Throws if there are no presentations
-  * Create method addStudent which lists a student for the course
-    * Accepts a string in the format 'Firstname Lastname'
-    * Throws if any of the names are not valid
-      * Names start with an upper case letter
-      * All other symbols in the name (if any) are lowercase letters
-    * Generates a unique student ID and returns it
-  * Create method getAllStudents that returns an array of students in the format:
-    * {firstname: 'string', lastname: 'string', id: StudentID}
-  * Create method submitHomework
-    * Accepts studentID and homeworkID
-      * homeworkID 1 is for the first presentation
-      * homeworkID 2 is for the second one
-      * ...
-    * Throws if any of the IDs are invalid
-  * Create method pushExamResults
-    * Accepts an array of items in the format {StudentID: ..., Score: ...}
-      * StudentIDs which are not listed get 0 points
-    * Throw if there is an invalid StudentID
-    * Throw if same StudentID is given more than once ( he tried to cheat (: )
-    * Throw if Score is not a number
-  * Create method getTopStudents which returns an array of the top 10 performing students
-    * Array must be sorted from best to worst
-    * If there are less than 10, return them all
-    * The final score that is used to calculate the top performing students is done as follows:
-      * 75% of the exam result
-      * 25% the submitted homework (count of submitted homeworks / count of all homeworks) for the course
-*/
-
 function solve() {
-	var Course = {
-		init: function(title, presentations) {
-		},
-		addStudent: function(name) {
-		},
-		getAllStudents: function() {
-		},
-		submitHomework: function(studentID, homeworkID) {
-		},
-		pushExamResults: function(results) {
-		},
-		getTopStudents: function() {
-		}
-	};
+    function* IdGenerator() {
+        let lastId = 0;
+        while (true) {
+            yield lastId += 1;
+        }
+    }
 
-	return Course;
+    const validator = (() => {
+        const WHITESPACE_START = /^\s+/,
+            WHITESPACE_END = /\s+$/,
+            WHITESPACE_CONSECUTIVE = /\s\s+/;
+
+        const STUDENT_NAME = /^[A-Z][a-z]*$/;
+
+        return {
+            validateIsNumber(value) {
+                value = Number(value);
+                if (isNaN(value)) {
+                    throw new Error();
+                }
+            },
+            validateIsString(value) {
+                if (value === undefined) {
+                    throw new Error();
+                }
+
+                if (typeof value !== 'string') {
+                    throw new Error();
+                }
+            },
+            validateTitle(value) {
+                validator.validateIsString(value);
+
+                if (value.length < 1) {
+                    throw new Error();
+                }
+
+                if (WHITESPACE_START.test(value)) {
+                    throw new Error();
+                }
+
+                if (WHITESPACE_END.test(value)) {
+                    throw new Error();
+                }
+
+                if (WHITESPACE_CONSECUTIVE.test(value)) {
+                    throw new Error();
+                }
+            },
+            validateStudentName(value) {
+                const names = value.split(' ');
+                if (names.length !== 2) {
+                    throw new Error();
+                }
+
+                names.forEach(name => {
+                    if (!STUDENT_NAME.test(name)) {
+                        throw new Error();
+                    }
+                });
+            }
+        };
+    })();
+
+    const studentIdGenerator = IdGenerator();
+    var Course = {
+        init: function (title, presentations) {
+            validator.validateTitle(title);
+            this.title = title;
+
+            if (!Array.isArray(presentations) || presentations.length === 0) {
+                throw new Error();
+            }
+
+            presentations.forEach(item => validator.validateTitle(item));
+            this.presentations = presentations;
+
+            this.students = [];
+
+            return this;
+        },
+        addStudent: function (name) {
+            validator.validateStudentName(name);
+            const studentNames = name.split(' ');
+
+            const nextId = studentIdGenerator.next().value;
+            this.students[nextId] = {
+                firstname: studentNames[0],
+                lastname: studentNames[1],
+                id: nextId
+            };
+
+            return nextId;
+        },
+        getAllStudents: function () {
+            const data = [];
+            this.students.forEach(student => {
+                if (student.id) {
+                    data.push({
+                        firstname: student.firstname,
+                        lastname: student.lastname,
+                        id: student.id
+                    });
+                }
+            });
+
+            return data;
+        },
+        submitHomework: function (studentID, homeworkID) {
+            validator.validateIsNumber(studentID);
+            validator.validateIsNumber(homeworkID);
+
+            if (homeworkID < 1 || this.presentations.length < homeworkID) {
+                throw new Error();
+            }
+
+            if (!this.students[studentID]) {
+                throw new Error();
+            }
+
+            const student = this.students[studentID];
+            if (!student.homework) {
+                student.homework = [];
+            }
+
+            student.homework[homeworkID] = true;
+        },
+        pushExamResults: function (results) {
+            if (!Array.isArray(results)) {
+                throw new Error();
+            }
+
+            const self = this;
+            results.forEach(item => {
+                if (item.StudentID === undefined || !item.score === undefined) {
+                    throw new Error();
+                }
+
+                validator.validateIsNumber(item.score);
+                validator.validateIsNumber(item.StudentID);
+
+                if (self.students[item.StudentID] === undefined) {
+                    throw new Error();
+                }
+
+                if (self.students[item.StudentID].score !== undefined) {
+                    throw new Error();
+                }
+
+                self.students[item.StudentID].score = item.score;
+            });
+
+            this.students.forEach(student => {
+                if (!student.score) {
+                    student.score = 0;
+                }
+            });
+        },
+        getTopStudents: function () {
+        }
+    };
+
+    return Course;
 }
 
 
