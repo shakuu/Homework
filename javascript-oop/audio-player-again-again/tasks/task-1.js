@@ -93,8 +93,50 @@ function solve() {
 				throw new Error();
 			}
 
-			this.playlists.splice(indexToRemove, 1);
+			this.items.splice(indexToRemove, 1);
 			return this;
+		}
+
+		list(page, size) {
+			page = Number(page);
+			size = Number(size);
+			if (isNaN(page) || isNaN(size)) {
+				throw new Error();
+			}
+
+			if (page * size > this.items.length) {
+				throw new Error();
+			}
+
+			if (page < 0) {
+				throw new Error();
+			}
+
+			if (size <= 0) {
+				throw new Error();
+			}
+
+			this.items.sort((a, b) => {
+				const compareTitle = a.title > b.title ? 1 : a === b ? 0 : -1;
+				if (compareTitle !== 0) {
+					return compareTitle;
+				} else {
+					return a.id - b.id;
+				}
+			});
+
+			const output = [];
+			for (let i = 0; i < size; i += 1) {
+				const index = page * size + i;
+
+				if (this.items[index]) {
+					output.push(this.items[index]);
+				} else {
+					break;
+				}
+			}
+
+			return output;
 		}
 	}
 
@@ -129,7 +171,8 @@ function solve() {
 		}
 
 		listPlaylists(page, size) {
-
+			const list = super.list(page, size);
+			return list;
 		}
 
 		contains(playable, playlist) {
@@ -153,10 +196,6 @@ function solve() {
 				throw new Error();
 			}
 
-			if (!(playable instanceof Playable)) {
-				throw new Error();
-			}
-
 			super.addItem(playable);
 			return this;
 		}
@@ -172,7 +211,8 @@ function solve() {
 		}
 
 		listPlayables(page, size) {
-
+			const list = super.list(page, size);
+			return list;
 		}
 	}
 
@@ -272,10 +312,10 @@ function solve() {
 			return new PlayList(name);
 		},
 		getAudio: function (title, author, length) {
-			//returns a new audio instance with the provided title, author and length
+			return new Audio(title, author, length);
 		},
 		getVideo: function (title, author, imdbRating) {
-			//returns a new video instance with the provided title, author and imdbRating
+			return new Video(title, author, imdbRating);
 		}
 	};
 
