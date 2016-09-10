@@ -30,6 +30,27 @@ function solve() {
 		};
 	})();
 
+	const idProvider = (() => {
+		function* Generator() {
+			let lastId = 0;
+			while (true) {
+				yield lastId += 1;
+			}
+		}
+
+		const generators = {};
+		return {
+			getNext(identifier) {
+				if (!generators[identifier]) {
+					generators[identifier] = Generator();
+				}
+
+				const next = generators[identifier].next().value;
+				return next;
+			}
+		};
+	})();
+
 	const NameableMixin = (() => {
 		return Base => class extends Base {
 			constructor(name, args) {
@@ -144,7 +165,8 @@ function solve() {
     class Player extends Container {
         constructor(name) {
 			super(name);
-			this.id = playerIdGenerator.next().value;
+			// this.id = playerIdGenerator.next().value;
+			this.id = idProvider.getNext(this.constructor.name);
         }
 
 		addPlaylist(playlistToAdd) {
