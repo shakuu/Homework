@@ -165,7 +165,6 @@ function solve() {
     class Player extends Container {
         constructor(name) {
 			super(name);
-			// this.id = playerIdGenerator.next().value;
 			this.id = idProvider.getNext(this.constructor.name);
         }
 
@@ -210,7 +209,7 @@ function solve() {
 	class PlayList extends Container {
 		constructor(name) {
 			super(name);
-			this.id = playerIdGenerator.next().value;
+			this.id = idProvider.getNext(this.constructor.name);
 		}
 
 		addPlayable(playable) {
@@ -241,7 +240,7 @@ function solve() {
 	const playableIdGenerator = IdGenerator();
 	class Playable {
 		constructor(title, author) {
-			this.id = playableIdGenerator.next().value;
+			this.id = idProvider.getNext(this.constructor.name);	
 
 			this.title = title;
 			this.author = author;
