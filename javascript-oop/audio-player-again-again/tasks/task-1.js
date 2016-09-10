@@ -230,7 +230,7 @@ function solve() {
 
 	class Playable {
 		constructor(title, author) {
-			this.id = idProvider.getNext(this.constructor.name);	
+			this.id = idProvider.getNext(this.constructor.name);
 
 			this.title = title;
 			this.author = author;
