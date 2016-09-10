@@ -1,12 +1,5 @@
 'use strict';
 function solve() {
-	function* IdGenerator() {
-		let lastId = 0;
-		while (true) {
-			yield lastId += 1;
-		}
-	}
-
 	const validator = (() => {
 		const NAME_LENGTH = {
 			MIN: 3,
@@ -161,7 +154,6 @@ function solve() {
 		}
 	}
 
-	const playerIdGenerator = IdGenerator();
     class Player extends Container {
         constructor(name) {
 			super(name);
@@ -205,7 +197,6 @@ function solve() {
 		}
 	}
 
-	const playlistIdGenerator = IdGenerator();
 	class PlayList extends Container {
 		constructor(name) {
 			super(name);
@@ -237,7 +228,6 @@ function solve() {
 		}
 	}
 
-	const playableIdGenerator = IdGenerator();
 	class Playable {
 		constructor(title, author) {
 			this.id = idProvider.getNext(this.constructor.name);	
