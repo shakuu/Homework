@@ -9,10 +9,19 @@ Create a function that:
     *   fullname is the concatenation of `firstName`, ' ' (empty space) and `lastName`
 *   **Use underscore.js for all operations**
 */
+const _ = require('underscore');
+function solve() {
+    return function (students) {
+        const top = _.chain(students)
+            .each(std => std.marks = _.reduce(std.marks, (a, b) => a + b) / std.marks.length, 0)
+            .sortBy(std => std.marks)
+            .reverse()
+            .first()
+            .value();
 
-function solve(){
-  return function (students) {
-  };
+        const result = `${top.firstName} ${top.lastName} has an average score of ${top.marks}`;
+        console.log(result);
+    };
 }
 
 module.exports = solve;
