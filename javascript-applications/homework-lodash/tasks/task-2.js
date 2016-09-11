@@ -8,9 +8,19 @@ Create a function that:
 *   **Use underscore.js for all operations**
 */
 
-function solve(){
-  return function (students) {
-  };
+function solve() {
+    'use strict';
+    return function (students) {
+        const matching = _.chain(students)
+            .filter(std => {
+                const isEligible = 18 <= std.age && std.age <= 24;
+                return isEligible;
+            })
+            .map(std => `${std.firstName} ${std.lastName}`)
+            .sortBy(std => std)
+            .each(std => console.log(std));
+
+    };
 }
 
 module.exports = solve;

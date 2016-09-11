@@ -14,14 +14,12 @@ const _ = require('underscore');
 function solve() {
     'use strict';
     return function (students) {
-        students = _.chain(students)
+        _.chain(students)
             .filter(std => std.firstName < std.lastName)
             .map(std => `${std.firstName} ${std.lastName}`)
             .sortBy(std => std)
-            .value()
-            .reverse();
-
-        students.forEach(std => console.log(std));
+            .reverse()
+            .each(std => console.log(std));
     };
 }
 
