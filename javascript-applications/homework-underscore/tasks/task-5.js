@@ -6,10 +6,19 @@ Create a function that:
     *   "Total number of legs: TOTAL_NUMBER_OF_LEGS"
 *   **Use underscore.js for all operations**
 */
+const _ = require('underscore');
 
-function solve(){
-  return function (animals) {
-  };
+function solve() {
+    'use strict()';
+    return function (animals) {
+        const legs = _.chain(animals)
+            .map(animal => animal.legsCount)
+            .reduce((a, b) => a + b, 0)
+            .value();
+
+        const result = `Total number of legs: ${legs}`;
+        console.log(result);
+    };
 }
 
 module.exports = solve;
