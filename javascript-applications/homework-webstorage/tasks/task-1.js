@@ -29,17 +29,21 @@ function solve() {
     })();
 
     const StorageProviderMixin = (() => {
+        const STORAGE_ITEM = 'SHEEP_AND_RAMS_SCORE_LIST';
+        const messages = [];
+
+        // Add localStorage
         return Base => class extends Base {
             constructor(args) {
                 super(args);
             }
 
             saveMessage(message) {
-
+                messages.push(message);
             }
 
             loadAllMessages() {
-
+                return messages;
             }
         };
     })();
@@ -100,11 +104,24 @@ function solve() {
                 const sheep = game._countSheep(number);
 
                 if (rams === 4) {
+                    this.isRunning = false;
                     this._updateScore(this.playerName, this._guessesCount);
                     this.endCallback();
                 }
 
                 return { rams, sheep };
+            }
+
+            getHighScore(count) {
+                const allMessages = this.loadAllMessages();
+                const result = _.chain(allMessages)
+                    .map(msg => JSON.parse(msg))
+                    .sortBy(msg => msg.score)
+                    .reverse()
+                    .take(count)
+                    .value();
+
+                return result;
             }
 
             _updateScore(playerName, guessesCount) {
@@ -157,7 +174,6 @@ function solve() {
 
     function init(playerName, endCallback) {
         game = new SheepAndRamsGame(playerName, endCallback);
-        return game;
     }
 
     function guess(number) {
@@ -170,7 +186,8 @@ function solve() {
     }
 
     function getHighScore(count) {
-
+        const highScoreList = game.getHighScore(count);
+        return highScoreList;
     }
 
     return {

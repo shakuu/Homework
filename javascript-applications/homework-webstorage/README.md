@@ -32,7 +32,7 @@ Your task is to create an object, that has 3 methods:
 	 	*	Should throw otherwise
 	*	The player makes a guess agains the number
 	*	Returns as a result an object in the format:
-		*	`{ sheep: 3, rams: 1 }`
+		*	`{ <s></s>heep: 3, rams: 1 }`
 *	`getHighScore(count)`
 	*	Returns the top `count` players of the high-score
 	*	If `count` is greater than the total count of players in the high-score, return the actual number of player in the high-score
