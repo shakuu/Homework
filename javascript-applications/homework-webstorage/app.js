@@ -1,6 +1,6 @@
-const solution = require('./tasks/task-1')();
+const game = require('./tasks/task-1')();
 
 
-const n = Object.create(solution).init();
-
-console.log(n);
+const ramsSheep = Object.create(game).init();
+ramsSheep.guess(1234);
+console.log(ramsSheep);
