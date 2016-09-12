@@ -28,7 +28,23 @@ function solve() {
         };
     })();
 
-    const GameLogic = (() => {
+    const StorageProviderMixin = (() => {
+        return Base => class extends Base {
+            constructor(args) {
+                super(args);
+            }
+
+            saveMessage(message) {
+
+            }
+
+            loadAllMessages() {
+
+            }
+        };
+    })();
+
+    const SheepAndRamsGame = (() => {
         function convertToArray(number) {
             const convertedNumber = number.toString().split('').map(Number);
             return convertedNumber;
@@ -46,10 +62,10 @@ function solve() {
                             number[index] = _.random(1, 9);
                         }
 
-                        let isUnique = validator.validateUniqueDigit(digit, number);
+                        let isUnique = validator.validateUniqueDigit(number[index], number);
                         while (!isUnique && index !== 0) {
                             number[index] = _.random(0, 9);
-                            isUnique = validator.validateUniqueDigit(digit, number);
+                            isUnique = validator.validateUniqueDigit(number[index], number);
                         }
                     });
 
@@ -59,17 +75,48 @@ function solve() {
             };
         })();
 
-        class GameLogic {
+        class GameLogic extends StorageProviderMixin(Object) {
             constructor(playerName, endCallback) {
+                super();
+
+                this.isRunning = true;
                 this.playerName = playerName;
                 this.endCallback = endCallback;
-                this.isRunning = true;
 
                 this._scoreList = [];
+                this._guessesCount = 0;
                 this.__secretNumber__ = secretNumberGenerator.generateSecretNumber(4);
             }
 
-            countRams(guess) {
+            evaluateGuess(number) {
+                if (!this.isRunning) {
+                    throw new Error('Run init()');
+                }
+
+                validator.validateGuess(number);
+
+                this._guessesCount += 1;
+                const rams = game._countRams(number);
+                const sheep = game._countSheep(number);
+
+                if (rams === 4) {
+                    this._updateScore(this.playerName, this._guessesCount);
+                    this.endCallback();
+                }
+
+                return { rams, sheep };
+            }
+
+            _updateScore(playerName, guessesCount) {
+                const message = JSON.stringify({
+                    name: playerName,
+                    score: guessesCount
+                });
+
+                this.saveMessage(message);
+            }
+
+            _countRams(guess) {
                 const convertedGuess = convertToArray(guess);
                 const convertedSecretNumber = convertToArray(this.__secretNumber__);
 
@@ -83,7 +130,7 @@ function solve() {
                 return count;
             }
 
-            countSheep(guess) {
+            _countSheep(guess) {
                 const convertedGuess = convertToArray(guess);
                 const convertedSecretNumber = convertToArray(this.__secretNumber__);
 
@@ -109,27 +156,16 @@ function solve() {
     let game;
 
     function init(playerName, endCallback) {
-        game = new GameLogic(playerName, endCallback);
+        game = new SheepAndRamsGame(playerName, endCallback);
         return game;
     }
 
     function guess(number) {
-        if (!game.isRunning) {
+        if (!game || !game.isRunning) {
             throw new Error('Invoke init().');
         }
 
-        validator.validateGuess(number);
-
-        const outcome = {
-            rams: game.countRams(number),
-            sheep: game.countSheep(number)
-        };
-
-        // if (outcome.rams === 4) {
-        //     gameLogic.handleWin();
-        //     this.onWinCallback();
-        // }
-
+        const outcome = game.evaluateGuess(number);
         return outcome;
     }
 
