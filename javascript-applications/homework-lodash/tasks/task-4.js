@@ -24,10 +24,27 @@ Create a function that:
 ```
 *   **Use underscore.js for all operations**
 */
+const _ = require('underscore');
+function solve() {
+    return function (animals) {
+        const result = _.chain(animals)
+            .sortBy('name')
+            .reverse()
+            .sortBy('species')
+            .reverse()
+            .groupBy('species')
+            .value();
 
-function solve(){
-  return function (animals) {
-  };
+        for (const i in result) {
+            const current = result[i];
+            console.log('-'.repeat(i.length + 1));
+            console.log(i + ':');
+            console.log('-'.repeat(i.length + 1));
+            _.chain(current)
+                .sortBy('legsCount')
+                .each(el => console.log(`${el.name} has ${el.legsCount} legs`));
+        }
+    };
 }
 
 module.exports = solve;
