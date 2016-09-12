@@ -9,10 +9,23 @@ Create a function that:
 		*   fullname is the concatenation of `firstName`, ' ' (empty space) and `lastName`
 *   **Use underscore.js for all operations**
 */
+const _ = require('underscore');
+function solve() {
+    'use strict()';
+    return function (books) {
+        const result = _.chain(books)
+            .map(item => item.author)
+            .map(author => author.firstName + ' ' + author.lastName)
+            .groupBy(author => author)
+            .value();
 
-function solve(){
-  return function (books) {
-  };
+        const maxLength = _.max(result, author => author.length).length;
+        let allAuthorsWithMostBooks = _.chain(result)
+            .filter(author => author.length === maxLength)
+            .map(author => author[0])
+            .sortBy(author => author)
+            .each(author => console.log(author));
+    };
 }
 
 module.exports = solve;
