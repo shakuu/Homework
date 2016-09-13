@@ -38,20 +38,29 @@ namespace ThreadTesting.Workers.Models
             {
                 return;
             }
+            else
+            {
+                this.isPassing = this.ExecutePrimeTest(this.primeCandidate);
+                this.isTested = true;
+            }
+        }
 
-            var primeCandidateSqrt = Math.Sqrt(this.primeCandidate);
+        private bool ExecutePrimeTest(int primeCandidate)
+        {
+            var isPassing = true;
+            var primeCandidateSqrt = Math.Sqrt(primeCandidate);
             var maximumDivisor = (int)Math.Floor(primeCandidateSqrt);
             var minimumDivisor = 2;
             for (int divisor = minimumDivisor; divisor <= maximumDivisor; divisor++)
             {
-                if (this.primeCandidate % divisor == 0)
+                if (primeCandidate % divisor == 0)
                 {
                     this.isPassing = false;
                     break;
                 }
             }
 
-            this.isTested = true;
+            return isPassing;
         }
     }
 }

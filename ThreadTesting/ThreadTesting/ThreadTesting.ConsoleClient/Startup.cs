@@ -9,7 +9,7 @@ namespace ThreadTesting.ConsoleClient
         public static void Main()
         {
             var tester = new PrimeTester(17);
-            var first = new Thread(new ThreadStart(tester.RunTest));
+            var first = new Thread(tester.RunTest);
             first.Start();
             first.Join();
 
