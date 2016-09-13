@@ -1,10 +1,13 @@
 ﻿using System;
 using System.Diagnostics;
 
-class AssertionsHomework
+public class AssertionsHomework
 {
-    public static void SelectionSort<T>(T[] arr) where T : IComparable<T>
+    public static void SelectionSort<T>(T[] arr)
+        where T : IComparable<T>
     {
+        Debug.Assert(arr != null, "Array to be sorted cannot be null");
+
         for (int index = 0; index < arr.Length - 1; index++)
         {
             int minElementIndex = FindMinElementIndex(arr, index, arr.Length - 1);
@@ -15,6 +18,10 @@ class AssertionsHomework
     private static int FindMinElementIndex<T>(T[] arr, int startIndex, int endIndex)
         where T : IComparable<T>
     {
+        Debug.Assert(arr != null);
+        Debug.Assert(startIndex <= endIndex);
+        Debug.Assert(endIndex == arr.Length - 1);
+
         int minElementIndex = startIndex;
         for (int i = startIndex + 1; i <= endIndex; i++)
         {
@@ -23,11 +30,19 @@ class AssertionsHomework
                 minElementIndex = i;
             }
         }
+
+        Debug.Assert(0 <= minElementIndex);
+        Debug.Assert(minElementIndex <= endIndex);
+        Debug.Assert(minElementIndex < arr.Length);
+
         return minElementIndex;
     }
 
     private static void Swap<T>(ref T x, ref T y)
     {
+        Debug.Assert(x != null);
+        Debug.Assert(y != null);
+
         T oldX = x;
         x = y;
         y = oldX;
@@ -74,7 +89,7 @@ class AssertionsHomework
         // Test sorting empty array
         SelectionSort(new int[0]);
         // Test sorting single element array
-        SelectionSort(new int[1]); 
+        SelectionSort(new int[1]);
 
         Console.WriteLine(BinarySearch(arr, -1000));
         Console.WriteLine(BinarySearch(arr, 0));
