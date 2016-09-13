@@ -47,7 +47,7 @@ namespace ThreadTesting.Workers.Models
 
         private bool ExecutePrimeTest(int primeCandidate)
         {
-            var isPassing = true;
+            var isPassing = false;
             var primeCandidateSqrt = Math.Sqrt(primeCandidate);
             var maximumDivisor = (int)Math.Floor(primeCandidateSqrt);
             var minimumDivisor = 2;
@@ -55,12 +55,15 @@ namespace ThreadTesting.Workers.Models
             {
                 if (primeCandidate % divisor == 0)
                 {
-                    this.isPassing = false;
-                    break;
+                    //this.isPassing = false;
+                    //break;
+                    return false;
                 }
             }
 
-            return isPassing;
+            return true;
+            //isPassing = true;
+            //return isPassing;
         }
     }
 }

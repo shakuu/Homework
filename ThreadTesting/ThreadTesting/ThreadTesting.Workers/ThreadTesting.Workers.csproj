@@ -40,7 +40,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Contracts\IWorker.cs" />
+    <Compile Include="Contracts\IRangeTester.cs" />
+    <Compile Include="Contracts\ITester.cs" />
+    <Compile Include="Models\PrimeRangeTester.cs" />
     <Compile Include="Models\PrimeTester.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
