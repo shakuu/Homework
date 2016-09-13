@@ -11,7 +11,7 @@ namespace ThreadTesting.ConsoleClient
         public static void Main()
         {
             var constructor = typeof(PrimeTester).GetConstructor(new[] { typeof(int) });
-            var rangeTester = new PrimeRangeTester(500, 1500, constructor);
+            var rangeTester = new PrimeRangeTester(500, 15000, constructor);
 
             var nt = new Thread(rangeTester.RunTests);
             nt.Start();
