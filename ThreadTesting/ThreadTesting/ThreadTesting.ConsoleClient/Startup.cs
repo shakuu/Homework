@@ -12,23 +12,18 @@ namespace ThreadTesting.ConsoleClient
         public static void Main()
         {
             var constructor = typeof(PrimeTester).GetConstructor(new[] { typeof(int) });
-            var rangeTester = new PrimeRangeTester(constructor);
+            var rangeTester = new PrimeRangeTester(500, 1500, constructor);
 
-            IEnumerable<int> values;
-            var nt = new Thread(rangeTester.StartTest);
+            var nt = new Thread(rangeTester.RunTests);
             nt.Start();
             do
             {
-                values = rangeTester.GetUpdatedRange();
-                var intermediateSum = values.Sum();
-                Console.WriteLine(intermediateSum);
+                Console.WriteLine(rangeTester.GetUpdatedRange().Count());
                 Thread.Sleep(500);
 
             } while (rangeTester.TestsAreRunning);
 
-            values = rangeTester.GetUpdatedRange();
-            var sum = values.Sum();
-            Console.WriteLine(sum);
+            Console.WriteLine(rangeTester.GetUpdatedRange().Count());
         }
     }
 }

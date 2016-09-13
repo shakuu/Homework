@@ -7,28 +7,29 @@ namespace ThreadTesting.Workers.Models
     public class PrimeTester : ITester
     {
         private int primeCandidate;
-        private bool isPassing;
+        private bool? isPassing;
         private bool isTested;
 
         public PrimeTester(int primeCandidate)
         {
             this.primeCandidate = primeCandidate;
-            this.isPassing = true;
+            this.isPassing = null;
             this.isTested = false;
+        }
+
+        public string Value
+        {
+            get
+            {
+                return this.primeCandidate.ToString();
+            }
         }
 
         public bool? IsPassing
         {
             get
             {
-                if (this.isTested)
-                {
-                    return this.isPassing;
-                }
-                else
-                {
-                    return null;
-                }
+                return this.isPassing;
             }
         }
 
@@ -45,9 +46,9 @@ namespace ThreadTesting.Workers.Models
             }
         }
 
-        private bool ExecutePrimeTest(int primeCandidate)
+        private bool? ExecutePrimeTest(int primeCandidate)
         {
-            var isPassing = false;
+            bool? isPassing = null;
             var primeCandidateSqrt = Math.Sqrt(primeCandidate);
             var maximumDivisor = (int)Math.Floor(primeCandidateSqrt);
             var minimumDivisor = 2;
@@ -55,15 +56,13 @@ namespace ThreadTesting.Workers.Models
             {
                 if (primeCandidate % divisor == 0)
                 {
-                    //this.isPassing = false;
-                    //break;
-                    return false;
+                    isPassing = false;
+                    break;
                 }
             }
 
-            return true;
-            //isPassing = true;
-            //return isPassing;
+            isPassing = isPassing == null ? true : isPassing;
+            return isPassing;
         }
     }
 }

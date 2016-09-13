@@ -2,12 +2,12 @@
 
 namespace ThreadTesting.Workers.Contracts
 {
-    public interface IRangeTester<T>
+    public interface IRangeTester
     {
         bool TestsAreRunning { get; }
 
-        void TestRange(T min, T max);
+        void RunTests();
 
-        IEnumerable<T> GetUpdatedRange();
+        IEnumerable<string> GetUpdatedRange();
     }
 }

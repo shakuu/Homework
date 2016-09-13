@@ -7,14 +7,19 @@ using ThreadTesting.Workers.Contracts;
 
 namespace ThreadTesting.Workers.Models
 {
-    public class PrimeRangeTester : IRangeTester<int>
+    public class PrimeRangeTester : IRangeTester
     {
         private ConstructorInfo testerConstructor;
         private IEnumerable<ITester> testers;
-        IEnumerable<Thread> primeTesterThreads;
+        private IEnumerable<Thread> primeTesterThreads;
 
-        public PrimeRangeTester(ConstructorInfo testerConstructor)
+        private int min;
+        private int max;
+
+        public PrimeRangeTester(int min, int max, ConstructorInfo testerConstructor)
         {
+            this.min = min;
+            this.max = max;
             this.testerConstructor = testerConstructor;
             this.testers = new List<ITester>();
         }
@@ -28,13 +33,12 @@ namespace ThreadTesting.Workers.Models
             }
         }
 
-        public void StartTest()
+        public void RunTests()
         {
-            // TODO: 
-            this.TestRange(50, 150);
+            this.TestRange(this.min, this.max);
         }
 
-        public void TestRange(int min, int max)
+        private void TestRange(int min, int max)
         {
             this.testers = this.CreateTesters(min, max, testerConstructor);
             this.primeTesterThreads = this.CreateTestingThreads(this.testers);
@@ -45,26 +49,20 @@ namespace ThreadTesting.Workers.Models
             }
         }
 
-        public IEnumerable<int> GetUpdatedRange()
+        public IEnumerable<string> GetUpdatedRange()
         {
             if (this.testers == null)
             {
                 return null;
             }
 
-            var values = new List<int>();
+            var values = new List<string>();
             foreach (var tester in this.testers)
             {
                 switch (tester.IsPassing)
                 {
                     case true:
-                        values.Add(1);
-                        break;
-                    case false:
-                        values.Add(0);
-                        break;
-                    case null:
-                        values.Add(-1);
+                        values.Add("1");
                         break;
                     default:
                         break;

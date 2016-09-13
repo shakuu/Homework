@@ -4,6 +4,8 @@
     {
         bool? IsPassing { get; }
 
+        string Value { get; }
+
         void RunTest();
     }
 }
