@@ -2,7 +2,7 @@
 {
     public interface ITester
     {
-        bool IsPassing { get; }
+        bool? IsPassing { get; }
 
         void RunTest();
     }

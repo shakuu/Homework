@@ -13,15 +13,22 @@ namespace ThreadTesting.Workers.Models
         public PrimeTester(int primeCandidate)
         {
             this.primeCandidate = primeCandidate;
-            this.isPassing = false;
+            this.isPassing = true;
             this.isTested = false;
         }
 
-        public bool IsPassing
+        public bool? IsPassing
         {
             get
             {
-                return this.isPassing;
+                if (this.isTested)
+                {
+                    return this.isPassing;
+                }
+                else
+                {
+                    return null;
+                }
             }
         }
 
@@ -39,7 +46,7 @@ namespace ThreadTesting.Workers.Models
             {
                 if (this.primeCandidate % divisor == 0)
                 {
-                    this.isPassing = true;
+                    this.isPassing = false;
                     break;
                 }
             }
