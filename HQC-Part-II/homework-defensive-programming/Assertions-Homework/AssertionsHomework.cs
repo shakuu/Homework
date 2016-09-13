@@ -3,29 +3,29 @@ using System.Diagnostics;
 
 public class AssertionsHomework
 {
-    public static void SelectionSort<T>(T[] arr)
+    public static void SelectionSort<T>(T[] toSort)
         where T : IComparable<T>
     {
-        Debug.Assert(arr != null, "Array to be sorted cannot be null");
+        Debug.Assert(toSort != null, "Array to be sorted cannot be null");
 
-        for (int index = 0; index < arr.Length - 1; index++)
+        for (int index = 0; index < toSort.Length - 1; index++)
         {
-            int minElementIndex = FindMinElementIndex(arr, index, arr.Length - 1);
-            Swap(ref arr[index], ref arr[minElementIndex]);
+            int minElementIndex = FindMinElementIndex(toSort, index, toSort.Length - 1);
+            Swap(ref toSort[index], ref toSort[minElementIndex]);
         }
     }
 
-    private static int FindMinElementIndex<T>(T[] arr, int startIndex, int endIndex)
+    private static int FindMinElementIndex<T>(T[] elements, int startIndex, int endIndex)
         where T : IComparable<T>
     {
-        Debug.Assert(arr != null);
+        Debug.Assert(elements != null);
         Debug.Assert(startIndex <= endIndex);
-        Debug.Assert(endIndex == arr.Length - 1);
+        Debug.Assert(endIndex == elements.Length - 1);
 
         int minElementIndex = startIndex;
         for (int i = startIndex + 1; i <= endIndex; i++)
         {
-            if (arr[i].CompareTo(arr[minElementIndex]) < 0)
+            if (elements[i].CompareTo(elements[minElementIndex]) < 0)
             {
                 minElementIndex = i;
             }
@@ -33,45 +33,56 @@ public class AssertionsHomework
 
         Debug.Assert(0 <= minElementIndex);
         Debug.Assert(minElementIndex <= endIndex);
-        Debug.Assert(minElementIndex < arr.Length);
+        Debug.Assert(minElementIndex < elements.Length);
 
         return minElementIndex;
     }
 
-    private static void Swap<T>(ref T x, ref T y)
+    private static void Swap<T>(ref T itemA, ref T itemB)
     {
-        Debug.Assert(x != null);
-        Debug.Assert(y != null);
+        Debug.Assert(itemA != null);
+        Debug.Assert(itemB != null);
 
-        T oldX = x;
-        x = y;
-        y = oldX;
+        T oldX = itemA;
+        itemA = itemB;
+        itemB = oldX;
     }
 
-    public static int BinarySearch<T>(T[] arr, T value)
+    public static int BinarySearch<T>(T[] collectionToSearch, T value)
         where T : IComparable<T>
     {
-        return BinarySearch(arr, value, 0, arr.Length - 1);
+        Debug.Assert(collectionToSearch != null);
+        Debug.Assert(value != null);
+
+        var index = BinarySearch(collectionToSearch, value, 0, collectionToSearch.Length - 1);
+
+        Debug.Assert(index < collectionToSearch.Length);
+
+        return index;
     }
 
-    private static int BinarySearch<T>(T[] arr, T value, int startIndex, int endIndex)
+    private static int BinarySearch<T>(T[] collectionToSearch, T value, int startIndex, int endIndex)
         where T : IComparable<T>
     {
         while (startIndex <= endIndex)
         {
+            Debug.Assert(startIndex >= 0);
+            Debug.Assert(endIndex < collectionToSearch.Length);
+
             int midIndex = (startIndex + endIndex) / 2;
-            if (arr[midIndex].Equals(value))
+            if (collectionToSearch[midIndex].Equals(value))
             {
                 return midIndex;
             }
-            if (arr[midIndex].CompareTo(value) < 0)
+
+            Debug.Assert(!collectionToSearch[midIndex].Equals(value));
+
+            if (collectionToSearch[midIndex].CompareTo(value) < 0)
             {
-                // Search on the right half
                 startIndex = midIndex + 1;
             }
             else
             {
-                // Search on the right half
                 endIndex = midIndex - 1;
             }
         }
@@ -86,9 +97,7 @@ public class AssertionsHomework
         SelectionSort(arr);
         Console.WriteLine("sorted = [{0}]", string.Join(", ", arr));
 
-        // Test sorting empty array
         SelectionSort(new int[0]);
-        // Test sorting single element array
         SelectionSort(new int[1]);
 
         Console.WriteLine(BinarySearch(arr, -1000));
