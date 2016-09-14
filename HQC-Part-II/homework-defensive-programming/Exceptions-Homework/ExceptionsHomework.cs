@@ -27,8 +27,7 @@ public class ExceptionsHomework
         Console.WriteLine(ExtractEnding("beer", 4));
         Console.WriteLine(ExtractEnding("Hi", 100));
 
-
-        CheckForPrimes();
+        Console.WriteLine(CheckForPrimes());
 
         List<Exam> peterExams = new List<Exam>()
         {
@@ -43,7 +42,7 @@ public class ExceptionsHomework
         Console.WriteLine("Average results = {0:p0}", peterAverageResult);
     }
 
-    public static void CheckForPrimes()
+    public static string CheckForPrimes()
     {
         var primeCheckerLogger = new Logger();
         var primeChecker = new PrimeChecker(primeCheckerLogger);
@@ -54,11 +53,21 @@ public class ExceptionsHomework
             primeChecker.CheckPrime(candidate);
         }
 
-        Console.WriteLine(primeCheckerLogger.ToString());
+        return primeCheckerLogger.ToString();
     }
 
     public static T[] Subsequence<T>(T[] arr, int startIndex, int count)
     {
+        if (arr.Length <= startIndex)
+        {
+            throw new IndexOutOfRangeException("startIndex");
+        }
+
+        if (arr.Length < startIndex + count)
+        {
+            throw new IndexOutOfRangeException("count");
+        }
+
         List<T> result = new List<T>();
         for (int i = startIndex; i < startIndex + count; i++)
         {

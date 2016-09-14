@@ -2,21 +2,18 @@
 
 public class SimpleMathExam : Exam
 {
-    public int ProblemsSolved { get; private set; }
-
     public SimpleMathExam(int problemsSolved)
     {
-        if (problemsSolved < 0)
+        var isValidNumberOfProblems = 0 <= problemsSolved && problemsSolved <= 2;
+        if (!isValidNumberOfProblems)
         {
-            problemsSolved = 0;
-        }
-        if (problemsSolved > 10)
-        {
-            problemsSolved = 10;
+            throw new ArgumentOutOfRangeException("Invalid number of problems.");
         }
 
         this.ProblemsSolved = problemsSolved;
     }
+
+    public int ProblemsSolved { get; private set; }
 
     public override ExamResult Check()
     {
