@@ -50,7 +50,6 @@
     <Compile Include="Exams\Exam.cs" />
     <Compile Include="Exams\Student.cs" />
     <Compile Include="Utils\Logger.cs" />
-    <Compile Include="Utils\SubsequenceParamaters.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Properties\" />
