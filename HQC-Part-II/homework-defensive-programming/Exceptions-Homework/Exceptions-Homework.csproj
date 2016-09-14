@@ -41,12 +41,15 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Contracts\ILogger.cs" />
     <Compile Include="CSharpExam.cs" />
     <Compile Include="ExamResult.cs" />
+    <Compile Include="PrimeChecker\PrimeChecker.cs" />
     <Compile Include="SimpleMathExam.cs" />
     <Compile Include="ExceptionsHomework.cs" />
     <Compile Include="Exam.cs" />
     <Compile Include="Student.cs" />
+    <Compile Include="Utils\Logger.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Properties\" />

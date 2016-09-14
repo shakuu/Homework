@@ -2,45 +2,13 @@
 using System.Collections.Generic;
 using System.Text;
 
-class ExceptionsHomework
+using Exceptions_Homework.PrimeChecker;
+using Exceptions_Homework.Utils;
+
+
+public class ExceptionsHomework
 {
-    public static T[] Subsequence<T>(T[] arr, int startIndex, int count)
-    {
-        List<T> result = new List<T>();
-        for (int i = startIndex; i < startIndex + count; i++)
-        {
-            result.Add(arr[i]);
-        }
-        return result.ToArray();
-    }
-
-    public static string ExtractEnding(string str, int count)
-    {
-        if (count > str.Length)
-        {
-            return "Invalid count!";
-        }
-
-        StringBuilder result = new StringBuilder();
-        for (int i = str.Length - count; i < str.Length; i++)
-        {
-            result.Append(str[i]);
-        }
-        return result.ToString();
-    }
-
-    public static void CheckPrime(int number)
-    {
-        for (int divisor = 2; divisor <= Math.Sqrt(number); divisor++)
-        {
-            if (number % divisor == 0)
-            {
-                throw new Exception("The number is not prime!");
-            }
-        }
-    }
-
-    static void Main()
+    public static void Main()
     {
         var substr = Subsequence("Hello!".ToCharArray(), 2, 3);
         Console.WriteLine(substr);
@@ -59,25 +27,8 @@ class ExceptionsHomework
         Console.WriteLine(ExtractEnding("beer", 4));
         Console.WriteLine(ExtractEnding("Hi", 100));
 
-        try
-        {
-            CheckPrime(23);
-            Console.WriteLine("23 is prime.");
-        }
-        catch (Exception ex)
-        {
-            Console.WriteLine("23 is not prime");
-        }
 
-        try
-        {
-            CheckPrime(33);
-            Console.WriteLine("33 is prime.");
-        }
-        catch (Exception ex)
-        {
-            Console.WriteLine("33 is not prime");
-        }
+        CheckForPrimes();
 
         List<Exam> peterExams = new List<Exam>()
         {
@@ -90,5 +41,49 @@ class ExceptionsHomework
         Student peter = new Student("Peter", "Petrov", peterExams);
         double peterAverageResult = peter.CalcAverageExamResultInPercents();
         Console.WriteLine("Average results = {0:p0}", peterAverageResult);
+    }
+
+    public static void CheckForPrimes()
+    {
+        var primeCheckerLogger = new Logger();
+        var primeChecker = new PrimeChecker(primeCheckerLogger);
+
+        var primeCandidates = GetPrimeCandidatesCollection();
+        foreach (var candidate in primeCandidates)
+        {
+            primeChecker.CheckPrime(candidate);
+        }
+
+        Console.WriteLine(primeCheckerLogger.ToString());
+    }
+
+    public static T[] Subsequence<T>(T[] arr, int startIndex, int count)
+    {
+        List<T> result = new List<T>();
+        for (int i = startIndex; i < startIndex + count; i++)
+        {
+            result.Add(arr[i]);
+        }
+
+        return result.ToArray();
+    }
+
+    public static string ExtractEnding(string str, int count)
+    {
+        StringBuilder result = new StringBuilder();
+
+        var startIndex = Math.Max(0, str.Length - count);
+        for (int i = startIndex; i < str.Length; i++)
+        {
+            result.Append(str[i]);
+        }
+
+        return result.ToString();
+    }
+
+    private static IEnumerable<int> GetPrimeCandidatesCollection()
+    {
+        var candidates = new List<int>() { 23, 33 };
+        return candidates;
     }
 }
