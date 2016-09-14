@@ -6,7 +6,7 @@ namespace Exceptions_Homework.PrimeChecker
 {
     public class PrimeChecker
     {
-        ILogger logger;
+        private ILogger logger;
 
         public PrimeChecker(ILogger logger)
         {

@@ -5,7 +5,6 @@ using System.Text;
 using Exceptions_Homework.PrimeChecker;
 using Exceptions_Homework.Utils;
 
-
 public class ExceptionsHomework
 {
     public static void Main()
@@ -14,13 +13,13 @@ public class ExceptionsHomework
         Console.WriteLine(substr);
 
         var subarr = Subsequence(new int[] { -1, 3, 2, 1 }, 0, 2);
-        Console.WriteLine(String.Join(" ", subarr));
+        Console.WriteLine(string.Join(" ", subarr));
 
         var allarr = Subsequence(new int[] { -1, 3, 2, 1 }, 0, 4);
-        Console.WriteLine(String.Join(" ", allarr));
+        Console.WriteLine(string.Join(" ", allarr));
 
         var emptyarr = Subsequence(new int[] { -1, 3, 2, 1 }, 0, 0);
-        Console.WriteLine(String.Join(" ", emptyarr));
+        Console.WriteLine(string.Join(" ", emptyarr));
 
         var extractEndingParameters = GetExtractEndingParameters();
         foreach (var pair in extractEndingParameters)

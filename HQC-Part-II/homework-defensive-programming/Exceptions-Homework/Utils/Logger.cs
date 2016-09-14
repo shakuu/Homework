@@ -7,7 +7,7 @@ namespace Exceptions_Homework.Utils
 {
     public class Logger : ILogger
     {
-        ICollection<string> messages;
+        private ICollection<string> messages;
 
         public Logger()
         {

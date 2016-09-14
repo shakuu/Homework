@@ -1,16 +1,15 @@
 ﻿using System;
-using System.Linq;
 using System.Collections.Generic;
+using System.Linq;
 
 public class Student
 {
     private string firstName;
     private string lastName;
-    IList<Exam> exams;
+    private IList<Exam> exams;
 
     public Student(string firstName, string lastName, IList<Exam> exams = null)
     {
-
         if (lastName == null)
         {
             throw new ArgumentNullException("Invalid last name!");
@@ -104,7 +103,7 @@ public class Student
         }
 
         double[] examScore = new double[this.Exams.Count];
-        IList<ExamResult> examResults = CheckExams();
+        IList<ExamResult> examResults = this.CheckExams();
         for (int i = 0; i < examResults.Count; i++)
         {
             examScore[i] =

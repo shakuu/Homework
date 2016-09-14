@@ -4,7 +4,7 @@ public class CSharpExam : Exam
 {
     public CSharpExam(int score)
     {
-        if (Score < 0 || Score > 100)
+        if (this.Score < 0 || this.Score > 100)
         {
             throw new ArgumentOutOfRangeException("Score must be a value between 0 and 100.");
         }
