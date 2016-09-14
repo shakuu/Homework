@@ -22,12 +22,28 @@ public class ExceptionsHomework
         var emptyarr = Subsequence(new int[] { -1, 3, 2, 1 }, 0, 0);
         Console.WriteLine(String.Join(" ", emptyarr));
 
-        Console.WriteLine(ExtractEnding("I love C#", 2));
-        Console.WriteLine(ExtractEnding("Nakov", 4));
-        Console.WriteLine(ExtractEnding("beer", 4));
-        Console.WriteLine(ExtractEnding("Hi", 100));
+        var extractEndingParameters = GetExtractEndingParameters();
+        foreach (var pair in extractEndingParameters)
+        {
+            try
+            {
+                var message = ExtractEnding(pair.Key, pair.Value);
+                Console.WriteLine(message);
+            }
+            catch (ArgumentOutOfRangeException)
+            {
+                Console.WriteLine("Invalid parameters {0} {1}", pair.Key, pair.Value);
+            }
+        }
 
-        Console.WriteLine(CheckForPrimes());
+        try
+        {
+            Console.WriteLine(CheckForPrimes());
+        }
+        catch (ArgumentNullException)
+        {
+            Console.WriteLine("Could not instantiate PrimeChecker.");
+        }
 
         List<Exam> peterExams = new List<Exam>()
         {
@@ -58,6 +74,11 @@ public class ExceptionsHomework
 
     public static T[] Subsequence<T>(T[] arr, int startIndex, int count)
     {
+        if (arr == null)
+        {
+            throw new ArgumentNullException("arr");
+        }
+
         if (arr.Length <= startIndex)
         {
             throw new IndexOutOfRangeException("startIndex");
@@ -94,5 +115,18 @@ public class ExceptionsHomework
     {
         var candidates = new List<int>() { 23, 33 };
         return candidates;
+    }
+
+    private static IDictionary<string, int> GetExtractEndingParameters()
+    {
+        var extractEndingParameters = new Dictionary<string, int>()
+        {
+            { "I love C#", 2 },
+            { "Nakov", 4 },
+            { "beer", 4 },
+            { "Hi", 100 }
+        };
+
+        return extractEndingParameters;
     }
 }

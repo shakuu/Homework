@@ -4,16 +4,16 @@ using System.Collections.Generic;
 
 public class Student
 {
+    private string firstName;
+    private string lastName;
+    IList<Exam> exams;
+
     public Student(string firstName, string lastName, IList<Exam> exams = null)
     {
-        if (firstName == null)
-        {
-            throw new ArgumentNullException("Invalid first name!");
-        }
 
         if (lastName == null)
         {
-            throw new ArgumentNullException("Invalid first name!");
+            throw new ArgumentNullException("Invalid last name!");
         }
 
         this.FirstName = firstName;
@@ -21,9 +21,54 @@ public class Student
         this.Exams = exams;
     }
 
-    public string FirstName { get; set; }
-    public string LastName { get; set; }
-    public IList<Exam> Exams { get; set; }
+    public string FirstName
+    {
+        get
+        {
+            return this.firstName;
+        }
+
+        set
+        {
+            if (string.IsNullOrEmpty(value))
+            {
+                throw new ArgumentNullException("Invalid first name!");
+            }
+
+            this.firstName = value;
+        }
+    }
+
+    public string LastName
+    {
+        get
+        {
+            return this.lastName;
+        }
+
+        set
+        {
+            if (string.IsNullOrEmpty(value))
+            {
+                throw new ArgumentNullException("Invalid last name!");
+            }
+
+            this.lastName = value;
+        }
+    }
+
+    public IList<Exam> Exams
+    {
+        get
+        {
+            return new List<Exam>(this.exams);
+        }
+
+        private set
+        {
+            this.exams = value;
+        }
+    }
 
     public IList<ExamResult> CheckExams()
     {

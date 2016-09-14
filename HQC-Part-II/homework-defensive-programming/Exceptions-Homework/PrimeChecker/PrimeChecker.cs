@@ -20,12 +20,33 @@ namespace Exceptions_Homework.PrimeChecker
 
         public void CheckPrime(int primeCandidate)
         {
-            var primeCheckResult = this.CheckIfValueIsPrime(primeCandidate);
-            this.LogIsPrimeMessage(primeCandidate, primeCheckResult);
+            try
+            {
+                var primeCheckResult = this.CheckIfValueIsPrime(primeCandidate);
+                this.LogIsPrimeMessage(primeCandidate, primeCheckResult);
+            }
+            catch (ArgumentNullException)
+            {
+                // TODO: Handle logger error
+            }
+            catch (ArgumentException)
+            {
+                this.LogError(primeCandidate);
+            }
+        }
+
+        private void LogError(int primeCandidate)
+        {
+            this.logger.Log($"{primeCandidate} could not be tested.");
         }
 
         private bool CheckIfValueIsPrime(int number)
         {
+            if (double.IsNaN(number))
+            {
+                throw new ArgumentException("number is NaN");
+            }
+
             var isPrime = true;
             for (int divisor = 2; divisor <= Math.Sqrt(number); divisor++)
             {
