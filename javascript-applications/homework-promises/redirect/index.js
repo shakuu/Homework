@@ -10,11 +10,22 @@ const popup = (() => {
     }
 
     function fadeOut(time) {
-        const initialOpacity = container.style.opacity || 1;
-        const opacityDecreaseStep = 1 / time;
-        while (container.style.opacity > 0) {
-            container.style.opacity -= opacityDecreaseStep;
+        container.style.opacity = container.style.opacity || 1;
+        const opacityDecreaseStep = 1 / time * 10;
+        decreaseOpacity(opacityDecreaseStep);
+    }
+
+    function decreaseOpacity(step) {
+        const callSelf = () => {
+            decreaseOpacity(step);
+        };
+
+        if (container.style.opacity <= 0) {
+            return;
         }
+
+        container.style.opacity -= step;
+        setTimeout(callSelf, 1);
     }
 
     return {
@@ -26,8 +37,10 @@ const popup = (() => {
 const redirect = ((popup) => {
     const redirectPromise = new Promise((resolve, reject) => {
         popup.display();
-        window.setTimeout(resolve, 5000);
+        popup.fadeOut(5000);
+        setTimeout(function () {
+            resolve("https://www.google.bg/");
+        }, 5000);
     })
-        .then(popup.fadeOut)
-        .then(() => window.location = "https://www.google.bg/");
+        .then((address) => window.location = address);
 })(popup);
