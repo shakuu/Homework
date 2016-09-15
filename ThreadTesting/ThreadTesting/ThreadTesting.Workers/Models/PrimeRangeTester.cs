@@ -22,13 +22,19 @@ namespace ThreadTesting.Workers.Models
             this.max = max;
             this.testerConstructor = testerConstructor;
             this.testers = new List<ITester>();
+            this.primeTesterThreads = new List<Thread>();
         }
 
         public bool TestsAreRunning
         {
             get
             {
-                var areRunning = this.primeTesterThreads.Any(thread => thread.ThreadState != ThreadState.Stopped);
+                var areRunning = true;
+                if (this.primeTesterThreads.Count() > 0)
+                {
+                    areRunning = this.primeTesterThreads.Any(thread => thread.ThreadState != ThreadState.Stopped);
+                }
+
                 return areRunning;
             }
         }
