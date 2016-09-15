@@ -1,3 +1,7 @@
+// You need a google maps api key for this to work.
+// It's free and takes 30 secs provided you've got an existing google account.
+// Insert your key in the url in index.html
+
 function initMaps() {
     showMap();
 }
