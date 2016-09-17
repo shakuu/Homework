@@ -6,8 +6,10 @@ namespace TestRunners.Runners.Contracts
 {
     public interface ITestRunner
     {
-        void EvaluateTests(ITestContainer testsToRunContainer);
-
         IEnumerable<string> LogEntries { get; }
+
+        void WarmUp(int numberOfRuns);
+
+        void EvaluateTests(ITestContainer testsToRunContainer);
     }
 }

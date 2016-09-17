@@ -1,4 +1,6 @@
-﻿using System;
+﻿using Microsoft.CSharp.RuntimeBinder;
+
+using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 
@@ -9,7 +11,7 @@ namespace TestRunners.Runners
 {
     public class NaiveTestRunner : ITestRunner
     {
-        private const string LogEntryFormat = "{1, 16} - {2, 6:F2} - {3, 6:F2}";
+        private const string LogEntryFormat = "{0, -16} - {1, 6}ms - {2, 12:F8}ms";
 
         private ICollection<string> logEntries;
 
@@ -27,6 +29,20 @@ namespace TestRunners.Runners
             }
         }
 
+        public void WarmUp(int numberOfRuns)
+        {
+            Action warmUp = () =>
+            {
+                dynamic a = Math.Sqrt(2);
+                dynamic b = Math.Sqrt(3);
+                var c = a * b;
+            };
+
+            var totalTimeElapsedInMs = this.MeasureTestExecutionTime(warmUp, numberOfRuns);
+            this.CreateNewLogEntry("warmUp", totalTimeElapsedInMs, numberOfRuns);
+            this.CreateNewEmptyLogEntry();
+        }
+
         public void EvaluateTests(ITestContainer testsToRunContainer)
         {
             if (testsToRunContainer == null)
@@ -37,10 +53,16 @@ namespace TestRunners.Runners
             var numberOfRuns = testsToRunContainer.NumberOfRuns;
             foreach (var test in testsToRunContainer.Tests)
             {
-                var totalTimeElapsedInMs = this.MeasureTestExecutionTime(test, numberOfRuns);
-
                 var testName = test.Method.Name;
-                this.CreateNewLogEntry(testName, totalTimeElapsedInMs, numberOfRuns);
+                try
+                {
+                    var totalTimeElapsedInMs = this.MeasureTestExecutionTime(test, numberOfRuns);
+                    this.CreateNewLogEntry(testName, totalTimeElapsedInMs, numberOfRuns);
+                }
+                catch (RuntimeBinderException ex)
+                {
+                    this.CreateErrorLogEntry(testName, ex.Message);
+                }
             }
 
             this.CreateNewEmptyLogEntry();
@@ -62,9 +84,15 @@ namespace TestRunners.Runners
             return totalTimeElapsedInMs;
         }
 
+        private void CreateErrorLogEntry(string testName, string message)
+        {
+            var logEntry = testName + " " + message;
+            this.logEntries.Add(logEntry);
+        }
+
         private void CreateNewLogEntry(string testName, long totalTimeElapsedInMs, int numberOfRuns)
         {
-            var averageTimeElapsedInMs = totalTimeElapsedInMs / numberOfRuns;
+            var averageTimeElapsedInMs = (double)((double)totalTimeElapsedInMs / (double)numberOfRuns);
 
             var logEntry = string.Format(
                 NaiveTestRunner.LogEntryFormat,
@@ -77,7 +105,7 @@ namespace TestRunners.Runners
 
         private void CreateNewEmptyLogEntry()
         {
-            this.logEntries.Add(Environment.NewLine);
+            this.logEntries.Add(string.Empty);
         }
     }
 }
