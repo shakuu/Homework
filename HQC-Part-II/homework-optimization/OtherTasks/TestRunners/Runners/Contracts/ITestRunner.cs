@@ -6,7 +6,7 @@ namespace TestRunners.Runners.Contracts
 {
     public interface ITestRunner
     {
-        void RunTest(ITestContainer testsToRun);
+        void RunTest(ITestContainer testsToRunContainer);
 
         IEnumerable<string> LogEntries { get; }
     }

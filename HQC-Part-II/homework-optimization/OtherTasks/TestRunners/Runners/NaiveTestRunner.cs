@@ -28,16 +28,16 @@ namespace TestRunners.Runners
             }
         }
 
-        public void RunTest(ITestContainer testsToRun)
+        public void RunTest(ITestContainer testsToRunContainer)
         {
-            if (testsToRun == null)
+            if (testsToRunContainer == null)
             {
                 throw new ArgumentNullException("testsToRun");
             }
 
-            foreach (var test in testsToRun.Tests)
+            foreach (var test in testsToRunContainer.Tests)
             {
-                var totalTime = this.Test(test, testsToRun.NumberOfRuns);
+                var totalTime = this.Test(test, testsToRunContainer.NumberOfRuns);
             }
         }
 

@@ -7,6 +7,8 @@ namespace TestRunners.Tests.Contracts
     {
         int NumberOfRuns { get; }
 
+        IEnumerable<string> TestNames { get; }
+
         IEnumerable<Action> Tests { get; }
     }
 }
