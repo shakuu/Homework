@@ -38,7 +38,8 @@ namespace TestRunners.Tests
                 this.numberOfRuns = value;
             }
         }
-
+        
+        // TODO: REMOVE!
         public IEnumerable<string> TestNames
         {
             get

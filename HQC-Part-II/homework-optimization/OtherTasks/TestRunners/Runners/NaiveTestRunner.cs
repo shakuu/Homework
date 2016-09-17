@@ -4,7 +4,6 @@ using System.Diagnostics;
 
 using TestRunners.Runners.Contracts;
 using TestRunners.Tests.Contracts;
-using TestRunners.Utils.Conctracts;
 
 namespace TestRunners.Runners
 {
@@ -28,20 +27,26 @@ namespace TestRunners.Runners
             }
         }
 
-        public void RunTest(ITestContainer testsToRunContainer)
+        public void EvaluateTests(ITestContainer testsToRunContainer)
         {
             if (testsToRunContainer == null)
             {
                 throw new ArgumentNullException("testsToRun");
             }
 
+            var numberOfRuns = testsToRunContainer.NumberOfRuns;
             foreach (var test in testsToRunContainer.Tests)
             {
-                var totalTime = this.Test(test, testsToRunContainer.NumberOfRuns);
+                var totalTimeElapsedInMs = this.MeasureTestExecutionTime(test, numberOfRuns);
+
+                var testName = test.Method.Name;
+                this.CreateNewLogEntry(testName, totalTimeElapsedInMs, numberOfRuns);
             }
+
+            this.CreateNewEmptyLogEntry();
         }
 
-        private long Test(Action task, int numberOfRuns)
+        private long MeasureTestExecutionTime(Action task, int numberOfRuns)
         {
             var stopwatch = new Stopwatch();
 
@@ -52,11 +57,12 @@ namespace TestRunners.Runners
             }
 
             stopwatch.Stop();
+
             var totalTimeElapsedInMs = stopwatch.ElapsedMilliseconds;
             return totalTimeElapsedInMs;
         }
 
-        private void Log(string testName, long totalTimeElapsedInMs, int numberOfRuns)
+        private void CreateNewLogEntry(string testName, long totalTimeElapsedInMs, int numberOfRuns)
         {
             var averageTimeElapsedInMs = totalTimeElapsedInMs / numberOfRuns;
 
@@ -67,6 +73,11 @@ namespace TestRunners.Runners
                 averageTimeElapsedInMs);
 
             this.logEntries.Add(logEntry);
+        }
+
+        private void CreateNewEmptyLogEntry()
+        {
+            this.logEntries.Add(Environment.NewLine);
         }
     }
 }
