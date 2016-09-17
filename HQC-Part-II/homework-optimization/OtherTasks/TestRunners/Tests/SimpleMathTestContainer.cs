@@ -8,6 +8,7 @@ namespace TestRunners.Tests
     public class SimpleMathTestContainer<T> : ITestContainer
     {
         private int numberOfRuns;
+        private string containerName;
         private IEnumerable<Action> tests;
 
         private dynamic valueA;
@@ -17,6 +18,7 @@ namespace TestRunners.Tests
         {
             this.numberOfRuns = numberOfRuns;
             this.tests = this.InitializeTestCollection();
+            this.containerName = this.CreateContainerName(typeof(T));
 
             this.valueA = valueA;
             this.valueB = valueB;
@@ -40,6 +42,14 @@ namespace TestRunners.Tests
             }
         }
 
+        public string TestsContainerName
+        {
+            get
+            {
+                return this.containerName;
+            }
+        }
+
         public IEnumerable<Action> Tests
         {
             get
@@ -59,6 +69,12 @@ namespace TestRunners.Tests
             tests.AddLast(this.DivideTest);
 
             return tests;
+        }
+
+        private string CreateContainerName(Type type)
+        {
+            var containerName = string.Format("SimpleMath<{0}>", type.Name);
+            return containerName;
         }
 
         private void AddTest()

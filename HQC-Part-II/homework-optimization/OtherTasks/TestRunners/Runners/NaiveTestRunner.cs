@@ -35,11 +35,12 @@ namespace TestRunners.Runners
             {
                 dynamic a = Math.Sqrt(2);
                 dynamic b = Math.Sqrt(3);
+                a++;
                 var c = a * b;
             };
 
             var totalTimeElapsedInMs = this.MeasureTestExecutionTime(warmUp, numberOfRuns);
-            this.CreateNewLogEntry("warmUp", totalTimeElapsedInMs, numberOfRuns);
+            this.CreateNewLogEntry("WarmUp", totalTimeElapsedInMs, numberOfRuns);
             this.CreateNewEmptyLogEntry();
         }
 
@@ -49,6 +50,8 @@ namespace TestRunners.Runners
             {
                 throw new ArgumentNullException("testsToRun");
             }
+
+            this.CreateNewHeaderLogEntry(testsToRunContainer.TestsContainerName);
 
             var numberOfRuns = testsToRunContainer.NumberOfRuns;
             foreach (var test in testsToRunContainer.Tests)
@@ -101,6 +104,11 @@ namespace TestRunners.Runners
                 averageTimeElapsedInMs);
 
             this.logEntries.Add(logEntry);
+        }
+
+        private void CreateNewHeaderLogEntry(string containerName)
+        {
+            this.logEntries.Add(containerName);
         }
 
         private void CreateNewEmptyLogEntry()
