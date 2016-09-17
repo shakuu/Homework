@@ -1,8 +1,8 @@
-﻿using Microsoft.CSharp.RuntimeBinder;
-
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Diagnostics;
+
+using Microsoft.CSharp.RuntimeBinder;
 
 using TestRunners.Runners.Contracts;
 using TestRunners.Tests.Contracts;

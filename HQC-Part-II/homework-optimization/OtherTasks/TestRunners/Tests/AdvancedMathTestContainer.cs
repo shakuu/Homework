@@ -31,17 +31,17 @@ namespace TestRunners.Tests
             return tests;
         }
 
-        public void SqrtTest()
+        private void SqrtTest()
         {
             var valueB = Math.Sqrt((double)this.valueA);
         }
 
-        public void LogTest()
+        private void LogTest()
         {
             var valueB = Math.Log((double)this.valueA);
         }
 
-        public void SinTest()
+        private void SinTest()
         {
             var valueB = Math.Sin((double)this.valueA);
         }
