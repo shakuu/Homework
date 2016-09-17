@@ -43,6 +43,8 @@
     <Compile Include="Runners\Contracts\ITestRunner.cs" />
     <Compile Include="Runners\NaiveTestRunner.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Tests\Abstract\AbstractTestContainer.cs" />
+    <Compile Include="Tests\AdvancedMathTestContainer.cs" />
     <Compile Include="Tests\Contracts\ITestContainer.cs" />
     <Compile Include="Tests\SimpleMathTestContainer.cs" />
   </ItemGroup>
