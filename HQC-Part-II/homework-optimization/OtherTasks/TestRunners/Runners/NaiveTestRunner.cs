@@ -54,6 +54,7 @@ namespace TestRunners.Runners
             }
 
             this.WarmUp(testsToRunContainer.NumberOfRuns);
+
             this.CreateNewHeaderLogEntry(testsToRunContainer.TestsContainerName);
 
             var numberOfRuns = testsToRunContainer.NumberOfRuns;
@@ -66,6 +67,10 @@ namespace TestRunners.Runners
                     this.CreateNewLogEntry(testName, totalTimeElapsedInMs, numberOfRuns);
                 }
                 catch (RuntimeBinderException ex)
+                {
+                    this.CreateErrorLogEntry(testName, ex.Message);
+                }
+                catch (NullReferenceException ex)
                 {
                     this.CreateErrorLogEntry(testName, ex.Message);
                 }

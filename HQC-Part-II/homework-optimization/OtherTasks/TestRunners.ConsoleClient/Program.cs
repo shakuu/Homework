@@ -8,11 +8,12 @@ namespace TestRunners.ConsoleClient
 {
     public class Program
     {
-        private const int TestRunsCount = 10000;
+        private const int TestRunsCount = 100000;
 
         public static void Main()
         {
             var homeworkTestRunner = new NaiveTestRunner();
+            homeworkTestRunner.WarmUp(Program.TestRunsCount);
 
             ExecuteTask1Tests(homeworkTestRunner);
             ExecuteTask2Tests(homeworkTestRunner);
@@ -46,7 +47,7 @@ namespace TestRunners.ConsoleClient
 
             var doubleTests = new AdvancedMathTestContainer<double>(45, Program.TestRunsCount);
             testRunner.EvaluateTests(doubleTests);
-            
+
             var decimalTests = new AdvancedMathTestContainer<decimal>(45, Program.TestRunsCount);
             testRunner.EvaluateTests(decimalTests);
         }
