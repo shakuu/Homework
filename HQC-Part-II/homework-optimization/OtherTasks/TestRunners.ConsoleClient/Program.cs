@@ -15,11 +15,18 @@ namespace TestRunners.ConsoleClient
             var homeworkTestRunner = new NaiveTestRunner();
             homeworkTestRunner.WarmUp(Program.TestRunsCount);
 
-            ExecuteTask1Tests(homeworkTestRunner);
-            ExecuteTask2Tests(homeworkTestRunner);
+            try
+            {
+                ExecuteTask1Tests(homeworkTestRunner);
+                ExecuteTask2Tests(homeworkTestRunner);
 
-            var output = string.Join(Environment.NewLine, homeworkTestRunner.LogEntries);
-            Console.WriteLine(output);
+                var output = string.Join(Environment.NewLine, homeworkTestRunner.LogEntries);
+                Console.WriteLine(output);
+            }
+            catch (ArgumentOutOfRangeException ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
         }
 
         private static void ExecuteTask1Tests(ITestRunner testRunner)
