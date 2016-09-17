@@ -257,3 +257,4 @@ typings/
 prepros.*
 typings.*
 .vscode/
+bower_components/
