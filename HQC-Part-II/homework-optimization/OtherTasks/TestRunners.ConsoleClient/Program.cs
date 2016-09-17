@@ -13,9 +13,9 @@ namespace TestRunners.ConsoleClient
         public static void Main()
         {
             var homeworkTestRunner = new NaiveTestRunner();
-            homeworkTestRunner.WarmUp(Program.TestRunsCount);
 
             ExecuteTask1Tests(homeworkTestRunner);
+            ExecuteTask2Tests(homeworkTestRunner);
 
             var output = string.Join(Environment.NewLine, homeworkTestRunner.LogEntries);
             Console.WriteLine(output);
@@ -36,6 +36,18 @@ namespace TestRunners.ConsoleClient
             testRunner.EvaluateTests(doubleTests);
 
             var decimalTests = new SimpleMathTestContainer<decimal>(1, 1, Program.TestRunsCount);
+            testRunner.EvaluateTests(decimalTests);
+        }
+
+        private static void ExecuteTask2Tests(ITestRunner testRunner)
+        {
+            var floatTests = new AdvancedMathTestContainer<float>(45, Program.TestRunsCount);
+            testRunner.EvaluateTests(floatTests);
+
+            var doubleTests = new AdvancedMathTestContainer<double>(45, Program.TestRunsCount);
+            testRunner.EvaluateTests(doubleTests);
+            
+            var decimalTests = new AdvancedMathTestContainer<decimal>(45, Program.TestRunsCount);
             testRunner.EvaluateTests(decimalTests);
         }
     }

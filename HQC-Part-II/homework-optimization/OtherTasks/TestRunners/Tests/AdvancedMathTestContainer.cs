@@ -7,19 +7,43 @@ namespace TestRunners.Tests
 {
     public class AdvancedMathTestContainer<T> : AbstractTestContainer<T>
     {
-        public AdvancedMathTestContainer(int numberOfRuns)
+        private dynamic valueA;
+
+        public AdvancedMathTestContainer(T valueA, int numberOfRuns)
             : base(numberOfRuns)
         {
+            this.valueA = valueA;
         }
 
         protected override string CreateContainerName(Type type)
         {
-            throw new NotImplementedException();
+            var containerName = string.Format("AdvancedMath<{0}>", type.Name);
+            return containerName;
         }
 
         protected override IEnumerable<Action> InitializeTestCollection()
         {
-            throw new NotImplementedException();
+            var tests = new LinkedList<Action>();
+            tests.AddLast(this.SqrtTest);
+            tests.AddLast(this.LogTest);
+            tests.AddLast(this.SinTest);
+
+            return tests;
+        }
+
+        public void SqrtTest()
+        {
+            var valueB = Math.Sqrt((double)this.valueA);
+        }
+
+        public void LogTest()
+        {
+            var valueB = Math.Log((double)this.valueA);
+        }
+
+        public void SinTest()
+        {
+            var valueB = Math.Sin((double)this.valueA);
         }
     }
 }

@@ -33,10 +33,12 @@ namespace TestRunners.Runners
         {
             Action warmUp = () =>
             {
-                dynamic a = Math.Sqrt(2);
-                dynamic b = Math.Sqrt(3);
-                a++;
-                var c = a * b;
+                dynamic x = 5;
+                dynamic a = Math.Sqrt(x);
+                dynamic b = Math.Log(x);
+                dynamic c = Math.Sin(x);
+                var d = a * b;
+                d++;
             };
 
             var totalTimeElapsedInMs = this.MeasureTestExecutionTime(warmUp, numberOfRuns);
@@ -51,6 +53,7 @@ namespace TestRunners.Runners
                 throw new ArgumentNullException("testsToRun");
             }
 
+            this.WarmUp(testsToRunContainer.NumberOfRuns);
             this.CreateNewHeaderLogEntry(testsToRunContainer.TestsContainerName);
 
             var numberOfRuns = testsToRunContainer.NumberOfRuns;
