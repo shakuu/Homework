@@ -29,7 +29,7 @@ namespace TestRunners.ConsoleClient
             var longTests = new SimpleMathTestContainer<long>(1, 1, Program.TestRunsCount);
             testRunner.EvaluateTests(longTests);
 
-            var floatTests = new SimpleMathTestContainer<float>(1f, 1f, Program.TestRunsCount);
+            var floatTests = new SimpleMathTestContainer<float>(1, 1, Program.TestRunsCount);
             testRunner.EvaluateTests(floatTests);
 
             var doubleTests = new SimpleMathTestContainer<double>(1, 1, Program.TestRunsCount);
