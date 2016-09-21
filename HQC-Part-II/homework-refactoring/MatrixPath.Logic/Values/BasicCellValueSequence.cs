@@ -8,6 +8,11 @@ namespace MatrixPath.Logic.Values
 
         public int GetNextCellValue()
         {
+            if (this.lastValue == int.MaxValue)
+            {
+                this.lastValue = 0;
+            }
+
             return ++this.lastValue;
         }
     }
