@@ -5,7 +5,7 @@ namespace MatrixPath.Logic.Cells
 {
     public class MovementDelta : DualPlaneCoordinatesContainer, IMovementDirection
     {
-        public MovementDelta(int deltaRow, int deltaCol) 
+        public MovementDelta(int deltaRow, int deltaCol)
             : base(deltaRow, deltaCol)
         {
             this.DeltaRow = deltaRow;
@@ -36,6 +36,12 @@ namespace MatrixPath.Logic.Cells
             {
                 base.Col = value;
             }
+        }
+
+        public IMovementDirection Clone()
+        {
+            var clone = new MovementDelta(this.DeltaRow, this.DeltaCol);
+            return clone;
         }
     }
 }

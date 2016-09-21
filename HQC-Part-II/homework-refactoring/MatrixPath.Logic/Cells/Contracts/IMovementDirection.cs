@@ -5,5 +5,7 @@
         int DeltaRow { get; }
 
         int DeltaCol { get; }
+
+        IMovementDirection Clone();
     }
 }

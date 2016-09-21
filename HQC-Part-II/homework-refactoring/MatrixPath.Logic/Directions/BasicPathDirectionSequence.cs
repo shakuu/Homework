@@ -10,6 +10,7 @@ namespace MatrixPath.Logic.Directions
     public class BasicPathDirectionSequence : IDirectionSequence
     {
         private IEnumerable<IMovementDirection> directions;
+        private IEnumerator<IMovementDirection> directionsEnumerator;
         private int sequenceLength = -1;
 
         public BasicPathDirectionSequence(Func<int, int, IMovementDirection> createDirection)
@@ -20,6 +21,7 @@ namespace MatrixPath.Logic.Directions
             }
 
             this.directions = this.GenerateSequence(createDirection);
+            this.directionsEnumerator = this.directions.GetEnumerator();
         }
 
         public int DirectionSequenceLength
@@ -37,20 +39,14 @@ namespace MatrixPath.Logic.Directions
 
         public IMovementDirection GetNextDirection()
         {
-            var nextDirection = (IMovementDirection)this.GetNext();
-            return nextDirection;
-        }
-
-        private IEnumerator<IMovementDirection> GetNext()
-        {
-            while (true)
+            if (!this.directionsEnumerator.MoveNext())
             {
-                var directionsEnumerator = this.directions.GetEnumerator();
-                while (directionsEnumerator.MoveNext())
-                {
-                    yield return directionsEnumerator.Current;
-                }
+                this.directionsEnumerator.Reset();
+                this.directionsEnumerator.MoveNext();
             }
+
+            var nextDirection = this.directionsEnumerator.Current;
+            return nextDirection;
         }
 
         private IEnumerable<IMovementDirection> GenerateSequence(Func<int, int, IMovementDirection> createDirection)

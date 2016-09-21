@@ -37,6 +37,7 @@ namespace MatrixPath.Logic.Matrices
             var matrixSize = this.theMatrix.Count;
             var position = startPosition.Clone();
             var direction = directionsInstructions.GetNextDirection();
+            var initialDirection = direction.Clone();
 
             do
             {
@@ -48,24 +49,32 @@ namespace MatrixPath.Logic.Matrices
                 nextPosition = nextPosition.MoveInDirection(direction);
 
                 var nextPositionIsFree = this.CheckIfPositionIsValidToMove(nextPosition, matrixSize);
-                for (int run = 1; run <= directionsInstructions.DirectionSequenceLength; run++)
+                if (!nextPositionIsFree)
                 {
-                    var nextDirection = directionsInstructions.GetNextDirection();
-                    nextPosition = position.Clone();
-                    nextPosition.MoveInDirection(nextDirection);
+                    for (int run = 1; run <= directionsInstructions.DirectionSequenceLength; run++)
+                    {
+                        var nextDirection = directionsInstructions.GetNextDirection();
+                        nextPosition = position.Clone();
+                        nextPosition = nextPosition.MoveInDirection(nextDirection);
 
-                    nextPositionIsFree = this.CheckIfPositionIsValidToMove(nextPosition, matrixSize);
-                    if (nextPositionIsFree)
-                    {
-                        break;
-                    }
-                    else if (run == directionsInstructions.DirectionSequenceLength)
-                    {
-                        nextPosition = this.FindPositionToJumpTo(nextPosition, matrixSize);
-                        if (nextPosition == null)
+                        nextPositionIsFree = this.CheckIfPositionIsValidToMove(nextPosition, matrixSize);
+                        if (nextPositionIsFree)
                         {
-                            matrixIsFilled = true;
+                            direction = nextDirection;
                             break;
+                        }
+                        else if (run == directionsInstructions.DirectionSequenceLength)
+                        {
+                            nextPosition = this.FindPositionToJumpTo(nextPosition, matrixSize);
+                            if (nextPosition == null)
+                            {
+                                matrixIsFilled = true;
+                                break;
+                            }
+                            else
+                            {
+                                direction = initialDirection.Clone();
+                            }
                         }
                     }
                 }
@@ -103,7 +112,7 @@ namespace MatrixPath.Logic.Matrices
                     if (!this.visitedCellPositions[row][col])
                     {
                         newPosition = position.MoveTo(row, col);
-                        break;
+                        return newPosition;
                     }
                 }
             }
