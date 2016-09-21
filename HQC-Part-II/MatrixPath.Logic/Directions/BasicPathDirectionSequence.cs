@@ -28,15 +28,16 @@ namespace MatrixPath.Logic.Directions
 
         private IEnumerator<IMovementDirection> GetNext()
         {
-            var enumerator = this.directions.GetEnumerator();
+            var directionsEnumerator = this.directions.GetEnumerator();
             while (true)
             {
-                if (!enumerator.MoveNext())
+                if (!directionsEnumerator.MoveNext())
                 {
-                    enumerator.Reset();
+                    directionsEnumerator.Reset();
+                    directionsEnumerator.MoveNext();
                 }
 
-                yield return enumerator.Current;
+                yield return directionsEnumerator.Current;
             }
         }
 
