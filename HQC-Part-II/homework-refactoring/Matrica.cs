@@ -59,7 +59,7 @@ namespace Task3
             return false;
         }
 
-        static void find_cell(int[,] arr, out int x, out int y)
+        static void FindAnEmptyCellToJumpTo(int[,] arr, out int x, out int y)
         {
             x = 0;
             y = 0;
@@ -87,81 +87,82 @@ namespace Task3
             //    Console.WriteLine( "You haven't entered a correct positive number" );
             //    input = Console.ReadLine(  );
             //}
-            int n = 3;
-            int[,] matrica = new int[n, n];
-            int step = n;
-            var k = 1;
-            var i = 0;
-            var j = 0;
-            var dx = 1;
-            var dy = 1;
+            int matrixSize = 6;
+            int[,] theMatrix = new int[matrixSize, matrixSize];
+            var nextCellValue = 1;
+            var rowCoordinate = 0;
+            var colCoordinate = 0;
+            var deltaX = 1;
+            var deltaY = 1;
 
+            //malko e kofti tova uslovie, no break-a raboti 100% : )
             while (true)
-            { //malko e kofti tova uslovie, no break-a raboti 100% : )
-                matrica[i, j] = k;
+            { 
+                theMatrix[rowCoordinate, colCoordinate] = nextCellValue;
 
-                if (!proverka(matrica, i, j))
+                // prekusvame ako sme se zadunili
+                if (!proverka(theMatrix, rowCoordinate, colCoordinate))
                 {
                     break;
-                } // prekusvame ako sme se zadunili
+                } 
 
-                if (i + dx >= n || i + dx < 0 || j + dy >= n || j + dy < 0 || matrica[i + dx, j + dy] != 0)
+                if (rowCoordinate + deltaX >= matrixSize || rowCoordinate + deltaX < 0 || colCoordinate + deltaY >= matrixSize || colCoordinate + deltaY < 0 || theMatrix[rowCoordinate + deltaX, colCoordinate + deltaY] != 0)
                 {
-                    while ((i + dx >= n || i + dx < 0 || j + dy >= n || j + dy < 0 || matrica[i + dx, j + dy] != 0))
+                    while ((rowCoordinate + deltaX >= matrixSize || rowCoordinate + deltaX < 0 || colCoordinate + deltaY >= matrixSize || colCoordinate + deltaY < 0 || theMatrix[rowCoordinate + deltaX, colCoordinate + deltaY] != 0))
                     {
-                        change(ref dx, ref dy);
+                        change(ref deltaX, ref deltaY);
                     }
                 }
 
-                i += dx;
-                j += dy;
-                k++;
+                rowCoordinate += deltaX;
+                colCoordinate += deltaY;
+                nextCellValue++;
             }
 
-            for (int p = 0; p < n; p++)
+            for (int p = 0; p < matrixSize; p++)
             {
-                for (int q = 0; q < n; q++)
+                for (int q = 0; q < matrixSize; q++)
                 {
-                    Console.Write("{0,3}", matrica[p, q]);
+                    Console.Write("{0,3}", theMatrix[p, q]);
                 }
 
                 Console.WriteLine();
             }
 
-            find_cell(matrica, out i, out j);
+            FindAnEmptyCellToJumpTo(theMatrix, out rowCoordinate, out colCoordinate);
 
-            if (i != 0 && j != 0)
+            if (rowCoordinate != 0 && colCoordinate != 0)
             { // taka go napravih, zashtoto funkciqta ne mi davashe da ne si definiram out parametrite
-                dx = 1;
-                dy = 1;
+                deltaX = 1;
+                deltaY = 1;
 
                 while (true)
                 { //malko e kofti tova uslovie, no break-a raboti 100% : )
-                    matrica[i, j] = k;
-                    if (!proverka(matrica, i, j))
+                    theMatrix[rowCoordinate, colCoordinate] = nextCellValue;
+                    if (!proverka(theMatrix, rowCoordinate, colCoordinate))
                     {
                         break;
                     }// prekusvame ako sme se zadunili
 
-                    if (i + dx >= n || i + dx < 0 || j + dy >= n || j + dy < 0 || matrica[i + dx, j + dy] != 0)
+                    if (rowCoordinate + deltaX >= matrixSize || rowCoordinate + deltaX < 0 || colCoordinate + deltaY >= matrixSize || colCoordinate + deltaY < 0 || theMatrix[rowCoordinate + deltaX, colCoordinate + deltaY] != 0)
                     {
-                        while ((i + dx >= n || i + dx < 0 || j + dy >= n || j + dy < 0 || matrica[i + dx, j + dy] != 0))
+                        while ((rowCoordinate + deltaX >= matrixSize || rowCoordinate + deltaX < 0 || colCoordinate + deltaY >= matrixSize || colCoordinate + deltaY < 0 || theMatrix[rowCoordinate + deltaX, colCoordinate + deltaY] != 0))
                         {
-                            change(ref dx, ref dy);
+                            change(ref deltaX, ref deltaY);
                         }
                     }
 
-                    i += dx;
-                    j += dy;
-                    k++;
+                    rowCoordinate += deltaX;
+                    colCoordinate += deltaY;
+                    nextCellValue++;
                 }
             }
 
-            for (int pp = 0; pp < n; pp++)
+            for (int pp = 0; pp < matrixSize; pp++)
             {
-                for (int qq = 0; qq < n; qq++)
+                for (int qq = 0; qq < matrixSize; qq++)
                 {
-                    Console.Write("{0,3}", matrica[pp, qq]);
+                    Console.Write("{0,3}", theMatrix[pp, qq]);
                 }
 
                 Console.WriteLine();
