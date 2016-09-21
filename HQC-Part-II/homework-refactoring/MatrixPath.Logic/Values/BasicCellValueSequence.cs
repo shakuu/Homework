@@ -8,7 +8,7 @@ namespace MatrixPath.Logic.Values
 
         public int GetNextCellValue()
         {
-            return ++lastValue;
+            return ++this.lastValue;
         }
     }
 }

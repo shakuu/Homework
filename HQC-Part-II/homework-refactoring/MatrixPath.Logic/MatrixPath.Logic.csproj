@@ -49,9 +49,13 @@
     <Compile Include="Cells\MovementDelta.cs" />
     <Compile Include="Cells\Position.cs" />
     <Compile Include="Directions\BasicPathDirectionSequence.cs" />
-    <Compile Include="Directions\Contracts\IDirectionSequence.cs" />
+    <Compile Include="Directions\Contracts\IDirectionSequence.cs">
+      <ExcludeFromStyleCop>False</ExcludeFromStyleCop>
+    </Compile>
     <Compile Include="Matrices\BasicMatrix.cs" />
-    <Compile Include="Matrices\Contracts\IMatrix.cs" />
+    <Compile Include="Matrices\Contracts\IMatrix.cs">
+      <ExcludeFromStyleCop>False</ExcludeFromStyleCop>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Utils\InstantiatingMethods.cs" />
     <Compile Include="Values\BasicCellValueSequence.cs" />

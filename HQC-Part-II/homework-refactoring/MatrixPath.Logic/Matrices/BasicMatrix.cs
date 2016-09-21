@@ -33,16 +33,16 @@ namespace MatrixPath.Logic.Matrices
 
         public void Populate(IPosition startPosition, IDirectionSequence directionsInstructions, ICellValueSequence valueProvider)
         {
-            var matrixIsFilled = false;
-            var matrixSize = this.theMatrix.Count;
             var position = startPosition.Clone();
             var direction = directionsInstructions.GetNextDirection();
             var initialDirection = direction.Clone();
 
+            var matrixSize = this.theMatrix.Count;
+            var matrixIsFilled = false;
             do
             {
-                var nextValue = valueProvider.GetNextCellValue();
-                this.theMatrix[position.Row][position.Col].Value = nextValue;
+                var nextCellValue = valueProvider.GetNextCellValue();
+                this.theMatrix[position.Row][position.Col].Value = nextCellValue;
                 this.visitedCellPositions[position.Row][position.Col] = true;
 
                 var nextPosition = position.Clone();
@@ -51,7 +51,7 @@ namespace MatrixPath.Logic.Matrices
                 var nextPositionIsFree = this.CheckIfPositionIsValidToMove(nextPosition, matrixSize);
                 if (!nextPositionIsFree)
                 {
-                    for (int run = 1; run <= directionsInstructions.DirectionSequenceLength; run++)
+                    for (int directionChangeCount = 1; directionChangeCount <= directionsInstructions.DirectionSequenceLength; directionChangeCount++)
                     {
                         var nextDirection = directionsInstructions.GetNextDirection();
                         nextPosition = position.Clone();
@@ -63,7 +63,7 @@ namespace MatrixPath.Logic.Matrices
                             direction = nextDirection;
                             break;
                         }
-                        else if (run == directionsInstructions.DirectionSequenceLength)
+                        else if (directionChangeCount == directionsInstructions.DirectionSequenceLength)
                         {
                             nextPosition = this.FindPositionToJumpTo(nextPosition, matrixSize);
                             if (nextPosition == null)
@@ -80,7 +80,8 @@ namespace MatrixPath.Logic.Matrices
                 }
 
                 position = nextPosition;
-            } while (!matrixIsFilled);
+            }
+            while (!matrixIsFilled);
         }
 
         public override string ToString()

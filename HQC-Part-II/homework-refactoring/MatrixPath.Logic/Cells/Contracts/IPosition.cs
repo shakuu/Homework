@@ -1,6 +1,4 @@
-﻿using System;
-
-namespace MatrixPath.Logic.Cells.Contracts
+﻿namespace MatrixPath.Logic.Cells.Contracts
 {
     public interface IPosition : IDualPlaneCoordinatesContainer
     {
