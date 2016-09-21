@@ -12,7 +12,7 @@ namespace MatrixPath.Logic.Matrices
     {
         private IList<IList<ICell>> theMatrix;
 
-        public BasicMatrix(int matrixSize, Func<int, int, ICell> createCell)
+        public BasicMatrix(int matrixSize, Func<int, int, int, ICell> createCell)
         {
             if (matrixSize <= 0)
             {
@@ -32,17 +32,20 @@ namespace MatrixPath.Logic.Matrices
             throw new NotImplementedException();
         }
 
-        private IList<IList<ICell>> CreateTheMatrix(int size, Func<int, int, ICell> createCell)
+        private IList<IList<ICell>> CreateTheMatrix(int size, Func<int, int, int, ICell> createCell)
         {
+            var cellDefaultValue = 0;
             var theMatrix = new List<IList<ICell>>();
             for (int rowIndex = 0; rowIndex < size; rowIndex++)
             {
-                theMatrix[rowIndex] = new List<ICell>();
+                var nextMatrixRow = new List<ICell>();
                 for (int colIndex = 0; colIndex < size; colIndex++)
                 {
-                    var cellToAdd = createCell(rowIndex, colIndex);
-                    theMatrix[rowIndex].Add(cellToAdd);
+                    var cellToAdd = createCell(rowIndex, colIndex, cellDefaultValue);
+                    nextMatrixRow.Add(cellToAdd);
                 }
+
+                theMatrix.Add(nextMatrixRow);
             }
 
             return theMatrix;
