@@ -4,53 +4,55 @@ namespace Task3
 {
     class WalkInMatrica
     {
-        static void change(ref int dx, ref int dy)
+        static void ChangeDirection(ref int dx, ref int dy)
         {
-            int[] dirX = { 1, 1, 1, 0, -1, -1, -1, 0 };
-            int[] dirY = { 1, 0, -1, -1, -1, 0, 1, 1 };
+            int[] deltaX = { 1, 1, 1, 0, -1, -1, -1, 0 };
+            int[] deltaY = { 1, 0, -1, -1, -1, 0, 1, 1 };
 
-            int cd = 0;
-            for (int count = 0; count < 8; count++)
+            int currentDirectionIndex = 0;
+            for (int directionIndex = 0; directionIndex < 8; directionIndex++)
             {
-                if (dirX[count] == dx && dirY[count] == dy)
+                if (deltaX[directionIndex] == dx && deltaY[directionIndex] == dy)
                 {
-                    cd = count; break;
+                    currentDirectionIndex = directionIndex;
+                    break;
                 }
             }
 
-            if (cd == 7)
+            if (currentDirectionIndex == 7)
             {
-                dx = dirX[0];
-                dy = dirY[0];
+                dx = deltaX[0];
+                dy = deltaY[0];
                 return;
             }
 
-            dx = dirX[cd + 1];
-            dy = dirY[cd + 1];
+            dx = deltaX[currentDirectionIndex + 1];
+            dy = deltaY[currentDirectionIndex + 1];
         }
 
-        static bool proverka(int[,] arr, int x, int y)
+        static bool CheckIfNextMatrixCellIsEmpty(int[,] matrix, int row, int col)
         {
-            int[] dirX = { 1, 1, 1, 0, -1, -1, -1, 0 };
-            int[] dirY = { 1, 0, -1, -1, -1, 0, 1, 1 };
+            int[] deltaX = { 1, 1, 1, 0, -1, -1, -1, 0 };
+            int[] deltaY = { 1, 0, -1, -1, -1, 0, 1, 1 };
 
-            for (int i = 0; i < 8; i++)
+            var matrixSize = matrix.GetLength(0);
+            for (int directionIndex = 0; directionIndex < 8; directionIndex++)
             {
-                if (x + dirX[i] >= arr.GetLength(0) || x + dirX[i] < 0)
+                if (row + deltaX[directionIndex] >= matrixSize || row + deltaX[directionIndex] < 0)
                 {
-                    dirX[i] = 0;
+                    deltaX[directionIndex] = 0;
                 }
 
 
-                if (y + dirY[i] >= arr.GetLength(0) || y + dirY[i] < 0)
+                if (col + deltaY[directionIndex] >= matrixSize || col + deltaY[directionIndex] < 0)
                 {
-                    dirY[i] = 0;
+                    deltaY[directionIndex] = 0;
                 }
             }
 
-            for (int i = 0; i < 8; i++)
+            for (int directionIndex = 0; directionIndex < 8; directionIndex++)
             {
-                if (arr[x + dirX[i], y + dirY[i]] == 0)
+                if (matrix[row + deltaX[directionIndex], col + deltaY[directionIndex]] == 0)
                 {
                     return true;
                 }
@@ -97,20 +99,20 @@ namespace Task3
 
             //malko e kofti tova uslovie, no break-a raboti 100% : )
             while (true)
-            { 
+            {
                 theMatrix[rowCoordinate, colCoordinate] = nextCellValue;
 
                 // prekusvame ako sme se zadunili
-                if (!proverka(theMatrix, rowCoordinate, colCoordinate))
+                if (!CheckIfNextMatrixCellIsEmpty(theMatrix, rowCoordinate, colCoordinate))
                 {
                     break;
-                } 
+                }
 
                 if (rowCoordinate + deltaX >= matrixSize || rowCoordinate + deltaX < 0 || colCoordinate + deltaY >= matrixSize || colCoordinate + deltaY < 0 || theMatrix[rowCoordinate + deltaX, colCoordinate + deltaY] != 0)
                 {
                     while ((rowCoordinate + deltaX >= matrixSize || rowCoordinate + deltaX < 0 || colCoordinate + deltaY >= matrixSize || colCoordinate + deltaY < 0 || theMatrix[rowCoordinate + deltaX, colCoordinate + deltaY] != 0))
                     {
-                        change(ref deltaX, ref deltaY);
+                        ChangeDirection(ref deltaX, ref deltaY);
                     }
                 }
 
@@ -139,7 +141,7 @@ namespace Task3
                 while (true)
                 { //malko e kofti tova uslovie, no break-a raboti 100% : )
                     theMatrix[rowCoordinate, colCoordinate] = nextCellValue;
-                    if (!proverka(theMatrix, rowCoordinate, colCoordinate))
+                    if (!CheckIfNextMatrixCellIsEmpty(theMatrix, rowCoordinate, colCoordinate))
                     {
                         break;
                     }// prekusvame ako sme se zadunili
@@ -148,7 +150,7 @@ namespace Task3
                     {
                         while ((rowCoordinate + deltaX >= matrixSize || rowCoordinate + deltaX < 0 || colCoordinate + deltaY >= matrixSize || colCoordinate + deltaY < 0 || theMatrix[rowCoordinate + deltaX, colCoordinate + deltaY] != 0))
                         {
-                            change(ref deltaX, ref deltaY);
+                            ChangeDirection(ref deltaX, ref deltaY);
                         }
                     }
 
