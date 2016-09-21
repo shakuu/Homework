@@ -146,7 +146,11 @@ namespace Task3
                         break;
                     }// prekusvame ako sme se zadunili
 
-                    if (rowCoordinate + deltaX >= matrixSize || rowCoordinate + deltaX < 0 || colCoordinate + deltaY >= matrixSize || colCoordinate + deltaY < 0 || theMatrix[rowCoordinate + deltaX, colCoordinate + deltaY] != 0)
+                    var nextRowCoordinateCandidate = rowCoordinate + deltaX;
+                    var nextColCoordinateCandidate = colCoordinate + deltaY;
+
+                    var isOutOfBounds = CheckIfCoordinateCandidateIsOutOfBounds(matrixSize, nextRowCoordinateCandidate, nextColCoordinateCandidate);
+                    if (isOutOfBounds || theMatrix[nextRowCoordinateCandidate, nextColCoordinateCandidate] != 0)
                     {
                         while ((rowCoordinate + deltaX >= matrixSize || rowCoordinate + deltaX < 0 || colCoordinate + deltaY >= matrixSize || colCoordinate + deltaY < 0 || theMatrix[rowCoordinate + deltaX, colCoordinate + deltaY] != 0))
                         {
@@ -169,6 +173,15 @@ namespace Task3
 
                 Console.WriteLine();
             }
+        }
+
+        private static bool CheckIfCoordinateCandidateIsOutOfBounds(int matrixSize, int rowCandidate, int colCandidate)
+        {
+            var isRowOutOfBounds = rowCandidate < 0 || matrixSize <= rowCandidate;
+            var isColOutOfBounds = colCandidate < 0 || matrixSize <= colCandidate;
+            var isOutOfBounds = isRowOutOfBounds || isColOutOfBounds;
+
+            return isOutOfBounds;
         }
     }
 }
