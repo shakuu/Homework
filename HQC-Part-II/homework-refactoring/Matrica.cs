@@ -135,6 +135,7 @@ namespace Task3
 
             if (rowCoordinate != 0 && colCoordinate != 0)
             { // taka go napravih, zashtoto funkciqta ne mi davashe da ne si definiram out parametrite
+                nextCellValue++;
                 deltaX = 1;
                 deltaY = 1;
 
