@@ -121,15 +121,7 @@ namespace Task3
                 nextCellValue++;
             }
 
-            for (int p = 0; p < matrixSize; p++)
-            {
-                for (int q = 0; q < matrixSize; q++)
-                {
-                    Console.Write("{0,3}", theMatrix[p, q]);
-                }
-
-                Console.WriteLine();
-            }
+            PrintTheMatrix(theMatrix);
 
             FindAnEmptyCellToJumpTo(theMatrix, out rowCoordinate, out colCoordinate);
 
@@ -165,11 +157,17 @@ namespace Task3
                 }
             }
 
-            for (int pp = 0; pp < matrixSize; pp++)
+            PrintTheMatrix(theMatrix);
+        }
+
+        private static void PrintTheMatrix(int[,] matrix)
+        {
+            var matrixSize = matrix.GetLength(0);
+            for (int row = 0; row < matrixSize; row++)
             {
-                for (int qq = 0; qq < matrixSize; qq++)
+                for (int col = 0; col < matrixSize; col++)
                 {
-                    Console.Write("{0,3}", theMatrix[pp, qq]);
+                    Console.Write("{0,3}", matrix[row, col]);
                 }
 
                 Console.WriteLine();
