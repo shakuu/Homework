@@ -34,7 +34,18 @@ namespace MatrixPath.Logic.Matrices
 
         private IList<IList<ICell>> CreateTheMatrix(int size, Func<int, int, ICell> createCell)
         {
-            throw new NotImplementedException();
+            var theMatrix = new List<IList<ICell>>();
+            for (int rowIndex = 0; rowIndex < size; rowIndex++)
+            {
+                theMatrix[rowIndex] = new List<ICell>();
+                for (int colIndex = 0; colIndex < size; colIndex++)
+                {
+                    var cellToAdd = createCell(rowIndex, colIndex);
+                    theMatrix[rowIndex].Add(cellToAdd);
+                }
+            }
+
+            return theMatrix;
         }
     }
 }
