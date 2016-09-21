@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 
 using MatrixPath.Logic.Cells.Contracts;
 using MatrixPath.Logic.Directions.Contracts;
@@ -9,6 +10,7 @@ namespace MatrixPath.Logic.Directions
     public class BasicPathDirectionSequence : IDirectionSequence
     {
         private IEnumerable<IMovementDirection> directions;
+        private int sequenceLength = -1;
 
         public BasicPathDirectionSequence(Func<int, int, IMovementDirection> createDirection)
         {
@@ -18,6 +20,19 @@ namespace MatrixPath.Logic.Directions
             }
 
             this.directions = this.GenerateSequence(createDirection);
+        }
+
+        public int DirectionSequenceLength
+        {
+            get
+            {
+                if (this.sequenceLength < 0)
+                {
+                    this.sequenceLength = this.directions.Count();
+                }
+
+                return this.sequenceLength;
+            }
         }
 
         public IMovementDirection GetNextDirection()

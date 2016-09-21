@@ -10,6 +10,18 @@ namespace MatrixPath.Logic.Cells
         {
         }
 
+        public IPosition MoveTo(int row, int col)
+        {
+            var movedTo = new Position(row, col);
+            return movedTo;
+        }
+
+        public IPosition Clone()
+        {
+            var clonedPosition = new Position(this.Row, this.Col);
+            return clonedPosition;
+        }
+
         public IPosition MoveInDirection(IMovementDirection direction)
         {
             var nextRow = this.Row + direction.DeltaRow;
