@@ -7,8 +7,8 @@
     <SchemaVersion>2.0</SchemaVersion>
     <ProjectGuid>{4D520899-7061-4EAA-B67E-D14EE8B30462}</ProjectGuid>
     <OutputType>Exe</OutputType>
-    <RootNamespace>GameFifteen</RootNamespace>
-    <AssemblyName>GameFifteen</AssemblyName>
+    <RootNamespace>MatrixPath.ConsoleClient</RootNamespace>
+    <AssemblyName>MatrixPath.ConsoleClient</AssemblyName>
     <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
     <TargetFrameworkProfile>Client</TargetFrameworkProfile>
     <FileAlignment>512</FileAlignment>
@@ -37,7 +37,7 @@
     <Reference Include="System.Core" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Matrica.cs" />
+    <Compile Include="Path.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

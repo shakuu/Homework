@@ -2,7 +2,7 @@
 
 namespace Task3
 {
-    class WalkInMatrica
+    public class Path
     {
         static void ChangeDirection(ref int dx, ref int dy)
         {
