@@ -3,11 +3,13 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 14
 VisualStudioVersion = 14.0.25420.1
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MatrixPath.RefactoredOriginal", "MatrixPath.RefactoredOriginal.csproj", "{4D520899-7061-4EAA-B67E-D14EE8B30462}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MatrixPath.RefactoredOriginal", "MatrixPath.RefactoredOriginal\MatrixPath.RefactoredOriginal.csproj", "{4D520899-7061-4EAA-B67E-D14EE8B30462}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MatrixPath.Logic", "..\MatrixPath.Logic\MatrixPath.Logic.csproj", "{1CAE8B0F-EE72-43C6-AC3C-A04C2D18D232}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MatrixPath.Logic", "MatrixPath.Logic\MatrixPath.Logic.csproj", "{1CAE8B0F-EE72-43C6-AC3C-A04C2D18D232}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MatrixPath.ConsoleClient", "MatrixPath.ConsoleClient\MatrixPath.ConsoleClient.csproj", "{8B96B5D9-401F-4F69-8240-271B74540F29}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MatrixPath.Logic.Tests", "MatrixPath.Logic.Tests\MatrixPath.Logic.Tests.csproj", "{DBE7AC93-EAD2-4239-9270-1600715B1ED6}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -39,6 +41,14 @@ Global
 		{8B96B5D9-401F-4F69-8240-271B74540F29}.Release|Any CPU.Build.0 = Release|Any CPU
 		{8B96B5D9-401F-4F69-8240-271B74540F29}.Release|x86.ActiveCfg = Release|Any CPU
 		{8B96B5D9-401F-4F69-8240-271B74540F29}.Release|x86.Build.0 = Release|Any CPU
+		{DBE7AC93-EAD2-4239-9270-1600715B1ED6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DBE7AC93-EAD2-4239-9270-1600715B1ED6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DBE7AC93-EAD2-4239-9270-1600715B1ED6}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{DBE7AC93-EAD2-4239-9270-1600715B1ED6}.Debug|x86.Build.0 = Debug|Any CPU
+		{DBE7AC93-EAD2-4239-9270-1600715B1ED6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DBE7AC93-EAD2-4239-9270-1600715B1ED6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DBE7AC93-EAD2-4239-9270-1600715B1ED6}.Release|x86.ActiveCfg = Release|Any CPU
+		{DBE7AC93-EAD2-4239-9270-1600715B1ED6}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

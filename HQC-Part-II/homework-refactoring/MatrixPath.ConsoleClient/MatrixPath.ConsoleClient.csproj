@@ -50,7 +50,7 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\MatrixPath.Logic\MatrixPath.Logic.csproj">
+    <ProjectReference Include="..\MatrixPath.Logic\MatrixPath.Logic.csproj">
       <Project>{1cae8b0f-ee72-43c6-ac3c-a04c2d18d232}</Project>
       <Name>MatrixPath.Logic</Name>
     </ProjectReference>
