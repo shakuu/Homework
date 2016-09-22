@@ -12,7 +12,7 @@ namespace MatrixPath.ConsoleClient
     {
         public static void Main()
         {
-            var theMatrix = new BasicMatrix(6, InstantiatingMethods.CreateMatrixCell);
+            var theMatrix = new BasicMatrix(10, InstantiatingMethods.CreateMatrixCell);
 
             var directionSequence = new BasicPathDirectionSequence(InstantiatingMethods.CreateDirection);
             var valuesGenerator = new BasicCellValueSequence();

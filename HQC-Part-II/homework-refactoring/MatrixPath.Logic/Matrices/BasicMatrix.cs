@@ -11,7 +11,7 @@ namespace MatrixPath.Logic.Matrices
 {
     public class BasicMatrix : IMatrix
     {
-        private IList<IList<ICell>> theMatrix;
+        private IList<IList<ICell>> matrix;
         private bool[][] visitedCellPositions;
 
         public BasicMatrix(int matrixSize, Func<int, int, int, ICell> createCell)
@@ -26,7 +26,7 @@ namespace MatrixPath.Logic.Matrices
                 throw new ArgumentNullException("createCell");
             }
 
-            this.theMatrix = this.CreateTheMatrix(matrixSize, createCell);
+            this.matrix = this.CreateTheMatrix(matrixSize, createCell);
             this.visitedCellPositions = this.InitializeVisitedFlags(matrixSize);
         }
 
@@ -51,12 +51,12 @@ namespace MatrixPath.Logic.Matrices
             var direction = directionsInstructions.GetNextDirection();
             var initialDirection = direction.Clone();
 
-            var matrixSize = this.theMatrix.Count;
+            var matrixSize = this.matrix.Count;
             var matrixIsFilled = false;
             do
             {
                 var nextCellValue = valueProvider.GetNextCellValue();
-                this.theMatrix[position.Row][position.Col].Value = nextCellValue;
+                this.matrix[position.Row][position.Col].Value = nextCellValue;
                 this.visitedCellPositions[position.Row][position.Col] = true;
 
                 var nextPosition = position.Clone();
@@ -104,13 +104,13 @@ namespace MatrixPath.Logic.Matrices
         {
             var stringRepresentation = new StringBuilder();
 
-            var matrixSize = this.theMatrix.Count;
+            var matrixSize = this.matrix.Count;
             for (int row = 0; row < matrixSize; row++)
             {
                 var currentRow = new StringBuilder();
                 for (int col = 0; col < matrixSize; col++)
                 {
-                    currentRow.Append(this.theMatrix[row][col].Value + " ");
+                    currentRow.Append(this.matrix[row][col].Value + " ");
                 }
 
                 stringRepresentation.AppendLine(currentRow.ToString().Trim());
