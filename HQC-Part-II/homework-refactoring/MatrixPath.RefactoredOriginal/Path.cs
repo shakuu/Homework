@@ -117,7 +117,7 @@ namespace Task3
                 var nextRowCoordinateCandidate = rowCoordinate + deltaX;
                 var nextColCoordinateCandidate = colCoordinate + deltaY;
                 var isOutOfBounds = CheckIfCoordinateCandidateIsOutOfBounds(matrixSize, nextRowCoordinateCandidate, nextColCoordinateCandidate);
-                while (isOutOfBounds || theMatrix[rowCoordinate + deltaX, colCoordinate + deltaY] != 0)
+                while (isOutOfBounds || theMatrix[nextRowCoordinateCandidate, nextColCoordinateCandidate] != 0)
                 {
                     ChangeDirection(ref deltaX, ref deltaY);
 
