@@ -4,7 +4,7 @@ namespace Task3
 {
     public class Path
     {
-        static void ChangeDirection(ref int dx, ref int dy)
+        public static void ChangeDirection(ref int dx, ref int dy)
         {
             int[] deltaX = { 1, 1, 1, 0, -1, -1, -1, 0 };
             int[] deltaY = { 1, 0, -1, -1, -1, 0, 1, 1 };
@@ -30,7 +30,7 @@ namespace Task3
             dy = deltaY[currentDirectionIndex + 1];
         }
 
-        static bool CheckIfNextMatrixCellIsEmpty(int[,] matrix, int row, int col)
+        public static bool CheckIfNextMatrixCellIsEmpty(int[,] matrix, int row, int col)
         {
             int[] deltaX = { 1, 1, 1, 0, -1, -1, -1, 0 };
             int[] deltaY = { 1, 0, -1, -1, -1, 0, 1, 1 };
@@ -42,7 +42,6 @@ namespace Task3
                 {
                     deltaX[directionIndex] = 0;
                 }
-
 
                 if (col + deltaY[directionIndex] >= matrixSize || col + deltaY[directionIndex] < 0)
                 {
@@ -61,103 +60,76 @@ namespace Task3
             return false;
         }
 
-        static void FindAnEmptyCellToJumpTo(int[,] arr, out int x, out int y)
+        public static void FindAnEmptyCellToJumpTo(int[,] theMatrix, out int positionRow, out int positionCol)
         {
-            x = 0;
-            y = 0;
-            for (int i = 0; i < arr.GetLength(0); i++)
+            positionRow = 0;
+            positionCol = 0;
+
+            var matrixSize = theMatrix.GetLength(0);
+            for (int row = 0; row < matrixSize; row++)
             {
-                for (int j = 0; j < arr.GetLength(0); j++)
+                for (int col = 0; col < matrixSize; col++)
                 {
-                    if (arr[i, j] == 0)
+                    if (theMatrix[row, col] == 0)
                     {
-                        x = i;
-                        y = j;
+                        positionRow = row;
+                        positionCol = col;
                         return;
                     }
                 }
             }
         }
 
-        static void Main(string[] args)
+        public static void Main()
         {
-            //Console.WriteLine( "Enter a positive number " );
-            //string input = Console.ReadLine(  );
-            //int n = 0;
-            //while ( !int.TryParse( input, out n ) || n < 0 || n > 100 )
-            //{
-            //    Console.WriteLine( "You haven't entered a correct positive number" );
-            //    input = Console.ReadLine(  );
-            //}
             int matrixSize = 6;
             int[,] theMatrix = new int[matrixSize, matrixSize];
             var nextCellValue = 1;
             var rowCoordinate = 0;
             var colCoordinate = 0;
+
+            FillTheMatrixUntilADeadEnd(theMatrix, ref rowCoordinate, ref colCoordinate, ref nextCellValue);
+            FindAnEmptyCellToJumpTo(theMatrix, out rowCoordinate, out colCoordinate);
+            while (rowCoordinate != 0 && colCoordinate != 0)
+            {
+                nextCellValue++;
+                FillTheMatrixUntilADeadEnd(theMatrix, ref rowCoordinate, ref colCoordinate, ref nextCellValue);
+                FindAnEmptyCellToJumpTo(theMatrix, out rowCoordinate, out colCoordinate);
+            }
+
+            PrintTheMatrix(theMatrix);
+        }
+
+        private static void FillTheMatrixUntilADeadEnd(int[,] theMatrix, ref int rowCoordinate, ref int colCoordinate, ref int nextCellValue)
+        {
             var deltaX = 1;
             var deltaY = 1;
+            var matrixSize = theMatrix.GetLength(0);
 
-            //malko e kofti tova uslovie, no break-a raboti 100% : )
             while (true)
             {
                 theMatrix[rowCoordinate, colCoordinate] = nextCellValue;
-
-                // prekusvame ako sme se zadunili
                 if (!CheckIfNextMatrixCellIsEmpty(theMatrix, rowCoordinate, colCoordinate))
                 {
                     break;
                 }
 
-                if (rowCoordinate + deltaX >= matrixSize || rowCoordinate + deltaX < 0 || colCoordinate + deltaY >= matrixSize || colCoordinate + deltaY < 0 || theMatrix[rowCoordinate + deltaX, colCoordinate + deltaY] != 0)
+                var nextRowCoordinateCandidate = rowCoordinate + deltaX;
+                var nextColCoordinateCandidate = colCoordinate + deltaY;
+                var isOutOfBounds = CheckIfCoordinateCandidateIsOutOfBounds(matrixSize, nextRowCoordinateCandidate, nextColCoordinateCandidate);
+                while (isOutOfBounds || theMatrix[nextRowCoordinateCandidate, nextColCoordinateCandidate] != 0)
                 {
-                    while ((rowCoordinate + deltaX >= matrixSize || rowCoordinate + deltaX < 0 || colCoordinate + deltaY >= matrixSize || colCoordinate + deltaY < 0 || theMatrix[rowCoordinate + deltaX, colCoordinate + deltaY] != 0))
-                    {
-                        ChangeDirection(ref deltaX, ref deltaY);
-                    }
+                    ChangeDirection(ref deltaX, ref deltaY);
+
+                    nextRowCoordinateCandidate = rowCoordinate + deltaX;
+                    nextColCoordinateCandidate = colCoordinate + deltaY;
+                    isOutOfBounds = CheckIfCoordinateCandidateIsOutOfBounds(matrixSize, nextRowCoordinateCandidate, nextColCoordinateCandidate);
                 }
 
                 rowCoordinate += deltaX;
                 colCoordinate += deltaY;
                 nextCellValue++;
             }
-
-            PrintTheMatrix(theMatrix);
-
-            FindAnEmptyCellToJumpTo(theMatrix, out rowCoordinate, out colCoordinate);
-
-            if (rowCoordinate != 0 && colCoordinate != 0)
-            { // taka go napravih, zashtoto funkciqta ne mi davashe da ne si definiram out parametrite
-                nextCellValue++;
-                deltaX = 1;
-                deltaY = 1;
-
-                while (true)
-                { //malko e kofti tova uslovie, no break-a raboti 100% : )
-                    theMatrix[rowCoordinate, colCoordinate] = nextCellValue;
-                    if (!CheckIfNextMatrixCellIsEmpty(theMatrix, rowCoordinate, colCoordinate))
-                    {
-                        break;
-                    }// prekusvame ako sme se zadunili
-
-                    var nextRowCoordinateCandidate = rowCoordinate + deltaX;
-                    var nextColCoordinateCandidate = colCoordinate + deltaY;
-
-                    var isOutOfBounds = CheckIfCoordinateCandidateIsOutOfBounds(matrixSize, nextRowCoordinateCandidate, nextColCoordinateCandidate);
-                    if (isOutOfBounds || theMatrix[nextRowCoordinateCandidate, nextColCoordinateCandidate] != 0)
-                    {
-                        while ((rowCoordinate + deltaX >= matrixSize || rowCoordinate + deltaX < 0 || colCoordinate + deltaY >= matrixSize || colCoordinate + deltaY < 0 || theMatrix[rowCoordinate + deltaX, colCoordinate + deltaY] != 0))
-                        {
-                            ChangeDirection(ref deltaX, ref deltaY);
-                        }
-                    }
-
-                    rowCoordinate += deltaX;
-                    colCoordinate += deltaY;
-                    nextCellValue++;
-                }
-            }
-
-            PrintTheMatrix(theMatrix);
         }
 
         private static void PrintTheMatrix(int[,] matrix)

@@ -1,4 +1,6 @@
-﻿using MatrixPath.Logic.Cells.Abstract;
+﻿using System;
+
+using MatrixPath.Logic.Cells.Abstract;
 using MatrixPath.Logic.Cells.Contracts;
 
 namespace MatrixPath.Logic.Cells
@@ -8,6 +10,20 @@ namespace MatrixPath.Logic.Cells
         public Position(int row, int col)
             : base(row, col)
         {
+        }
+
+        public IPosition MoveInDirection(IMovementDirection direction)
+        {
+            if (direction == null)
+            {
+                throw new ArgumentNullException("direction");
+            }
+
+            var nextRow = this.Row + direction.DeltaRow;
+            var nextCol = this.Col + direction.DeltaCol;
+            var resultingPosition = new Position(nextRow, nextCol);
+
+            return resultingPosition;
         }
 
         public IPosition MoveTo(int row, int col)
@@ -20,15 +36,6 @@ namespace MatrixPath.Logic.Cells
         {
             var clonedPosition = new Position(this.Row, this.Col);
             return clonedPosition;
-        }
-
-        public IPosition MoveInDirection(IMovementDirection direction)
-        {
-            var nextRow = this.Row + direction.DeltaRow;
-            var nextCol = this.Col + direction.DeltaCol;
-            var resultingPosition = new Position(nextRow, nextCol);
-
-            return resultingPosition;
         }
     }
 }

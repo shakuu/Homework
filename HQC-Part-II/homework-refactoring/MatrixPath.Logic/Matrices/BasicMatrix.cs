@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Text;
 
 using MatrixPath.Logic.Cells.Contracts;
@@ -12,7 +11,7 @@ namespace MatrixPath.Logic.Matrices
 {
     public class BasicMatrix : IMatrix
     {
-        private IList<IList<ICell>> theMatrix;
+        private IList<IList<ICell>> matrix;
         private bool[][] visitedCellPositions;
 
         public BasicMatrix(int matrixSize, Func<int, int, int, ICell> createCell)
@@ -27,22 +26,37 @@ namespace MatrixPath.Logic.Matrices
                 throw new ArgumentNullException("createCell");
             }
 
-            this.theMatrix = this.CreateTheMatrix(matrixSize, createCell);
+            this.matrix = this.CreateTheMatrix(matrixSize, createCell);
             this.visitedCellPositions = this.InitializeVisitedFlags(matrixSize);
         }
 
         public void Populate(IPosition startPosition, IDirectionSequence directionsInstructions, ICellValueSequence valueProvider)
         {
+            if (startPosition == null)
+            {
+                throw new ArgumentNullException(nameof(startPosition));
+            }
+
+            if (directionsInstructions == null)
+            {
+                throw new ArgumentNullException(nameof(directionsInstructions));
+            }
+
+            if (valueProvider == null)
+            {
+                throw new ArgumentNullException(nameof(valueProvider));
+            }
+
             var position = startPosition.Clone();
             var direction = directionsInstructions.GetNextDirection();
             var initialDirection = direction.Clone();
 
-            var matrixSize = this.theMatrix.Count;
+            var matrixSize = this.matrix.Count;
             var matrixIsFilled = false;
             do
             {
                 var nextCellValue = valueProvider.GetNextCellValue();
-                this.theMatrix[position.Row][position.Col].Value = nextCellValue;
+                this.matrix[position.Row][position.Col].Value = nextCellValue;
                 this.visitedCellPositions[position.Row][position.Col] = true;
 
                 var nextPosition = position.Clone();
@@ -54,25 +68,27 @@ namespace MatrixPath.Logic.Matrices
                     for (int directionChangeCount = 1; directionChangeCount <= directionsInstructions.DirectionSequenceLength; directionChangeCount++)
                     {
                         var nextDirection = directionsInstructions.GetNextDirection();
-                        nextPosition = position.Clone();
-                        nextPosition = nextPosition.MoveInDirection(nextDirection);
+                        var adjustedNextPosition = position.Clone();
+                        adjustedNextPosition = adjustedNextPosition.MoveInDirection(nextDirection);
 
-                        nextPositionIsFree = this.CheckIfPositionIsValidToMove(nextPosition, matrixSize);
-                        if (nextPositionIsFree)
+                        var adjustedNextPositionIsFree = this.CheckIfPositionIsValidToMove(adjustedNextPosition, matrixSize);
+                        if (adjustedNextPositionIsFree)
                         {
+                            nextPosition = adjustedNextPosition;
                             direction = nextDirection;
                             break;
                         }
                         else if (directionChangeCount == directionsInstructions.DirectionSequenceLength)
                         {
-                            nextPosition = this.FindPositionToJumpTo(nextPosition, matrixSize);
-                            if (nextPosition == null)
+                            var positionToJumpTo = this.FindPositionToJumpTo(adjustedNextPosition, matrixSize);
+                            if (positionToJumpTo == null)
                             {
                                 matrixIsFilled = true;
                                 break;
                             }
                             else
                             {
+                                nextPosition = positionToJumpTo;
                                 direction = initialDirection.Clone();
                             }
                         }
@@ -86,18 +102,21 @@ namespace MatrixPath.Logic.Matrices
 
         public override string ToString()
         {
+            const string valueFormat = "{0,4}";
+
             var stringRepresentation = new StringBuilder();
 
-            var matrixSize = this.theMatrix.Count;
+            var matrixSize = this.matrix.Count;
             for (int row = 0; row < matrixSize; row++)
             {
                 var currentRow = new StringBuilder();
                 for (int col = 0; col < matrixSize; col++)
                 {
-                    currentRow.Append(this.theMatrix[row][col].Value + " ");
+                    var formattedValueToAppend = string.Format(valueFormat, this.matrix[row][col].Value);
+                    currentRow.Append(formattedValueToAppend);
                 }
 
-                stringRepresentation.AppendLine(currentRow.ToString().Trim());
+                stringRepresentation.AppendLine(currentRow.ToString());
             }
 
             return stringRepresentation.ToString();
@@ -119,14 +138,6 @@ namespace MatrixPath.Logic.Matrices
             }
 
             return newPosition;
-        }
-
-        private bool CheckForAvailablePositionToJump()
-        {
-            var availablePosition = this.visitedCellPositions
-                .Any(flagsArr => flagsArr.Any(flag => flag == false));
-
-            return availablePosition;
         }
 
         private bool CheckIfPositionIsValidToMove(IPosition position, int matrixSize)
