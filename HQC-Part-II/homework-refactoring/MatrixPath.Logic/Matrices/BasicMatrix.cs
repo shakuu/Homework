@@ -102,6 +102,8 @@ namespace MatrixPath.Logic.Matrices
 
         public override string ToString()
         {
+            const string valueFormat = "{0,4}";
+
             var stringRepresentation = new StringBuilder();
 
             var matrixSize = this.matrix.Count;
@@ -110,10 +112,11 @@ namespace MatrixPath.Logic.Matrices
                 var currentRow = new StringBuilder();
                 for (int col = 0; col < matrixSize; col++)
                 {
-                    currentRow.Append(this.matrix[row][col].Value + " ");
+                    var formattedValueToAppend = string.Format(valueFormat, this.matrix[row][col].Value);
+                    currentRow.Append(formattedValueToAppend);
                 }
 
-                stringRepresentation.AppendLine(currentRow.ToString().Trim());
+                stringRepresentation.AppendLine(currentRow.ToString());
             }
 
             return stringRepresentation.ToString();
