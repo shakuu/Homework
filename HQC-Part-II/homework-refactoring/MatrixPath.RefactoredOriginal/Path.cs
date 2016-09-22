@@ -97,12 +97,16 @@ namespace Task3
                     break;
                 }
 
-                if (rowCoordinate + deltaX >= matrixSize || rowCoordinate + deltaX < 0 || colCoordinate + deltaY >= matrixSize || colCoordinate + deltaY < 0 || theMatrix[rowCoordinate + deltaX, colCoordinate + deltaY] != 0)
+                var nextRowCoordinateCandidate = rowCoordinate + deltaX;
+                var nextColCoordinateCandidate = colCoordinate + deltaY;
+                var isOutOfBounds = CheckIfCoordinateCandidateIsOutOfBounds(matrixSize, nextRowCoordinateCandidate, nextColCoordinateCandidate);
+                while (isOutOfBounds || theMatrix[rowCoordinate + deltaX, colCoordinate + deltaY] != 0)
                 {
-                    while (rowCoordinate + deltaX >= matrixSize || rowCoordinate + deltaX < 0 || colCoordinate + deltaY >= matrixSize || colCoordinate + deltaY < 0 || theMatrix[rowCoordinate + deltaX, colCoordinate + deltaY] != 0)
-                    {
-                        ChangeDirection(ref deltaX, ref deltaY);
-                    }
+                    ChangeDirection(ref deltaX, ref deltaY);
+
+                    nextRowCoordinateCandidate = rowCoordinate + deltaX;
+                    nextColCoordinateCandidate = colCoordinate + deltaY;
+                    isOutOfBounds = CheckIfCoordinateCandidateIsOutOfBounds(matrixSize, nextRowCoordinateCandidate, nextColCoordinateCandidate);
                 }
 
                 rowCoordinate += deltaX;
