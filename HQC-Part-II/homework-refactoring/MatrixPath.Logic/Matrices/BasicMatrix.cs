@@ -33,6 +33,21 @@ namespace MatrixPath.Logic.Matrices
 
         public void Populate(IPosition startPosition, IDirectionSequence directionsInstructions, ICellValueSequence valueProvider)
         {
+            if (startPosition == null)
+            {
+                throw new ArgumentNullException(nameof(startPosition));
+            }
+
+            if (directionsInstructions == null)
+            {
+                throw new ArgumentNullException(nameof(directionsInstructions));
+            }
+
+            if (valueProvider == null)
+            {
+                throw new ArgumentNullException(nameof(valueProvider));
+            }
+
             var position = startPosition.Clone();
             var direction = directionsInstructions.GetNextDirection();
             var initialDirection = direction.Clone();
@@ -54,25 +69,27 @@ namespace MatrixPath.Logic.Matrices
                     for (int directionChangeCount = 1; directionChangeCount <= directionsInstructions.DirectionSequenceLength; directionChangeCount++)
                     {
                         var nextDirection = directionsInstructions.GetNextDirection();
-                        nextPosition = position.Clone();
-                        nextPosition = nextPosition.MoveInDirection(nextDirection);
+                        var adjustedNextPosition = position.Clone();
+                        adjustedNextPosition = adjustedNextPosition.MoveInDirection(nextDirection);
 
-                        nextPositionIsFree = this.CheckIfPositionIsValidToMove(nextPosition, matrixSize);
-                        if (nextPositionIsFree)
+                        var adjustedNextPositionIsFree = this.CheckIfPositionIsValidToMove(adjustedNextPosition, matrixSize);
+                        if (adjustedNextPositionIsFree)
                         {
+                            nextPosition = adjustedNextPosition;
                             direction = nextDirection;
                             break;
                         }
                         else if (directionChangeCount == directionsInstructions.DirectionSequenceLength)
                         {
-                            nextPosition = this.FindPositionToJumpTo(nextPosition, matrixSize);
-                            if (nextPosition == null)
+                            adjustedNextPosition = this.FindPositionToJumpTo(adjustedNextPosition, matrixSize);
+                            if (adjustedNextPosition == null)
                             {
                                 matrixIsFilled = true;
                                 break;
                             }
                             else
                             {
+                                nextPosition = adjustedNextPosition;
                                 direction = initialDirection.Clone();
                             }
                         }
