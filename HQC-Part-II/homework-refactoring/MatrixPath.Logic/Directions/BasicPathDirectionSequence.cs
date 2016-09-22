@@ -17,7 +17,7 @@ namespace MatrixPath.Logic.Directions
         {
             if (createDirection == null)
             {
-                throw new ArgumentNullException("directionInstantiator");
+                throw new ArgumentNullException("createDirection");
             }
 
             this.directions = this.GenerateSequence(createDirection);
@@ -46,7 +46,8 @@ namespace MatrixPath.Logic.Directions
             }
 
             var nextDirection = this.directionsEnumerator.Current;
-            return nextDirection;
+            var clonedNextDirection = nextDirection.Clone();
+            return clonedNextDirection;
         }
 
         private IEnumerable<IMovementDirection> GenerateSequence(Func<int, int, IMovementDirection> createDirection)
