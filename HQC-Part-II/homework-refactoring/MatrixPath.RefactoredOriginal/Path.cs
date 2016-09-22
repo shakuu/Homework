@@ -60,25 +60,27 @@ namespace Task3
             return false;
         }
 
-        public static void FindAnEmptyCellToJumpTo(int[,] arr, out int x, out int y)
+        public static void FindAnEmptyCellToJumpTo(int[,] theMatrix, out int positionRow, out int positionCol)
         {
-            x = 0;
-            y = 0;
-            for (int i = 0; i < arr.GetLength(0); i++)
+            positionRow = 0;
+            positionCol = 0;
+
+            var matrixSize = theMatrix.GetLength(0);
+            for (int row = 0; row < matrixSize; row++)
             {
-                for (int j = 0; j < arr.GetLength(0); j++)
+                for (int col = 0; col < matrixSize; col++)
                 {
-                    if (arr[i, j] == 0)
+                    if (theMatrix[row, col] == 0)
                     {
-                        x = i;
-                        y = j;
+                        positionRow = row;
+                        positionCol = col;
                         return;
                     }
                 }
             }
         }
 
-        public static void Main(string[] args)
+        public static void Main()
         {
             int matrixSize = 6;
             int[,] theMatrix = new int[matrixSize, matrixSize];
