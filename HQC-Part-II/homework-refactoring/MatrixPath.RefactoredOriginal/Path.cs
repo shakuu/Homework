@@ -110,8 +110,6 @@ namespace Task3
                 nextCellValue++;
             }
 
-            PrintTheMatrix(theMatrix);
-
             FindAnEmptyCellToJumpTo(theMatrix, out rowCoordinate, out colCoordinate);
 
             if (rowCoordinate != 0 && colCoordinate != 0)
@@ -130,14 +128,14 @@ namespace Task3
 
                     var nextRowCoordinateCandidate = rowCoordinate + deltaX;
                     var nextColCoordinateCandidate = colCoordinate + deltaY;
-
                     var isOutOfBounds = CheckIfCoordinateCandidateIsOutOfBounds(matrixSize, nextRowCoordinateCandidate, nextColCoordinateCandidate);
-                    if (isOutOfBounds || theMatrix[nextRowCoordinateCandidate, nextColCoordinateCandidate] != 0)
+                    while (isOutOfBounds || theMatrix[rowCoordinate + deltaX, colCoordinate + deltaY] != 0)
                     {
-                        while (rowCoordinate + deltaX >= matrixSize || rowCoordinate + deltaX < 0 || colCoordinate + deltaY >= matrixSize || colCoordinate + deltaY < 0 || theMatrix[rowCoordinate + deltaX, colCoordinate + deltaY] != 0)
-                        {
-                            ChangeDirection(ref deltaX, ref deltaY);
-                        }
+                        ChangeDirection(ref deltaX, ref deltaY);
+
+                        nextRowCoordinateCandidate = rowCoordinate + deltaX;
+                        nextColCoordinateCandidate = colCoordinate + deltaY;
+                        isOutOfBounds = CheckIfCoordinateCandidateIsOutOfBounds(matrixSize, nextRowCoordinateCandidate, nextColCoordinateCandidate);
                     }
 
                     rowCoordinate += deltaX;
