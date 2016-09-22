@@ -80,15 +80,15 @@ namespace MatrixPath.Logic.Matrices
                         }
                         else if (directionChangeCount == directionsInstructions.DirectionSequenceLength)
                         {
-                            adjustedNextPosition = this.FindPositionToJumpTo(adjustedNextPosition, matrixSize);
-                            if (adjustedNextPosition == null)
+                            var positionToJumpTo = this.FindPositionToJumpTo(adjustedNextPosition, matrixSize);
+                            if (positionToJumpTo == null)
                             {
                                 matrixIsFilled = true;
                                 break;
                             }
                             else
                             {
-                                nextPosition = adjustedNextPosition;
+                                nextPosition = positionToJumpTo;
                                 direction = initialDirection.Clone();
                             }
                         }
@@ -136,7 +136,7 @@ namespace MatrixPath.Logic.Matrices
 
             return newPosition;
         }
-        
+
         private bool CheckIfPositionIsValidToMove(IPosition position, int matrixSize)
         {
             var isValid = true;
