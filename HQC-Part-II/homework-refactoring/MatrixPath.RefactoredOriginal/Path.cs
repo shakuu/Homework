@@ -85,13 +85,28 @@ namespace Task3
             var nextCellValue = 1;
             var rowCoordinate = 0;
             var colCoordinate = 0;
+
+            FillTheMatrixUntilADeadEnd(theMatrix, ref rowCoordinate, ref colCoordinate, ref nextCellValue);
+            FindAnEmptyCellToJumpTo(theMatrix, out rowCoordinate, out colCoordinate);
+            while (rowCoordinate != 0 && colCoordinate != 0)
+            {
+                nextCellValue++;
+                FillTheMatrixUntilADeadEnd(theMatrix, ref rowCoordinate, ref colCoordinate, ref nextCellValue);
+                FindAnEmptyCellToJumpTo(theMatrix, out rowCoordinate, out colCoordinate);
+            }
+
+            PrintTheMatrix(theMatrix);
+        }
+
+        private static void FillTheMatrixUntilADeadEnd(int[,] theMatrix, ref int rowCoordinate, ref int colCoordinate, ref int nextCellValue)
+        {
             var deltaX = 1;
             var deltaY = 1;
+            var matrixSize = theMatrix.GetLength(0);
 
             while (true)
             {
                 theMatrix[rowCoordinate, colCoordinate] = nextCellValue;
-
                 if (!CheckIfNextMatrixCellIsEmpty(theMatrix, rowCoordinate, colCoordinate))
                 {
                     break;
@@ -113,42 +128,6 @@ namespace Task3
                 colCoordinate += deltaY;
                 nextCellValue++;
             }
-
-            FindAnEmptyCellToJumpTo(theMatrix, out rowCoordinate, out colCoordinate);
-
-            if (rowCoordinate != 0 && colCoordinate != 0)
-            {
-                nextCellValue++;
-                deltaX = 1;
-                deltaY = 1;
-
-                while (true)
-                {
-                    theMatrix[rowCoordinate, colCoordinate] = nextCellValue;
-                    if (!CheckIfNextMatrixCellIsEmpty(theMatrix, rowCoordinate, colCoordinate))
-                    {
-                        break;
-                    }
-
-                    var nextRowCoordinateCandidate = rowCoordinate + deltaX;
-                    var nextColCoordinateCandidate = colCoordinate + deltaY;
-                    var isOutOfBounds = CheckIfCoordinateCandidateIsOutOfBounds(matrixSize, nextRowCoordinateCandidate, nextColCoordinateCandidate);
-                    while (isOutOfBounds || theMatrix[rowCoordinate + deltaX, colCoordinate + deltaY] != 0)
-                    {
-                        ChangeDirection(ref deltaX, ref deltaY);
-
-                        nextRowCoordinateCandidate = rowCoordinate + deltaX;
-                        nextColCoordinateCandidate = colCoordinate + deltaY;
-                        isOutOfBounds = CheckIfCoordinateCandidateIsOutOfBounds(matrixSize, nextRowCoordinateCandidate, nextColCoordinateCandidate);
-                    }
-
-                    rowCoordinate += deltaX;
-                    colCoordinate += deltaY;
-                    nextCellValue++;
-                }
-            }
-
-            PrintTheMatrix(theMatrix);
         }
 
         private static void PrintTheMatrix(int[,] matrix)
