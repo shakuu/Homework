@@ -4,9 +4,6 @@ namespace MatrixPath.Logic.Cells.Abstract
 {
     public abstract class DualPlaneCoordinatesContainer : IDualPlaneCoordinatesContainer
     {
-        private int row;
-        private int col;
-
         protected DualPlaneCoordinatesContainer(int row, int col)
         {
             this.Row = row;
