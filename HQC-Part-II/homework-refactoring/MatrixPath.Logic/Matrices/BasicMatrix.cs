@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Text;
 
 using MatrixPath.Logic.Cells.Contracts;
@@ -137,15 +136,7 @@ namespace MatrixPath.Logic.Matrices
 
             return newPosition;
         }
-
-        private bool CheckForAvailablePositionToJump()
-        {
-            var availablePosition = this.visitedCellPositions
-                .Any(flagsArr => flagsArr.Any(flag => flag == false));
-
-            return availablePosition;
-        }
-
+        
         private bool CheckIfPositionIsValidToMove(IPosition position, int matrixSize)
         {
             var isValid = true;
