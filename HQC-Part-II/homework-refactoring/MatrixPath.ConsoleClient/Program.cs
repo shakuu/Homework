@@ -17,8 +17,8 @@ namespace MatrixPath.ConsoleClient
             var inputMatrixSize = ui.AskForInput("Enter matrix size: ");
 
             int parsedMatrixSize;
-            var isParsed = int.TryParse(inputMatrixSize, out parsedMatrixSize);
-            if (isParsed)
+            var isSuccessfullyParsed = int.TryParse(inputMatrixSize, out parsedMatrixSize);
+            if (isSuccessfullyParsed)
             {
                 var theMatrix = new BasicMatrix(parsedMatrixSize, InstantiatingMethods.CreateMatrixCell);
 
