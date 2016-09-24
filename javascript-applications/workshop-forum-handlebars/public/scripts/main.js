@@ -99,7 +99,7 @@
 
     setTimeout(() => {
       container.remove();
-    }, delay || 2000)
+    }, delay || 2000);
   }
 
   navbar.on('click', 'li', (ev) => {
