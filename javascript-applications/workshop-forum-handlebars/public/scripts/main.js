@@ -24,31 +24,55 @@
 
   const app = Sammy('#root #content-fluid', function () {
     this.get('/', function () {
-
+      contentContainer.html('');
     });
 
     this.get('#/', function () {
-
+      contentContainer.html('');
     });
 
     this.get('#/threads', function () {
       Promise.all([
         data.threads.get(),
         data.templates.get('thread'),
-        data.templates.get('threads-container')
+        data.templates.get('threads-container'),
+        data.templates.get('thread-new')
       ])
-        .then(([content, threads, container]) => {
+        .then(([content, threads, container, add]) => {
           const compiledThreads = threads(content.result);
-          const html = container(compiledThreads);
+          const newThread = add(null);
+          const html = container({
+            threads: compiledThreads,
+            add: newThread
+          });
           contentContainer.html(html);
         });
     });
 
+    this.get('#/threads/add', function () {
+      
+    });
+
     this.get('#/threads/:id', (route) => {
       let threadId = route.params.id;
-      data.threads.getById(threadId)
-        .then(loadMessagesContent)
-        .catch((err) => showMsg(err, 'Error', 'alert-danger'))
+      Promise.all([
+        data.threads.getById(threadId),
+        data.templates.get('message'),
+        data.templates.get('messages-container'),
+        data.templates.get('message-new')
+      ])
+        .then(([content, messages, container, add]) => {
+          const compiledMessages = messages(content.result.messages);
+          const newMessage = add(null);
+          const html = container({
+            id: content.result.id,
+            title: content.result.title,
+            messages: compiledMessages,
+            add: newMessage
+          });
+
+          contentContainer.append(html);
+        });
     });
 
     this.get('#/gallery', function () {
@@ -68,38 +92,6 @@
     setTimeout(() => {
       container.remove();
     }, delay || 2000)
-  }
-
-  // start threads
-  function loadMessagesContent(data) {
-    let container = $($('#messages-container-template').text()),
-      messagesContainer = container.find('.panel-body');
-    container.attr('data-thread-id', data.result.id);
-
-    function getMsgUI(msg, author, date) {
-      let template = $($('#messages-template').text());
-      template.find('.message-content').text(msg.content);
-      template.find('.message-creator').text(author || msg.username || 'anonymous');
-      template.find('.message-date').text(date || msg.postDate || 'unknown');
-      return template.clone(true);
-    }
-    function getAddNewMsgUI() {
-      let template = $($('#message-new-template').html());
-      return template.clone(true);
-    }
-
-    if (data.result.messages && data.result.messages.length > 0) {
-      data.result.messages.forEach((msg) => {
-        messagesContainer.append(getMsgUI(msg))
-      })
-    } else {
-      messagesContainer.append(getMsgUI('No messages!'))
-    }
-
-    messagesContainer.append(getAddNewMsgUI());
-
-    container.find('.thread-title').text(data.result.title);
-    contentContainer.append(container);
   }
 
   function loadGalleryContent(data) {
@@ -130,7 +122,7 @@
     let title = $(ev.target).parents('form').find('input#input-add-thread').val() || null;
     data.threads.add(title)
       .then((thread) => {
-        loadThreadsContent([thread]);
+        // loadThreadsContent([thread]);
       })
       .then(() => $('#btn-threads').trigger('click'))
       .then(showMsg('Successfuly added the new thread', 'Success', 'alert-success'))
@@ -145,7 +137,10 @@
 
     data.threads.addMessage(thId, msg)
       .then((message) => {
-        loadMessagesContent([message]);
+      })
+      .then(() => {
+        const btn = $('#thread-' + thId);
+        btn.trigger('click');
       })
       .then(showMsg('Successfuly added the new mssagee', 'Success', 'alert-success'))
       .catch((err) => showMsg(JSON.parse(err.responseText).err, 'Error', 'alert-danger'));
