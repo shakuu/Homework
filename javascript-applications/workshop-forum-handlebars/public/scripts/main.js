@@ -50,7 +50,7 @@
     });
 
     this.get('#/threads/add', function () {
-      
+
     });
 
     this.get('#/threads/:id', (route) => {
@@ -76,9 +76,17 @@
     });
 
     this.get('#/gallery', function () {
-      data.gallery.get()
-        .then(loadGalleryContent)
-        .catch(console.log);
+      Promise.all([
+        data.gallery.get(),
+        data.templates.get('gallery-container'),
+        data.templates.get('gallery-item')
+      ])
+        .then(([data, container, item]) => {
+          let list = data.data.children;
+          const items = item(list);
+          const html = container(items);
+          contentContainer.html(html);
+        });
     });
   });
 
@@ -92,24 +100,6 @@
     setTimeout(() => {
       container.remove();
     }, delay || 2000)
-  }
-
-  function loadGalleryContent(data) {
-    let list = data.data.children,
-      containerGallery = $($('#gallery-container-tempalte').text()),
-      containerImgs = containerGallery.find('#gallery-imgs'),
-      item = $($('#gallery-img-tempalte').text()),
-      itemImg = item.find('img.gallery-item-img'),
-      itemTitle = item.find('.gallery-item-title')
-
-    list.forEach((el) => {
-      itemTitle.text(el.data.title);
-      itemImg.attr('src', el.data.thumbnail);
-
-      containerImgs.append(item.clone(true));
-    });
-
-    contentContainer.html('').append(containerGallery);
   }
 
   navbar.on('click', 'li', (ev) => {
