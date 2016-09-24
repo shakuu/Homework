@@ -42,12 +42,13 @@
           const html = container(compiledThreads);
           contentContainer.html(html);
         });
+    });
 
-      // data.threads.get()
-      //   .then((data) => {
-      //     console.log(data);
-      //     loadThreadsContent(data.result);
-      //   });
+    this.get('#/threads/:id', (route) => {
+      let threadId = route.params.id;
+      data.threads.getById(threadId)
+        .then(loadMessagesContent)
+        .catch((err) => showMsg(err, 'Error', 'alert-danger'))
     });
 
     this.get('#/gallery', function () {
@@ -70,33 +71,6 @@
   }
 
   // start threads
-  function loadThreadsContent(threads) {
-    let container = $($('#threads-container-template').text()),
-      threadsContainer = container.find('#threads');
-
-    function getThreadUI(title, id, creator, date) {
-      let template = $($('#thread-template').text()).attr('data-id', id),
-        threadTitle = template.find('.thread-title').text(title),
-        threadCreator = template.find('.thread-creator').text(creator || 'anonymous'),
-        threadDate = template.find('.thread-date').text(date || 'unknown');
-
-      return template.clone(true);
-    }
-    function getAddNewThreadUI() {
-      let template = $($('#thread-new-template').html());
-      return template.clone(true);
-    }
-
-    threads.forEach((th) => {
-      let currentThreadUI = getThreadUI(th.title, th.id, th.username, th.date);
-      threadsContainer.append(currentThreadUI);
-    })
-    threadsContainer.append(getAddNewThreadUI());
-
-    contentContainer.find('#container-thraeds').remove();
-    contentContainer.html('').prepend(container);
-  }
-
   function loadMessagesContent(data) {
     let container = $($('#messages-container-template').text()),
       messagesContainer = container.find('.panel-body');
@@ -161,15 +135,6 @@
       .then(() => $('#btn-threads').trigger('click'))
       .then(showMsg('Successfuly added the new thread', 'Success', 'alert-success'))
       .catch((err) => showMsg(JSON.parse(err.responseText).err, 'Error', 'alert-danger'));
-  })
-
-  contentContainer.on('click', 'a.thread-title', (ev) => {
-    let $target = $(ev.target),
-      threadId = $target.parents('.thread').attr('data-id');
-
-    data.threads.getById(threadId)
-      .then(loadMessagesContent)
-      .catch((err) => showMsg(err, 'Error', 'alert-danger'))
   })
 
   contentContainer.on('click', '.btn-add-message', (ev) => {
