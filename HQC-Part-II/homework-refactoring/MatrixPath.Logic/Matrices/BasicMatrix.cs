@@ -11,19 +11,19 @@ namespace MatrixPath.Logic.Matrices
 {
     public class BasicMatrix : IMatrix
     {
-        private IList<IList<ICell>> matrix;
-        private bool[][] visitedCellPositions;
+        private readonly IList<IList<ICell>> matrix;
+        private readonly bool[][] visitedCellPositions;
 
         public BasicMatrix(int matrixSize, Func<int, int, int, ICell> createCell)
         {
             if (matrixSize <= 0)
             {
-                throw new ArgumentOutOfRangeException("Matrix size must be larger than 0");
+                throw new ArgumentOutOfRangeException(nameof(matrixSize));
             }
 
             if (createCell == null)
             {
-                throw new ArgumentNullException("createCell");
+                throw new ArgumentNullException(nameof(createCell));
             }
 
             this.matrix = this.CreateTheMatrix(matrixSize, createCell);
@@ -102,7 +102,7 @@ namespace MatrixPath.Logic.Matrices
 
         public override string ToString()
         {
-            const string valueFormat = "{0,4}";
+            const string ValueFormat = "{0,4}";
 
             var stringRepresentation = new StringBuilder();
 
@@ -112,7 +112,7 @@ namespace MatrixPath.Logic.Matrices
                 var currentRow = new StringBuilder();
                 for (int col = 0; col < matrixSize; col++)
                 {
-                    var formattedValueToAppend = string.Format(valueFormat, this.matrix[row][col].Value);
+                    var formattedValueToAppend = string.Format(ValueFormat, this.matrix[row][col].Value);
                     currentRow.Append(formattedValueToAppend);
                 }
 
@@ -129,11 +129,13 @@ namespace MatrixPath.Logic.Matrices
             {
                 for (int col = 0; col < matrixSize; col++)
                 {
-                    if (!this.visitedCellPositions[row][col])
+                    if (this.visitedCellPositions[row][col])
                     {
-                        newPosition = position.MoveTo(row, col);
-                        return newPosition;
+                        continue;
                     }
+
+                    newPosition = position.MoveTo(row, col);
+                    return newPosition;
                 }
             }
 
