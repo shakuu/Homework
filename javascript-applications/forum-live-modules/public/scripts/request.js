@@ -10,12 +10,14 @@ const request = (() => {
         });
     }
 
-    function postJSON(url, json) {
+    function postJSON(url, json, header) {
+        header = header || {};
         return new Promise((resolve, reject) => {
             $.ajax({
                 url: url,
                 method: 'POST',
                 contentType: 'application/json',
+                headers: header,
                 data: JSON.stringify(json)
             })
                 .done(resolve)

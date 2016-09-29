@@ -7,3 +7,5 @@ const app = (() => {
         start
     };
 })();
+
+app.start();

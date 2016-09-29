@@ -1,7 +1,7 @@
-const controllers = (() => {
+const userController = (() => {
     function home(contentId) {
         $(contentId).html('');
-        if (dataService.isLogged()) {
+        if (userDataService.isLogged()) {
             $(document.body).addClass('logged-in');
         } else {
             $(document.body).removeClass('logged-in');
@@ -25,17 +25,16 @@ const controllers = (() => {
                         passHash: password.val()
                     };
 
-                    dataService.userRegister(user)
+                    userDataService.userRegister(user)
                         .then((data) => {
-                            dataService.userLogin(user)
+                            userDataService.userLogin(user)
                                 .then(() => {
                                     return data;
                                 });
-                                
+
                             window.location = '#/';
                             return data;
                         })
-                        .then(console.log)
                         .catch(console.log);
                 });
 
@@ -48,7 +47,7 @@ const controllers = (() => {
                         passHash: password.val()
                     };
 
-                    dataService.userLogin(user)
+                    userDataService.userLogin(user)
                         .then((data) => {
                             window.location = '#/';
                             return data;
@@ -57,20 +56,34 @@ const controllers = (() => {
                             $(document.body).addClass('logged-in');
                             return data;
                         })
-                        .then(console.log)
                         .catch(console.log);
                 });
             });
     }
 
+    function allUsers(contentId) {
+        const container = $(contentId);
+
+        Promise.all([
+            templates.get('all-users'),
+            userDataService.allUsers()
+        ])
+            .then(([template, data]) => {
+                const html = template(data.result);
+                container.html(html);
+                return [template, data.result];
+            });
+    }
+
     function logout() {
-        dataService.userLogout();
+        userDataService.userLogout();
         window.location = '#/';
     }
 
     return {
         home,
         login,
-        logout
+        logout,
+        allUsers
     };
 })();

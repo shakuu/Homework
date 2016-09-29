@@ -1,4 +1,4 @@
-const dataService = (() => {
+const userDataService = (() => {
     const URLS = {
         REGISTER_USER: 'api/users',
         LOGIN_USER: 'api/auth'
@@ -31,10 +31,15 @@ const dataService = (() => {
         window.localStorage.removeItem('authKey');
     }
 
+    function allUsers() {
+        return request.get(URLS.REGISTER_USER);
+    }
+
     return {
         isLogged,
         userRegister,
         userLogin,
-        userLogout
+        userLogout,
+        allUsers
     };
 })();

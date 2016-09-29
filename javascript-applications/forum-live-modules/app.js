@@ -70,6 +70,7 @@ app.put('/api/auth', function(req, res) {
 });
 
 app.post('/api/threads', function(req, res) {
+  console.log(req.user);
   if (!req.user) {
     res.status(401)
       .json({

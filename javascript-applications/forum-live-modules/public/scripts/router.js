@@ -2,15 +2,27 @@ const router = ((contentId) => {
     const router = new Navigo(null, true);
 
     router.on('/logout', () => {
-        controllers.logout();
+        userController.logout();
     });
 
     router.on('/login', () => {
-        controllers.login(contentId);
+        userController.login(contentId);
+    });
+
+    router.on('/users', () => {
+        userController.allUsers(contentId);
+    });
+
+    router.on('/threads/add', () => {
+        threadsController.addThread(contentId);
+    });
+
+    router.on('/threads', () => {
+        threadsController.allThreads(contentId);
     });
 
     router.on('/', () => {
-        controllers.home(contentId);
+        userController.home(contentId);
     });
 
     return router;

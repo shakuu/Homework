@@ -1,0 +1,26 @@
+<ul class="content-container list-group">
+    <li class="list-group-item thread" data-id="{{this.id}}">
+        <div class="input-group">
+            <span class="input-group-btn">
+                <a href="#/threads/add" class="btn btn-success">Create</a>
+            </span>
+            <input id="tb-thread-title" type="text" class="form-control" placeholder="thread name">
+        </div>
+    </li>
+    {{#each this}}
+    <li class="list-group-item thread" data-id="{{this.id}}">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h1><a href="#/threads/{{this.id}}">{{this.title}}</a></h1>
+            </div>
+            <div class="panel-body">
+                <p class="author" data-user-id="{{this.user.id}}">Author: <span>{{this.user.username}}</span></p>
+                <p>Date: <span>{{this.postDate}}</span></p>
+            </div>
+            <div class="panel-footer">
+
+            </div>
+        </div>
+    </li>
+    {{/each}}
+</ul>
