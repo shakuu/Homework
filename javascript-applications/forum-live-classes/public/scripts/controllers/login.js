@@ -28,16 +28,9 @@ const LoginController = (() => {
                         that.dataService.userLogin(user)
                             .then((response) => {
                                 console.log(response);
-                                that._saveUser(response);
-                                return response;
                             });
                     });
                 });
-        }
-
-        _saveUser(user) {
-            window.sessionStorage.setItem('USER_NAME', user.username);
-            window.sessionStorage.setItem('AUTH_KEY', user.authKey);
         }
     }
 
