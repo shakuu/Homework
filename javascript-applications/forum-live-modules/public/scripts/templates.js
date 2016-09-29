@@ -1,6 +1,7 @@
 const templates = (() => {
     function get(template) {
-        return request.get('login')
+        const url = `templates/${template}.html`;
+        return request.get(url)
             .then((data) => {
                 const compiled = Handlebars.compile(data);
                 return compiled;
