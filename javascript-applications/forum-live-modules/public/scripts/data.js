@@ -4,7 +4,7 @@ const dataService = (() => {
     };
 
     function isLogged() {
-        return true;
+        return false;
     }
 
     function userLogin(user) {

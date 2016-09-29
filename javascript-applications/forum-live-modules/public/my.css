@@ -1,0 +1,17 @@
+
+        .logged-in .visible-when-logged-in {
+            display: initial;
+        }
+        
+        .hidden-when-logged-in {
+            display: initial;
+        }
+        
+        .logged-in .hidden-when-logged-in {
+            display: none; 
+        }
+
+        .visible-when-logged-in {
+            display: none !important;
+        }
+        

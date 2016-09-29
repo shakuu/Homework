@@ -6,6 +6,7 @@
     <title>Forum</title>
 
     <link rel="stylesheet" type="text/css" href="./bower_components/bootstrap/dist/css/bootstrap.css">
+    <link rel="stylesheet" type="text/css" href="./my.css">
 </head>
 
 <body>
@@ -27,8 +28,8 @@
                 <!-- Collect the nav links, forms, and other content for toggling -->
                 <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                     <ul class="nav navbar-nav">
-                        <li class="hidden-when-logged-in"><a href="#/login" class="hidden-when-logged-in">Login</a></li>
-                        <li class="visible-when-logged-in"><a href="#/logout">Logout</a></li>
+                        <li><a href="#/login" class="hidden-when-logged-in">Login</a></li>
+                        <li><a href="#/logout" class="visible-when-logged-in">Logout</a></li>
                     </ul>
                 </div>
                 <!-- /.navbar-collapse -->
@@ -52,23 +53,7 @@
     <script src="./scripts/templates.js"></script>
     <script src="./scripts/controllers.js"></script>
 
-    <style>
-        .visible-when-logged-in {
-            display: none;
-        }
-        
-        .logged-in .visible-when-logged-in {
-            display: block;
-        }
-        
-        .hidden-when-logged-in {
-            display: block;
-        }
-        
-        .logged-in .hidden-when-logged-in {
-            display: none;
-        }
-    </style>
+
 </body>
 
 </html>
