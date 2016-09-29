@@ -1,10 +1,10 @@
-const TemplateLoader = (() => {
-    class TemplateLoader {
+const TemplateLoaderService = (() => {
+    class TemplateLoaderService {
         constructor(requestsProvider) {
             this._requests = requestsProvider;
         }
 
-        load(template) {
+        get(template) {
             const url = `/templates/${template}.html`;
             return this._requests.get(url)
                 .then((data) => {
@@ -14,7 +14,7 @@ const TemplateLoader = (() => {
         }
     }
 
-    return TemplateLoader;
+    return TemplateLoaderService;
 })();
 
-module.exports = TemplateLoader;
+module.exports = TemplateLoaderService;

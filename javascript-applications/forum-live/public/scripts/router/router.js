@@ -21,7 +21,7 @@ const Router = (() => {
             });
 
             that._router.on('/login', () => {
-                that.loginController.start();
+                that.loginController.start('#content');
             });
         }
     }
