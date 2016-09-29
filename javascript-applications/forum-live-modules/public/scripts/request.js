@@ -23,8 +23,22 @@ const request = (() => {
         });
     }
 
+    function putJSON(url, json) {
+        return new Promise((resolve, reject) => {
+            $.ajax({
+                url: url,
+                method: 'PUT',
+                contentType: 'application/json',
+                data: JSON.stringify(json)
+            })
+                .done(resolve)
+                .fail(reject);
+        });
+    }
+
     return {
         get,
-        postJSON
+        postJSON,
+        putJSON
     };
 })();

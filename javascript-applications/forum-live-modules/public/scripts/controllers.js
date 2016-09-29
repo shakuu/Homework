@@ -16,6 +16,29 @@ const controllers = (() => {
                 container.html(html);
             })
             .then(() => {
+                const btnRegister = container.find('#btn-register');
+                btnRegister.on('click', (ev) => {
+                    const username = container.find('#tb-username');
+                    const password = container.find('#tb-password');
+                    const user = {
+                        username: username.val(),
+                        passHash: password.val()
+                    };
+
+                    dataService.userRegister(user)
+                        .then((data) => {
+                            dataService.userLogin(user)
+                                .then(() => {
+                                    return data;
+                                });
+                                
+                            window.location = '#/';
+                            return data;
+                        })
+                        .then(console.log)
+                        .catch(console.log);
+                });
+
                 const btnLogin = container.find('#btn-login');
                 btnLogin.on('click', (ev) => {
                     const username = container.find('#tb-username');
