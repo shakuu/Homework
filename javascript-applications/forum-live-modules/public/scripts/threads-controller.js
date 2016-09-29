@@ -9,7 +9,6 @@ const threadsController = (() => {
             .then(([template, data]) => {
                 const html = template(data.result);
                 container.html(html);
-                console.log(data);
                 return [template, data.result];
             });
     }
@@ -28,8 +27,33 @@ const threadsController = (() => {
             });
     }
 
+    function getThreadMessages(contentId, id) {
+        const container = $(contentId);
+
+        Promise.all([
+            templates.get('thread-messages'),
+            threadsDataService.getById(id)
+        ])
+            .then(([template, data]) => {
+                const html = template(data.result);
+                container.html(html);
+            });
+    }
+
+    function addMessageToThreadWith(contentId, id) {
+        const container = $(contentId);
+        const messageContent = container.find('#tb-message-content');
+        const message = {
+            test: messageContent.val()
+        };
+
+        return threadsDataService.addMessage(id, message);
+    }
+
     return {
         allThreads,
-        addThread
+        addThread,
+        getThreadMessages,
+        addMessageToThreadWith
     };
 })();

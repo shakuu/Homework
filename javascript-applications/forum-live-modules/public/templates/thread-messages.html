@@ -1,0 +1,38 @@
+<div class="container-fluid">
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            <h1><a href="#/threads/{{this.id}}">{{this.title}}</a></h1>
+            <div class="row">
+                <p class="author col-md-6" data-user-id="{{this.user.id}}">Author: <span>{{this.user.username}}</span></p>
+                <p class="col-md-6">Date: <span>{{this.postDate}}</span></p>
+            </div>
+        </div>
+        <div class="panel-body">
+            <ul class="list-group">
+                {{#each this.messages}}
+                <li class="list-group-item">
+                    <div class="panel panel-primary">
+                        <div class="panel-body">
+                            <h3>{{this.test}}</h3>
+                        </div>
+                        <div class="panel-footer">
+                            <div class="row">
+                                <p class="author col-md-6" data-user-id="{{this.user.id}}">Author: <span>{{this.user.username}}</span></p>
+                                <p class="col-md-6">Date: <span>{{this.postDate}}</span></p>
+                            </div>
+                        </div>
+                    </div>
+                </li>
+                {{/each}}
+            </ul>
+        </div>
+        <div class="panel-footer">
+            <div class="input-group">
+                <span class="input-group-btn">
+                    <a href="#/messages/{{this.id}}" class="btn btn-success">Add</a>
+                </span>
+                <input id="tb-message-content" type="text" class="form-control" placeholder="message">
+            </div>
+        </div>
+    </div>
+</div>

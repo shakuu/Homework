@@ -13,8 +13,20 @@ const router = ((contentId) => {
         userController.allUsers(contentId);
     });
 
+    router.on('/messages/:id', (params) => {
+        threadsController.addMessageToThreadWith(contentId, params.id)
+            .then(() => {
+                window.location = '#/threads/' + params.id;
+            });
+    });
+
     router.on('/threads/add', () => {
         threadsController.addThread(contentId);
+    });
+
+    router.on('/threads/:id', (params) => {
+        const currentHash = window.location.hash;
+        threadsController.getThreadMessages(contentId, params.id);
     });
 
     router.on('/threads', () => {
