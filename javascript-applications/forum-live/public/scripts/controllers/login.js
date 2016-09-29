@@ -6,6 +6,8 @@ const LoginController = (() => {
         }
 
         start(containerId) {
+            const that = this;
+
             const container = $(containerId);
             return this.templateService.get('login')
                 .then((template) => {
@@ -14,8 +16,28 @@ const LoginController = (() => {
                     return html;
                 })
                 .then((html) => {
-                    // Attach events
+                    const btnLogin = container.find('#btn-login');
+                    btnLogin.on('click', (ev) => {
+                        const username = container.find('#tb-username');
+                        const password = container.find('#tb-password');
+                        const user = {
+                            username: username.val(),
+                            passHash: password.val()
+                        };
+
+                        that.dataService.userLogin(user)
+                            .then((response) => {
+                                console.log(response);
+                                that._saveUser(response);
+                                return response;
+                            });
+                    });
                 });
+        }
+
+        _saveUser(user) {
+            window.sessionStorage.setItem('USER_NAME', user.username);
+            window.sessionStorage.setItem('AUTH_KEY', user.authKey);
         }
     }
 

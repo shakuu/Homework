@@ -12,7 +12,16 @@ const RequestProvider = (() => {
         }
 
         post(url, data) {
-
+            return new Promise((resolve, reject) => {
+                $.ajax({
+                    method: 'POST',
+                    url: url,
+                    data: JSON.stringify(data),
+                    contentType: 'application/json'
+                })
+                    .done(resolve)
+                    .fail(reject);
+            });
         }
 
         put(url, data) {

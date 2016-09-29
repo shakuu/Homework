@@ -49,19 +49,27 @@
 	const RequestProvider = __webpack_require__(5);
 	const DataServise = __webpack_require__(6);
 	const TemplateLoaderService = __webpack_require__(4);
+
+	// controllers
 	const LoginController = __webpack_require__(3);
+	const HomeController = __webpack_require__(7);
+
 	(() => {
+	    const URLS = {
+	        USERS: 'api/users'
+	    };
 
 	    const requests = new RequestProvider();
 
-	    const data = new DataServise(requests);
+	    const data = new DataServise(URLS, requests);
 	    const templates = new TemplateLoaderService(requests);
 
+	    const home = new HomeController();
 	    const login = new LoginController(templates, data);
 
-	    const my = new Router(login);
+	    const my = new Router('#content', home, login);
 	    my.start();
-	    
+
 	})();
 
 /***/ },
@@ -72,7 +80,10 @@
 
 	const Router = (() => {
 	    class Router {
-	        constructor(loginController) {
+	        constructor(contentContainerId, homeController, loginController) {
+	            this.contentId = contentContainerId;
+
+	            this.homeController = homeController;
 	            this.loginController = loginController;
 
 	            this.__initRouter__();
@@ -91,7 +102,11 @@
 	            });
 
 	            that._router.on('/login', () => {
-	                that.loginController.start('#content');
+	                that.loginController.start(that.contentId);
+	            });
+
+	            that._router.on('/', () => {
+	                that.homeController.start(that.contentId);
 	            });
 	        }
 	    }
@@ -120,6 +135,8 @@
 	        }
 
 	        start(containerId) {
+	            const that = this;
+
 	            const container = $(containerId);
 	            return this.templateService.get('login')
 	                .then((template) => {
@@ -128,8 +145,28 @@
 	                    return html;
 	                })
 	                .then((html) => {
-	                    // Attach events
+	                    const btnLogin = container.find('#btn-login');
+	                    btnLogin.on('click', (ev) => {
+	                        const username = container.find('#tb-username');
+	                        const password = container.find('#tb-password');
+	                        const user = {
+	                            username: username.val(),
+	                            passHash: password.val()
+	                        };
+
+	                        that.dataService.userLogin(user)
+	                            .then((response) => {
+	                                console.log(response);
+	                                that._saveUser(response);
+	                                return response;
+	                            });
+	                    });
 	                });
+	        }
+
+	        _saveUser(user) {
+	            window.sessionStorage.setItem('USER_NAME', user.username);
+	            window.sessionStorage.setItem('AUTH_KEY', user.authKey);
 	        }
 	    }
 
@@ -181,7 +218,16 @@
 	        }
 
 	        post(url, data) {
-
+	            return new Promise((resolve, reject) => {
+	                $.ajax({
+	                    method: 'POST',
+	                    url: url,
+	                    data: JSON.stringify(data),
+	                    contentType: 'application/json'
+	                })
+	                    .done(resolve)
+	                    .fail(reject);
+	            });
 	        }
 
 	        put(url, data) {
@@ -200,13 +246,64 @@
 
 	const DataService = (() => {
 	    class DataService {
+	        constructor(SERVER_URL, requestsProvider) {
+	            this.URLS = SERVER_URL;
 
+	            this.requests = requestsProvider;
+	        }
+
+	        isUserLoggedIn() {
+	            return window.sessionStorage.USER_NAME && window.sessionStorage.AUTH_KEY;
+	        }
+
+	        loggedInUser() {
+	            let username = 'annonymous';
+	            if (this.isUserLoggedIn) {
+	                username = window.sessionStorage.USER_NAME;
+	            }
+
+	            return username;
+	        }
+
+	        userLogin(user) {
+	            const that = this;
+	            return this.requests.post(this.URLS.USERS, user)
+	                .then((response) => {
+	                    that._saveUser(response);
+	                    return response;
+	                });
+	        }
+
+	        _saveUser(user) {
+	            window.sessionStorage.setItem('USER_NAME', user.username);
+	            window.sessionStorage.setItem('AUTH_KEY', user.authKey);
+	        }
 	    }
 
 	    return DataService;
 	})();
 
 	module.exports = DataService;
+
+/***/ },
+/* 7 */
+/***/ function(module, exports) {
+
+	const HomeController = (() => {
+	    class HomeController {
+	        constructor() {
+
+	        }
+
+	        start(containerId) {
+	            $(containerId).html('');
+	        }
+	    }
+
+	    return HomeController;
+	})();
+
+	module.exports = HomeController;
 
 /***/ }
 /******/ ]);

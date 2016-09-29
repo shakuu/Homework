@@ -2,7 +2,10 @@ const Navigo = require('../../bower_components/navigo/lib/navigo.min');
 
 const Router = (() => {
     class Router {
-        constructor(loginController) {
+        constructor(contentContainerId, homeController, loginController) {
+            this.contentId = contentContainerId;
+
+            this.homeController = homeController;
             this.loginController = loginController;
 
             this.__initRouter__();
@@ -21,7 +24,11 @@ const Router = (() => {
             });
 
             that._router.on('/login', () => {
-                that.loginController.start('#content');
+                that.loginController.start(that.contentId);
+            });
+
+            that._router.on('/', () => {
+                that.homeController.start(that.contentId);
             });
         }
     }
