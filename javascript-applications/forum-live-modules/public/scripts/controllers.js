@@ -35,7 +35,9 @@ const userController = (() => {
                             window.location = '#/';
                             return data;
                         })
-                        .catch(console.log);
+                        .catch((error) => {
+                            toastr.error(error);
+                        });
                 });
 
                 const btnLogin = container.find('#btn-login');
@@ -56,7 +58,12 @@ const userController = (() => {
                             $(document.body).addClass('logged-in');
                             return data;
                         })
-                        .catch(console.log);
+                        .then((data) => {
+                            toastr.success(`Welcome back ${data.username}`);
+                        })
+                        .catch((error) => {
+                            toastr.error('Invalid username or password');
+                        });
                 });
             });
     }
