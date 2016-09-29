@@ -40,8 +40,14 @@ const controllers = (() => {
             });
     }
 
+    function logout() {
+        dataService.userLogout();
+        window.location = '#/';
+    }
+
     return {
         home,
-        login
+        login,
+        logout
     };
 })();

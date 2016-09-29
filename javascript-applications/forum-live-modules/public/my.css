@@ -1,6 +1,6 @@
 
         .logged-in .visible-when-logged-in {
-            display: initial;
+            display: block !important;
         }
         
         .hidden-when-logged-in {

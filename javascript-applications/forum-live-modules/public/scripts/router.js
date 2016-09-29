@@ -1,6 +1,10 @@
 const router = ((contentId) => {
     const router = new Navigo(null, true);
 
+    router.on('/logout', () => {
+        controllers.logout();
+    });
+
     router.on('/login', () => {
         controllers.login(contentId);
     });
