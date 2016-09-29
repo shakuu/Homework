@@ -10,7 +10,21 @@ const request = (() => {
         });
     }
 
+    function postJSON(url, json) {
+        return new Promise((resolve, reject) => {
+            $.ajax({
+                url: url,
+                method: 'POST',
+                contentType: 'application/json',
+                data: JSON.stringify(json)
+            })
+                .done(resolve)
+                .fail(reject);
+        });
+    }
+
     return {
-        get
+        get,
+        postJSON
     };
 })();

@@ -27,8 +27,8 @@
                 <!-- Collect the nav links, forms, and other content for toggling -->
                 <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                     <ul class="nav navbar-nav">
-                        <li><a href="#/login">Login</a></li>
-                        <li><a href="#/logout">Logout</a></li>
+                        <li class="hidden-when-logged-in"><a href="#/login" class="hidden-when-logged-in">Login</a></li>
+                        <li class="visible-when-logged-in"><a href="#/logout">Logout</a></li>
                     </ul>
                 </div>
                 <!-- /.navbar-collapse -->
@@ -45,11 +45,30 @@
     <script src="./bower_components/navigo/lib/navigo.min.js"></script>
     <script src="./bower_components/handlebars/handlebars.js"></script>
 
+    <script src="./scripts/data.js"></script>
     <script src="./scripts/index.js"></script>
     <script src="./scripts/router.js"></script>
     <script src="./scripts/request.js"></script>
     <script src="./scripts/templates.js"></script>
     <script src="./scripts/controllers.js"></script>
+
+    <style>
+        .visible-when-logged-in {
+            display: none;
+        }
+        
+        .logged-in .visible-when-logged-in {
+            display: block;
+        }
+        
+        .hidden-when-logged-in {
+            display: block;
+        }
+        
+        .logged-in .hidden-when-logged-in {
+            display: none;
+        }
+    </style>
 </body>
 
 </html>
