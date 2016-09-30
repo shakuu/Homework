@@ -88,6 +88,16 @@ const usersController = (() => {
             });
     }
 
+    function like(cookie) {
+        return usersService.like(cookie)
+            .then((data) => {
+                toastr.success('oh snap!');
+            })
+            .catch((error) => {
+                toastr.error('Login first');
+            });
+    }
+
     function logout() {
         return usersService.logout();
     }
@@ -96,6 +106,7 @@ const usersController = (() => {
         load,
         logout,
         displayAll,
-        myCookie
+        myCookie,
+        like
     };
 })();

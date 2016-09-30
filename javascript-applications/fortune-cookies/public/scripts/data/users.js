@@ -2,7 +2,8 @@ const usersService = (() => {
     const URLS = {
         USERS: 'api/users',
         AUTH: 'api/auth',
-        COOKIE: 'api/my-cookie'
+        COOKIE: 'api/my-cookie',
+        LIKE: 'api/cookies/'
     };
 
     function allUsers() {
@@ -55,12 +56,29 @@ const usersService = (() => {
         return requester.get(URLS.COOKIE, headers);
     }
 
+    function like(cookie) {
+        let headers = {};
+        if (isLoggedIn()) {
+            headers = {
+                'x-auth-key': window.localStorage.authKey
+            };
+        }
+
+        const url = URLS.LIKE + cookie.id;
+        const json = {
+            type: cookie.type
+        };
+
+        return requester.putJSON(url, json, headers);
+    }
+
     return {
         allUsers,
         register,
         login,
         logout,
         isLoggedIn,
-        myCookie
+        myCookie,
+        like
     };
 })();

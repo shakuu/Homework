@@ -1,6 +1,10 @@
 const router = ((containerId) => {
     const router = new Navigo(null, true);
 
+    router.on('/share', () => {
+
+    });
+
     router.on('/my-cookie', () => {
         usersController.myCookie(containerId);
     });
@@ -20,6 +24,16 @@ const router = ((containerId) => {
 
     router.on('/categories', () => {
         categoriesController.load(containerId);
+    });
+
+    router.on('/home/:type/:id', (params) => {
+        const cookie = {
+            type: params.type,
+            id: params.id
+        };
+
+        usersController.like(cookie);
+        window.location = '#/';
     });
 
     router.on('/home', () => {
