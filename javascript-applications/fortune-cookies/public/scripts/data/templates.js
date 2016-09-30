@@ -5,6 +5,9 @@ const templatesService = (() => {
             .then((data) => {
                 const compiled = Handlebars.compile(data);
                 return compiled;
+            })
+            .catch((error) => {
+                toastr.error('Failed to load template!', 'Press F12 for more info.');
             });
     }
 

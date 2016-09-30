@@ -1,0 +1,19 @@
+<ul class="list-group">
+    {{#each this}}
+    <li class="list-group-item fortune-cookie" data-id="{{this.id}}">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <div class="row">
+                    <h1>{{this.text}}</h1>
+                </div>
+                <div class="row">
+                    
+                </div>
+            </div>
+            <div class="panel-body">
+                <img src="{{this.img}}" alt="" height="100px">
+            </div>
+        </div>
+    </li>
+    {{/each}}
+</ul>

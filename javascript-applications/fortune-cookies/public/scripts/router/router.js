@@ -2,7 +2,7 @@ const router = ((containerId) => {
     const router = new Navigo(null, true);
 
     router.on('/home', () => {
-
+        homeController.load(containerId);
     });
 
     router.on(() => {
