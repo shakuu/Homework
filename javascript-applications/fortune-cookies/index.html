@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+
+    <link rel="stylesheet" type="text/css" href="../node_modules/mocha/mocha.css">
+</head>
+
+<body>
+    <div id="mocha"></div>
+
+    <!-- My Scripts -->
+    <script src="./public/bower_components/jquery/dist/jquery.min.js"></script>
+    <script src="./public/bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+    <script src="./public/bower_components/navigo/lib/navigo.min.js"></script>
+    <script src="./public/bower_components/handlebars/handlebars.min.js"></script>
+    <script src="./public/bower_components/toastr/toastr.min.js"></script>
+
+    <script src="./public/scripts/controllers/home.js"></script>
+    <script src="./public/scripts/controllers/categories.js"></script>
+    <script src="./public/scripts/controllers/users.js"></script>
+    <script src="./public/scripts/controllers/share.js"></script>
+
+    <script src="./public/scripts/data/templates.js"></script>
+    <script src="./public/scripts/data/cookies.js"></script>
+    <script src="./public/scripts/data/categories.js"></script>
+    <script src="./public/scripts/data/users.js"></script>
+
+    <script src="./public/scripts/requests/requester.js"></script>
+    <script src="./public/scripts/router/router.js"></script>
+    <!--<script src="./public/scripts/index.js"></script>-->
+
+    <!-- Testing libs -->
+    <script src="node_modules/mocha/mocha.js"></script>
+    <script src="node_modules/chai/chai.js"></script>
+    <script src="node_modules/sinon/pkg/sinon-1.17.6.js"></script>
+    <script>mocha.setup('bdd')</script>
+    <!-- Tests  -->
+    <script src="./test/test.js"></script>
+    <script src="./test/data/users.js"></script>
+    
+    <script>
+      mocha.run();
+    </script>
+</body>
+
+</html>
