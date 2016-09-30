@@ -44,12 +44,7 @@ const homeController = (() => {
             });
     }
 
-    function sortBy(parameter) {
-
-    }
-
     return {
-        load,
-        sortBy
+        load
     };
 })();
