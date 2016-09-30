@@ -73,7 +73,7 @@ const usersController = (() => {
     }
 
     function logout() {
-
+        return usersService.logout();
     }
 
     return {

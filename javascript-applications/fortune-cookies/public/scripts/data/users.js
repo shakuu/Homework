@@ -29,7 +29,11 @@ const usersService = (() => {
     }
 
     function logout() {
-
+        return new Promise((resolve, reject) => {
+            window.localStorage.removeItem('username');
+            window.localStorage.removeItem('authKey');
+            resolve();
+        });
     }
 
     function isLoggedIn() {

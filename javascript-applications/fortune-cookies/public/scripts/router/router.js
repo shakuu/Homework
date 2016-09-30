@@ -9,6 +9,11 @@ const router = ((containerId) => {
         usersController.load(containerId);
     });
 
+    router.on('/logout', () => {
+        usersController.logout();
+        window.location = '#/';
+    });
+
     router.on('/categories', () => {
         categoriesController.load(containerId);
     });
@@ -16,7 +21,6 @@ const router = ((containerId) => {
     router.on('/home', () => {
         const hash = window.location.hash;
         const params = getQueryParams(hash);
-        console.log(params);
         homeController.load(containerId, params);
     });
 
