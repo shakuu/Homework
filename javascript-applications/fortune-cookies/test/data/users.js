@@ -1,5 +1,5 @@
-describe('usersDataService', () => {
-    describe('allUsers', (done) => {
+describe('usersService', () => {
+    describe('allUsers', () => {
         it('Should invoke requester.get method once.', () => {
             const mockRequester = sinon.mock(requester);
             mockRequester.expects('get').once();
@@ -32,5 +32,25 @@ describe('usersDataService', () => {
 
             mockRequester.verify();
         });
+    });
+
+    describe('register', () => {
+        it('Should invoke requester.postJSON method', () => {
+            const mockRequester = sinon.mock(requester);
+            mockRequester.expects('postJSON').once();
+
+            usersService.register();
+
+            mockRequester.verify();
+        });
+
+        it('Should invoke requester.postJSON method with correct url.', () => {
+            const mockRequester = sinon.mock(requester);
+            mockRequester.expects('postJSON').withArgs('api/users').once();
+
+            usersService.register();
+
+            mockRequester.verify();
+        })
     });
 });
