@@ -11,7 +11,7 @@ const shareController = (() => {
                 const btnShare = content.find('#btn-share');
                 btnShare.on('click', () => {
                     const tbText = content.find('#tb-cookie-text');
-                    const tbCategory = content.find('tb-cookie-category');
+                    const tbCategory = content.find('#tb-cookie-category');
                     const tbImage = content.find('#tb-cookie-img');
                     const cookie = {
                         text: tbText.val(),
