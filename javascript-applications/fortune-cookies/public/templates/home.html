@@ -1,17 +1,29 @@
 <ul class="list-group">
+    <div class="well text-center">
+        <span>Sort by</span>
+        <a href="#/home?sortby=likes" class="btn btn-default ">Likes</a>
+        <a href="#/home?sortby=shareDate" class="btn btn-default">Date</a>
+    </div>
     {{#each this}}
-    <li class="list-group-item fortune-cookie" data-id="{{this.id}}">
+    <li class="list-group-item fortune-cookie text-center" data-id="{{this.id}}">
         <div class="panel panel-default">
             <div class="panel-heading">
-                <div class="row">
-                    <h1>{{this.text}}</h1>
-                </div>
-                <div class="row">
-                    
+                <div class="container-fluid">
+                    <div class="row">
+                        <h1>{{this.text}}</h1>
+                    </div>
+                    <div class="row">
+                        <a href="#/home/like/{{this.id}}" class="btn btn-success col-md-2 col-md-offset-4">Like ({{this.likes}})</a>
+                        <a href="#/home/dislike/{{this.id}}" class="btn btn-danger col-md-2">Dislike ({{this.dislikes}})</a>
+                    </div>
                 </div>
             </div>
             <div class="panel-body">
                 <img src="{{this.img}}" alt="" height="100px">
+            </div>
+            <div class="panel-footer">
+                <div class="author" data-id="{{this.userId}}"></div>
+                <div data-id="{{this.shareDate}}">{{this.shareDate}}</div>
             </div>
         </div>
     </li>
