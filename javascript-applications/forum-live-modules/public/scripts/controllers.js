@@ -62,6 +62,7 @@ const userController = (() => {
                             toastr.success(`Welcome back ${data.username}`);
                         })
                         .catch((error) => {
+                            noty({text: 'test'});
                             toastr.error('Invalid username or password');
                         });
                 });
