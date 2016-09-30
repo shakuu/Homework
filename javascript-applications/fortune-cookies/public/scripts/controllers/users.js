@@ -72,6 +72,22 @@ const usersController = (() => {
             });
     }
 
+    function myCookie(containerId) {
+        const content = $(containerId);
+
+        return Promise.all([
+            templatesService.loadTemplate('my-cookie'),
+            usersService.myCookie()
+        ])
+            .then(([template, data]) => {
+                const html = template(data.result);
+                content.html(html);
+            })
+            .catch((error) => {
+                toastr.error('Login first');
+            });
+    }
+
     function logout() {
         return usersService.logout();
     }
@@ -79,6 +95,7 @@ const usersController = (() => {
     return {
         load,
         logout,
-        displayAll
+        displayAll,
+        myCookie
     };
 })();

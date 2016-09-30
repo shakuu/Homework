@@ -1,7 +1,8 @@
 const usersService = (() => {
     const URLS = {
         USERS: 'api/users',
-        AUTH: 'api/auth'
+        AUTH: 'api/auth',
+        COOKIE: 'api/my-cookie'
     };
 
     function allUsers() {
@@ -43,11 +44,23 @@ const usersService = (() => {
         return isLoggedIn;
     }
 
+    function myCookie() {
+        let headers = {};
+        if (isLoggedIn()) {
+            headers = {
+                'x-auth-key': window.localStorage.authKey
+            };
+        }
+
+        return requester.get(URLS.COOKIE, headers);
+    }
+
     return {
         allUsers,
         register,
         login,
         logout,
-        isLoggedIn
+        isLoggedIn,
+        myCookie
     };
 })();

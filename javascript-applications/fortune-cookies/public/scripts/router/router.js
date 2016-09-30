@@ -1,6 +1,10 @@
 const router = ((containerId) => {
     const router = new Navigo(null, true);
 
+    router.on('/my-cookie', () => {
+        usersController.myCookie(containerId);
+    });
+
     router.on('/users', () => {
         usersController.displayAll(containerId);
     });
