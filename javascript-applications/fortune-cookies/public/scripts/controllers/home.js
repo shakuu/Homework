@@ -35,12 +35,18 @@ const homeController = (() => {
                     });
                 }
 
+                if (params.userId) {
+                    const userId = params.userId;
+                    cookies = cookies.filter(cookie => {
+                        return cookie.userId === userId;
+                    });
+                }
+
                 return [template, cookies];
             })
             .then(([template, cookies]) => {
                 const html = template(cookies);
                 container.html(html);
-                console.log(cookies);
             });
     }
 

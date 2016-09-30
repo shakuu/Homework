@@ -13,6 +13,13 @@
       "usernameToLower": "minkov3",
       "id": "bd04b3b8-5586-47ad-bf8f-db6c531dbb73",
       "authKey": "bd04b3b8-5586-47ad-bf8f-db6c531dbb73erxSIAJyVOzIEIrpMFbanscO"
+    },
+    {
+      "username": "asd",
+      "passHash": "123",
+      "usernameToLower": "asd",
+      "id": "81cd45b0-ad0f-4a9e-a81d-b5a03fe143b8",
+      "authKey": "81cd45b0-ad0f-4a9e-a81d-b5a03fe143b8KFJlIJqKjRNYGVIpucMLoyqd"
     }
   ],
   "cookies": [

@@ -1,0 +1,10 @@
+<div class="well">
+    <h1>Click on a category to display the fortune cookies.</h1>
+</div>
+<ul class="list-group">
+    {{#each this}}
+    <li class="list-group-item">
+        <a href="#/home?category={{this}}">{{this}}</a>
+    </li>
+    {{/each}}
+</ul>

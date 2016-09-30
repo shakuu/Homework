@@ -1,0 +1,10 @@
+<div class="well">
+    <h1>Click on a user to display their cookies.</h1>
+</div>
+<ul class="list-group">
+    {{#each this}}
+    <li class="list-group-item">
+        <a href="#/home?userId={{this.id}}">{{this.username}}</a>
+    </li>
+    {{/each}}
+</ul>

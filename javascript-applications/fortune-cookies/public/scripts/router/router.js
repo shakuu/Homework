@@ -1,9 +1,22 @@
 const router = ((containerId) => {
     const router = new Navigo(null, true);
 
+    router.on('/users', () => {
+        usersController.displayAll(containerId);
+    });
+
+    router.on('/login', () => {
+        usersController.load(containerId);
+    });
+
+    router.on('/categories', () => {
+        categoriesController.load(containerId);
+    });
+
     router.on('/home', () => {
         const hash = window.location.hash;
         const params = getQueryParams(hash);
+        console.log(params);
         homeController.load(containerId, params);
     });
 
