@@ -83,6 +83,37 @@ describe('usersService', () => {
                 .then(() => {
                     mockStorage.verify();
                 })
+                .then(() => {
+                    mockStorage.restore();
+                    requesterPutJSON.restore();
+                })
+                .then(done, done);
+        });
+
+        it('Should invoke.localStorage.setItem with correct values.', (done) => {
+            const requesterPutJSON = sinon.stub(requester, 'putJSON');
+            requesterPutJSON.returns(new Promise((resolve, reject) => {
+                const fakeResponse = {};
+                fakeResponse.result = {
+                    username: 'me',
+                    authKey: 'key'
+                };
+
+                resolve(fakeResponse);
+            }));
+
+            const mockStorage = sinon.mock(window.localStorage);
+            mockStorage.expects('setItem').withArgs('username', 'me').once();
+            mockStorage.expects('setItem').withArgs('authKey', 'key').once();
+
+            usersService.login()
+                .then(() => {
+                    mockStorage.verify();
+                })
+                .then(() => {
+                    mockStorage.restore();
+                    requesterPutJSON.restore();
+                })
                 .then(done, done);
         });
     });
