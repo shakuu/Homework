@@ -12,5 +12,12 @@
     "public/bower_components",
     "test",
     "tests"
-  ]
+  ],
+  "dependencies": {
+    "bootstrap": "~3.3.5",
+    "handlebars": "~3.0.3",
+    "jquery": "~2.1.4",
+    "navigo": "^3.0.0",
+    "toastr": "^2.1.3"
+  }
 }
