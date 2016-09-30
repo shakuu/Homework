@@ -28,7 +28,15 @@ const usersController = (() => {
                         passHash: tbPassword.val()
                     };
 
-                    usersService.register(user)
+                    const usernameLength = user.username.length;
+                    if (!(6 <= usernameLength && usernameLength <= 30)) {
+                        toastr.error('Incorret username length.', 'Username should be between 6 and 30 characters long.');
+                        return new Promise((resolve, reject) => {
+                            resolve();
+                        });
+                    }
+
+                    return usersService.register(user)
                         .then(() => {
                             toastr.success('registered');
                         })

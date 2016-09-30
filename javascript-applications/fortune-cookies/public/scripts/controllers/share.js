@@ -19,7 +19,15 @@ const shareController = (() => {
                         img: tbImage.val()
                     };
 
-                    usersController.share(cookie)
+                    const isValidCookie = isValid(cookie);
+                    if (!isValidCookie) {
+                        toastr.error('Invalid lenght or characters');
+                        return new Promise((resolve, reject) => {
+                            resolve();
+                        });
+                    }
+
+                    return usersController.share(cookie)
                         .then((response) => {
                             toastr.success('good');
                         })
@@ -29,6 +37,21 @@ const shareController = (() => {
                         .catch((error) => {
                             toastr.error('Error');
                         });
+
+                    function isValid(cookie) {
+                        const hasValidText = validateString(cookie.text);
+                        const hasValidCategory = validateString(cookie.category);
+
+                        return hasValidText && hasValidCategory;
+
+                        function validateString(value) {
+                            const isString = typeof value === 'string';
+                            const isValidLength = 6 <= value.length && value.length <= 30;
+                            const containsOnlyCharacters = /^[A-Za-z]+$/.test(value);
+
+                            return isString && isValidLength && containsOnlyCharacters;
+                        }
+                    }
                 });
             });
     }
