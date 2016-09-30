@@ -28,6 +28,16 @@ const homeController = (() => {
                 return [template, cookies];
             })
             .then(([template, cookies]) => {
+                if (params.category) {
+                    const category = params.category;
+                    cookies = cookies.filter(cookie => {
+                        return cookie.category === category;
+                    });
+                }
+
+                return [template, cookies];
+            })
+            .then(([template, cookies]) => {
                 const html = template(cookies);
                 container.html(html);
                 console.log(cookies);

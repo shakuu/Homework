@@ -13,8 +13,9 @@
                         <h1>{{this.text}}</h1>
                     </div>
                     <div class="row">
-                        <a href="#/home/like/{{this.id}}" class="btn btn-success col-md-2 col-md-offset-4">Like ({{this.likes}})</a>
+                        <a href="#/home/like/{{this.id}}" class="btn btn-success col-md-2 col-md-offset-3">Like ({{this.likes}})</a>
                         <a href="#/home/dislike/{{this.id}}" class="btn btn-danger col-md-2">Dislike ({{this.dislikes}})</a>
+                        <a href="#/home?category={{this.category}}" class="btn btn-primary col-md-2">Display category: {{this.category}}</a>
                     </div>
                 </div>
             </div>
