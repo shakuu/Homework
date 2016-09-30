@@ -9,9 +9,10 @@ const usersService = (() => {
 
     function allUsers() {
         let headers = {};
-        if (isLoggedIn()) {
+
+        if (usersService.isLoggedIn()) {
             headers = {
-                'x-auth-key': window.localStorage.authKey
+                'x-auth-key': window.localStorage.getItem('authKey')
             };
         }
 
