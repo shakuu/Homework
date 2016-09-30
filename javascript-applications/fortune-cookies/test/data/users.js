@@ -34,6 +34,59 @@ describe('usersService', () => {
         });
     });
 
+    describe('login', () => {
+        it('Should invoke requester.putJSON method.', () => {
+            const mockRequester = sinon.mock(requester);
+            mockRequester.expects('putJSON').once();
+
+            try {
+                usersService.login();
+            } catch (err) {
+
+            }
+
+            mockRequester.verify();
+        });
+
+        it('Should invoke requester.putJSON method with correct url.', () => {
+            const mockRequester = sinon.mock(requester);
+            mockRequester
+                .expects('putJSON')
+                .withArgs('api/auth')
+                .once();
+
+            try {
+                usersService.login();
+            } catch (err) {
+
+            }
+
+            mockRequester.verify();
+        });
+
+        it('Should invoke window.localStorage.setItem 2 times.', (done) => {
+            const requesterPutJSON = sinon.stub(requester, 'putJSON');
+            requesterPutJSON.returns(new Promise((resolve, reject) => {
+                const fakeResponse = {};
+                fakeResponse.result = {
+                    username: 'me',
+                    authKey: 'key'
+                };
+
+                resolve(fakeResponse);
+            }));
+
+            const mockStorage = sinon.mock(window.localStorage);
+            mockStorage.expects('setItem').twice();
+
+            usersService.login()
+                .then(() => {
+                    mockStorage.verify();
+                })
+                .then(done, done);
+        });
+    });
+
     describe('register', () => {
         it('Should invoke requester.postJSON method', () => {
             const mockRequester = sinon.mock(requester);
@@ -51,6 +104,6 @@ describe('usersService', () => {
             usersService.register();
 
             mockRequester.verify();
-        })
+        });
     });
 });
