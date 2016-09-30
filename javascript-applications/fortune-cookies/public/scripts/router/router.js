@@ -2,7 +2,7 @@ const router = ((containerId) => {
     const router = new Navigo(null, true);
 
     router.on('/share', () => {
-
+        shareController.load(containerId);
     });
 
     router.on('/my-cookie', () => {

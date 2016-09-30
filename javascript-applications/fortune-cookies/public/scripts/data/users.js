@@ -3,7 +3,8 @@ const usersService = (() => {
         USERS: 'api/users',
         AUTH: 'api/auth',
         COOKIE: 'api/my-cookie',
-        LIKE: 'api/cookies/'
+        LIKE: 'api/cookies/',
+        SHARE: 'api/cookies'
     };
 
     function allUsers() {
@@ -72,6 +73,23 @@ const usersService = (() => {
         return requester.putJSON(url, json, headers);
     }
 
+    function share(cookie) {
+        let headers = {};
+        if (isLoggedIn()) {
+            headers = {
+                'x-auth-key': window.localStorage.authKey
+            };
+        }
+
+        const json = {
+            text: cookie.text || '',
+            category: cookie.category || '',
+            img: cookie.img || ''
+        };
+
+        return requester.postJSON(URLS.SHARE, json, headers);
+    }
+
     return {
         allUsers,
         register,
@@ -79,6 +97,7 @@ const usersService = (() => {
         logout,
         isLoggedIn,
         myCookie,
-        like
+        like,
+        share
     };
 })();
