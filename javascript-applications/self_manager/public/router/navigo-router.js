@@ -29,7 +29,10 @@ const appRouter = (() => {
     });
 
     router.on('/todos', () => {
-        todosController.main(containerId);
+        todosController.main(containerId)
+            .then(() => {
+                navbarController.displayControls();
+            });
     });
 
     function start(container) {
