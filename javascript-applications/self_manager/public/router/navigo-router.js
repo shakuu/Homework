@@ -7,7 +7,11 @@ const appRouter = (() => {
     });
 
     router.notFound(() => {
-        homeController.load(containerId);
+        router.navigate('/home');
+    });
+
+    router.on('/login', () => {
+        loginController.main(containerId);
     });
 
     function start(container) {

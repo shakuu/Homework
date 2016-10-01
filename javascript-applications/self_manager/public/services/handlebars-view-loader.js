@@ -1,4 +1,4 @@
-const viewLoader = (() => {
+const handlebarsViewLoader = (() => {
     function load(view) {
         const viewUrl = `views/${view}.html`;
         return ajaxRequester.get(viewUrl)
