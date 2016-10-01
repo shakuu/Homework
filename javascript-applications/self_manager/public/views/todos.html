@@ -1,10 +1,19 @@
 {{#each this}}
 <div class="panel {{#if this.state}}panel-success{{else}}panel-warning{{/if}}" data-id="{{this.id}}">
     <div class="panel-heading">
-        <h1>{{this.category}}</h1>
+         {{#if this.state}}
+         <h1>Done!</h1>
+         {{else}}
+         <h1>TODO:</h1>
+         {{/if}}
     </div>
     <div class="panel-body">
         <p>{{this.text}}</p>
+    </div>
+    <div class="panel-footer">
+        <p>
+            Category: <a href="#/todos?category={{this.category}}">{{this.category}}</a>
+        </p>
     </div>
 </div>
 {{/each}}
