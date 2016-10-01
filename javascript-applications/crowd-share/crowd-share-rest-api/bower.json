@@ -1,0 +1,29 @@
+{
+  "name": "crowd-share",
+  "description": "",
+  "main": "",
+  "authors": [
+    "shakuu <todorov.h@gmail.com>"
+  ],
+  "license": "MIT",
+  "homepage": "https://github.com/shakuu/Homework",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "public/bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "bootstrap": "^3.3.7",
+    "lodash": "^4.16.2",
+    "crypto-js": "^3.1.6",
+    "navigo": "^3.0.0",
+    "toastr": "^2.1.3",
+    "jquery": "^3.1.1"
+  },
+  "resolutions": {
+    "jquery": "^3.1.1"
+  }
+}
