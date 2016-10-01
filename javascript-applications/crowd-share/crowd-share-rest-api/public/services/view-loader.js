@@ -1,4 +1,4 @@
-const viewsLoader = (() => {
+const viewLoader = (() => {
     function load(view) {
         const viewUrl = `views/${view}.html`;
         return ajaxRequester.get(viewUrl)

@@ -3,8 +3,8 @@ const homeController = (() => {
         const content = $(containerId);
 
         return Promise.all([
-            viewsLoader.load('home'),
-            viewsLoader.load('home-item'),
+            viewLoader.load('home'),
+            viewLoader.load('home-item'),
             homeDataService.loadAllPosts()
         ])
             .then(([homeView, itemView, data]) => {

@@ -3,6 +3,33 @@ const ajaxRequester = (() => {
         return new Promise((resolve, reject) => {
             $.ajax({
                 url: url,
+                method: 'GET',
+                contentType: 'application/json',
+                headers: headers
+            })
+                .done(resolve)
+                .fail(reject);
+        });
+    }
+
+    function postJSON(url, json, headers = {}) {
+        return new Promise((resolve, reject) => {
+            $.ajax({
+                url: url,
+                method: 'POST',
+                contentType: 'application/json',
+                headers: headers
+            })
+                .done(resolve)
+                .fail(reject);
+        });
+    }
+
+    function putJSON(url, json, headers = {}) {
+        return new Promise((resolve, reject) => {
+            $.ajax({
+                url: url,
+                method: 'PUT',
                 contentType: 'application/json',
                 headers: headers
             })
@@ -12,6 +39,8 @@ const ajaxRequester = (() => {
     }
 
     return {
-        get
+        get,
+        postJSON,
+        putJSON
     };
 })();
