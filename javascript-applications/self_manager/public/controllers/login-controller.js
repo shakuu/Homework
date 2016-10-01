@@ -16,6 +16,38 @@ const loginController = (() => {
 
                 const btnLogin = loginForm.find('#btn-login');
                 btnLogin.on('click', (ev) => {
+                    const user = createUserObjectFromInput();
+                    loginService.login(user)
+                        .then((user) => {
+                            toastr.success(`${user} logged in.`);
+                        })
+                        .then(() => {
+                            window.location = '#/';
+                        })
+                        .catch((res) => {
+                            toastr.error(res.responseText);
+                        });
+                });
+
+                const btnRegister = loginForm.find('#btn-register');
+                btnRegister.on('click', (ev) => {
+                    const user = createUserObjectFromInput();
+                    loginService.register(user)
+                        .then((user) => {
+                            toastr.success(`${user} registered.`);
+                        })
+                        .then(() => {
+                            loginService.login(user);
+                        })
+                        .then(() => {
+                            window.location = '#/';
+                        })
+                        .catch((res) => {
+                            toastr.error(res.responseText);
+                        });
+                });
+
+                function createUserObjectFromInput() {
                     const inputPassword = tbPassword.val();
                     const hashedPassword = cryptoTools.encrypt(inputPassword);
                     const user = {
@@ -23,21 +55,26 @@ const loginController = (() => {
                         passHash: hashedPassword
                     };
 
-                    loginService.login(user)
-                        .then((user) => {
-                            toastr.success(`${user} logged in.`);
-                        })
-                        .catch((res) => {
-                            toastr.error(res.responseText);
-                        });
-                });
+                    return user;
+                }
             })
             .catch((error) => {
                 toastr.error(error.responseText);
             });
     }
 
+    function logout() {
+        return credentialManager.remove()
+            .then((username) => {
+                toastr.success(`${username} has logged out.`);
+            })
+            .catch((err) => {
+                toastr.error(err.message);
+            });
+    }
+
     return {
-        main
+        main,
+        logout
     };
 })();

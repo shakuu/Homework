@@ -10,8 +10,22 @@ const appRouter = (() => {
         router.navigate('/home');
     });
 
+    router.on('/home', () => {
+        navbarController.displayControls();
+    });
+
     router.on('/login', () => {
-        loginController.main(containerId);
+        loginController.main(containerId)
+            .then(() => {
+                navbarController.displayControls();
+            });
+    });
+
+    router.on('/logout', () => {
+        loginController.logout()
+            .then(() => {
+                navbarController.displayControls();
+            });
     });
 
     function start(container) {
