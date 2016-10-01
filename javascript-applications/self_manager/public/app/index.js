@@ -1,3 +1,3 @@
 $(() => {
-    appRouter.resolve();
+    appRouter.start('#content');
 });

@@ -1,4 +1,5 @@
-const appRouter = ((containerId) => {
+const appRouter = (() => {
+    let containerId = '#content';
     const router = new Navigo(null, true);
 
     router.on(() => {
@@ -9,5 +10,12 @@ const appRouter = ((containerId) => {
         homeController.load(containerId);
     });
 
-    return router;
+    function start(container) {
+        containerId = container;
+        router.resolve();
+    }
+
+    return {
+        start
+    };
 })();
