@@ -39,6 +39,13 @@ const appRouter = (() => {
             });
     });
 
+    router.on('/events', () => {
+        eventsController.main(containerId)
+            .then(() => {
+                navbarController.displayControls();
+            });
+    });
+
     function start(container) {
         containerId = container;
         router.resolve();

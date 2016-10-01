@@ -1,0 +1,25 @@
+{{#each this}}
+<div class="panel {{#if this.state}}panel-success{{else}}panel-warning{{/if}}" data-id="{{this.id}}" data-author-id="{{this.creatorId}}">
+    <div class="panel-heading">
+        <div class="row">
+            <h1 class="col-xs-6">{{this.title}}</h1>
+            <h2 class="col-xs-6">{{this.description}}</h2>
+        </div>
+        <strong>{{this.date}}</strong>
+    </div>
+    <div class="panel-body">
+        <ul class="list-group">
+            {{#each this.users}}
+            <li class="list-group-item">
+                {{this}}
+            </li>
+            {{/each}}
+        </ul>
+    </div>
+    <div class="panel-footer">
+        <p>
+            Category: <a href="#/todos?category={{this.category}}">{{this.category}}</a>
+        </p>
+    </div>
+</div>
+{{/each}}
