@@ -1,14 +1,16 @@
 const homeController = (() => {
-    function load(containerId) {
+    function main(containerId) {
         const content = $(containerId);
 
         return Promise.all([
             viewsLoader.load('home'),
+            viewsLoader.load('home-item'),
             homeDataService.loadAllPosts()
         ])
-            .then(([view, data]) => {
-                const html = view();
-                content.html(html);
+            .then(([homeView, itemView, data]) => {
+                const compiledData = itemView(data);
+                const generatedHtml = homeView(compiledData);
+                content.html(generatedHtml);
             })
             .then(() => {
                 toastr.success('yay!');
@@ -20,6 +22,6 @@ const homeController = (() => {
     }
 
     return {
-        load
+        main
     };
 })();

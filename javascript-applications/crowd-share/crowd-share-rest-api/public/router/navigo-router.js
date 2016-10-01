@@ -5,8 +5,16 @@ const appRouter = ((containerId) => {
         router.navigate('/home');
     });
 
+    router.notFound(()=>{
+        router.navigate('/home');
+    });
+
     router.on('/home', () => {
-        homeController.load(containerId);
+        homeController.main(containerId);
+    });
+
+    router.on('/login', () => {
+        usersController.login(containerId)
     });
 
     return router;
