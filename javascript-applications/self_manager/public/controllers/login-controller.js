@@ -16,11 +16,20 @@ const loginController = (() => {
 
                 const btnLogin = loginForm.find('#btn-login');
                 btnLogin.on('click', (ev) => {
-                
+                    const inputPassword = tbPassword.val();
+                    const hashedPassword = cryptoTools.encrypt(inputPassword);
                     const user = {
                         username: tbUsername.val(),
-                        passHash: tbPassword.val()
+                        passHash: hashedPassword
                     };
+
+                    loginService.login(user)
+                        .then((user) => {
+                            toastr.success(`${user} logged in.`);
+                        })
+                        .catch((res) => {
+                            toastr.error(res.responseText);
+                        });
                 });
             })
             .catch((error) => {
