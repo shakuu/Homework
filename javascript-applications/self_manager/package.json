@@ -5,6 +5,7 @@
   "main": "index.js",
   "scripts": {
     "start": "node app.js",
+    "test": "live-server",
     "postinstall": "bower install"
   },
   "author": "Doncho Minkov (DonchoMinkov@gmail.com)",
@@ -12,9 +13,13 @@
   "dependencies": {
     "body-parser": "^1.13.3",
     "bower": "^1.7.9",
+    "chai": "^3.5.0",
     "express": "^4.13.3",
+    "live-server": "^1.1.0",
     "lodash": "^3.10.1",
     "lowdb": "^0.10.2",
+    "mocha": "^3.1.0",
+    "sinon": "^1.17.6",
     "underscore-db": "^0.9.0"
   }
 }
