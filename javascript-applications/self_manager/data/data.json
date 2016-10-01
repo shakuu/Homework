@@ -91,7 +91,58 @@
       "passHash": "cRDtpNCeBiql5KOQsKVyrA0sAiA=",
       "usernameLower": "asdf",
       "authKey": "undefinedbgMbPlccGVMlAP+t$bI%zcG!kGiowwaazjY@X_CPnt&eR^M$k-C",
-      "id": "3f210d2d-bf00-455a-81dd-0b4b388d1a50"
+      "id": "3f210d2d-bf00-455a-81dd-0b4b388d1a50",
+      "events": [
+        {
+          "id": 449037,
+          "title": "Test",
+          "category": "Work",
+          "description": "",
+          "date": "2015-09-08T23:00:00.000Z",
+          "creatorId": "d69707b4-d06d-42ac-bc10-1dde5aaafcf7",
+          "users": [
+            "d69707b4-d06d-42ac-bc10-1dde5aaafcf7",
+            "d69707b4-d06d-42ac-bc10-1dde5aaafcf7"
+          ]
+        },
+        {
+          "id": 449037,
+          "title": "Test",
+          "category": "Work",
+          "description": "",
+          "date": "2015-09-08T23:00:00.000Z",
+          "creatorId": "d69707b4-d06d-42ac-bc10-1dde5aaafcf7",
+          "users": [
+            "d69707b4-d06d-42ac-bc10-1dde5aaafcf7",
+            "d69707b4-d06d-42ac-bc10-1dde5aaafcf7"
+          ]
+        },
+        {
+          "id": 792579,
+          "title": "Test",
+          "category": "Free time",
+          "description": "",
+          "date": "2015-09-17T23:00:00.000Z",
+          "creatorId": "d69707b4-d06d-42ac-bc10-1dde5aaafcf7",
+          "users": [
+            "d69707b4-d06d-42ac-bc10-1dde5aaafcf7"
+          ]
+        }
+      ],
+      "todos": [
+        {
+          "id": 27882,
+          "text": "qwe",
+          "state": true,
+          "category": "Home"
+        },
+        {
+          "id": 365117,
+          "text": "NEW TODO",
+          "state": false,
+          "category": "Home"
+        }
+      ]
     },
     {
       "username": "qwer",
@@ -225,6 +276,13 @@
       "usernameLower": "asdfghjjjjj",
       "authKey": "undefinedSYWV#Jjfik+NX-g!NDLETDbvW!g(&NRaFAtngqWjOZPP+sISr)D",
       "id": "e4d9b6fb-3dfa-4aec-9864-ea3dc7ad6aae"
+    },
+    {
+      "username": "asdfgh",
+      "passHash": "cRDtpNCeBiql5KOQsKVyrA0sAiA=",
+      "usernameLower": "asdfgh",
+      "authKey": "undefinedFKhRZgM=eY-y+sW)P=r^sd&MXOt=C&klcE)gL)iuRX&*kpFaB(Y",
+      "id": "8f7e0ae7-8a9a-4522-b115-0862c8ffed95"
     }
   ]
 }

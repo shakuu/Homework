@@ -28,6 +28,10 @@ const appRouter = (() => {
             });
     });
 
+    router.on('/todos', () => {
+        todosController.main(containerId);
+    });
+
     function start(container) {
         containerId = container;
         router.resolve();

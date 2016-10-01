@@ -2,11 +2,11 @@ const requester = (() => {
     function get(url, headers = {}) {
         return new Promise((resolve, reject) => {
             $.ajax({
-                url: url,
-                method: 'GET',
-                headers: headers,
-                contentType: 'application/json'
-            })
+                    url: url,
+                    method: 'GET',
+                    headers: headers,
+                    contentType: 'application/json'
+                })
                 .done(resolve)
                 .fail(reject);
         });
@@ -15,12 +15,12 @@ const requester = (() => {
     function postJSON(url, json, headers = {}) {
         return new Promise((resolve, reject) => {
             $.ajax({
-                url: url,
-                method: 'POST',
-                headers: headers,
-                contentType: 'application/json',
-                data: JSON.stringify(json)
-            })
+                    url: url,
+                    method: 'POST',
+                    headers: headers,
+                    contentType: 'application/json',
+                    data: JSON.stringify(json)
+                })
                 .done(resolve)
                 .fail(reject);
         });
@@ -29,12 +29,12 @@ const requester = (() => {
     function putJSON(url, json, headers = {}) {
         return new Promise((resolve, reject) => {
             $.ajax({
-                url: url,
-                method: 'PUT',
-                headers: headers,
-                contentType: 'application/json',
-                data: JSON.stringify(json)
-            })
+                    url: url,
+                    method: 'PUT',
+                    headers: headers,
+                    contentType: 'application/json',
+                    data: JSON.stringify(json)
+                })
                 .done(resolve)
                 .fail(reject);
         });

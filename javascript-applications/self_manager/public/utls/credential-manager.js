@@ -1,24 +1,19 @@
 const credentialManager = (() => {
     function save(user) {
-        return new Promise((resolve, reject) => {
-            const stringifiedUser = JSON.stringify(user);
-            window.localStorage.setItem('loggedUser', stringifiedUser);
-            window.localStorage.setItem('isLogged', 'loggedUser');
-            resolve(user);
-        });
+        const stringifiedUser = JSON.stringify(user);
+        window.localStorage.setItem('loggedUser', stringifiedUser);
+        window.localStorage.setItem('isLogged', 'loggedUser');
+        return user;
     }
 
     function load() {
-        return new Promise((resolve, reject) => {
-            if (!isLogged) {
-                reject(new Error('No logged user.'));
-                return;
-            }
+        if (!isLogged) {
+            return;
+        }
 
-            const stringifiedUser = window.localStorage.getItem('loggedUser');
-            const user = JSON.parse(stringifiedUser);
-            resolve(user);
-        });
+        const stringifiedUser = window.localStorage.getItem('loggedUser');
+        const user = JSON.parse(stringifiedUser);
+        return user;
     }
 
     function remove() {

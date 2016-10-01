@@ -3,10 +3,10 @@ var express = require('express'),
 
 require('../polyfills/array');
 
-module.exports = function(db) {
+module.exports = function (db) {
   var router = express.Router();
 
-  router.get('/', function(req, res) {
+  router.get('/', function (req, res) {
       var user = req.user;
       if (!user) {
         res.status(401)
@@ -14,11 +14,12 @@ module.exports = function(db) {
         return;
       }
       var todos = user.todos;
-      res.json({
-        result: todos
-      });
+      res.status(200)
+        .json({
+          result: todos
+        });
     })
-    .post('/', function(req, res) {
+    .post('/', function (req, res) {
       var user = req.user;
       if (!user) {
         res.status(401)
@@ -40,7 +41,7 @@ module.exports = function(db) {
           result: todo
         });
     })
-    .put('/:id', function(req, res) {
+    .put('/:id', function (req, res) {
       var user = req.user;
       if (!user) {
         res.status(401)
@@ -48,7 +49,7 @@ module.exports = function(db) {
         return;
       }
       var id = +req.params.id;
-      var todo = user.todos.find(function(dbTodo) {
+      var todo = user.todos.find(function (dbTodo) {
         return dbTodo.id === id;
       });
       if (!todo) {
