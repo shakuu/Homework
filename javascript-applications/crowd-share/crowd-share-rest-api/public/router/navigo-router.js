@@ -10,4 +10,4 @@ const appRouter = ((containerId) => {
     });
 
     return router;
-})();
+})('#content');

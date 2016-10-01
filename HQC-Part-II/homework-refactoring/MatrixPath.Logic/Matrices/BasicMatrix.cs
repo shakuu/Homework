@@ -9,6 +9,8 @@ using MatrixPath.Logic.Values.Contracts;
 
 namespace MatrixPath.Logic.Matrices
 {
+    using System.Diagnostics.CodeAnalysis;
+
     public class BasicMatrix : IMatrix
     {
         private readonly IList<IList<ICell>> matrix;
@@ -122,6 +124,7 @@ namespace MatrixPath.Logic.Matrices
             return stringRepresentation.ToString();
         }
 
+        [SuppressMessage("ReSharper", "ExpressionIsAlwaysNull")]
         private IPosition FindPositionToJumpTo(IPosition position, int matrixSize)
         {
             IPosition newPosition = null;
@@ -144,6 +147,11 @@ namespace MatrixPath.Logic.Matrices
 
         private bool CheckIfPositionIsValidToMove(IPosition position, int matrixSize)
         {
+            if (position == null)
+            {
+                throw new ArgumentNullException(nameof(position));
+            }
+
             var isValid = true;
 
             var rowOutOfBounds = position.Row < 0 || matrixSize <= position.Row;

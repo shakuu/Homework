@@ -1,11 +1,14 @@
 const homeController = (() => {
     function load(containerId) {
+        const content = $(containerId);
+
         return Promise.all([
             viewsLoader.load('home'),
             homeDataService.loadAllPosts()
         ])
             .then(([view, data]) => {
-                console.log(data);
+                const html = view();
+                content.html(html);
             })
             .then(() => {
                 toastr.success('yay!');
