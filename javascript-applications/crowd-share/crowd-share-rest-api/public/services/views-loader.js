@@ -1,7 +1,7 @@
 const viewsLoader = (() => {
     function load(view) {
         const viewUrl = `views/${view}.html`;
-        return ajaxRequester.get(url)
+        return ajaxRequester.get(viewUrl)
             .then((view) => {
                 const compiled = Handlebars.compile(view);
                 return compiled;

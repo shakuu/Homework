@@ -5,5 +5,9 @@ const appRouter = ((containerId) => {
         router.navigate('/home');
     });
 
+    router.on('/home', () => {
+        homeController.load(containerId);
+    });
+
     return router;
 })();
