@@ -18,7 +18,7 @@ const ajaxRequester = (() => {
                 url: url,
                 method: 'POST',
                 contentType: 'application/json',
-                data: JSON.stringify(json),
+                data: JSON.stringify(json),                
                 headers: headers
             })
                 .done(resolve)
