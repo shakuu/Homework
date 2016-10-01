@@ -11,6 +11,7 @@ const appRouter = (() => {
     });
 
     router.on('/home', () => {
+        homeController.main(containerId);
         navbarController.displayControls();
     });
 
@@ -25,6 +26,9 @@ const appRouter = (() => {
         loginController.logout()
             .then(() => {
                 navbarController.displayControls();
+            })
+            .then(() => {
+                router.navigate('/home');
             });
     });
 
