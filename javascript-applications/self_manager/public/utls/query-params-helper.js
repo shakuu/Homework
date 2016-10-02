@@ -1,3 +1,5 @@
+// const hash = window.location.hash;
+
 const queryParamsHelper = (() => {
     function getQueryParamsFromHash(hash) {
         hash = String(hash);

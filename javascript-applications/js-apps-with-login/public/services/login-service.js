@@ -1,3 +1,7 @@
+// TODO:
+// Check URLS.
+// Check response format.
+
 const loginService = (() => {
     URLS = {
         LOGIN: 'api/users/auth',
