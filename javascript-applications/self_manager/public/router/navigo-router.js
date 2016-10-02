@@ -2,14 +2,6 @@ const appRouter = (() => {
     let containerId = '#content';
     const router = new Navigo(null, true);
 
-    router.on(() => {
-        router.navigate('/home');
-    });
-
-    router.notFound(() => {
-        router.navigate('/home');
-    });
-
     router.on('/home', () => {
         homeController.main(containerId);
         navbarController.displayControls();
@@ -39,6 +31,30 @@ const appRouter = (() => {
             });
     });
 
+    router.on('/todos/filter', () => {
+        const hash = window.location.hash;
+        const queryParams = queryParamsHelper.getQueryParamsFromHash(hash);
+
+        todosController.main(containerId)
+            .then(() => {
+                const queryParamsKeys = Object.keys(queryParams);
+                if (queryParamsKeys.length === 0) {
+                    return;
+                }
+
+                const predicate = (element) => {
+                    const field = $(element).find(`.${queryParamsKeys[0]}`);
+                    const isMatch = field.html() === queryParams[queryParamsKeys[0]];
+                    return isMatch;
+                };
+
+                domTreeHelpers.showElementsWith('#content', '.todo', predicate);
+            })
+            .then(() => {
+                navbarController.displayControls();
+            });
+    });
+
     router.on('/todos/:todoId/:state', (params) => {
         const id = params.todoId;
         const update = {
@@ -56,6 +72,14 @@ const appRouter = (() => {
             .then(() => {
                 navbarController.displayControls();
             });
+    });
+
+    router.on(() => {
+        router.navigate('/home');
+    });
+
+    router.notFound(() => {
+        router.navigate('/home');
     });
 
     function start(container) {
