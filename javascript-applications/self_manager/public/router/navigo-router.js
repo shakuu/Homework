@@ -24,13 +24,6 @@ const appRouter = (() => {
             });
     });
 
-    router.on('/todos', () => {
-        todosController.main(containerId)
-            .then(() => {
-                navbarController.displayControls();
-            });
-    });
-
     router.on('/todos/filter', () => {
         const hash = window.location.hash;
         const queryParams = queryParamsHelper.getQueryParamsFromHash(hash);
@@ -55,6 +48,7 @@ const appRouter = (() => {
             });
     });
 
+
     router.on('/todos/:todoId/:state', (params) => {
         const id = params.todoId;
         const update = {
@@ -62,6 +56,13 @@ const appRouter = (() => {
         };
 
         todosController.updateTodo(id, update)
+            .then(() => {
+                navbarController.displayControls();
+            });
+    });
+    
+    router.on('/todos', () => {
+        todosController.main(containerId)
             .then(() => {
                 navbarController.displayControls();
             });
