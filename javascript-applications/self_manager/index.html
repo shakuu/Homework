@@ -12,8 +12,41 @@
     <div id="mocha"></div>
 
     <!-- My Scripts -->
+    <!-- bower dependencies -->
+    <script src="public/bower_components/jquery/dist/jquery.min.js"></script>
+    <script src="public/bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+    <script src="public/bower_components/handlebars/handlebars.min.js"></script>
+    <script src="public/bower_components/lodash/dist/lodash.min.js"></script>
+    <script src="public/bower_components/navigo/lib/navigo.min.js"></script>
+    <script src="public/bower_components/crypto-js/crypto-js.js"></script>
+    <script src="public/bower_components/toastr/toastr.min.js"></script>
 
+    <script src="public/bower_components/crypto-js/enc-base64.js"></script>
+    <script src="public/bower_components/crypto-js/enc-utf16.js"></script>
     <!--<script src="./public/scripts/index.js"></script>-->
+    <!-- scritps -->
+    <script src="public/controllers/login-controller.js"></script>
+    <script src="public/controllers/navbar-controller.js"></script>
+    <script src="public/controllers/todos-controller.js"></script>
+    <script src="public/controllers/events-controller.js"></script>
+    <script src="public/controllers/home-controller.js"></script>
+
+    <script src="public/requester/jquery-ajax-requester.js"></script>
+
+    <script src="public/router/navigo-router.js"></script>
+
+    <script src="public/services/handlebars-view-loader.js"></script>
+    <script src="public/services/todos-service.js"></script>
+    <script src="public/services/events-service.js"></script>
+    <script src="public/services/login-service.js"></script>
+
+    <script src="public/utls/headers-helper.js"></script>
+    <script src="public/utls/query-params-helper.js"></script>
+    <script src="public/utls/credential-manager.js"></script>
+    <script src="public/utls/crypto-tools.js"></script>
+    <script src="public/utls/dom-tree-helpers.js"></script>
+
+    <!--<script src="./app/index.js"></script>-->
 
     <!-- Testing libs -->
     <script src="node_modules/mocha/mocha.js"></script>
@@ -21,7 +54,8 @@
     <script src="node_modules/sinon/pkg/sinon-1.17.6.js"></script>
     <script>mocha.setup('bdd')</script>
     <!-- Tests  -->
-    
+    <script src="unit-tests/services/login-service-tests.js"></script>
+
     <script>
       mocha.run();
     </script>
