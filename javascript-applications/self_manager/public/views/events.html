@@ -1,3 +1,17 @@
+<div class="panel panel-primary">
+    <div class="panel-heading">
+        <h1>Create</h1>
+    </div>
+    <div class="panel-body">
+        <input id="tb-todo-text" class="form-control" type="text" name="" value="" placeholder="Text">
+        <input id="tb-todo-description" class="form-control" type="text" name="" value="" placeholder="Description">
+        <input id="tb-todo-date" class="form-control" type="date" name="" value="" placeholder="Date">
+        <input id="tb-todo-category" class="form-control" type="text" name="" value="" placeholder="Category">
+    </div>
+    <div class="panel-footer">
+        <button id="btn-todo-create" class="btn btn-success" type="button">Create</button>
+    </div>
+</div>
 {{#each this}}
 <div class="panel {{#if this.state}}panel-success{{else}}panel-warning{{/if}}" data-id="{{this.id}}" data-author-id="{{this.creatorId}}">
     <div class="panel-heading">

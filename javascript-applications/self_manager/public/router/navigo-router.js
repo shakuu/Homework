@@ -39,6 +39,18 @@ const appRouter = (() => {
             });
     });
 
+    router.on('/todos/:todoId/:state', (params) => {
+        const id = params.todoId;
+        const update = {
+            state: params.state
+        };
+
+        todosController.updateTodo(id, update)
+            .then(() => {
+                navbarController.displayControls();
+            });
+    });
+
     router.on('/events', () => {
         eventsController.main(containerId)
             .then(() => {

@@ -1,24 +1,28 @@
 const todosService = (() => {
     const URLS = {
-        GET: 'api/todos'
+        GET: 'api/todos',
+        POST: 'api/todos'
     };
 
     function getAllTodos() {
-        let headers = {};
-        const loggedUser = credentialManager.isLogged();
-        if (loggedUser) {
-            const user = credentialManager.load();
-            headers = {
-                'x-auth-key': user.authKey
-            };
-        } else {
-            throw new Error('Not logged in');
-        }
-
+        const headers = headersHelper.addXAuthKeyHeader();        
         return ajaxRequester.get(URLS.GET, headers);
     }
 
+    function createTodo(todo) {
+        const headers = headersHelper.addXAuthKeyHeader();             
+        return ajaxRequester.postJSON(URLS.POST, todo, headers);
+    }
+
+    function updateTodo(id, update) {
+        const url = `${URLS.POST}/${id}`;
+        const headers = headersHelper.addXAuthKeyHeader();        
+        return ajaxRequester.putJSON(url, update, headers);
+    }
+
     return {
-        getAllTodos
+        getAllTodos,
+        createTodo,
+        updateTodo
     };
 })();

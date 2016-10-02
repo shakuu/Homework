@@ -92,55 +92,121 @@
       "usernameLower": "asdf",
       "authKey": "undefinedbgMbPlccGVMlAP+t$bI%zcG!kGiowwaazjY@X_CPnt&eR^M$k-C",
       "id": "3f210d2d-bf00-455a-81dd-0b4b388d1a50",
-      "events": [
-        {
-          "id": 449037,
-          "title": "Test",
-          "category": "Work",
-          "description": "",
-          "date": "2015-09-08T23:00:00.000Z",
-          "creatorId": "d69707b4-d06d-42ac-bc10-1dde5aaafcf7",
-          "users": [
-            "d69707b4-d06d-42ac-bc10-1dde5aaafcf7",
-            "d69707b4-d06d-42ac-bc10-1dde5aaafcf7"
-          ]
-        },
-        {
-          "id": 449037,
-          "title": "Test",
-          "category": "Work",
-          "description": "",
-          "date": "2015-09-08T23:00:00.000Z",
-          "creatorId": "d69707b4-d06d-42ac-bc10-1dde5aaafcf7",
-          "users": [
-            "d69707b4-d06d-42ac-bc10-1dde5aaafcf7",
-            "d69707b4-d06d-42ac-bc10-1dde5aaafcf7"
-          ]
-        },
-        {
-          "id": 792579,
-          "title": "Test",
-          "category": "Free time",
-          "description": "",
-          "date": "2015-09-17T23:00:00.000Z",
-          "creatorId": "d69707b4-d06d-42ac-bc10-1dde5aaafcf7",
-          "users": [
-            "d69707b4-d06d-42ac-bc10-1dde5aaafcf7"
-          ]
-        }
-      ],
+      "events": [],
       "todos": [
         {
           "id": 27882,
           "text": "qwe",
-          "state": true,
+          "state": "false",
           "category": "Home"
         },
         {
           "id": 365117,
           "text": "NEW TODO",
-          "state": false,
+          "state": "true",
           "category": "Home"
+        },
+        {
+          "id": 107473,
+          "text": "take the exam ",
+          "state": "true",
+          "category": "uncategorized"
+        },
+        {
+          "id": 175148,
+          "text": "another exam",
+          "state": "false",
+          "category": "uncategorized"
+        },
+        {
+          "id": 200529,
+          "text": "asdafafs",
+          "state": "true",
+          "category": "uncategorized"
+        },
+        {
+          "id": 210429,
+          "text": "asdafafs",
+          "state": "true",
+          "category": "uncategorized"
+        },
+        {
+          "id": 258638,
+          "text": "nwnw",
+          "state": "true",
+          "category": "uncategorized"
+        },
+        {
+          "id": 356046,
+          "text": "asdf",
+          "state": "true",
+          "category": "ghj"
+        },
+        {
+          "id": 364792,
+          "text": "asdf",
+          "state": "true",
+          "category": "ghj"
+        },
+        {
+          "id": 386850,
+          "text": "",
+          "state": "true",
+          "category": "uncategorized"
+        },
+        {
+          "id": 390123,
+          "text": "asdfff",
+          "state": "true",
+          "category": "asdasd"
+        },
+        {
+          "id": 485645,
+          "text": "asdf",
+          "state": "true",
+          "category": "1234"
+        },
+        {
+          "id": 598659,
+          "text": "new todo again",
+          "state": "true",
+          "category": "asdasd"
+        },
+        {
+          "id": 829179,
+          "text": "asdf",
+          "state": "true",
+          "category": "1234"
+        },
+        {
+          "id": 838732,
+          "text": "asdf",
+          "state": false,
+          "category": "1234"
+        },
+        {
+          "id": 870414,
+          "text": "asdf",
+          "state": "true",
+          "category": "asdfg"
+        },
+        {
+          "id": 914766,
+          "text": "asdf",
+          "state": "true",
+          "category": "1234"
+        },
+        {
+          "id": 925699,
+          "text": "new new new ",
+          "state": "true",
+          "category": "new new new"
+        },
+        {
+          "id": 407152,
+          "text": "take exam 1!!!!!",
+          "state": false,
+          "category": "alalala"
         }
       ]
     }
