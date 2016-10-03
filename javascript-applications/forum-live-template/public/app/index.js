@@ -1,0 +1,3 @@
+$(() => {
+    appRouter.start('#content');
+});
