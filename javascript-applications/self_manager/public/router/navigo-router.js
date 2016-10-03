@@ -60,9 +60,12 @@ const appRouter = (() => {
                 navbarController.displayControls();
             });
     });
-    
+
     router.on('/todos', () => {
         todosController.main(containerId)
+            .then(() => {
+                pagination.paginate(containerId, '.todo', 5);
+            })
             .then(() => {
                 navbarController.displayControls();
             });
