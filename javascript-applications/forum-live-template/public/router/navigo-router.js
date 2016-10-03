@@ -30,6 +30,8 @@ const appRouter = (() => {
                 };
 
                 domTreeHelpers.orderElementsBy(containerId, '.user', predicate);
+            })
+            .then(() => {
                 pagination.paginate(containerId, '.user', 5);
             })
             .then(() => {
