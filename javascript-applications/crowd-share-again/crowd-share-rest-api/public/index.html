@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>TASK NAME HERE</title>
+
+    <link rel="stylesheet" type="text/css" href="./bower_components/bootstrap/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="./bower_components/toastr/toastr.min.css">
+
+    <style>
+        body {
+            background-color: #74AFAD;
+        }
+
+        .debug .visible-when-debugging{
+            display: block !important;
+        }
+    </style>
+</head>
+
+<body class="debug">
+    <button type="button" class="visible-when-debugging" style="display:none;">Show Error Log</button>
+    <div id="root" class="container">
+        <header>
+            <div class="page-header">
+                <h1>TASK NAME<small>JS Apps exam</small></h1>
+            </div>
+            <nav id="navbar-global" class="navbar navbar-default">
+                <div class="container-fluid">
+                    <!-- Brand and toggle get grouped for better mobile display -->
+                    <div class="navbar-header">
+                        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1"
+                            aria-expanded="false">
+                            <span class="sr-only">Toggle navigation</span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                        </button>
+                        <a class="navbar-brand" href="#">CHANGE HTML TITLE TAG</a>
+                    </div>
+
+                    <!-- Collect the nav links, forms, and other content for toggling -->
+                    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                        <ul class="nav navbar-nav">
+                            <li><a href="#/users">All users</a></li>
+                            <li><a href="#">Link</a></li>
+                        </ul>
+                        <ul class="nav navbar-nav navbar-right">
+                            <li id="btn-global-login"><a href="#/login">Login</a></li>
+                            <li id="btn-global-logout"><a href="#/logout">Logout</a></li>
+                        </ul>
+                    </div>
+                    <!-- /.navbar-collapse -->
+                </div>
+                <!-- /.container-fluid -->
+            </nav>
+        </header>
+
+        <main id="content"></main>
+    </div>
+
+    <!-- bower dependencies -->
+    <script src="./bower_components/jquery/dist/jquery.min.js"></script>
+    <script src="./bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+    <script src="./bower_components/handlebars/handlebars.min.js"></script>
+    <script src="./bower_components/lodash/dist/lodash.min.js"></script>
+    <script src="./bower_components/navigo/lib/navigo.min.js"></script>
+    <script src="./bower_components/crypto-js/crypto-js.js"></script>
+    <script src="./bower_components/toastr/toastr.min.js"></script>
+
+    <script src="./bower_components/crypto-js/enc-base64.js"></script>
+    <script src="./bower_components/crypto-js/enc-utf16.js"></script>
+
+    <!-- scritps -->
+    <script src="./controllers/home-controller.js"></script>
+    <script src="./controllers/login-controller.js"></script>
+    <script src="./controllers/navbar-controller.js"></script>
+
+    <script src="./requester/jquery-ajax-requester.js"></script>
+
+    <script src="./router/navigo-router.js"></script>
+
+    <script src="./services/handlebars-view-loader.js"></script>
+    <script src="./services/login-service.js"></script>
+
+    <script src="./utils/credential-manager.js"></script>
+    <script src="./utils/crypto-tools.js"></script>
+    <script src="./utils/dom-tree-helpers.js"></script>
+    <script src="./utils/headers-helper.js"></script>
+    <script src="./utils/pagination.js"></script>
+    <script src="./utils/query-params-helper.js"></script>
+    <script src="./utils/validator.js"></script>
+
+    <script src="./app/index.js"></script>
+</body>
+
+</html>

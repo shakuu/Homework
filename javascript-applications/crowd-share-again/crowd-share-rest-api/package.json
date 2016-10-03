@@ -1,0 +1,15 @@
+{
+  "name": "crowd-share",
+  "version": "0.0.1",
+  "private": true,
+  "scripts": {
+    "start": "node app.js",
+    "postinstall": "bower install"
+  },
+  "dependencies": {
+    "bower": "^1.7.9",
+    "express": "~3.3.4"
+  },
+  "devDependencies": {
+  }
+}
