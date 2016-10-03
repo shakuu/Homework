@@ -29,6 +29,7 @@ const headersHelper = (() => {
     }
 
     return {
-        addXAuthKeyHeader
+        addXAuthKeyHeader,
+        addXSessionKeyHeader
     };
 })();

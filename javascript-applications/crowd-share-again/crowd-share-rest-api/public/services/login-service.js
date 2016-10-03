@@ -6,7 +6,8 @@ const loginService = (() => {
     URLS = {
         GET: 'users',
         LOGIN: 'auth',
-        REGISTER: 'user'
+        REGISTER: 'user',
+        LOGOUT: 'user'
     };
 
     function login(user) {
@@ -35,12 +36,18 @@ const loginService = (() => {
             });
     }
 
+    function logout() {
+        const headers = headersHelper.addXSessionKeyHeader();
+        return ajaxRequester.putJSON(URLS.LOGOUT, {}, headers);
+    }
+
     function allUsers() {
         return ajaxRequester.get(URLS.GET);
     }
 
     return {
         login,
+        logout,
         register,
         allUsers
     };

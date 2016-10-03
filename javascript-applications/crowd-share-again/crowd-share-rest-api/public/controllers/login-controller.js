@@ -80,12 +80,15 @@ const loginController = (() => {
     }
 
     function logout() {
-        return credentialManager.remove()
-            .then((username) => {
-                toastr.success(`${username} has logged out.`);
-            })
-            .catch((err) => {
-                toastr.error(err.message);
+        return loginService.logout()
+            .then((res) => {
+                credentialManager.remove()
+                    .then((username) => {
+                        toastr.success(`${username} has logged out.`);
+                    })
+                    .catch((err) => {
+                        toastr.error(err.message);
+                    });
             });
     }
 
