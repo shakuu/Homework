@@ -24,7 +24,7 @@ const appRouter = (() => {
     router.on('/users', () => {
         loginController.displayAllUsers(containerId)
             .then(() => {
-                pagination.paginate(containerId, '.user', 10);
+                pagination.paginate(containerId, '.user', 5);
             })
             .then(() => {
                 navbarController.displayControls();

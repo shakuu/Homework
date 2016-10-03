@@ -1,5 +1,5 @@
 const pagination = (() => {
-    function paginate(container, selector, pageSize) {
+    function paginate(container, selector, inputPageSize) {
         const content = $(container);
         if (content.length === 0) {
             return;
@@ -10,8 +10,17 @@ const pagination = (() => {
             return;
         }
 
+        let pageSize = Number(inputPageSize);
+        if (isNaN(pageSize)) {
+            return;
+        }
+
+        if (!(0 < pageSize && pageSize <= 50)) {
+            return;
+        }
+
         let currentPage = 0;
-        const pages = splitElementsIntoPages(elements, pageSize);
+        let pages = splitElementsIntoPages(elements, pageSize);
         displayPageNumber(pages, currentPage);
 
         handlebarsViewLoader.load('paginate-addon')
@@ -37,6 +46,15 @@ const pagination = (() => {
                         currentPage = pages.length - 1;
                     }
 
+                    displayPageNumber(pages, currentPage);
+                });
+
+                const tbPageSize = content.find('#tb-page-size');
+                tbPageSize.val(pageSize);
+                tbPageSize.on('change', (ev) => {
+                    currentPage = 0;
+                    pageSize = Number(tbPageSize.val());
+                    pages = splitElementsIntoPages(elements, pageSize);
                     displayPageNumber(pages, currentPage);
                 });
             });
