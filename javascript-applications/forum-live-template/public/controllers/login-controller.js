@@ -43,7 +43,6 @@ const loginController = (() => {
                             window.location = '#/';
                         })
                         .catch((res) => {
-                            console.log(res);
                             toastr.error(res.responseText);
                         });
                 });
@@ -64,6 +63,22 @@ const loginController = (() => {
             });
     }
 
+    function displayAllUsers(containerId) {
+        const content = $(containerId);
+
+        return Promise.all([
+                handlebarsViewLoader.load('users'),
+                loginService.allUsers()
+            ])
+            .then(([view, users]) => {
+                const html = view(users.result);
+                content.html(html);
+            })
+            .catch((err) => {
+                toastr.error(err.responseText);
+            });
+    }
+
     function logout() {
         return credentialManager.remove()
             .then((username) => {
@@ -76,6 +91,7 @@ const loginController = (() => {
 
     return {
         main,
-        logout
+        logout,
+        displayAllUsers
     };
 })();
