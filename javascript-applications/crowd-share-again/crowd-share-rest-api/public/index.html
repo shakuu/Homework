@@ -43,8 +43,8 @@
                     <!-- Collect the nav links, forms, and other content for toggling -->
                     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                         <ul class="nav navbar-nav">
-                            <li><a href="#/users">All users</a></li>
-                            <li><a href="#">Link</a></li>
+                            <!--<li><a href="#/users">All users</a></li>-->
+                            <li><a href="#/posts">Posts</a></li>
                         </ul>
                         <ul class="nav navbar-nav navbar-right">
                             <li id="btn-global-login"><a href="#/login">Login</a></li>
@@ -71,11 +71,13 @@
 
     <script src="./bower_components/crypto-js/enc-base64.js"></script>
     <script src="./bower_components/crypto-js/enc-utf16.js"></script>
+    <script src="./bower_components/crypto-js/enc-utf8.js"></script>    
 
     <!-- scritps -->
     <script src="./controllers/home-controller.js"></script>
     <script src="./controllers/login-controller.js"></script>
     <script src="./controllers/navbar-controller.js"></script>
+    <script src="./controllers/posts-controller.js"></script>    
 
     <script src="./requester/jquery-ajax-requester.js"></script>
 
@@ -83,6 +85,7 @@
 
     <script src="./services/handlebars-view-loader.js"></script>
     <script src="./services/login-service.js"></script>
+    <script src="./services/posts-service.js"></script>    
 
     <script src="./utils/credential-manager.js"></script>
     <script src="./utils/crypto-tools.js"></script>

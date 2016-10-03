@@ -49,7 +49,7 @@ const loginController = (() => {
 
                 function createUserObjectFromInput() {
                     const inputPassword = tbPassword.val();
-                    const hashedPassword = cryptoTools.toFortyCharactersSHA1(inputPassword);
+                    const hashedPassword = cryptoTools.toSHA1(inputPassword);
                     const user = {
                         username: tbUsername.val(),
                         authCode: hashedPassword

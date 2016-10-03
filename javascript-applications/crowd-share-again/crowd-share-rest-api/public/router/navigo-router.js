@@ -21,6 +21,13 @@ const appRouter = (() => {
             });
     });
 
+    router.on('/posts', () => {
+        postsController.main(containerId)
+            .then(() => {
+                navbarController.displayControls();
+            });
+    });
+
     router.on('/users', () => {
         loginController.displayAllUsers(containerId)
             .then(() => {

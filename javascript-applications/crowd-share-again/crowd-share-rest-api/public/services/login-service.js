@@ -25,7 +25,6 @@ const loginService = (() => {
     }
 
     function register(user) {
-        console.log(user.authCode.length);
         return ajaxRequester.postJSON(URLS.REGISTER, user)
             .then((response) => {
                 // CHECK RESPONSE FORMAT
