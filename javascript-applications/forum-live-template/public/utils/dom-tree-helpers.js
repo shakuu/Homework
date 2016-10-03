@@ -20,6 +20,10 @@
 const domTreeHelpers = (() => {
     function showElementsWith(container, selector, predicate) {
         const elements = $(container).find(selector);
+        if (elements.length === 0) {
+            return;
+        }
+
         _.forEach(elements, el => {
             if (predicate(el)) {
                 $(el).css('display', '');
@@ -31,6 +35,10 @@ const domTreeHelpers = (() => {
 
     function hideElementsWith(container, selector, predicate) {
         const elements = $(container).find(selector);
+        if (elements.length === 0) {
+            return;
+        }
+
         _.forEach(elements, el => {
             if (predicate(el)) {
                 $(el).css('display', 'none');
@@ -40,8 +48,26 @@ const domTreeHelpers = (() => {
         });
     }
 
+    // Sample sorting predicate.
+    //
+    // const predicate = (el) => {
+    //     const username = $(el).find('#username').html();
+    //     return username;
+    // };
+    function orderElementsBy(container, selector, predicate) {
+        const elements = $(container).find(selector);
+        if (elements.length === 0) {
+            return;
+        }
+
+        const sortedElements = _.sortBy(elements, (el) => predicate(el));
+        elements.remove();                
+        $(container).append(sortedElements);
+    }
+
     return {
         showElementsWith,
-        hideElementsWith
+        hideElementsWith,
+        orderElementsBy
     };
 })();

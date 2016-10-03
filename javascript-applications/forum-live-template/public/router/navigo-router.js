@@ -24,6 +24,12 @@ const appRouter = (() => {
     router.on('/users', () => {
         loginController.displayAllUsers(containerId)
             .then(() => {
+                const predicate = (el) => {
+                    const username = $(el).find('#username').html();
+                    return username;
+                };
+
+                domTreeHelpers.orderElementsBy(containerId, '.user', predicate);
                 pagination.paginate(containerId, '.user', 5);
             })
             .then(() => {

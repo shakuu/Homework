@@ -1,7 +1,7 @@
 <ul class="list-group">
     {{#each this}}
     <li class="list-group-item user" data-id="{{this.id}}">
-        Username: <a href="#/users?id={{this.id}}">{{this.username}}</a>
+        Username: <a id="username" href="#/users?id={{this.id}}">{{this.username}}</a>
     </li>
     {{/each}}
 </ul>
