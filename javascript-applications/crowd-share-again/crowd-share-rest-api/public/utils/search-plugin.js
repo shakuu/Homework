@@ -29,7 +29,15 @@ const searchPlugin = (() => {
 
         return loadView(container)
             .then(() => {
-                // attach query params
+                const tbSearchPlugin = content.find('#tb-search-plguin');
+                const query = {
+                    pattern: tbSearchPlugin.val()
+                };
+
+                const currentHash = window.location.hash;
+                const hashWithQuery = queryParamsHelper.addParamsToHash(currentHash, query);
+
+                window.location = hashWithQuery;
             });
     }
 

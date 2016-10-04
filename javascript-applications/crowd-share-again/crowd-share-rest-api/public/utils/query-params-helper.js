@@ -17,7 +17,12 @@ const queryParamsHelper = (() => {
         return params;
     }
 
+    function addParamsToHash(hash, params) {
+
+    }
+
     return {
-        getQueryParamsFromHash
+        getQueryParamsFromHash,
+        addParamsToHash
     };
 })();
