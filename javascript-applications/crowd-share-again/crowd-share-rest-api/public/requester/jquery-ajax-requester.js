@@ -1,5 +1,6 @@
 const ajaxRequester = (() => {
     function get(url, headers = {}) {
+        url = encodeURI(url);
         return new Promise((resolve, reject) => {
             $.ajax({
                     url: url,
@@ -13,6 +14,7 @@ const ajaxRequester = (() => {
     }
 
     function postJSON(url, json, headers = {}) {
+        url = encodeURI(url);        
         return new Promise((resolve, reject) => {
             $.ajax({
                     url: url,
@@ -27,6 +29,7 @@ const ajaxRequester = (() => {
     }
 
     function putJSON(url, json, headers = {}) {
+        url = encodeURI(url);        
         return new Promise((resolve, reject) => {
             $.ajax({
                     url: url,
