@@ -12,7 +12,17 @@ const searchPlugin = (() => {
 
         return loadView(container)
             .then(() => {
-                // filter dom elements
+                const btnSearchPlugin = content.find('#btn-search-plugin');
+                btnSearchPlugin.on('click', (ev) => {
+                    const tbSearchPlugin = content.find('#tb-search-plugin');
+
+                    const predicate = (el) => {
+                        // some predicate from the element
+                        // return boolean
+                    };
+
+                    domTreeHelpers.showElementsWith(container, selector, predicate);
+                });
             });
     }
 
@@ -29,15 +39,18 @@ const searchPlugin = (() => {
 
         return loadView(container)
             .then(() => {
-                const tbSearchPlugin = content.find('#tb-search-plguin');
-                const query = {
-                    pattern: tbSearchPlugin.val()
-                };
+                const btnSearchPlugin = content.find('#btn-search-plugin');
+                btnSearchPlugin.on('click', (ev) => {
+                    const tbSearchPlugin = content.find('#tb-search-plugin');
+                    const query = {
+                        pattern: tbSearchPlugin.val()
+                    };
 
-                const currentHash = window.location.hash;
-                const hashWithQuery = queryParamsHelper.addParamsToHash(currentHash, query);
+                    const currentHash = window.location.hash;
+                    const hashWithQuery = queryParamsHelper.addParamsToHash(currentHash, query);
 
-                window.location = hashWithQuery;
+                    window.location = hashWithQuery;
+                });
             });
     }
 

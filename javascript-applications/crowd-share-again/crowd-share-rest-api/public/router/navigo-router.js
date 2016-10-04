@@ -24,7 +24,7 @@ const appRouter = (() => {
     router.on('/posts', () => {
         postsController.main(containerId)
             .then(() => {
-                searchPlugin.createFilter(containerId, '.post');
+                searchPlugin.createQuery(containerId, '.post');
             })
             .then(() => {
                 pagination.paginate(containerId, '.post', 5);
