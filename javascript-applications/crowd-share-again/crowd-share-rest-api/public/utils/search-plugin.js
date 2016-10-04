@@ -1,15 +1,33 @@
 const searchPlugin = (() => {
-    function createFilter(containerId) {
-        const content = $(containerId);
-        return loadView(containerId)
+    function createFilter(container, selector) {
+        const content = $(container);
+        if (content.length === 0) {
+            return;
+        }
+
+        const elements = content.find(selector);
+        if (elements.length === 0) {
+            return;
+        }
+
+        return loadView(container)
             .then(() => {
                 // filter dom elements
             });
     }
 
-    function createQuery(containerId) {
-        const content = $(containerId);
-        return loadView(containerId)
+    function createQuery(container, selector) {
+        const content = $(container);
+        if (content.length === 0) {
+            return;
+        }
+
+        const elements = content.find(selector);
+        if (elements.length === 0) {
+            return;
+        }
+
+        return loadView(container)
             .then(() => {
                 // attach query params
             });
@@ -20,7 +38,7 @@ const searchPlugin = (() => {
         return handlebarsViewLoader.load('search-plugin')
             .then((view) => {
                 const html = view();
-                content.html(html);
+                content.prepend(html);
             });
     }
 

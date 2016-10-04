@@ -24,6 +24,12 @@ const appRouter = (() => {
     router.on('/posts', () => {
         postsController.main(containerId)
             .then(() => {
+                searchPlugin.createFilter(containerId, '.post');
+            })
+            .then(() => {
+                pagination.paginate(containerId, '.post', 5);
+            })
+            .then(() => {
                 navbarController.displayControls();
             });
     });
