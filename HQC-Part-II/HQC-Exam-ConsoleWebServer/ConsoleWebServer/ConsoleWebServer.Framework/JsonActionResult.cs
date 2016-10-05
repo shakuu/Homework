@@ -1,20 +1,20 @@
 ﻿using System;
 using System.Collections.Generic;using System.Text;
 using System.Net;
-
+using ConsoleWebServer.Framework;
 using Newtonsoft.Json;
 
 public class JsonActionResult : IActionResult {
     public virtual HttpStatusCode GetStatusCode() {
         return HttpStatusCode.OK;
     }
-    public JsonActionResult(HttpRq rq, object m)
+    public JsonActionResult(HttpRequest request, object m)
     {
         model = m;
-        Request = rq;
+        Request = request;
         ResponseHeaders = new List<KeyValuePair<string, string>>();
     }
-    public HttpRq Request { get; private set; }
+    public HttpRequest Request { get; private set; }
     public List<KeyValuePair<string, string>> ResponseHeaders { get; private set; }
     public string GetContent() {
         return JsonConvert.SerializeObject(model);
@@ -31,14 +31,14 @@ public class JsonActionResult : IActionResult {
     }
 }
 public class JsonActionResultWithCors : JsonActionResult{
-    public JsonActionResultWithCors(HttpRq request, object model, string corsSettings)
+    public JsonActionResultWithCors(HttpRequest request, object model, string corsSettings)
         : base(request, model)
     {
         this.ResponseHeaders.Add(new KeyValuePair<string, string>("Access-Control-Allow-Origin", corsSettings));
     }
 }
 public class JsonActionResultWithoutCaching : JsonActionResult{
-    public JsonActionResultWithoutCaching(HttpRq r, object model)
+    public JsonActionResultWithoutCaching(HttpRequest r, object model)
         : base(r, model)
     {
         this.ResponseHeaders.Add(new KeyValuePair<string, string>("Cache-Control", "private, max-age=0, no-cache"));
@@ -46,7 +46,7 @@ public class JsonActionResultWithoutCaching : JsonActionResult{
     }
 }
 public class JsonActionResultWithCorsWithoutCaching : JsonActionResult{
-    public JsonActionResultWithCorsWithoutCaching(HttpRq request, object model, string corsSettings)
+    public JsonActionResultWithCorsWithoutCaching(HttpRequest request, object model, string corsSettings)
         : base(request, model)
     {
         this.ResponseHeaders.Add(new KeyValuePair<string, string>("Access-Control-Allow-Origin", corsSettings));

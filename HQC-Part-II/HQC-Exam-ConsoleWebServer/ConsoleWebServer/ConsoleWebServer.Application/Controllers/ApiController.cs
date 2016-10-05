@@ -1,11 +1,12 @@
 ﻿using System;
 using System.Linq;
+using ConsoleWebServer.Framework;
 
 namespace ConsoleWebServer.Application.Controllers
 {
     public class ApiController : Controller
     {
-        public ApiController(HttpRq request) : base(request)
+        public ApiController(HttpRequest request) : base(request)
         {
         }
 

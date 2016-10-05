@@ -1,7 +1,9 @@
-﻿public abstract class Controller
+﻿using ConsoleWebServer.Framework;
+
+public abstract class Controller
 {
-    public HttpRq Request{get; private set;}
+    public HttpRequest Request{get; private set;}
     protected IActionResult Content(object model){return new ContentActionResult(this.Request, model);}
     protected IActionResult Json(object model){return new JsonActionResult(this.Request, model);}
-    protected Controller(HttpRq r){this.Request = r;}
+    protected Controller(HttpRequest r){this.Request = r;}
 }
