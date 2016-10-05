@@ -2,6 +2,7 @@
 using System.Text;
 
 using ConsoleWebServer.Application.Loggers;
+using ConsoleWebServer.Application.UI;
 using ConsoleWebServer.Framework;
 
 namespace ConsoleWebServer.Application
@@ -9,13 +10,19 @@ namespace ConsoleWebServer.Application
     public class WebServerConsole
     {
         private readonly IResponseProvider responseProvider;
+        private readonly IInputProvider inputProvider;
         private readonly ILogger logger;
 
-        public WebServerConsole(IResponseProvider responseProvider, ILogger logger)
+        public WebServerConsole(IResponseProvider responseProvider, IInputProvider inputProvider, ILogger logger)
         {
             if (responseProvider == null)
             {
                 throw new ArgumentNullException(nameof(responseProvider));
+            }
+
+            if (inputProvider == null)
+            {
+                throw new ArgumentNullException(nameof(inputProvider));
             }
 
             if (logger == null)
@@ -24,17 +31,18 @@ namespace ConsoleWebServer.Application
             }
 
             this.responseProvider = responseProvider;
+            this.inputProvider = inputProvider;
             this.logger = logger;
         }
 
         public void Start()
         {
             var requestBuilder = new StringBuilder();
-            
+
             var isRunning = true;
             do
             {
-                var inputLine = Console.ReadLine();
+                var inputLine = this.inputProvider.ReadLine();
                 if (inputLine == null)
                 {
                     isRunning = false;

@@ -1,6 +1,7 @@
 ﻿// TODO: Describe patterns, SOLID, bugs and bottleneck in Documentation.txt
 
 using ConsoleWebServer.Application.Loggers;
+using ConsoleWebServer.Application.UI;
 using ConsoleWebServer.Framework;
 
 namespace ConsoleWebServer.Application
@@ -16,8 +17,9 @@ namespace ConsoleWebServer.Application
         private static WebServerConsole CreateWebServer()
         {
             var logger = new ConsoleLogger();
+            var inputProvider = new ConsoleInputProvider();
             var responseProvider = new ResponseProvider();
-            var webServer = new WebServerConsole(responseProvider, logger);
+            var webServer = new WebServerConsole(responseProvider, inputProvider, logger);
             return webServer;
         }
     }
