@@ -1,0 +1,38 @@
+Design pattern: Factory Method
+	* 
+
+Design pattern: Strategy
+	* 
+
+Design pattern: Template Method
+	* 
+	* 
+
+Design pattern: Chain of Responsibility
+	* 
+
+Design pattern: Decorator
+	* 
+
+Found bugs:
+	* 
+	* 
+	* 
+
+Found bottleneck:
+	* 
+
+Single responsibility principle
+	* 
+
+Open/closed principle
+	* 
+
+Liskov substitution principle
+	* 
+
+Interface segregation principle
+	* 
+
+Dependency inversion principle
+	* 

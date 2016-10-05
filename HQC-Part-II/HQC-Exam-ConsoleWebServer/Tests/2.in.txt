@@ -1,0 +1,14 @@
+GET /Files/best-helpers-2015.csv HTTP/2.0
+
+GET Files/data.txt HTTP/2.0
+
+GET Files/notfound.txt HTTP/1.1
+
+GET /Api/ReturnMe/someParam123 HTTP/1.1
+
+GET /Api/GetDateWithCors/telerikacademy HTTP/2.0
+Referer: http://telerikacademy.com
+
+GET /Api/GetDateWithCors/telerikacademy HTTP/2.0
+Referer: http://someotherhost.com
+

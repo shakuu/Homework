@@ -1,0 +1,50 @@
+HTTP/1.1 200 OK
+Content-Length: 172
+Content-Type: text/plain; charset=utf-8
+Server: ConsoleWebServer
+
+/Api/ReturnMe/{parameter}
+/Api/GetDateWithCors/{parameter}
+/Home/Index/{parameter}
+/Home/LivePage/{parameter}
+/Home/LivePageForAjax/{parameter}
+/Home/Forum/{parameter}
+
+HTTP/1.0 200 OK
+Content-Length: 12
+Content-Type: text/plain; charset=utf-8
+Server: ConsoleWebServer
+
+Home page :)
+
+HTTP/1.1 200 OK
+Cache-Control: private, max-age=0, no-cache
+Content-Length: 25
+Content-Type: text/plain; charset=utf-8
+Server: ConsoleWebServer
+
+Live page with no caching
+
+HTTP/1.1 200 OK
+Access-Control-Allow-Origin: *
+Cache-Control: private, max-age=0, no-cache
+Content-Length: 34
+Content-Type: text/plain; charset=utf-8
+Server: ConsoleWebServer
+
+Live page with no caching and CORS
+
+HTTP/3.0 501 NotImplemented
+Content-Length: 26
+Content-Type: text/plain; charset=utf-8
+Server: ConsoleWebServer
+
+Request cannot be handled.
+
+HTTP/1.1 400 BadRequest
+Content-Length: 89
+Content-Type: text/plain; charset=utf-8
+Server: ConsoleWebServer
+
+Invalid format for the first request line. Expected format: [Method] [Uri] HTTP/[Version]
+

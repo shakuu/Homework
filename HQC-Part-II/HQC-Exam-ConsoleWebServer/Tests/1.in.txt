@@ -1,0 +1,16 @@
+OPTIONS / HTTP/1.1
+
+GET / HTTP/1.0
+
+GET /Home/LivePage HTTP/1.1
+
+GET /Home/LivePageForAjax HTTP/1.1
+Host: telerikacademy.com
+Referer: http://telerikacademy.com/
+Connection: keep-alive
+User-Agent: MyGreatConsoleBrowser
+
+GET / HTTP/3.0
+
+asd
+

@@ -1,0 +1,52 @@
+HTTP/2.0 200 OK
+Content-Length: 214
+Content-Type: text/plain; charset=utf-8
+Server: ConsoleWebServer
+
+Course,Helper,Points
+C# Programming - Part 1,dentia,125
+C# Programming - Part II,dentia,115
+JavaScript OOP 2015,dentia,94
+C# OOP 2015,dentia,73
+JavaScript UI and DOM,dentia,69
+JavaScript OOP 2015,topalkata,67
+
+HTTP/2.0 200 OK
+Content-Length: 64
+Content-Type: text/plain; charset=utf-8
+Server: ConsoleWebServer
+
+Za tebe imam
+fail pulen s taini
+Ela i si kopni
+Ela i si kopni
+
+HTTP/1.1 404 NotFound
+Content-Length: 15
+Content-Type: text/plain; charset=utf-8
+Server: ConsoleWebServer
+
+File not found!
+
+HTTP/1.1 200 OK
+Content-Length: 24
+Content-Type: application/json
+Server: ConsoleWebServer
+
+{"param":"someParam123"}
+
+HTTP/2.0 200 OK
+Access-Control-Allow-Origin: telerikacademy
+Content-Length: 68
+Content-Type: application/json
+Server: ConsoleWebServer
+
+{"date":"2015-10-14","moreInfo":"Data available for telerikacademy"}
+
+HTTP/2.0 500 InternalServerError
+Content-Length: 16
+Content-Type: text/plain; charset=utf-8
+Server: ConsoleWebServer
+
+Invalid referer!
+
