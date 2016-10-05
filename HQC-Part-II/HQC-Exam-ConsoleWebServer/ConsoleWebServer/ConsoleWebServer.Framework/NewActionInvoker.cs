@@ -1,8 +1,8 @@
-﻿    class NewActionInvoker
+﻿class NewActionInvoker
+{
+    public IActionResult InvokeAction(Controller controller, ActionDescriptor actionDescriptor)
     {
-        public IActionResult InvokeAction(Controller controller, ActionDescriptor actionDescriptor)
-        {
-            var className = HttpNotFound.ClassName;
-            return new ActionInvoker().InvokeAction(controller, actionDescriptor);
-        }
+        var className = HttpNotFound.ClassName;
+        return new ActionInvoker().InvokeAction(controller, actionDescriptor);
     }
+}
