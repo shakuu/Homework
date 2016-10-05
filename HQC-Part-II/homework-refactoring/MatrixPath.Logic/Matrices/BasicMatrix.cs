@@ -9,8 +9,6 @@ using MatrixPath.Logic.Values.Contracts;
 
 namespace MatrixPath.Logic.Matrices
 {
-    using System.Diagnostics.CodeAnalysis;
-
     public class BasicMatrix : IMatrix
     {
         private readonly IList<IList<ICell>> matrix;
@@ -123,8 +121,7 @@ namespace MatrixPath.Logic.Matrices
 
             return stringRepresentation.ToString();
         }
-
-        [SuppressMessage("ReSharper", "ExpressionIsAlwaysNull")]
+        
         private IPosition FindPositionToJumpTo(IPosition position, int matrixSize)
         {
             IPosition newPosition = null;
