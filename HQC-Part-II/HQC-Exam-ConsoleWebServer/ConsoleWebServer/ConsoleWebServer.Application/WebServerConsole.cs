@@ -30,18 +30,29 @@ namespace ConsoleWebServer.Application
         public void Start()
         {
             var requestBuilder = new StringBuilder();
-            string inputLine;
-            while ((inputLine = Console.ReadLine()) != null)
+            
+            var isRunning = true;
+            do
             {
-                if (string.IsNullOrWhiteSpace(inputLine))
+                var inputLine = Console.ReadLine();
+                if (inputLine == null)
                 {
-                    var response = this.responseProvider.GetResponse(requestBuilder.ToString());
-
-                    requestBuilder.Clear();
-                    continue;
+                    isRunning = false;
                 }
-                requestBuilder.AppendLine(inputLine);
+                else if (string.IsNullOrWhiteSpace(inputLine))
+                {
+                    var request = requestBuilder.ToString();
+                    requestBuilder.Clear();
+
+                    var response = this.responseProvider.GetResponse(request);
+                    this.logger.Log(response);
+                }
+                else
+                {
+                    requestBuilder.AppendLine(inputLine);
+                }
             }
+            while (isRunning);
         }
     }
 }

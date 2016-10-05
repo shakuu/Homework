@@ -43,9 +43,11 @@
   <ItemGroup>
     <Compile Include="Controllers\ApiController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Loggers\ConsoleLogger.cs" />
+    <Compile Include="Loggers\ILogger.cs" />
     <Compile Include="Startup.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="WebServerConsole5.cs" />
+    <Compile Include="WebServerConsole.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
