@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Text;
 
+using ConsoleWebServer.Application.Loggers;
 using ConsoleWebServer.Framework;
 
 namespace ConsoleWebServer.Application
@@ -8,14 +9,22 @@ namespace ConsoleWebServer.Application
     public class WebServerConsole
     {
         private readonly IResponseProvider responseProvider;
-        public WebServerConsole(IResponseProvider responseProvider)
+        private readonly ILogger logger;
+
+        public WebServerConsole(IResponseProvider responseProvider, ILogger logger)
         {
             if (responseProvider == null)
             {
                 throw new ArgumentNullException(nameof(responseProvider));
             }
 
+            if (logger == null)
+            {
+                throw new ArgumentNullException(nameof(logger));
+            }
+
             this.responseProvider = responseProvider;
+            this.logger = logger;
         }
 
         public void Start()
@@ -27,9 +36,7 @@ namespace ConsoleWebServer.Application
                 if (string.IsNullOrWhiteSpace(inputLine))
                 {
                     var response = this.responseProvider.GetResponse(requestBuilder.ToString());
-                    Console.ForegroundColor = ConsoleColor.DarkGray;
-                    Console.WriteLine(response);
-                    Console.ResetColor();
+
                     requestBuilder.Clear();
                     continue;
                 }
