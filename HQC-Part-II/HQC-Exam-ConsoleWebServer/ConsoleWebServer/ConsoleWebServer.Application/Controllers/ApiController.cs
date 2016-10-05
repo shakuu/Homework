@@ -6,7 +6,7 @@ namespace ConsoleWebServer.Application.Controllers
 {
     public class ApiController : Controller
     {
-        public ApiController(HttpRequest request) : base(request)
+        public ApiController(HttpRequestManager requestManager) : base(requestManager)
         {
         }
 
@@ -18,16 +18,16 @@ namespace ConsoleWebServer.Application.Controllers
         public IActionResult GetDateWithCors(string domainName)
         {
             var requestReferer = string.Empty;
-            if (this.Request.Headers.ContainsKey("Referer"))
+            if (this.RequestManager.Headers.ContainsKey("Referer"))
             {
-                requestReferer = this.Request.Headers["Referer"].FirstOrDefault();
+                requestReferer = this.RequestManager.Headers["Referer"].FirstOrDefault();
             }
             if (string.IsNullOrWhiteSpace(requestReferer) || !requestReferer.Contains(domainName))
             {
                 throw new ArgumentException("Invalid referer!");
             }
             return new JsonActionResultWithCors(
-                this.Request,
+                this.RequestManager,
                 new { date = DateTime.Now.ToString("yyyy-MM-dd"), moreInfo = "Data available for " + domainName },
                 domainName);
             ;

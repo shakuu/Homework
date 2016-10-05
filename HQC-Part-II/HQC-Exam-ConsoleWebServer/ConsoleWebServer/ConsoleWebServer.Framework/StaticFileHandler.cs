@@ -6,20 +6,20 @@ using ConsoleWebServer.Framework;
 using str = System.String;
 public class StaticFileHandler
 {
-    public bool CanHandle(HttpRequest request)
+    public bool CanHandle(HttpRequestManager requestManager)
     {
-        return request.Uri.LastIndexOf(".", StringComparison.Ordinal)
-                > request.Uri.LastIndexOf("/", StringComparison.Ordinal);
+        return requestManager.Uri.LastIndexOf(".", StringComparison.Ordinal)
+                > requestManager.Uri.LastIndexOf("/", StringComparison.Ordinal);
     }
-    public HttpResponse Handle(HttpRequest request)
+    public HttpResponse Handle(HttpRequestManager requestManager)
     {
-        str filePath = Environment.CurrentDirectory + "/" + request.Uri;
+        str filePath = Environment.CurrentDirectory + "/" + requestManager.Uri;
         if (!this.FileExists("C:\\", filePath, 3))
         {
-            return new HttpResponse(request.ProtocolVersion, HttpStatusCode.NotFound, "File not found");
+            return new HttpResponse(requestManager.ProtocolVersion, HttpStatusCode.NotFound, "File not found");
         }
         str fileContents = File.ReadAllText(filePath);
-        var response = new HttpResponse(request.ProtocolVersion, HttpStatusCode.OK, fileContents);
+        var response = new HttpResponse(requestManager.ProtocolVersion, HttpStatusCode.OK, fileContents);
         return response;
     }
     private bool FileExists(str path, str filePath, int depth)

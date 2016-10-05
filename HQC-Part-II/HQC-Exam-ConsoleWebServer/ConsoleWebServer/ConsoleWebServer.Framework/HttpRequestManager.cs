@@ -5,9 +5,9 @@ using System.Text;
 
 namespace ConsoleWebServer.Framework
 {
-    public class HttpRequest
+    public class HttpRequestManager
     {
-        public HttpRequest(string method, string uri, string httpVersion)
+        public HttpRequestManager(string method, string uri, string httpVersion)
         {
             this.ProtocolVersion = Version.Parse(httpVersion.ToLower().Replace("HTTP/".ToLower(), string.Empty));
             this.Headers = new SortedDictionary<string, ICollection<string>>();
@@ -56,7 +56,7 @@ namespace ConsoleWebServer.Framework
 
         public ActionDescriptor Action { get; private set; }
 
-        public HttpRequest Parse(string reqAsStr)
+        public HttpRequestManager Parse(string reqAsStr)
         {
             var textReader = new StringReader(reqAsStr);
             var firstLine = textReader.ReadLine();
@@ -67,18 +67,19 @@ namespace ConsoleWebServer.Framework
             {
                 this.AddHeaderToRequest(requestObject, line);
             }
+
             return requestObject;
         }
 
-        private HttpRequest CreateRequest(string frl)
+        private HttpRequestManager CreateRequest(string frl)
         {
             var firstRequestLineParts = frl.Split(' ');
             if (firstRequestLineParts.Length != 3)
             {
                 throw new HttpNotFound.ParserException(
-                    "Invalid format for the first request line. Expected format: [Method] [Uri] HTTP/[Version]");
+                    "Invalid format for the first requestManager line. Expected format: [Method] [Uri] HTTP/[Version]");
             }
-            var requestObject = new HttpRequest(
+            var requestObject = new HttpRequestManager(
                 firstRequestLineParts[0],
                 firstRequestLineParts[1],
                 firstRequestLineParts[2]);
@@ -86,7 +87,7 @@ namespace ConsoleWebServer.Framework
             return requestObject;
         }
 
-        private void AddHeaderToRequest(HttpRequest r, string headerLine)
+        private void AddHeaderToRequest(HttpRequestManager r, string headerLine)
         {
             var hp = headerLine.Split(new[] { ':' }, 2);
             var hn = hp[0].Trim();

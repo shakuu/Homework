@@ -4,7 +4,7 @@ namespace ConsoleWebServer.Application.Controllers
 {
     public class HomeController : Controller
     {
-        public HomeController(HttpRequest request) : base(request)
+        public HomeController(HttpRequestManager requestManager) : base(requestManager)
         {
         }
 
@@ -15,12 +15,12 @@ namespace ConsoleWebServer.Application.Controllers
 
         public IActionResult LivePage(string param)
         {
-            return new ContentActionResultWithoutCaching(this.Request, "Live page with no caching");
+            return new ContentActionResultWithoutCaching(this.RequestManager, "Live page with no caching");
         }
 
         public IActionResult LivePageForAjax(string param)
         {
-            return new ContentActionResultWithCorsWithoutCaching(this.Request, "Live page with no caching and CORS", "*");
+            return new ContentActionResultWithCorsWithoutCaching(this.RequestManager, "Live page with no caching and CORS", "*");
         }
     }
 }

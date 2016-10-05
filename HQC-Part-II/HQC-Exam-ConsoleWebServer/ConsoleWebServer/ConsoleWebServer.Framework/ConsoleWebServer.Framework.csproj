@@ -77,7 +77,7 @@
     <Compile Include="NewActionInvoker.cs" />
     <Compile Include="StaticFileHandler.cs" />
     <Compile Include="HttpNotFound.cs" />
-    <Compile Include="HttpRequest.cs" />
+    <Compile Include="HttpRequestManager.cs" />
     <Compile Include="Controller.cs" />
     <Compile Include="HR.cs" />
     <Compile Include="IActionResult.cs" />
