@@ -80,6 +80,7 @@
     <Compile Include="Http\Contracts\IHttpResponse.cs" />
     <Compile Include="Http\Factory\HttpResponseFactory.cs" />
     <Compile Include="IActionInvoker.cs" />
+    <Compile Include="IStaticFileHandler.cs" />
     <Compile Include="JsonActionResults\JsonActionResult.cs" />
     <Compile Include="ContentActionResults\ContentActionResult.cs" />
     <Compile Include="JsonActionResults\JsonActionResultWithCors.cs" />

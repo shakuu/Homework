@@ -23,9 +23,12 @@ namespace ConsoleWebServer.Application
             var logger = new ConsoleLogger();
             var inputProvider = new ConsoleInputProvider();
             var actionInvoker = new ActionInvoker();
+            var staticFileHandler = new StaticFileHandler();
+
             var responseProvider = new ResponseProvider(
                 requestManager,
                 actionInvoker,
+                staticFileHandler,
                 HttpResponseFactory.CreateHttpResponse);
 
             var webServer = new WebServerConsole(responseProvider, inputProvider, logger);

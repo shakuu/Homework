@@ -13,11 +13,13 @@ namespace ConsoleWebServer.Framework.Http
     {
         private readonly IHttpRequestManager requestManager;
         private readonly IActionInvoker actionInvoker;
+        private readonly IStaticFileHandler staticFileHandler;
         private readonly Func<Version, HttpStatusCode, string, IHttpResponse> createResponse;
 
         public ResponseProvider(
             IHttpRequestManager requestManager,
             IActionInvoker actionInvoker,
+            IStaticFileHandler staticFileHandler,
             Func<Version, HttpStatusCode, string, IHttpResponse> createResponse)
         {
             if (requestManager == null)
@@ -35,8 +37,14 @@ namespace ConsoleWebServer.Framework.Http
                 throw new ArgumentNullException(nameof(createResponse));
             }
 
+            if (staticFileHandler == null)
+            {
+                throw new ArgumentNullException(nameof(staticFileHandler));
+            }
+
             this.requestManager = requestManager;
             this.actionInvoker = actionInvoker;
+            this.staticFileHandler = staticFileHandler;
             this.createResponse = createResponse;
         }
 
@@ -68,9 +76,9 @@ namespace ConsoleWebServer.Framework.Http
 
                 return new HttpResponse(httpRequest.ProtocolVersion, HttpStatusCode.OK, string.Join(Environment.NewLine, routes));
             }
-            else if (new StaticFileHandler().CanHandle(httpRequest))
+            else if (this.staticFileHandler.CanHandle(httpRequest))
             {
-                return new StaticFileHandler().Handle(httpRequest);
+                return this.staticFileHandler.Handle(httpRequest);
             }
             else if (httpRequest.ProtocolVersion.Major <= 3)
             {
