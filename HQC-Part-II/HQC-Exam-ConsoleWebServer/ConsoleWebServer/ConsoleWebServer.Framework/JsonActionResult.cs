@@ -2,6 +2,7 @@
 using System.Collections.Generic;using System.Text;
 using System.Net;
 using ConsoleWebServer.Framework;
+using ConsoleWebServer.Framework.Contracts;
 using Newtonsoft.Json;
 
 public class JsonActionResult : IActionResult {

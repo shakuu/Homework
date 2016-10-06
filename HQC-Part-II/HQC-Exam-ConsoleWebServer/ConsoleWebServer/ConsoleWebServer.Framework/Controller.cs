@@ -1,4 +1,5 @@
 ﻿using ConsoleWebServer.Framework;
+using ConsoleWebServer.Framework.Contracts;
 
 public abstract class Controller
 {

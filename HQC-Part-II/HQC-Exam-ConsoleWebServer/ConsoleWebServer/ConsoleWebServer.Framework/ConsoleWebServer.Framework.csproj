@@ -72,7 +72,7 @@
   <ItemGroup>
     <Compile Include="ActionInvoker.cs" />
     <Compile Include="HighQualityCodeExamPointsProvider.cs" />
-    <Compile Include="IHttpRequestManager.cs" />
+    <Compile Include="Contracts\IHttpRequestManager.cs" />
     <Compile Include="JsonActionResult.cs" />
     <Compile Include="ContentActionResult.cs" />
     <Compile Include="NewActionInvoker.cs" />
@@ -81,8 +81,8 @@
     <Compile Include="HttpRequestManager.cs" />
     <Compile Include="Controller.cs" />
     <Compile Include="HR.cs" />
-    <Compile Include="IActionResult.cs" />
-    <Compile Include="IResponseProvider.cs" />
+    <Compile Include="Contracts\IActionResult.cs" />
+    <Compile Include="Contracts\IResponseProvider.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ActionDescriptor.cs" />
     <Compile Include="ResponseProvider.cs" />

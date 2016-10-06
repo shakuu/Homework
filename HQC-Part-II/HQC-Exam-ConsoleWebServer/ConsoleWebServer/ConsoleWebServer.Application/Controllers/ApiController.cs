@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Linq;
 using ConsoleWebServer.Framework;
+using ConsoleWebServer.Framework.Contracts;
 
 namespace ConsoleWebServer.Application.Controllers
 {

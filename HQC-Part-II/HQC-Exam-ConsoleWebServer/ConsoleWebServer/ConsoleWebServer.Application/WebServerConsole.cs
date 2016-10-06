@@ -4,6 +4,7 @@ using System.Text;
 using ConsoleWebServer.Application.Loggers;
 using ConsoleWebServer.Application.UI;
 using ConsoleWebServer.Framework;
+using ConsoleWebServer.Framework.Contracts;
 
 namespace ConsoleWebServer.Application
 {
