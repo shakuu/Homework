@@ -5,7 +5,7 @@ namespace ConsoleWebServer.Framework
 {
     public abstract class Controller
     {
-        public IHttpRequestManager RequestManager { get; private set; }
+        public IHttpRequest RequestManager { get; private set; }
 
         protected Controller(HttpRequestManager r)
         {

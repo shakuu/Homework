@@ -71,6 +71,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ActionInvoker.cs" />
+    <Compile Include="Contracts\IHttpRequest.cs" />
     <Compile Include="Contracts\IHtttpRequestManager.cs" />
     <Compile Include="HighQualityCodeExamPointsProvider.cs" />
     <Compile Include="JsonActionResults\JsonActionResult.cs" />

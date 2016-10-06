@@ -9,12 +9,12 @@ namespace ConsoleWebServer.Framework
 {
     public class StaticFileHandler
     {
-        public bool CanHandle(IHttpRequestManager requestManager)
+        public bool CanHandle(IHttpRequest requestManager)
         {
             return requestManager.Uri.LastIndexOf(".", StringComparison.Ordinal)
                    > requestManager.Uri.LastIndexOf("/", StringComparison.Ordinal);
         }
-        public HttpResponse Handle(IHttpRequestManager requestManager)
+        public HttpResponse Handle(IHttpRequest requestManager)
         {
             var filePath = Environment.CurrentDirectory + "/" + requestManager.Uri;
             if (!this.FileExists("C:\\", filePath, 3))

@@ -13,13 +13,13 @@ namespace ConsoleWebServer.Framework.JsonActionResults
         {
             return HttpStatusCode.OK;
         }
-        public JsonActionResult(IHttpRequestManager requestManager, object m)
+        public JsonActionResult(IHttpRequest requestManager, object m)
         {
             this.model = m;
             this.RequestManager = requestManager;
             this.ResponseHeaders = new List<KeyValuePair<string, string>>();
         }
-        public IHttpRequestManager RequestManager { get; private set; }
+        public IHttpRequest RequestManager { get; private set; }
         public List<KeyValuePair<string, string>> ResponseHeaders { get; private set; }
         public string GetContent()
         {

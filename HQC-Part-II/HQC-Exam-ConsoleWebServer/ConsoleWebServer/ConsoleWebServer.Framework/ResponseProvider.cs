@@ -23,7 +23,7 @@ namespace ConsoleWebServer.Framework
 
         public HttpResponse GetResponse(string requestAsString)
         {
-            IHttpRequestManager resultHttpRequest;
+            IHttpRequest resultHttpRequest;
             try
             {
                 resultHttpRequest = this.requestManager.Parse(requestAsString);
@@ -37,9 +37,9 @@ namespace ConsoleWebServer.Framework
             return response;
         }
 
-        private HttpResponse Process(IHttpRequestManager requestManager)
+        private HttpResponse Process(IHttpRequest httpRequest)
         {
-            if (requestManager.Method.ToLower() == "options")
+            if (httpRequest.Method.ToLower() == "options")
             {
                 var routes = Assembly.GetEntryAssembly()
                         .GetTypes()
@@ -48,39 +48,39 @@ namespace ConsoleWebServer.Framework
                         .SelectMany(x => x.Methods.Select(m => string.Format("/{0}/{1}/{{parameter}}", x.Name.Replace("Controller", string.Empty), m.Name)))
                         .ToList();
 
-                return new HttpResponse(requestManager.ProtocolVersion, HttpStatusCode.OK, string.Join(Environment.NewLine, routes));
+                return new HttpResponse(httpRequest.ProtocolVersion, HttpStatusCode.OK, string.Join(Environment.NewLine, routes));
             }
-            else if (new StaticFileHandler().CanHandle(requestManager))
+            else if (new StaticFileHandler().CanHandle(httpRequest))
             {
-                return new StaticFileHandler().Handle(requestManager);
+                return new StaticFileHandler().Handle(httpRequest);
             }
-            else if (requestManager.ProtocolVersion.Major <= 3)
+            else if (httpRequest.ProtocolVersion.Major <= 3)
             {
                 HttpResponse response;
                 try
                 {
-                    var controller = this.CreateController(requestManager);
+                    var controller = this.CreateController(httpRequest);
                     var actionInvoker = new NewActionInvoker();
-                    var actionResult = actionInvoker.InvokeAction(controller, requestManager.Action);
+                    var actionResult = actionInvoker.InvokeAction(controller, httpRequest.Action);
                     response = actionResult.GetResponse();
                 }
                 catch (HttpNotFound exception)
                 {
-                    response = new HttpResponse(requestManager.ProtocolVersion, HttpStatusCode.NotFound, exception.Message);
+                    response = new HttpResponse(httpRequest.ProtocolVersion, HttpStatusCode.NotFound, exception.Message);
                 }
                 catch (Exception exception)
                 {
-                    response = new HttpResponse(requestManager.ProtocolVersion, HttpStatusCode.InternalServerError, exception.Message);
+                    response = new HttpResponse(httpRequest.ProtocolVersion, HttpStatusCode.InternalServerError, exception.Message);
                 }
                 return response;
             }
             else
             {
-                return new HttpResponse(requestManager.ProtocolVersion, HttpStatusCode.NotImplemented, "RequestManager cannot be handled.");
+                return new HttpResponse(httpRequest.ProtocolVersion, HttpStatusCode.NotImplemented, "RequestManager cannot be handled.");
             }
         }
 
-        private Controller CreateController(IHttpRequestManager requestManager)
+        private Controller CreateController(IHttpRequest requestManager)
         {
             var controllerClassName = requestManager.Action.ControllerName + "Controller";
             var type =

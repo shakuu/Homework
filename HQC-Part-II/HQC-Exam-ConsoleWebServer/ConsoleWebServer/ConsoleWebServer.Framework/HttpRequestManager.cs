@@ -7,7 +7,7 @@ using ConsoleWebServer.Framework.Contracts;
 namespace ConsoleWebServer.Framework
 {   
     // TODO: Split Parse and object.
-    public class HttpRequestManager : IHttpRequestManager
+    public class HttpRequestManager : IHttpRequestManager, IHttpRequest
     {
         public HttpRequestManager(string method, string uri, string httpVersion)
         {
@@ -28,7 +28,7 @@ namespace ConsoleWebServer.Framework
 
         public string Uri { get; private set; }
 
-        public IHttpRequestManager Parse(string reqAsStr)
+        public IHttpRequest Parse(string reqAsStr)
         {
             var textReader = new StringReader(reqAsStr);
             var firstLine = textReader.ReadLine();
