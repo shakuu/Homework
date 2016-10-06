@@ -20,9 +20,21 @@ namespace ConsoleWebServer.Framework.Http
             this.AddHeader("Content-Type", contentType);
         }
 
-        public Version ProtocolVersion { get; protected set; }
+        private Version ProtocolVersion { get; set; }
 
-        public IDictionary<string, ICollection<string>> Headers { get; protected set; }
+        private IDictionary<string, ICollection<string>> Headers { get; set; }
+
+        private HttpStatusCode StatusCode { get; set; }
+
+        private string Body { get; set; }
+
+        private string StatusCodeAsString
+        {
+            get
+            {
+                return this.StatusCode.ToString();
+            }
+        }
 
         public void AddHeader(string name, string value)
         {
@@ -33,12 +45,6 @@ namespace ConsoleWebServer.Framework.Http
 
             this.Headers[name].Add(value);
         }
-
-        public HttpStatusCode StatusCode { get; private set; }
-
-        public string Body { get; private set; }
-
-        public string StatusCodeAsString { get { return this.StatusCode.ToString(); } }
 
         public override string ToString()
         {

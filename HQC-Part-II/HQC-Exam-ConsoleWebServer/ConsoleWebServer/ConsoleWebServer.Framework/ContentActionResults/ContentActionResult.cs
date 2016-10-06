@@ -28,6 +28,5 @@ namespace ConsoleWebServer.Framework.ContentActionResults
             foreach (var responseHeader in this.ResponseHeaders) { response.AddHeader(responseHeader.Key, responseHeader.Value); }
             return response;
         }
-
     }
 }
