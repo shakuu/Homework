@@ -6,7 +6,7 @@ using ConsoleWebServer.Framework.Http.Exceptions;
 
 namespace ConsoleWebServer.Framework
 {
-    public class ActionInvoker
+    public class ActionInvoker : IActionInvoker
     {
         public IActionResult InvokeAction(Controller controller, ActionDescriptor actionDescriptor)
         {

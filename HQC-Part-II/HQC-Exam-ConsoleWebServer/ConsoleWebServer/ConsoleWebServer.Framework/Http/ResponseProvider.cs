@@ -14,7 +14,10 @@ namespace ConsoleWebServer.Framework.Http
         private readonly IHttpRequestManager requestManager;
         private readonly IActionInvoker actionInvoker;
 
-        public ResponseProvider(IHttpRequestManager requestManager, IActionInvoker actionInvoker)
+        public ResponseProvider(
+            IHttpRequestManager requestManager,
+            IActionInvoker actionInvoker,
+            Func<Version, HttpStatusCode, string, string, IHttpResponse> createResponse)
         {
             if (requestManager == null)
             {
@@ -65,7 +68,7 @@ namespace ConsoleWebServer.Framework.Http
             }
             else if (httpRequest.ProtocolVersion.Major <= 3)
             {
-                HttpResponse response;
+                IHttpResponse response;
                 try
                 {
                     var controller = this.CreateController(httpRequest);
@@ -80,6 +83,7 @@ namespace ConsoleWebServer.Framework.Http
                 {
                     response = new HttpResponse(httpRequest.ProtocolVersion, HttpStatusCode.InternalServerError, exception.Message);
                 }
+
                 return response;
             }
             else
@@ -91,16 +95,16 @@ namespace ConsoleWebServer.Framework.Http
         private Controller CreateController(IHttpRequest httpRequest)
         {
             var controllerClassName = httpRequest.Action.ControllerName + "Controller";
-            var type =
-                Assembly.GetEntryAssembly()
-                    .GetTypes()
-                    .FirstOrDefault(
-                        x => x.Name.ToLower() == controllerClassName.ToLower() && typeof(Controller).IsAssignableFrom(x));
+            var type = Assembly
+                .GetEntryAssembly()
+                .GetTypes()
+                .FirstOrDefault(x =>
+                    x.Name.ToLower() == controllerClassName.ToLower() &&
+                    typeof(Controller).IsAssignableFrom(x));
 
             if (type == null)
             {
-                throw new HttpNotFoundException(
-                    string.Format("Controller with name {0} not found!", controllerClassName));
+                throw new HttpNotFoundException(string.Format("Controller with name {0} not found!", controllerClassName));
             }
 
             var instance = (Controller)Activator.CreateInstance(type, httpRequest);
