@@ -16,6 +16,10 @@ namespace ConsoleWebServer.Framework
             this.Action = new ActionDescriptor(uri);
         }
 
+        public ActionDescriptor Action { get; private set; }
+
+        public string Method { get; private set; }
+
         public Version ProtocolVersion { get; protected set; }
 
         public IDictionary<string, ICollection<string>> Headers { get; protected set; }
@@ -31,8 +35,6 @@ namespace ConsoleWebServer.Framework
 
             this.Headers[name].Add(valueValueValue);
         }
-        
-        public string Method { get; private set; }
 
         public override string ToString()
         {
@@ -54,7 +56,6 @@ namespace ConsoleWebServer.Framework
             return sb.ToString();
         }
 
-        public ActionDescriptor Action { get; private set; }
 
         public HttpRequestManager Parse(string reqAsStr)
         {
