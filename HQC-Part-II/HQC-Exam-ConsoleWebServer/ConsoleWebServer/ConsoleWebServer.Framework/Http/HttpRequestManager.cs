@@ -2,18 +2,19 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Text;
-
-using ConsoleWebServer.Framework.Contracts;
-using ConsoleWebServer.Framework.Http;
 using ConsoleWebServer.Framework.Http.Contracts;
 using ConsoleWebServer.Framework.Http.Exceptions;
 
-namespace ConsoleWebServer.Framework
-{   
+namespace ConsoleWebServer.Framework.Http
+{
     // TODO: Split Parse and object.
     public class HttpRequestManager : IHttpRequestManager, IHttpRequest
     {
-        public HttpRequestManager(string method, string uri, string httpVersion)
+        public HttpRequestManager()
+        {
+        }
+
+        private HttpRequestManager(string method, string uri, string httpVersion)
         {
             this.ProtocolVersion = Version.Parse(httpVersion.ToLower().Replace("HTTP/".ToLower(), string.Empty));
             this.Headers = new SortedDictionary<string, ICollection<string>>();

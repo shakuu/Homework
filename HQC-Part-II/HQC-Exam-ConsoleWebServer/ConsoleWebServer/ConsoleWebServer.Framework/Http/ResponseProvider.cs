@@ -12,15 +12,22 @@ namespace ConsoleWebServer.Framework.Http
     public class ResponseProvider : IResponseProvider
     {
         private readonly IHttpRequestManager requestManager;
+        private readonly IActionInvoker actionInvoker;
 
-        public ResponseProvider(IHttpRequestManager requestManager)
+        public ResponseProvider(IHttpRequestManager requestManager, IActionInvoker actionInvoker)
         {
             if (requestManager == null)
             {
                 throw new ArgumentNullException(nameof(requestManager));
             }
 
+            if (this.actionInvoker == null)
+            {
+                throw new ArgumentNullException(nameof(actionInvoker));
+            }
+
             this.requestManager = requestManager;
+            this.actionInvoker = actionInvoker;
         }
 
         public IHttpResponse GetResponse(string requestAsString)
@@ -62,8 +69,7 @@ namespace ConsoleWebServer.Framework.Http
                 try
                 {
                     var controller = this.CreateController(httpRequest);
-                    var actionInvoker = new NewActionInvoker();
-                    var actionResult = actionInvoker.InvokeAction(controller, httpRequest.Action);
+                    var actionResult = this.actionInvoker.InvokeAction(controller, httpRequest.Action);
                     response = actionResult.GetResponse();
                 }
                 catch (HttpNotFoundException exception)
