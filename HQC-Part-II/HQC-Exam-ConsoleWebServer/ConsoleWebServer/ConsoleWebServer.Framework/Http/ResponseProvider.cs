@@ -13,11 +13,12 @@ namespace ConsoleWebServer.Framework.Http
     {
         private readonly IHttpRequestManager requestManager;
         private readonly IActionInvoker actionInvoker;
+        private readonly Func<Version, HttpStatusCode, string, IHttpResponse> createResponse;
 
         public ResponseProvider(
             IHttpRequestManager requestManager,
             IActionInvoker actionInvoker,
-            Func<Version, HttpStatusCode, string, string, IHttpResponse> createResponse)
+            Func<Version, HttpStatusCode, string, IHttpResponse> createResponse)
         {
             if (requestManager == null)
             {
@@ -29,24 +30,29 @@ namespace ConsoleWebServer.Framework.Http
                 throw new ArgumentNullException(nameof(actionInvoker));
             }
 
+            if (createResponse == null)
+            {
+                throw new ArgumentNullException(nameof(createResponse));
+            }
+
             this.requestManager = requestManager;
             this.actionInvoker = actionInvoker;
+            this.createResponse = createResponse;
         }
 
         public IHttpResponse GetResponse(string requestAsString)
         {
-            IHttpRequest resultHttpRequest;
             try
             {
-                resultHttpRequest = this.requestManager.Parse(requestAsString);
+                var resultHttpRequest = this.requestManager.Parse(requestAsString);
+                var response = this.Process(resultHttpRequest);
+                return response;
             }
             catch (HttpNotFoundException.ParserException ex)
             {
-                return new HttpResponse(new Version(1, 1), HttpStatusCode.BadRequest, ex.Message);
+                var reponse = this.createResponse(new Version(1, 1), HttpStatusCode.BadRequest, ex.Message);
+                return reponse;
             }
-
-            var response = this.Process(resultHttpRequest);
-            return response;
         }
 
         private IHttpResponse Process(IHttpRequest httpRequest)
@@ -77,18 +83,18 @@ namespace ConsoleWebServer.Framework.Http
                 }
                 catch (HttpNotFoundException exception)
                 {
-                    response = new HttpResponse(httpRequest.ProtocolVersion, HttpStatusCode.NotFound, exception.Message);
+                    response = this.createResponse(httpRequest.ProtocolVersion, HttpStatusCode.NotFound, exception.Message);
                 }
                 catch (Exception exception)
                 {
-                    response = new HttpResponse(httpRequest.ProtocolVersion, HttpStatusCode.InternalServerError, exception.Message);
+                    response = this.createResponse(httpRequest.ProtocolVersion, HttpStatusCode.InternalServerError, exception.Message);
                 }
 
                 return response;
             }
             else
             {
-                return new HttpResponse(httpRequest.ProtocolVersion, HttpStatusCode.NotImplemented, "RequestManager cannot be handled.");
+                return this.createResponse(httpRequest.ProtocolVersion, HttpStatusCode.NotImplemented, "RequestManager cannot be handled.");
             }
         }
 

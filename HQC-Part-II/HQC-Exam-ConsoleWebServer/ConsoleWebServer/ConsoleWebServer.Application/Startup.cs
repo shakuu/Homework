@@ -4,6 +4,7 @@ using ConsoleWebServer.Application.Loggers;
 using ConsoleWebServer.Application.UI;
 using ConsoleWebServer.Framework;
 using ConsoleWebServer.Framework.Http;
+using ConsoleWebServer.Framework.Http.Factory;
 
 namespace ConsoleWebServer.Application
 {
@@ -22,7 +23,11 @@ namespace ConsoleWebServer.Application
             var logger = new ConsoleLogger();
             var inputProvider = new ConsoleInputProvider();
             var actionInvoker = new ActionInvoker();
-            var responseProvider = new ResponseProvider(requestManager, actionInvoker);
+            var responseProvider = new ResponseProvider(
+                requestManager,
+                actionInvoker,
+                HttpResponseFactory.CreateHttpResponse);
+
             var webServer = new WebServerConsole(responseProvider, inputProvider, logger);
             return webServer;
         }

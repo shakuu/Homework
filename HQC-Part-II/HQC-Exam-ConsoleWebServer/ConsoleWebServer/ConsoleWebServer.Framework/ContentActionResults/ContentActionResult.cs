@@ -22,7 +22,7 @@ namespace ConsoleWebServer.Framework.ContentActionResults
 
         public IList<KeyValuePair<string, string>> ResponseHeaders { get; private set; }
 
-        public HttpResponse GetResponse()
+        public IHttpResponse GetResponse()
         {
             var response = new HttpResponse(this.RequestManager.ProtocolVersion, HttpStatusCode.OK, this.model.ToString(), "text/plain; charset=utf-8");
             foreach (var responseHeader in this.ResponseHeaders) { response.AddHeader(responseHeader.Key, responseHeader.Value); }
