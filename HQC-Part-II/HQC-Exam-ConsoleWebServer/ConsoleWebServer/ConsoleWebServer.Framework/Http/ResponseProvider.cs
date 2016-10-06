@@ -80,7 +80,7 @@ namespace ConsoleWebServer.Framework.Http
             {
                 return this.staticFileHandler.Handle(httpRequest);
             }
-            else if (httpRequest.ProtocolVersion.Major <= 3)
+            else if (httpRequest.ProtocolVersion.Major < 3)
             {
                 IHttpResponse response;
                 try
