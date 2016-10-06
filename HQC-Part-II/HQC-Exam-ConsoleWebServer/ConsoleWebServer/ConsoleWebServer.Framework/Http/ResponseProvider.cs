@@ -4,11 +4,10 @@ using System.Net;
 using System.Reflection;
 
 using ConsoleWebServer.Framework.Contracts;
-using ConsoleWebServer.Framework.Http;
 using ConsoleWebServer.Framework.Http.Contracts;
 using ConsoleWebServer.Framework.Http.Exceptions;
 
-namespace ConsoleWebServer.Framework
+namespace ConsoleWebServer.Framework.Http
 {
     public class ResponseProvider : IResponseProvider
     {

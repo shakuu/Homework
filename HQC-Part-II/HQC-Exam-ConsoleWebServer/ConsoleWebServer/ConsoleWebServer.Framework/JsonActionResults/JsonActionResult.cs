@@ -2,6 +2,7 @@
 using System.Net;
 
 using ConsoleWebServer.Framework.Contracts;
+using ConsoleWebServer.Framework.Http;
 using ConsoleWebServer.Framework.Http.Contracts;
 using Newtonsoft.Json;
 

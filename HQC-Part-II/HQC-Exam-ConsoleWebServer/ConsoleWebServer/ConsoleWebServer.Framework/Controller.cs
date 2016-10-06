@@ -1,4 +1,5 @@
-﻿using ConsoleWebServer.Framework.Contracts;
+﻿using ConsoleWebServer.Framework.ContentActionResults;
+using ConsoleWebServer.Framework.Contracts;
 using ConsoleWebServer.Framework.Http.Contracts;
 using ConsoleWebServer.Framework.JsonActionResults;
 

@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Net;
 using System.Text;
 
-namespace ConsoleWebServer.Framework
+namespace ConsoleWebServer.Framework.Http
 {
     public class HttpResponse
     {

@@ -3,6 +3,7 @@
 using ConsoleWebServer.Application.Loggers;
 using ConsoleWebServer.Application.UI;
 using ConsoleWebServer.Framework;
+using ConsoleWebServer.Framework.Http;
 
 namespace ConsoleWebServer.Application
 {

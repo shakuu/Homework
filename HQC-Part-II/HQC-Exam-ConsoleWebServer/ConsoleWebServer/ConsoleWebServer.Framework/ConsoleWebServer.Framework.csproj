@@ -71,11 +71,14 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ActionInvoker.cs" />
+    <Compile Include="ContentActionResults\ContentActionResultWithCors.cs" />
+    <Compile Include="ContentActionResults\ContentActionResultWithCorsWithoutCaching.cs" />
+    <Compile Include="ContentActionResults\ContentActionResultWithoutCaching.cs" />
     <Compile Include="Http\Contracts\IHttpRequest.cs" />
     <Compile Include="Http\Contracts\IHtttpRequestManager.cs" />
     <Compile Include="HighQualityCodeExamPointsProvider.cs" />
     <Compile Include="JsonActionResults\JsonActionResult.cs" />
-    <Compile Include="ContentActionResult.cs" />
+    <Compile Include="ContentActionResults\ContentActionResult.cs" />
     <Compile Include="JsonActionResults\JsonActionResultWithCors.cs" />
     <Compile Include="JsonActionResults\JsonActionResultWithCorsWithoutCaching.cs" />
     <Compile Include="JsonActionResults\JsonActionResultWithoutCaching.cs" />

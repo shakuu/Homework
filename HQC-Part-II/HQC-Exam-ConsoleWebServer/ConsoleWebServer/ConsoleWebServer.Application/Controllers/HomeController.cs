@@ -1,4 +1,5 @@
 ﻿using ConsoleWebServer.Framework;
+using ConsoleWebServer.Framework.ContentActionResults;
 using ConsoleWebServer.Framework.Contracts;
 
 namespace ConsoleWebServer.Application.Controllers

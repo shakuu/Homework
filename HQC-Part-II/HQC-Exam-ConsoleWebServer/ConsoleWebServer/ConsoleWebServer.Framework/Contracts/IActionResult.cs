@@ -1,4 +1,6 @@
-﻿namespace ConsoleWebServer.Framework.Contracts
+﻿using ConsoleWebServer.Framework.Http;
+
+namespace ConsoleWebServer.Framework.Contracts
 {
     public interface IActionResult
     {
