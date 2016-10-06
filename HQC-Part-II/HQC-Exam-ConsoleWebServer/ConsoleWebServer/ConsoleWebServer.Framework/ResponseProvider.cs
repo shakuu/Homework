@@ -28,7 +28,7 @@ namespace ConsoleWebServer.Framework
             {
                 resultHttpRequest = this.requestManager.Parse(requestAsString);
             }
-            catch (Exception ex)
+            catch (HttpNotFound.ParserException ex)
             {
                 return new HttpResponse(new Version(1, 1), HttpStatusCode.BadRequest, ex.Message);
             }
@@ -80,9 +80,9 @@ namespace ConsoleWebServer.Framework
             }
         }
 
-        private Controller CreateController(IHttpRequest requestManager)
+        private Controller CreateController(IHttpRequest httpRequest)
         {
-            var controllerClassName = requestManager.Action.ControllerName + "Controller";
+            var controllerClassName = httpRequest.Action.ControllerName + "Controller";
             var type =
                 Assembly.GetEntryAssembly()
                     .GetTypes()
@@ -93,7 +93,7 @@ namespace ConsoleWebServer.Framework
                 throw new HttpNotFound(
                     string.Format("Controller with name {0} not found!", controllerClassName));
             }
-            var instance = (Controller)Activator.CreateInstance(type, requestManager);
+            var instance = (Controller)Activator.CreateInstance(type, httpRequest);
             return instance;
         }
     }
