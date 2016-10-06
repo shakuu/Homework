@@ -16,9 +16,11 @@ namespace ConsoleWebServer.Application
 
         private static WebServerConsole CreateWebServer()
         {
+            var requestManager = new HttpRequestManager("GET", "/", "1.1");
+            
             var logger = new ConsoleLogger();
             var inputProvider = new ConsoleInputProvider();
-            var responseProvider = new ResponseProvider();
+            var responseProvider = new ResponseProvider(requestManager);
             var webServer = new WebServerConsole(responseProvider, inputProvider, logger);
             return webServer;
         }

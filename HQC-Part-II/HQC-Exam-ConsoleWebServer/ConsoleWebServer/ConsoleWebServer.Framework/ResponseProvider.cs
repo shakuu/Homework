@@ -2,35 +2,42 @@ using System;
 using System.Linq;
 using System.Net;
 using System.Reflection;
+
 using ConsoleWebServer.Framework.Contracts;
 
 namespace ConsoleWebServer.Framework
 {
     public class ResponseProvider : IResponseProvider
     {
-        public ResponseProvider()
-        {
+        private IHttpRequestManager requestManager;
 
+        public ResponseProvider(IHttpRequestManager requestManager)
+        {
+            if (requestManager == null)
+            {
+                throw new ArgumentNullException(nameof(requestManager));
+            }
+
+            this.requestManager = requestManager;
         }
 
         public HttpResponse GetResponse(string requestAsString)
         {
-            HttpRequestManager requestManager;
+            IHttpRequestManager resultHttpRequest;
             try
             {
-                var requestParser = new HttpRequestManager("GET", "/", "1.1");
-                requestManager = requestParser.Parse(requestAsString);
+                resultHttpRequest = this.requestManager.Parse(requestAsString);
             }
             catch (Exception ex)
             {
                 return new HttpResponse(new Version(1, 1), HttpStatusCode.BadRequest, ex.Message);
             }
 
-            var response = this.Process(requestManager);
+            var response = this.Process(resultHttpRequest);
             return response;
         }
 
-        private HttpResponse Process(HttpRequestManager requestManager)
+        private HttpResponse Process(IHttpRequestManager requestManager)
         {
             if (requestManager.Method.ToLower() == "options")
             {
@@ -73,7 +80,7 @@ namespace ConsoleWebServer.Framework
             }
         }
 
-        private Controller CreateController(HttpRequestManager requestManager)
+        private Controller CreateController(IHttpRequestManager requestManager)
         {
             var controllerClassName = requestManager.Action.ControllerName + "Controller";
             var type =
