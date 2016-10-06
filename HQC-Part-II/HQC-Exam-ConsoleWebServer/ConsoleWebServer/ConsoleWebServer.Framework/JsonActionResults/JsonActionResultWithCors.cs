@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using ConsoleWebServer.Framework.Http.Contracts;
 
 namespace ConsoleWebServer.Framework.JsonActionResults
 {

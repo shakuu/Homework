@@ -1,4 +1,4 @@
-﻿namespace ConsoleWebServer.Framework.Contracts
+﻿namespace ConsoleWebServer.Framework.Http.Contracts
 {
     public interface IResponseProvider
     {

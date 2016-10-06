@@ -2,6 +2,8 @@
 using System.Reflection;
 using ConsoleWebServer.Framework;
 using ConsoleWebServer.Framework.Contracts;
+using ConsoleWebServer.Framework.Http;
+using ConsoleWebServer.Framework.Http.Exceptions;
 
 
 public class ActionInvoker{
@@ -17,7 +19,7 @@ public class ActionInvoker{
                 .GetMethods().FirstOrDefault(x => x.Name.ToLower() == ad.ActionName.ToLower() && x.GetParameters().Length == 1
                     && x.GetParameters()[0].ParameterType == typeof(string)&& x.ReturnType == typeof(IActionResult));
         if (methodWithIntParameter == null){
-            throw new HttpNotFound(
+            throw new HttpNotFoundException(
                 string.Format("Expected method with signature IActionResult {0}(string) in class {1}Controller",
                     ad.ActionName,ad.ControllerName));
         } try {

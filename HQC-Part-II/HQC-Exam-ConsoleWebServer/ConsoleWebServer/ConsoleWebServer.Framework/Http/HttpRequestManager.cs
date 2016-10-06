@@ -4,6 +4,9 @@ using System.IO;
 using System.Text;
 
 using ConsoleWebServer.Framework.Contracts;
+using ConsoleWebServer.Framework.Http;
+using ConsoleWebServer.Framework.Http.Contracts;
+using ConsoleWebServer.Framework.Http.Exceptions;
 
 namespace ConsoleWebServer.Framework
 {   
@@ -79,7 +82,7 @@ namespace ConsoleWebServer.Framework
             var firstRequestLineParts = firstRequestLine.Split(' ');
             if (firstRequestLineParts.Length != 3)
             {
-                throw new HttpNotFound.ParserException(
+                throw new HttpNotFoundException.ParserException(
                     "Invalid format for the first requestManager line. Expected format: [Method] [Uri] HTTP/[Version]");
             }
             var requestObject = new HttpRequestManager(

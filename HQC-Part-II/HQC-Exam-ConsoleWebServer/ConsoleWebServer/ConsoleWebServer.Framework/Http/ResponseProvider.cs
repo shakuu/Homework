@@ -4,6 +4,9 @@ using System.Net;
 using System.Reflection;
 
 using ConsoleWebServer.Framework.Contracts;
+using ConsoleWebServer.Framework.Http;
+using ConsoleWebServer.Framework.Http.Contracts;
+using ConsoleWebServer.Framework.Http.Exceptions;
 
 namespace ConsoleWebServer.Framework
 {
@@ -28,7 +31,7 @@ namespace ConsoleWebServer.Framework
             {
                 resultHttpRequest = this.requestManager.Parse(requestAsString);
             }
-            catch (HttpNotFound.ParserException ex)
+            catch (HttpNotFoundException.ParserException ex)
             {
                 return new HttpResponse(new Version(1, 1), HttpStatusCode.BadRequest, ex.Message);
             }
@@ -64,7 +67,7 @@ namespace ConsoleWebServer.Framework
                     var actionResult = actionInvoker.InvokeAction(controller, httpRequest.Action);
                     response = actionResult.GetResponse();
                 }
-                catch (HttpNotFound exception)
+                catch (HttpNotFoundException exception)
                 {
                     response = new HttpResponse(httpRequest.ProtocolVersion, HttpStatusCode.NotFound, exception.Message);
                 }
@@ -91,7 +94,7 @@ namespace ConsoleWebServer.Framework
 
             if (type == null)
             {
-                throw new HttpNotFound(
+                throw new HttpNotFoundException(
                     string.Format("Controller with name {0} not found!", controllerClassName));
             }
             var instance = (Controller)Activator.CreateInstance(type, httpRequest);

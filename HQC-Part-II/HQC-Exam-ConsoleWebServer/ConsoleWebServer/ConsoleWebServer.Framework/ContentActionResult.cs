@@ -1,8 +1,10 @@
 ﻿using System.Collections.Generic;
 using System.Text;
 using System.Net;
+using ConsoleWebServer;
 using ConsoleWebServer.Framework;
 using ConsoleWebServer.Framework.Contracts;
+using ConsoleWebServer.Framework.Http.Contracts;
 
 
 public class ContentActionResult : IActionResult

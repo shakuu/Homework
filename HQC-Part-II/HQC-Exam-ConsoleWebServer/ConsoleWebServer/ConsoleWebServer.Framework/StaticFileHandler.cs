@@ -4,6 +4,7 @@ using System.Linq;
 using System.Net;
 
 using ConsoleWebServer.Framework.Contracts;
+using ConsoleWebServer.Framework.Http.Contracts;
 
 namespace ConsoleWebServer.Framework
 {

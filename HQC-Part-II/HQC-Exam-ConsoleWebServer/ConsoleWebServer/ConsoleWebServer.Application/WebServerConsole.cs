@@ -5,6 +5,7 @@ using ConsoleWebServer.Application.Loggers;
 using ConsoleWebServer.Application.UI;
 using ConsoleWebServer.Framework;
 using ConsoleWebServer.Framework.Contracts;
+using ConsoleWebServer.Framework.Http.Contracts;
 
 namespace ConsoleWebServer.Application
 {
