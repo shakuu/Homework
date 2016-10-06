@@ -5,7 +5,7 @@ using System.Text;
 
 namespace ConsoleWebServer.Framework
 {
-    public class HttpRequestManager
+    public class HttpRequestManager : IHttpRequestManager
     {
         public HttpRequestManager(string method, string uri, string httpVersion)
         {
@@ -26,14 +26,19 @@ namespace ConsoleWebServer.Framework
 
         public string Uri { get; private set; }
 
-        public void AddHeader(string name, string valueValueValue)
+        public HttpRequestManager Parse(string reqAsStr)
         {
-            if (!this.Headers.ContainsKey(name))
+            var textReader = new StringReader(reqAsStr);
+            var firstLine = textReader.ReadLine();
+            var requestObject = this.CreateRequest(firstLine);
+
+            string line;
+            while ((line = textReader.ReadLine()) != null)
             {
-                this.Headers.Add(name, new HashSet<string>(new List<string>()));
+                this.AddHeaderToRequest(requestObject, line);
             }
 
-            this.Headers[name].Add(valueValueValue);
+            return requestObject;
         }
 
         public override string ToString()
@@ -56,20 +61,14 @@ namespace ConsoleWebServer.Framework
             return sb.ToString();
         }
 
-
-        public HttpRequestManager Parse(string reqAsStr)
+        private void AddHeader(string name, string valueValueValue)
         {
-            var textReader = new StringReader(reqAsStr);
-            var firstLine = textReader.ReadLine();
-            var requestObject = this.CreateRequest(firstLine);
-
-            string line;
-            while ((line = textReader.ReadLine()) != null)
+            if (!this.Headers.ContainsKey(name))
             {
-                this.AddHeaderToRequest(requestObject, line);
+                this.Headers.Add(name, new HashSet<string>(new List<string>()));
             }
 
-            return requestObject;
+            this.Headers[name].Add(valueValueValue);
         }
 
         private HttpRequestManager CreateRequest(string frl)
