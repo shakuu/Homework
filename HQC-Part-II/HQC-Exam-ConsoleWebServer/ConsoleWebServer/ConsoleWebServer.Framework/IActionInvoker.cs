@@ -4,6 +4,6 @@ namespace ConsoleWebServer.Framework
 {
     public interface IActionInvoker
     {
-        IActionResult InvokeAction(Controller controller, ActionDescriptor actionDescriptor);
+        IActionResult InvokeAction(Controller controller, HttpRequestWords httpRequestWords);
     }
 }

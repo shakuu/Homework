@@ -8,7 +8,7 @@ namespace ConsoleWebServer.Framework
 {
     public class ActionInvoker : IActionInvoker
     {
-        public IActionResult InvokeAction(Controller controller, ActionDescriptor actionDescriptor)
+        public IActionResult InvokeAction(Controller controller, HttpRequestWords httpRequestWords)
         {
             // * Child processes that use such C run-time functions as printf() and fprintf() can behave poorly when redirected.
             // * The C run - time functions maintain separate IO buffers.When redirected, these buffers might not be flushed immediately after each IO call.
@@ -20,7 +20,7 @@ namespace ConsoleWebServer.Framework
                 .GetType()
                 .GetMethods()
                 .FirstOrDefault(x =>
-                    x.Name.ToLower() == actionDescriptor.ActionName.ToLower() &&
+                    x.Name.ToLower() == httpRequestWords.ActionName.ToLower() &&
                     x.GetParameters().Length == 1 &&
                     x.GetParameters()[0].ParameterType == typeof(string) &&
                     x.ReturnType == typeof(IActionResult));
@@ -30,12 +30,12 @@ namespace ConsoleWebServer.Framework
                 throw new HttpNotFoundException(
                     string.Format(
                         "Expected method with signature IActionResult {0}(string) in class {1}Controller",
-                        actionDescriptor.ActionName, actionDescriptor.ControllerName));
+                        httpRequestWords.ActionName, httpRequestWords.ControllerName));
             }
 
             try
             {
-                var actionResult = (IActionResult)methodWithStringParameter.Invoke(controller, new object[] { actionDescriptor.Parameter });
+                var actionResult = (IActionResult)methodWithStringParameter.Invoke(controller, new object[] { httpRequestWords.Parameter });
                 return actionResult;
             }
             catch (TargetInvocationException ex)

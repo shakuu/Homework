@@ -2,9 +2,9 @@
 
 namespace ConsoleWebServer.Framework
 {
-    public class ActionDescriptor
+    public class HttpRequestWords
     {
-        public ActionDescriptor(string uri)
+        public HttpRequestWords(string uri)
         {
             if (uri == null)
             {

@@ -27,7 +27,7 @@ namespace ConsoleWebServer.Framework.Http
                 throw new ArgumentNullException(nameof(requestManager));
             }
 
-            if (this.actionInvoker == null)
+            if (actionInvoker == null)
             {
                 throw new ArgumentNullException(nameof(actionInvoker));
             }

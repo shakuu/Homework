@@ -58,6 +58,7 @@ namespace ConsoleWebServer.Framework.Http
                     this.ProtocolVersion,
                     (int)this.StatusCode,
                     this.StatusCodeAsString));
+
             var headerStringBuilder = new StringBuilder();
             foreach (var key in this.Headers.Keys)
             {

@@ -20,10 +20,10 @@ namespace ConsoleWebServer.Framework.Http
             this.Headers = new SortedDictionary<string, ICollection<string>>();
             this.Uri = uri;
             this.Method = method;
-            this.Action = new ActionDescriptor(uri);
+            this.Action = new HttpRequestWords(uri);
         }
 
-        public ActionDescriptor Action { get; private set; }
+        public HttpRequestWords Action { get; private set; }
 
         public string Method { get; private set; }
 
@@ -64,6 +64,7 @@ namespace ConsoleWebServer.Framework.Http
             {
                 headerStringBuilder.AppendLine(string.Format("{0}: {1}", key, string.Join("; ", this.Headers[key])));
             }
+
             sb.AppendLine(headerStringBuilder.ToString());
             return sb.ToString();
         }

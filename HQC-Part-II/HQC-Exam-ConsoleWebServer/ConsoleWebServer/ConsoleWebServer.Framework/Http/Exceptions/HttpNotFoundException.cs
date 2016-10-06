@@ -10,7 +10,7 @@ namespace ConsoleWebServer.Framework.Http.Exceptions
 
         public class ParserException : Exception
         {
-            public ParserException(string message, ActionDescriptor request = null)
+            public ParserException(string message, HttpRequestWords request = null)
                 : base(message)
             {
             }

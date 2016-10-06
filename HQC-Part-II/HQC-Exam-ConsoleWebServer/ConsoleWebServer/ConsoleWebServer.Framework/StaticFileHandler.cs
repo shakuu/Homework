@@ -1,6 +1,5 @@
 ﻿using System;
 using System.IO;
-using System.Linq;
 using System.Net;
 
 using ConsoleWebServer.Framework.Http;
@@ -19,7 +18,7 @@ namespace ConsoleWebServer.Framework
         public IHttpResponse Handle(IHttpRequest requestManager)
         {
             var filePath = Environment.CurrentDirectory + "/" + requestManager.Uri;
-            if (!this.FileExists("C:\\", filePath, 3))
+            if (!this.FileExists(filePath))
             {
                 return new HttpResponse(requestManager.ProtocolVersion, HttpStatusCode.NotFound, "File not found");
             }
@@ -29,34 +28,9 @@ namespace ConsoleWebServer.Framework
             return response;
         }
 
-        private bool FileExists(string path, string filePath, int depth)
+        private bool FileExists(string filePath)
         {
-            if (depth <= 0)
-            {
-                return File.Exists(filePath);
-            }
-            try
-            {
-                var f = Directory.GetFiles(path);
-                if (f.Contains(filePath))
-                {
-                    return true;
-                }
-                var d = Directory.GetDirectories(path);
-                foreach (var dd in d)
-                {
-                    if (this.FileExists(dd, filePath, depth - 1))
-                    {
-                        return true;
-                    }
-                }
-
-                return false;
-            }
-            catch (Exception)
-            {
-                return false;
-            }
+            return File.Exists(filePath);
         }
     }
 }

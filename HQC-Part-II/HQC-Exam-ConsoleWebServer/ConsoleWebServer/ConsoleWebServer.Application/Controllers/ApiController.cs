@@ -1,15 +1,17 @@
 ﻿using System;
 using System.Linq;
+
 using ConsoleWebServer.Framework;
 using ConsoleWebServer.Framework.Contracts;
-using ConsoleWebServer.Framework.Http;
+using ConsoleWebServer.Framework.Http.Contracts;
 using ConsoleWebServer.Framework.JsonActionResults;
 
 namespace ConsoleWebServer.Application.Controllers
 {
     public class ApiController : Controller
     {
-        public ApiController(HttpRequestManager requestManager) : base(requestManager)
+        public ApiController(IHttpRequest requestManager) 
+            : base(requestManager)
         {
         }
 
@@ -25,10 +27,12 @@ namespace ConsoleWebServer.Application.Controllers
             {
                 requestReferer = this.RequestManager.Headers["Referer"].FirstOrDefault();
             }
+
             if (string.IsNullOrWhiteSpace(requestReferer) || !requestReferer.Contains(domainName))
             {
                 throw new ArgumentException("Invalid referer!");
             }
+
             return new JsonActionResultWithCors(
                 this.RequestManager,
                 new { date = DateTime.Now.ToString("yyyy-MM-dd"), moreInfo = "Data available for " + domainName },
