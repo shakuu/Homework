@@ -5,7 +5,8 @@ using System.Text;
 using ConsoleWebServer.Framework.Contracts;
 
 namespace ConsoleWebServer.Framework
-{
+{   
+    // TODO: Split Parse and object.
     public class HttpRequestManager : IHttpRequestManager
     {
         public HttpRequestManager(string method, string uri, string httpVersion)
@@ -27,7 +28,7 @@ namespace ConsoleWebServer.Framework
 
         public string Uri { get; private set; }
 
-        public HttpRequestManager Parse(string reqAsStr)
+        public IHttpRequestManager Parse(string reqAsStr)
         {
             var textReader = new StringReader(reqAsStr);
             var firstLine = textReader.ReadLine();
@@ -72,9 +73,9 @@ namespace ConsoleWebServer.Framework
             this.Headers[name].Add(valueValueValue);
         }
 
-        private HttpRequestManager CreateRequest(string frl)
+        private HttpRequestManager CreateRequest(string firstRequestLine)
         {
-            var firstRequestLineParts = frl.Split(' ');
+            var firstRequestLineParts = firstRequestLine.Split(' ');
             if (firstRequestLineParts.Length != 3)
             {
                 throw new HttpNotFound.ParserException(

@@ -2,6 +2,7 @@
 using System.Linq;
 using ConsoleWebServer.Framework;
 using ConsoleWebServer.Framework.Contracts;
+using ConsoleWebServer.Framework.JsonActionResults;
 
 namespace ConsoleWebServer.Application.Controllers
 {

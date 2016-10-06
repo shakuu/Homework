@@ -1,12 +1,14 @@
 using System.Collections.Generic;
-using ConsoleWebServer.Framework;
 
-public class JsonActionResultWithCorsWithoutCaching : JsonActionResult
+namespace ConsoleWebServer.Framework.JsonActionResults
 {
-    public JsonActionResultWithCorsWithoutCaching(HttpRequestManager requestManager, object model, string corsSettings)
-        : base(requestManager, model)
+    public class JsonActionResultWithCorsWithoutCaching : JsonActionResult
     {
-        this.ResponseHeaders.Add(new KeyValuePair<string, string>("Access-Control-Allow-Origin", corsSettings));
-        this.ResponseHeaders.Add(new KeyValuePair<string, string>("Cache-Control", "private, max-age=0, no-cache"));
+        public JsonActionResultWithCorsWithoutCaching(HttpRequestManager requestManager, object model, string corsSettings)
+            : base(requestManager, model)
+        {
+            this.ResponseHeaders.Add(new KeyValuePair<string, string>("Access-Control-Allow-Origin", corsSettings));
+            this.ResponseHeaders.Add(new KeyValuePair<string, string>("Cache-Control", "private, max-age=0, no-cache"));
+        }
     }
 }

@@ -1,11 +1,14 @@
 using System.Collections.Generic;
 using ConsoleWebServer.Framework.Contracts;
 
-public class JsonActionResultWithCors : JsonActionResult
+namespace ConsoleWebServer.Framework.JsonActionResults
 {
-    public JsonActionResultWithCors(IHttpRequestManager requestManager, object model, string corsSettings)
-        : base(requestManager, model)
+    public class JsonActionResultWithCors : JsonActionResult
     {
-        this.ResponseHeaders.Add(new KeyValuePair<string, string>("Access-Control-Allow-Origin", corsSettings));
+        public JsonActionResultWithCors(IHttpRequestManager requestManager, object model, string corsSettings)
+            : base(requestManager, model)
+        {
+            this.ResponseHeaders.Add(new KeyValuePair<string, string>("Access-Control-Allow-Origin", corsSettings));
+        }
     }
 }

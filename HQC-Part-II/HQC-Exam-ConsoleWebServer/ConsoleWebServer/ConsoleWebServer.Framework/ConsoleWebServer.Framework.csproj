@@ -73,8 +73,11 @@
     <Compile Include="ActionInvoker.cs" />
     <Compile Include="Contracts\IHtttpRequestManager.cs" />
     <Compile Include="HighQualityCodeExamPointsProvider.cs" />
-    <Compile Include="JsonActionResult.cs" />
+    <Compile Include="JsonActionResults\JsonActionResult.cs" />
     <Compile Include="ContentActionResult.cs" />
+    <Compile Include="JsonActionResults\JsonActionResultWithCors.cs" />
+    <Compile Include="JsonActionResults\JsonActionResultWithCorsWithoutCaching.cs" />
+    <Compile Include="JsonActionResults\JsonActionResultWithoutCaching.cs" />
     <Compile Include="NewActionInvoker.cs" />
     <Compile Include="StaticFileHandler.cs" />
     <Compile Include="HttpNotFound.cs" />

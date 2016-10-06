@@ -10,6 +10,6 @@ namespace ConsoleWebServer.Framework.Contracts
         Version ProtocolVersion { get; }
         IDictionary<string, ICollection<string>> Headers { get; }
         string Uri { get; }
-        HttpRequestManager Parse(string reqAsStr);
+        IHttpRequestManager Parse(string reqAsStr);
     }
 }
