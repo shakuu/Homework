@@ -88,6 +88,7 @@ namespace ConsoleWebServer.Framework
                     .GetTypes()
                     .FirstOrDefault(
                         x => x.Name.ToLower() == controllerClassName.ToLower() && typeof(Controller).IsAssignableFrom(x));
+
             if (type == null)
             {
                 throw new HttpNotFound(

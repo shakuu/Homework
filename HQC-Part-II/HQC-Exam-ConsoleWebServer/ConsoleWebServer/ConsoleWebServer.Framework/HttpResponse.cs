@@ -1,5 +1,7 @@
-﻿using System;using System.Linq;
-using System.Collections.Generic;using System.Text;
+﻿using System;
+using System.Linq;
+using System.Collections.Generic;
+using System.Text;
 using System.Net;
 using System.Text;
 
@@ -30,7 +32,8 @@ public class HttpResponse
 
     public void AddHeader(string name, string value)
     {
-        if (!Headers.ContainsKey(name)){
+        if (!Headers.ContainsKey(name))
+        {
             Headers.Add(name, new HashSet<string>());
         }
         Headers[name].Add(value);
@@ -38,9 +41,9 @@ public class HttpResponse
 
     public HttpStatusCode StatusCode { get; private set; }
 
-    public string Body{get;private set; }
+    public string Body { get; private set; }
 
-    public string StatusCodeAsString{get{return this.StatusCode.ToString();}}
+    public string StatusCodeAsString { get { return this.StatusCode.ToString(); } }
 
     public override string ToString()
     {
