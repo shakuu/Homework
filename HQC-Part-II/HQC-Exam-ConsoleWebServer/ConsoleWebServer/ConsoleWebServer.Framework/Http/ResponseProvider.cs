@@ -74,7 +74,7 @@ namespace ConsoleWebServer.Framework.Http
                         .SelectMany(x => x.Methods.Select(m => string.Format("/{0}/{1}/{{parameter}}", x.Name.Replace("Controller", string.Empty), m.Name)))
                         .ToList();
 
-                return new HttpResponse(httpRequest.ProtocolVersion, HttpStatusCode.OK, string.Join(Environment.NewLine, routes));
+                return this.createResponse(httpRequest.ProtocolVersion, HttpStatusCode.OK, string.Join(Environment.NewLine, routes));
             }
             else if (this.staticFileHandler.CanHandle(httpRequest))
             {
