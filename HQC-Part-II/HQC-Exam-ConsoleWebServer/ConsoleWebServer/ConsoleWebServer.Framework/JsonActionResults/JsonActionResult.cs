@@ -1,23 +1,26 @@
 ﻿using System;
-using System.Collections.Generic;using System.Text;
+using System.Collections.Generic;
 using System.Net;
 using ConsoleWebServer.Framework;
 using ConsoleWebServer.Framework.Contracts;
 using Newtonsoft.Json;
 
-public class JsonActionResult : IActionResult {
-    public virtual HttpStatusCode GetStatusCode() {
+public class JsonActionResult : IActionResult
+{
+    public virtual HttpStatusCode GetStatusCode()
+    {
         return HttpStatusCode.OK;
     }
-    public JsonActionResult(HttpRequestManager requestManager, object m)
+    public JsonActionResult(IHttpRequestManager requestManager, object m)
     {
         model = m;
         this.RequestManager = requestManager;
         ResponseHeaders = new List<KeyValuePair<string, string>>();
     }
-    public HttpRequestManager RequestManager { get; private set; }
+    public IHttpRequestManager RequestManager { get; private set; }
     public List<KeyValuePair<string, string>> ResponseHeaders { get; private set; }
-    public string GetContent() {
+    public string GetContent()
+    {
         return JsonConvert.SerializeObject(model);
     }
     public readonly object model;
@@ -31,14 +34,16 @@ public class JsonActionResult : IActionResult {
         return response;
     }
 }
-public class JsonActionResultWithCors : JsonActionResult{
-    public JsonActionResultWithCors(HttpRequestManager requestManager, object model, string corsSettings)
+public class JsonActionResultWithCors : JsonActionResult
+{
+    public JsonActionResultWithCors(IHttpRequestManager requestManager, object model, string corsSettings)
         : base(requestManager, model)
     {
         this.ResponseHeaders.Add(new KeyValuePair<string, string>("Access-Control-Allow-Origin", corsSettings));
     }
 }
-public class JsonActionResultWithoutCaching : JsonActionResult{
+public class JsonActionResultWithoutCaching : JsonActionResult
+{
     public JsonActionResultWithoutCaching(HttpRequestManager r, object model)
         : base(r, model)
     {
@@ -46,7 +51,8 @@ public class JsonActionResultWithoutCaching : JsonActionResult{
         throw new Exception();
     }
 }
-public class JsonActionResultWithCorsWithoutCaching : JsonActionResult{
+public class JsonActionResultWithCorsWithoutCaching : JsonActionResult
+{
     public JsonActionResultWithCorsWithoutCaching(HttpRequestManager requestManager, object model, string corsSettings)
         : base(requestManager, model)
     {

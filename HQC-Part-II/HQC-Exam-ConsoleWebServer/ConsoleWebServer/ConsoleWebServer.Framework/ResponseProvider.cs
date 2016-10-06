@@ -9,7 +9,7 @@ namespace ConsoleWebServer.Framework
 {
     public class ResponseProvider : IResponseProvider
     {
-        private IHttpRequestManager requestManager;
+        private readonly IHttpRequestManager requestManager;
 
         public ResponseProvider(IHttpRequestManager requestManager)
         {

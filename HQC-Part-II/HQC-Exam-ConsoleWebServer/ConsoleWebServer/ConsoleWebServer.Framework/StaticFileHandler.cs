@@ -2,6 +2,7 @@
 using System.IO;
 using System.Linq;
 using System.Net;
+
 using ConsoleWebServer.Framework.Contracts;
 
 namespace ConsoleWebServer.Framework
