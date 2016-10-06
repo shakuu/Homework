@@ -2,7 +2,7 @@
 {
     public interface IResponseProvider
     {
-        HttpResponse GetResponse(string requestAsString);
+        IHttpResponse GetResponse(string requestAsString);
     }
 }
 

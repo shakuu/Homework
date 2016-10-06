@@ -77,6 +77,7 @@
     <Compile Include="Http\Contracts\IHttpRequest.cs" />
     <Compile Include="Http\Contracts\IHtttpRequestManager.cs" />
     <Compile Include="HighQualityCodeExamPointsProvider.cs" />
+    <Compile Include="Http\Contracts\IHttpResponse.cs" />
     <Compile Include="JsonActionResults\JsonActionResult.cs" />
     <Compile Include="ContentActionResults\ContentActionResult.cs" />
     <Compile Include="JsonActionResults\JsonActionResultWithCors.cs" />

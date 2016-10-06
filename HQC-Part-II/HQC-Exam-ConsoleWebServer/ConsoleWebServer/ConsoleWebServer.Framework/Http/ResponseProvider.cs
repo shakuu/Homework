@@ -23,7 +23,7 @@ namespace ConsoleWebServer.Framework.Http
             this.requestManager = requestManager;
         }
 
-        public HttpResponse GetResponse(string requestAsString)
+        public IHttpResponse GetResponse(string requestAsString)
         {
             IHttpRequest resultHttpRequest;
             try
@@ -39,7 +39,7 @@ namespace ConsoleWebServer.Framework.Http
             return response;
         }
 
-        private HttpResponse Process(IHttpRequest httpRequest)
+        private IHttpResponse Process(IHttpRequest httpRequest)
         {
             if (httpRequest.Method.ToLower() == "options")
             {
@@ -96,6 +96,7 @@ namespace ConsoleWebServer.Framework.Http
                 throw new HttpNotFoundException(
                     string.Format("Controller with name {0} not found!", controllerClassName));
             }
+
             var instance = (Controller)Activator.CreateInstance(type, httpRequest);
             return instance;
         }

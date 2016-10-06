@@ -2,10 +2,11 @@
 using System.Collections.Generic;
 using System.Net;
 using System.Text;
+using ConsoleWebServer.Framework.Http.Contracts;
 
 namespace ConsoleWebServer.Framework.Http
 {
-    public class HttpResponse
+    public class HttpResponse : IHttpResponse
     {
         private const string ServerEngineName = "ConsoleWebServer";
 
