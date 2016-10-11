@@ -1,0 +1,105 @@
+﻿@model IEnumerable<EntitiyTesting.DBModels.Order>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.OrderDate)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.RequiredDate)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ShippedDate)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Freight)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ShipName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ShipAddress)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ShipCity)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ShipRegion)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ShipPostalCode)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ShipCountry)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Customer.CompanyName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Employee.LastName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Shipper.CompanyName)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.OrderDate)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.RequiredDate)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ShippedDate)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Freight)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ShipName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ShipAddress)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ShipCity)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ShipRegion)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ShipPostalCode)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ShipCountry)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Customer.CompanyName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Employee.LastName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Shipper.CompanyName)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.OrderID }) |
+            @Html.ActionLink("Details", "Details", new { id=item.OrderID }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.OrderID })
+        </td>
+    </tr>
+}
+
+</table>

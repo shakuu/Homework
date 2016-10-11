@@ -12,19 +12,19 @@ namespace EntitiyTesting.DBModels
     using System;
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
-    
-    public partial class NorthwindEntities : DbContext
+
+    public partial class NorthwindEntities1 : DbContext
     {
-        public NorthwindEntities()
+        public NorthwindEntities1()
             : base("name=NorthwindEntities")
         {
         }
-    
+
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
             throw new UnintentionalCodeFirstException();
         }
-    
+
         public virtual DbSet<Category> Categories { get; set; }
         public virtual DbSet<CustomerDemographic> CustomerDemographics { get; set; }
         public virtual DbSet<Customer> Customers { get; set; }
@@ -35,6 +35,7 @@ namespace EntitiyTesting.DBModels
         public virtual DbSet<Region> Regions { get; set; }
         public virtual DbSet<Shipper> Shippers { get; set; }
         public virtual DbSet<Supplier> Suppliers { get; set; }
+        public virtual DbSet<sysdiagram> sysdiagrams { get; set; }
         public virtual DbSet<Territory> Territories { get; set; }
     }
 }
