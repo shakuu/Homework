@@ -1,21 +1,20 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<urn:students xmlns:urn="http://www.w3.org/TR/html4/unique/name">
-  <urn:name></urn:name>
-  <urn:sex></urn:sex>
-  <urn:birthdate></urn:birthdate>
-  <urn:phone></urn:phone>
-  <urn:email></urn:email>
-  <urn:course></urn:course>
-  <urn:specialty></urn:specialty>
-  <urn:facultyNumber></urn:facultyNumber>
-  <urn:examsTaken>
-    <exam id="1">
-      <name></name>
-      <score></score>
-    </exam>
-    <exam id="2">
-      <name></name>
-      <score></score>
-    </exam>
-  </urn:examsTaken>
-</urn:students>
+<students:students xmlns:students="http://www.w3.org/TR/html4/unique/name">
+  <students:student>
+    <students:name>Name</students:name>
+    <students:sex>Sex</students:sex>
+    <students:birthdate>birth date</students:birthdate>
+    <students:phonenumber>phone number</students:phonenumber>
+    <students:email>email</students:email>
+    <students:course>course</students:course>
+    <students:specialty>specialty</students:specialty>
+    <students:fn>fn</students:fn>
+    <students:exams xmlns:exams="http://another.unique">
+      <exams:exam>
+        <exams:name>name</exams:name>
+        <exams:tutor>tutor</exams:tutor>
+        <exams:score>score</exams:score>
+      </exams:exam>
+    </students:exams>
+  </students:student>
+</students:students>
