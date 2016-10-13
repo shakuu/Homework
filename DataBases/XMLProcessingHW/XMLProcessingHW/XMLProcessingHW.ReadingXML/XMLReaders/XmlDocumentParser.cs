@@ -11,31 +11,37 @@ namespace XMLProcessingHW.ReadingXML.XMLReaders
     {
         private IXmlDocumentProvider xmlDocumentProvider;
 
-        public XmlDocumentParser(IXmlDocumentProvider rootElementProvider)
+        public XmlDocumentParser(IXmlDocumentProvider xmlDocumentProvider)
         {
-            if (rootElementProvider == null)
+            if (xmlDocumentProvider == null)
             {
-                throw new ArgumentNullException(nameof(rootElementProvider));
+                throw new ArgumentNullException(nameof(xmlDocumentProvider));
             }
 
-            this.xmlDocumentProvider = rootElementProvider;
+            this.xmlDocumentProvider = xmlDocumentProvider;
         }
 
         public void DeleteElementsWith(
             string fileName,
+            string modifiedFileName,
             string containerElementName,
             Func<XmlElement, bool> matchForDeletion)
         {
             var xmlDocument = this.xmlDocumentProvider.GetXmlDocument(fileName);
             var containingElements = xmlDocument.GetElementsByTagName(containerElementName);
-            foreach (XmlElement element in containingElements)
+            for (var index = 0; index < containingElements.Count; index++)
             {
+                var element = containingElements[index] as XmlElement;
+
                 var toBeDeleted = matchForDeletion(element);
                 if (toBeDeleted)
                 {
-
+                    element.ParentNode.RemoveChild(element);
+                    index--;
                 }
             }
+
+            this.xmlDocumentProvider.SetXmlDocument(modifiedFileName, xmlDocument);
         }
 
         public IDictionary ExtractValuesWithXPath(

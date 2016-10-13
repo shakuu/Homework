@@ -12,6 +12,8 @@ namespace XMLProcessingHW.ReadingXML
         public static void Main()
         {
             var url = "D:\\GitHub\\Homework\\DataBases\\XMLProcessingHW\\XMLProcessingHW\\catalogue.xml";
+            var urlModifiedDocument = "D:\\GitHub\\Homework\\DataBases\\XMLProcessingHW\\XMLProcessingHW\\catalogue-modified.xml";
+
             var documentParser = CreateDocumentParser();
 
             ExecuteDisplayWithDomParser(url, documentParser);
@@ -22,10 +24,10 @@ namespace XMLProcessingHW.ReadingXML
 
             Console.WriteLine("----------------------------------");
 
-            ExecuteDeleteElements(url, documentParser);
+            ExecuteDeleteElements(url, urlModifiedDocument, documentParser);
         }
 
-        private static void ExecuteDeleteElements(string url, IXmlDocumentParser documentParser)
+        private static void ExecuteDeleteElements(string url, string urlModifiedDocument, IXmlDocumentParser documentParser)
         {
             Func<XmlElement, bool> prediate = (XmlElement element) =>
             {
@@ -42,8 +44,6 @@ namespace XMLProcessingHW.ReadingXML
 
                 return result;
             };
-
-            var urlModifiedDocument = "D:\\GitHub\\Homework\\DataBases\\XMLProcessingHW\\XMLProcessingHW\\catalogue-modified.xml";
 
             documentParser.DeleteElementsWith(url, urlModifiedDocument, "album", prediate);
             ExecuteDisplayWithDomParser(urlModifiedDocument, documentParser);

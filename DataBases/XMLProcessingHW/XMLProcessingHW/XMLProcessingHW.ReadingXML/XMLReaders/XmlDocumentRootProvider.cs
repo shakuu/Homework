@@ -12,5 +12,10 @@ namespace XMLProcessingHW.ReadingXML.XMLReaders
             xmlDocument.Load(fileName);
             return xmlDocument;
         }
+
+        public void SetXmlDocument(string fileName, XmlDocument document)
+        {
+            document.Save(fileName);
+        }
     }
 }
