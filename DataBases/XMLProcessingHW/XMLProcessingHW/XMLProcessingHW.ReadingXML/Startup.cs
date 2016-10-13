@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections;
+using System.Xml;
 
 using XMLProcessingHW.ReadingXML.XMLReaders;
 using XMLProcessingHW.ReadingXML.XMLReaders.Contracts;
@@ -18,6 +19,34 @@ namespace XMLProcessingHW.ReadingXML
             Console.WriteLine("----------------------------------");
 
             ExecuteDisplayWithXPath(url, documentParser);
+
+            Console.WriteLine("----------------------------------");
+
+            ExecuteDeleteElements(url, documentParser);
+        }
+
+        private static void ExecuteDeleteElements(string url, IXmlDocumentParser documentParser)
+        {
+            Func<XmlElement, bool> prediate = (XmlElement element) =>
+            {
+                const int maximumPrice = 20;
+                var result = false;
+
+                int price;
+                var priceIsParsed = int.TryParse(element["price"].InnerText, out price);
+                if (priceIsParsed)
+                {
+                    var priceIsLargerThan = price > maximumPrice;
+                    result = priceIsLargerThan;
+                }
+
+                return result;
+            };
+
+            var urlModifiedDocument = "D:\\GitHub\\Homework\\DataBases\\XMLProcessingHW\\XMLProcessingHW\\catalogue-modified.xml";
+
+            documentParser.DeleteElementsWith(url, urlModifiedDocument, "album", prediate);
+            ExecuteDisplayWithDomParser(urlModifiedDocument, documentParser);
         }
 
         private static void ExecuteDisplayWithDomParser(string url, IXmlDocumentParser documentParser)
