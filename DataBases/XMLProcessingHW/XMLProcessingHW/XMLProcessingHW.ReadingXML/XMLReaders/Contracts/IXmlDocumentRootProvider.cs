@@ -2,8 +2,8 @@
 
 namespace XMLProcessingHW.ReadingXML.XMLReaders.Contracts
 {
-    public interface IXmlDocumentRootProvider
+    public interface IXmlDocumentProvider
     {
-        XmlElement GetXmlDocumentRoot(string fileName);
+        XmlDocument GetXmlDocument(string fileName);
     }
 }

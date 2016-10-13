@@ -1,4 +1,6 @@
-﻿using System.Xml;
+﻿using System;
+using System.Collections;
+
 using XMLProcessingHW.ReadingXML.XMLReaders;
 
 namespace XMLProcessingHW.ReadingXML
@@ -11,10 +13,26 @@ namespace XMLProcessingHW.ReadingXML
             var rootElementProvider = new XmlDocumentRootProvider();
             var documentParser = new XmlDocumentParser(rootElementProvider);
 
-            var result = documentParser.ExtractValues(url, "album", "artist", "name");
-            foreach (var item in result)
+            var resultWithDom = documentParser.ExtractValues(url, "album", "artist", "name");
+            foreach (DictionaryEntry item in resultWithDom)
             {
-                System.Console.WriteLine(item);
+                var authorName = item.Key;
+                var songsList = (ICollection)item.Value;
+                var songsCount = songsList.Count;
+
+                Console.WriteLine($"{authorName} --- {songsCount}");
+            }
+
+            Console.WriteLine("----------------------------------");
+
+            var resultWithXPath = documentParser.ExtractValuesWithXPath(url, "catalogue", "album", "artist", "name");
+            foreach (DictionaryEntry item in resultWithXPath)
+            {
+                var authorName = item.Key;
+                var songsList = (ICollection)item.Value;
+                var songsCount = songsList.Count;
+
+                Console.WriteLine($"{authorName} --- {songsCount}");
             }
         }
     }

@@ -9,9 +9,9 @@ namespace XMLProcessingHW.ReadingXML.XMLReaders
 {
     public class XmlDocumentParser : IXmlDocumentParser
     {
-        private IXmlDocumentRootProvider rootElementProvider;
+        private IXmlDocumentProvider rootElementProvider;
 
-        public XmlDocumentParser(IXmlDocumentRootProvider rootElementProvider)
+        public XmlDocumentParser(IXmlDocumentProvider rootElementProvider)
         {
             if (rootElementProvider == null)
             {
@@ -21,17 +21,39 @@ namespace XMLProcessingHW.ReadingXML.XMLReaders
             this.rootElementProvider = rootElementProvider;
         }
 
+        public IDictionary ExtractValuesWithXPath(
+            string fileName,
+            string rootElementName,
+            string containerElementName,
+            string keyElementName,
+            string valueElementName)
+        {
+            var xPathQuery = $"/{rootElementName}/{containerElementName}";
+
+            var xmlDocument = this.rootElementProvider.GetXmlDocument(fileName);
+            var containingElements = xmlDocument.SelectNodes(xPathQuery);
+            var result = this.ExtractDictionaryOfElements(containingElements, keyElementName, valueElementName);
+
+            return result;
+        }
+
         public IDictionary ExtractValues(
             string fileName,
             string containerElementName,
             string keyElementName,
             string valueElementName)
         {
-            var result = new Hashtable();
+            var xmlDocument = this.rootElementProvider.GetXmlDocument(fileName);
+            var containingElements = xmlDocument.GetElementsByTagName(containerElementName);
+            var result = this.ExtractDictionaryOfElements(containingElements, keyElementName, valueElementName);
 
-            var rootElement = this.rootElementProvider.GetXmlDocumentRoot(fileName);
-            var containingElements = rootElement.GetElementsByTagName(containerElementName);
-            foreach (XmlElement element in containingElements)
+            return result;
+        }
+
+        private IDictionary ExtractDictionaryOfElements(XmlNodeList elements, string keyElementName, string valueElementName)
+        {
+            var result = new Hashtable();
+            foreach (XmlElement element in elements)
             {
                 var key = this.ExtractInnerTextFromElement(element, keyElementName);
                 var value = this.ExtractInnerTextFromElement(element, valueElementName);

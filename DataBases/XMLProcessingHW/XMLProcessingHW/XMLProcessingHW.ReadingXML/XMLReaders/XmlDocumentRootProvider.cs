@@ -4,14 +4,13 @@ using XMLProcessingHW.ReadingXML.XMLReaders.Contracts;
 
 namespace XMLProcessingHW.ReadingXML.XMLReaders
 {
-    public class XmlDocumentRootProvider : IXmlDocumentRootProvider
+    public class XmlDocumentRootProvider : IXmlDocumentProvider
     {
-        public XmlElement GetXmlDocumentRoot(string fileName)
+        public XmlDocument GetXmlDocument(string fileName)
         {
             var xmlDocument = new XmlDocument();
             xmlDocument.Load(fileName);
-            var rootElement = xmlDocument.DocumentElement;
-            return rootElement;
+            return xmlDocument;
         }
     }
 }
