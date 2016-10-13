@@ -45,10 +45,12 @@
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
+    <Compile Include="XMLReaders\Contracts\IXmlDocumentParser.cs" />
+    <Compile Include="XMLReaders\Contracts\IXmlDocumentRootProvider.cs" />
+    <Compile Include="XMLReaders\XmlDocumentParser.cs" />
+    <Compile Include="XMLReaders\XmlDocumentRootProvider.cs" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="XMLReaders\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

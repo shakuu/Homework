@@ -1,5 +1,4 @@
-﻿using System;
-using System.Xml;
+﻿using System.Xml;
 
 using XMLProcessingHW.ReadingXML.XMLReaders.Contracts;
 
@@ -9,7 +8,10 @@ namespace XMLProcessingHW.ReadingXML.XMLReaders
     {
         public XmlElement GetXmlDocumentRoot(string fileName)
         {
-            throw new NotImplementedException();
+            var xmlDocument = new XmlDocument();
+            xmlDocument.Load(fileName);
+            var rootElement = xmlDocument.DocumentElement;
+            return rootElement;
         }
     }
 }

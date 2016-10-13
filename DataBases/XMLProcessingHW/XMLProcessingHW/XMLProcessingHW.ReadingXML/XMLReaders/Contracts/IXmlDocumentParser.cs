@@ -4,6 +4,6 @@ namespace XMLProcessingHW.ReadingXML.XMLReaders.Contracts
 {
     public interface IXmlDocumentParser
     {
-        IDictionary ExtractValues(string keyElementName, string valueElementName);
+        IDictionary ExtractValues(string fileName, string containerElementName, string keyElementName, string valueElementName);
     }
 }

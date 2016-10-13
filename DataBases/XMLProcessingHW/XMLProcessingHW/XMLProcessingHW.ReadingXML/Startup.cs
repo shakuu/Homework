@@ -1,4 +1,5 @@
 ﻿using System.Xml;
+using XMLProcessingHW.ReadingXML.XMLReaders;
 
 namespace XMLProcessingHW.ReadingXML
 {
@@ -7,17 +8,13 @@ namespace XMLProcessingHW.ReadingXML
         public static void Main()
         {
             var url = "D:\\GitHub\\Homework\\DataBases\\XMLProcessingHW\\XMLProcessingHW\\catalogue.xml";
-            var xmlDocument = new XmlDocument();
-            xmlDocument.Load(url);
+            var rootElementProvider = new XmlDocumentRootProvider();
+            var documentParser = new XmlDocumentParser(rootElementProvider);
 
-            var doc = xmlDocument.DocumentElement;
-
-            var albums = doc.GetElementsByTagName("album");
-
-            foreach (XmlElement element in albums)
+            var result = documentParser.ExtractValues(url, "album", "artist", "name");
+            foreach (var item in result)
             {
-                System.Console.WriteLine(element.ChildNodes[0].InnerText);
-                System.Console.WriteLine(element.ChildNodes[1].InnerText);
+                System.Console.WriteLine(item);
             }
         }
     }
