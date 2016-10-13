@@ -2,6 +2,7 @@
 using System.Collections;
 
 using XMLProcessingHW.ReadingXML.XMLReaders;
+using XMLProcessingHW.ReadingXML.XMLReaders.Contracts;
 
 namespace XMLProcessingHW.ReadingXML
 {
@@ -13,8 +14,12 @@ namespace XMLProcessingHW.ReadingXML
             var rootElementProvider = new XmlDocumentRootProvider();
             var documentParser = new XmlDocumentParser(rootElementProvider);
 
-            var resultWithDom = documentParser.ExtractValues(url, "album", "artist", "name");
-            foreach (DictionaryEntry item in resultWithDom)
+            ExecuteDisplayWithDomParser(url, documentParser);
+
+            Console.WriteLine("----------------------------------");
+
+            var resultWithXPath = documentParser.ExtractValuesWithXPath(url, "catalogue", "album", "artist", "name");
+            foreach (DictionaryEntry item in resultWithXPath)
             {
                 var authorName = item.Key;
                 var songsList = (ICollection)item.Value;
@@ -22,11 +27,12 @@ namespace XMLProcessingHW.ReadingXML
 
                 Console.WriteLine($"{authorName} --- {songsCount}");
             }
+        }
 
-            Console.WriteLine("----------------------------------");
-
-            var resultWithXPath = documentParser.ExtractValuesWithXPath(url, "catalogue", "album", "artist", "name");
-            foreach (DictionaryEntry item in resultWithXPath)
+        private static void ExecuteDisplayWithDomParser(string url, IXmlDocumentParser documentParser)
+        {
+            var resultWithDom = documentParser.ExtractValues(url, "album", "artist", "name");
+            foreach (DictionaryEntry item in resultWithDom)
             {
                 var authorName = item.Key;
                 var songsList = (ICollection)item.Value;

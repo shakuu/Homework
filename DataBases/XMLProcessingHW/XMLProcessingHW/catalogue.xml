@@ -5,79 +5,79 @@
     <artist>Artist 1</artist>
     <producer></producer>
     <year></year>
-    <price></price>
+    <price>15</price>
     <songs>
       <song>
         <name></name>
       </song>
     </songs>
   </album>
-  <album id="1">
+  <album id="2">
     <name>Album 1</name>
     <artist>Artist 2</artist>
     <producer></producer>
     <year></year>
-    <price></price>
+    <price>25</price>
     <songs>
       <song>
         <name></name>
       </song>
     </songs>
   </album>
-  <album id="1">
+  <album id="3">
     <name>Album 1</name>
     <artist>Artist 3</artist>
     <producer></producer>
     <year></year>
-    <price></price>
+    <price>15</price>
     <songs>
       <song>
         <name></name>
       </song>
     </songs>
   </album>
-  <album id="1">
+  <album id="4">
     <name>Album 1</name>
     <artist>Artist 2</artist>
     <producer></producer>
     <year></year>
-    <price></price>
+    <price>15</price>
     <songs>
       <song>
         <name></name>
       </song>
     </songs>
   </album>
-  <album id="1">
+  <album id="5">
     <name>Album 1</name>
     <artist>Artist 4</artist>
     <producer></producer>
     <year></year>
-    <price></price>
+    <price>15</price>
     <songs>
       <song>
         <name></name>
       </song>
     </songs>
   </album>
-  <album id="1">
+  <album id="6">
     <name>Album 1</name>
     <artist>Artist 1</artist>
     <producer></producer>
     <year></year>
-    <price></price>
+    <price>15</price>
     <songs>
       <song>
         <name></name>
       </song>
     </songs>
   </album>
-  <album id="1">
+  <album id="7">
     <name>Album 1</name>
     <artist>Artist 1</artist>
     <producer></producer>
     <year></year>
-    <price></price>
+    <price>25</price>
     <songs>
       <song>
         <name></name>

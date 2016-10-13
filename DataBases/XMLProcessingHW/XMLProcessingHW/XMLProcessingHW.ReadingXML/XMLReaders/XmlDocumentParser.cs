@@ -9,7 +9,7 @@ namespace XMLProcessingHW.ReadingXML.XMLReaders
 {
     public class XmlDocumentParser : IXmlDocumentParser
     {
-        private IXmlDocumentProvider rootElementProvider;
+        private IXmlDocumentProvider xmlDocumentProvider;
 
         public XmlDocumentParser(IXmlDocumentProvider rootElementProvider)
         {
@@ -18,7 +18,24 @@ namespace XMLProcessingHW.ReadingXML.XMLReaders
                 throw new ArgumentNullException(nameof(rootElementProvider));
             }
 
-            this.rootElementProvider = rootElementProvider;
+            this.xmlDocumentProvider = rootElementProvider;
+        }
+
+        public void DeleteElementsWith(
+            string fileName,
+            string containerElementName,
+            Func<XmlElement, bool> matchForDeletion)
+        {
+            var xmlDocument = this.xmlDocumentProvider.GetXmlDocument(fileName);
+            var containingElements = xmlDocument.GetElementsByTagName(containerElementName);
+            foreach (XmlElement element in containingElements)
+            {
+                var toBeDeleted = matchForDeletion(element);
+                if (toBeDeleted)
+                {
+
+                }
+            }
         }
 
         public IDictionary ExtractValuesWithXPath(
@@ -30,7 +47,7 @@ namespace XMLProcessingHW.ReadingXML.XMLReaders
         {
             var xPathQuery = $"/{rootElementName}/{containerElementName}";
 
-            var xmlDocument = this.rootElementProvider.GetXmlDocument(fileName);
+            var xmlDocument = this.xmlDocumentProvider.GetXmlDocument(fileName);
             var containingElements = xmlDocument.SelectNodes(xPathQuery);
             var result = this.ExtractDictionaryOfElements(containingElements, keyElementName, valueElementName);
 
@@ -43,7 +60,7 @@ namespace XMLProcessingHW.ReadingXML.XMLReaders
             string keyElementName,
             string valueElementName)
         {
-            var xmlDocument = this.rootElementProvider.GetXmlDocument(fileName);
+            var xmlDocument = this.xmlDocumentProvider.GetXmlDocument(fileName);
             var containingElements = xmlDocument.GetElementsByTagName(containerElementName);
             var result = this.ExtractDictionaryOfElements(containingElements, keyElementName, valueElementName);
 
