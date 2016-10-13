@@ -1,0 +1,87 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<catalogue>
+  <album id="1">
+    <name>Album 1</name>
+    <artist>Artist 1</artist>
+    <producer></producer>
+    <year></year>
+    <price></price>
+    <songs>
+      <song>
+        <name></name>
+      </song>
+    </songs>
+  </album>
+  <album id="1">
+    <name>Album 1</name>
+    <artist>Artist 2</artist>
+    <producer></producer>
+    <year></year>
+    <price></price>
+    <songs>
+      <song>
+        <name></name>
+      </song>
+    </songs>
+  </album>
+  <album id="1">
+    <name>Album 1</name>
+    <artist>Artist 3</artist>
+    <producer></producer>
+    <year></year>
+    <price></price>
+    <songs>
+      <song>
+        <name></name>
+      </song>
+    </songs>
+  </album>
+  <album id="1">
+    <name>Album 1</name>
+    <artist>Artist 2</artist>
+    <producer></producer>
+    <year></year>
+    <price></price>
+    <songs>
+      <song>
+        <name></name>
+      </song>
+    </songs>
+  </album>
+  <album id="1">
+    <name>Album 1</name>
+    <artist>Artist 4</artist>
+    <producer></producer>
+    <year></year>
+    <price></price>
+    <songs>
+      <song>
+        <name></name>
+      </song>
+    </songs>
+  </album>
+  <album id="1">
+    <name>Album 1</name>
+    <artist>Artist 1</artist>
+    <producer></producer>
+    <year></year>
+    <price></price>
+    <songs>
+      <song>
+        <name></name>
+      </song>
+    </songs>
+  </album>
+  <album id="1">
+    <name>Album 1</name>
+    <artist>Artist 1</artist>
+    <producer></producer>
+    <year></year>
+    <price></price>
+    <songs>
+      <song>
+        <name></name>
+      </song>
+    </songs>
+  </album>
+</catalogue>

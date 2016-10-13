@@ -5,6 +5,11 @@ VisualStudioVersion = 14.0.25420.1
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "XMLProcessingHW.ReadingXML", "XMLProcessingHW.ReadingXML\XMLProcessingHW.ReadingXML.csproj", "{D7F1F67E-4455-45E6-926C-F1754CC10AC7}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "data", "data", "{C1689101-9949-4878-BC1A-1ACCC27F9B00}"
+	ProjectSection(SolutionItems) = preProject
+		catalogue.xml = catalogue.xml
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
