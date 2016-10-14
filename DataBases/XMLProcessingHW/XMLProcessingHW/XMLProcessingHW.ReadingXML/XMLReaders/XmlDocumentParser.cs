@@ -40,7 +40,7 @@ namespace XMLProcessingHW.ReadingXML.XMLReaders
                     index--;
                 }
             }
-
+            
             this.xmlDocumentProvider.SetXmlDocument(modifiedFileName, xmlDocument);
         }
 

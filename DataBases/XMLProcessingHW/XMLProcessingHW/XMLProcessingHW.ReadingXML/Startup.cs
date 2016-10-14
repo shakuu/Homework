@@ -77,7 +77,7 @@ namespace XMLProcessingHW.ReadingXML
 
         private static IXmlDocumentParser CreateDocumentParser()
         {
-            var rootElementProvider = new XmlDocumentRootProvider();
+            var rootElementProvider = new XmlDocumentProvider();
             var documentParser = new XmlDocumentParser(rootElementProvider);
 
             return documentParser;

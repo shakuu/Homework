@@ -4,7 +4,7 @@ using XMLProcessingHW.ReadingXML.XMLReaders.Contracts;
 
 namespace XMLProcessingHW.ReadingXML.XMLReaders
 {
-    public class XmlDocumentRootProvider : IXmlDocumentProvider
+    public class XmlDocumentProvider : IXmlDocumentProvider
     {
         public XmlDocument GetXmlDocument(string fileName)
         {
