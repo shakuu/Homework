@@ -29,6 +29,19 @@ namespace XMLProcessingHW.ReadingXML
             Console.WriteLine("----------------------------------");
 
             ExecuteSearchForElementWithNameUsingXmlReader(url, documentParser);
+
+            Console.WriteLine("----------------------------------");
+
+            ExecuteSearchForElementsWithNameUsingLinqToXml(url, documentParser);
+        }
+
+        private static void ExecuteSearchForElementsWithNameUsingLinqToXml(string url, IXmlDocumentParser documentParser)
+        {
+            var songTitles = documentParser.GetAllElementsWithNameUsingLinqToXml(url, "title");
+            foreach (var title in songTitles)
+            {
+                Console.WriteLine($"Song Title: {title}");
+            }
         }
 
         private static void ExecuteSearchForElementWithNameUsingXmlReader(string url, IXmlDocumentParser documentParser)

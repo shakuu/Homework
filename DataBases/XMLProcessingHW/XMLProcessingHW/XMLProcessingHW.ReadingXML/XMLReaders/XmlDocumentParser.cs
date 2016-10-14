@@ -3,7 +3,6 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Xml;
-using System.Xml.Linq;
 
 using XMLProcessingHW.ReadingXML.XMLReaders.Contracts;
 
@@ -30,8 +29,8 @@ namespace XMLProcessingHW.ReadingXML.XMLReaders
             var xDocument = this.xmlDocumentProvider.GetXDocument(fileName);
             var descendants = xDocument.Descendants();
             var result = descendants
-                .Select(descendant => descendant.Name.LocalName)
-                .Where(descendantName => descendantName == searchedElementName);
+                .Where(descendant => descendant.Name.LocalName == searchedElementName)
+                .Select(descendant => descendant.Value);
 
             return result;
         }
