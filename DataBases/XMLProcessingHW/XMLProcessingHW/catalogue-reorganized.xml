@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="windows-1251"?>
+<albums>
+	<artist>
+		<album>
+			<name>Album 1</name>
+		</album>
+		<album>
+			<name>Album 1</name>
+		</album>
+		<album>
+			<name>Album 1</name>
+		</album>
+	</artist>
+	<artist>
+		<album>
+			<name>Album 1</name>
+		</album>
+	</artist>
+	<artist>
+		<album>
+			<name>Album 1</name>
+		</album>
+	</artist>
+	<artist>
+		<album>
+			<name>Album 1</name>
+		</album>
+		<album>
+			<name>Album 1</name>
+		</album>
+	</artist>
+</albums>
