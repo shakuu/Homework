@@ -43,6 +43,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="DirectoryStructureGenerator\Contracts\IDirectoryStructureGenerator.cs" />
+    <Compile Include="DirectoryStructureGenerator\Contracts\IDirectoryStructureLogger.cs" />
+    <Compile Include="DirectoryStructureGenerator\XmlDirectoryStructureLogger.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
     <Compile Include="XMLReaders\Contracts\IXmlDocumentParser.cs" />
