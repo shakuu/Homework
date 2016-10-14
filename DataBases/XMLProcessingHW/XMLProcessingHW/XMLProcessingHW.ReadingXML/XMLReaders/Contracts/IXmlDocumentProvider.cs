@@ -10,7 +10,7 @@ namespace XMLProcessingHW.ReadingXML.XMLReaders.Contracts
 
         XmlReader GetXmlReader(string fileName);
 
-        XmlWriter GetXmlWriter(string fileName, Encoding encoding);
+        XmlTextWriter GetXmlWriter(string fileName, Encoding encoding);
 
         XmlDocument GetXmlDocument(string fileName);
 

@@ -21,7 +21,7 @@ namespace XMLProcessingHW.ReadingXML.XMLReaders
             return reader;
         }
 
-        public XmlWriter GetXmlWriter(string fileName, Encoding encoding)
+        public XmlTextWriter GetXmlWriter(string fileName, Encoding encoding)
         {
             var writer = new XmlTextWriter(fileName, encoding);
             return writer;

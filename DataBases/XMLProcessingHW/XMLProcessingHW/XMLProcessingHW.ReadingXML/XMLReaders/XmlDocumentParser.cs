@@ -31,10 +31,37 @@ namespace XMLProcessingHW.ReadingXML.XMLReaders
             string keyElementName,
             string valueElementName)
         {
-            var xmlWriter = this.xmlDocumentProvider.GetXmlWriter(outputFileName, encoding);
+
             var albumsForEachAuthor = this.ExtractValues(inputFileName, containerElementName, keyElementName, valueElementName);
+            using (var xmlWriter = this.xmlDocumentProvider.GetXmlWriter(outputFileName, encoding))
+            {
+                xmlWriter.Formatting = Formatting.Indented;
+                xmlWriter.IndentChar = '\t';
+                xmlWriter.Indentation = 1;
 
+                xmlWriter.WriteStartDocument();
+                xmlWriter.WriteStartElement("albums");
 
+                foreach (var key in albumsForEachAuthor.Keys)
+                {
+                    xmlWriter.WriteStartElement("artist");
+
+                    var albumsForThisAuthor = albumsForEachAuthor[key] as ICollection<string>;
+                    foreach (var album in albumsForThisAuthor)
+                    {
+                        xmlWriter.WriteStartElement("album");
+                        xmlWriter.WriteStartElement("name");
+                        xmlWriter.WriteString(album);
+                        xmlWriter.WriteEndElement();
+                        xmlWriter.WriteEndElement();
+                    }
+
+                    xmlWriter.WriteEndElement();
+                }
+
+                xmlWriter.WriteEndElement();
+                xmlWriter.WriteEndDocument();
+            }
 
         }
 
