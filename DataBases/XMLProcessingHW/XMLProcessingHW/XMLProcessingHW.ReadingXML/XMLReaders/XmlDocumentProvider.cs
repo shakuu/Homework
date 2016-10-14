@@ -1,4 +1,6 @@
-﻿using System.Xml;
+﻿using System;
+using System.Text;
+using System.Xml;
 using System.Xml.Linq;
 
 using XMLProcessingHW.ReadingXML.XMLReaders.Contracts;
@@ -29,6 +31,12 @@ namespace XMLProcessingHW.ReadingXML.XMLReaders
         public void SetXmlDocument(string fileName, XmlDocument document)
         {
             document.Save(fileName);
+        }
+
+        public XmlWriter GetXmlWriter(string fileName, Encoding encoding)
+        {
+            var writer = XmlTextWriter.Create(fileName, encoding);
+            return writer;
         }
     }
 }

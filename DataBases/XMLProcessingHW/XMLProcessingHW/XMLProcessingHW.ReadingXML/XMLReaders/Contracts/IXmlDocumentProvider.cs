@@ -1,4 +1,5 @@
-﻿using System.Xml;
+﻿using System.Text;
+using System.Xml;
 using System.Xml.Linq;
 
 namespace XMLProcessingHW.ReadingXML.XMLReaders.Contracts
@@ -8,6 +9,8 @@ namespace XMLProcessingHW.ReadingXML.XMLReaders.Contracts
         XDocument GetXDocument(string fileName);
 
         XmlReader GetXmlReader(string fileName);
+
+        XmlWriter GetXmlWriter(string fileName, Encoding encoding);
 
         XmlDocument GetXmlDocument(string fileName);
 
