@@ -46,9 +46,9 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
     <Compile Include="XMLReaders\Contracts\IXmlDocumentParser.cs" />
-    <Compile Include="XMLReaders\Contracts\IXmlDocumentRootProvider.cs" />
+    <Compile Include="XMLReaders\Contracts\IXmlDocumentProvider.cs" />
     <Compile Include="XMLReaders\XmlDocumentParser.cs" />
-    <Compile Include="XMLReaders\XmlDocumentRootProvider.cs" />
+    <Compile Include="XMLReaders\XmlDocumentProvider.cs" />
   </ItemGroup>
   <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
