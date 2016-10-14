@@ -25,6 +25,16 @@ namespace XMLProcessingHW.ReadingXML
             Console.WriteLine("----------------------------------");
 
             ExecuteDeleteElements(url, urlModifiedDocument, documentParser);
+
+            Console.WriteLine("----------------------------------");
+
+            ExecuteSearchForElementWithNameUsingXmlReader(url, documentParser);
+
+        }
+
+        private static void ExecuteSearchForElementWithNameUsingXmlReader(string url, IXmlDocumentParser documentParser)
+        {
+            var songTitles = documentParser.GetAllElementsWithNameUsingXmlReader(url, "name");
         }
 
         private static void ExecuteDeleteElements(string url, string urlModifiedDocument, IXmlDocumentParser documentParser)

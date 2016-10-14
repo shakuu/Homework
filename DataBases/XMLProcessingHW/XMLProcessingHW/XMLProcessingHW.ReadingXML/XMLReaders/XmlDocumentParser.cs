@@ -21,7 +21,9 @@ namespace XMLProcessingHW.ReadingXML.XMLReaders
             this.xmlDocumentProvider = xmlDocumentProvider;
         }
 
-        public IEnumerable<string> ExtractAllElementsWithName(string fileName, string searchedElementName)
+        public IEnumerable<string> GetAllElementsWithNameUsingXmlReader(
+            string fileName, 
+            string searchedElementName)
         {
             var result = new LinkedList<string>();
             var reader = this.xmlDocumentProvider.GetXmlReader(fileName);
