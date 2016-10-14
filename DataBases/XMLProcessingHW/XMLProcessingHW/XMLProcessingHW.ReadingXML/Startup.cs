@@ -29,7 +29,7 @@ namespace XMLProcessingHW.ReadingXML
 
         private static void ExecuteDeleteElements(string url, string urlModifiedDocument, IXmlDocumentParser documentParser)
         {
-            Func<XmlElement, bool> prediate = (XmlElement element) =>
+            Func<XmlElement, bool> predicate = (XmlElement element) =>
             {
                 const int maximumPrice = 20;
                 var result = false;
@@ -45,7 +45,7 @@ namespace XMLProcessingHW.ReadingXML
                 return result;
             };
 
-            documentParser.DeleteElementsWith(url, urlModifiedDocument, "album", prediate);
+            documentParser.DeleteElementsWith(url, urlModifiedDocument, "album", predicate);
             ExecuteDisplayWithDomParser(urlModifiedDocument, documentParser);
         }
 

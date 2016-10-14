@@ -21,6 +21,32 @@ namespace XMLProcessingHW.ReadingXML.XMLReaders
             this.xmlDocumentProvider = xmlDocumentProvider;
         }
 
+        public IEnumerable<string> ExtractAllElementsWithName(string fileName, string searchedElementName)
+        {
+            var result = new LinkedList<string>();
+            var reader = this.xmlDocumentProvider.GetXmlReader(fileName);
+            using (reader)
+            {
+                while (reader.Read())
+                {
+                    var isXmlElement = reader.NodeType == XmlNodeType.Element;
+                    if (isXmlElement)
+                    {
+                        var currentElementName = reader.Name;
+                        if (currentElementName == searchedElementName)
+                        {
+                            var content = reader.ReadContentAsString();
+                            result.AddLast(content);
+                        }
+                    }
+                }
+
+                reader.Close();
+            }
+
+            return result;
+        }
+
         public void DeleteElementsWith(
             string fileName,
             string modifiedFileName,
@@ -40,7 +66,7 @@ namespace XMLProcessingHW.ReadingXML.XMLReaders
                     index--;
                 }
             }
-            
+
             this.xmlDocumentProvider.SetXmlDocument(modifiedFileName, xmlDocument);
         }
 
