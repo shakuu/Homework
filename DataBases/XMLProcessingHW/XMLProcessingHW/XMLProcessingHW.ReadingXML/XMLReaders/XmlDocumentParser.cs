@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using System.Xml;
 using System.Xml.Linq;
 
@@ -20,6 +21,19 @@ namespace XMLProcessingHW.ReadingXML.XMLReaders
             }
 
             this.xmlDocumentProvider = xmlDocumentProvider;
+        }
+
+        public IEnumerable<string> GetAllElementsWithNameUsingLinqToXml(
+            string fileName,
+            string searchedElementName)
+        {
+            var xDocument = this.xmlDocumentProvider.GetXDocument(fileName);
+            var descendants = xDocument.Descendants();
+            var result = descendants
+                .Select(descendant => descendant.Name.LocalName)
+                .Where(descendantName => descendantName == searchedElementName);
+
+            return result;
         }
 
         public IEnumerable<string> GetAllElementsWithNameUsingXmlReader(
