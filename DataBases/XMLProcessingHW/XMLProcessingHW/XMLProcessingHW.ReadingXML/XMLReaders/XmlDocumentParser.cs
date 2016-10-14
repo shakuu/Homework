@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using System.Text;
 using System.Xml;
 
 using XMLProcessingHW.ReadingXML.XMLReaders.Contracts;
@@ -20,6 +21,21 @@ namespace XMLProcessingHW.ReadingXML.XMLReaders
             }
 
             this.xmlDocumentProvider = xmlDocumentProvider;
+        }
+
+        public void WriteToXmlDocumentUsingXmlTextWriter(
+            string inputFileName,
+            string outputFileName,
+            Encoding encoding,
+            string containerElementName,
+            string keyElementName,
+            string valueElementName)
+        {
+            var xmlWriter = this.xmlDocumentProvider.GetXmlWriter(outputFileName, encoding);
+            var albumsForEachAuthor = this.ExtractValues(inputFileName, containerElementName, keyElementName, valueElementName);
+
+
+
         }
 
         public IEnumerable<string> GetAllElementsWithNameUsingLinqToXml(
@@ -141,6 +157,7 @@ namespace XMLProcessingHW.ReadingXML.XMLReaders
             {
                 var currentListOfValues = (ICollection<string>)container[key];
                 currentListOfValues.Add(value);
+                container[key] = currentListOfValues;
             }
             else
             {

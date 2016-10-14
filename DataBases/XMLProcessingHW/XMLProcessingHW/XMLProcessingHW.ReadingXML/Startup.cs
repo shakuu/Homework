@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections;
+using System.Text;
 using System.Xml;
 
 using XMLProcessingHW.ReadingXML.XMLReaders;
@@ -33,6 +34,10 @@ namespace XMLProcessingHW.ReadingXML
             Console.WriteLine("----------------------------------");
 
             ExecuteSearchForElementsWithNameUsingLinqToXml(url, documentParser);
+
+            Console.WriteLine("----------------------------------");
+
+            WriteNewXmlWithDIfferentStructure(url, documentParser);
         }
 
         private static void ExecuteSearchForElementsWithNameUsingLinqToXml(string url, IXmlDocumentParser documentParser)
@@ -73,6 +78,13 @@ namespace XMLProcessingHW.ReadingXML
 
             documentParser.DeleteElementsWith(url, urlModifiedDocument, "album", predicate);
             ExecuteDisplayWithDomParser(urlModifiedDocument, documentParser);
+        }
+
+        private static void WriteNewXmlWithDIfferentStructure(string url, IXmlDocumentParser documentParser)
+        {
+            var encoding = Encoding.GetEncoding("windows-1251");
+            var outputFileName = "D:\\GitHub\\Homework\\DataBases\\XMLProcessingHW\\XMLProcessingHW\\catalogue-reorganized.xml";
+            documentParser.WriteToXmlDocumentUsingXmlTextWriter(url, outputFileName, encoding, "album", "artist", "name");
         }
 
         private static void ExecuteDisplayWithDomParser(string url, IXmlDocumentParser documentParser)

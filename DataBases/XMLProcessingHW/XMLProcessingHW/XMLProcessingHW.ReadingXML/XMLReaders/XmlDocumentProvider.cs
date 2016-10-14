@@ -21,6 +21,12 @@ namespace XMLProcessingHW.ReadingXML.XMLReaders
             return reader;
         }
 
+        public XmlWriter GetXmlWriter(string fileName, Encoding encoding)
+        {
+            var writer = new XmlTextWriter(fileName, encoding);
+            return writer;
+        }
+
         public XmlDocument GetXmlDocument(string fileName)
         {
             var xmlDocument = new XmlDocument();
@@ -31,12 +37,6 @@ namespace XMLProcessingHW.ReadingXML.XMLReaders
         public void SetXmlDocument(string fileName, XmlDocument document)
         {
             document.Save(fileName);
-        }
-
-        public XmlWriter GetXmlWriter(string fileName, Encoding encoding)
-        {
-            var writer = XmlTextWriter.Create(fileName, encoding);
-            return writer;
         }
     }
 }
