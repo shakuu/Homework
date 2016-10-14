@@ -1,4 +1,5 @@
 ﻿using System;
+using System.IO;
 using System.Text;
 using System.Xml;
 
@@ -15,7 +16,21 @@ namespace XMLProcessingHW.ReadingXML.DirectoryStructureGenerators
 
         public XmlDirectoryStructureLogger(string fileName, Encoding encoding)
         {
-            // TODO: Validate fileName
+            if (string.IsNullOrEmpty(fileName))
+            {
+                throw new ArgumentNullException(nameof(fileName));
+            }
+
+            if (!File.Exists(fileName))
+            {
+                throw new FileNotFoundException(fileName);
+            }
+
+            if (encoding == null)
+            {
+                throw new ArgumentNullException(nameof(encoding));
+            }
+
             this.fileName = fileName;
             this.encoding = encoding;
         }

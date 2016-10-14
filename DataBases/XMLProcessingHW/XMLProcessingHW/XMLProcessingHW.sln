@@ -10,8 +10,6 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "data", "data", "{C1689101-9
 		catalogue.xml = catalogue.xml
 	EndProjectSection
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "XMLProcessingHW.XMLWritingLogic", "XMLProcessingHW.XMLWritingLogic\XMLProcessingHW.XMLWritingLogic.csproj", "{51702AE2-6B31-4C2C-B149-7C3122A83D9F}"
-EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -22,10 +20,6 @@ Global
 		{D7F1F67E-4455-45E6-926C-F1754CC10AC7}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{D7F1F67E-4455-45E6-926C-F1754CC10AC7}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{D7F1F67E-4455-45E6-926C-F1754CC10AC7}.Release|Any CPU.Build.0 = Release|Any CPU
-		{51702AE2-6B31-4C2C-B149-7C3122A83D9F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{51702AE2-6B31-4C2C-B149-7C3122A83D9F}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{51702AE2-6B31-4C2C-B149-7C3122A83D9F}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{51702AE2-6B31-4C2C-B149-7C3122A83D9F}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

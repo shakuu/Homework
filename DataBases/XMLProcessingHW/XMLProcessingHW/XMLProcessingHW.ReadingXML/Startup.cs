@@ -42,10 +42,20 @@ namespace XMLProcessingHW.ReadingXML
 
             Console.WriteLine("----------------------------------");
 
-            FolderStructure();
+            CreateDirectoryStructureXml();
+
+            Console.WriteLine("----------------------------------");
+
+            ValidateXml(url, documentParser);
         }
 
-        private static void FolderStructure()
+        private static void ValidateXml(string fileName, IXmlDocumentParser documentParser)
+        {
+            var schemaName = "D:\\GitHub\\Homework\\DataBases\\XMLProcessingHW\\XMLProcessingHW\\catalogue.xsd";
+            documentParser.ValidateXml(fileName, schemaName);
+        }
+
+        private static void CreateDirectoryStructureXml()
         {
             var encoding = Encoding.GetEncoding("windows-1251");
             var outputFileName = "D:\\GitHub\\Homework\\DataBases\\XMLProcessingHW\\XMLProcessingHW\\directories.xml";

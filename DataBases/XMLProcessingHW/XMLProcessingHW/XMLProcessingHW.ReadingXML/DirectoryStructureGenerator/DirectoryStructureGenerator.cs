@@ -1,4 +1,5 @@
-﻿using System.IO;
+﻿using System;
+using System.IO;
 
 using XMLProcessingHW.ReadingXML.DirectoryStructureGenerators.Contracts;
 
@@ -6,11 +7,26 @@ namespace XMLProcessingHW.ReadingXML.DirectoryStructureGenerators
 {
     public class DirectoryStructureGenerator : IDirectoryStructureGenerator
     {
-        private const string Directory = "directory";
-        private const string File = "file";
+        private const string ElementNameDirectory = "directory";
+        private const string ElementNameFile = "file";
 
         public void GenerateDirectoryStructure(string rootDirectory, IDirectoryStructureLogger logger)
         {
+            if (logger == null)
+            {
+                throw new ArgumentNullException(nameof(logger));
+            }
+
+            if (string.IsNullOrEmpty(rootDirectory))
+            {
+                throw new ArgumentNullException(nameof(rootDirectory));
+            }
+
+            if (!Directory.Exists(rootDirectory))
+            {
+                throw new DirectoryNotFoundException(rootDirectory);
+            }
+
             using (logger)
             {
                 this.ParseDirectory(rootDirectory, logger);
@@ -21,7 +37,7 @@ namespace XMLProcessingHW.ReadingXML.DirectoryStructureGenerators
         {
             var directoryInfo = new DirectoryInfo(rootDirectory);
 
-            logger.LogElement(DirectoryStructureGenerator.Directory, directoryInfo.FullName, true);
+            logger.LogElement(DirectoryStructureGenerator.ElementNameDirectory, directoryInfo.FullName, true);
 
             var subDirectories = directoryInfo.GetDirectories();
             foreach (var directory in subDirectories)
@@ -32,7 +48,7 @@ namespace XMLProcessingHW.ReadingXML.DirectoryStructureGenerators
             var files = directoryInfo.GetFiles();
             foreach (var file in files)
             {
-                logger.LogElement(DirectoryStructureGenerator.File, file.FullName);
+                logger.LogElement(DirectoryStructureGenerator.ElementNameFile, file.FullName);
             }
 
             logger.EndScope();

@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Xml;
-
+using System.Xml.Schema;
 using XMLProcessingHW.ReadingXML.XMLReaders.Contracts;
 
 namespace XMLProcessingHW.ReadingXML.XMLReaders
@@ -21,6 +21,42 @@ namespace XMLProcessingHW.ReadingXML.XMLReaders
             }
 
             this.xmlDocumentProvider = xmlDocumentProvider;
+        }
+
+        /// <summary>
+        /// https://msdn.microsoft.com/en-us/library/ms162371(v=vs.110).aspx
+        /// </summary>
+        /// <param name="fileName"></param>
+        /// <param name="schemaName"></param>
+        public void ValidateXml(
+            string fileName,
+            string schemaName)
+        {
+            XmlReaderSettings settings = new XmlReaderSettings();
+            settings.Schemas.Add("http://www.contoso.com/books", schemaName);
+            settings.ValidationType = ValidationType.Schema;
+
+            XmlReader reader = XmlReader.Create(fileName, settings);
+            XmlDocument document = new XmlDocument();
+            document.Load(reader);
+
+            var eventHandler = new ValidationEventHandler(this.ValidationEventHandler);
+
+            // the following call to Validate succeeds.
+            document.Validate(eventHandler);
+        }
+
+        private void ValidationEventHandler(object sender, ValidationEventArgs e)
+        {
+            switch (e.Severity)
+            {
+                case XmlSeverityType.Error:
+                    Console.WriteLine("Error: {0}", e.Message);
+                    break;
+                case XmlSeverityType.Warning:
+                    Console.WriteLine("Warning {0}", e.Message);
+                    break;
+            }
         }
 
         public void WriteToXmlDocumentUsingXmlTextWriter(
