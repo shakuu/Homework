@@ -51,7 +51,9 @@ namespace XMLProcessingHW.ReadingXML.XMLReaders
                     {
                         xmlWriter.WriteStartElement("album");
                         xmlWriter.WriteStartElement("name");
+
                         xmlWriter.WriteString(album);
+
                         xmlWriter.WriteEndElement();
                         xmlWriter.WriteEndElement();
                     }

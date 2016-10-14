@@ -1,25 +1,23 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Text;
 using System.Xml;
 
-using XMLProcessingHW.ReadingXML.DirectoryStructureGenerator.Contracts;
+using XMLProcessingHW.ReadingXML.DirectoryStructureGenerators.Contracts;
 
-namespace XMLProcessingHW.ReadingXML.DirectoryStructureGenerator
+namespace XMLProcessingHW.ReadingXML.DirectoryStructureGenerators
 {
     public class XmlDirectoryStructureLogger : IDirectoryStructureLogger, IDisposable
     {
         private XmlWriter writer;
-        private Stack<string> scopeStack;
+
+        private string fileName;
+        private Encoding encoding;
 
         public XmlDirectoryStructureLogger(string fileName, Encoding encoding)
         {
             // TODO: Validate fileName
-
-            this.scopeStack = new Stack<string>();
-
-            this.writer = new XmlTextWriter(fileName, encoding);
-            this.writer.WriteStartDocument();
+            this.fileName = fileName;
+            this.encoding = encoding;
         }
 
         public void Dispose()
@@ -30,6 +28,12 @@ namespace XMLProcessingHW.ReadingXML.DirectoryStructureGenerator
 
         public void LogElement(string elementName, string elementText, bool isNewScope = false)
         {
+            if (this.writer == null)
+            {
+                this.writer = new XmlTextWriter(this.fileName, this.encoding);
+                this.writer.WriteStartDocument();
+            }
+
             this.writer.WriteStartElement(elementName);
             this.writer.WriteString(elementText);
 

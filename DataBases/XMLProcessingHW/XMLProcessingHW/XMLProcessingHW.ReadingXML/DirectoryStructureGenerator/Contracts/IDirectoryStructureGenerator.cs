@@ -1,4 +1,4 @@
-﻿namespace XMLProcessingHW.ReadingXML.DirectoryStructureGenerator.Contracts
+﻿namespace XMLProcessingHW.ReadingXML.DirectoryStructureGenerators.Contracts
 {
     public interface IDirectoryStructureGenerator
     {

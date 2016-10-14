@@ -3,6 +3,7 @@ using System.Collections;
 using System.Text;
 using System.Xml;
 
+using XMLProcessingHW.ReadingXML.DirectoryStructureGenerators;
 using XMLProcessingHW.ReadingXML.XMLReaders;
 using XMLProcessingHW.ReadingXML.XMLReaders.Contracts;
 
@@ -38,6 +39,20 @@ namespace XMLProcessingHW.ReadingXML
             Console.WriteLine("----------------------------------");
 
             WriteNewXmlWithDIfferentStructure(url, documentParser);
+
+            Console.WriteLine("----------------------------------");
+
+            FolderStructure();
+        }
+
+        private static void FolderStructure()
+        {
+            var encoding = Encoding.GetEncoding("windows-1251");
+            var outputFileName = "D:\\GitHub\\Homework\\DataBases\\XMLProcessingHW\\XMLProcessingHW\\directories.xml";
+            var logger = new XmlDirectoryStructureLogger(outputFileName, encoding);
+            var generator = new DirectoryStructureGenerator();
+
+            generator.GenerateDirectoryStructure("D:\\test", logger);
         }
 
         private static void ExecuteSearchForElementsWithNameUsingLinqToXml(string url, IXmlDocumentParser documentParser)

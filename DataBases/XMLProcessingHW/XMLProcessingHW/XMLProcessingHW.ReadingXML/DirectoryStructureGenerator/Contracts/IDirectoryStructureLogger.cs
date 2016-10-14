@@ -1,6 +1,8 @@
-﻿namespace XMLProcessingHW.ReadingXML.DirectoryStructureGenerator.Contracts
+﻿using System;
+
+namespace XMLProcessingHW.ReadingXML.DirectoryStructureGenerators.Contracts
 {
-    public interface IDirectoryStructureLogger
+    public interface IDirectoryStructureLogger : IDisposable
     {
         void EndScope();
 
