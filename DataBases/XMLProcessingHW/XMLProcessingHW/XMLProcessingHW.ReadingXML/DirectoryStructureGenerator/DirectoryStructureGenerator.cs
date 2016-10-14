@@ -29,7 +29,6 @@ namespace XMLProcessingHW.ReadingXML.DirectoryStructureGenerators
                 this.ParseDirectory(directory.FullName, logger);
             }
 
-
             var files = directoryInfo.GetFiles();
             foreach (var file in files)
             {
