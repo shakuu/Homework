@@ -37,7 +37,7 @@ namespace XMLProcessingHW.ReadingXML.XMLReaders
                         var currentElementName = reader.Name;
                         if (currentElementName == searchedElementName)
                         {
-                            var content = reader.ReadContentAsString();
+                            var content = reader.ReadElementContentAsString();
                             result.AddLast(content);
                         }
                     }

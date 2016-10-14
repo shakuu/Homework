@@ -8,7 +8,7 @@
     <price>15</price>
     <songs>
       <song>
-        <name></name>
+        <title>Song</title>
       </song>
     </songs>
   </album>
@@ -20,7 +20,7 @@
     <price>25</price>
     <songs>
       <song>
-        <name></name>
+        <title>Song</title>
       </song>
     </songs>
   </album>
@@ -32,7 +32,7 @@
     <price>15</price>
     <songs>
       <song>
-        <name></name>
+        <title>Song</title>
       </song>
     </songs>
   </album>
@@ -44,7 +44,7 @@
     <price>15</price>
     <songs>
       <song>
-        <name></name>
+        <title>Song</title>
       </song>
     </songs>
   </album>
@@ -56,7 +56,7 @@
     <price>15</price>
     <songs>
       <song>
-        <name></name>
+        <title>Song</title>
       </song>
     </songs>
   </album>
@@ -68,7 +68,7 @@
     <price>15</price>
     <songs>
       <song>
-        <name></name>
+        <title>Song</title>
       </song>
     </songs>
   </album>
@@ -80,7 +80,7 @@
     <price>25</price>
     <songs>
       <song>
-        <name></name>
+        <title>Song</title>
       </song>
     </songs>
   </album>
