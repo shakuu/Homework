@@ -49,6 +49,8 @@
     <Compile Include="ConfigurationReaders\Contracts\IConfigurationReader.cs" />
     <Compile Include="DataServices\Contracts\IDataService.cs" />
     <Compile Include="DataServices\WebClientDataService.cs" />
+    <Compile Include="HtmlGenerator\Contracts\IHtmlGenerator.cs" />
+    <Compile Include="Models\Contracts\IModel.cs" />
     <Compile Include="Models\YouTubeVideo.cs" />
     <Compile Include="Parsers\Contracts\IJsonParser.cs" />
     <Compile Include="Parsers\Contracts\IXmlDocumentProvider.cs" />

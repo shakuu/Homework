@@ -1,0 +1,462 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<feed xmlns:yt="http://www.youtube.com/xml/schemas/2015" xmlns:media="http://search.yahoo.com/mrss/" xmlns="http://www.w3.org/2005/Atom">
+ <link rel="self" href="http://www.youtube.com/feeds/videos.xml?channel_id=UCLC-vbm7OWvpbqzXaoAMGGw"/>
+ <id>yt:channel:UCLC-vbm7OWvpbqzXaoAMGGw</id>
+ <yt:channelId>UCLC-vbm7OWvpbqzXaoAMGGw</yt:channelId>
+ <title>TelerikAcademy</title>
+ <link rel="alternate" href="http://www.youtube.com/channel/UCLC-vbm7OWvpbqzXaoAMGGw"/>
+ <author>
+  <name>TelerikAcademy</name>
+  <uri>http://www.youtube.com/channel/UCLC-vbm7OWvpbqzXaoAMGGw</uri>
+ </author>
+ <published>2011-06-24T15:53:13+00:00</published>
+ <entry>
+  <id>yt:video:tJ0f_B5SYiw</id>
+  <yt:videoId>tJ0f_B5SYiw</yt:videoId>
+  <yt:channelId>UCLC-vbm7OWvpbqzXaoAMGGw</yt:channelId>
+  <title>Примитивни типове данни и променливи</title>
+  <link rel="alternate" href="http://www.youtube.com/watch?v=tJ0f_B5SYiw"/>
+  <author>
+   <name>TelerikAcademy</name>
+   <uri>http://www.youtube.com/channel/UCLC-vbm7OWvpbqzXaoAMGGw</uri>
+  </author>
+  <published>2016-10-15T06:21:45+00:00</published>
+  <updated>2016-10-15T07:34:44+00:00</updated>
+  <media:group>
+   <media:title>Примитивни типове данни и променливи</media:title>
+   <media:content url="https://www.youtube.com/v/tJ0f_B5SYiw?version=3" type="application/x-shockwave-flash" width="640" height="390"/>
+   <media:thumbnail url="https://i1.ytimg.com/vi/tJ0f_B5SYiw/hqdefault.jpg" width="480" height="360"/>
+   <media:description>Лекция: Примитивни типове данни и променливи
+Курс: C# Fundamentals
+Лектор: Кристиян Цъклев
+Дата: 14 октомври 2016
+
+Уебсайт на Академията на Телерик: http://academy.telerik.com
+
+Следете за предстоящи безплатни обучения на Академията на Телерик във Facebook: http://www.facebook.com/TelerikAcademy.</media:description>
+   <media:community>
+    <media:starRating count="0" average="0.00" min="1" max="5"/>
+    <media:statistics views="54"/>
+   </media:community>
+  </media:group>
+ </entry>
+ <entry>
+  <id>yt:video:PhbkdUxwPo4</id>
+  <yt:videoId>PhbkdUxwPo4</yt:videoId>
+  <yt:channelId>UCLC-vbm7OWvpbqzXaoAMGGw</yt:channelId>
+  <title>Основи на Уеб</title>
+  <link rel="alternate" href="http://www.youtube.com/watch?v=PhbkdUxwPo4"/>
+  <author>
+   <name>TelerikAcademy</name>
+   <uri>http://www.youtube.com/channel/UCLC-vbm7OWvpbqzXaoAMGGw</uri>
+  </author>
+  <published>2016-10-14T16:13:51+00:00</published>
+  <updated>2016-10-15T00:42:20+00:00</updated>
+  <media:group>
+   <media:title>Основи на Уеб</media:title>
+   <media:content url="https://www.youtube.com/v/PhbkdUxwPo4?version=3" type="application/x-shockwave-flash" width="640" height="390"/>
+   <media:thumbnail url="https://i1.ytimg.com/vi/PhbkdUxwPo4/hqdefault.jpg" width="480" height="360"/>
+   <media:description>Лекция: Основи на Уеб
+Курс: HTML Основи
+Лектор: Евлоги Христов
+Дата: 14.10.2016
+
+Уебсайт на Академията на Телерик: http://academy.telerik.com
+
+Следете за предстоящи безплатни обучения на Академията на Телерик във Facebook: http://www.facebook.com/TelerikAcademy.</media:description>
+   <media:community>
+    <media:starRating count="1" average="5.00" min="1" max="5"/>
+    <media:statistics views="86"/>
+   </media:community>
+  </media:group>
+ </entry>
+ <entry>
+  <id>yt:video:RoidEi-R-yU</id>
+  <yt:videoId>RoidEi-R-yU</yt:videoId>
+  <yt:channelId>UCLC-vbm7OWvpbqzXaoAMGGw</yt:channelId>
+  <title>Моделиране на данни и E/R диаграми</title>
+  <link rel="alternate" href="http://www.youtube.com/watch?v=RoidEi-R-yU"/>
+  <author>
+   <name>TelerikAcademy</name>
+   <uri>http://www.youtube.com/channel/UCLC-vbm7OWvpbqzXaoAMGGw</uri>
+  </author>
+  <published>2016-10-14T16:13:40+00:00</published>
+  <updated>2016-10-14T18:56:12+00:00</updated>
+  <media:group>
+   <media:title>Моделиране на данни и E/R диаграми</media:title>
+   <media:content url="https://www.youtube.com/v/RoidEi-R-yU?version=3" type="application/x-shockwave-flash" width="640" height="390"/>
+   <media:thumbnail url="https://i3.ytimg.com/vi/RoidEi-R-yU/hqdefault.jpg" width="480" height="360"/>
+   <media:description>Лекция: Моделиране на данни и E/R диаграми
+Курс: Бази от данни и SQL 2016
+Лектор: Дончо Минков
+Дата: 14 октомври 2016 г.
+
+Уебсайт на Академията на Телерик: http://academy.telerik.com
+
+Следете за предстоящи безплатни обучения на Академията на Телерик във Facebook: http://www.facebook.com/TelerikAcademy.</media:description>
+   <media:community>
+    <media:starRating count="0" average="0.00" min="1" max="5"/>
+    <media:statistics views="52"/>
+   </media:community>
+  </media:group>
+ </entry>
+ <entry>
+  <id>yt:video:k96tKkbMma8</id>
+  <yt:videoId>k96tKkbMma8</yt:videoId>
+  <yt:channelId>UCLC-vbm7OWvpbqzXaoAMGGw</yt:channelId>
+  <title>Представяне на курса</title>
+  <link rel="alternate" href="http://www.youtube.com/watch?v=k96tKkbMma8"/>
+  <author>
+   <name>TelerikAcademy</name>
+   <uri>http://www.youtube.com/channel/UCLC-vbm7OWvpbqzXaoAMGGw</uri>
+  </author>
+  <published>2016-10-14T15:51:12+00:00</published>
+  <updated>2016-10-15T01:54:14+00:00</updated>
+  <media:group>
+   <media:title>Представяне на курса</media:title>
+   <media:content url="https://www.youtube.com/v/k96tKkbMma8?version=3" type="application/x-shockwave-flash" width="640" height="390"/>
+   <media:thumbnail url="https://i4.ytimg.com/vi/k96tKkbMma8/hqdefault.jpg" width="480" height="360"/>
+   <media:description>Лекция: Представяне на курса
+Курс: HTML Основи
+Лектор: Евлоги Христов
+Дата: 14.10.2016
+
+Уебсайт на Академията на Телерик: http://academy.telerik.com
+
+Следете за предстоящи безплатни обучения на Академията на Телерик във Facebook: http://www.facebook.com/TelerikAcademy.</media:description>
+   <media:community>
+    <media:starRating count="0" average="0.00" min="1" max="5"/>
+    <media:statistics views="57"/>
+   </media:community>
+  </media:group>
+ </entry>
+ <entry>
+  <id>yt:video:8_SOTdfAJwI</id>
+  <yt:videoId>8_SOTdfAJwI</yt:videoId>
+  <yt:channelId>UCLC-vbm7OWvpbqzXaoAMGGw</yt:channelId>
+  <title>Бази от данни &amp; SQL: Въведение в базите данни</title>
+  <link rel="alternate" href="http://www.youtube.com/watch?v=8_SOTdfAJwI"/>
+  <author>
+   <name>TelerikAcademy</name>
+   <uri>http://www.youtube.com/channel/UCLC-vbm7OWvpbqzXaoAMGGw</uri>
+  </author>
+  <published>2016-10-14T14:15:30+00:00</published>
+  <updated>2016-10-14T20:04:53+00:00</updated>
+  <media:group>
+   <media:title>Бази от данни &amp; SQL: Въведение в базите данни</media:title>
+   <media:content url="https://www.youtube.com/v/8_SOTdfAJwI?version=3" type="application/x-shockwave-flash" width="640" height="390"/>
+   <media:thumbnail url="https://i1.ytimg.com/vi/8_SOTdfAJwI/hqdefault.jpg" width="480" height="360"/>
+   <media:description>Лекция: Въведение в базите данни
+Курс: Бази от данни &amp; SQL - октомври 2016
+Лектор: Мартин Вешев
+Дата: 14 октомври 2016
+
+Уебсайт на Академията на Телерик: http://academy.telerik.com
+
+Следете за предстоящи безплатни обучения на Академията на Телерик във Facebook: http://www.facebook.com/TelerikAcademy.</media:description>
+   <media:community>
+    <media:starRating count="1" average="5.00" min="1" max="5"/>
+    <media:statistics views="72"/>
+   </media:community>
+  </media:group>
+ </entry>
+ <entry>
+  <id>yt:video:qvSkCv9GyPY</id>
+  <yt:videoId>qvSkCv9GyPY</yt:videoId>
+  <yt:channelId>UCLC-vbm7OWvpbqzXaoAMGGw</yt:channelId>
+  <title>Бази от данни &amp; SQL: Microsoft SQL Server и MySQL</title>
+  <link rel="alternate" href="http://www.youtube.com/watch?v=qvSkCv9GyPY"/>
+  <author>
+   <name>TelerikAcademy</name>
+   <uri>http://www.youtube.com/channel/UCLC-vbm7OWvpbqzXaoAMGGw</uri>
+  </author>
+  <published>2016-10-14T13:47:35+00:00</published>
+  <updated>2016-10-14T18:40:47+00:00</updated>
+  <media:group>
+   <media:title>Бази от данни &amp; SQL: Microsoft SQL Server и MySQL</media:title>
+   <media:content url="https://www.youtube.com/v/qvSkCv9GyPY?version=3" type="application/x-shockwave-flash" width="640" height="390"/>
+   <media:thumbnail url="https://i2.ytimg.com/vi/qvSkCv9GyPY/hqdefault.jpg" width="480" height="360"/>
+   <media:description>Лекция: Microsoft SQL Server и MySQL
+Курс: Бази от данни &amp; SQL - октомври 2016
+Лектор: Мартин Вешев
+Дата: 14 октомври 2016
+
+Уебсайт на Академията на Телерик: http://academy.telerik.com
+
+Следете за предстоящи безплатни обучения на Академията на Телерик във Facebook: http://www.facebook.com/TelerikAcademy.</media:description>
+   <media:community>
+    <media:starRating count="0" average="0.00" min="1" max="5"/>
+    <media:statistics views="55"/>
+   </media:community>
+  </media:group>
+ </entry>
+ <entry>
+  <id>yt:video:gQZ9ACoCvf4</id>
+  <yt:videoId>gQZ9ACoCvf4</yt:videoId>
+  <yt:channelId>UCLC-vbm7OWvpbqzXaoAMGGw</yt:channelId>
+  <title>Основи на Уеб</title>
+  <link rel="alternate" href="http://www.youtube.com/watch?v=gQZ9ACoCvf4"/>
+  <author>
+   <name>TelerikAcademy</name>
+   <uri>http://www.youtube.com/channel/UCLC-vbm7OWvpbqzXaoAMGGw</uri>
+  </author>
+  <published>2016-10-14T13:36:03+00:00</published>
+  <updated>2016-10-14T23:40:15+00:00</updated>
+  <media:group>
+   <media:title>Основи на Уеб</media:title>
+   <media:content url="https://www.youtube.com/v/gQZ9ACoCvf4?version=3" type="application/x-shockwave-flash" width="640" height="390"/>
+   <media:thumbnail url="https://i4.ytimg.com/vi/gQZ9ACoCvf4/hqdefault.jpg" width="480" height="360"/>
+   <media:description>Лекция: Основи на Уеб
+Курс: HTML Основи
+Лектор: Константин Симеонов
+Дата: 13.10.2016
+
+Уебсайт на Академията на Телерик: http://academy.telerik.com
+
+Следете за предстоящи безплатни обучения на Академията на Телерик във Facebook: http://www.facebook.com/TelerikAcademy.</media:description>
+   <media:community>
+    <media:starRating count="2" average="5.00" min="1" max="5"/>
+    <media:statistics views="85"/>
+   </media:community>
+  </media:group>
+ </entry>
+ <entry>
+  <id>yt:video:GiB8_7f--Ms</id>
+  <yt:videoId>GiB8_7f--Ms</yt:videoId>
+  <yt:channelId>UCLC-vbm7OWvpbqzXaoAMGGw</yt:channelId>
+  <title>Въведение в курса</title>
+  <link rel="alternate" href="http://www.youtube.com/watch?v=GiB8_7f--Ms"/>
+  <author>
+   <name>TelerikAcademy</name>
+   <uri>http://www.youtube.com/channel/UCLC-vbm7OWvpbqzXaoAMGGw</uri>
+  </author>
+  <published>2016-10-14T13:09:11+00:00</published>
+  <updated>2016-10-15T01:55:26+00:00</updated>
+  <media:group>
+   <media:title>Въведение в курса</media:title>
+   <media:content url="https://www.youtube.com/v/GiB8_7f--Ms?version=3" type="application/x-shockwave-flash" width="640" height="390"/>
+   <media:thumbnail url="https://i4.ytimg.com/vi/GiB8_7f--Ms/hqdefault.jpg" width="480" height="360"/>
+   <media:description>Лекция: Въведение в курса
+Курс: HTML Основи
+Лектор: Константин Симеонов
+Дата: 14.10.2016
+
+Уебсайт на Академията на Телерик: http://academy.telerik.com
+
+Следете за предстоящи безплатни обучения на Академията на Телерик във Facebook: http://www.facebook.com/TelerikAcademy.</media:description>
+   <media:community>
+    <media:starRating count="0" average="0.00" min="1" max="5"/>
+    <media:statistics views="84"/>
+   </media:community>
+  </media:group>
+ </entry>
+ <entry>
+  <id>yt:video:JXARonG9LVw</id>
+  <yt:videoId>JXARonG9LVw</yt:videoId>
+  <yt:channelId>UCLC-vbm7OWvpbqzXaoAMGGw</yt:channelId>
+  <title>SOLID и други принципи</title>
+  <link rel="alternate" href="http://www.youtube.com/watch?v=JXARonG9LVw"/>
+  <author>
+   <name>TelerikAcademy</name>
+   <uri>http://www.youtube.com/channel/UCLC-vbm7OWvpbqzXaoAMGGw</uri>
+  </author>
+  <published>2016-10-14T13:00:44+00:00</published>
+  <updated>2016-10-14T20:26:19+00:00</updated>
+  <media:group>
+   <media:title>SOLID и други принципи</media:title>
+   <media:content url="https://www.youtube.com/v/JXARonG9LVw?version=3" type="application/x-shockwave-flash" width="640" height="390"/>
+   <media:thumbnail url="https://i3.ytimg.com/vi/JXARonG9LVw/hqdefault.jpg" width="480" height="360"/>
+   <media:description>Лекция: SOLID и други принципи
+Курс: Шаблони за дизайн
+Лектор: Виктор Цветков
+Дата: 12 октомври 2016
+
+Уебсайт на Академията на Телерик: http://academy.telerik.com
+
+Следете за предстоящи безплатни обучения на Академията на Телерик във Facebook: http://www.facebook.com/TelerikAcademy.</media:description>
+   <media:community>
+    <media:starRating count="2" average="5.00" min="1" max="5"/>
+    <media:statistics views="106"/>
+   </media:community>
+  </media:group>
+ </entry>
+ <entry>
+  <id>yt:video:KiQENaiijPQ</id>
+  <yt:videoId>KiQENaiijPQ</yt:videoId>
+  <yt:channelId>UCLC-vbm7OWvpbqzXaoAMGGw</yt:channelId>
+  <title>Въведение в шаблоните за дизайн</title>
+  <link rel="alternate" href="http://www.youtube.com/watch?v=KiQENaiijPQ"/>
+  <author>
+   <name>TelerikAcademy</name>
+   <uri>http://www.youtube.com/channel/UCLC-vbm7OWvpbqzXaoAMGGw</uri>
+  </author>
+  <published>2016-10-14T12:28:36+00:00</published>
+  <updated>2016-10-14T20:15:21+00:00</updated>
+  <media:group>
+   <media:title>Въведение в шаблоните за дизайн</media:title>
+   <media:content url="https://www.youtube.com/v/KiQENaiijPQ?version=3" type="application/x-shockwave-flash" width="640" height="390"/>
+   <media:thumbnail url="https://i4.ytimg.com/vi/KiQENaiijPQ/hqdefault.jpg" width="480" height="360"/>
+   <media:description>Лекция: Въведение в шаблоните за дизайн
+Курс: Шаблони за дизайн
+Лектор: Виктор Цветков
+Дата: 13 октомври 2016
+
+Уебсайт на Академията на Телерик: http://academy.telerik.com
+
+Следете за предстоящи безплатни обучения на Академията на Телерик във Facebook: http://www.facebook.com/TelerikAcademy.</media:description>
+   <media:community>
+    <media:starRating count="0" average="0.00" min="1" max="5"/>
+    <media:statistics views="65"/>
+   </media:community>
+  </media:group>
+ </entry>
+ <entry>
+  <id>yt:video:AkDA4K710TE</id>
+  <yt:videoId>AkDA4K710TE</yt:videoId>
+  <yt:channelId>UCLC-vbm7OWvpbqzXaoAMGGw</yt:channelId>
+  <title>Примитивни типове данни и променливи</title>
+  <link rel="alternate" href="http://www.youtube.com/watch?v=AkDA4K710TE"/>
+  <author>
+   <name>TelerikAcademy</name>
+   <uri>http://www.youtube.com/channel/UCLC-vbm7OWvpbqzXaoAMGGw</uri>
+  </author>
+  <published>2016-10-14T09:33:22+00:00</published>
+  <updated>2016-10-14T18:55:13+00:00</updated>
+  <media:group>
+   <media:title>Примитивни типове данни и променливи</media:title>
+   <media:content url="https://www.youtube.com/v/AkDA4K710TE?version=3" type="application/x-shockwave-flash" width="640" height="390"/>
+   <media:thumbnail url="https://i2.ytimg.com/vi/AkDA4K710TE/hqdefault.jpg" width="480" height="360"/>
+   <media:description>Лекция: Примитивни типове данни и променливи
+Курс: C# Fundamentals
+Лектор: Евлоги Христов
+Дата: 13.10.2016
+
+Уебсайт на Академията на Телерик: http://academy.telerik.com
+
+Следете за предстоящи безплатни обучения на Академията на Телерик във Facebook: http://www.facebook.com/TelerikAcademy.</media:description>
+   <media:community>
+    <media:starRating count="1" average="1.00" min="1" max="5"/>
+    <media:statistics views="116"/>
+   </media:community>
+  </media:group>
+ </entry>
+ <entry>
+  <id>yt:video:OnIhma3BMrU</id>
+  <yt:videoId>OnIhma3BMrU</yt:videoId>
+  <yt:channelId>UCLC-vbm7OWvpbqzXaoAMGGw</yt:channelId>
+  <title>Въведение в програмирането</title>
+  <link rel="alternate" href="http://www.youtube.com/watch?v=OnIhma3BMrU"/>
+  <author>
+   <name>TelerikAcademy</name>
+   <uri>http://www.youtube.com/channel/UCLC-vbm7OWvpbqzXaoAMGGw</uri>
+  </author>
+  <published>2016-10-13T15:03:28+00:00</published>
+  <updated>2016-10-14T19:12:21+00:00</updated>
+  <media:group>
+   <media:title>Въведение в програмирането</media:title>
+   <media:content url="https://www.youtube.com/v/OnIhma3BMrU?version=3" type="application/x-shockwave-flash" width="640" height="390"/>
+   <media:thumbnail url="https://i4.ytimg.com/vi/OnIhma3BMrU/hqdefault.jpg" width="480" height="360"/>
+   <media:description>Лекция: Въведение в програмирането
+Курс: C# Основи
+Лектор: Стивън Цветков
+Дата: 12 октомври 2016
+
+Уебсайт на Академията на Телерик: http://academy.telerik.com
+
+Следете за предстоящи безплатни обучения на Академията на Телерик във Facebook: http://www.facebook.com/TelerikAcademy.</media:description>
+   <media:community>
+    <media:starRating count="1" average="5.00" min="1" max="5"/>
+    <media:statistics views="159"/>
+   </media:community>
+  </media:group>
+ </entry>
+ <entry>
+  <id>yt:video:YPSVpKZYeIg</id>
+  <yt:videoId>YPSVpKZYeIg</yt:videoId>
+  <yt:channelId>UCLC-vbm7OWvpbqzXaoAMGGw</yt:channelId>
+  <title>Бази от данни &amp; SQL: Основи на XML</title>
+  <link rel="alternate" href="http://www.youtube.com/watch?v=YPSVpKZYeIg"/>
+  <author>
+   <name>TelerikAcademy</name>
+   <uri>http://www.youtube.com/channel/UCLC-vbm7OWvpbqzXaoAMGGw</uri>
+  </author>
+  <published>2016-10-13T14:15:27+00:00</published>
+  <updated>2016-10-14T15:50:09+00:00</updated>
+  <media:group>
+   <media:title>Бази от данни &amp; SQL: Основи на XML</media:title>
+   <media:content url="https://www.youtube.com/v/YPSVpKZYeIg?version=3" type="application/x-shockwave-flash" width="640" height="390"/>
+   <media:thumbnail url="https://i2.ytimg.com/vi/YPSVpKZYeIg/hqdefault.jpg" width="480" height="360"/>
+   <media:description>Лекция: Основи на XML
+Курс: Бази от данни &amp; SQL октомври 2016
+Лектор: Дончо Минков
+Дата: 12 октомври 2016 г.
+
+Уебсайт на Академията на Телерик: http://academy.telerik.com
+
+Следете за предстоящи безплатни обучения на Академията на Телерик във Facebook: http://www.facebook.com/TelerikAcademy.</media:description>
+   <media:community>
+    <media:starRating count="3" average="1.00" min="1" max="5"/>
+    <media:statistics views="177"/>
+   </media:community>
+  </media:group>
+ </entry>
+ <entry>
+  <id>yt:video:glnaBYV9aKY</id>
+  <yt:videoId>glnaBYV9aKY</yt:videoId>
+  <yt:channelId>UCLC-vbm7OWvpbqzXaoAMGGw</yt:channelId>
+  <title>Бази от данни &amp; SQL: Работа с JSON със C#</title>
+  <link rel="alternate" href="http://www.youtube.com/watch?v=glnaBYV9aKY"/>
+  <author>
+   <name>TelerikAcademy</name>
+   <uri>http://www.youtube.com/channel/UCLC-vbm7OWvpbqzXaoAMGGw</uri>
+  </author>
+  <published>2016-10-13T14:15:27+00:00</published>
+  <updated>2016-10-14T13:27:21+00:00</updated>
+  <media:group>
+   <media:title>Бази от данни &amp; SQL: Работа с JSON със C#</media:title>
+   <media:content url="https://www.youtube.com/v/glnaBYV9aKY?version=3" type="application/x-shockwave-flash" width="640" height="390"/>
+   <media:thumbnail url="https://i4.ytimg.com/vi/glnaBYV9aKY/hqdefault.jpg" width="480" height="360"/>
+   <media:description>Лекция: Работа с JSON със C#
+Курс: Бази от данни &amp; SQL октомври 2016
+Лектор: Дончо Минков
+Дата: 13 октомври 2016 г.
+
+Уебсайт на Академията на Телерик: http://academy.telerik.com
+
+Следете за предстоящи безплатни обучения на Академията на Телерик във Facebook: http://www.facebook.com/TelerikAcademy.</media:description>
+   <media:community>
+    <media:starRating count="1" average="5.00" min="1" max="5"/>
+    <media:statistics views="118"/>
+   </media:community>
+  </media:group>
+ </entry>
+ <entry>
+  <id>yt:video:ML8_eLNISI8</id>
+  <yt:videoId>ML8_eLNISI8</yt:videoId>
+  <yt:channelId>UCLC-vbm7OWvpbqzXaoAMGGw</yt:channelId>
+  <title>Бази от данни &amp; SQL: Работа с XML със C#</title>
+  <link rel="alternate" href="http://www.youtube.com/watch?v=ML8_eLNISI8"/>
+  <author>
+   <name>TelerikAcademy</name>
+   <uri>http://www.youtube.com/channel/UCLC-vbm7OWvpbqzXaoAMGGw</uri>
+  </author>
+  <published>2016-10-13T11:51:16+00:00</published>
+  <updated>2016-10-14T13:27:12+00:00</updated>
+  <media:group>
+   <media:title>Бази от данни &amp; SQL: Работа с XML със C#</media:title>
+   <media:content url="https://www.youtube.com/v/ML8_eLNISI8?version=3" type="application/x-shockwave-flash" width="640" height="390"/>
+   <media:thumbnail url="https://i2.ytimg.com/vi/ML8_eLNISI8/hqdefault.jpg" width="480" height="360"/>
+   <media:description>Лекция: Работа с XML със C#
+Курс: Бази от данни &amp; SQL октомври 2016
+Лектор: Дончо Минков
+Дата: 13 октомври 2016 г.
+Уебсайт на Академията на Телерик: http://academy.telerik.com
+
+Следете за предстоящи безплатни обучения на Академията на Телерик във Facebook: http://www.facebook.com/TelerikAcademy.</media:description>
+   <media:community>
+    <media:starRating count="0" average="0.00" min="1" max="5"/>
+    <media:statistics views="164"/>
+   </media:community>
+  </media:group>
+ </entry>
+</feed>
