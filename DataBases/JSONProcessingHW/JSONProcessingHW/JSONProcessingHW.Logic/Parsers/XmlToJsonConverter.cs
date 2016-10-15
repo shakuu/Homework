@@ -1,8 +1,8 @@
 ﻿using System.Xml;
 
-using Newtonsoft.Json;
-
 using JSONProcessingHW.Logic.Parsers.Contracts;
+
+using Newtonsoft.Json;
 
 namespace JSONProcessingHW.Logic.Parsers
 {

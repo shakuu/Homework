@@ -1,10 +1,12 @@
 ﻿using System.IO;
 
+using JSONProcessingHW.Logic.HtmlGenerator.Contracts;
+
 namespace JSONProcessingHW.Logic.HtmlGenerator
 {
-    public class HtmlFileCreator
+    public class HtmlFileCreator : IHtmlFileCreator
     {
-        private static string Template = @"<!DOCTYPE html>
+        private const string Template = @"<!DOCTYPE html>
                                            <html lang=""en"">
 
                                            <head>
@@ -17,7 +19,7 @@ namespace JSONProcessingHW.Logic.HtmlGenerator
                                            </body>
                                            </html> ";
 
-        public void CreateHtmlFile(string fileName,string title, string content)
+        public void CreateHtmlFile(string fileName, string title, string content)
         {
             var fileContent = string.Format(HtmlFileCreator.Template, content, title);
             File.WriteAllText(fileName, fileContent);

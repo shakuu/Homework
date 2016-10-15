@@ -1,10 +1,10 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 
-using Newtonsoft.Json.Linq;
-
 using JSONProcessingHW.Logic.Models.Contracts;
 using JSONProcessingHW.Logic.Parsers.Contracts;
+
+using Newtonsoft.Json.Linq;
 
 namespace JSONProcessingHW.Logic.Parsers
 {
