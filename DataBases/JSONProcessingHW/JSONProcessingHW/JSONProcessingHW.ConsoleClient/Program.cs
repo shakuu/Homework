@@ -1,5 +1,8 @@
-﻿using JSONProcessingHW.Logic.ConfigurationReaders;
+﻿using System.IO;
+
+using JSONProcessingHW.Logic.ConfigurationReaders;
 using JSONProcessingHW.Logic.DataServices;
+using JSONProcessingHW.Logic.HtmlGenerator;
 using JSONProcessingHW.Logic.Models;
 using JSONProcessingHW.Logic.Parsers;
 
@@ -27,7 +30,13 @@ namespace JSONProcessingHW.ConsoleClient
             var json = xmlToJsonConverter.ConvertXmlToJson(xmlDocument);
 
             var parser = new JsonParser<YouTubeVideo>();
-            parser.ParseJson(json, "feed", "entry");
+            var data = parser.ParseJson(json, "feed", "entry");
+
+            var htmlGenerator = new HtmlGenerator();
+            var html = htmlGenerator.GenerateHtml(data);
+
+            var outputFile = configReader.ReadConfiguration(Program.OutputHtmlFileLocationKey);
+            File.WriteAllText(outputFile, html);
         }
     }
 }

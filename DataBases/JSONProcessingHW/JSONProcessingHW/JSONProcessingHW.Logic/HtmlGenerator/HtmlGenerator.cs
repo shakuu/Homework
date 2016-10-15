@@ -1,5 +1,4 @@
 ﻿using System.Collections.Generic;
-using System.IO;
 using System.Text;
 
 using JSONProcessingHW.Logic.HtmlGenerator.Contracts;
@@ -13,7 +12,7 @@ namespace JSONProcessingHW.Logic.HtmlGenerator
         private const string CloseList = "</ul>";
         private const string ItemTemplate = "<li><a href=\"{1}\">{0}</a></li>";
 
-        public void GenerateHtml(IEnumerable<IModel> data, string outputFileName)
+        public string GenerateHtml(IEnumerable<IModel> data)
         {
             var html = new StringBuilder();
             html.AppendLine(HtmlGenerator.OpenList);
@@ -24,7 +23,7 @@ namespace JSONProcessingHW.Logic.HtmlGenerator
             }
 
             html.AppendLine(HtmlGenerator.CloseList);
-            File.WriteAllText(outputFileName, html.ToString());
+            return html.ToString();
         }
     }
 }

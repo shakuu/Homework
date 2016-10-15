@@ -6,6 +6,6 @@ namespace JSONProcessingHW.Logic.HtmlGenerator.Contracts
 {
     public interface IHtmlGenerator
     {
-        void GenerateHtml(IEnumerable<IModel> data, string outputFileName);
+        string GenerateHtml(IEnumerable<IModel> data);
     }
 }
