@@ -9,6 +9,7 @@ using JSONProcessingHW.Logic.DataServices.Contracts;
 using JSONProcessingHW.Logic.DataServices;
 using JSONProcessingHW.Logic.ConfigurationReaders;
 using JSONProcessingHW.Logic.ConfigurationReaders.Contracts;
+using JSONProcessingHW.Logic;
 
 namespace JSONProcessingHW.ConsoleClient.NinjectBinding
 {
@@ -23,6 +24,7 @@ namespace JSONProcessingHW.ConsoleClient.NinjectBinding
             this.Bind<IXmlDocumentProvider>().To<XmlDocumentProvider>();
             this.Bind<IDataService>().To<WebClientDataService>();
             this.Bind<IConfigurationReader>().To<AppConfigConfigurationReader>();
+            this.Bind<IDataParser>().To<DataParser>();
         }
     }
 }

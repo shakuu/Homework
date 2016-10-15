@@ -4,7 +4,7 @@ using JSONProcessingHW.Logic.Models.Contracts;
 
 namespace JSONProcessingHW.Logic.Parsers.Contracts
 {
-    public interface IJsonParser<T> where T : IModel, new()
+    public interface IJsonParser<T>
     {
         IEnumerable<T> ParseJson(string json, string rootName, string elementName);
     }

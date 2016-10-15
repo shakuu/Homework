@@ -23,6 +23,7 @@ namespace JSONProcessingHW.ConsoleClient
             var configReader = new AppConfigConfigurationReader();
             var rssFeedUrl = configReader.ReadConfiguration(Program.RssFeedUrlKey);
             var fileLocation = configReader.ReadConfiguration(Program.TargetXmlFileLocationKey);
+            var outputFile = configReader.ReadConfiguration(Program.OutputHtmlFileLocationKey);
 
             var dataService = new WebClientDataService();
             dataService.GetData(rssFeedUrl, fileLocation);
@@ -39,7 +40,6 @@ namespace JSONProcessingHW.ConsoleClient
             var htmlGenerator = new HtmlGenerator();
             var html = htmlGenerator.GenerateHtml(data);
 
-            var outputFile = configReader.ReadConfiguration(Program.OutputHtmlFileLocationKey);
             var htmlCreator = new HtmlFileCreator();
             htmlCreator.CreateHtmlFile(outputFile, "YouTube RSS", html);
         }
