@@ -1,8 +1,11 @@
-﻿using JSONProcessingHW.Logic.ConfigurationReaders;
+﻿using Ninject;
+
+using JSONProcessingHW.Logic.ConfigurationReaders;
 using JSONProcessingHW.Logic.DataServices;
 using JSONProcessingHW.Logic.HtmlGenerator;
 using JSONProcessingHW.Logic.Models;
 using JSONProcessingHW.Logic.Parsers;
+using System.Reflection;
 
 namespace JSONProcessingHW.ConsoleClient
 {
@@ -14,6 +17,9 @@ namespace JSONProcessingHW.ConsoleClient
 
         static void Main()
         {
+            var ninject = new StandardKernel();
+            ninject.Load(Assembly.GetExecutingAssembly());
+
             var configReader = new AppConfigConfigurationReader();
             var rssFeedUrl = configReader.ReadConfiguration(Program.RssFeedUrlKey);
             var fileLocation = configReader.ReadConfiguration(Program.TargetXmlFileLocationKey);
