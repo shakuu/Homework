@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Text;
 
 using JSONProcessingHW.Logic.HtmlGenerator.Contracts;
@@ -14,16 +15,21 @@ namespace JSONProcessingHW.Logic.HtmlGenerator
 
         public string GenerateHtml(IEnumerable<IModel> data)
         {
-            var html = new StringBuilder();
-            html.AppendLine(HtmlGenerator.OpenList);
+            if (data == null)
+            {
+                throw new ArgumentNullException(nameof(data));
+            }
+
+            var htmlBuilder = new StringBuilder();
+            htmlBuilder.AppendLine(HtmlGenerator.OpenList);
 
             foreach (var model in data)
             {
-                html.AppendLine(string.Format(HtmlGenerator.ItemTemplate, model.Title, model.Url));
+                htmlBuilder.AppendLine(string.Format(HtmlGenerator.ItemTemplate, model.Title, model.Url));
             }
 
-            html.AppendLine(HtmlGenerator.CloseList);
-            return html.ToString();
+            htmlBuilder.AppendLine(HtmlGenerator.CloseList);
+            return htmlBuilder.ToString();
         }
     }
 }
