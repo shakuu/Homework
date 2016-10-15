@@ -9,9 +9,10 @@ using Newtonsoft.Json.Linq;
 
 namespace JSONProcessingHW.Logic.Parsers
 {
-    public class JsonParser<ModelType> : IJsonParser<ModelType> where ModelType : IModel, new()
+    public class JsonParser : IJsonParser
     {
-        public IEnumerable<ModelType> ParseJson(string json, string rootName, string elementName)
+        public IEnumerable<ModelType> ParseJson<ModelType>(string json, string rootName, string elementName)
+            where ModelType : IModel, new()
         {
             if (json == null)
             {

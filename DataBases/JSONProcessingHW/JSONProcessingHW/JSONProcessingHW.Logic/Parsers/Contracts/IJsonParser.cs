@@ -1,11 +1,11 @@
-﻿using System.Collections.Generic;
-
-using JSONProcessingHW.Logic.Models.Contracts;
+﻿using JSONProcessingHW.Logic.Models.Contracts;
+using System.Collections.Generic;
 
 namespace JSONProcessingHW.Logic.Parsers.Contracts
 {
-    public interface IJsonParser<T>
+    public interface IJsonParser
     {
-        IEnumerable<T> ParseJson(string json, string rootName, string elementName);
+        IEnumerable<ModelType> ParseJson<ModelType>(string json, string rootName, string elementName) 
+            where ModelType : IModel, new();
     }
 }

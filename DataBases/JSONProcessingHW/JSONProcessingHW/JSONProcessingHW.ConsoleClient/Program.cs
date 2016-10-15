@@ -1,11 +1,9 @@
-﻿using Ninject;
+﻿using System.Reflection;
+
+using Ninject;
 
 using JSONProcessingHW.Logic.ConfigurationReaders;
-using JSONProcessingHW.Logic.DataServices;
-using JSONProcessingHW.Logic.HtmlGenerator;
-using JSONProcessingHW.Logic.Models;
-using JSONProcessingHW.Logic.Parsers;
-using System.Reflection;
+using JSONProcessingHW.Logic;
 
 namespace JSONProcessingHW.ConsoleClient
 {
@@ -24,24 +22,8 @@ namespace JSONProcessingHW.ConsoleClient
             var rssFeedUrl = configReader.ReadConfiguration(Program.RssFeedUrlKey);
             var fileLocation = configReader.ReadConfiguration(Program.TargetXmlFileLocationKey);
             var outputFile = configReader.ReadConfiguration(Program.OutputHtmlFileLocationKey);
-
-            var dataService = new WebClientDataService();
-            dataService.GetData(rssFeedUrl, fileLocation);
-
-            var documentProvider = new XmlDocumentProvider();
-            var xmlDocument = documentProvider.GetXmlDocument(fileLocation);
-
-            var xmlToJsonConverter = new XmlToJsonConverter();
-            var json = xmlToJsonConverter.ConvertXmlToJson(xmlDocument);
-
-            var parser = new JsonParser<YouTubeVideo>();
-            var data = parser.ParseJson(json, "feed", "entry");
-
-            var htmlGenerator = new HtmlGenerator();
-            var html = htmlGenerator.GenerateHtml(data);
-
-            var htmlCreator = new HtmlFileCreator();
-            htmlCreator.CreateHtmlFile(outputFile, "YouTube RSS", html);
+            
+            var dataParser = ninject.Get<IDataParser>();
         }
     }
 }

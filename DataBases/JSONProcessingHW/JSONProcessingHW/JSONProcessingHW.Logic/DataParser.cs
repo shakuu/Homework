@@ -1,5 +1,5 @@
 ﻿using JSONProcessingHW.Logic.HtmlGenerator.Contracts;
-using JSONProcessingHW.Logic.Models.Contracts;
+using JSONProcessingHW.Logic.Models;
 using JSONProcessingHW.Logic.Parsers.Contracts;
 
 namespace JSONProcessingHW.Logic
@@ -8,14 +8,14 @@ namespace JSONProcessingHW.Logic
     {
         private readonly IXmlDocumentProvider xmlDocumentProvider;
         private readonly IXmlToJsonConverter xmlToJsonConverter;
-        private readonly IJsonParser<IModel> jsonParser;
+        private readonly IJsonParser jsonParser;
         private readonly IHtmlGenerator htmlGenerator;
         private readonly IHtmlFileCreator htmlCreator;
 
         public DataParser(
             IXmlDocumentProvider xmlDocumentProvider,
             IXmlToJsonConverter xmlToJsonConverter,
-            IJsonParser<IModel> jsonParser,
+            IJsonParser jsonParser,
             IHtmlGenerator htmlGenerator,
             IHtmlFileCreator htmlCreator)
         {
@@ -30,7 +30,7 @@ namespace JSONProcessingHW.Logic
         {
             var xmlDocument = this.xmlDocumentProvider.GetXmlDocument(inputXmlFile);
             var json = this.xmlToJsonConverter.ConvertXmlToJson(xmlDocument);
-            var data = this.jsonParser.ParseJson(json, "feed", "entry");
+            var data = this.jsonParser.ParseJson<YouTubeVideo>(json, "feed", "entry");
             var html = this.htmlGenerator.GenerateHtml(data);
             this.htmlCreator.CreateHtmlFile(outputHtmlFile, "YouTube RSS", html);
         }
