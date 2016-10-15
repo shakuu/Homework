@@ -2,6 +2,6 @@
 {
     public interface IConfigurationReader
     {
-        string ReaderConfiguration(string key);
+        string ReadConfiguration(string key);
     }
 }

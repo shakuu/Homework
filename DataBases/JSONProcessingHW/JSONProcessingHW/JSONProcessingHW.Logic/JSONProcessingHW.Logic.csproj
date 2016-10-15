@@ -49,11 +49,19 @@
     <Compile Include="ConfigurationReaders\Contracts\IConfigurationReader.cs" />
     <Compile Include="DataServices\Contracts\IDataService.cs" />
     <Compile Include="DataServices\WebClientDataService.cs" />
+    <Compile Include="Models\YouTubeVideo.cs" />
+    <Compile Include="Parsers\Contracts\IJsonParser.cs" />
+    <Compile Include="Parsers\Contracts\IXmlDocumentProvider.cs" />
+    <Compile Include="Parsers\Contracts\IXmlToJsonConverter.cs" />
+    <Compile Include="Parsers\JsonParser.cs" />
+    <Compile Include="Parsers\XmlDocumentProvider.cs" />
+    <Compile Include="Parsers\XmlToJsonConverter.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

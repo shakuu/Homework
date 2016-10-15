@@ -1,10 +1,12 @@
 ﻿using System.Configuration;
 
+using JSONProcessingHW.Logic.ConfigurationReaders.Contracts;
+
 namespace JSONProcessingHW.Logic.ConfigurationReaders
 {
-    public class AppConfigConfigurationReader
+    public class AppConfigConfigurationReader : IConfigurationReader
     {
-        public string ReaderConfiguration(string key)
+        public string ReadConfiguration(string key)
         {
             var configValue = ConfigurationManager.AppSettings[key];
             return configValue;

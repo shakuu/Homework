@@ -1,4 +1,5 @@
 ﻿using JSONProcessingHW.Logic.ConfigurationReaders;
+using JSONProcessingHW.Logic.DataServices;
 
 namespace JSONProcessingHW.ConsoleClient
 {
@@ -10,7 +11,11 @@ namespace JSONProcessingHW.ConsoleClient
         static void Main()
         {
             var configReader = new AppConfigConfigurationReader();
-            System.Console.WriteLine(configReader.ReaderConfiguration("RSSFeedUrl"));
+            var rssFeedUrl = configReader.ReadConfiguration(Program.RssFeedUrlKey);
+            var fileLocation = configReader.ReadConfiguration(Program.TargetXmlFileLocation);
+
+            var dataService = new WebClientDataService();
+            dataService.GetData(rssFeedUrl, fileLocation);
         }
     }
 }
