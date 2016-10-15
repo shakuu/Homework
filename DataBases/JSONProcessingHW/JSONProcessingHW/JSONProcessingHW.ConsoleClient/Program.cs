@@ -2,8 +2,9 @@
 
 using Ninject;
 
-using JSONProcessingHW.Logic.ConfigurationReaders;
 using JSONProcessingHW.Logic;
+using JSONProcessingHW.Logic.ConfigurationReaders.Contracts;
+using JSONProcessingHW.Logic.DataServices.Contracts;
 
 namespace JSONProcessingHW.ConsoleClient
 {
@@ -18,12 +19,16 @@ namespace JSONProcessingHW.ConsoleClient
             var ninject = new StandardKernel();
             ninject.Load(Assembly.GetExecutingAssembly());
 
-            var configReader = new AppConfigConfigurationReader();
+            var configReader = ninject.Get<IConfigurationReader>();
             var rssFeedUrl = configReader.ReadConfiguration(Program.RssFeedUrlKey);
-            var fileLocation = configReader.ReadConfiguration(Program.TargetXmlFileLocationKey);
-            var outputFile = configReader.ReadConfiguration(Program.OutputHtmlFileLocationKey);
-            
+            var xmlFileLocation = configReader.ReadConfiguration(Program.TargetXmlFileLocationKey);
+            var htmlFileLocation = configReader.ReadConfiguration(Program.OutputHtmlFileLocationKey);
+
+            var rssLoader = ninject.Get<IDataService>();
+            rssLoader.GetData(rssFeedUrl, xmlFileLocation);
+
             var dataParser = ninject.Get<IDataParser>();
+            dataParser.CreateHtml(xmlFileLocation, htmlFileLocation);
         }
     }
 }
