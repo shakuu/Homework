@@ -1,4 +1,5 @@
-﻿using System.Configuration;
+﻿using System;
+using System.Configuration;
 
 using JSONProcessingHW.Logic.ConfigurationReaders.Contracts;
 
@@ -8,6 +9,11 @@ namespace JSONProcessingHW.Logic.ConfigurationReaders
     {
         public string ReadConfiguration(string key)
         {
+            if (string.IsNullOrEmpty(key))
+            {
+                throw new ArgumentNullException(nameof(key));
+            }
+
             var configValue = ConfigurationManager.AppSettings[key];
             return configValue;
         }
