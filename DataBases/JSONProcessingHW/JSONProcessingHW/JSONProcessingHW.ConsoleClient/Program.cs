@@ -36,7 +36,8 @@ namespace JSONProcessingHW.ConsoleClient
             var html = htmlGenerator.GenerateHtml(data);
 
             var outputFile = configReader.ReadConfiguration(Program.OutputHtmlFileLocationKey);
-            File.WriteAllText(outputFile, html);
+            var htmlCreator = new HtmlFileCreator();
+            htmlCreator.CreateHtmlFile(outputFile, "YouTube RSS", html);
         }
     }
 }
