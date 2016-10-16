@@ -81,6 +81,8 @@ namespace JSONProcessingHW.Logic
         public void CreateHtml<ModelType>(string inputXmlFile, string outputHtmlFile)
             where ModelType : IModel, new()
         {
+            // XML cannot be validated due to inconsistent <entry> element content.
+            // <entry> elements contain varying sets of child elements.
             var xmlDocument = this.xmlDocumentProvider.GetXmlDocument(inputXmlFile);
             var json = this.xmlToJsonConverter.ConvertXmlToJson(xmlDocument);
             var data = this.jsonParser.ParseJson<ModelType>(json, DataParser.RootElementName, DataParser.ContentElementName, this.titleCallback, this.urlCallback);

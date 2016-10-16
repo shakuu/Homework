@@ -19,7 +19,7 @@ namespace JSONProcessingHW.Logic.Parsers
             if (validationSchemaIsProvided)
             {
                 var xmlReaderSettings = new XmlReaderSettings();
-                xmlReaderSettings.Schemas.Add("http://www.myxml.com/myschema", validationSchema);
+                xmlReaderSettings.Schemas.Add("http://www.w3.org/2005/Atom", validationSchema);
                 xmlReaderSettings.ValidationType = ValidationType.Schema;
 
                 var xmlReader = XmlReader.Create(fileName, xmlReaderSettings);
