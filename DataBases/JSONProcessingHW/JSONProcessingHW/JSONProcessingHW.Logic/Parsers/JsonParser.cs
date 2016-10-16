@@ -11,7 +11,12 @@ namespace JSONProcessingHW.Logic.Parsers
 {
     public class JsonParser : IJsonParser
     {
-        public IEnumerable<ModelType> ParseJson<ModelType>(string json, string rootName, string elementName)
+        public IEnumerable<ModelType> ParseJson<ModelType>(
+            string json,
+            string rootName,
+            string elementName,
+           IJTokenValueExtractor titleCallback,
+           IJTokenValueExtractor urlCallback)
             where ModelType : IModel, new()
         {
             if (json == null)
@@ -35,10 +40,10 @@ namespace JSONProcessingHW.Logic.Parsers
 
             var modelElementsChildren = modelElements.Children();
             var result = modelElementsChildren.Select(element => new ModelType
-                {
-                    Title = (string)element.SelectToken("title"),
-                    Url = (string)element.SelectToken("link").SelectToken("@href")
-                })
+            {
+                Title = titleCallback.ExtractJTokenValue(element),
+                Url = urlCallback.ExtractJTokenValue(element)
+            })
                 .ToList();
 
             return result;

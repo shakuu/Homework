@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using JSONProcessingHW.Logic.HtmlGenerator.Contracts;
 using JSONProcessingHW.Logic.Models.Contracts;
 using JSONProcessingHW.Logic.Parsers.Contracts;
+using JSONProcessingHW.Logic.Parsers;
 
 namespace JSONProcessingHW.Logic
 {
@@ -57,9 +58,13 @@ namespace JSONProcessingHW.Logic
         public void CreateHtml<ModelType>(string inputXmlFile, string outputHtmlFile)
             where ModelType : IModel, new()
         {
+            // Temp
+            var titleCallback = new JTokenValueExtractor(new[] { "title" });
+            var urlCallback = new JTokenValueExtractor(new[] { "link", "@href" });
+
             var xmlDocument = this.xmlDocumentProvider.GetXmlDocument(inputXmlFile);
             var json = this.xmlToJsonConverter.ConvertXmlToJson(xmlDocument);
-            var data = this.jsonParser.ParseJson<ModelType>(json, "feed", "entry");
+            var data = this.jsonParser.ParseJson<ModelType>(json, "feed", "entry", titleCallback, urlCallback);
             var html = this.htmlGenerator.GenerateHtml((IEnumerable<IModel>)data);
             this.htmlCreator.CreateHtmlFile(outputHtmlFile, "YouTube RSS", html);
         }
