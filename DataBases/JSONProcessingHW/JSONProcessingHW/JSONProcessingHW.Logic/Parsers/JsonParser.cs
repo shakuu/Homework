@@ -15,8 +15,8 @@ namespace JSONProcessingHW.Logic.Parsers
             string json,
             string rootName,
             string elementName,
-            IJTokenValueExtractor titleCallback,
-            IJTokenValueExtractor urlCallback)
+            IJTokenValueExtractor titleExtractor,
+            IJTokenValueExtractor urlExtractor)
             where ModelType : IModel, new()
         {
             if (json == null)
@@ -34,14 +34,14 @@ namespace JSONProcessingHW.Logic.Parsers
                 throw new ArgumentNullException(nameof(elementName));
             }
 
-            if (titleCallback == null)
+            if (titleExtractor == null)
             {
-                throw new ArgumentNullException(nameof(titleCallback));
+                throw new ArgumentNullException(nameof(titleExtractor));
             }
 
-            if (urlCallback == null)
+            if (urlExtractor == null)
             {
-                throw new ArgumentNullException(nameof(urlCallback));
+                throw new ArgumentNullException(nameof(urlExtractor));
             }
 
             var jsonObject = JObject.Parse(json);
@@ -51,8 +51,8 @@ namespace JSONProcessingHW.Logic.Parsers
             var contentElementsChildren = contentElements.Children();
             var result = contentElementsChildren.Select(element => new ModelType
             {
-                Title = titleCallback.ExtractJTokenValue(element),
-                Url = urlCallback.ExtractJTokenValue(element)
+                Title = titleExtractor.ExtractJTokenValue(element),
+                Url = urlExtractor.ExtractJTokenValue(element)
             })
                 .ToList();
 

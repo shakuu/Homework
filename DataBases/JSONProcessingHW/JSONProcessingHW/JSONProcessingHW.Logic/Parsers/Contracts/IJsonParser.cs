@@ -9,7 +9,7 @@ namespace JSONProcessingHW.Logic.Parsers.Contracts
 {
     public interface IJsonParser
     {
-        IEnumerable<ModelType> ParseJson<ModelType>(string json, string rootName, string elementName, IJTokenValueExtractor titleCallback, IJTokenValueExtractor urlCallback)
+        IEnumerable<ModelType> ParseJson<ModelType>(string json, string rootName, string elementName, IJTokenValueExtractor titleExtractor, IJTokenValueExtractor urlExtractor)
             where ModelType : IModel, new();
     }
 }
