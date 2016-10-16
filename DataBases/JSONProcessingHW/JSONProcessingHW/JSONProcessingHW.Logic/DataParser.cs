@@ -87,7 +87,7 @@ namespace JSONProcessingHW.Logic
             var json = this.xmlToJsonConverter.ConvertXmlToJson(xmlDocument);
             var data = this.jsonParser.ParseJson<ModelType>(json, DataParser.RootElementName, DataParser.ContentElementName, this.titleCallback, this.urlCallback);
             var html = this.htmlGenerator.GenerateHtml((IEnumerable<IModel>)data);
-            this.htmlCreator.CreateHtmlFile(outputHtmlFile, "YouTube RSS", html);
+            this.htmlCreator.CreateHtmlFile(outputHtmlFile, DataParser.HtmlDocumentTitle, html);
         }
     }
 }
