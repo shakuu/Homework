@@ -24,13 +24,15 @@ namespace JSONProcessingHW.ConsoleClient.NinjectBinding
             this.Bind<IXmlDocumentProvider>().To<XmlDocumentProvider>();
             this.Bind<IDataService>().To<WebClientDataService>();
             this.Bind<IConfigurationReader>().To<AppConfigConfigurationReader>();
+            this.Bind<IJTokenValueExtractorProvider>().To<JTokenValueExtractorProvider>();
             this.Bind<IDataParser>()
                 .To<DataParser>()
                 .WithConstructorArgument("xmlDocumentProvider", ctx => ctx.Kernel.Get<IXmlDocumentProvider>())
                 .WithConstructorArgument("xmlToJsonConverter", ctx => ctx.Kernel.Get<IXmlToJsonConverter>())
                 .WithConstructorArgument("jsonParser", ctx => ctx.Kernel.Get<IJsonParser>())
                 .WithConstructorArgument("htmlGenerator", ctx => ctx.Kernel.Get<IHtmlGenerator>())
-                .WithConstructorArgument("htmlCreator", ctx => ctx.Kernel.Get<IHtmlFileCreator>());
+                .WithConstructorArgument("htmlCreator", ctx => ctx.Kernel.Get<IHtmlFileCreator>())
+                .WithConstructorArgument("valueExtractorProvider", ctx => ctx.Kernel.Get<IJTokenValueExtractorProvider>());
         }
     }
 }
