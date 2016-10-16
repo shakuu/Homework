@@ -9,6 +9,10 @@ namespace JSONProcessingHW.Logic
 {
     public class DataParser : IDataParser
     {
+        private const string RootElementName = "feed";
+        private const string ContentElementName = "entry";
+        private const string HtmlDocumentTitle = "YouTube RSS";
+
         private readonly IXmlDocumentProvider xmlDocumentProvider;
         private readonly IXmlToJsonConverter xmlToJsonConverter;
         private readonly IJsonParser jsonParser;
@@ -69,7 +73,7 @@ namespace JSONProcessingHW.Logic
         {
             var xmlDocument = this.xmlDocumentProvider.GetXmlDocument(inputXmlFile);
             var json = this.xmlToJsonConverter.ConvertXmlToJson(xmlDocument);
-            var data = this.jsonParser.ParseJson<ModelType>(json, "feed", "entry", this.titleCallback, this.urlCallback);
+            var data = this.jsonParser.ParseJson<ModelType>(json, DataParser.RootElementName, DataParser.ContentElementName, this.titleCallback, this.urlCallback);
             var html = this.htmlGenerator.GenerateHtml((IEnumerable<IModel>)data);
             this.htmlCreator.CreateHtmlFile(outputHtmlFile, "YouTube RSS", html);
         }
