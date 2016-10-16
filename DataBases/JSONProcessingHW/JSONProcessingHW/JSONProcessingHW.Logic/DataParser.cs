@@ -73,8 +73,10 @@ namespace JSONProcessingHW.Logic
             this.jsonParser = jsonParser;
             this.htmlGenerator = htmlGenerator;
             this.htmlCreator = htmlCreator;
+
             this.titleCallback = valueExtractorProvider.CreateJTokenValueExtractor(new[] { "title" });
             this.urlCallback = valueExtractorProvider.CreateJTokenValueExtractor(new[] { "link", "@href" });
+
             this.validationSchemaFileName = configurationReader.ReadConfiguration(DataParser.ValidationSchemaConfigKey);
         }
 
