@@ -5,6 +5,7 @@ using Ninject;
 using JSONProcessingHW.Logic;
 using JSONProcessingHW.Logic.ConfigurationReaders.Contracts;
 using JSONProcessingHW.Logic.DataServices.Contracts;
+using JSONProcessingHW.Logic.Models;
 
 namespace JSONProcessingHW.ConsoleClient
 {
@@ -28,7 +29,7 @@ namespace JSONProcessingHW.ConsoleClient
             rssLoader.GetData(rssFeedUrl, xmlFileLocation);
 
             var dataParser = ninject.Get<IDataParser>();
-            dataParser.CreateHtml(xmlFileLocation, htmlFileLocation);
+            dataParser.CreateHtml<YouTubeVideo>(xmlFileLocation, htmlFileLocation);
         }
     }
 }

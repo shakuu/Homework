@@ -1,5 +1,7 @@
-﻿using JSONProcessingHW.Logic.HtmlGenerator.Contracts;
-using JSONProcessingHW.Logic.Models;
+﻿using System.Collections.Generic;
+
+using JSONProcessingHW.Logic.HtmlGenerator.Contracts;
+using JSONProcessingHW.Logic.Models.Contracts;
 using JSONProcessingHW.Logic.Parsers.Contracts;
 
 namespace JSONProcessingHW.Logic
@@ -26,12 +28,13 @@ namespace JSONProcessingHW.Logic
             this.htmlCreator = htmlCreator;
         }
 
-        public void CreateHtml(string inputXmlFile, string outputHtmlFile)
+        public void CreateHtml<ModelType>(string inputXmlFile, string outputHtmlFile)
+            where ModelType : IModel, new()
         {
             var xmlDocument = this.xmlDocumentProvider.GetXmlDocument(inputXmlFile);
             var json = this.xmlToJsonConverter.ConvertXmlToJson(xmlDocument);
-            var data = this.jsonParser.ParseJson<YouTubeVideo>(json, "feed", "entry");
-            var html = this.htmlGenerator.GenerateHtml(data);
+            var data = this.jsonParser.ParseJson<ModelType>(json, "feed", "entry");
+            var html = this.htmlGenerator.GenerateHtml((IEnumerable<IModel>)data);
             this.htmlCreator.CreateHtmlFile(outputHtmlFile, "YouTube RSS", html);
         }
     }

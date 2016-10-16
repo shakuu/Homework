@@ -1,7 +1,10 @@
-﻿namespace JSONProcessingHW.Logic
+﻿using JSONProcessingHW.Logic.Models.Contracts;
+
+namespace JSONProcessingHW.Logic
 {
     public interface IDataParser
     {
-        void CreateHtml(string inputXmlFile, string outputHtmlFile);
+        void CreateHtml<ModelType>(string inputXmlFile, string outputHtmlFile)
+            where ModelType : IModel, new();
     }
 }
