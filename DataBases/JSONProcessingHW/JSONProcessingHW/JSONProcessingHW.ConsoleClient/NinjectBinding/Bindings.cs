@@ -35,7 +35,8 @@ namespace JSONProcessingHW.ConsoleClient.NinjectBinding
                 .WithConstructorArgument("jsonParser", ctx => ctx.Kernel.Get<IJsonParser>())
                 .WithConstructorArgument("htmlGenerator", ctx => ctx.Kernel.Get<IHtmlGenerator>())
                 .WithConstructorArgument("htmlCreator", ctx => ctx.Kernel.Get<IHtmlFileCreator>())
-                .WithConstructorArgument("valueExtractorProvider", ctx => ctx.Kernel.Get<IJTokenValueExtractorProvider>());
+                .WithConstructorArgument("valueExtractorProvider", ctx => ctx.Kernel.Get<IJTokenValueExtractorProvider>())
+                .WithConstructorArgument("configurationReader", ctx => ctx.Kernel.Get<IConfigurationReader>());
         }
     }
 }

@@ -4,6 +4,6 @@ namespace JSONProcessingHW.Logic.Parsers.Contracts
 {
     public interface IXmlDocumentProvider
     {
-        XmlDocument GetXmlDocument(string fileName);
+        XmlDocument GetXmlDocument(string fileName, string validationSchema = null);
     }
 }

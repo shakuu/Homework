@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 
+using JSONProcessingHW.Logic.ConfigurationReaders.Contracts;
 using JSONProcessingHW.Logic.HtmlGenerator.Contracts;
 using JSONProcessingHW.Logic.Models.Contracts;
 using JSONProcessingHW.Logic.Parsers.Contracts;
@@ -12,6 +13,7 @@ namespace JSONProcessingHW.Logic
         private const string RootElementName = "feed";
         private const string ContentElementName = "entry";
         private const string HtmlDocumentTitle = "YouTube RSS";
+        private const string ValidationSchemaConfigKey = "DataParserSchemaFileName";
 
         private readonly IXmlDocumentProvider xmlDocumentProvider;
         private readonly IXmlToJsonConverter xmlToJsonConverter;
@@ -20,6 +22,7 @@ namespace JSONProcessingHW.Logic
         private readonly IHtmlFileCreator htmlCreator;
         private readonly IJTokenValueExtractor titleCallback;
         private readonly IJTokenValueExtractor urlCallback;
+        private readonly string validationSchemaFileName;
 
         public DataParser(
             IXmlDocumentProvider xmlDocumentProvider,
@@ -27,7 +30,8 @@ namespace JSONProcessingHW.Logic
             IJsonParser jsonParser,
             IHtmlGenerator htmlGenerator,
             IHtmlFileCreator htmlCreator,
-            IJTokenValueExtractorProvider valueExtractorProvider)
+            IJTokenValueExtractorProvider valueExtractorProvider,
+            IConfigurationReader configurationReader)
         {
             if (xmlDocumentProvider == null)
             {
@@ -59,6 +63,11 @@ namespace JSONProcessingHW.Logic
                 throw new ArgumentNullException(nameof(valueExtractorProvider));
             }
 
+            if (configurationReader == null)
+            {
+                throw new ArgumentNullException(nameof(configurationReader));
+            }
+
             this.xmlDocumentProvider = xmlDocumentProvider;
             this.xmlToJsonConverter = xmlToJsonConverter;
             this.jsonParser = jsonParser;
@@ -66,6 +75,7 @@ namespace JSONProcessingHW.Logic
             this.htmlCreator = htmlCreator;
             this.titleCallback = valueExtractorProvider.CreateJTokenValueExtractor(new[] { "title" });
             this.urlCallback = valueExtractorProvider.CreateJTokenValueExtractor(new[] { "link", "@href" });
+            this.validationSchemaFileName = configurationReader.ReadConfiguration(DataParser.ValidationSchemaConfigKey);
         }
 
         public void CreateHtml<ModelType>(string inputXmlFile, string outputHtmlFile)
