@@ -1,4 +1,5 @@
-﻿using System.Xml;
+﻿using System;
+using System.Xml;
 
 using JSONProcessingHW.Logic.Parsers.Contracts;
 
@@ -10,6 +11,11 @@ namespace JSONProcessingHW.Logic.Parsers
     {
         public string ConvertXmlToJson(XmlDocument xmlDocument)
         {
+            if (xmlDocument == null)
+            {
+                throw new ArgumentNullException(nameof(xmlDocument));
+            }
+
             var json = JsonConvert.SerializeXmlNode(xmlDocument);
             return json;
         }
