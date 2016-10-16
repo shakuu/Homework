@@ -15,6 +15,11 @@ namespace JSONProcessingHW.Logic.ConfigurationReaders
             }
 
             var configValue = ConfigurationManager.AppSettings[key];
+            if (configValue == null)
+            {
+                throw new ArgumentException($"{key} was not found.");
+            }
+
             return configValue;
         }
     }
