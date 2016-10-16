@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 
 using JSONProcessingHW.Logic.HtmlGenerator.Contracts;
 using JSONProcessingHW.Logic.Models.Contracts;
@@ -21,6 +22,31 @@ namespace JSONProcessingHW.Logic
             IHtmlGenerator htmlGenerator,
             IHtmlFileCreator htmlCreator)
         {
+            if (xmlDocumentProvider == null)
+            {
+                throw new ArgumentNullException(nameof(xmlDocumentProvider));
+            }
+
+            if (xmlToJsonConverter == null)
+            {
+                throw new ArgumentNullException(nameof(xmlToJsonConverter));
+            }
+
+            if (jsonParser == null)
+            {
+                throw new ArgumentNullException(nameof(jsonParser));
+            }
+
+            if (htmlGenerator == null)
+            {
+                throw new ArgumentNullException(nameof(htmlGenerator));
+            }
+
+            if (htmlCreator == null)
+            {
+                throw new ArgumentNullException(nameof(htmlCreator));
+            }
+
             this.xmlDocumentProvider = xmlDocumentProvider;
             this.xmlToJsonConverter = xmlToJsonConverter;
             this.jsonParser = jsonParser;
