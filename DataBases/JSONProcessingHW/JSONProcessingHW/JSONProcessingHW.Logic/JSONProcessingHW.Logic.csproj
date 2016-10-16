@@ -54,6 +54,8 @@
     <Compile Include="DataParser.cs" />
     <Compile Include="DataServices\Contracts\IDataService.cs" />
     <Compile Include="DataServices\WebClientDataService.cs" />
+    <Compile Include="FIleSystemProvider\Contracts\IFileWriter.cs" />
+    <Compile Include="FIleSystemProvider\FileWriter.cs" />
     <Compile Include="HtmlGenerators\Contracts\IHtmlFileCreator.cs" />
     <Compile Include="HtmlGenerators\Contracts\IHtmlGenerator.cs" />
     <Compile Include="HtmlGenerators\HtmlFileCreator.cs" />

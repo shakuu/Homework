@@ -6,6 +6,8 @@ using JSONProcessingHW.Logic.ConfigurationReaders;
 using JSONProcessingHW.Logic.ConfigurationReaders.Contracts;
 using JSONProcessingHW.Logic.DataServices;
 using JSONProcessingHW.Logic.DataServices.Contracts;
+using JSONProcessingHW.Logic.FIleSystemProvider;
+using JSONProcessingHW.Logic.FIleSystemProvider.Contracts;
 using JSONProcessingHW.Logic.HtmlGenerator;
 using JSONProcessingHW.Logic.HtmlGenerator.Contracts;
 using JSONProcessingHW.Logic.Parsers;
@@ -17,7 +19,9 @@ namespace JSONProcessingHW.ConsoleClient.NinjectBinding
     {
         public override void Load()
         {
-            this.Bind<IHtmlFileCreator>().To<HtmlFileCreator>();
+            this.Bind<IFileWriter>().To<FileWriter>();
+            this.Bind<IHtmlFileCreator>().To<HtmlFileCreator>()
+                .WithConstructorArgument("fileWriter", ctx => ctx.Kernel.Get<IFileWriter>());
             this.Bind<IHtmlGenerator>().To<HtmlGenerator>();
             this.Bind<IJsonParser>().To<JsonParser>();
             this.Bind<IXmlToJsonConverter>().To<XmlToJsonConverter>();
@@ -25,8 +29,7 @@ namespace JSONProcessingHW.ConsoleClient.NinjectBinding
             this.Bind<IDataService>().To<WebClientDataService>();
             this.Bind<IConfigurationReader>().To<AppConfigConfigurationReader>();
             this.Bind<IJTokenValueExtractorProvider>().To<JTokenValueExtractorProvider>();
-            this.Bind<IDataParser>()
-                .To<DataParser>()
+            this.Bind<IDataParser>().To<DataParser>()
                 .WithConstructorArgument("xmlDocumentProvider", ctx => ctx.Kernel.Get<IXmlDocumentProvider>())
                 .WithConstructorArgument("xmlToJsonConverter", ctx => ctx.Kernel.Get<IXmlToJsonConverter>())
                 .WithConstructorArgument("jsonParser", ctx => ctx.Kernel.Get<IJsonParser>())

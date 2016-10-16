@@ -1,6 +1,6 @@
 ﻿using System;
-using System.IO;
 
+using JSONProcessingHW.Logic.FIleSystemProvider.Contracts;
 using JSONProcessingHW.Logic.HtmlGenerator.Contracts;
 
 namespace JSONProcessingHW.Logic.HtmlGenerator
@@ -20,6 +20,18 @@ namespace JSONProcessingHW.Logic.HtmlGenerator
                                            </body>
                                            </html> ";
 
+        private readonly IFileWriter fileWriter;
+
+        public HtmlFileCreator(IFileWriter fileWriter)
+        {
+            if (fileWriter == null)
+            {
+                throw new ArgumentNullException(nameof(fileWriter));
+            }
+
+            this.fileWriter = fileWriter;
+        }
+
         public void CreateHtmlFile(string fileName, string title, string content)
         {
             if (fileName == null)
@@ -38,7 +50,7 @@ namespace JSONProcessingHW.Logic.HtmlGenerator
             }
 
             var fileContent = string.Format(HtmlFileCreator.Template, content, title);
-            File.WriteAllText(fileName, fileContent);
+            this.fileWriter.WriteToFile(fileName, fileContent);
         }
     }
 }
