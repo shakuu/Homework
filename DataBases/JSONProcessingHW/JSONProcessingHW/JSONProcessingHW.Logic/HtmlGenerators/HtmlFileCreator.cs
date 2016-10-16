@@ -12,7 +12,7 @@ namespace JSONProcessingHW.Logic.HtmlGenerator
 
                                            <head>
                                                <meta charset = ""UTF-8"" >
-                                               <title> {1} </title>
+                                               <title>{1}</title>
                                            </head>
                                            
                                            <body>
