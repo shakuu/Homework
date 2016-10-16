@@ -62,8 +62,10 @@
     <Compile Include="Models\Contracts\IModel.cs" />
     <Compile Include="Models\YouTubeVideo.cs" />
     <Compile Include="Parsers\Contracts\IJsonParser.cs" />
+    <Compile Include="Parsers\Contracts\IJTokenValueExtractor.cs" />
     <Compile Include="Parsers\Contracts\IXmlDocumentProvider.cs" />
     <Compile Include="Parsers\Contracts\IXmlToJsonConverter.cs" />
+    <Compile Include="Parsers\JTokenValueExtractor.cs" />
     <Compile Include="Parsers\JsonParser.cs" />
     <Compile Include="Parsers\XmlDocumentProvider.cs" />
     <Compile Include="Parsers\XmlToJsonConverter.cs" />

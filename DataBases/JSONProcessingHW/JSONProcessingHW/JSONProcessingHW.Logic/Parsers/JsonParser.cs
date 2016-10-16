@@ -15,8 +15,8 @@ namespace JSONProcessingHW.Logic.Parsers
             string json,
             string rootName,
             string elementName,
-           IJTokenValueExtractor titleCallback,
-           IJTokenValueExtractor urlCallback)
+            IJTokenValueExtractor titleCallback,
+            IJTokenValueExtractor urlCallback)
             where ModelType : IModel, new()
         {
             if (json == null)
@@ -32,6 +32,16 @@ namespace JSONProcessingHW.Logic.Parsers
             if (elementName == null)
             {
                 throw new ArgumentNullException(nameof(elementName));
+            }
+
+            if (titleCallback == null)
+            {
+                throw new ArgumentNullException(nameof(titleCallback));
+            }
+
+            if (urlCallback == null)
+            {
+                throw new ArgumentNullException(nameof(urlCallback));
             }
 
             var jsonObject = JObject.Parse(json);
