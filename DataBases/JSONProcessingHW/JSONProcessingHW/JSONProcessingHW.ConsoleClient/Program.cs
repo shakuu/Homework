@@ -15,15 +15,15 @@ namespace JSONProcessingHW.ConsoleClient
         private const string TargetXmlFileLocationKey = "XmlFileLocation";
         private const string OutputHtmlFileLocationKey = "HtmlFileLocation";
 
-        static void Main()
+        public static void Main()
         {
             var ninject = new StandardKernel();
             ninject.Load(Assembly.GetExecutingAssembly());
 
             var configReader = ninject.Get<IConfigurationReader>();
-            var rssFeedUrl = configReader.ReadConfiguration(Program.RssFeedUrlKey);
-            var xmlFileLocation = configReader.ReadConfiguration(Program.TargetXmlFileLocationKey);
-            var htmlFileLocation = configReader.ReadConfiguration(Program.OutputHtmlFileLocationKey);
+            string rssFeedUrl = configReader.ReadConfiguration(Program.RssFeedUrlKey);
+            string xmlFileLocation = configReader.ReadConfiguration(Program.TargetXmlFileLocationKey);
+            string htmlFileLocation = configReader.ReadConfiguration(Program.OutputHtmlFileLocationKey);
 
             var rssLoader = ninject.Get<IDataService>();
             rssLoader.GetData(rssFeedUrl, xmlFileLocation);

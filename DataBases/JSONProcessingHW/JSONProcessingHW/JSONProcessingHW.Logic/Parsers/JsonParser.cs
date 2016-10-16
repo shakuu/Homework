@@ -34,12 +34,12 @@ namespace JSONProcessingHW.Logic.Parsers
             var modelElements = rootElement.SelectTokens(elementName);
 
             var modelElementsChildren = modelElements.Children();
-            var result = modelElementsChildren.Select(el => new ModelType
-            {
-                Title = (string)el.SelectToken("title"),
-                Url = (string)el.SelectToken("link").SelectToken("@href")
-            })
-            .ToList();
+            var result = modelElementsChildren.Select(element => new ModelType
+                {
+                    Title = (string)element.SelectToken("title"),
+                    Url = (string)element.SelectToken("link").SelectToken("@href")
+                })
+                .ToList();
 
             return result;
         }
