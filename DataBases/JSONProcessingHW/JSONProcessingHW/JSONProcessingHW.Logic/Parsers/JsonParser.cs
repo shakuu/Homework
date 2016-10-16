@@ -46,10 +46,10 @@ namespace JSONProcessingHW.Logic.Parsers
 
             var jsonObject = JObject.Parse(json);
             var rootElement = jsonObject.SelectToken(rootName);
-            var modelElements = rootElement.SelectTokens(elementName);
+            var contentElements = rootElement.SelectTokens(elementName);
 
-            var modelElementsChildren = modelElements.Children();
-            var result = modelElementsChildren.Select(element => new ModelType
+            var contentElementsChildren = contentElements.Children();
+            var result = contentElementsChildren.Select(element => new ModelType
             {
                 Title = titleCallback.ExtractJTokenValue(element),
                 Url = urlCallback.ExtractJTokenValue(element)
