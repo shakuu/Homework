@@ -17,7 +17,7 @@ namespace JSONProcessingHW.Logic
 
         private readonly IXmlDocumentProvider xmlDocumentProvider;
         private readonly IXmlToJsonConverter xmlToJsonConverter;
-        private readonly IJsonParser jsonParser;
+        private readonly IJsonParser<ITitleUrlModel> jsonParser;
         private readonly IHtmlGenerator htmlGenerator;
         private readonly IHtmlFileCreator htmlCreator;
         private readonly IJTokenValueExtractor titleCallback;
@@ -27,7 +27,7 @@ namespace JSONProcessingHW.Logic
         public DataParser(
             IXmlDocumentProvider xmlDocumentProvider,
             IXmlToJsonConverter xmlToJsonConverter,
-            IJsonParser jsonParser,
+            IJsonParser<ITitleUrlModel> jsonParser,
             IHtmlGenerator htmlGenerator,
             IHtmlFileCreator htmlCreator,
             IJTokenValueExtractorProvider valueExtractorProvider,
@@ -87,7 +87,7 @@ namespace JSONProcessingHW.Logic
             // <entry> elements contain varying sets of child elements.
             var xmlDocument = this.xmlDocumentProvider.GetXmlDocument(inputXmlFile);
             var json = this.xmlToJsonConverter.ConvertXmlToJson(xmlDocument);
-            var data = this.jsonParser.ParseJson<ModelType>(json, DataParser.RootElementName, DataParser.ContentElementName, this.titleCallback, this.urlCallback);
+            var data = this.jsonParser.ParseJson(json, DataParser.RootElementName, DataParser.ContentElementName, this.titleCallback, this.urlCallback);
             var html = this.htmlGenerator.GenerateHtml((IEnumerable<ITitleUrlModel>)data);
             this.htmlCreator.CreateHtmlFile(outputHtmlFile, DataParser.HtmlDocumentTitle, html);
         }

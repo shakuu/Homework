@@ -26,7 +26,7 @@ namespace JSONProcessingHW.ConsoleClient.NinjectBinding
                 .WithConstructorArgument("fileWriter", ctx => ctx.Kernel.Get<IFileWriter>());
             this.Bind<ITitleUrlModel>().To<YouTubeVideo>();
             this.Bind<IHtmlGenerator>().To<HtmlGenerator>();
-            this.Bind<IJsonParser>().To<JsonParser>();
+            this.Bind<IJsonParser<ITitleUrlModel>>().To<JsonParser<ITitleUrlModel, YouTubeVideo>>();
             this.Bind<IXmlToJsonConverter>().To<XmlToJsonConverter>();
             this.Bind<IXmlDocumentProvider>().To<XmlDocumentProvider>();
             this.Bind<IDataService>().To<WebClientDataService>();
@@ -35,7 +35,7 @@ namespace JSONProcessingHW.ConsoleClient.NinjectBinding
             this.Bind<IDataParser>().To<DataParser>()
                 .WithConstructorArgument("xmlDocumentProvider", ctx => ctx.Kernel.Get<IXmlDocumentProvider>())
                 .WithConstructorArgument("xmlToJsonConverter", ctx => ctx.Kernel.Get<IXmlToJsonConverter>())
-                .WithConstructorArgument("jsonParser", ctx => ctx.Kernel.Get<IJsonParser>())
+                .WithConstructorArgument("jsonParser", ctx => ctx.Kernel.Get<IJsonParser<ITitleUrlModel>>())
                 .WithConstructorArgument("htmlGenerator", ctx => ctx.Kernel.Get<IHtmlGenerator>())
                 .WithConstructorArgument("htmlCreator", ctx => ctx.Kernel.Get<IHtmlFileCreator>())
                 .WithConstructorArgument("valueExtractorProvider", ctx => ctx.Kernel.Get<IJTokenValueExtractorProvider>())

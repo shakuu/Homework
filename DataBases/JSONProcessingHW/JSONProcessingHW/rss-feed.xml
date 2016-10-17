@@ -11,6 +11,36 @@
  </author>
  <published>2011-06-24T15:53:13+00:00</published>
  <entry>
+  <id>yt:video:fyM0mPb6eU0</id>
+  <yt:videoId>fyM0mPb6eU0</yt:videoId>
+  <yt:channelId>UCLC-vbm7OWvpbqzXaoAMGGw</yt:channelId>
+  <title>Бази данни &amp; SQL: Въведение в SQL - част 2</title>
+  <link rel="alternate" href="http://www.youtube.com/watch?v=fyM0mPb6eU0"/>
+  <author>
+   <name>TelerikAcademy</name>
+   <uri>http://www.youtube.com/channel/UCLC-vbm7OWvpbqzXaoAMGGw</uri>
+  </author>
+  <published>2016-10-17T15:33:55+00:00</published>
+  <updated>2016-10-17T15:37:09+00:00</updated>
+  <media:group>
+   <media:title>Бази данни &amp; SQL: Въведение в SQL - част 2</media:title>
+   <media:content url="https://www.youtube.com/v/fyM0mPb6eU0?version=3" type="application/x-shockwave-flash" width="640" height="390"/>
+   <media:thumbnail url="https://i3.ytimg.com/vi/fyM0mPb6eU0/hqdefault.jpg" width="480" height="360"/>
+   <media:description>Лекция: Въведение в SQL - част 2
+Курс: Бази данни &amp; SQL
+Лектор: Мартин Вешев
+Дата: 17 октомври 2016
+
+Уебсайт на Академията на Телерик: http://academy.telerik.com
+
+Следете за предстоящи безплатни обучения на Академията на Телерик във Facebook: http://www.facebook.com/TelerikAcademy.</media:description>
+   <media:community>
+    <media:starRating count="0" average="0.00" min="1" max="5"/>
+    <media:statistics views="3"/>
+   </media:community>
+  </media:group>
+ </entry>
+ <entry>
   <id>yt:video:y7cIgoaratc</id>
   <yt:videoId>y7cIgoaratc</yt:videoId>
   <yt:channelId>UCLC-vbm7OWvpbqzXaoAMGGw</yt:channelId>
@@ -36,7 +66,7 @@
 Следете за предстоящи безплатни обучения на Академията на Телерик във Facebook: http://www.facebook.com/TelerikAcademy.</media:description>
    <media:community>
     <media:starRating count="0" average="0.00" min="1" max="5"/>
-    <media:statistics views="181"/>
+    <media:statistics views="185"/>
    </media:community>
   </media:group>
  </entry>
@@ -66,7 +96,7 @@
 Следете за предстоящи безплатни обучения на Академията на Телерик във Facebook: http://www.facebook.com/TelerikAcademy.</media:description>
    <media:community>
     <media:starRating count="0" average="0.00" min="1" max="5"/>
-    <media:statistics views="178"/>
+    <media:statistics views="181"/>
    </media:community>
   </media:group>
  </entry>
@@ -156,7 +186,7 @@
 Следете за предстоящи безплатни обучения на Академията на Телерик във Facebook: http://www.facebook.com/TelerikAcademy.</media:description>
    <media:community>
     <media:starRating count="0" average="0.00" min="1" max="5"/>
-    <media:statistics views="130"/>
+    <media:statistics views="132"/>
    </media:community>
   </media:group>
  </entry>
@@ -186,7 +216,7 @@
 Следете за предстоящи безплатни обучения на Академията на Телерик във Facebook: http://www.facebook.com/TelerikAcademy.</media:description>
    <media:community>
     <media:starRating count="1" average="5.00" min="1" max="5"/>
-    <media:statistics views="172"/>
+    <media:statistics views="173"/>
    </media:community>
   </media:group>
  </entry>
@@ -246,7 +276,7 @@
 Следете за предстоящи безплатни обучения на Академията на Телерик във Facebook: http://www.facebook.com/TelerikAcademy.</media:description>
    <media:community>
     <media:starRating count="2" average="5.00" min="1" max="5"/>
-    <media:statistics views="211"/>
+    <media:statistics views="212"/>
    </media:community>
   </media:group>
  </entry>
@@ -276,7 +306,7 @@
 Следете за предстоящи безплатни обучения на Академията на Телерик във Facebook: http://www.facebook.com/TelerikAcademy.</media:description>
    <media:community>
     <media:starRating count="0" average="0.00" min="1" max="5"/>
-    <media:statistics views="221"/>
+    <media:statistics views="224"/>
    </media:community>
   </media:group>
  </entry>
@@ -306,7 +336,7 @@
 Следете за предстоящи безплатни обучения на Академията на Телерик във Facebook: http://www.facebook.com/TelerikAcademy.</media:description>
    <media:community>
     <media:starRating count="4" average="5.00" min="1" max="5"/>
-    <media:statistics views="265"/>
+    <media:statistics views="266"/>
    </media:community>
   </media:group>
  </entry>
@@ -366,7 +396,7 @@
 Следете за предстоящи безплатни обучения на Академията на Телерик във Facebook: http://www.facebook.com/TelerikAcademy.</media:description>
    <media:community>
     <media:starRating count="1" average="1.00" min="1" max="5"/>
-    <media:statistics views="291"/>
+    <media:statistics views="296"/>
    </media:community>
   </media:group>
  </entry>
@@ -396,7 +426,7 @@
 Следете за предстоящи безплатни обучения на Академията на Телерик във Facebook: http://www.facebook.com/TelerikAcademy.</media:description>
    <media:community>
     <media:starRating count="1" average="5.00" min="1" max="5"/>
-    <media:statistics views="301"/>
+    <media:statistics views="306"/>
    </media:community>
   </media:group>
  </entry>
@@ -426,37 +456,7 @@
 Следете за предстоящи безплатни обучения на Академията на Телерик във Facebook: http://www.facebook.com/TelerikAcademy.</media:description>
    <media:community>
     <media:starRating count="3" average="1.00" min="1" max="5"/>
-    <media:statistics views="261"/>
-   </media:community>
-  </media:group>
- </entry>
- <entry>
-  <id>yt:video:glnaBYV9aKY</id>
-  <yt:videoId>glnaBYV9aKY</yt:videoId>
-  <yt:channelId>UCLC-vbm7OWvpbqzXaoAMGGw</yt:channelId>
-  <title>Бази от данни &amp; SQL: Работа с JSON със C#</title>
-  <link rel="alternate" href="http://www.youtube.com/watch?v=glnaBYV9aKY"/>
-  <author>
-   <name>TelerikAcademy</name>
-   <uri>http://www.youtube.com/channel/UCLC-vbm7OWvpbqzXaoAMGGw</uri>
-  </author>
-  <published>2016-10-13T14:15:27+00:00</published>
-  <updated>2016-10-14T13:27:21+00:00</updated>
-  <media:group>
-   <media:title>Бази от данни &amp; SQL: Работа с JSON със C#</media:title>
-   <media:content url="https://www.youtube.com/v/glnaBYV9aKY?version=3" type="application/x-shockwave-flash" width="640" height="390"/>
-   <media:thumbnail url="https://i4.ytimg.com/vi/glnaBYV9aKY/hqdefault.jpg" width="480" height="360"/>
-   <media:description>Лекция: Работа с JSON със C#
-Курс: Бази от данни &amp; SQL октомври 2016
-Лектор: Дончо Минков
-Дата: 13 октомври 2016 г.
-
-Уебсайт на Академията на Телерик: http://academy.telerik.com
-
-Следете за предстоящи безплатни обучения на Академията на Телерик във Facebook: http://www.facebook.com/TelerikAcademy.</media:description>
-   <media:community>
-    <media:starRating count="1" average="5.00" min="1" max="5"/>
-    <media:statistics views="196"/>
+    <media:statistics views="263"/>
    </media:community>
   </media:group>
  </entry>
