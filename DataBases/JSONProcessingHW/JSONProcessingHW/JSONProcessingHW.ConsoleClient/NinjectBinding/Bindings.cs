@@ -10,10 +10,10 @@ using JSONProcessingHW.Logic.FIleSystemProvider;
 using JSONProcessingHW.Logic.FIleSystemProvider.Contracts;
 using JSONProcessingHW.Logic.HtmlGenerator;
 using JSONProcessingHW.Logic.HtmlGenerator.Contracts;
+using JSONProcessingHW.Logic.Models;
+using JSONProcessingHW.Logic.Models.Contracts;
 using JSONProcessingHW.Logic.Parsers;
 using JSONProcessingHW.Logic.Parsers.Contracts;
-using JSONProcessingHW.Logic.Models.Contracts;
-using JSONProcessingHW.Logic.Models;
 
 namespace JSONProcessingHW.ConsoleClient.NinjectBinding
 {
@@ -22,15 +22,15 @@ namespace JSONProcessingHW.ConsoleClient.NinjectBinding
         public override void Load()
         {
             this.Bind<IFileWriter>().To<FileWriter>();
+            this.Bind<IHtmlGenerator>().To<HtmlGenerator>();
             this.Bind<IHtmlFileCreator>().To<HtmlFileCreator>()
                 .WithConstructorArgument("fileWriter", ctx => ctx.Kernel.Get<IFileWriter>());
-            this.Bind<IHtmlGenerator>().To<HtmlGenerator>();
-            this.Bind<IJsonParser<ITitleUrlModel>>().To<JsonParser<ITitleUrlModel, YouTubeVideo>>();
             this.Bind<IXmlToJsonConverter>().To<XmlToJsonConverter>();
             this.Bind<IXmlDocumentProvider>().To<XmlDocumentProvider>();
             this.Bind<IDataService>().To<WebClientDataService>();
             this.Bind<IConfigurationReader>().To<AppConfigConfigurationReader>();
             this.Bind<IJTokenValueExtractorProvider>().To<JTokenValueExtractorProvider>();
+            this.Bind<IJsonParser<ITitleUrlModel>>().To<JsonParser<ITitleUrlModel, YouTubeVideo>>();
             this.Bind<IDataParser>().To<DataParser>()
                 .WithConstructorArgument("xmlDocumentProvider", ctx => ctx.Kernel.Get<IXmlDocumentProvider>())
                 .WithConstructorArgument("xmlToJsonConverter", ctx => ctx.Kernel.Get<IXmlToJsonConverter>())
