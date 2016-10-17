@@ -22,6 +22,7 @@ namespace JSONProcessingHW.ConsoleClient.NinjectBinding
             this.Bind<IFileWriter>().To<FileWriter>();
             this.Bind<IHtmlFileCreator>().To<HtmlFileCreator>()
                 .WithConstructorArgument("fileWriter", ctx => ctx.Kernel.Get<IFileWriter>());
+
             this.Bind<IHtmlGenerator>().To<HtmlGenerator>();
             this.Bind<IJsonParser>().To<JsonParser>();
             this.Bind<IXmlToJsonConverter>().To<XmlToJsonConverter>();
