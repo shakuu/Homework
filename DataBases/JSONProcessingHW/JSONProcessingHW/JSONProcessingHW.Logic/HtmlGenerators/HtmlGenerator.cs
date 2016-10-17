@@ -13,7 +13,7 @@ namespace JSONProcessingHW.Logic.HtmlGenerator
         private const string CloseList = "</ul>";
         private const string ItemTemplate = "<li><a href=\"{1}\">{0}</a></li>";
 
-        public string GenerateHtml(IEnumerable<IModel> data)
+        public string GenerateHtml(IEnumerable<ITitleUrlModel> data)
         {
             if (data == null)
             {

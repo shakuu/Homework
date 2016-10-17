@@ -2,7 +2,7 @@
 
 namespace JSONProcessingHW.Logic.Models
 {
-    public class YouTubeVideo : IModel
+    public class YouTubeVideo : ITitleUrlModel
     {
         public string Title { get; set; }
 

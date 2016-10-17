@@ -17,7 +17,7 @@ namespace JSONProcessingHW.Logic.Parsers
             string elementName,
             IJTokenValueExtractor titleExtractor,
             IJTokenValueExtractor urlExtractor)
-            where ModelType : IModel, new()
+            where ModelType : ITitleUrlModel, new()
         {
             if (json == null)
             {

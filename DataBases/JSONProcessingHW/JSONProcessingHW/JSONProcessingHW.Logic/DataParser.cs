@@ -81,14 +81,14 @@ namespace JSONProcessingHW.Logic
         }
 
         public void CreateHtml<ModelType>(string inputXmlFile, string outputHtmlFile)
-            where ModelType : IModel, new()
+            where ModelType : ITitleUrlModel, new()
         {
             // XML cannot be validated due to inconsistent <entry> element content.
             // <entry> elements contain varying sets of child elements.
             var xmlDocument = this.xmlDocumentProvider.GetXmlDocument(inputXmlFile);
             var json = this.xmlToJsonConverter.ConvertXmlToJson(xmlDocument);
             var data = this.jsonParser.ParseJson<ModelType>(json, DataParser.RootElementName, DataParser.ContentElementName, this.titleCallback, this.urlCallback);
-            var html = this.htmlGenerator.GenerateHtml((IEnumerable<IModel>)data);
+            var html = this.htmlGenerator.GenerateHtml((IEnumerable<ITitleUrlModel>)data);
             this.htmlCreator.CreateHtmlFile(outputHtmlFile, DataParser.HtmlDocumentTitle, html);
         }
     }

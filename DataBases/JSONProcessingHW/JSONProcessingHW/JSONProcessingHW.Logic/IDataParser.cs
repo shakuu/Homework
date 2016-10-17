@@ -5,6 +5,6 @@ namespace JSONProcessingHW.Logic
     public interface IDataParser
     {
         void CreateHtml<ModelType>(string inputXmlFile, string outputHtmlFile)
-            where ModelType : IModel, new();
+            where ModelType : ITitleUrlModel, new();
     }
 }

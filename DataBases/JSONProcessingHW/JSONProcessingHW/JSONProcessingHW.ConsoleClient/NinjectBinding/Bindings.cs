@@ -12,6 +12,8 @@ using JSONProcessingHW.Logic.HtmlGenerator;
 using JSONProcessingHW.Logic.HtmlGenerator.Contracts;
 using JSONProcessingHW.Logic.Parsers;
 using JSONProcessingHW.Logic.Parsers.Contracts;
+using JSONProcessingHW.Logic.Models.Contracts;
+using JSONProcessingHW.Logic.Models;
 
 namespace JSONProcessingHW.ConsoleClient.NinjectBinding
 {
@@ -22,7 +24,7 @@ namespace JSONProcessingHW.ConsoleClient.NinjectBinding
             this.Bind<IFileWriter>().To<FileWriter>();
             this.Bind<IHtmlFileCreator>().To<HtmlFileCreator>()
                 .WithConstructorArgument("fileWriter", ctx => ctx.Kernel.Get<IFileWriter>());
-
+            this.Bind<ITitleUrlModel>().To<YouTubeVideo>();
             this.Bind<IHtmlGenerator>().To<HtmlGenerator>();
             this.Bind<IJsonParser>().To<JsonParser>();
             this.Bind<IXmlToJsonConverter>().To<XmlToJsonConverter>();

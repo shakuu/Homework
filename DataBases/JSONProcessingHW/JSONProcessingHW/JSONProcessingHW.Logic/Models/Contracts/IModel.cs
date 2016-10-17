@@ -1,6 +1,6 @@
 ﻿namespace JSONProcessingHW.Logic.Models.Contracts
 {
-    public interface IModel
+    public interface ITitleUrlModel
     {
         string Title { get; set; }
 
