@@ -1,15 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 
 using JSONProcessingHW.Logic.Models.Contracts;
 
-using Newtonsoft.Json.Linq;
-
 namespace JSONProcessingHW.Logic.Parsers.Contracts
 {
-    public interface IJsonParser
+    public interface IJsonParser<T> where T : ITitleUrlModel
     {
-        IEnumerable<ModelType> ParseJson<ModelType>(string json, string rootName, string elementName, IJTokenValueExtractor titleExtractor, IJTokenValueExtractor urlExtractor)
-            where ModelType : ITitleUrlModel, new();
+        IEnumerable<T> ParseJson(string json, string rootName, string elementName, IJTokenValueExtractor titleExtractor, IJTokenValueExtractor urlExtractor);
     }
 }

@@ -6,7 +6,6 @@ using JSONProcessingHW.Logic;
 using JSONProcessingHW.Logic.ConfigurationReaders.Contracts;
 using JSONProcessingHW.Logic.DataServices.Contracts;
 using JSONProcessingHW.Logic.Models;
-using JSONProcessingHW.Logic.Models.Contracts;
 
 namespace JSONProcessingHW.ConsoleClient
 {

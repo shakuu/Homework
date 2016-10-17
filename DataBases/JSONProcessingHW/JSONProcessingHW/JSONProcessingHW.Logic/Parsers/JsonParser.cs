@@ -9,15 +9,17 @@ using Newtonsoft.Json.Linq;
 
 namespace JSONProcessingHW.Logic.Parsers
 {
-    public class JsonParser : IJsonParser
+    public class JsonParser<TInterface, TEntity>
+        : IJsonParser<TInterface>
+        where TEntity : ITitleUrlModel, new()
+        where TInterface : ITitleUrlModel
     {
-        public IEnumerable<ModelType> ParseJson<ModelType>(
+        public IEnumerable<TInterface> ParseJson(
             string json,
             string rootName,
             string elementName,
             IJTokenValueExtractor titleExtractor,
             IJTokenValueExtractor urlExtractor)
-            where ModelType : ITitleUrlModel, new()
         {
             if (json == null)
             {
@@ -49,7 +51,7 @@ namespace JSONProcessingHW.Logic.Parsers
             var contentElements = rootElement.SelectTokens(elementName);
 
             var contentElementsChildren = contentElements.Children();
-            var result = contentElementsChildren.Select(element => new ModelType
+            var result = (IEnumerable<TInterface>)contentElementsChildren.Select(element => new TEntity
             {
                 Title = titleExtractor.ExtractJTokenValue(element),
                 Url = urlExtractor.ExtractJTokenValue(element)
