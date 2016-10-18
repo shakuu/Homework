@@ -133,3 +133,30 @@ FROM Employees e
 	JOIN Addresses em
 		ON e.ManagerID = m.EmployeeID AND m.AddressID = em.AddressID
 
+/* Write a SQL query to find all departments and all town names as a single list. Use UNION. */
+USE TelerikAcademy
+
+SELECT d.Name
+FROM Departments d
+UNION
+SELECT t.Name
+FROM Towns t
+
+/* Write a SQL query to find all the employees and the manager for each of them 
+ along with the employees that do not have manager.Use right outer join. 
+ Rewrite the query to use left outer join. */
+USE TelerikAcademy
+
+SELECT e.FirstName + ' ' + e.LastName as [Employee], 
+	   m.FirstName + ' ' + m.LastName as [Manager]
+FROM Employees e
+	RIGHT OUTER JOIN Employees m
+		ON e.ManagerID = m.EmployeeID
+
+USE TelerikAcademy
+
+SELECT e.FirstName + ' ' + e.LastName as [Employee], 
+	   m.FirstName + ' ' + m.LastName as [Manager]
+FROM Employees e
+	LEFT OUTER JOIN Employees m
+		ON e.ManagerID = m.EmployeeID
