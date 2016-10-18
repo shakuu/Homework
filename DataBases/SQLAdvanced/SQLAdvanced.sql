@@ -130,3 +130,52 @@ CREATE TABLE Users (
 	passHash nvarchar(160) NOT NULL,
 	fullname nvarchar(160), 
 	lastlogin datetime)
+
+/* GO executes everything above and starts a new batch of commands 
+   it's here to prevent the command below from whining) */
+GO 
+/* Write a SQL statement to create a view that displays the users from the Users table that have been in the system today.
+   Test if the view works correctly. */
+CREATE VIEW UsersDefaultView AS
+	SELECT u.username, u.lastlogin
+	FROM TelerikAcademy.dbo.Users u
+GO
+
+SELECT * FROM UsersDefaultView
+
+/* Write a SQL statement to create a table Groups. Groups should have unique name (use unique constraint).
+   Define primary key and identity column. */
+USE TelerikAcademy
+
+CREATE TABLE Groups (
+	id int NOT NULL IDENTITY PRIMARY KEY,
+	name nvarchar(50) UNIQUE)
+
+/* Write a SQL statement to add a column GroupID to the table Users.
+   Fill some data in this new column and as well in the `Groups table.
+   Write a SQL statement to add a foreign key constraint between tables Users and Groups tables. */
+USE TelerikAcademy
+
+ALTER TABLE Users 
+	ADD GroupID int
+
+ALTER TABLE Users	
+	ADD CONSTRAINT FK_USERS_GROUPS
+		FOREIGN KEY(GroupID)
+		REFERENCES Groups(id)
+
+/* Write SQL statements to insert several records in the Users and Groups tables. */
+USE TelerikAcademy
+
+INSERT INTO Users (username, passHash, groupid)
+	VALUES
+	('me', '12345o', 1),
+	('myeself', '12345p', 1),
+	('and I', '12345q', 1)
+		
+INSERT INTO Groups (name)
+	VALUES 
+	('2'),
+	('3'),
+	('5'),
+	('7')
