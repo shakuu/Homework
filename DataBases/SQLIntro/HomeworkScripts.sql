@@ -160,3 +160,14 @@ SELECT e.FirstName + ' ' + e.LastName as [Employee],
 FROM Employees e
 	LEFT OUTER JOIN Employees m
 		ON e.ManagerID = m.EmployeeID
+
+/* Write a SQL query to find the names of all employees 
+   from the departments "Sales" and "Finance" whose hire year is between 1995 and 2005. */
+USE TelerikAcademy
+
+SELECT e.FirstName + ' ' + e.LastName as [Employee], e.HireDate, d.Name as [DepartmentName]
+FROM Employees e, Departments d
+WHERE (d.Name = 'Sales' OR d.Name = 'Finance') AND 
+	   d.DepartmentID = e.DepartmentID AND 
+	  (year(e.HireDate) >= 1995 AND year(e.HireDate) <= 2005)
+	
