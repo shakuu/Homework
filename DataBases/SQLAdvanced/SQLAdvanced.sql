@@ -209,3 +209,40 @@ INSERT INTO Users ( username, passhash, fullname)
 		   LOWER(LEFT(e.FirstName, 1) + e.LastName), 
 		   e.FirstName + ' ' + e.LastName
 	FROM Employees e
+
+/* Write a SQL statement that changes the password to NULL for all users that have not been in the system since 10.03.2010 */
+USE TelerikAcademy
+
+UPDATE Users
+SET passhash = NULL
+WHERE CONVERT(datetime, lastlogin, 1) < CONVERT(datetime, '03/10/10', 1) OR lastlogin IS NULL
+
+/* Write a SQL statement that deletes all users without passwords (NULL password). */
+USE TelerikAcademy
+
+DELETE FROM Users
+WHERE passhash IS NULL
+
+/* Write a SQL query to display the average employee salary by department and job title. */
+USE TelerikAcademy
+
+SELECT AVG(e.Salary), d.Name, e.JobTitle
+FROM Employees e, Departments d
+WHERE e.DepartmentID = d.DepartmentID
+GROUP BY e.DepartmentID, e.JobTitle, d.Name
+ORDER BY AVG(e.Salary) DESC
+
+/* Write a SQL query to display the minimal employee salary by department and job title
+   along with the name of some of the employees that take it. */
+USE TelerikAcademy
+
+SELECT MIN(e.Salary) as [MinimumSalary], d.Name as [DepartmentName], e.JobTitle, (
+	SELECT TOP(1) em.FirstName + ' ' + em.LastName
+	FROM Employees em
+	WHERE em.Salary = MIN(e.Salary)) as [Employee]
+FROM Employees e, Departments d
+WHERE e.DepartmentID = d.DepartmentID
+GROUP BY e.DepartmentID, e.JobTitle, d.Name
+ORDER BY AVG(e.Salary) DESC
+
+
