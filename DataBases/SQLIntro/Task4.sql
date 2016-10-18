@@ -92,3 +92,20 @@ FROM Employees
  SELECT TOP(5) FirstName + ' ' + LastName as [FullName], Salary
  FROM Employees
  ORDER BY Salary DESC
+
+ /* Write a SQL query to find all employees along with their address. Use inner join with ON clause. */
+ USE TelerikAcademy
+
+ SELECT e.FirstName + ' ' + e.LastName as [FullName], a.AddressText
+ FROM Employees e
+	INNER JOIN Addresses a
+		ON e.AddressID = a.AddressID
+
+/* Write a SQL query to find all employees and their address. Use equijoins (conditions in the WHERE clause). */
+USE TelerikAcademy
+
+SELECT e.FirstName + ' ' + e.LastName as [FullName], a.AddressText
+FROM Employees e, Addresses a
+WHERE e.AddressID = a.AddressID
+
+/*  */
