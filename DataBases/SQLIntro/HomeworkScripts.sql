@@ -167,7 +167,6 @@ USE TelerikAcademy
 
 SELECT e.FirstName + ' ' + e.LastName as [Employee], e.HireDate, d.Name as [DepartmentName]
 FROM Employees e, Departments d
-WHERE (d.Name = 'Sales' OR d.Name = 'Finance') AND 
-	   d.DepartmentID = e.DepartmentID AND 
+WHERE (d.Name = 'Sales' OR d.Name = 'Finance') AND  d.DepartmentID = e.DepartmentID AND 
 	  (year(e.HireDate) >= 1995 AND year(e.HireDate) <= 2005)
 	
