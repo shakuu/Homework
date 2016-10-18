@@ -272,3 +272,65 @@ WHERE e.EmployeeID IN (
 	a.TownID = t.TownID
 GROUP BY t.Name 
 ORDER BY COUNT(*) DESC
+
+/* Write a SQL to create table WorkHours to store work reports for each employee (employee id, date, task, hours, comments).
+	Don't forget to define identity, primary key and appropriate foreign key.
+	Issue few SQL statements to insert, update and delete of some data in the table.
+	Define a table WorkHoursLogs to track all changes in the WorkHours table with triggers.
+	For each change keep the old record data, the new record data and the command (insert / update / delete). */
+USE TelerikAcademy
+
+CREATE TABLE WorkHours (
+	id int IDENTITY PRIMARY KEY,
+	employeeid int,
+	dates datetime,
+	task nvarchar(200),
+	hoursWorked int,
+	comments ntext)
+
+ALTER TABLE WorkHours	
+	ADD CONSTRAINT FK_WORKHOURS_EMPLOYEES
+		FOREIGN KEY(EmployeeID)
+		REFERENCES Employees(EmployeeID)
+
+CREATE TABLE WorkHoursLogs (
+	id int IDENTITY PRIMARY KEY,
+	changeTime datetime,
+	changeType nvarchar(50))
+
+--START HERE to add triggers
+USE TelerikAcademy
+GO
+CREATE TRIGGER ONINSERT
+ON TelerikAcademy.dbo.WorkHours
+AFTER INSERT
+AS
+	INSERT INTO TelerikAcademy.dbo.WorkHoursLogs 
+		VALUES(GETDATE(), 'INSERT')
+GO
+CREATE TRIGGER ONUPDATE
+ON TelerikAcademy.dbo.WorkHours
+AFTER UPDATE
+AS
+	INSERT INTO TelerikAcademy.dbo.WorkHoursLogs 
+		VALUES(GETDATE(), 'UPDATE')
+GO
+CREATE TRIGGER ONDELETE
+ON TelerikAcademy.dbo.WorkHours
+AFTER DELETE
+AS
+	INSERT INTO TelerikAcademy.dbo.WorkHoursLogs 
+		VALUES(GETDATE(), 'DELETE')
+ --END HERE to end triggers
+ GO
+
+ USE TelerikAcademy
+ INSERT INTO WorkHours (dates)
+	VALUES(GETDATE())
+
+/* Transaction */
+USE TelerikAcademy
+
+BEGIN TRANSACTION
+DELETE FROM Users
+ROLLBACK TRANSACTION
