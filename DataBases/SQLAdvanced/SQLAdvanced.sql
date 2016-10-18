@@ -116,3 +116,17 @@ WHERE LEN(e.LastName) = 5
 	"day.month.year hour:minutes:seconds:milliseconds".
 	Search in Google to find how to format dates in SQL Server. */
 SELECT CONVERT(VARCHAR(50),GETDATE(),3) + ' ' + CONVERT(VARCHAR(50),GETDATE(),14)
+
+/* Write a SQL statement to create a table Users. Users should have username, password, full name and last login time.
+Choose appropriate data types for the table fields. Define a primary key column with a primary key constraint.
+Define the primary key column as identity to facilitate inserting records.
+Define unique constraint to avoid repeating usernames.
+Define a check constraint to ensure the password is at least 5 characters long. */
+USE TelerikAcademy
+
+CREATE TABLE Users (
+	id int NOT NULL IDENTITY PRIMARY KEY,
+	username nvarchar(100) UNIQUE NOT NULL,
+	passHash nvarchar(160) NOT NULL,
+	fullname nvarchar(160), 
+	lastlogin datetime)
