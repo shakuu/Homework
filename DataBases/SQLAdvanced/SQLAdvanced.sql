@@ -94,3 +94,20 @@ WHERE m.EmployeeID IN (
 	GROUP BY e.ManagerID
 	HAVING COUNT(*) = 5)
 
+/* Write a SQL query to find all employees along with their managers.
+   For employees that do not have manager display the value "(no manager)". */
+USE TelerikAcademy
+
+SELECT e.FirstName + ' ' + e.LastName as [EmployeeName],
+	   ISNULL(m.FirstName + ' ' + m.LastName, '(no manger)') as [ManagerName]
+FROM Employees e
+	LEFT OUTER JOIN Employees m
+	ON	e.ManagerID = m.EmployeeID
+
+/* Write a SQL query to find the names of all employees whose 
+   last name is exactly 5 characters long. Use the built-in LEN(str) function. */
+USE TelerikAcademy 
+
+SELECT e.FirstName + ' ' + e.LastName as [FullName]
+FROM Employees e
+WHERE LEN(e.LastName) = 5
