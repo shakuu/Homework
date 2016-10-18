@@ -4,8 +4,8 @@ USE TelerikAcademy
 
 SELECT e.FirstName + ' ' + e.LastName as [FullName], e.Salary
 FROM Employees e
-WHERE e.Salary = 
-	(SELECT MIN(d.Salary)
+WHERE e.Salary = (
+	SELECT MIN(d.Salary)
 	FROM Employees d)
 	
 /* Write a SQL query to find the names and salaries of the employees that have a salary 
@@ -14,9 +14,9 @@ USE TelerikAcademy
 
 SELECT e.FirstName + ' ' + e.LastName as [FullName], e.Salary
 FROM Employees e
-WHERE e.Salary <= 1.1 * 
-	(SELECT MIN(d.Salary)
-	 FROM Employees d)
+WHERE e.Salary <= 1.1 * (
+	SELECT MIN(d.Salary)
+	FROM Employees d)
 
 /* Write a SQL query to find the full name, salary and department of the employees
    that take the minimal salary in their department.
@@ -26,10 +26,10 @@ USE TelerikAcademy
 
 SELECT e.FirstName + ' ' + e.LastName as [FullName], e.Salary, d.Name as [DepartmentName]
 FROM Employees e, Departments d
-WHERE e.Salary IN
-	(SELECT MIN(es.Salary)
-	 FROM Employees es
-	 WHERE es.DepartmentID = d.DepartmentID)
+WHERE e.Salary IN (
+	SELECT MIN(es.Salary)
+	FROM Employees es
+	WHERE es.DepartmentID = d.DepartmentID)
 ORDER BY d.Name
 
 /* Write a SQL query to find the average salary in the department #1. */
