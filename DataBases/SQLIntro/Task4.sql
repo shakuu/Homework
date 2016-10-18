@@ -108,4 +108,28 @@ SELECT e.FirstName + ' ' + e.LastName as [FullName], a.AddressText
 FROM Employees e, Addresses a
 WHERE e.AddressID = a.AddressID
 
-/*  */
+/* Write a SQL query to find all employees along with their manager. */
+USE TelerikAcademy
+
+SELECT e.FirstName + ' ' + e.LastName as [Employee], 
+	   m.FirstName + ' ' + m.LastName as [Manager]
+FROM Employees e
+	JOIN Employees m
+		ON e.ManagerID = m.EmployeeID
+
+/* Write a SQL query to find all employees, along with their manager and their address.
+ Join the 3 tables: Employees e, Employees m and Addresses a. */
+ USE TelerikAcademy
+
+SELECT e.FirstName + ' ' + e.LastName as [Employee], 
+	   ea.AddressText as [EmployeeAddress],
+	   m.FirstName + ' ' + m.LastName as [Manager],
+	   em.AddressText as [ManagerAddress]
+FROM Employees e
+	JOIN Employees m
+		ON e.ManagerID = m.EmployeeID
+	JOIN Addresses ea
+		ON e.AddressID = ea.AddressID
+	JOIN Addresses em
+		ON e.ManagerID = m.EmployeeID AND m.AddressID = em.AddressID
+
