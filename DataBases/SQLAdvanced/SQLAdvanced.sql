@@ -82,3 +82,15 @@ SELECT COUNT(*) as [EmployeesCount], d.Name as [DepartmentName], t.Name as [Town
 FROM Employees e, Departments d, Addresses a, Towns t
 WHERE e.DepartmentID = d.DepartmentID AND e.AddressID = a.AddressID AND a.TownID = t.TownID
 GROUP BY d.Name, t.Name
+
+/* Write a SQL query to find all managers that have exactly 5 employees. Display their first name and last name. */
+USE TelerikAcademy
+
+SELECT m.FirstName + ' ' + m.LastName as [FullName]
+FROM Employees m
+WHERE m.EmployeeID IN (
+	SELECT e.ManagerID
+	FROM Employees e
+	GROUP BY e.ManagerID
+	HAVING COUNT(*) = 5)
+
