@@ -179,3 +179,33 @@ INSERT INTO Groups (name)
 	('3'),
 	('5'),
 	('7')
+
+/* Write SQL statements to update some of the records in the Users and Groups tables. */
+USE TelerikAcademy
+
+UPDATE Users
+SET username='Pesho'
+WHERE id = 1 
+
+UPDATE Groups
+SET name = 'gosho'
+WHERE name = '2'
+
+/* Write SQL statements to delete some of the records from the Users and Groups tables. */
+DELETE FROM Users
+WHERE username = 'Pesho'
+
+DELETE FROM Groups
+WHERE name = 'gosho'
+
+/* Write SQL statements to insert in the Users table the names of all employees from the Employees table.
+	Combine the first and last names as a full name.
+	For username use the first letter of the first name + the last name (in lowercase).
+	Use the same for the password, and NULL for last login time. */
+USE TelerikAcademy
+
+INSERT INTO Users ( username, passhash, fullname)
+	SELECT LOWER(LEFT(e.FirstName, 1) + e.LastName), 
+		   LOWER(LEFT(e.FirstName, 1) + e.LastName), 
+		   e.FirstName + ' ' + e.LastName
+	FROM Employees e
