@@ -245,4 +245,18 @@ WHERE e.DepartmentID = d.DepartmentID
 GROUP BY e.DepartmentID, e.JobTitle, d.Name
 ORDER BY AVG(e.Salary) DESC
 
+/*Write a SQL query to display the town where maximal number of employees work.*/
+USE TelerikAcademy
+
+SELECT ts.Name as [Most Common Town]
+FROM Towns ts
+WHERE ts.TownID = (
+	SELECT TOP(1) a.TownID
+	FROM Employees e
+		JOIN Addresses a
+			ON a.AddressID = e.AddressID
+		JOIN Towns t
+			ON a.TownID = t.TownID
+	GROUP BY a.TownID, t.Name
+	ORDER BY COUNT(*) DESC)
 
