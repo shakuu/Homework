@@ -78,3 +78,7 @@ WHERE e.DepartmentID = d.DepartmentID
 GROUP BY e.DepartmentID, d.Name
 
 /* Write a SQL query to find the count of all employees in each department and for each town. */
+SELECT COUNT(*) as [EmployeesCount], d.Name as [DepartmentName], t.Name as [TownName]
+FROM Employees e, Departments d, Addresses a, Towns t
+WHERE e.DepartmentID = d.DepartmentID AND e.AddressID = a.AddressID AND a.TownID = t.TownID
+GROUP BY d.Name, t.Name
