@@ -260,3 +260,15 @@ WHERE ts.TownID = (
 	GROUP BY a.TownID, t.Name
 	ORDER BY COUNT(*) DESC)
 
+/* Write a SQL query to display the number of managers from each town. */
+USE TelerikAcademy
+
+SELECT TOP(1) t.Name as [TownName], COUNT(*) as [ManagersCount]
+FROM Employees e, Addresses a, Towns t
+WHERE e.EmployeeID IN (
+	SELECT m.ManagerID
+	FROM Employees m) AND
+	e.AddressID = a.AddressID AND
+	a.TownID = t.TownID
+GROUP BY t.Name 
+ORDER BY COUNT(*) DESC
