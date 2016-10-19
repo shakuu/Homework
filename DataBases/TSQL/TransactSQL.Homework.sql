@@ -118,6 +118,7 @@ CREATE PROCEDURE usp_WithdrawMoney(@accountId int, @amount money)
 			FROM Accounts a
 			WHERE a.Id = @accountId
 		)
+		WHERE id = @accountId
 	COMMIT
 
 GO
@@ -139,6 +140,7 @@ CREATE PROCEDURE usp_DepositMoney(@accountId int, @amount money)
 			FROM Accounts a
 			WHERE a.Id = @accountId
 		)
+		WHERE id = @accountId
 	COMMIT
 
 GO
@@ -150,3 +152,48 @@ FROM Accounts a
 WHERE a.Id = 1
 
 GO
+
+/* Create another table – Logs(LogID, AccountID, OldSum, NewSum).
+	Add a trigger to the Accounts table that enters a new entry into the Logs table every time the sum on an account changes. */
+
+CREATE TABLE Logs (
+	LogID int IDENTITY PRIMARY KEY,
+	AccountID int,
+	OldSum money,
+	NewSum money
+)
+
+GO
+
+CREATE TRIGGER tr_OnAccountBalanceChange 
+ON Accounts 
+AFTER UPDATE
+	AS
+	BEGIN
+		DECLARE @oldSum money, 
+			@newSum money,
+			@accountId int
+
+		SET @oldSum = (
+			SELECT Balance
+			FROM deleted
+		)
+
+		SET @newSum = (
+			SELECT Balance
+			FROM inserted
+			WHERE id = (
+				SELECT id
+				FROM deleted)
+		)
+
+		SET @accountId = (
+			SELECT Id
+			FROM inserted
+		)
+
+		INSERT INTO Logs 
+			VALUES(@accountId, @oldSum, @newSum)
+	END
+GO
+
