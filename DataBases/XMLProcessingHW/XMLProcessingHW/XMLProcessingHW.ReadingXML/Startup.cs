@@ -13,8 +13,8 @@ namespace XMLProcessingHW.ReadingXML
     {
         public static void Main()
         {
-            var url = "D:\\GitHub\\Homework\\DataBases\\XMLProcessingHW\\XMLProcessingHW\\catalogue.xml";
-            var urlModifiedDocument = "D:\\GitHub\\Homework\\DataBases\\XMLProcessingHW\\XMLProcessingHW\\catalogue-modified.xml";
+            var url = "../../../catalogue.xml";
+            var urlModifiedDocument = "../../../catalogue-modified.xml";
 
             var documentParser = CreateDocumentParser();
 
@@ -51,14 +51,14 @@ namespace XMLProcessingHW.ReadingXML
 
         private static void ValidateXml(string fileName, IXmlDocumentParser documentParser)
         {
-            var schemaName = "D:\\GitHub\\Homework\\DataBases\\XMLProcessingHW\\XMLProcessingHW\\catalogue.xsd";
+            var schemaName = "../../../catalogue.xsd";
             documentParser.ValidateXml(fileName, schemaName);
         }
 
         private static void CreateDirectoryStructureXml()
         {
             var encoding = Encoding.GetEncoding("windows-1251");
-            var outputFileName = "D:\\GitHub\\Homework\\DataBases\\XMLProcessingHW\\XMLProcessingHW\\directories.xml";
+            var outputFileName = "../../../directories.xml";
             var logger = new XmlDirectoryStructureLogger(outputFileName, encoding);
             var generator = new DirectoryStructureGenerator();
 
@@ -108,7 +108,7 @@ namespace XMLProcessingHW.ReadingXML
         private static void WriteNewXmlWithDIfferentStructure(string url, IXmlDocumentParser documentParser)
         {
             var encoding = Encoding.GetEncoding("windows-1251");
-            var outputFileName = "D:\\GitHub\\Homework\\DataBases\\XMLProcessingHW\\XMLProcessingHW\\catalogue-reorganized.xml";
+            var outputFileName = "../../../catalogue-reorganized.xml";
             documentParser.WriteToXmlDocumentUsingXmlTextWriter(url, outputFileName, encoding, "album", "artist", "name");
         }
 
