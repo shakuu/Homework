@@ -8,6 +8,8 @@ namespace XMLProcessingHW.ReadingXML.XMLReaders.Contracts
 {
     public interface IXmlDocumentParser
     {
+        void ApplyStylesheet(string fileName, string stylesheer, string htmlName);
+
         void ValidateXml(string fileName, string schemaName);
 
         void WriteToXmlDocumentUsingXmlTextWriter(

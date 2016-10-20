@@ -5,6 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Xml;
 using System.Xml.Schema;
+using System.Xml.Xsl;
 using XMLProcessingHW.ReadingXML.XMLReaders.Contracts;
 
 namespace XMLProcessingHW.ReadingXML.XMLReaders
@@ -21,6 +22,16 @@ namespace XMLProcessingHW.ReadingXML.XMLReaders
             }
 
             this.xmlDocumentProvider = xmlDocumentProvider;
+        }
+
+        public void ApplyStylesheet(
+            string fileName,
+            string stylesheet,
+            string htmlName)
+        {
+            var xslt = new XslCompiledTransform();
+            xslt.Load(stylesheet);
+            xslt.Transform(fileName, htmlName);
         }
 
         /// <summary>

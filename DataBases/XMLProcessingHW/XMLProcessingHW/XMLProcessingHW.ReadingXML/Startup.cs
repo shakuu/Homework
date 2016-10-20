@@ -18,6 +18,8 @@ namespace XMLProcessingHW.ReadingXML
 
             var documentParser = CreateDocumentParser();
 
+            ExecuteApplyStylesheet(url, documentParser);
+
             ExecuteDisplayWithDomParser(url, documentParser);
 
             Console.WriteLine("----------------------------------");
@@ -49,6 +51,11 @@ namespace XMLProcessingHW.ReadingXML
             ValidateXml(url, documentParser);
         }
 
+        private static void ExecuteApplyStylesheet(string fileName, IXmlDocumentParser documentParser)
+        {
+            documentParser.ApplyStylesheet(fileName, "../../../catalogue.xslt", "../../../catalogue.html");
+        }
+
         private static void ValidateXml(string fileName, IXmlDocumentParser documentParser)
         {
             var schemaName = "../../../catalogue.xsd";
@@ -62,7 +69,7 @@ namespace XMLProcessingHW.ReadingXML
             var logger = new XmlDirectoryStructureLogger(outputFileName, encoding);
             var generator = new DirectoryStructureGenerator();
 
-            generator.GenerateDirectoryStructure("D:\\test", logger);
+            generator.GenerateDirectoryStructure("D:\\", logger);
         }
 
         private static void ExecuteSearchForElementsWithNameUsingLinqToXml(string url, IXmlDocumentParser documentParser)
