@@ -16,17 +16,16 @@ namespace ADONET.Homework.Logic.DataHandlers
             {
                 throw new ArgumentNullException(nameof(dataReader));
             }
-
-
+            
             var parsedData = new LinkedList<ModelType>();
             var propertiesInfo = this.GetModelTypeProperties(typeof(ModelType));
 
             while (dataReader.Read())
             {
                 var nextItem = new ModelType();
-                foreach (var prop in propertiesInfo)
+                foreach (var property in propertiesInfo)
                 {
-                    prop.SetValue(nextItem, dataReader[prop.Name]);
+                    property.SetValue(nextItem, dataReader[property.Name]);
                 }
 
                 parsedData.AddLast(nextItem);
