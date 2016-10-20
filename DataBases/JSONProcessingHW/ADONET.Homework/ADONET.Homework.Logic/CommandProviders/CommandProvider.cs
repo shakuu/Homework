@@ -9,7 +9,7 @@ namespace ADONET.Homework.Logic.CommandProviders
 {
     public class CommandProvider : ICommandProvider
     {
-        public IDbCommand CreateCommand(string commandString, IDictionary<string, string> parameters)
+        public IDbCommand CreateCommand(string commandString, IDictionary<string, string> parameters = null)
         {
             if (string.IsNullOrEmpty(commandString))
             {

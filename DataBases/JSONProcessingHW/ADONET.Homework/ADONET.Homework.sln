@@ -3,7 +3,25 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 14
 VisualStudioVersion = 14.0.25420.1
 MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ADONET.Homework.Logic", "ADONET.Homework.Logic\ADONET.Homework.Logic.csproj", "{43C7FE08-EB2B-4604-9FDD-7825C8C3AA9B}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ADONET.Homework.ConsoleClient", "ADONET.Homework.ConsoleClient\ADONET.Homework.ConsoleClient.csproj", "{23452A29-2236-4F01-8421-8423B79C3039}"
+EndProject
 Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{43C7FE08-EB2B-4604-9FDD-7825C8C3AA9B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{43C7FE08-EB2B-4604-9FDD-7825C8C3AA9B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{43C7FE08-EB2B-4604-9FDD-7825C8C3AA9B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{43C7FE08-EB2B-4604-9FDD-7825C8C3AA9B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{23452A29-2236-4F01-8421-8423B79C3039}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{23452A29-2236-4F01-8421-8423B79C3039}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{23452A29-2236-4F01-8421-8423B79C3039}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{23452A29-2236-4F01-8421-8423B79C3039}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection

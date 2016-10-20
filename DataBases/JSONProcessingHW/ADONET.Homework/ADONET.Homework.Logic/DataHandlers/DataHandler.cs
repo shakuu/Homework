@@ -26,7 +26,8 @@ namespace ADONET.Homework.Logic.DataHandlers
                 foreach (var property in propertiesInfo)
                 {
                     var propertyName = property.Name;
-                    property.SetValue(nextItem, propertyName);
+                    var properyValue = dataReader[propertyName];
+                    property.SetValue(nextItem, properyValue);
                 }
 
                 parsedData.AddLast(nextItem);

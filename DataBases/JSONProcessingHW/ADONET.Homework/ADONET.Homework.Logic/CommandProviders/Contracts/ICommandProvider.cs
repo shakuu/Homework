@@ -5,6 +5,6 @@ namespace ADONET.Homework.Logic.CommandProviders.Contracts
 {
     public interface ICommandProvider
     {
-        IDbCommand CreateCommand(string commandString, IDictionary<string, string> parameters);
+        IDbCommand CreateCommand(string commandString, IDictionary<string, string> parameters = null);
     }
 }
