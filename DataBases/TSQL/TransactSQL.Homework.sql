@@ -197,3 +197,36 @@ AFTER UPDATE
 	END
 GO
 
+/* Define a function in the database TelerikAcademy that returns all Employee's names (first or middle or last name) and all town's names that are comprised of given set of letters.
+	Example: 'oistmiahf' will return 'Sofia', 'Smith', … but not 'Rob' and 'Guy'. */
+
+USE TelerikAcademy
+GO
+CREATE FUNCTION ufn_RegexSim(@matchChars nvarchar(150), @string nvarchar(150))
+	RETURNS BIT
+	AS
+	BEGIN
+		DECLARE @length int, @i int
+		SET @length = LEN(@string)
+		SET @i = 0
+		WHILE (@i < @length)
+			BEGIN
+				DECLARE @char nvarchar(1)
+				SET @char = SUBSTRING(@string, @i, 1)
+					IF (@char LIKE '[' + @matchChars + ']')
+						SET @i = @i
+					ELSE
+						RETURN 0
+						
+				SET @i = @i + 1
+			END
+		
+		RETURN 1
+	END
+GO
+
+USE TelerikAcademy
+
+SELECT *
+FROM Employees e
+WHERE 1 = dbo.ufn_RegexSim('a', e.FirstName)
