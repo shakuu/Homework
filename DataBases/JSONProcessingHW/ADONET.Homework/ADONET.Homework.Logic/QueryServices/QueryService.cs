@@ -9,7 +9,13 @@ namespace ADONET.Homework.Logic.QueryServices
     {
         public IDataReader ExecuteReaderQuery(IDbCommand command)
         {
-            throw new NotImplementedException();
+            if (command == null)
+            {
+                throw new ArgumentNullException(nameof(command));
+            }
+
+            var reader = command.ExecuteReader();
+            return reader;
         }
     }
 }
