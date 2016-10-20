@@ -50,6 +50,7 @@
     <Compile Include="DataHandlers\Contracts\IDataHandler.cs" />
     <Compile Include="DataHandlers\DataHandler.cs" />
     <Compile Include="Models\Category.cs" />
+    <Compile Include="Models\ProductWIthCategory.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="QueryEngines\Contract\IQueryEngine.cs" />
     <Compile Include="QueryEngines\SimpleQueryEngine.cs" />

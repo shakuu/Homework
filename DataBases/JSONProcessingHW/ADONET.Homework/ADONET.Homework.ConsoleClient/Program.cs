@@ -20,6 +20,9 @@ namespace ADONET.Homework.ConsoleClient
 
             var queryEngine = ninject.Get<IQueryEngine>();
             var result = queryEngine.ExecuteReaderCommand<Category>(command);
+
+            var commandTask2 = commandProvider.CreateCommand("SELECT p.ProductName, c.CategoryName FROM Products p JOIN Categories c ON p.CategoryID = c.CategoryID", null);
+            var resultTask2 = queryEngine.ExecuteReaderCommand<ProductWIthCategory>(commandTask2);
         }
     }
 }
