@@ -5,7 +5,7 @@ namespace ADONET.Homework.Logic.QueryEngines.Contract
 {
     public interface IQueryEngine
     {
-        IEnumerable<ModelType> ExecuteCommand<ModelType>(IDbCommand command)
+        IEnumerable<ModelType> ExecuteReaderCommand<ModelType>(IDbCommand command)
             where ModelType : new();
     }
 }

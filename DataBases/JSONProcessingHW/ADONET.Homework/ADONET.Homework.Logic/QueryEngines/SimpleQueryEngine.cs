@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Data;
+using System.Data.Common;
 
 using ADONET.Homework.Logic.ConnectionProviders.Contracts;
 using ADONET.Homework.Logic.DataHandlers.Contracts;
@@ -37,18 +38,25 @@ namespace ADONET.Homework.Logic.QueryEngines
             this.connectionProvider = connectionProvider;
         }
 
-        public IEnumerable<ModelType> ExecuteCommand<ModelType>(IDbCommand command)
+        public IEnumerable<ModelType> ExecuteReaderCommand<ModelType>(IDbCommand command)
             where ModelType : new()
         {
             var connection = this.connectionProvider.CreateConnection(null);
             command.Connection = connection;
 
-            connection.Open();
-            var reader = this.queryService.ExecuteReaderQuery(command);
-            var parsedData = this.dataHandler.ParseData<ModelType>(reader);
-            connection.Close();
+            try
+            {
+                connection.Open();
+                var reader = this.queryService.ExecuteReaderQuery(command);
+                var parsedData = this.dataHandler.ParseData<ModelType>(reader);
+                connection.Close();
 
-            return parsedData;
+                return parsedData;
+            }
+            catch (DbException)
+            {
+                throw;
+            }
         }
     }
 }

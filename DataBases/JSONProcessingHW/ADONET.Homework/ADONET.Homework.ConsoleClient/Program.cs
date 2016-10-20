@@ -19,7 +19,7 @@ namespace ADONET.Homework.ConsoleClient
             var command = commandProvider.CreateCommand("SELECT * FROM Categories", null);
 
             var queryEngine = ninject.Get<IQueryEngine>();
-            var result = queryEngine.ExecuteCommand<Category>(command);
+            var result = queryEngine.ExecuteReaderCommand<Category>(command);
         }
     }
 }

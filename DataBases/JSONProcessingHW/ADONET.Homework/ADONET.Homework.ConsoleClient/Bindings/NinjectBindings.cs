@@ -19,7 +19,7 @@ namespace ADONET.Homework.ConsoleClient.Bindings
         public override void Load()
         {
             this.Bind<IConnectionProvider>().To<DefaultSqlServerConnectionProvider>();
-            this.Bind<ICommandProvider>().To<CommandProvider>();
+            this.Bind<ICommandProvider>().To<SqlCommandProvider>();
             this.Bind<IDataHandler>().To<DataHandler>();
             this.Bind<IQueryService>().To<QueryService>();
 

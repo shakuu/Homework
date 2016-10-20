@@ -7,7 +7,7 @@ using ADONET.Homework.Logic.CommandProviders.Contracts;
 
 namespace ADONET.Homework.Logic.CommandProviders
 {
-    public class CommandProvider : ICommandProvider
+    public class SqlCommandProvider : ICommandProvider
     {
         public IDbCommand CreateCommand(string commandString, IDictionary<string, string> parameters = null)
         {
