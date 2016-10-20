@@ -21,7 +21,17 @@ namespace ADONET.Homework.Logic.CommandProviders
             var parametersExist = parameters != null;
             if (parametersExist)
             {
-                // TODO: Parse parameters
+                command = this.CreateParameters(command, parameters);
+            }
+
+            return command;
+        }
+
+        private SqlCommand CreateParameters(SqlCommand command, IDictionary<string, string> commandsToParse)
+        {
+            foreach (var item in commandsToParse)
+            {
+                command.Parameters.AddWithValue(item.Key, item.Value);
             }
 
             return command;
