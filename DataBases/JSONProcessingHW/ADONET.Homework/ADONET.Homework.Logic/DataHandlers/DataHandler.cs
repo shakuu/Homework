@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Data;
-using System.Linq;
 using System.Reflection;
 
 using ADONET.Homework.Logic.DataHandlers.Contracts;
@@ -39,7 +38,6 @@ namespace ADONET.Homework.Logic.DataHandlers
         private IEnumerable<PropertyInfo> GetModelTypeProperties(Type modelType)
         {
             var modelTypePropertiesInfo = modelType.GetProperties();
-
             return modelTypePropertiesInfo;
         }
     }

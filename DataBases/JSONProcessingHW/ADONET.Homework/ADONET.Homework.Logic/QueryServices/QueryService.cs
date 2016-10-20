@@ -15,6 +15,7 @@ namespace ADONET.Homework.Logic.QueryServices
             }
 
             var reader = command.ExecuteReader();
+
             return reader;
         }
     }
