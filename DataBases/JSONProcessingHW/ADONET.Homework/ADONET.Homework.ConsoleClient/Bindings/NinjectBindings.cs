@@ -1,16 +1,16 @@
 ﻿using Ninject;
 using Ninject.Modules;
 
-using ADONET.Homework.Logic.ConnectionProviders.Contracts;
-using ADONET.Homework.Logic.ConnectionProviders;
 using ADONET.Homework.Logic.CommandProviders.Contracts;
 using ADONET.Homework.Logic.CommandProviders;
+using ADONET.Homework.Logic.ConnectionProviders.Contracts;
+using ADONET.Homework.Logic.ConnectionProviders;
 using ADONET.Homework.Logic.DataHandlers.Contracts;
 using ADONET.Homework.Logic.DataHandlers;
-using ADONET.Homework.Logic.QueryServices.Contracts;
-using ADONET.Homework.Logic.QueryServices;
 using ADONET.Homework.Logic.QueryEngines.Contract;
 using ADONET.Homework.Logic.QueryEngines;
+using ADONET.Homework.Logic.QueryServices.Contracts;
+using ADONET.Homework.Logic.QueryServices;
 
 namespace ADONET.Homework.ConsoleClient.Bindings
 {
