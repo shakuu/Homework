@@ -23,11 +23,11 @@ namespace ADONET.Homework.ConsoleClient
             var queryEngine = ninject.Get<IQueryEngine>();
             var imageService = ninject.Get<IImageService>();
 
-            //DisplayNumberOfCategories(commandProvider, queryEngine);
-            //DisplayAllCategories(commandProvider, queryEngine);
-            //DisplayEachProductWithCategory(commandProvider, queryEngine);
-            //InsertNewProduct(commandProvider, queryEngine);
-            //DisplayAllCategoriesWithPictures(commandProvider, queryEngine, imageService);
+            DisplayNumberOfCategories(commandProvider, queryEngine);
+            DisplayAllCategories(commandProvider, queryEngine);
+            DisplayEachProductWithCategory(commandProvider, queryEngine);
+            InsertNewProduct(commandProvider, queryEngine);
+            DisplayAllCategoriesWithPictures(commandProvider, queryEngine, imageService);
 
             var oleCommandProvider = new OleDbCommandProvider();
             var oleDbConnectionProvider = new DefaultOleDbConnectionProvider(new OleDbConnectionProvider());
