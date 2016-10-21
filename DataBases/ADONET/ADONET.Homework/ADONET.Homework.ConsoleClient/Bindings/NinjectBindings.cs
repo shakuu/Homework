@@ -24,22 +24,26 @@ namespace ADONET.Homework.ConsoleClient.Bindings
         {
             this.Bind<IDbFactory>().To<DbFactory>();
 
-            this.Bind<IConnectionProvider>().To<DefaultSqlServerConnectionProvider>().Named("Sql")
+            this.Bind<IConnectionProvider>().To<DefaultSqlServerConnectionProvider>().Named("SqlServer")
                 .WithConstructorArgument("decoratedProvider", ctx => ctx.Kernel.Get<SqlServerConnectionProvider>());
 
             this.Bind<IConnectionProvider>().To<DefaultOleDbConnectionProvider>().Named("Ole")
                 .WithConstructorArgument("decoratedProvider", ctx => ctx.Kernel.Get<OleDbConnectionProvider>());
-            
-            this.Bind<ICommandProvider>().To<SqlCommandProvider>().Named("Sql");
-            this.Bind<ICommandProvider>().To<OleDbCommandProvider>().Named("Ole");
 
+            this.Bind<IConnectionProvider>().To<DefaultMySqlConnectionProvider>().Named("MySql")
+               .WithConstructorArgument("decoratedProvider", ctx => ctx.Kernel.Get<MySqlConnectionProvider>());
+
+            this.Bind<ICommandProvider>().To<SqlCommandProvider>().Named("SqlServer");
+            this.Bind<ICommandProvider>().To<OleDbCommandProvider>().Named("Ole");
+            this.Bind<ICommandProvider>().To<MySqlCommandProvider>().Named("MySql");
+            
             this.Bind<IDataObjectMapper>().To<DataObjectMapper>();
             this.Bind<IQueryService>().To<QueryService>();
 
             this.Bind<IImageService>().To<ImageService>();
 
             this.Bind<IQueryEngine>().To<SimpleQueryEngine>()
-                .WithConstructorArgument("connectionProvider", ctx => ctx.Kernel.Get<IConnectionProvider>("Sql"))
+                .WithConstructorArgument("connectionProvider", ctx => ctx.Kernel.Get<IConnectionProvider>("SqlServer"))
                 .WithConstructorArgument("queryService", ctx => ctx.Kernel.Get<IQueryService>())
                 .WithConstructorArgument("dataHandler", ctx => ctx.Kernel.Get<IDataObjectMapper>());
         }

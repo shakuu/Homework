@@ -14,7 +14,8 @@ namespace ADONET.Homework.ConsoleClient
 {
     public class Program
     {
-        private const string NinjectSqlServer = "Sql";
+        private const string NinjectSqlServer = "SqlServer";
+        private const string NinjectMySql = "MySql";
         private const string NinjectOleDb = "Ole";
 
         public static void Main()
@@ -40,6 +41,10 @@ namespace ADONET.Homework.ConsoleClient
             DisplayExcelFile(oleCommandProvider, queryEngine);
             AddRowToExcelTable(oleCommandProvider, queryEngine);
             DisplayExcelFile(oleCommandProvider, queryEngine);
+
+            var mySqlCommandProvider = ninject.Get<ICommandProvider>(Program.NinjectMySql);
+            var mySqlConnectionProvider = ninject.Get<IConnectionProvider>(Program.NinjectMySql);
+            queryEngine.ConnectionProvider = oleDbConnectionProvider;
         }
 
         private static void DisplayNumberOfCategories(ICommandProvider commandProvider, IQueryEngine queryEngine)
