@@ -34,6 +34,7 @@ namespace ADONET.Homework.ConsoleClient
             var oleCommandProvider = ninject.Get<ICommandProvider>(Program.NinjectOleDb);
             var oleDbConnectionProvider = ninject.Get<IConnectionProvider>(Program.NinjectOleDb);
             queryEngine.ConnectionProvider = oleDbConnectionProvider;
+
             DisplayExcelFile(oleCommandProvider, queryEngine);
             AddRowToExcelTable(oleCommandProvider, queryEngine);
             DisplayExcelFile(oleCommandProvider, queryEngine);
@@ -134,6 +135,13 @@ namespace ADONET.Homework.ConsoleClient
             var sql = "INSERT INTO Table3 VALUES(1, 'Doncho Minkov', 33)";
             var command = commandProvider.CreateCommand(sql);
             var resultInsert = queryEngine.ExecuteNonQueryCommand(command);
+        }
+
+        private static void DisplayProductsMatchingStringReadFromConsole(ICommandProvider commandProvider, IQueryEngine queryEngine)
+        {
+            var sql = "SELECT * FROM Categories";
+            var command = commandProvider.CreateCommand(sql);
+            var result = queryEngine.ExecuteReaderCommand<Category>(command);
         }
     }
 }
