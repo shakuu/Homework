@@ -35,6 +35,8 @@ namespace ADONET.Homework.ConsoleClient
             var oleDbConnectionProvider = ninject.Get<IConnectionProvider>(Program.NinjectOleDb);
             queryEngine.ConnectionProvider = oleDbConnectionProvider;
             DisplayExcelFile(oleCommandProvider, queryEngine);
+            AddRowToExcelTable(oleCommandProvider, queryEngine);
+            DisplayExcelFile(oleCommandProvider, queryEngine);
         }
 
         private static void DisplayNumberOfCategories(ICommandProvider commandProvider, IQueryEngine queryEngine)
@@ -129,7 +131,7 @@ namespace ADONET.Homework.ConsoleClient
 
         private static void AddRowToExcelTable(ICommandProvider commandProvider, IQueryEngine queryEngine)
         {
-            var sql = "INSERT INTO Table3 VALUES(1, 'Doncho Minkov', 24)";
+            var sql = "INSERT INTO Table3 VALUES(1, 'Doncho Minkov', 33)";
             var command = commandProvider.CreateCommand(sql);
             var resultInsert = queryEngine.ExecuteNonQueryCommand(command);
         }
