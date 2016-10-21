@@ -13,6 +13,9 @@ namespace ADONET.Homework.ConsoleClient
 {
     public class Program
     {
+        private const string NinjectSqlServer = "Sql";
+        private const string NinjectOleDb = "Ole";
+
         public static void Main()
         {
             var ninject = new StandardKernel();
@@ -20,16 +23,16 @@ namespace ADONET.Homework.ConsoleClient
 
             var queryEngine = ninject.Get<IQueryEngine>();
             var imageService = ninject.Get<IImageService>();
-            var commandProvider = ninject.Get<ICommandProvider>("Sql");
-            
+            var commandProvider = ninject.Get<ICommandProvider>(Program.NinjectSqlServer);
+
             DisplayNumberOfCategories(commandProvider, queryEngine);
             DisplayAllCategories(commandProvider, queryEngine);
             DisplayEachProductWithCategory(commandProvider, queryEngine);
             InsertNewProduct(commandProvider, queryEngine);
             DisplayAllCategoriesWithPictures(commandProvider, queryEngine, imageService);
 
-            var oleCommandProvider = ninject.Get<ICommandProvider>("Ole");
-            var oleDbConnectionProvider = ninject.Get<IConnectionProvider>("Ole");
+            var oleCommandProvider = ninject.Get<ICommandProvider>(Program.NinjectOleDb);
+            var oleDbConnectionProvider = ninject.Get<IConnectionProvider>(Program.NinjectOleDb);
             queryEngine.ConnectionProvider = oleDbConnectionProvider;
             DisplayExcelFile(oleCommandProvider, queryEngine);
         }
@@ -122,6 +125,13 @@ namespace ADONET.Homework.ConsoleClient
             var sql = "SELECT * FROM Table3";
             var command = commandProvider.CreateCommand(sql);
             var result = queryEngine.ExecuteReaderCommand<ExcelView>(command);
+        }
+
+        private static void AddRowToExcelTable(ICommandProvider commandProvider, IQueryEngine queryEngine)
+        {
+            var sql = "INSERT INTO Table3 VALUES(1, 'Doncho Minkov', 24)";
+            var command = commandProvider.CreateCommand(sql);
+            var resultInsert = queryEngine.ExecuteNonQueryCommand(command);
         }
     }
 }
