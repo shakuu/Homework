@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Reflection;
 
 using Ninject;
@@ -30,6 +31,7 @@ namespace ADONET.Homework.ConsoleClient
             DisplayEachProductWithCategory(commandProvider, queryEngine);
             InsertNewProduct(commandProvider, queryEngine);
             DisplayAllCategoriesWithPictures(commandProvider, queryEngine, imageService);
+            DisplayProductsMatchingStringReadFromConsole(commandProvider, queryEngine);
 
             var oleCommandProvider = ninject.Get<ICommandProvider>(Program.NinjectOleDb);
             var oleDbConnectionProvider = ninject.Get<IConnectionProvider>(Program.NinjectOleDb);
@@ -139,9 +141,18 @@ namespace ADONET.Homework.ConsoleClient
 
         private static void DisplayProductsMatchingStringReadFromConsole(ICommandProvider commandProvider, IQueryEngine queryEngine)
         {
-            var sql = "SELECT * FROM Categories";
+            var inputToMatch = Console.ReadLine();
+            var charsToReplace = new[] { '\'', '%', '"', '\\', '_' };
+            foreach (var chr in charsToReplace)
+            {
+                inputToMatch = inputToMatch.Replace(chr.ToString(), "");
+            }
+
+            var stringToMatch = string.Format($"'%{inputToMatch}%'");
+
+            var sql = "SELECT * FROM Products p WHERE p.ProductName LIKE " + stringToMatch;
             var command = commandProvider.CreateCommand(sql);
-            var result = queryEngine.ExecuteReaderCommand<Category>(command);
+            var result = queryEngine.ExecuteReaderCommand<Product>(command);
         }
     }
 }
