@@ -27,6 +27,7 @@ namespace ADONET.Homework.Logic.DataHandlers
                 {
                     var propertyName = property.Name;
                     var propertyValue = dataReader[propertyName];
+
                     property.SetValue(nextItem, propertyValue);
                 }
 
