@@ -253,6 +253,8 @@ _Pvt_Extensions
 *.pdf
 *.exe
 
+*.jpg
+
 typings/
 prepros.*
 typings.*

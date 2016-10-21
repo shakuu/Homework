@@ -7,18 +7,32 @@ namespace ADONET.Homework.Logic.ImageServices
 {
     public class ImageService : IImageService
     {
+        private ImageConverter imageConverter;
+
+        private ImageConverter ImageConverter
+        {
+            get
+            {
+                if (this.imageConverter == null)
+                {
+                    this.imageConverter = new ImageConverter();
+                }
+
+                return this.imageConverter;
+            }
+        }
+
         public void SaveImageToFile(byte[] imageData, string fileName)
         {
-            var info = new FileInfo(fileName);
-
-            var directoryExists = Directory.Exists(info.DirectoryName);
+            var fileNameInfo = new FileInfo(fileName);
+            var directoryExists = Directory.Exists(fileNameInfo.DirectoryName);
             if (!directoryExists)
             {
-                Directory.CreateDirectory(info.DirectoryName);
+                Directory.CreateDirectory(fileNameInfo.DirectoryName);
             }
-
-            Image x = (Bitmap)((new ImageConverter()).ConvertFrom(imageData));
-            x.Save(fileName);
+            
+            var image = (Bitmap)(this.ImageConverter.ConvertFrom(imageData));
+            image.Save(fileName);
         }
     }
 }
