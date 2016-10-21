@@ -7,7 +7,7 @@ namespace ADONET.Homework.Logic.ConnectionProviders
 {
     public class DefaultMySqlConnectionProvider : IConnectionProvider
     {
-        private const string ConnectionString = "";
+        private const string ConnectionString = "Server=localhost; port=3306; database=library; UID=randomuser; password=12345";
 
         private readonly IConnectionProvider decoratedProvider;
 
