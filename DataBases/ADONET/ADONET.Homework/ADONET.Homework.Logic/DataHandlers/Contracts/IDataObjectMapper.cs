@@ -3,7 +3,7 @@ using System.Data;
 
 namespace ADONET.Homework.Logic.DataHandlers.Contracts
 {
-    public interface IDataHandler
+    public interface IDataObjectMapper
     {
         IEnumerable<ModelType> ParseData<ModelType>(IDataReader dataReader) 
             where ModelType : new();

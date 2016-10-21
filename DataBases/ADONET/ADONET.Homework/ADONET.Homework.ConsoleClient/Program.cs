@@ -16,13 +16,24 @@ namespace ADONET.Homework.ConsoleClient
             ninject.Load(Assembly.GetExecutingAssembly());
 
             var commandProvider = ninject.Get<ICommandProvider>();
-            var command = commandProvider.CreateCommand("SELECT * FROM Categories", null);
-
             var queryEngine = ninject.Get<IQueryEngine>();
-            var result = queryEngine.ExecuteReaderCommand<Category>(command);
 
-            var commandTask2 = commandProvider.CreateCommand("SELECT p.ProductName, c.CategoryName FROM Products p JOIN Categories c ON p.CategoryID = c.CategoryID", null);
-            var resultTask2 = queryEngine.ExecuteReaderCommand<ProductWIthCategory>(commandTask2);
+            DisplayAllCategories(commandProvider, queryEngine);
+            DisplayEachProductWithCategory(commandProvider, queryEngine);
+        }
+
+        private static void DisplayAllCategories(ICommandProvider commandProvider, IQueryEngine queryEngine)
+        {
+            var sql = "SELECT * FROM Categories";
+            var command = commandProvider.CreateCommand(sql);
+            var result = queryEngine.ExecuteReaderCommand<Category>(command);
+        }
+
+        private static void DisplayEachProductWithCategory(ICommandProvider commandProvider, IQueryEngine queryEngine)
+        {
+            var sql = "SELECT p.ProductName, c.CategoryName FROM Products p JOIN Categories c ON p.CategoryID = c.CategoryID";
+            var command = commandProvider.CreateCommand(sql);
+            var result = queryEngine.ExecuteReaderCommand<ProductWIthCategory>(command);
         }
     }
 }

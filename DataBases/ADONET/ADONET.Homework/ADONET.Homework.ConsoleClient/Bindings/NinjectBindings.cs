@@ -20,13 +20,13 @@ namespace ADONET.Homework.ConsoleClient.Bindings
         {
             this.Bind<IConnectionProvider>().To<DefaultSqlServerConnectionProvider>();
             this.Bind<ICommandProvider>().To<SqlCommandProvider>();
-            this.Bind<IDataHandler>().To<DataHandler>();
+            this.Bind<IDataObjectMapper>().To<DataObjectMapper>();
             this.Bind<IQueryService>().To<QueryService>();
 
             this.Bind<IQueryEngine>().To<SimpleQueryEngine>()
                 .WithConstructorArgument("connectionProvider", ctx => ctx.Kernel.Get<IConnectionProvider>())
                 .WithConstructorArgument("queryService", ctx => ctx.Kernel.Get<IQueryService>())
-                .WithConstructorArgument("dataHandler", ctx => ctx.Kernel.Get<IDataHandler>());
+                .WithConstructorArgument("dataHandler", ctx => ctx.Kernel.Get<IDataObjectMapper>());
         }
     }
 }

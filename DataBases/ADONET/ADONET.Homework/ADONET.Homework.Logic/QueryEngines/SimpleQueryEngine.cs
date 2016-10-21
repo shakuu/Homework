@@ -13,10 +13,10 @@ namespace ADONET.Homework.Logic.QueryEngines
     public class SimpleQueryEngine : IQueryEngine
     {
         private readonly IQueryService queryService;
-        private readonly IDataHandler dataHandler;
+        private readonly IDataObjectMapper dataHandler;
         private readonly IConnectionProvider connectionProvider;
 
-        public SimpleQueryEngine(IConnectionProvider connectionProvider, IQueryService queryService, IDataHandler dataHandler)
+        public SimpleQueryEngine(IConnectionProvider connectionProvider, IQueryService queryService, IDataObjectMapper dataHandler)
         {
             if (queryService == null)
             {
