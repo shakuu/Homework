@@ -16,8 +16,8 @@ namespace ADONET.Homework.Logic.DataMappers
             {
                 throw new ArgumentNullException(nameof(dataReader));
             }
-            
-            var parsedData = new LinkedList<ModelType>();
+
+            var parsedData = this.InitializeCollection<ModelType>();
             var propertiesInfo = this.GetModelTypeProperties(typeof(ModelType));
 
             while (dataReader.Read())
@@ -31,7 +31,7 @@ namespace ADONET.Homework.Logic.DataMappers
                     property.SetValue(nextItem, propertyValue);
                 }
 
-                parsedData.AddLast(nextItem);
+                parsedData.Add(nextItem);
             }
 
             return parsedData;
@@ -41,6 +41,12 @@ namespace ADONET.Homework.Logic.DataMappers
         {
             var modelTypePropertiesInfo = modelType.GetProperties();
             return modelTypePropertiesInfo;
+        }
+
+        private ICollection<ModelType> InitializeCollection<ModelType>()
+        {
+            var collection = new LinkedList<ModelType>();
+            return collection;
         }
     }
 }
