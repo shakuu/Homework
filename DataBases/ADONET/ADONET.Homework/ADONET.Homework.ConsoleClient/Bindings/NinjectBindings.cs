@@ -11,6 +11,8 @@ using ADONET.Homework.Logic.QueryEngines.Contract;
 using ADONET.Homework.Logic.QueryEngines;
 using ADONET.Homework.Logic.QueryServices.Contracts;
 using ADONET.Homework.Logic.QueryServices;
+using ADONET.Homework.Logic.ImageServices.Contracts;
+using ADONET.Homework.Logic.ImageServices;
 
 namespace ADONET.Homework.ConsoleClient.Bindings
 {
@@ -24,6 +26,8 @@ namespace ADONET.Homework.ConsoleClient.Bindings
             this.Bind<ICommandProvider>().To<SqlCommandProvider>();
             this.Bind<IDataObjectMapper>().To<DataObjectMapper>();
             this.Bind<IQueryService>().To<QueryService>();
+
+            this.Bind<IImageService>().To<ImageService>();
 
             this.Bind<IQueryEngine>().To<SimpleQueryEngine>()
                 .WithConstructorArgument("connectionProvider", ctx => ctx.Kernel.Get<IConnectionProvider>())

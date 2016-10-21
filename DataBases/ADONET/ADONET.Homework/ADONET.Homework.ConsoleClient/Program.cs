@@ -3,9 +3,10 @@ using System.Reflection;
 
 using Ninject;
 
+using ADONET.Homework.Logic.CommandProviders.Contracts;
+using ADONET.Homework.Logic.ImageServices.Contracts;
 using ADONET.Homework.Logic.Models;
 using ADONET.Homework.Logic.QueryEngines.Contract;
-using ADONET.Homework.Logic.CommandProviders.Contracts;
 
 namespace ADONET.Homework.ConsoleClient
 {
@@ -18,11 +19,13 @@ namespace ADONET.Homework.ConsoleClient
 
             var commandProvider = ninject.Get<ICommandProvider>();
             var queryEngine = ninject.Get<IQueryEngine>();
+            var imageService = ninject.Get<IImageService>();
 
             DisplayNumberOfCategories(commandProvider, queryEngine);
             DisplayAllCategories(commandProvider, queryEngine);
             DisplayEachProductWithCategory(commandProvider, queryEngine);
             InsertNewProduct(commandProvider, queryEngine);
+            DisplayAllCategoriesWithPictures(commandProvider, queryEngine, imageService);
         }
 
         private static void DisplayNumberOfCategories(ICommandProvider commandProvider, IQueryEngine queryEngine)
@@ -62,6 +65,22 @@ namespace ADONET.Homework.ConsoleClient
             var sqlDisplayNewProduct = "SELECT p.ProductName, c.CategoryName FROM Products p JOIN Categories c ON p.CategoryID = c.CategoryID WHERE p.ProductName = 'new product'";
             var commandDisplayNewProduct = commandProvider.CreateCommand(sqlDisplayNewProduct);
             var result = queryEngine.ExecuteReaderCommand<ProductWithCategory>(commandDisplayNewProduct);
+        }
+
+        private static void DisplayAllCategoriesWithPictures(ICommandProvider commandProvider, IQueryEngine queryEngine, IImageService imageService)
+        {
+            var sql = "SELECT * FROM Categories";
+            var command = commandProvider.CreateCommand(sql);
+            var result = queryEngine.ExecuteReaderCommand<CategoryWithPicture>(command);
+
+            var fileNameTemplate = "../../../CategoryPictures/{0}.jpg";
+            foreach (var item in result)
+            {
+                var imageData = item.Picture;
+                var fileName = string.Format(fileNameTemplate, item.CategoryName);
+
+                imageService.SaveImageToFile(imageData, fileName);
+            }
         }
     }
 }
