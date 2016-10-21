@@ -7,6 +7,7 @@ using ADONET.Homework.Logic.CommandProviders.Contracts;
 using ADONET.Homework.Logic.ImageServices.Contracts;
 using ADONET.Homework.Logic.Models;
 using ADONET.Homework.Logic.QueryEngines.Contract;
+using ADONET.Homework.Logic.ConnectionProviders;
 
 namespace ADONET.Homework.ConsoleClient
 {
@@ -20,6 +21,8 @@ namespace ADONET.Homework.ConsoleClient
             var commandProvider = ninject.Get<ICommandProvider>();
             var queryEngine = ninject.Get<IQueryEngine>();
             var imageService = ninject.Get<IImageService>();
+
+            DisplayExcelFile(commandProvider, queryEngine);
 
             DisplayNumberOfCategories(commandProvider, queryEngine);
             DisplayAllCategories(commandProvider, queryEngine);
@@ -81,6 +84,14 @@ namespace ADONET.Homework.ConsoleClient
 
                 imageService.SaveImageToFile(imageData, fileName);
             }
+        }
+
+        private static void DisplayExcelFile(ICommandProvider commandProvider, IQueryEngine queryEngine)
+        {
+            var oleConnection = new DefaultOleDbConnectionProvider(new OleDbConnectionProvider());
+            var con = oleConnection.CreateConnection(null);
+            con.Open();
+            con.Close();
         }
     }
 }

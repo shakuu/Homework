@@ -14,7 +14,8 @@ namespace ADONET.Homework.Logic.QueryEngines
     {
         private readonly IQueryService queryService;
         private readonly IDataObjectMapper dataHandler;
-        private readonly IConnectionProvider connectionProvider;
+
+        private IConnectionProvider connectionProvider;
 
         public SimpleQueryEngine(IConnectionProvider connectionProvider, IQueryService queryService, IDataObjectMapper dataHandler)
         {
@@ -36,6 +37,24 @@ namespace ADONET.Homework.Logic.QueryEngines
             this.queryService = queryService;
             this.dataHandler = dataHandler;
             this.connectionProvider = connectionProvider;
+        }
+
+        public IConnectionProvider ConnectionProvider
+        {
+            get
+            {
+                return this.connectionProvider;
+            }
+
+            set
+            {
+                if (value == null)
+                {
+                    throw new ArgumentNullException(nameof(ConnectionProvider));
+                }
+
+                this.connectionProvider = value;
+            }
         }
 
         public IEnumerable<ModelType> ExecuteReaderCommand<ModelType>(IDbCommand command)

@@ -30,6 +30,10 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Ninject, Version=3.2.0.0, Culture=neutral, PublicKeyToken=c7192dc5380945e7, processorArchitecture=MSIL">
+      <HintPath>..\packages\Ninject.3.2.2.0\lib\net45-full\Ninject.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Drawing" />
@@ -46,7 +50,11 @@
     <Compile Include="ConfigurationProviders\Contracts\IConfigurationReader.cs" />
     <Compile Include="ConnectionProviders\Contracts\IConnectionProvider.cs" />
     <Compile Include="ConnectionProviders\DecoratedSqlServerConnectionProvider.cs" />
+    <Compile Include="ConnectionProviders\DefaultOleDbConnectionProvider.cs" />
     <Compile Include="ConnectionProviders\DefaultSqlServerConnectionProvider.cs" />
+    <Compile Include="ConnectionProviders\Factories\ConnectionProviderFactory.cs" />
+    <Compile Include="ConnectionProviders\Factories\Contracts\IConnectionProviderFactory.cs" />
+    <Compile Include="ConnectionProviders\OleDbConnectionProvider.cs" />
     <Compile Include="ConnectionProviders\SqlServerConnectionProvider.cs" />
     <Compile Include="DataMappers\Contracts\IDataObjectMapper.cs" />
     <Compile Include="DataMappers\DataObjectMapper.cs" />
@@ -61,7 +69,9 @@
     <Compile Include="QueryServices\Contracts\IQueryService.cs" />
     <Compile Include="QueryServices\QueryService.cs" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <None Include="packages.config" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
