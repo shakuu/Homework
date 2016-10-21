@@ -1,4 +1,5 @@
-﻿using System.Reflection;
+﻿using System.Collections.Generic;
+using System.Reflection;
 
 using Ninject;
 
@@ -21,6 +22,7 @@ namespace ADONET.Homework.ConsoleClient
             DisplayNumberOfCategories(commandProvider, queryEngine);
             DisplayAllCategories(commandProvider, queryEngine);
             DisplayEachProductWithCategory(commandProvider, queryEngine);
+            InsertNewProduct(commandProvider, queryEngine);
         }
 
         private static void DisplayNumberOfCategories(ICommandProvider commandProvider, IQueryEngine queryEngine)
@@ -41,7 +43,25 @@ namespace ADONET.Homework.ConsoleClient
         {
             var sql = "SELECT p.ProductName, c.CategoryName FROM Products p JOIN Categories c ON p.CategoryID = c.CategoryID";
             var command = commandProvider.CreateCommand(sql);
-            var result = queryEngine.ExecuteReaderCommand<ProductWIthCategory>(command);
+            var result = queryEngine.ExecuteReaderCommand<ProductWithCategory>(command);
+        }
+
+        private static void InsertNewProduct(ICommandProvider commandProvider, IQueryEngine queryEngine)
+        {
+            var sql = "INSERT INTO Products (ProductName, CategoryID, Discontinued) VALUES(@productName, @categoryId, @discontinued)";
+            var parameters = new Dictionary<string, string>()
+            {
+                { "@productName", "new product" },
+                { "@categoryId", "2" },
+                { "@discontinued", "1"}
+            };
+
+            var command = commandProvider.CreateCommand(sql, parameters);
+            var rowsAffected = queryEngine.ExecuteNonQueryCommand(command);
+
+            var sqlDisplayNewProduct = "SELECT p.ProductName, c.CategoryName FROM Products p JOIN Categories c ON p.CategoryID = c.CategoryID WHERE p.ProductName = 'new product'";
+            var commandDisplayNewProduct = commandProvider.CreateCommand(sqlDisplayNewProduct);
+            var result = queryEngine.ExecuteReaderCommand<ProductWithCategory>(commandDisplayNewProduct);
         }
     }
 }

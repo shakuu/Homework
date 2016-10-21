@@ -32,5 +32,17 @@ namespace ADONET.Homework.Logic.QueryServices
 
             return result;
         }
+
+        public int ExecuteNonQuery(IDbCommand command)
+        {
+            if (command == null)
+            {
+                throw new ArgumentNullException(nameof(command));
+            }
+
+            var rowsAffected = command.ExecuteNonQuery();
+
+            return rowsAffected;
+        }
     }
 }

@@ -78,5 +78,24 @@ namespace ADONET.Homework.Logic.QueryEngines
                 throw;
             }
         }
+
+        public int ExecuteNonQueryCommand(IDbCommand command)
+        {
+            var connection = this.connectionProvider.CreateConnection(null);
+            command.Connection = connection;
+
+            try
+            {
+                connection.Open();
+                var rowsAffected = this.queryService.ExecuteNonQuery(command);
+                connection.Close();
+
+                return rowsAffected;
+            }
+            catch (DbException)
+            {
+                throw;
+            }
+        }
     }
 }

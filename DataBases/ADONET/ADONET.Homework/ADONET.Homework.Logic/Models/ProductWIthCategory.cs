@@ -1,6 +1,6 @@
 ﻿namespace ADONET.Homework.Logic.Models
 {
-    public class ProductWIthCategory
+    public class ProductWithCategory
     {
         public string ProductName { get; set; }
 

@@ -10,5 +10,7 @@ namespace ADONET.Homework.Logic.QueryEngines.Contract
 
         ScalarType ExecuteScalarCommand<ScalarType>(IDbCommand command)
             where ScalarType : struct;
+
+        int ExecuteNonQueryCommand(IDbCommand command);
     }
 }
