@@ -90,6 +90,11 @@ namespace ADONET.Homework.ConsoleClient
             }
         }
 
+        /// <summary>
+        /// This'll throw an exception as Table3 already exists.
+        /// </summary>
+        /// <param name="commandProvider"></param>
+        /// <param name="queryEngine"></param>
         private static void FillTableWithData(ICommandProvider commandProvider, IQueryEngine queryEngine)
         {
             var sql = "CREATE TABLE Table3 (ID int, name nvarchar, score int)";
