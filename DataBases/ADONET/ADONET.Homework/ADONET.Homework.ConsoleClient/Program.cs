@@ -9,6 +9,7 @@ using ADONET.Homework.Logic.Models;
 using ADONET.Homework.Logic.QueryEngines.Contract;
 using ADONET.Homework.Logic.ConnectionProviders;
 using ADONET.Homework.Logic.CommandProviders;
+using ADONET.Homework.Logic.Factories.Contracts;
 
 namespace ADONET.Homework.ConsoleClient
 {
@@ -22,6 +23,7 @@ namespace ADONET.Homework.ConsoleClient
             var commandProvider = ninject.Get<ICommandProvider>();
             var queryEngine = ninject.Get<IQueryEngine>();
             var imageService = ninject.Get<IImageService>();
+            var dbFactory = ninject.Get<IDbFactory>();
 
             DisplayNumberOfCategories(commandProvider, queryEngine);
             DisplayAllCategories(commandProvider, queryEngine);

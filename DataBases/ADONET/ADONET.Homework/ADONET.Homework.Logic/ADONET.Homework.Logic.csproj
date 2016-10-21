@@ -71,12 +71,12 @@
     <Compile Include="ConnectionProviders\DecoratedSqlServerConnectionProvider.cs" />
     <Compile Include="ConnectionProviders\DefaultOleDbConnectionProvider.cs" />
     <Compile Include="ConnectionProviders\DefaultSqlServerConnectionProvider.cs" />
-    <Compile Include="ConnectionProviders\Factories\ConnectionProviderFactory.cs" />
-    <Compile Include="ConnectionProviders\Factories\Contracts\IConnectionProviderFactory.cs" />
     <Compile Include="ConnectionProviders\OleDbConnectionProvider.cs" />
     <Compile Include="ConnectionProviders\SqlServerConnectionProvider.cs" />
     <Compile Include="DataMappers\Contracts\IDataObjectMapper.cs" />
     <Compile Include="DataMappers\DataObjectMapper.cs" />
+    <Compile Include="Factories\Contracts\IDbFactory.cs" />
+    <Compile Include="Factories\DbFactory.cs" />
     <Compile Include="ImageServices\Contracts\IImageService.cs" />
     <Compile Include="ImageServices\ImageService.cs" />
     <Compile Include="Models\Category.cs" />

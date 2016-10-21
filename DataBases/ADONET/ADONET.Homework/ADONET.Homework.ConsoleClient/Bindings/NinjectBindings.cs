@@ -13,6 +13,8 @@ using ADONET.Homework.Logic.QueryServices.Contracts;
 using ADONET.Homework.Logic.QueryServices;
 using ADONET.Homework.Logic.ImageServices.Contracts;
 using ADONET.Homework.Logic.ImageServices;
+using ADONET.Homework.Logic.Factories.Contracts;
+using ADONET.Homework.Logic.Factories;
 
 namespace ADONET.Homework.ConsoleClient.Bindings
 {
@@ -20,6 +22,8 @@ namespace ADONET.Homework.ConsoleClient.Bindings
     {
         public override void Load()
         {
+            this.Bind<IDbFactory>().To<DbFactory>();
+
             this.Bind<IConnectionProvider>().To<DefaultSqlServerConnectionProvider>()
                 .WithConstructorArgument("decoratedProvider", ctx => ctx.Kernel.Get<SqlServerConnectionProvider>());
 

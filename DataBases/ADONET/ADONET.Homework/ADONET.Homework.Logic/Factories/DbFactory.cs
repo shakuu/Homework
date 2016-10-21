@@ -61,7 +61,7 @@ namespace ADONET.Homework.Logic.Factories
             var assembly = Assembly.GetAssembly(this.GetType());
             var commandProviders = assembly
                 .GetTypes()
-                .Where(type => type.IsClass && type.IsInstanceOfType(implementedInterface));
+                .Where(type => type.IsClass && implementedInterface.IsAssignableFrom(type));
 
             var dictionary = new Dictionary<string, Type>();
             foreach (var type in commandProviders)
