@@ -45,6 +45,7 @@ namespace ADONET.Homework.ConsoleClient
             var mySqlCommandProvider = ninject.Get<ICommandProvider>(Program.NinjectMySql);
             var mySqlConnectionProvider = ninject.Get<IConnectionProvider>(Program.NinjectMySql);
             queryEngine.ConnectionProvider = mySqlConnectionProvider;
+            DisplayAllBooks(mySqlCommandProvider, queryEngine);
         }
 
         private static void DisplayNumberOfCategories(ICommandProvider commandProvider, IQueryEngine queryEngine)
@@ -158,6 +159,20 @@ namespace ADONET.Homework.ConsoleClient
             var sql = "SELECT * FROM Products p WHERE p.ProductName LIKE " + stringToMatch;
             var command = commandProvider.CreateCommand(sql);
             var result = queryEngine.ExecuteReaderCommand<Product>(command);
+        }
+
+        private static void DisplayAllBooks(ICommandProvider commandProvider, IQueryEngine queryEngine)
+        {
+            var sql = "SELECT Title, Author FROM library.books;";
+            var command = commandProvider.CreateCommand(sql);
+            var result = queryEngine.ExecuteReaderCommand<Book>(command);
+        }
+
+        private static void AddBook(ICommandProvider commandProvider, IQueryEngine queryEngine)
+        {
+            var sql = "SELECT Title, Author FROM library.books;";
+            var command = commandProvider.CreateCommand(sql);
+            var result = queryEngine.ExecuteReaderCommand<Book>(command);
         }
     }
 }

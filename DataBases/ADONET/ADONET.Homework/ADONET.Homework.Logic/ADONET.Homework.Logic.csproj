@@ -89,6 +89,7 @@
     <Compile Include="Models\Category.cs" />
     <Compile Include="Models\CategoryWithPicture.cs" />
     <Compile Include="Models\ExcelView.cs" />
+    <Compile Include="Models\Book.cs" />
     <Compile Include="Models\Product.cs" />
     <Compile Include="Models\ProductWIthCategory.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
