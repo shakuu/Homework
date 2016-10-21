@@ -27,30 +27,30 @@ namespace ADONET.Homework.ConsoleClient
             var queryEngine = ninject.Get<IQueryEngine>();
             var imageService = ninject.Get<IImageService>();
             var sqlServerCommandProvider = ninject.Get<ICommandProvider>(Program.NinjectSqlServer);
+            
+            DisplayNumberOfCategories(sqlServerCommandProvider, queryEngine);
+            DisplayAllCategories(sqlServerCommandProvider, queryEngine);
+            DisplayEachProductWithCategory(sqlServerCommandProvider, queryEngine);
+            InsertNewProduct(sqlServerCommandProvider, queryEngine);
+            DisplayAllCategoriesWithPictures(sqlServerCommandProvider, queryEngine, imageService);
+            DisplayProductsMatchingStringReadFromConsole(sqlServerCommandProvider, queryEngine);
+            
+            var oleCommandProvider = ninject.Get<ICommandProvider>(Program.NinjectOleDb);
+            var oleDbConnectionProvider = ninject.Get<IConnectionProvider>(Program.NinjectOleDb);
+            queryEngine.ConnectionProvider = oleDbConnectionProvider;
 
-            //DisplayNumberOfCategories(sqlServerCommandProvider, queryEngine);
-            //DisplayAllCategories(sqlServerCommandProvider, queryEngine);
-            //DisplayEachProductWithCategory(sqlServerCommandProvider, queryEngine);
-            //InsertNewProduct(sqlServerCommandProvider, queryEngine);
-            //DisplayAllCategoriesWithPictures(sqlServerCommandProvider, queryEngine, imageService);
-            //DisplayProductsMatchingStringReadFromConsole(sqlServerCommandProvider, queryEngine);
+            DisplayExcelFile(oleCommandProvider, queryEngine);
+            AddRowToExcelTable(oleCommandProvider, queryEngine);
+            DisplayExcelFile(oleCommandProvider, queryEngine);
+            
+            var mySqlCommandProvider = ninject.Get<ICommandProvider>(Program.NinjectMySql);
+            var mySqlConnectionProvider = ninject.Get<IConnectionProvider>(Program.NinjectMySql);
+            queryEngine.ConnectionProvider = mySqlConnectionProvider;
 
-            //var oleCommandProvider = ninject.Get<ICommandProvider>(Program.NinjectOleDb);
-            //var oleDbConnectionProvider = ninject.Get<IConnectionProvider>(Program.NinjectOleDb);
-            //queryEngine.ConnectionProvider = oleDbConnectionProvider;
-
-            //DisplayExcelFile(oleCommandProvider, queryEngine);
-            //AddRowToExcelTable(oleCommandProvider, queryEngine);
-            //DisplayExcelFile(oleCommandProvider, queryEngine);
-
-            //var mySqlCommandProvider = ninject.Get<ICommandProvider>(Program.NinjectMySql);
-            //var mySqlConnectionProvider = ninject.Get<IConnectionProvider>(Program.NinjectMySql);
-            //queryEngine.ConnectionProvider = mySqlConnectionProvider;
-
-            //MySqlDisplayAllBooks(mySqlCommandProvider, queryEngine);
-            //MySqlDisplayBookByBookName(mySqlCommandProvider, queryEngine);
-            //MySqlAddBook(mySqlCommandProvider, queryEngine);
-
+            MySqlDisplayAllBooks(mySqlCommandProvider, queryEngine);
+            MySqlDisplayBookByBookName(mySqlCommandProvider, queryEngine);
+            MySqlAddBook(mySqlCommandProvider, queryEngine);
+            
             var sqLiteCommandProvider = ninject.Get<ICommandProvider>(Program.NinjectSQLite);
             var sqLiteConnectionProvider = ninject.Get<IConnectionProvider>(Program.NinjectSQLite);
             queryEngine.ConnectionProvider = sqLiteConnectionProvider;
