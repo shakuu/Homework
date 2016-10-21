@@ -76,7 +76,7 @@ namespace ADONET.Homework.ConsoleClient
             var command = commandProvider.CreateCommand(sql);
             var result = queryEngine.ExecuteReaderCommand<CategoryWithPicture>(command);
 
-            var fileNameTemplate = "../../../CategoryPictures/{0}.jpg";
+            var fileNameTemplate = "../../../../CategoryPictures/{0}.jpg";
             foreach (var item in result)
             {
                 var imageData = item.Picture;

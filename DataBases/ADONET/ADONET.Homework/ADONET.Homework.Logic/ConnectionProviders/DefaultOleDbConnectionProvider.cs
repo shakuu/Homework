@@ -7,7 +7,7 @@ namespace ADONET.Homework.Logic.ConnectionProviders
 {
     public class DefaultOleDbConnectionProvider : IConnectionProvider
     {
-        private const string ConnectionString = "Provider=Microsoft.ACE.OLEDB.12.0;Data Source=" + "../../../scores.xlsx" + ";" + "Extended Properties='Excel 12.0 Xml;HDR=YES;IMEX=1;MAXSCANROWS=0'";
+        private const string ConnectionString = "Provider=Microsoft.ACE.OLEDB.12.0;Data Source=" + "../../../../scores.xlsx" + ";" + "Extended Properties='Excel 12.0 Xml;HDR=YES;IMEX=1;MAXSCANROWS=0'";
 
         private readonly IConnectionProvider decoratedProvider;
 
