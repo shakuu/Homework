@@ -4,7 +4,7 @@ using System.Data;
 using System.Data.Common;
 
 using ADONET.Homework.Logic.ConnectionProviders.Contracts;
-using ADONET.Homework.Logic.DataHandlers.Contracts;
+using ADONET.Homework.Logic.DataMappers.Contracts;
 using ADONET.Homework.Logic.QueryEngines.Contract;
 using ADONET.Homework.Logic.QueryServices.Contracts;
 

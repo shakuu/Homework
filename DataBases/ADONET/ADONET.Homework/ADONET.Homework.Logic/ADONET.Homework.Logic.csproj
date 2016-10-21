@@ -47,8 +47,8 @@
     <Compile Include="ConnectionProviders\DecoratedSqlServerConnectionProvider.cs" />
     <Compile Include="ConnectionProviders\DefaultSqlServerConnectionProvider.cs" />
     <Compile Include="ConnectionProviders\SqlServerConnectionProvider.cs" />
-    <Compile Include="DataHandlers\Contracts\IDataObjectMapper.cs" />
-    <Compile Include="DataHandlers\DataObjectMapper.cs" />
+    <Compile Include="DataMappers\Contracts\IDataObjectMapper.cs" />
+    <Compile Include="DataMappers\DataObjectMapper.cs" />
     <Compile Include="Models\Category.cs" />
     <Compile Include="Models\ProductWIthCategory.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

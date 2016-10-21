@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using System.Data;
 using System.Reflection;
 
-using ADONET.Homework.Logic.DataHandlers.Contracts;
+using ADONET.Homework.Logic.DataMappers.Contracts;
 
-namespace ADONET.Homework.Logic.DataHandlers
+namespace ADONET.Homework.Logic.DataMappers
 {
     public class DataObjectMapper : IDataObjectMapper
     {
