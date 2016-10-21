@@ -94,14 +94,17 @@
     <Compile Include="CommandProviders\OleDbCommandProvider.cs" />
     <Compile Include="CommandProviders\SqlCommandProvider.cs" />
     <Compile Include="CommandProviders\Contracts\ICommandProvider.cs" />
+    <Compile Include="CommandProviders\SQLiteCommandProvider.cs" />
     <Compile Include="ConfigurationProviders\Contracts\IConfigurationReader.cs" />
     <Compile Include="ConnectionProviders\Contracts\IConnectionProvider.cs" />
     <Compile Include="ConnectionProviders\DecoratedSqlServerConnectionProvider.cs" />
     <Compile Include="ConnectionProviders\DefaultMySqlConnectionProvider.cs" />
     <Compile Include="ConnectionProviders\DefaultOleDbConnectionProvider.cs" />
+    <Compile Include="ConnectionProviders\DefaultSQLiteConnectionProvider.cs" />
     <Compile Include="ConnectionProviders\DefaultSqlServerConnectionProvider.cs" />
     <Compile Include="ConnectionProviders\MySqlConnectionProvider.cs" />
     <Compile Include="ConnectionProviders\OleDbConnectionProvider.cs" />
+    <Compile Include="ConnectionProviders\SQLiteConnectionProvider.cs" />
     <Compile Include="ConnectionProviders\SqlServerConnectionProvider.cs" />
     <Compile Include="DataMappers\Contracts\IDataObjectMapper.cs" />
     <Compile Include="DataMappers\DataObjectMapper.cs" />

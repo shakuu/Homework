@@ -33,9 +33,13 @@ namespace ADONET.Homework.ConsoleClient.Bindings
             this.Bind<IConnectionProvider>().To<DefaultMySqlConnectionProvider>().Named("MySql")
                .WithConstructorArgument("decoratedProvider", ctx => ctx.Kernel.Get<MySqlConnectionProvider>());
 
+            this.Bind<IConnectionProvider>().To<DefaultSQLiteConnectionProvider>().Named("SQLite")
+               .WithConstructorArgument("decoratedProvider", ctx => ctx.Kernel.Get<SQLiteConnectionProvider>());
+
             this.Bind<ICommandProvider>().To<SqlCommandProvider>().Named("SqlServer");
             this.Bind<ICommandProvider>().To<OleDbCommandProvider>().Named("Ole");
             this.Bind<ICommandProvider>().To<MySqlCommandProvider>().Named("MySql");
+            this.Bind<ICommandProvider>().To<SQLiteCommandProvider>().Named("SQLite");
             
             this.Bind<IDataObjectMapper>().To<DataObjectMapper>();
             this.Bind<IQueryService>().To<QueryService>();

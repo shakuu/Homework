@@ -15,9 +15,10 @@ namespace ADONET.Homework.ConsoleClient
     public class Program
     {
         private const string NinjectSqlServer = "SqlServer";
+        private const string NinjectSQLite = "SQLite";
         private const string NinjectMySql = "MySql";
         private const string NinjectOleDb = "Ole";
-
+        
         public static void Main()
         {
             var ninject = new StandardKernel();
@@ -25,29 +26,38 @@ namespace ADONET.Homework.ConsoleClient
 
             var queryEngine = ninject.Get<IQueryEngine>();
             var imageService = ninject.Get<IImageService>();
-            var commandProvider = ninject.Get<ICommandProvider>(Program.NinjectSqlServer);
+            var sqlServerCommandProvider = ninject.Get<ICommandProvider>(Program.NinjectSqlServer);
 
-            DisplayNumberOfCategories(commandProvider, queryEngine);
-            DisplayAllCategories(commandProvider, queryEngine);
-            DisplayEachProductWithCategory(commandProvider, queryEngine);
-            InsertNewProduct(commandProvider, queryEngine);
-            DisplayAllCategoriesWithPictures(commandProvider, queryEngine, imageService);
-            DisplayProductsMatchingStringReadFromConsole(commandProvider, queryEngine);
+            //DisplayNumberOfCategories(sqlServerCommandProvider, queryEngine);
+            //DisplayAllCategories(sqlServerCommandProvider, queryEngine);
+            //DisplayEachProductWithCategory(sqlServerCommandProvider, queryEngine);
+            //InsertNewProduct(sqlServerCommandProvider, queryEngine);
+            //DisplayAllCategoriesWithPictures(sqlServerCommandProvider, queryEngine, imageService);
+            //DisplayProductsMatchingStringReadFromConsole(sqlServerCommandProvider, queryEngine);
 
-            var oleCommandProvider = ninject.Get<ICommandProvider>(Program.NinjectOleDb);
-            var oleDbConnectionProvider = ninject.Get<IConnectionProvider>(Program.NinjectOleDb);
-            queryEngine.ConnectionProvider = oleDbConnectionProvider;
+            //var oleCommandProvider = ninject.Get<ICommandProvider>(Program.NinjectOleDb);
+            //var oleDbConnectionProvider = ninject.Get<IConnectionProvider>(Program.NinjectOleDb);
+            //queryEngine.ConnectionProvider = oleDbConnectionProvider;
 
-            DisplayExcelFile(oleCommandProvider, queryEngine);
-            AddRowToExcelTable(oleCommandProvider, queryEngine);
-            DisplayExcelFile(oleCommandProvider, queryEngine);
+            //DisplayExcelFile(oleCommandProvider, queryEngine);
+            //AddRowToExcelTable(oleCommandProvider, queryEngine);
+            //DisplayExcelFile(oleCommandProvider, queryEngine);
 
-            var mySqlCommandProvider = ninject.Get<ICommandProvider>(Program.NinjectMySql);
-            var mySqlConnectionProvider = ninject.Get<IConnectionProvider>(Program.NinjectMySql);
-            queryEngine.ConnectionProvider = mySqlConnectionProvider;
-            DisplayAllBooks(mySqlCommandProvider, queryEngine);
-            DisplayBookByBookName(mySqlCommandProvider, queryEngine);
-            AddBook(mySqlCommandProvider, queryEngine);
+            //var mySqlCommandProvider = ninject.Get<ICommandProvider>(Program.NinjectMySql);
+            //var mySqlConnectionProvider = ninject.Get<IConnectionProvider>(Program.NinjectMySql);
+            //queryEngine.ConnectionProvider = mySqlConnectionProvider;
+
+            //MySqlDisplayAllBooks(mySqlCommandProvider, queryEngine);
+            //MySqlDisplayBookByBookName(mySqlCommandProvider, queryEngine);
+            //MySqlAddBook(mySqlCommandProvider, queryEngine);
+
+            var sqLiteCommandProvider = ninject.Get<ICommandProvider>(Program.NinjectSQLite);
+            var sqLiteConnectionProvider = ninject.Get<IConnectionProvider>(Program.NinjectSQLite);
+            queryEngine.ConnectionProvider = sqLiteConnectionProvider;
+
+            SqLiteDisplayAllBooks(sqLiteCommandProvider, queryEngine);
+            SqLiteDisplayBookByBookName(sqLiteCommandProvider, queryEngine);
+            SqLiteAddBook(sqLiteCommandProvider, queryEngine);
         }
 
         private static void DisplayNumberOfCategories(ICommandProvider commandProvider, IQueryEngine queryEngine)
@@ -163,14 +173,14 @@ namespace ADONET.Homework.ConsoleClient
             var result = queryEngine.ExecuteReaderCommand<Product>(command);
         }
 
-        private static void DisplayAllBooks(ICommandProvider commandProvider, IQueryEngine queryEngine)
+        private static void MySqlDisplayAllBooks(ICommandProvider commandProvider, IQueryEngine queryEngine)
         {
             var sql = "SELECT Title, Author FROM library.books;";
             var command = commandProvider.CreateCommand(sql);
             var result = queryEngine.ExecuteReaderCommand<Book>(command);
         }
 
-        private static void DisplayBookByBookName(ICommandProvider commandProvider, IQueryEngine queryEngine)
+        private static void MySqlDisplayBookByBookName(ICommandProvider commandProvider, IQueryEngine queryEngine)
         {
             var titleToSearchFor = "Dependency Injection";
             var query = $"'%{titleToSearchFor}%'";
@@ -180,10 +190,42 @@ namespace ADONET.Homework.ConsoleClient
             var result = queryEngine.ExecuteReaderCommand<Book>(command);
         }
 
-        private static void AddBook(ICommandProvider commandProvider, IQueryEngine queryEngine)
+        private static void MySqlAddBook(ICommandProvider commandProvider, IQueryEngine queryEngine)
         {
             var sql = "INSERT INTO library.books (Title, Author, PublishDate, ISBN)" +
                 "values('Dependency Injection in .NET', 'Mark Seemann', STR_TO_DATE('5/15/2009', '%c/%e/%Y'), '1234567890')";
+            var command = commandProvider.CreateCommand(sql);
+            var result = queryEngine.ExecuteNonQueryCommand(command);
+        }
+
+        private static void SqLiteDisplayAllBooks(ICommandProvider commandProvider, IQueryEngine queryEngine)
+        {
+            var sql = "SELECT Title, Author FROM books;";
+            var command = commandProvider.CreateCommand(sql);
+            var result = queryEngine.ExecuteReaderCommand<Book>(command);
+        }
+
+        private static void SqLiteDisplayBookByBookName(ICommandProvider commandProvider, IQueryEngine queryEngine)
+        {
+            var titleToSearchFor = "Dependency Injection";
+            var query = $"'%{titleToSearchFor}%'";
+
+            var sql = "SELECT Title, Author FROM books WHERE Title LIKE " + query;
+            var command = commandProvider.CreateCommand(sql);
+            var result = queryEngine.ExecuteReaderCommand<Book>(command);
+        }
+
+        private static void SqLiteAddBook(ICommandProvider commandProvider, IQueryEngine queryEngine)
+        {
+            var sql = "INSERT INTO books (Title, Author, PublishDate, ISBN)" +
+                "values('Dependency Injection in .NET', 'Mark Seemann', date('now'), '1234567890')";
+            var command = commandProvider.CreateCommand(sql);
+            var result = queryEngine.ExecuteNonQueryCommand(command);
+        }
+
+        private static void CreateSQLiteTable(ICommandProvider commandProvider, IQueryEngine queryEngine)
+        {
+            var sql = "CREATE TABLE books(id INTEGER PRIMARY KEY, Title VARCHAR, Author VARCHAR, PublishDate VARCHAR, ISBN VARCHAR)";
             var command = commandProvider.CreateCommand(sql);
             var result = queryEngine.ExecuteNonQueryCommand(command);
         }
