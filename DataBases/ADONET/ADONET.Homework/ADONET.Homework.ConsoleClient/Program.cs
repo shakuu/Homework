@@ -7,9 +7,7 @@ using ADONET.Homework.Logic.CommandProviders.Contracts;
 using ADONET.Homework.Logic.ImageServices.Contracts;
 using ADONET.Homework.Logic.Models;
 using ADONET.Homework.Logic.QueryEngines.Contract;
-using ADONET.Homework.Logic.ConnectionProviders;
-using ADONET.Homework.Logic.CommandProviders;
-using ADONET.Homework.Logic.Factories.Contracts;
+using ADONET.Homework.Logic.ConnectionProviders.Contracts;
 
 namespace ADONET.Homework.ConsoleClient
 {
@@ -20,19 +18,18 @@ namespace ADONET.Homework.ConsoleClient
             var ninject = new StandardKernel();
             ninject.Load(Assembly.GetExecutingAssembly());
 
-            var commandProvider = ninject.Get<ICommandProvider>();
             var queryEngine = ninject.Get<IQueryEngine>();
             var imageService = ninject.Get<IImageService>();
-            var dbFactory = ninject.Get<IDbFactory>();
-
+            var commandProvider = ninject.Get<ICommandProvider>("Sql");
+            
             DisplayNumberOfCategories(commandProvider, queryEngine);
             DisplayAllCategories(commandProvider, queryEngine);
             DisplayEachProductWithCategory(commandProvider, queryEngine);
             InsertNewProduct(commandProvider, queryEngine);
             DisplayAllCategoriesWithPictures(commandProvider, queryEngine, imageService);
 
-            var oleCommandProvider = new OleDbCommandProvider();
-            var oleDbConnectionProvider = new DefaultOleDbConnectionProvider(new OleDbConnectionProvider());
+            var oleCommandProvider = ninject.Get<ICommandProvider>("Ole");
+            var oleDbConnectionProvider = ninject.Get<IConnectionProvider>("Ole");
             queryEngine.ConnectionProvider = oleDbConnectionProvider;
             DisplayExcelFile(oleCommandProvider, queryEngine);
         }

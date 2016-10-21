@@ -7,15 +7,20 @@ using ADONET.Homework.Logic.CommandProviders.Contracts;
 using ADONET.Homework.Logic.ConnectionProviders.Contracts;
 using ADONET.Homework.Logic.Factories.Contracts;
 
+using Ninject;
+
 namespace ADONET.Homework.Logic.Factories
 {
     public class DbFactory : IDbFactory
     {
         private readonly IDictionary<string, Type> commandProviders;
         private readonly IDictionary<string, Type> connectionProviders;
+        private readonly IKernel ninject;
 
-        public DbFactory()
+        public DbFactory(IKernel ninject)
         {
+            this.ninject = ninject;
+
             this.commandProviders = this.FindTypesImplementing(typeof(ICommandProvider));
             this.connectionProviders = this.FindTypesImplementing(typeof(IConnectionProvider));
         }
