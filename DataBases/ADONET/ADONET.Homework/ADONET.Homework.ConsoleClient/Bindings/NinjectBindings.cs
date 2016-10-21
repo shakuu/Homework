@@ -18,7 +18,9 @@ namespace ADONET.Homework.ConsoleClient.Bindings
     {
         public override void Load()
         {
-            this.Bind<IConnectionProvider>().To<DefaultSqlServerConnectionProvider>();
+            this.Bind<IConnectionProvider>().To<DefaultSqlServerConnectionProvider>()
+                .WithConstructorArgument("decoratedProvider", ctx => ctx.Kernel.Get<SqlServerConnectionProvider>());
+
             this.Bind<ICommandProvider>().To<SqlCommandProvider>();
             this.Bind<IDataObjectMapper>().To<DataObjectMapper>();
             this.Bind<IQueryService>().To<QueryService>();

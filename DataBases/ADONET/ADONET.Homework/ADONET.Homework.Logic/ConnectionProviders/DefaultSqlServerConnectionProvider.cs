@@ -1,5 +1,5 @@
-﻿using System.Data;
-using System.Data.SqlClient;
+﻿using System;
+using System.Data;
 
 using ADONET.Homework.Logic.ConnectionProviders.Contracts;
 
@@ -9,6 +9,18 @@ namespace ADONET.Homework.Logic.ConnectionProviders
     {
         private const string ConnectionString = "Server=.;Database=Northwind;Integrated Security = true";
 
+        private readonly IConnectionProvider decoratedProvider;
+
+        public DefaultSqlServerConnectionProvider(IConnectionProvider decoratedProvider)
+        {
+            if (decoratedProvider == null)
+            {
+                throw new ArgumentNullException(nameof(decoratedProvider));
+            }
+
+            this.decoratedProvider = decoratedProvider;
+        }
+
         public IDbConnection CreateConnection(string connectionString)
         {
             if (connectionString == null)
@@ -16,7 +28,7 @@ namespace ADONET.Homework.Logic.ConnectionProviders
                 connectionString = DefaultSqlServerConnectionProvider.ConnectionString;
             }
 
-            var connection = new SqlConnection(connectionString);
+            var connection = this.decoratedProvider.CreateConnection(connectionString);
 
             return connection;
         }

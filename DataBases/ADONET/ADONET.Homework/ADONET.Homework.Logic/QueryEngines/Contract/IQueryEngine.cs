@@ -7,5 +7,8 @@ namespace ADONET.Homework.Logic.QueryEngines.Contract
     {
         IEnumerable<ModelType> ExecuteReaderCommand<ModelType>(IDbCommand command)
             where ModelType : new();
+
+        ScalarType ExecuteScalarCommand<ScalarType>(IDbCommand command)
+            where ScalarType : struct;
     }
 }

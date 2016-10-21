@@ -58,5 +58,25 @@ namespace ADONET.Homework.Logic.QueryEngines
                 throw;
             }
         }
+
+        public ScalarType ExecuteScalarCommand<ScalarType>(IDbCommand command)
+            where ScalarType : struct
+        {
+            var connection = this.connectionProvider.CreateConnection(null);
+            command.Connection = connection;
+
+            try
+            {
+                connection.Open();
+                var scalar = this.queryService.ExecuteScalarQuery<ScalarType>(command);
+                connection.Close();
+
+                return scalar;
+            }
+            catch (DbException)
+            {
+                throw;
+            }
+        }
     }
 }

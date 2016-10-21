@@ -18,8 +18,16 @@ namespace ADONET.Homework.ConsoleClient
             var commandProvider = ninject.Get<ICommandProvider>();
             var queryEngine = ninject.Get<IQueryEngine>();
 
+            DisplayNumberOfCategories(commandProvider, queryEngine);
             DisplayAllCategories(commandProvider, queryEngine);
             DisplayEachProductWithCategory(commandProvider, queryEngine);
+        }
+
+        private static void DisplayNumberOfCategories(ICommandProvider commandProvider, IQueryEngine queryEngine)
+        {
+            var sql = "SELECT COUNT(*) FROM Categories";
+            var command = commandProvider.CreateCommand(sql);
+            var result = queryEngine.ExecuteScalarCommand<int>(command);
         }
 
         private static void DisplayAllCategories(ICommandProvider commandProvider, IQueryEngine queryEngine)

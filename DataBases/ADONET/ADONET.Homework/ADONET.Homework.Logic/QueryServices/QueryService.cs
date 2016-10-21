@@ -18,5 +18,19 @@ namespace ADONET.Homework.Logic.QueryServices
 
             return reader;
         }
+
+        public ScalarType ExecuteScalarQuery<ScalarType>(IDbCommand command)
+            where ScalarType : struct
+        {
+            if (command == null)
+            {
+                throw new ArgumentNullException(nameof(command));
+            }
+
+            var scalar = command.ExecuteScalar();
+            var result = (ScalarType)scalar;
+
+            return result;
+        }
     }
 }
