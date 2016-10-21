@@ -80,6 +80,7 @@
     <Compile Include="ImageServices\ImageService.cs" />
     <Compile Include="Models\Category.cs" />
     <Compile Include="Models\CategoryWithPicture.cs" />
+    <Compile Include="Models\ExcelView.cs" />
     <Compile Include="Models\ProductWIthCategory.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="QueryEngines\Contract\IQueryEngine.cs" />

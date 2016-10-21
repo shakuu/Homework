@@ -22,13 +22,13 @@ namespace ADONET.Homework.ConsoleClient
             var queryEngine = ninject.Get<IQueryEngine>();
             var imageService = ninject.Get<IImageService>();
 
-            DisplayExcelFile(commandProvider, queryEngine);
-
             DisplayNumberOfCategories(commandProvider, queryEngine);
             DisplayAllCategories(commandProvider, queryEngine);
             DisplayEachProductWithCategory(commandProvider, queryEngine);
             InsertNewProduct(commandProvider, queryEngine);
             DisplayAllCategoriesWithPictures(commandProvider, queryEngine, imageService);
+
+            DisplayExcelFile(commandProvider, queryEngine);
         }
 
         private static void DisplayNumberOfCategories(ICommandProvider commandProvider, IQueryEngine queryEngine)
@@ -88,10 +88,12 @@ namespace ADONET.Homework.ConsoleClient
 
         private static void DisplayExcelFile(ICommandProvider commandProvider, IQueryEngine queryEngine)
         {
-            var oleConnection = new DefaultOleDbConnectionProvider(new OleDbConnectionProvider());
-            var con = oleConnection.CreateConnection(null);
-            con.Open();
-            con.Close();
+            var oleDbConnectionProvider = new DefaultOleDbConnectionProvider(new OleDbConnectionProvider());
+            queryEngine.ConnectionProvider = oleDbConnectionProvider;
+
+            var sql = "SELECT * FROM Sheet1";
+            var command = commandProvider.CreateCommand(sql);
+            var result = queryEngine.ExecuteReaderCommand<CategoryWithPicture>(command);
         }
     }
 }
