@@ -8,6 +8,7 @@ using ADONET.Homework.Logic.ImageServices.Contracts;
 using ADONET.Homework.Logic.Models;
 using ADONET.Homework.Logic.QueryEngines.Contract;
 using ADONET.Homework.Logic.ConnectionProviders;
+using ADONET.Homework.Logic.CommandProviders;
 
 namespace ADONET.Homework.ConsoleClient
 {
@@ -28,7 +29,10 @@ namespace ADONET.Homework.ConsoleClient
             InsertNewProduct(commandProvider, queryEngine);
             DisplayAllCategoriesWithPictures(commandProvider, queryEngine, imageService);
 
-            DisplayExcelFile(commandProvider, queryEngine);
+            var oleCommandProvider = new OleDbCommandProvider();
+            var oleDbConnectionProvider = new DefaultOleDbConnectionProvider(new OleDbConnectionProvider());
+            queryEngine.ConnectionProvider = oleDbConnectionProvider;
+            DisplayExcelFile(oleCommandProvider, queryEngine);
         }
 
         private static void DisplayNumberOfCategories(ICommandProvider commandProvider, IQueryEngine queryEngine)
@@ -86,14 +90,34 @@ namespace ADONET.Homework.ConsoleClient
             }
         }
 
+        private static void FillTableWithData(ICommandProvider commandProvider, IQueryEngine queryEngine)
+        {
+            var sql = "CREATE TABLE Table3 (ID int, name nvarchar, score int)";
+            var command = commandProvider.CreateCommand(sql);
+            var result = queryEngine.ExecuteNonQueryCommand(command);
+
+            var insert = "INSERT INTO Table3 VALUES(1, 'Doncho Minkov', 24)";
+            var commandInsert = commandProvider.CreateCommand(insert);
+            var resultInsert = queryEngine.ExecuteNonQueryCommand(commandInsert);
+
+            var insert2 = "INSERT INTO Table3 VALUES(1, 'Svetlin Nakov', 25)";
+            var commandInsert2 = commandProvider.CreateCommand(insert2);
+            var resultInsert2 = queryEngine.ExecuteNonQueryCommand(commandInsert2);
+
+            var insert3 = "INSERT INTO Table3 VALUES(1, 'Nikolay Kostov', 22)";
+            var commandInsert3 = commandProvider.CreateCommand(insert3);
+            var resultInsert3 = queryEngine.ExecuteNonQueryCommand(commandInsert3);
+
+            var insert4 = "INSERT INTO Table3 VALUES(1, 'Goerge Georgiev', 20)";
+            var commandInsert4 = commandProvider.CreateCommand(insert4);
+            var resultInsert4 = queryEngine.ExecuteNonQueryCommand(commandInsert4);
+        }
+
         private static void DisplayExcelFile(ICommandProvider commandProvider, IQueryEngine queryEngine)
         {
-            var oleDbConnectionProvider = new DefaultOleDbConnectionProvider(new OleDbConnectionProvider());
-            queryEngine.ConnectionProvider = oleDbConnectionProvider;
-
-            var sql = "SELECT * FROM Sheet1";
+            var sql = "SELECT * FROM Table3";
             var command = commandProvider.CreateCommand(sql);
-            var result = queryEngine.ExecuteReaderCommand<CategoryWithPicture>(command);
+            var result = queryEngine.ExecuteReaderCommand<ExcelView>(command);
         }
     }
 }

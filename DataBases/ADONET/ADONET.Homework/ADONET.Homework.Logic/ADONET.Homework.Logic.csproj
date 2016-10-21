@@ -63,7 +63,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="CommandProviders\CommandProvider.cs" />
+    <Compile Include="CommandProviders\OleDbCommandProvider.cs" />
+    <Compile Include="CommandProviders\SqlCommandProvider.cs" />
     <Compile Include="CommandProviders\Contracts\ICommandProvider.cs" />
     <Compile Include="ConfigurationProviders\Contracts\IConfigurationReader.cs" />
     <Compile Include="ConnectionProviders\Contracts\IConnectionProvider.cs" />
