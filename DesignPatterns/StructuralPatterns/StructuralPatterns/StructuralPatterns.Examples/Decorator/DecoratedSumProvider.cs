@@ -2,11 +2,11 @@
 
 namespace StructuralPatterns.Examples.Decorator
 {
-    public class DecoratedSumProvider : ISum
+    public class DecoratedSumProvider : ISumProvider
     {
-        private readonly ISum decoratedSumProvider;
+        private readonly ISumProvider decoratedSumProvider;
 
-        public DecoratedSumProvider(ISum decoratedSumProvider)
+        public DecoratedSumProvider(ISumProvider decoratedSumProvider)
         {
             // An instance of the decorated type.
             this.decoratedSumProvider = decoratedSumProvider;

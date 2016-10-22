@@ -50,6 +50,9 @@
     <Compile Include="Decorator\DecoratedSumProvider.cs" />
     <Compile Include="Decorator\ISum.cs" />
     <Compile Include="Decorator\SumProvider.cs" />
+    <Compile Include="Facade\FacadeType.cs" />
+    <Compile Include="Facade\WorkerTypeA.cs" />
+    <Compile Include="Facade\WorkerTypeB.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

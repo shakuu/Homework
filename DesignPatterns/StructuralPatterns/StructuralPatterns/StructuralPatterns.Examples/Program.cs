@@ -2,6 +2,7 @@
 
 using StructuralPatterns.Examples.Composite;
 using StructuralPatterns.Examples.Decorator;
+using StructuralPatterns.Examples.Facade;
 
 namespace StructuralPatterns.Examples
 {
@@ -11,6 +12,7 @@ namespace StructuralPatterns.Examples
         {
             CompositeExample();
             DecoratorExample();
+            FacadeExample();
         }
 
         private static void CompositeExample()
@@ -40,7 +42,19 @@ namespace StructuralPatterns.Examples
             // Inject the instance into the decorator.
             var decorator = new DecoratedSumProvider(decoratedTypeInstance);
             // Decorator implements the same interface.
+            decoratedTypeInstance.ConsoleSum(2, 2);
             decorator.ConsoleSum(1, 1);
+        }
+
+        private static void FacadeExample()
+        {
+            // Use a number of objects to complete a single operation
+            // containing different stages through a single method call.
+            var workerA = new WorkerTypeA();
+            var workerB = new WorkerTypeB();
+            var facade = new FacadeType(workerA, workerB);
+
+            facade.ComplicatedOperation();
         }
     }
 }

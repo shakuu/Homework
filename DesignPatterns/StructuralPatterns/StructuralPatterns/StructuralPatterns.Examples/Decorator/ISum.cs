@@ -1,6 +1,6 @@
 ﻿namespace StructuralPatterns.Examples.Decorator
 {
-    public interface ISum
+    public interface ISumProvider
     {
         void ConsoleSum(int x, int y);
     }
