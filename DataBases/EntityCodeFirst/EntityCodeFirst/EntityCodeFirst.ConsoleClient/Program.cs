@@ -48,6 +48,12 @@ namespace EntityCodeFirst.ConsoleClient
                 System.Console.WriteLine($"Id: {comp.Id}, Make: {comp.Make}, MB: {comp.Motherboard}");
             }
 
+            var mbs = db.Motherboards.ToList();
+            foreach (var mb1 in mbs)
+            {
+                System.Console.WriteLine(mb1.Id);
+            }
+
             var count = db.Computers.Count();
 
             System.Console.WriteLine(count);
