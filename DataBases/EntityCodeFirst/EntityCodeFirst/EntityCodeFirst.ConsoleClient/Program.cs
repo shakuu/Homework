@@ -1,9 +1,9 @@
-﻿using System.Linq;
-using System.Data.Entity;
+﻿using System.Data.Entity;
+using System.Linq;
 
 using EntityCodeFirst.Data;
-using EntityCodeFirst.Models;
 using EntityCodeFirst.Data.Migrations;
+using EntityCodeFirst.Models;
 
 namespace EntityCodeFirst.ConsoleClient
 {
@@ -21,14 +21,31 @@ namespace EntityCodeFirst.ConsoleClient
                 Model = "mine"
             };
 
+            var mb = new Motherboard()
+            {
+                Make = "Asus",
+                Model = "ROG"
+            };
+
+            var pc1 = db.Computers.Where(comp => comp.Id == 2).FirstOrDefault();
+            pc1.MotherBoard = mb;
+
             db.Computers.Add(pc);
             db.SaveChanges();
 
-            var comps = db.Computers.Where(comp => comp.Model == "mine").ToList();
+            var comps = db.Computers
+                .Where(comp => comp.Model == "mine")
+                .Select(comp => new
+                {
+                    Id = comp.Id,
+                    Make = comp.Make,
+                    Motherboard = comp.MotherBoard.Model
+                })
+                .ToList();
+
             foreach (var comp in comps)
             {
-                System.Console.WriteLine(comp.Id);
-                System.Console.WriteLine(comp.Make);
+                System.Console.WriteLine($"Id: {comp.Id}, Make: {comp.Make}, MB: {comp.Motherboard}");
             }
 
             var count = db.Computers.Count();
