@@ -43,7 +43,23 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Program.cs" />
+    <Compile Include="AbstractFactory\AbstractFactoryImplementationA.cs" />
+    <Compile Include="AbstractFactory\AbstractFactoryImplementationB.cs" />
+    <Compile Include="AbstractFactory\TypeAImplmentationA.cs" />
+    <Compile Include="AbstractFactory\IAbstractFactory.cs" />
+    <Compile Include="AbstractFactory\ITypeA.cs" />
+    <Compile Include="AbstractFactory\ITypeB.cs" />
+    <Compile Include="AbstractFactory\TypeAImplmentationB.cs" />
+    <Compile Include="AbstractFactory\TypeBImplmentationA.cs" />
+    <Compile Include="AbstractFactory\TypeBImplmentationB.cs" />
+    <Compile Include="FactoryMethod\BaseClass.cs" />
+    <Compile Include="FactoryMethod\DependencyImplementationTypeA.cs" />
+    <Compile Include="FactoryMethod\DependencyImplementationTypeB.cs" />
+    <Compile Include="FactoryMethod\IDependency.cs" />
+    <Compile Include="FactoryMethod\SubClassTypeA.cs" />
+    <Compile Include="FactoryMethod\SubClassTypeB.cs" />
+    <Compile Include="Singletons\Singleton.cs" />
+    <Compile Include="Startup.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
