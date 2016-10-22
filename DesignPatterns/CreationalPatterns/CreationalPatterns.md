@@ -18,10 +18,12 @@ Downside - it's static.
 
 # Factory Method
 
-An abstract / virtual method in a base class. Lets subclasses initialize the their own specific dependencies.
+An abstract / virtual method in a base class. Lets subclasses initialize their own specific dependencies.
 
 Creates parallel inheritence hierarchies. 
 
 # Abstract Factory
 
+An interface providing instantiating methods. Each implementation initializes a different set of specific implementations of an abstraction.
 
+Used to initialize a different set of objects implementing the same set of abstractions
