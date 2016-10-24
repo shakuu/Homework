@@ -177,3 +177,18 @@ SELECT COUNT(DISTINCT Customers.CityId)
 FROM Customers
 
 /* Drop column City and ShipCity from Employees, Suppliers, Customers and Orders tables */
+ALTER TABLE Employees
+	DROP COLUMN City
+
+ALTER TABLE Employees
+	DROP COLUMN ShipCity
+
+ALTER TABLE Suppliers
+	DROP COLUMN City
+
+DROP INDEX Customers.City
+
+ALTER TABLE Customers
+	DROP COLUMN City
+
+/* Drop column Country and ShipCountry from Employees, Customers, Suppliers and Orders tables */
