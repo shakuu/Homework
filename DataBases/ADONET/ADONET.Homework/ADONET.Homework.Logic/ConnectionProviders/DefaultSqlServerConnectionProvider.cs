@@ -5,7 +5,7 @@ using ADONET.Homework.Logic.ConnectionProviders.Contracts;
 
 namespace ADONET.Homework.Logic.ConnectionProviders
 {
-    public class DefaultSqlServerConnectionProvider : IConnectionProvider
+    public class DefaultSqlServerConnectionProvider : IDefaultConnectionProvider
     {
         private const string ConnectionString = "Server=.;Database=Northwind;Integrated Security = true";
 
@@ -21,13 +21,9 @@ namespace ADONET.Homework.Logic.ConnectionProviders
             this.decoratedProvider = decoratedProvider;
         }
 
-        public IDbConnection CreateConnection(string connectionString)
+        public IDbConnection CreateConnection()
         {
-            if (connectionString == null)
-            {
-                connectionString = DefaultSqlServerConnectionProvider.ConnectionString;
-            }
-
+            var connectionString = DefaultSqlServerConnectionProvider.ConnectionString;
             var connection = this.decoratedProvider.CreateConnection(connectionString);
 
             return connection;

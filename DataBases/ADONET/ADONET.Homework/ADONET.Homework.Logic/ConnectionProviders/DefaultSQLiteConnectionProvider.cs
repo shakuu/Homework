@@ -5,7 +5,7 @@ using ADONET.Homework.Logic.ConnectionProviders.Contracts;
 
 namespace ADONET.Homework.Logic.ConnectionProviders
 {
-    public class DefaultSQLiteConnectionProvider : IConnectionProvider
+    public class DefaultSQLiteConnectionProvider : IDefaultConnectionProvider
     {
         private const string ConnectionString = "Data Source=../../../../homework.sqlite;Version=3;";
 
@@ -21,13 +21,9 @@ namespace ADONET.Homework.Logic.ConnectionProviders
             this.decoratedProvider = decoratedProvider;
         }
 
-        public IDbConnection CreateConnection(string connectionString)
+        public IDbConnection CreateConnection()
         {
-            if (string.IsNullOrEmpty(connectionString))
-            {
-                connectionString = DefaultSQLiteConnectionProvider.ConnectionString;
-            }
-
+            var connectionString = DefaultSQLiteConnectionProvider.ConnectionString;
             var connection = this.decoratedProvider.CreateConnection(connectionString);
 
             return connection;

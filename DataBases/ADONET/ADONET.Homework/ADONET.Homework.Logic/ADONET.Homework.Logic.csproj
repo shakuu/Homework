@@ -97,6 +97,7 @@
     <Compile Include="CommandProviders\SQLiteCommandProvider.cs" />
     <Compile Include="ConfigurationProviders\Contracts\IConfigurationReader.cs" />
     <Compile Include="ConnectionProviders\Contracts\IConnectionProvider.cs" />
+    <Compile Include="ConnectionProviders\Contracts\IDefaultConnectionProvider.cs" />
     <Compile Include="ConnectionProviders\DecoratedSqlServerConnectionProvider.cs" />
     <Compile Include="ConnectionProviders\DefaultMySqlConnectionProvider.cs" />
     <Compile Include="ConnectionProviders\DefaultOleDbConnectionProvider.cs" />

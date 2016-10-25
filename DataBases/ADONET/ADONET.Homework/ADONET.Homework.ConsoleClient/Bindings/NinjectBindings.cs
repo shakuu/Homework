@@ -29,16 +29,16 @@ namespace ADONET.Homework.ConsoleClient.Bindings
         {
             this.Bind<IDbFactory>().To<DbFactory>();
 
-            this.Bind<IConnectionProvider>().To<DefaultSqlServerConnectionProvider>().Named(NinjectBindings.NinjectSqlServer)
+            this.Bind<IDefaultConnectionProvider>().To<DefaultSqlServerConnectionProvider>().Named(NinjectBindings.NinjectSqlServer)
                 .WithConstructorArgument("decoratedProvider", ctx => ctx.Kernel.Get<SqlServerConnectionProvider>());
 
-            this.Bind<IConnectionProvider>().To<DefaultOleDbConnectionProvider>().Named(NinjectBindings.NinjectOleDb)
+            this.Bind<IDefaultConnectionProvider>().To<DefaultOleDbConnectionProvider>().Named(NinjectBindings.NinjectOleDb)
                 .WithConstructorArgument("decoratedProvider", ctx => ctx.Kernel.Get<OleDbConnectionProvider>());
 
-            this.Bind<IConnectionProvider>().To<DefaultMySqlConnectionProvider>().Named(NinjectBindings.NinjectMySql)
+            this.Bind<IDefaultConnectionProvider>().To<DefaultMySqlConnectionProvider>().Named(NinjectBindings.NinjectMySql)
                .WithConstructorArgument("decoratedProvider", ctx => ctx.Kernel.Get<MySqlConnectionProvider>());
 
-            this.Bind<IConnectionProvider>().To<DefaultSQLiteConnectionProvider>().Named(NinjectBindings.NinjectSQLite)
+            this.Bind<IDefaultConnectionProvider>().To<DefaultSQLiteConnectionProvider>().Named(NinjectBindings.NinjectSQLite)
                .WithConstructorArgument("decoratedProvider", ctx => ctx.Kernel.Get<SQLiteConnectionProvider>());
 
             this.Bind<ICommandProvider>().To<SqlCommandProvider>().Named(NinjectBindings.NinjectSqlServer);
@@ -52,7 +52,7 @@ namespace ADONET.Homework.ConsoleClient.Bindings
             this.Bind<IImageService>().To<ImageService>();
 
             this.Bind<IQueryEngine>().To<SimpleQueryEngine>()
-                .WithConstructorArgument("connectionProvider", ctx => ctx.Kernel.Get<IConnectionProvider>(NinjectBindings.NinjectSqlServer))
+                .WithConstructorArgument("connectionProvider", ctx => ctx.Kernel.Get<IDefaultConnectionProvider>(NinjectBindings.NinjectSqlServer))
                 .WithConstructorArgument("queryService", ctx => ctx.Kernel.Get<IQueryService>())
                 .WithConstructorArgument("dataHandler", ctx => ctx.Kernel.Get<IDataObjectMapper>());
         }

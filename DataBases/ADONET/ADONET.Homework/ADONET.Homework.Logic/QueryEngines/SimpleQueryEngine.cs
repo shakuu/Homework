@@ -15,9 +15,9 @@ namespace ADONET.Homework.Logic.QueryEngines
         private readonly IQueryService queryService;
         private readonly IDataObjectMapper dataHandler;
 
-        private IConnectionProvider connectionProvider;
+        private IDefaultConnectionProvider connectionProvider;
 
-        public SimpleQueryEngine(IConnectionProvider connectionProvider, IQueryService queryService, IDataObjectMapper dataHandler)
+        public SimpleQueryEngine(IDefaultConnectionProvider connectionProvider, IQueryService queryService, IDataObjectMapper dataHandler)
         {
             if (queryService == null)
             {
@@ -39,7 +39,7 @@ namespace ADONET.Homework.Logic.QueryEngines
             this.connectionProvider = connectionProvider;
         }
 
-        public IConnectionProvider ConnectionProvider
+        public IDefaultConnectionProvider ConnectionProvider
         {
             get
             {
@@ -60,7 +60,7 @@ namespace ADONET.Homework.Logic.QueryEngines
         public IEnumerable<ModelType> ExecuteReaderCommand<ModelType>(IDbCommand command)
             where ModelType : new()
         {
-            var connection = this.connectionProvider.CreateConnection(null);
+            var connection = this.connectionProvider.CreateConnection();
             command.Connection = connection;
 
             try
@@ -81,7 +81,7 @@ namespace ADONET.Homework.Logic.QueryEngines
         public ScalarType ExecuteScalarCommand<ScalarType>(IDbCommand command)
             where ScalarType : struct
         {
-            var connection = this.connectionProvider.CreateConnection(null);
+            var connection = this.connectionProvider.CreateConnection();
             command.Connection = connection;
 
             try
@@ -100,7 +100,7 @@ namespace ADONET.Homework.Logic.QueryEngines
 
         public int ExecuteNonQueryCommand(IDbCommand command)
         {
-            var connection = this.connectionProvider.CreateConnection(null);
+            var connection = this.connectionProvider.CreateConnection();
             command.Connection = connection;
 
             try

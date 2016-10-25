@@ -7,7 +7,7 @@ namespace ADONET.Homework.Logic.QueryEngines.Contract
 {
     public interface IQueryEngine
     {
-        IConnectionProvider ConnectionProvider { get; set; }
+        IDefaultConnectionProvider ConnectionProvider { get; set; }
 
         IEnumerable<ModelType> ExecuteReaderCommand<ModelType>(IDbCommand command)
             where ModelType : new();

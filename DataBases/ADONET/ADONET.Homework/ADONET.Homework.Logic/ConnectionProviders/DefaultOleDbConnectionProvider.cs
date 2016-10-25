@@ -5,7 +5,7 @@ using ADONET.Homework.Logic.ConnectionProviders.Contracts;
 
 namespace ADONET.Homework.Logic.ConnectionProviders
 {
-    public class DefaultOleDbConnectionProvider : IConnectionProvider
+    public class DefaultOleDbConnectionProvider : IDefaultConnectionProvider
     {
         //private const string ConnectionString = "Provider=Microsoft.ACE.OLEDB.12.0;Data Source=" + "../../../../scores.xlsx" + ";" + "Extended Properties='Excel 12.0 Xml;HDR=YES;IMEX=1;MAXSCANROWS=0;ReadOnly=False;'";
 
@@ -23,13 +23,9 @@ namespace ADONET.Homework.Logic.ConnectionProviders
             this.decoratedProvider = decoratedProvider;
         }
 
-        public IDbConnection CreateConnection(string connectionString)
+        public IDbConnection CreateConnection()
         {
-            if (connectionString == null)
-            {
-                connectionString = DefaultOleDbConnectionProvider.ConnectionString;
-            }
-            
+            var connectionString = DefaultOleDbConnectionProvider.ConnectionString;
             var connection = this.decoratedProvider.CreateConnection(connectionString);
 
             return connection;

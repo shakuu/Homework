@@ -36,7 +36,7 @@ namespace ADONET.Homework.ConsoleClient
             DisplayProductsMatchingStringReadFromConsole(sqlServerCommandProvider, queryEngine);
             
             var oleCommandProvider = ninject.Get<ICommandProvider>(Program.NinjectOleDb);
-            var oleDbConnectionProvider = ninject.Get<IConnectionProvider>(Program.NinjectOleDb);
+            var oleDbConnectionProvider = ninject.Get<IDefaultConnectionProvider>(Program.NinjectOleDb);
             queryEngine.ConnectionProvider = oleDbConnectionProvider;
 
             DisplayExcelFile(oleCommandProvider, queryEngine);
@@ -44,7 +44,7 @@ namespace ADONET.Homework.ConsoleClient
             DisplayExcelFile(oleCommandProvider, queryEngine);
             
             var mySqlCommandProvider = ninject.Get<ICommandProvider>(Program.NinjectMySql);
-            var mySqlConnectionProvider = ninject.Get<IConnectionProvider>(Program.NinjectMySql);
+            var mySqlConnectionProvider = ninject.Get<IDefaultConnectionProvider>(Program.NinjectMySql);
             queryEngine.ConnectionProvider = mySqlConnectionProvider;
 
             MySqlDisplayAllBooks(mySqlCommandProvider, queryEngine);
@@ -52,7 +52,7 @@ namespace ADONET.Homework.ConsoleClient
             MySqlAddBook(mySqlCommandProvider, queryEngine);
             
             var sqLiteCommandProvider = ninject.Get<ICommandProvider>(Program.NinjectSQLite);
-            var sqLiteConnectionProvider = ninject.Get<IConnectionProvider>(Program.NinjectSQLite);
+            var sqLiteConnectionProvider = ninject.Get<IDefaultConnectionProvider>(Program.NinjectSQLite);
             queryEngine.ConnectionProvider = sqLiteConnectionProvider;
 
             SqLiteDisplayAllBooks(sqLiteCommandProvider, queryEngine);

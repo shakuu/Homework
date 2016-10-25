@@ -5,7 +5,7 @@ using ADONET.Homework.Logic.ConnectionProviders.Contracts;
 
 namespace ADONET.Homework.Logic.ConnectionProviders
 {
-    public class DefaultMySqlConnectionProvider : IConnectionProvider
+    public class DefaultMySqlConnectionProvider : IDefaultConnectionProvider
     {
         private const string ConnectionString = "Server=localhost; port=3306; database=library; UID=randomuser; password=12345";
 
@@ -21,13 +21,9 @@ namespace ADONET.Homework.Logic.ConnectionProviders
             this.decoratedProvider = decoratedProvider;
         }
 
-        public IDbConnection CreateConnection(string connectionString)
+        public IDbConnection CreateConnection()
         {
-            if (string.IsNullOrEmpty(connectionString))
-            {
-                connectionString = DefaultMySqlConnectionProvider.ConnectionString;
-            }
-
+            var connectionString = DefaultMySqlConnectionProvider.ConnectionString;
             var connection = this.decoratedProvider.CreateConnection(connectionString);
 
             return connection;
