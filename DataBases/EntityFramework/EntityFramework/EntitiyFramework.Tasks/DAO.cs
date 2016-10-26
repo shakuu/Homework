@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 
 using EntityFramework.Data;
@@ -64,6 +65,20 @@ namespace EntitiyFramework.Tasks
             var matchingCustomer = context.Customers.FirstOrDefault(c => c.CustomerID == customer.CustomerID);
             context.Customers.Remove(matchingCustomer);
             context.SaveChanges();
+        }
+
+        public static IEnumerable<Customer> GetCustomersWithOrderYearAndCountry(int year, string country)
+        {
+            var context = DAO.GetContext();
+            var customers = context.Orders
+                .Where(o => o.OrderDate != null)
+                .ToList()
+                .Where(o => o.OrderDate.GetValueOrDefault().Year == year && o.ShipCountry == country)
+                .Select(o => o.Customer)
+                .Distinct()
+                .ToList();
+
+            return customers;
         }
     }
 }
