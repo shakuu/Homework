@@ -1,4 +1,5 @@
 using System.Data.Entity.Migrations;
+using System.Linq;
 
 namespace EntityFrameworkCodeFirst.Data.Migrations
 {
@@ -11,6 +12,11 @@ namespace EntityFrameworkCodeFirst.Data.Migrations
 
         protected override void Seed(DbContexts.StudentSystemDbContext context)
         {
+            if (!context.Courses.Any())
+            {
+
+            }
+
             //  This method will be called after migrating to the latest version.
 
             //  You can use the DbSet<T>.AddOrUpdate() helper extension method 
