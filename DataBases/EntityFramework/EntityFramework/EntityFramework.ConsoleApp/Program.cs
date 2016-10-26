@@ -85,7 +85,15 @@ namespace EntityFramework.ConsoleApp
 
         private static void FindsAllSalesByRegionAndPeriod(string shipReagion, DateTime start, DateTime end)
         {
+            var orders = DAO.FindsAllSalesByRegionAndPeriod(shipReagion, start, end);
 
+            System.Console.WriteLine($"Orders between, Start: {start.ToShortDateString()}, End: {end.ToShortDateString()}, Region: {shipReagion}");
+            foreach (var order in orders)
+            {
+                System.Console.WriteLine($"Name: {order.OrderDate}, Country: {order.ShipRegion}");
+            }
+
+            System.Console.WriteLine();
         }
     }
 }
