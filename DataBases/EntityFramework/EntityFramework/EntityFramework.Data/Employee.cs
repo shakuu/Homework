@@ -11,7 +11,8 @@ namespace EntityFramework.Data
 {
     using System;
     using System.Collections.Generic;
-    
+    using System.Data.Linq;
+
     public partial class Employee
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
@@ -19,7 +20,7 @@ namespace EntityFramework.Data
         {
             this.Employees1 = new HashSet<Employee>();
             this.Orders = new HashSet<Order>();
-            this.Territories = new HashSet<Territory>();
+            this.Territories = new EntitySet<Territory>();
         }
     
         public int EmployeeID { get; set; }

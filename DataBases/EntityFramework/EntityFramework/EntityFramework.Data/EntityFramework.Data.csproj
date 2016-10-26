@@ -41,6 +41,7 @@
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Data.Linq" />
     <Reference Include="System.Runtime.Serialization" />
     <Reference Include="System.Security" />
     <Reference Include="System.Xml.Linq" />
@@ -87,6 +88,7 @@
     <Compile Include="Employee_Sales_by_Country_Result.cs">
       <DependentUpon>NorthwindModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="ExtendedModels\ExtendedEmployee.cs" />
     <Compile Include="Invoice.cs">
       <DependentUpon>NorthwindModel.tt</DependentUpon>
     </Compile>

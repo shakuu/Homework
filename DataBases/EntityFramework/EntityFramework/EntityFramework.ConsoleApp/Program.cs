@@ -12,6 +12,8 @@ namespace EntityFramework.ConsoleApp
 
         public static void Main()
         {
+            DAO.ExtendedEmployeeTesting();
+
             Program.InsertCustomer(Program.CustomerId, "Company");
             Program.ModifyCustomer(Program.CustomerId);
             Program.RemoveCustomer(Program.CustomerId);
@@ -22,6 +24,8 @@ namespace EntityFramework.ConsoleApp
             var end = new DateTime(2000, 6, 1);
             var start = new DateTime(1996, 6, 1);
             Program.FindsAllSalesByRegionAndPeriod("Essex", start, end);
+
+            
         }
 
         private static void InsertCustomer(string id, string companyName)

@@ -2,9 +2,8 @@
 using System.Collections.Generic;
 using System.Linq;
 
-using Microsoft.SqlServer.Management;
-
 using EntityFramework.Data;
+
 using Microsoft.SqlServer.Management.Smo;
 using Microsoft.SqlServer.Management.Common;
 
@@ -94,6 +93,12 @@ namespace EntitiyFramework.Tasks
                 .ToList();
 
             return orders;
+        }
+
+        public static void ExtendedEmployeeTesting()
+        {
+            var context = DAO.GetContext();
+            var emp = context.Employees.FirstOrDefault().EntitySetTerritories;
         }
 
         public static void TransferServer()
