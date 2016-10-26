@@ -12,8 +12,6 @@ namespace EntityFramework.ConsoleApp
 
         public static void Main()
         {
-            DAO.ExtendedEmployeeTesting();
-
             Program.InsertCustomer(Program.CustomerId, "Company");
             Program.ModifyCustomer(Program.CustomerId);
             Program.RemoveCustomer(Program.CustomerId);
