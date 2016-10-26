@@ -19,9 +19,8 @@ namespace EntityFramework.ConsoleApp
             Program.CustomersWithOrdersFromYearToCountry(1997, "Canada");
             Program.CustomersWithOrdersFromYearToCountryWithSQL(1997, "Canada");
 
-
-            var start = new DateTime(1996, 6, 1);
             var end = new DateTime(2000, 6, 1);
+            var start = new DateTime(1996, 6, 1);
             Program.FindsAllSalesByRegionAndPeriod("Essex", start, end);
         }
 
