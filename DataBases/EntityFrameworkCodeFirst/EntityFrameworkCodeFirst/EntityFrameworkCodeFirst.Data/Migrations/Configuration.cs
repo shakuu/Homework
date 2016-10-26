@@ -1,6 +1,8 @@
 using System.Data.Entity.Migrations;
 using System.Linq;
 
+using EntityFrameworkCodeFirst.Models.StudentSystem;
+
 namespace EntityFrameworkCodeFirst.Data.Migrations
 {
     public sealed class Configuration : DbMigrationsConfiguration<DbContexts.StudentSystemDbContext>
@@ -14,21 +16,45 @@ namespace EntityFrameworkCodeFirst.Data.Migrations
         {
             if (!context.Courses.Any())
             {
+                var dataBases = new Course()
+                {
+                    Name = "Databases",
+                    Description = "SQL Torture"
+                };
 
+                var designPatterns = new Course()
+                {
+                    Name = "Design Patters",
+                    Description = "Programming philosophy"
+                };
+
+                context.Courses.Add(dataBases);
+                context.Courses.Add(dataBases);
             }
 
-            //  This method will be called after migrating to the latest version.
+            if (!context.Students.Any())
+            {
+                var studentPesho = new Student()
+                {
+                    Name = "Pesho"
+                };
 
-            //  You can use the DbSet<T>.AddOrUpdate() helper extension method 
-            //  to avoid creating duplicate seed data. E.g.
-            //
-            //    context.People.AddOrUpdate(
-            //      p => p.FullName,
-            //      new Person { FullName = "Andrew Peters" },
-            //      new Person { FullName = "Brice Lambson" },
-            //      new Person { FullName = "Rowan Miller" }
-            //    );
-            //
+                var studentGosho = new Student()
+                {
+                    Name = "Gosho"
+                };
+
+                var studentStamat = new Student()
+                {
+                    Name = "Stamat"
+                };
+
+                context.Students.Add(studentPesho);
+                context.Students.Add(studentGosho);
+                context.Students.Add(studentStamat);
+            }
+
+            context.SaveChanges();
         }
     }
 }

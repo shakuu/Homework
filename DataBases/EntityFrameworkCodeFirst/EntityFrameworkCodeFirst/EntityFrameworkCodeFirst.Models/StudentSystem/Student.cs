@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
@@ -24,7 +25,8 @@ namespace EntityFrameworkCodeFirst.Models.StudentSystem
         public string Name { get; set; }
 
         [Index(IsClustered = false, IsUnique = true)]
-        public int Number { get; set; }
+        [StringLength(5, MinimumLength = 5)]
+        public string StudentNumber { get; set; }
 
         public virtual ICollection<Course> Courses
         {
