@@ -2,6 +2,7 @@
 
 using EntityFramework.Data;
 using EntitiyFramework.Tasks;
+using System;
 
 namespace EntityFramework.ConsoleApp
 {
@@ -17,6 +18,11 @@ namespace EntityFramework.ConsoleApp
 
             Program.CustomersWithOrdersFromYearToCountry(1997, "Canada");
             Program.CustomersWithOrdersFromYearToCountryWithSQL(1997, "Canada");
+
+
+            var start = new DateTime(1996, 6, 1);
+            var end = new DateTime(2000, 6, 1);
+            Program.FindsAllSalesByRegionAndPeriod("Essex", start, end);
         }
 
         private static void InsertCustomer(string id, string companyName)
@@ -47,7 +53,7 @@ namespace EntityFramework.ConsoleApp
         {
             var customers = DAO.GetCustomersWithOrderYearAndCountry(year, country);
 
-            System.Console.WriteLine("Customers with EF, OrederYear 1997, Country Canada");
+            System.Console.WriteLine($"Customers with NativeSQL, OrderYear: {year}, Country: {country}");
             foreach (var customer in customers)
             {
                 System.Console.WriteLine($"Name: {customer.ContactName}, Country: {customer.Country}");
@@ -68,13 +74,18 @@ namespace EntityFramework.ConsoleApp
             var context = new NorthwindEntities();
             var customers = context.Customers.SqlQuery(query).Distinct().ToList();
 
-            System.Console.WriteLine("Customers with NativeSQL, OrederYear 1997, Country Canada");
+            System.Console.WriteLine($"Customers with NativeSQL, OrderYear: {year}, Country: {country}");
             foreach (var customer in customers)
             {
                 System.Console.WriteLine($"Name: {customer.ContactName}, Country: {customer.Country}");
             }
 
             System.Console.WriteLine();
+        }
+
+        private static void FindsAllSalesByRegionAndPeriod(string shipReagion, DateTime start, DateTime end)
+        {
+
         }
     }
 }

@@ -72,13 +72,24 @@ namespace EntitiyFramework.Tasks
             var context = DAO.GetContext();
             var customers = context.Orders
                 .Where(o => o.OrderDate != null)
-                .ToList()
-                .Where(o => o.OrderDate.GetValueOrDefault().Year == year && o.ShipCountry == country)
+                .Where(o => o.OrderDate.Value.Year == year && o.ShipCountry == country)
                 .Select(o => o.Customer)
                 .Distinct()
                 .ToList();
 
             return customers;
+        }
+
+        public static IEnumerable<Order> FindsAllSalesByRegionAndPeriod(string shipReagion, DateTime start, DateTime end)
+        {
+            var context = DAO.GetContext();
+            var orders = context.Orders
+                .Where(o => o.OrderDate.HasValue && start <= o.OrderDate && o.OrderDate <= end)
+                .Where(o => o.ShipRegion != null)
+                .Where(o => o.ShipRegion == shipReagion)
+                .ToList();
+
+            return orders;
         }
     }
 }
