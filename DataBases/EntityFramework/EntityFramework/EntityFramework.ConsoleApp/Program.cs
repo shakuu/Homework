@@ -14,6 +14,7 @@ namespace EntityFramework.ConsoleApp
             Program.InsertCustomer(Program.CustomerId, "Company");
             Program.ModifyCustomer(Program.CustomerId);
             Program.RemoveCustomer(Program.CustomerId);
+
             Program.CustomersWithOrdersFromYearToCountry(1997, "Canada");
             Program.CustomersWithOrdersFromYearToCountryWithSQL(1997, "Canada");
         }
