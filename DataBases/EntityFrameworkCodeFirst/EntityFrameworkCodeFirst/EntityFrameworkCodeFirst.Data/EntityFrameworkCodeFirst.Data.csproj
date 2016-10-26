@@ -54,6 +54,22 @@
     <Compile Include="Migrations\201610262153392_initial.Designer.cs">
       <DependentUpon>201610262153392_initial.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201610262214160_added annotations.cs" />
+    <Compile Include="Migrations\201610262214160_added annotations.Designer.cs">
+      <DependentUpon>201610262214160_added annotations.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201610262216327_annotation.cs" />
+    <Compile Include="Migrations\201610262216327_annotation.Designer.cs">
+      <DependentUpon>201610262216327_annotation.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201610262218400_updated-annotations.cs" />
+    <Compile Include="Migrations\201610262218400_updated-annotations.Designer.cs">
+      <DependentUpon>201610262218400_updated-annotations.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201610262221578_ntext.cs" />
+    <Compile Include="Migrations\201610262221578_ntext.Designer.cs">
+      <DependentUpon>201610262221578_ntext.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -64,6 +80,18 @@
   <ItemGroup>
     <EmbeddedResource Include="Migrations\201610262153392_initial.resx">
       <DependentUpon>201610262153392_initial.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201610262214160_added annotations.resx">
+      <DependentUpon>201610262214160_added annotations.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201610262216327_annotation.resx">
+      <DependentUpon>201610262216327_annotation.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201610262218400_updated-annotations.resx">
+      <DependentUpon>201610262218400_updated-annotations.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201610262221578_ntext.resx">
+      <DependentUpon>201610262221578_ntext.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>

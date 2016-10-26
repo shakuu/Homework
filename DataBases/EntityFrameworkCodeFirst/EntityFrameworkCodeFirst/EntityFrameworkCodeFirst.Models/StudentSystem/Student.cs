@@ -1,4 +1,6 @@
 ﻿using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace EntityFrameworkCodeFirst.Models.StudentSystem
 {
@@ -14,10 +16,14 @@ namespace EntityFrameworkCodeFirst.Models.StudentSystem
             this.homeoworks = new HashSet<Homework>();
         }
 
+        [Key]
         public int Id { get; set; }
 
+        [Required]
+        [StringLength(20, MinimumLength = 3)]
         public string Name { get; set; }
 
+        [Index(IsClustered = false, IsUnique = true)]
         public int Number { get; set; }
 
         public virtual ICollection<Course> Courses
