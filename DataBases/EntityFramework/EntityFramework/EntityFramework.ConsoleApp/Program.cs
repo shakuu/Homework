@@ -1,7 +1,7 @@
-﻿using EntityFramework.Data;
+﻿using System.Linq;
+
+using EntityFramework.Data;
 using EntitiyFramework.Tasks;
-using System.Data.Entity;
-using System.Linq;
 
 namespace EntityFramework.ConsoleApp
 {
@@ -45,15 +45,19 @@ namespace EntityFramework.ConsoleApp
         private static void CustomersWithOrdersFromYearToCountry(int year, string country)
         {
             var customers = DAO.GetCustomersWithOrderYearAndCountry(year, country);
+
+            System.Console.WriteLine("Customers with EF, OrederYear 1997, Country Canada");
             foreach (var customer in customers)
             {
                 System.Console.WriteLine($"Name: {customer.ContactName}, Country: {customer.Country}");
             }
+
+            System.Console.WriteLine();
         }
 
         private static void CustomersWithOrdersFromYearToCountryWithSQL(int year, string country)
         {
-            var queryTemplate = @"SELECT DISTINCT *
+            var queryTemplate = @"SELECT *
                     FROM Customers c
                     JOIN Orders o
                         ON o.CustomerID = c.CustomerID
@@ -61,11 +65,15 @@ namespace EntityFramework.ConsoleApp
             var query = string.Format(queryTemplate, year, country);
 
             var context = new NorthwindEntities();
-            var customers = context.Customers.SqlQuery(query).ToList();
+            var customers = context.Customers.SqlQuery(query).Distinct().ToList();
+
+            System.Console.WriteLine("Customers with NativeSQL, OrederYear 1997, Country Canada");
             foreach (var customer in customers)
             {
                 System.Console.WriteLine($"Name: {customer.ContactName}, Country: {customer.Country}");
             }
+
+            System.Console.WriteLine();
         }
     }
 }
