@@ -18,7 +18,8 @@ namespace EntityFrameworkCodeFirst.Data.Migrations
         {
             var coursesExist = context.Courses.Any();
             var studentsExist = context.Students.Any();
-            if (!(coursesExist && studentsExist))
+            var homeworksExist = context.Homeworks.Any();
+            if (!coursesExist || !studentsExist || !homeworksExist)
             {
                 var jsonContainer = new JsonContainer();
                 var seeder = new Seeder(jsonContainer);
@@ -29,7 +30,14 @@ namespace EntityFrameworkCodeFirst.Data.Migrations
                     context.Students.Add(student);
                 }
 
+                var homeworks = seeder.SeedHomework();
+                foreach (var hw in homeworks)
+                {
+                    context.Homeworks.Add(hw);
+                }
+
                 var random = new Random();
+                var homeworkCount = homeworks.Count;
                 var studentsCount = students.Count;
                 var studentsPerCourse = 20;
 
@@ -43,6 +51,11 @@ namespace EntityFrameworkCodeFirst.Data.Migrations
 
                         course.Students.Add(nextStudent);
                         nextStudent.Courses.Add(course);
+                        
+                        var nextHomeworkId = random.Next(0, homeworkCount);
+                        var nextHomework = homeworks[nextHomeworkId];
+                        nextHomework.Student = nextStudent;
+                        nextHomework.Course = course;
                     }
 
                     context.Courses.Add(course);

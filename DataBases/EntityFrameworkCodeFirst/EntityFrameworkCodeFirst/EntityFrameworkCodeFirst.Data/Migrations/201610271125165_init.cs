@@ -35,7 +35,7 @@ namespace EntityFrameworkCodeFirst.Data.Migrations
                     {
                         Id = c.Int(nullable: false, identity: true),
                         Content = c.String(storeType: "ntext"),
-                        TimeSent = c.DateTime(nullable: false),
+                        TimeSent = c.DateTime(),
                         StudentId = c.Int(nullable: false),
                         CourseId = c.Int(nullable: false),
                     })

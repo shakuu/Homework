@@ -13,7 +13,7 @@ namespace EntityFrameworkCodeFirst.Data.Migrations
         
         string IMigrationMetadata.Id
         {
-            get { return "201610271053485_init"; }
+            get { return "201610271125165_init"; }
         }
         
         string IMigrationMetadata.Source

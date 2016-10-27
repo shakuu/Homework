@@ -5,5 +5,7 @@
         string SeededNamesJson { get; }
 
         string SeededCoursesJson { get; }
+
+        string SeededHomeworksJson { get; }
     }
 }

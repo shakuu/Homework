@@ -5,6 +5,7 @@ using EntityFrameworkCodeFirst.Models.SeedModels;
 using EntityFrameworkCodeFirst.Models.StudentSystem;
 
 using Newtonsoft.Json;
+using Newtonsoft.Json.Converters;
 
 namespace EntityFrameworkCodeFirst.Data.Seeders
 {
@@ -50,6 +51,26 @@ namespace EntityFrameworkCodeFirst.Data.Seeders
                 {
                     Name = course.Name,
                     Description = course.Description
+                };
+
+                courses.Add(nextCourse);
+            }
+
+            return courses;
+        }
+
+        public IList<Homework> SeedHomework()
+        {
+            var coursesJson = this.jsonContainer.SeededCoursesJson;
+            var parsedCourses = JsonConvert.DeserializeObject<List<SeedHomework>>(coursesJson, new IsoDateTimeConverter { DateTimeFormat = "MM/dd/yyyy" });
+
+            var courses = new List<Homework>();
+            foreach (var course in parsedCourses)
+            {
+                var nextCourse = new Homework()
+                {
+                    Content = course.Content,
+                    TimeSent = course.TimeSent
                 };
 
                 courses.Add(nextCourse);

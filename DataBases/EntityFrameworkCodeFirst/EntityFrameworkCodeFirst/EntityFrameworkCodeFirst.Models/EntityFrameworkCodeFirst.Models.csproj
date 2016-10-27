@@ -50,6 +50,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="SeedModels\SeedHomework.cs" />
     <Compile Include="SeedModels\SeedName.cs" />
     <Compile Include="SeedModels\SeedCourse.cs" />
     <Compile Include="StudentSystem\Course.cs" />
