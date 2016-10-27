@@ -1,502 +1,502 @@
 [
 	{
-		"FirstName": "Madeline",
-		"LastName": "Leach",
-		"StudentNumber": 56986
-	},
-	{
-		"FirstName": "Garth",
-		"LastName": "Morin",
-		"StudentNumber": 47021
-	},
-	{
-		"FirstName": "Silas",
-		"LastName": "Moses",
-		"StudentNumber": 22247
-	},
-	{
-		"FirstName": "Kathleen",
-		"LastName": "Watts",
-		"StudentNumber": 95630
-	},
-	{
-		"FirstName": "Kellie",
-		"LastName": "Dickson",
-		"StudentNumber": 97458
-	},
-	{
-		"FirstName": "Ann",
-		"LastName": "Osborne",
-		"StudentNumber": 13236
-	},
-	{
-		"FirstName": "Tana",
-		"LastName": "Spence",
-		"StudentNumber": 42984
-	},
-	{
-		"FirstName": "Chadwick",
-		"LastName": "Morse",
-		"StudentNumber": 99192
-	},
-	{
-		"FirstName": "Glenna",
-		"LastName": "Ferguson",
-		"StudentNumber": 68454
-	},
-	{
-		"FirstName": "Griffin",
-		"LastName": "Sellers",
-		"StudentNumber": 85430
-	},
-	{
-		"FirstName": "Tad",
-		"LastName": "Bird",
-		"StudentNumber": 18791
-	},
-	{
-		"FirstName": "Risa",
-		"LastName": "Wise",
-		"StudentNumber": 72897
-	},
-	{
-		"FirstName": "Hyacinth",
-		"LastName": "Jordan",
-		"StudentNumber": 51587
-	},
-	{
-		"FirstName": "Isabella",
-		"LastName": "Morgan",
-		"StudentNumber": 75019
-	},
-	{
-		"FirstName": "Imelda",
-		"LastName": "Sawyer",
-		"StudentNumber": 95582
-	},
-	{
-		"FirstName": "Ishmael",
-		"LastName": "Espinoza",
-		"StudentNumber": 81034
-	},
-	{
-		"FirstName": "Gareth",
-		"LastName": "Cain",
-		"StudentNumber": 46163
-	},
-	{
-		"FirstName": "Porter",
-		"LastName": "Hudson",
-		"StudentNumber": 44396
-	},
-	{
-		"FirstName": "Tyler",
-		"LastName": "Pollard",
-		"StudentNumber": 21388
-	},
-	{
-		"FirstName": "Medge",
-		"LastName": "Dickson",
-		"StudentNumber": 86342
-	},
-	{
-		"FirstName": "Connor",
-		"LastName": "Jimenez",
-		"StudentNumber": 11815
-	},
-	{
-		"FirstName": "Rama",
-		"LastName": "Giles",
-		"StudentNumber": 96080
-	},
-	{
-		"FirstName": "Adrian",
-		"LastName": "Cox",
-		"StudentNumber": 42979
-	},
-	{
-		"FirstName": "Signe",
-		"LastName": "Kirk",
-		"StudentNumber": 54404
-	},
-	{
-		"FirstName": "Roanna",
-		"LastName": "Ramirez",
-		"StudentNumber": 42432
-	},
-	{
-		"FirstName": "Amity",
-		"LastName": "Travis",
-		"StudentNumber": 91096
-	},
-	{
-		"FirstName": "Peter",
-		"LastName": "Navarro",
-		"StudentNumber": 76683
-	},
-	{
-		"FirstName": "Macon",
-		"LastName": "Hester",
-		"StudentNumber": 16985
-	},
-	{
-		"FirstName": "Jasmine",
-		"LastName": "Burt",
-		"StudentNumber": 94209
-	},
-	{
-		"FirstName": "Ursa",
-		"LastName": "Vargas",
-		"StudentNumber": 64159
-	},
-	{
-		"FirstName": "Portia",
-		"LastName": "Mathews",
-		"StudentNumber": 17323
-	},
-	{
-		"FirstName": "Naomi",
-		"LastName": "Lynch",
-		"StudentNumber": 95266
-	},
-	{
-		"FirstName": "Serina",
-		"LastName": "Lott",
-		"StudentNumber": 24541
-	},
-	{
-		"FirstName": "Olivia",
-		"LastName": "Cleveland",
-		"StudentNumber": 80832
-	},
-	{
-		"FirstName": "Jena",
-		"LastName": "Gay",
-		"StudentNumber": 97600
-	},
-	{
-		"FirstName": "Bernard",
-		"LastName": "Valentine",
-		"StudentNumber": 46526
-	},
-	{
-		"FirstName": "Bethany",
-		"LastName": "Figueroa",
-		"StudentNumber": 52629
-	},
-	{
-		"FirstName": "Marshall",
-		"LastName": "Coleman",
-		"StudentNumber": 31984
-	},
-	{
-		"FirstName": "Kasper",
-		"LastName": "Cain",
-		"StudentNumber": 85814
-	},
-	{
-		"FirstName": "Violet",
-		"LastName": "Salas",
-		"StudentNumber": 32651
-	},
-	{
-		"FirstName": "Brooke",
-		"LastName": "Gallagher",
-		"StudentNumber": 88942
-	},
-	{
-		"FirstName": "Claudia",
-		"LastName": "Chapman",
-		"StudentNumber": 30395
-	},
-	{
-		"FirstName": "Wayne",
-		"LastName": "Strickland",
-		"StudentNumber": 74538
-	},
-	{
-		"FirstName": "Judah",
-		"LastName": "Harrison",
-		"StudentNumber": 62638
-	},
-	{
-		"FirstName": "Emily",
-		"LastName": "Roach",
-		"StudentNumber": 49843
-	},
-	{
-		"FirstName": "Judah",
-		"LastName": "Burris",
-		"StudentNumber": 49492
+		"FirstName": "Emery",
+		"LastName": "Jacobson",
+		"GenderType": 2
 	},
 	{
 		"FirstName": "Carlos",
-		"LastName": "Martin",
-		"StudentNumber": 41245
+		"LastName": "Lopez",
+		"GenderType": 2
 	},
 	{
-		"FirstName": "Lester",
-		"LastName": "Stark",
-		"StudentNumber": 95661
+		"FirstName": "Cheyenne",
+		"LastName": "Herring",
+		"GenderType": 2
 	},
 	{
-		"FirstName": "Lael",
-		"LastName": "Miranda",
-		"StudentNumber": 52986
+		"FirstName": "Phoebe",
+		"LastName": "Wolf",
+		"GenderType": 2
 	},
 	{
-		"FirstName": "Breanna",
-		"LastName": "Bradley",
-		"StudentNumber": 14507
+		"FirstName": "Solomon",
+		"LastName": "Mullins",
+		"GenderType": 2
 	},
 	{
-		"FirstName": "Tashya",
-		"LastName": "Kerr",
-		"StudentNumber": 55201
+		"FirstName": "Rama",
+		"LastName": "Williamson",
+		"GenderType": 2
 	},
 	{
-		"FirstName": "Zephr",
-		"LastName": "Zimmerman",
-		"StudentNumber": 79998
+		"FirstName": "Kylan",
+		"LastName": "Bauer",
+		"GenderType": 2
 	},
 	{
-		"FirstName": "Raven",
-		"LastName": "House",
-		"StudentNumber": 39990
+		"FirstName": "Shad",
+		"LastName": "Becker",
+		"GenderType": 1
 	},
 	{
-		"FirstName": "Jameson",
-		"LastName": "Hopper",
-		"StudentNumber": 91677
+		"FirstName": "Thomas",
+		"LastName": "Wilcox",
+		"GenderType": 1
 	},
 	{
-		"FirstName": "Nasim",
-		"LastName": "Jensen",
-		"StudentNumber": 62924
+		"FirstName": "Rafael",
+		"LastName": "Mckinney",
+		"GenderType": 2
 	},
 	{
-		"FirstName": "Erica",
-		"LastName": "Hurley",
-		"StudentNumber": 58346
+		"FirstName": "Sigourney",
+		"LastName": "Trevino",
+		"GenderType": 1
 	},
 	{
-		"FirstName": "Lucy",
-		"LastName": "Santana",
-		"StudentNumber": 99641
-	},
-	{
-		"FirstName": "Mary",
-		"LastName": "Cote",
-		"StudentNumber": 40939
-	},
-	{
-		"FirstName": "Libby",
-		"LastName": "Walker",
-		"StudentNumber": 71540
-	},
-	{
-		"FirstName": "Maia",
-		"LastName": "Cardenas",
-		"StudentNumber": 72109
-	},
-	{
-		"FirstName": "Harper",
-		"LastName": "Chase",
-		"StudentNumber": 76491
-	},
-	{
-		"FirstName": "Dustin",
-		"LastName": "Jordan",
-		"StudentNumber": 99752
-	},
-	{
-		"FirstName": "Illiana",
-		"LastName": "Vaughan",
-		"StudentNumber": 83791
-	},
-	{
-		"FirstName": "Hedy",
-		"LastName": "Thornton",
-		"StudentNumber": 72697
-	},
-	{
-		"FirstName": "Odessa",
-		"LastName": "Brooks",
-		"StudentNumber": 52208
-	},
-	{
-		"FirstName": "Murphy",
-		"LastName": "Alvarez",
-		"StudentNumber": 53675
-	},
-	{
-		"FirstName": "Keaton",
-		"LastName": "Vasquez",
-		"StudentNumber": 11825
-	},
-	{
-		"FirstName": "Beverly",
-		"LastName": "Hudson",
-		"StudentNumber": 66282
-	},
-	{
-		"FirstName": "Jesse",
-		"LastName": "Key",
-		"StudentNumber": 52466
-	},
-	{
-		"FirstName": "Signe",
-		"LastName": "Head",
-		"StudentNumber": 82449
-	},
-	{
-		"FirstName": "Elizabeth",
-		"LastName": "Elliott",
-		"StudentNumber": 49893
-	},
-	{
-		"FirstName": "Raymond",
-		"LastName": "Mccormick",
-		"StudentNumber": 87326
-	},
-	{
-		"FirstName": "Lucius",
-		"LastName": "Jacobs",
-		"StudentNumber": 58122
-	},
-	{
-		"FirstName": "Quon",
-		"LastName": "House",
-		"StudentNumber": 45804
-	},
-	{
-		"FirstName": "Mark",
-		"LastName": "Warren",
-		"StudentNumber": 50066
-	},
-	{
-		"FirstName": "Sophia",
-		"LastName": "Prince",
-		"StudentNumber": 51810
+		"FirstName": "Summer",
+		"LastName": "King",
+		"GenderType": 1
 	},
 	{
 		"FirstName": "Baxter",
-		"LastName": "Hickman",
-		"StudentNumber": 96627
+		"LastName": "Joyner",
+		"GenderType": 2
 	},
 	{
-		"FirstName": "Alice",
+		"FirstName": "Alika",
+		"LastName": "Beasley",
+		"GenderType": 2
+	},
+	{
+		"FirstName": "Nerea",
+		"LastName": "Macdonald",
+		"GenderType": 2
+	},
+	{
+		"FirstName": "Leroy",
+		"LastName": "Haynes",
+		"GenderType": 1
+	},
+	{
+		"FirstName": "Raya",
+		"LastName": "Jensen",
+		"GenderType": 2
+	},
+	{
+		"FirstName": "Charlotte",
+		"LastName": "Tran",
+		"GenderType": 1
+	},
+	{
+		"FirstName": "Lareina",
+		"LastName": "Bridges",
+		"GenderType": 1
+	},
+	{
+		"FirstName": "Melodie",
+		"LastName": "Hicks",
+		"GenderType": 2
+	},
+	{
+		"FirstName": "Aspen",
+		"LastName": "Kirk",
+		"GenderType": 2
+	},
+	{
+		"FirstName": "Carter",
+		"LastName": "Grant",
+		"GenderType": 2
+	},
+	{
+		"FirstName": "Kessie",
+		"LastName": "Hurst",
+		"GenderType": 2
+	},
+	{
+		"FirstName": "Chloe",
+		"LastName": "Britt",
+		"GenderType": 2
+	},
+	{
+		"FirstName": "Tana",
+		"LastName": "Mckay",
+		"GenderType": 2
+	},
+	{
+		"FirstName": "Alyssa",
+		"LastName": "Schmidt",
+		"GenderType": 2
+	},
+	{
+		"FirstName": "Linda",
+		"LastName": "Schwartz",
+		"GenderType": 2
+	},
+	{
+		"FirstName": "Allegra",
+		"LastName": "Dodson",
+		"GenderType": 2
+	},
+	{
+		"FirstName": "Laura",
+		"LastName": "Jimenez",
+		"GenderType": 1
+	},
+	{
+		"FirstName": "Dawn",
+		"LastName": "Short",
+		"GenderType": 2
+	},
+	{
+		"FirstName": "Brady",
+		"LastName": "Holcomb",
+		"GenderType": 2
+	},
+	{
+		"FirstName": "Sasha",
+		"LastName": "Chambers",
+		"GenderType": 1
+	},
+	{
+		"FirstName": "Hadassah",
+		"LastName": "Mcintyre",
+		"GenderType": 1
+	},
+	{
+		"FirstName": "Lamar",
+		"LastName": "Hawkins",
+		"GenderType": 2
+	},
+	{
+		"FirstName": "Mason",
+		"LastName": "Prince",
+		"GenderType": 1
+	},
+	{
+		"FirstName": "Murphy",
+		"LastName": "Thompson",
+		"GenderType": 1
+	},
+	{
+		"FirstName": "Bruce",
+		"LastName": "Franklin",
+		"GenderType": 2
+	},
+	{
+		"FirstName": "Sopoline",
+		"LastName": "Callahan",
+		"GenderType": 1
+	},
+	{
+		"FirstName": "Xyla",
+		"LastName": "Charles",
+		"GenderType": 1
+	},
+	{
+		"FirstName": "Elijah",
+		"LastName": "Christian",
+		"GenderType": 2
+	},
+	{
+		"FirstName": "Bryar",
+		"LastName": "Boyer",
+		"GenderType": 1
+	},
+	{
+		"FirstName": "Quon",
+		"LastName": "Smith",
+		"GenderType": 2
+	},
+	{
+		"FirstName": "Flavia",
+		"LastName": "Arnold",
+		"GenderType": 1
+	},
+	{
+		"FirstName": "Clarke",
+		"LastName": "Warner",
+		"GenderType": 1
+	},
+	{
+		"FirstName": "Alfreda",
+		"LastName": "Bell",
+		"GenderType": 1
+	},
+	{
+		"FirstName": "Owen",
 		"LastName": "Cummings",
-		"StudentNumber": 48676
+		"GenderType": 2
 	},
 	{
-		"FirstName": "Evangeline",
-		"LastName": "Bean",
-		"StudentNumber": 18391
+		"FirstName": "Eve",
+		"LastName": "Perkins",
+		"GenderType": 1
 	},
 	{
-		"FirstName": "Tiger",
-		"LastName": "Barton",
-		"StudentNumber": 59181
+		"FirstName": "John",
+		"LastName": "Shepard",
+		"GenderType": 2
 	},
 	{
-		"FirstName": "Mara",
-		"LastName": "Lambert",
-		"StudentNumber": 93908
+		"FirstName": "Stella",
+		"LastName": "Carrillo",
+		"GenderType": 1
 	},
 	{
-		"FirstName": "Wanda",
-		"LastName": "Bauer",
-		"StudentNumber": 28398
+		"FirstName": "Gray",
+		"LastName": "Mcleod",
+		"GenderType": 1
 	},
 	{
-		"FirstName": "Alden",
-		"LastName": "Spears",
-		"StudentNumber": 96195
+		"FirstName": "Odette",
+		"LastName": "Moss",
+		"GenderType": 2
 	},
 	{
-		"FirstName": "Merritt",
-		"LastName": "Hayden",
-		"StudentNumber": 76895
+		"FirstName": "Lee",
+		"LastName": "Giles",
+		"GenderType": 2
 	},
 	{
-		"FirstName": "Tyrone",
-		"LastName": "Frazier",
-		"StudentNumber": 10595
+		"FirstName": "Ryder",
+		"LastName": "Shepard",
+		"GenderType": 2
 	},
 	{
-		"FirstName": "Haviva",
-		"LastName": "Castro",
-		"StudentNumber": 51721
+		"FirstName": "Roth",
+		"LastName": "Frost",
+		"GenderType": 1
 	},
 	{
-		"FirstName": "Madeson",
-		"LastName": "Larson",
-		"StudentNumber": 90767
+		"FirstName": "Sheila",
+		"LastName": "Brennan",
+		"GenderType": 1
 	},
 	{
-		"FirstName": "Shoshana",
-		"LastName": "Mendoza",
-		"StudentNumber": 74520
+		"FirstName": "Shelley",
+		"LastName": "Sheppard",
+		"GenderType": 2
 	},
 	{
-		"FirstName": "Griffith",
-		"LastName": "Payne",
-		"StudentNumber": 44433
+		"FirstName": "Adrian",
+		"LastName": "Brooks",
+		"GenderType": 2
 	},
 	{
-		"FirstName": "Driscoll",
-		"LastName": "Wilkerson",
-		"StudentNumber": 74725
+		"FirstName": "Amos",
+		"LastName": "Burnett",
+		"GenderType": 2
 	},
 	{
-		"FirstName": "Indigo",
-		"LastName": "Richmond",
-		"StudentNumber": 76480
+		"FirstName": "Lacey",
+		"LastName": "Nieves",
+		"GenderType": 1
+	},
+	{
+		"FirstName": "Fleur",
+		"LastName": "Tucker",
+		"GenderType": 2
+	},
+	{
+		"FirstName": "Luke",
+		"LastName": "Newman",
+		"GenderType": 2
+	},
+	{
+		"FirstName": "Damon",
+		"LastName": "Velazquez",
+		"GenderType": 2
+	},
+	{
+		"FirstName": "Preston",
+		"LastName": "Joyner",
+		"GenderType": 1
+	},
+	{
+		"FirstName": "Frances",
+		"LastName": "Bradshaw",
+		"GenderType": 1
+	},
+	{
+		"FirstName": "Emma",
+		"LastName": "Bennett",
+		"GenderType": 1
+	},
+	{
+		"FirstName": "Travis",
+		"LastName": "Cohen",
+		"GenderType": 2
+	},
+	{
+		"FirstName": "Melyssa",
+		"LastName": "Herrera",
+		"GenderType": 1
+	},
+	{
+		"FirstName": "McKenzie",
+		"LastName": "Newton",
+		"GenderType": 1
+	},
+	{
+		"FirstName": "Clio",
+		"LastName": "Cote",
+		"GenderType": 1
+	},
+	{
+		"FirstName": "Hunter",
+		"LastName": "Sims",
+		"GenderType": 2
+	},
+	{
+		"FirstName": "Denton",
+		"LastName": "Michael",
+		"GenderType": 2
+	},
+	{
+		"FirstName": "Guy",
+		"LastName": "Lott",
+		"GenderType": 1
+	},
+	{
+		"FirstName": "Guy",
+		"LastName": "Stuart",
+		"GenderType": 2
+	},
+	{
+		"FirstName": "Demetria",
+		"LastName": "Padilla",
+		"GenderType": 1
+	},
+	{
+		"FirstName": "Graiden",
+		"LastName": "Combs",
+		"GenderType": 1
+	},
+	{
+		"FirstName": "Sybil",
+		"LastName": "Thompson",
+		"GenderType": 1
+	},
+	{
+		"FirstName": "Fulton",
+		"LastName": "Jennings",
+		"GenderType": 1
+	},
+	{
+		"FirstName": "Stuart",
+		"LastName": "Grant",
+		"GenderType": 1
+	},
+	{
+		"FirstName": "Meghan",
+		"LastName": "Daugherty",
+		"GenderType": 2
+	},
+	{
+		"FirstName": "Melyssa",
+		"LastName": "Meyer",
+		"GenderType": 1
+	},
+	{
+		"FirstName": "Hasad",
+		"LastName": "Villarreal",
+		"GenderType": 1
+	},
+	{
+		"FirstName": "Phillip",
+		"LastName": "Head",
+		"GenderType": 2
 	},
 	{
 		"FirstName": "Germane",
-		"LastName": "Snyder",
-		"StudentNumber": 33662
+		"LastName": "Carrillo",
+		"GenderType": 2
 	},
 	{
-		"FirstName": "Bianca",
-		"LastName": "David",
-		"StudentNumber": 23574
+		"FirstName": "Fuller",
+		"LastName": "Livingston",
+		"GenderType": 2
 	},
 	{
-		"FirstName": "Colleen",
-		"LastName": "Espinoza",
-		"StudentNumber": 83394
+		"FirstName": "Kylie",
+		"LastName": "Kim",
+		"GenderType": 1
 	},
 	{
-		"FirstName": "Logan",
-		"LastName": "Farrell",
-		"StudentNumber": 70184
+		"FirstName": "Marshall",
+		"LastName": "Vang",
+		"GenderType": 1
 	},
 	{
-		"FirstName": "Ezekiel",
-		"LastName": "Salinas",
-		"StudentNumber": 20848
+		"FirstName": "Ella",
+		"LastName": "Kirby",
+		"GenderType": 1
 	},
 	{
-		"FirstName": "Jolene",
-		"LastName": "Koch",
-		"StudentNumber": 53051
+		"FirstName": "Gwendolyn",
+		"LastName": "Frederick",
+		"GenderType": 1
 	},
 	{
-		"FirstName": "Calvin",
-		"LastName": "Horton",
-		"StudentNumber": 22659
+		"FirstName": "David",
+		"LastName": "Walter",
+		"GenderType": 1
 	},
 	{
-		"FirstName": "Geraldine",
-		"LastName": "Sherman",
-		"StudentNumber": 18595
+		"FirstName": "Grady",
+		"LastName": "Conway",
+		"GenderType": 1
 	},
 	{
-		"FirstName": "Jakeem",
-		"LastName": "Little",
-		"StudentNumber": 66365
+		"FirstName": "Steven",
+		"LastName": "Serrano",
+		"GenderType": 1
+	},
+	{
+		"FirstName": "Carl",
+		"LastName": "Daniels",
+		"GenderType": 1
+	},
+	{
+		"FirstName": "Iris",
+		"LastName": "Booth",
+		"GenderType": 1
+	},
+	{
+		"FirstName": "Octavius",
+		"LastName": "Elliott",
+		"GenderType": 1
+	},
+	{
+		"FirstName": "Baxter",
+		"LastName": "Le",
+		"GenderType": 1
+	},
+	{
+		"FirstName": "Renee",
+		"LastName": "Mason",
+		"GenderType": 2
+	},
+	{
+		"FirstName": "Hedda",
+		"LastName": "Abbott",
+		"GenderType": 2
+	},
+	{
+		"FirstName": "Orlando",
+		"LastName": "Hudson",
+		"GenderType": 1
+	},
+	{
+		"FirstName": "Jameson",
+		"LastName": "Finley",
+		"GenderType": 2
+	},
+	{
+		"FirstName": "Marny",
+		"LastName": "Hayden",
+		"GenderType": 2
 	}
 ]
