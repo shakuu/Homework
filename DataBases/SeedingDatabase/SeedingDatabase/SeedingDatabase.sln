@@ -1,0 +1,28 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 14
+VisualStudioVersion = 14.0.25420.1
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SeedingDatabase.Models", "SeedingDatabase.Models\SeedingDatabase.Models.csproj", "{2D8FAED4-BD6E-4FBD-8ACF-B2327D44EF46}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SeedingDatabase.Data", "SeedingDatabase.Data\SeedingDatabase.Data.csproj", "{100F85E9-4AB2-4040-A647-9115C016B115}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{2D8FAED4-BD6E-4FBD-8ACF-B2327D44EF46}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2D8FAED4-BD6E-4FBD-8ACF-B2327D44EF46}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2D8FAED4-BD6E-4FBD-8ACF-B2327D44EF46}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2D8FAED4-BD6E-4FBD-8ACF-B2327D44EF46}.Release|Any CPU.Build.0 = Release|Any CPU
+		{100F85E9-4AB2-4040-A647-9115C016B115}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{100F85E9-4AB2-4040-A647-9115C016B115}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{100F85E9-4AB2-4040-A647-9115C016B115}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{100F85E9-4AB2-4040-A647-9115C016B115}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
