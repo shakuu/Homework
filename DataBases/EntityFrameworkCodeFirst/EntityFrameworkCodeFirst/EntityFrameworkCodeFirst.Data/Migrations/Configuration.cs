@@ -59,7 +59,7 @@ namespace EntityFrameworkCodeFirst.Data.Migrations
                             Content = homeworks[nextHomeworkId].Content,
                             TimeSent = homeworks[nextHomeworkId].TimeSent,
                         };
-
+                        
                         nextHomework.Student = nextStudent;
                         nextHomework.Course = course;
                         context.Homeworks.Add(nextHomework);
