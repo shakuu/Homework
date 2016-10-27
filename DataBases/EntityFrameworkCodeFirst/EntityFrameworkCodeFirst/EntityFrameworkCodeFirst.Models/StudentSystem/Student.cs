@@ -16,8 +16,7 @@ namespace EntityFrameworkCodeFirst.Models.StudentSystem
             this.courses = new HashSet<Course>();
             this.homeoworks = new HashSet<Homework>();
         }
-
-        [Key]
+        
         public int Id { get; set; }
 
         [Required]

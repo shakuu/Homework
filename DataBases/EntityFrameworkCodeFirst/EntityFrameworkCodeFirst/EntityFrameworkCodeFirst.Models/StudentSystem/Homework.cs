@@ -6,7 +6,6 @@ namespace EntityFrameworkCodeFirst.Models.StudentSystem
 {
     public class Homework
     {
-        [Key]
         public int Id { get; set; }
 
         [Column(TypeName = "ntext")]

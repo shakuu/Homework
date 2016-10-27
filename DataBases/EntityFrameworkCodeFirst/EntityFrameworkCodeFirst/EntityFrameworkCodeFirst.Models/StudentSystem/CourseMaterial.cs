@@ -4,7 +4,6 @@ namespace EntityFrameworkCodeFirst.Models.StudentSystem
 {
     public class CourseMaterial
     {
-        [Key]
         public int Id { get; set; }
 
         [DataType(DataType.Url)]
