@@ -3,7 +3,7 @@ namespace EntityFrameworkCodeFirst.Data.Migrations
     using System;
     using System.Data.Entity.Migrations;
     
-    public partial class initial : DbMigration
+    public partial class init : DbMigration
     {
         public override void Up()
         {
@@ -12,7 +12,7 @@ namespace EntityFrameworkCodeFirst.Data.Migrations
                 c => new
                     {
                         Id = c.Int(nullable: false, identity: true),
-                        Url = c.String(),
+                        Url = c.String(maxLength: 200),
                         CourseId = c.Int(nullable: false),
                     })
                 .PrimaryKey(t => t.Id)
@@ -24,8 +24,8 @@ namespace EntityFrameworkCodeFirst.Data.Migrations
                 c => new
                     {
                         Id = c.Int(nullable: false, identity: true),
-                        Name = c.String(),
-                        Description = c.String(),
+                        Name = c.String(nullable: false, maxLength: 20),
+                        Description = c.String(storeType: "ntext"),
                     })
                 .PrimaryKey(t => t.Id);
             
@@ -34,7 +34,7 @@ namespace EntityFrameworkCodeFirst.Data.Migrations
                 c => new
                     {
                         Id = c.Int(nullable: false, identity: true),
-                        Content = c.String(),
+                        Content = c.String(storeType: "ntext"),
                         TimeSent = c.DateTime(nullable: false),
                         StudentId = c.Int(nullable: false),
                         CourseId = c.Int(nullable: false),
@@ -50,10 +50,12 @@ namespace EntityFrameworkCodeFirst.Data.Migrations
                 c => new
                     {
                         Id = c.Int(nullable: false, identity: true),
-                        Name = c.String(),
-                        Number = c.Int(nullable: false),
+                        FirstName = c.String(nullable: false, maxLength: 20),
+                        LastName = c.String(nullable: false, maxLength: 20),
+                        StudentNumber = c.String(maxLength: 5),
                     })
-                .PrimaryKey(t => t.Id);
+                .PrimaryKey(t => t.Id)
+                .Index(t => t.StudentNumber, unique: true);
             
             CreateTable(
                 "dbo.StudentCourses",
@@ -79,6 +81,7 @@ namespace EntityFrameworkCodeFirst.Data.Migrations
             DropForeignKey("dbo.CourseMaterials", "CourseId", "dbo.Courses");
             DropIndex("dbo.StudentCourses", new[] { "Course_Id" });
             DropIndex("dbo.StudentCourses", new[] { "Student_Id" });
+            DropIndex("dbo.Students", new[] { "StudentNumber" });
             DropIndex("dbo.Homework", new[] { "CourseId" });
             DropIndex("dbo.Homework", new[] { "StudentId" });
             DropIndex("dbo.CourseMaterials", new[] { "CourseId" });

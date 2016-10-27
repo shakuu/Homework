@@ -7,13 +7,13 @@ namespace EntityFrameworkCodeFirst.Data.Migrations
     using System.Resources;
     
     [GeneratedCode("EntityFramework.Migrations", "6.1.3-40302")]
-    public sealed partial class addedannotations : IMigrationMetadata
+    public sealed partial class init : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(addedannotations));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(init));
         
         string IMigrationMetadata.Id
         {
-            get { return "201610262214160_added annotations"; }
+            get { return "201610270911341_init"; }
         }
         
         string IMigrationMetadata.Source
