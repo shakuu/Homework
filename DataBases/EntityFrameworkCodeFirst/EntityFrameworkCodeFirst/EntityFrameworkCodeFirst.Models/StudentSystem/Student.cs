@@ -22,7 +22,11 @@ namespace EntityFrameworkCodeFirst.Models.StudentSystem
 
         [Required]
         [StringLength(20, MinimumLength = 3)]
-        public string Name { get; set; }
+        public string FirstName { get; set; }
+
+        [Required]
+        [StringLength(20, MinimumLength = 3)]
+        public string LastName { get; set; }
 
         [Index(IsClustered = false, IsUnique = true)]
         [StringLength(5, MinimumLength = 5)]

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace EntityFrameworkCodeFirst.Models.StudentSystem
 {
@@ -8,7 +9,8 @@ namespace EntityFrameworkCodeFirst.Models.StudentSystem
         [Key]
         public int Id { get; set; }
 
-        [DataType(DataType.Text)]
+        [Column(TypeName = "ntext")]
+        [MaxLength]
         public string Content { get; set; }
 
         public DateTime TimeSent { get; set; }

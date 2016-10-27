@@ -70,6 +70,10 @@
     <Compile Include="Migrations\201610262221578_ntext.Designer.cs">
       <DependentUpon>201610262221578_ntext.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201610270722108_homework content ntext.cs" />
+    <Compile Include="Migrations\201610270722108_homework content ntext.Designer.cs">
+      <DependentUpon>201610270722108_homework content ntext.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -92,6 +96,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201610262221578_ntext.resx">
       <DependentUpon>201610262221578_ntext.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201610270722108_homework content ntext.resx">
+      <DependentUpon>201610270722108_homework content ntext.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
