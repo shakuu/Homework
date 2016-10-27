@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
@@ -9,8 +8,7 @@ namespace EntityFrameworkCodeFirst.Models.StudentSystem
     {
         private ICollection<Course> courses;
         private ICollection<Homework> homeoworks;
-
-
+        
         public Student()
         {
             this.courses = new HashSet<Course>();

@@ -1,5 +1,9 @@
 ﻿namespace EntityFrameworkCodeFirst.Data.Seeders.Containers
 {
+    /// <summary>
+    /// CTRL + M + O 
+    /// Default keybinding for collapsing in VS.
+    /// </summary>
     public class JsonContainer : IJsonContainer
     {
         private readonly string courses =
@@ -950,10 +954,28 @@
 ]";
         #endregion
 
-        public string SeededNamesJson { get { return this.names; } }
+        public string SeededNamesJson
+        {
+            get
+            {
+                return this.names;
+            }
+        }
 
-        public string SeededCoursesJson { get { return this.courses; } }
+        public string SeededCoursesJson
+        {
+            get
+            {
+                return this.courses;
+            }
+        }
 
-        public string SeededHomeworksJson { get { return this.homeworks; } }
+        public string SeededHomeworksJson
+        {
+            get
+            {
+                return this.homeworks;
+            }
+        }
     }
 }

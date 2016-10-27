@@ -12,7 +12,7 @@ namespace EntityFrameworkCodeFirst.Data.Migrations
     {
         public Configuration()
         {
-            AutomaticMigrationsEnabled = false;
+            this.AutomaticMigrationsEnabled = false;
         }
 
         protected override void Seed(DbContexts.StudentSystemDbContext context)
@@ -59,7 +59,7 @@ namespace EntityFrameworkCodeFirst.Data.Migrations
                             Content = homeworks[nextHomeworkId].Content,
                             TimeSent = homeworks[nextHomeworkId].TimeSent,
                         };
-                        
+
                         nextHomework.Student = nextStudent;
                         nextHomework.Course = course;
                         context.Homeworks.Add(nextHomework);
