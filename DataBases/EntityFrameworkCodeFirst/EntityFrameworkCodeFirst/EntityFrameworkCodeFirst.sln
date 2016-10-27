@@ -7,6 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EntityFrameworkCodeFirst.Mo
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EntityFrameworkCodeFirst.Data", "EntityFrameworkCodeFirst.Data\EntityFrameworkCodeFirst.Data.csproj", "{DE209609-449F-4C6D-8887-04FCA9E50F95}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EntityFrameworkCodeFirst.ConsoleClient", "EntityFrameworkCodeFirst.ConsoleClient\EntityFrameworkCodeFirst.ConsoleClient.csproj", "{B794B4F1-23F4-4149-9CC0-18DC36975317}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,10 @@ Global
 		{DE209609-449F-4C6D-8887-04FCA9E50F95}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{DE209609-449F-4C6D-8887-04FCA9E50F95}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{DE209609-449F-4C6D-8887-04FCA9E50F95}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B794B4F1-23F4-4149-9CC0-18DC36975317}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B794B4F1-23F4-4149-9CC0-18DC36975317}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B794B4F1-23F4-4149-9CC0-18DC36975317}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B794B4F1-23F4-4149-9CC0-18DC36975317}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

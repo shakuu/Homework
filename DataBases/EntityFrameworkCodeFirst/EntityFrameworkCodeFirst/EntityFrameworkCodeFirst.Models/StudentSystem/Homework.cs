@@ -13,7 +13,7 @@ namespace EntityFrameworkCodeFirst.Models.StudentSystem
         [MaxLength]
         public string Content { get; set; }
 
-        public DateTime? TimeSent { get; set; }
+        public DateTime TimeSent { get; set; }
                 
         public int StudentId { get; set; }
         

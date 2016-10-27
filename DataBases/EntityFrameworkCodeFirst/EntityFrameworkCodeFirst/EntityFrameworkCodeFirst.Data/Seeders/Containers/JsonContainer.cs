@@ -1,6 +1,6 @@
 ﻿namespace EntityFrameworkCodeFirst.Data.Seeders.Containers
 {
-    internal class JsonContainer : IJsonContainer
+    public class JsonContainer : IJsonContainer
     {
         private readonly string courses =
         #region SeededCourses

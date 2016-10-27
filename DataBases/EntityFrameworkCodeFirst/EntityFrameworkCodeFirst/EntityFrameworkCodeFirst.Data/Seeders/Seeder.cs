@@ -61,7 +61,7 @@ namespace EntityFrameworkCodeFirst.Data.Seeders
 
         public IList<Homework> SeedHomework()
         {
-            var coursesJson = this.jsonContainer.SeededCoursesJson;
+            var coursesJson = this.jsonContainer.SeededHomeworksJson;
             var parsedCourses = JsonConvert.DeserializeObject<List<SeedHomework>>(coursesJson, new IsoDateTimeConverter { DateTimeFormat = "MM/dd/yyyy" });
 
             var courses = new List<Homework>();
