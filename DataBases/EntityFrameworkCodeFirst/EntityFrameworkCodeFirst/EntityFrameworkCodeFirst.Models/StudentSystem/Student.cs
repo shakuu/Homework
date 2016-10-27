@@ -29,7 +29,7 @@ namespace EntityFrameworkCodeFirst.Models.StudentSystem
         public string LastName { get; set; }
 
         [Index(IsClustered = false, IsUnique = true)]
-        [StringLength(5, MinimumLength = 5)]
+        [StringLength(10, MinimumLength = 10)]
         public string StudentNumber { get; set; }
 
         public virtual ICollection<Course> Courses

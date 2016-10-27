@@ -35,7 +35,7 @@ namespace EntityFrameworkCodeFirst.Data.Migrations
                     {
                         Id = c.Int(nullable: false, identity: true),
                         Content = c.String(storeType: "ntext"),
-                        TimeSent = c.DateTime(),
+                        TimeSent = c.DateTime(nullable: false),
                         StudentId = c.Int(nullable: false),
                         CourseId = c.Int(nullable: false),
                     })
@@ -52,7 +52,7 @@ namespace EntityFrameworkCodeFirst.Data.Migrations
                         Id = c.Int(nullable: false, identity: true),
                         FirstName = c.String(nullable: false, maxLength: 20),
                         LastName = c.String(nullable: false, maxLength: 20),
-                        StudentNumber = c.String(maxLength: 5),
+                        StudentNumber = c.String(maxLength: 10),
                     })
                 .PrimaryKey(t => t.Id)
                 .Index(t => t.StudentNumber, unique: true);

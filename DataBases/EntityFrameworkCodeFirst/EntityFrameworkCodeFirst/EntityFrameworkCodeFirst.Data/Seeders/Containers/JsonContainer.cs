@@ -112,11 +112,6 @@
                     ""StudentNumber"": 72897
                 },
                 {
-                    ""FirstName"": ""Hyacinth"",
-                    ""LastName"": ""Jordan"",
-                    ""StudentNumber"": 51587
-                },
-                {
                     ""FirstName"": ""Isabella"",
                     ""LastName"": ""Morgan"",
                     ""StudentNumber"": 75019
@@ -400,11 +395,6 @@
                     ""FirstName"": ""Signe"",
                     ""LastName"": ""Head"",
                     ""StudentNumber"": 82449
-                },
-                {
-                    ""FirstName"": ""Elizabeth"",
-                    ""LastName"": ""Elliott"",
-                    ""StudentNumber"": 49893
                 },
                 {
                     ""FirstName"": ""Raymond"",

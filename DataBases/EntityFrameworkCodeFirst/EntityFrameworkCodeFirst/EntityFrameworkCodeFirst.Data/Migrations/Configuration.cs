@@ -1,9 +1,10 @@
+using System;
 using System.Data.Entity.Migrations;
 using System.Linq;
 
 using EntityFrameworkCodeFirst.Data.Seeders;
 using EntityFrameworkCodeFirst.Data.Seeders.Containers;
-using System;
+using EntityFrameworkCodeFirst.Models.StudentSystem;
 
 namespace EntityFrameworkCodeFirst.Data.Migrations
 {
@@ -19,23 +20,16 @@ namespace EntityFrameworkCodeFirst.Data.Migrations
             var coursesExist = context.Courses.Any();
             var studentsExist = context.Students.Any();
             var homeworksExist = context.Homeworks.Any();
-            if (!coursesExist || !studentsExist || !homeworksExist)
+            if (!(coursesExist && studentsExist && homeworksExist))
             {
                 var jsonContainer = new JsonContainer();
                 var seeder = new Seeder(jsonContainer);
 
                 var students = seeder.SeedStudents();
-                foreach (var student in students)
-                {
-                    context.Students.Add(student);
-                }
 
                 var homeworks = seeder.SeedHomework();
-                foreach (var hw in homeworks)
-                {
-                    context.Homeworks.Add(hw);
-                }
 
+                var studentNumber = 1000000001;
                 var random = new Random();
                 var homeworkCount = homeworks.Count;
                 var studentsCount = students.Count;
@@ -47,15 +41,28 @@ namespace EntityFrameworkCodeFirst.Data.Migrations
                     for (int i = 0; i < studentsPerCourse; i++)
                     {
                         var nextStudentId = random.Next(0, studentsCount);
-                        var nextStudent = students[nextStudentId];
+                        var nextStudent = new Student()
+                        {
+                            FirstName = students[nextStudentId].FirstName,
+                            LastName = students[nextStudentId].LastName,
+                            StudentNumber = studentNumber.ToString().PadLeft(10)
+                        };
+
+                        studentNumber++;
 
                         course.Students.Add(nextStudent);
                         nextStudent.Courses.Add(course);
-                        
+
                         var nextHomeworkId = random.Next(0, homeworkCount);
-                        var nextHomework = homeworks[nextHomeworkId];
+                        var nextHomework = new Homework()
+                        {
+                            Content = homeworks[nextHomeworkId].Content,
+                            TimeSent = homeworks[nextHomeworkId].TimeSent,
+                        };
+
                         nextHomework.Student = nextStudent;
                         nextHomework.Course = course;
+                        context.Homeworks.Add(nextHomework);
                     }
 
                     context.Courses.Add(course);
