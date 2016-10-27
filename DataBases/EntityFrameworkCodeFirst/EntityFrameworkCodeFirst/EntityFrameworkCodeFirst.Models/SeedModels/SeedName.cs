@@ -8,6 +8,8 @@
 
         public string LastName { get; set; }
 
+        public string StudentNumber { get; set; }
+
         public int GenderType { get; set; }
     }
 }

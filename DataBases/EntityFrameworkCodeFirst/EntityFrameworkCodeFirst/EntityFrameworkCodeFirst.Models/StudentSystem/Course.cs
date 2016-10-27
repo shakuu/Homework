@@ -21,7 +21,7 @@ namespace EntityFrameworkCodeFirst.Models.StudentSystem
         public int Id { get; set; }
 
         [Required]
-        [StringLength(20, MinimumLength = 3)]
+        [StringLength(120, MinimumLength = 3)]
         public string Name { get; set; }
 
         [Column(TypeName = "ntext")]

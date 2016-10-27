@@ -1,7 +1,9 @@
 using System.Data.Entity.Migrations;
 using System.Linq;
 
-using EntityFrameworkCodeFirst.Models.StudentSystem;
+using EntityFrameworkCodeFirst.Data.Seeders;
+using EntityFrameworkCodeFirst.Data.Seeders.Containers;
+using System;
 
 namespace EntityFrameworkCodeFirst.Data.Migrations
 {
@@ -14,50 +16,40 @@ namespace EntityFrameworkCodeFirst.Data.Migrations
 
         protected override void Seed(DbContexts.StudentSystemDbContext context)
         {
-            //if (!context.Courses.Any())
-            //{
-            //    var dataBases = new Course()
-            //    {
-            //        Name = "Databases",
-            //        Description = "SQL Torture"
-            //    };
+            var coursesExist = context.Courses.Any();
+            var studentsExist = context.Students.Any();
+            if (!(coursesExist && studentsExist))
+            {
+                var jsonContainer = new JsonContainer();
+                var seeder = new Seeder(jsonContainer);
 
-            //    var designPatterns = new Course()
-            //    {
-            //        Name = "Design Patters",
-            //        Description = "Programming philosophy"
-            //    };
+                var students = seeder.SeedStudents();
+                foreach (var student in students)
+                {
+                    context.Students.Add(student);
+                }
 
-            //    context.Courses.Add(dataBases);
-            //    context.Courses.Add(dataBases);
-            //}
+                var random = new Random();
+                var studentsCount = students.Count;
+                var studentsPerCourse = 20;
 
-            //if (!context.Students.Any())
-            //{
-            //    var studentPesho = new Student()
-            //    {
-            //        FirstName = "Pesho",
-            //        LastName = "Peshev"
-            //    };
+                var courses = seeder.SeedCourses();
+                foreach (var course in courses)
+                {
+                    for (int i = 0; i < studentsPerCourse; i++)
+                    {
+                        var nextStudentId = random.Next(0, studentsCount);
+                        var nextStudent = students[nextStudentId];
 
-            //    var studentGosho = new Student()
-            //    {
-            //        FirstName = "Gosho",
-            //        LastName = "Goshev"
-            //    };
+                        course.Students.Add(nextStudent);
+                        nextStudent.Courses.Add(course);
+                    }
 
-            //    var studentStamat = new Student()
-            //    {
-            //        FirstName = "Stamat",
-            //        LastName = "Stamat"
-            //    };
+                    context.Courses.Add(course);
+                }
+            }
 
-            //    context.Students.Add(studentPesho);
-            //    context.Students.Add(studentGosho);
-            //    context.Students.Add(studentStamat);
-            //}
-
-            //context.SaveChanges();
+            context.SaveChanges();
         }
     }
 }

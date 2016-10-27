@@ -17,32 +17,33 @@ namespace EntityFrameworkCodeFirst.Data.Seeders
             this.jsonContainer = jsonContainer;
         }
 
-        public IEnumerable<Student> SeedStudents()
+        public IList<Student> SeedStudents()
         {
             var namesJson = this.jsonContainer.SeededNamesJson;
             var parsedNames = JsonConvert.DeserializeObject<List<SeedName>>(namesJson);
 
-            var students = new LinkedList<Student>();
+            var students = new List<Student>();
             foreach (var name in parsedNames)
             {
                 var nextStudent = new Student()
                 {
                     FirstName = name.FirstName,
-                    LastName = name.LastName
+                    LastName = name.LastName,
+                    StudentNumber = name.StudentNumber
                 };
 
-                students.AddLast(nextStudent);
+                students.Add(nextStudent);
             }
 
             return students;
         }
 
-        public IEnumerable<Course> SeedCourses()
+        public IList<Course> SeedCourses()
         {
             var coursesJson = this.jsonContainer.SeededCoursesJson;
             var parsedCourses = JsonConvert.DeserializeObject<List<SeedCourse>>(coursesJson);
 
-            var courses = new LinkedList<Course>();
+            var courses = new List<Course>();
             foreach (var course in parsedCourses)
             {
                 var nextCourse = new Course()
@@ -51,7 +52,7 @@ namespace EntityFrameworkCodeFirst.Data.Seeders
                     Description = course.Description
                 };
 
-                courses.AddLast(nextCourse);
+                courses.Add(nextCourse);
             }
 
             return courses;

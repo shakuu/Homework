@@ -24,7 +24,7 @@ namespace EntityFrameworkCodeFirst.Data.Migrations
                 c => new
                     {
                         Id = c.Int(nullable: false, identity: true),
-                        Name = c.String(nullable: false, maxLength: 20),
+                        Name = c.String(nullable: false, maxLength: 120),
                         Description = c.String(storeType: "ntext"),
                     })
                 .PrimaryKey(t => t.Id);
