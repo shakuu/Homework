@@ -1,8 +1,9 @@
-﻿using System.Linq;
+﻿using System;
+using System.Data.SqlClient;
+using System.Linq;
 
 using EntityFramework.Data;
 using EntitiyFramework.Tasks;
-using System;
 
 namespace EntityFramework.ConsoleApp
 {
@@ -16,14 +17,53 @@ namespace EntityFramework.ConsoleApp
             Program.ModifyCustomer(Program.CustomerId);
             Program.RemoveCustomer(Program.CustomerId);
 
+            Program.InsertCustomerWithSql(Program.CustomerId, "Company");
+            Program.ModifyCustomerWithSql(Program.CustomerId);
+            Program.RemoveCustomerWithSql(Program.CustomerId);
+
             Program.CustomersWithOrdersFromYearToCountry(1997, "Canada");
             Program.CustomersWithOrdersFromYearToCountryWithSQL(1997, "Canada");
 
             var end = new DateTime(2000, 6, 1);
             var start = new DateTime(1996, 6, 1);
             Program.FindsAllSalesByRegionAndPeriod("Essex", start, end);
+        }
 
+        private static void InsertCustomerWithSql(string id, string companyName)
+        {
+            var query =
+                @"INSERT INTO Customers (CustomerID, CompanyName)
+                        VALUES(@id, @company)";
             
+            var context = DAO.GetContext();
+            context.Database.ExecuteSqlCommand(
+                query,
+                new SqlParameter("@id", id),
+                new SqlParameter("@company", companyName));
+        }
+
+        private static void ModifyCustomerWithSql(string id)
+        {
+            var query =
+                @"UPDATE Customers
+                    SET CompanyName = @company
+                    WHERE CustomerID = @id";
+            
+            var context = DAO.GetContext();
+            context.Database.ExecuteSqlCommand(
+                query,
+                new SqlParameter("@id", id),
+                new SqlParameter("@company", "changed"));
+        }
+
+        private static void RemoveCustomerWithSql(string id)
+        {
+            var query =
+                @"DELETE FROM Customers
+                    WHERE CustomerID = @id";
+            
+            var context = DAO.GetContext();
+            context.Database.ExecuteSqlCommand(query, new SqlParameter("@id", id));
         }
 
         private static void InsertCustomer(string id, string companyName)

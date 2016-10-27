@@ -11,7 +11,7 @@ namespace EntitiyFramework.Tasks
 {
     public class DAO
     {
-        private static NorthwindEntities GetContext()
+        public static NorthwindEntities GetContext()
         {
             var dbContext = new NorthwindEntities();
             return dbContext;
