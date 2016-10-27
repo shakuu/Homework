@@ -1,4 +1,11 @@
+using System.Collections.Generic;
 using System.Data.Entity.Migrations;
+using System.IO;
+using System.Linq;
+
+using Newtonsoft.Json;
+
+using SeedingDatabase.Models.Names;
 
 namespace SeedingDatabase.Data.Migrations
 {
@@ -9,20 +16,20 @@ namespace SeedingDatabase.Data.Migrations
             AutomaticMigrationsEnabled = false;
         }
 
-        protected override void Seed(SeedingDatabase.Data.SeedingData.SeedingDataDbContext context)
+        protected override void Seed(SeedingData.SeedingDataDbContext context)
         {
-            //  This method will be called after migrating to the latest version.
+            if (!context.Names.Any())
+            {
+                var json = File.ReadAllText("D:\\GitHub\\names.json");
+                var items = JsonConvert.DeserializeObject<List<Name>>(json);
 
-            //  You can use the DbSet<T>.AddOrUpdate() helper extension method 
-            //  to avoid creating duplicate seed data. E.g.
-            //
-            //    context.People.AddOrUpdate(
-            //      p => p.FullName,
-            //      new Person { FullName = "Andrew Peters" },
-            //      new Person { FullName = "Brice Lambson" },
-            //      new Person { FullName = "Rowan Miller" }
-            //    );
-            //
+                foreach (var item in items)
+                {
+                    context.Names.Add(item);
+                }
+
+                context.SaveChanges();
+            }
         }
     }
 }
