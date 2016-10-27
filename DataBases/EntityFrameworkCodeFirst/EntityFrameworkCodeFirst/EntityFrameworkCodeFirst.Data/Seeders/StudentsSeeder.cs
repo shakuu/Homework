@@ -17,23 +17,44 @@ namespace EntityFrameworkCodeFirst.Data.Seeders
             this.jsonContainer = jsonContainer;
         }
 
-        public IEnumerable<Student> SeedStudents(int number)
+        public IEnumerable<Student> SeedStudents()
         {
             var namesJson = this.jsonContainer.SeededNamesJson;
             var parsedNames = JsonConvert.DeserializeObject<List<SeedName>>(namesJson);
 
             var students = new LinkedList<Student>();
-            for (int i = 0; i < number; i++)
+            foreach (var name in parsedNames)
             {
-                var name = parsedNames[i];
                 var nextStudent = new Student()
                 {
                     FirstName = name.FirstName,
                     LastName = name.LastName
                 };
+
+                students.AddLast(nextStudent);
             }
 
             return students;
+        }
+
+        public IEnumerable<Course> SeedCourses()
+        {
+            var coursesJson = this.jsonContainer.SeededCoursesJson;
+            var parsedCourses = JsonConvert.DeserializeObject<List<SeedCourse>>(coursesJson);
+
+            var courses = new LinkedList<Course>();
+            foreach (var course in parsedCourses)
+            {
+                var nextCourse = new Course()
+                {
+                    Name = course.Name,
+                    Description = course.Description
+                };
+
+                courses.AddLast(nextCourse);
+            }
+
+            return courses;
         }
     }
 }

@@ -1,6 +1,11 @@
 ﻿namespace EntityFrameworkCodeFirst.Models.SeedModels
 {
-    class SeedCourse
+    public class SeedCourse
     {
+        public int Id { get; set; }
+
+        public string Name { get; set; }
+
+        public string Description { get; set; }
     }
 }
