@@ -49,6 +49,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Courses\Course.cs" />
     <Compile Include="Names\Enums\GenderType.cs" />
     <Compile Include="Names\Name.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

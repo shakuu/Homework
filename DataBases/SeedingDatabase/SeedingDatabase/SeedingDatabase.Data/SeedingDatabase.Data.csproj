@@ -61,6 +61,10 @@
     <Compile Include="Migrations\201610270824131_names.Designer.cs">
       <DependentUpon>201610270824131_names.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201610270835480_courses.cs" />
+    <Compile Include="Migrations\201610270835480_courses.Designer.cs">
+      <DependentUpon>201610270835480_courses.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="SeedingData\SeedingDataDbContext.cs" />
@@ -81,6 +85,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201610270824131_names.resx">
       <DependentUpon>201610270824131_names.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201610270835480_courses.resx">
+      <DependentUpon>201610270835480_courses.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
