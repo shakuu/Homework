@@ -95,6 +95,15 @@ namespace EntitiyFramework.Tasks
             return orders;
         }
 
+        public static void CreateNorthwindTwin()
+        {
+            //var northwindConnectionString = "NorthwindEntities";
+            var northwindTwinConnectionString = "NorthwindTwin";
+
+            var context = new NorthwindEntities(northwindTwinConnectionString);
+            context.Database.CreateIfNotExists();
+        }
+
         public static void ExtendedEmployeeTesting()
         {
             var context = DAO.GetContext();

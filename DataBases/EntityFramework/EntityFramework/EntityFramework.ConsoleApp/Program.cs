@@ -27,6 +27,8 @@ namespace EntityFramework.ConsoleApp
             var end = new DateTime(2000, 6, 1);
             var start = new DateTime(1996, 6, 1);
             Program.FindsAllSalesByRegionAndPeriod("Essex", start, end);
+
+            DAO.CreateNorthwindTwin();
         }
 
         private static void InsertCustomerWithSql(string id, string companyName)
@@ -34,7 +36,7 @@ namespace EntityFramework.ConsoleApp
             var query =
                 @"INSERT INTO Customers (CustomerID, CompanyName)
                         VALUES(@id, @company)";
-            
+
             var context = DAO.GetContext();
             context.Database.ExecuteSqlCommand(
                 query,
@@ -48,7 +50,7 @@ namespace EntityFramework.ConsoleApp
                 @"UPDATE Customers
                     SET CompanyName = @company
                     WHERE CustomerID = @id";
-            
+
             var context = DAO.GetContext();
             context.Database.ExecuteSqlCommand(
                 query,
@@ -61,7 +63,7 @@ namespace EntityFramework.ConsoleApp
             var query =
                 @"DELETE FROM Customers
                     WHERE CustomerID = @id";
-            
+
             var context = DAO.GetContext();
             context.Database.ExecuteSqlCommand(query, new SqlParameter("@id", id));
         }
