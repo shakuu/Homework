@@ -30,7 +30,7 @@ namespace EntityFramework.ConsoleApp
 
             DAO.CreateNorthwindTwin();
 
-            //DAO.ConcurrentChanges();
+            DAO.ConcurrentChanges();
         }
 
         private static void InsertCustomerWithSql(string id, string companyName)
