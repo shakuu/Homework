@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Linq;
 
 namespace Data.Seeding.Seeders
@@ -49,7 +48,6 @@ namespace Data.Seeding.Seeders
             var departmentsIds = context.Departments.Select(d => d.Id).ToList();
             var departmentsCount = departmentsIds.Count();
 
-            var seededEmployees = new List<Employee>();
             var random = new Random();
             for (int i = 1; i <= employeeCount; i++)
             {
@@ -67,26 +65,45 @@ namespace Data.Seeding.Seeders
                 };
 
                 context.Employees.Add(nextSeedEmployee);
-                seededEmployees.Add(nextSeedEmployee);
             }
 
-            var allEmployeesFromDb = context.Employees.Select(e => e.Id).ToList();
-            var lastAssignedEmployee = allEmployeesFromDb.Count - 1;
+            context.SaveChanges();
+            System.Console.WriteLine("Emplyees successfully created.");
 
-            var executivesCount = (int)Math.Ceiling(employeeCount + 0.05);
-            var employeesPerExecutive = employeeCount / executivesCount;
-            for (int managerIndex = 0; managerIndex < executivesCount; managerIndex++)
+            StaticSeeder.CreateManagers();
+        }
+
+        public static void CreateManagers()
+        {
+            var context = StaticSeeder.GetContext();
+            if (!context.Employees.Any())
             {
-                for (int employeeIndex = lastAssignedEmployee; employeeIndex >= employeeCount - (employeesPerExecutive * (managerIndex + 1)); employeeIndex--)
+                Console.WriteLine("No employees found");
+                return;
+            }
+            
+            var allEmployees = context.Employees.ToList();
+            var employeesCount = allEmployees.Count;
+            var managersCount = (int)Math.Ceiling(employeesCount * 0.05);
+
+            var employeesPerManager = employeesCount / managersCount;
+            var firstEmployeeIndex = managersCount;
+
+            for (int manager = 0; manager < managersCount; manager++)
+            {
+                var managerId = allEmployees[manager].Id;
+
+                for (int employee = firstEmployeeIndex; employee < firstEmployeeIndex + employeesPerManager; employee++)
                 {
-                    seededEmployees[employeeIndex].ManagerId = allEmployeesFromDb[managerIndex];
-                    lastAssignedEmployee--;
-                }
-            }
+                    if (employeesCount <= employee)
+                    {
+                        break;
+                    }
 
-            for (int i = 0; i < executivesCount; i++)
-            {
-                seededEmployees[i].ManagerId = null;
+                    allEmployees[employee].ManagerId = managerId;
+                }
+
+                firstEmployeeIndex += employeesPerManager;
             }
 
             context.SaveChanges();

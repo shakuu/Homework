@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="CompanyModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="CompanyModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="Departments">
           <Key>
             <PropertyRef Name="Id" />
@@ -60,13 +60,25 @@
           <Property Name="definition" Type="varbinary(max)" />
         </EntityType>
         <Association Name="FK_Employees_Departments">
-          <End Role="Departments" Type="Self.Departments" Multiplicity="0..1" />
+          <End Role="Departments" Type="Self.Departments" Multiplicity="1" />
           <End Role="Employees" Type="Self.Employees" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Departments">
               <PropertyRef Name="Id" />
             </Principal>
             <Dependent Role="Employees">
+              <PropertyRef Name="DepartmentId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Employees_Employees">
+          <End Role="Employees" Type="Self.Employees" Multiplicity="0..1" />
+          <End Role="Employees1" Type="Self.Employees" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Employees">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Employees1">
               <PropertyRef Name="ManagerId" />
             </Dependent>
           </ReferentialConstraint>
@@ -118,6 +130,10 @@
             <End Role="Departments" EntitySet="Departments" />
             <End Role="Employees" EntitySet="Employees" />
           </AssociationSet>
+          <AssociationSet Name="FK_Employees_Employees" Association="Self.FK_Employees_Employees">
+            <End Role="Employees" EntitySet="Employees" />
+            <End Role="Employees1" EntitySet="Employees" />
+          </AssociationSet>
           <AssociationSet Name="FK_Employees_Projects_Employees" Association="Self.FK_Employees_Projects_Employees">
             <End Role="Employees" EntitySet="Employees" />
             <End Role="Employees_Projects" EntitySet="Employees_Projects" />
@@ -131,8 +147,7 @@
             <End Role="Reports" EntitySet="Reports" />
           </AssociationSet>
         </EntityContainer>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="CompanyModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -143,6 +158,7 @@
           <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
           <NavigationProperty Name="Employees" Relationship="Self.FK_Employees_Departments" FromRole="Departments" ToRole="Employees" />
+          <NavigationProperty Name="Employees1" Relationship="CompanyModel.FK_Employees_Departments1" FromRole="Department" ToRole="Employee" />
         </EntityType>
         <EntityType Name="Employee">
           <Key>
@@ -157,6 +173,9 @@
           <NavigationProperty Name="Department" Relationship="Self.FK_Employees_Departments" FromRole="Employees" ToRole="Departments" />
           <NavigationProperty Name="Employees_Projects" Relationship="Self.FK_Employees_Projects_Employees" FromRole="Employees" ToRole="Employees_Projects" />
           <NavigationProperty Name="Reports" Relationship="Self.FK_Reports_Employees" FromRole="Employees" ToRole="Reports" />
+          <NavigationProperty Name="Employees1" Relationship="CompanyModel.FK_Employees_Employees" FromRole="Employee" ToRole="Employee1" />
+          <NavigationProperty Name="Employee1" Relationship="CompanyModel.FK_Employees_Employees" FromRole="Employee1" ToRole="Employee" />
+          <NavigationProperty Name="Department1" Relationship="CompanyModel.FK_Employees_Departments1" FromRole="Employee" ToRole="Department" />
         </EntityType>
         <EntityType Name="Employees_Projects">
           <Key>
@@ -269,7 +288,39 @@
             <End Role="Projects" EntitySet="Projects" />
             <End Role="Employees_Projects" EntitySet="Employees_Projects" />
           </AssociationSet>
+          <AssociationSet Name="FK_Employees_Employees" Association="CompanyModel.FK_Employees_Employees">
+            <End Role="Employee" EntitySet="Employees" />
+            <End Role="Employee1" EntitySet="Employees" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Employees_Departments1" Association="CompanyModel.FK_Employees_Departments1">
+            <End Role="Department" EntitySet="Departments" />
+            <End Role="Employee" EntitySet="Employees" />
+          </AssociationSet>
         </EntityContainer>
+        <Association Name="FK_Employees_Employees">
+          <End Type="CompanyModel.Employee" Role="Employee" Multiplicity="0..1" />
+          <End Type="CompanyModel.Employee" Role="Employee1" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Employee">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Employee1">
+              <PropertyRef Name="ManagerId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Employees_Departments1">
+          <End Type="CompanyModel.Department" Role="Department" Multiplicity="1" />
+          <End Type="CompanyModel.Employee" Role="Employee" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Department">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Employee">
+              <PropertyRef Name="DepartmentId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->

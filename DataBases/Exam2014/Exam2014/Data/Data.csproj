@@ -56,12 +56,35 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>CompanyModel.Context.tt</DependentUpon>
     </Compile>
+    <Compile Include="CompanyModel.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>CompanyModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="CompanyModel.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>CompanyModel.edmx</DependentUpon>
     </Compile>
+    <Compile Include="Department.cs">
+      <DependentUpon>CompanyModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Employee.cs">
+      <DependentUpon>CompanyModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Employees_Projects.cs">
+      <DependentUpon>CompanyModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Project.cs">
+      <DependentUpon>CompanyModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Report.cs">
+      <DependentUpon>CompanyModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="sysdiagram.cs">
+      <DependentUpon>CompanyModel.tt</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <EntityDeploy Include="CompanyModel.edmx">
@@ -80,6 +103,12 @@
     <Content Include="CompanyModel.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <LastGenOutput>CompanyModel.Context.cs</LastGenOutput>
+      <DependentUpon>CompanyModel.edmx</DependentUpon>
+    </Content>
+    <Content Include="CompanyModel.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>CompanyModel.edmx</DependentUpon>
+      <LastGenOutput>CompanyModel.cs</LastGenOutput>
     </Content>
   </ItemGroup>
   <ItemGroup>

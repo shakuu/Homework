@@ -19,6 +19,7 @@ namespace Data
         {
             this.Employees_Projects = new HashSet<Employees_Projects>();
             this.Reports = new HashSet<Report>();
+            this.Employees1 = new HashSet<Employee>();
         }
     
         public int Id { get; set; }
@@ -33,5 +34,9 @@ namespace Data
         public virtual ICollection<Employees_Projects> Employees_Projects { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Report> Reports { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Employee> Employees1 { get; set; }
+        public virtual Employee Employee1 { get; set; }
+        public virtual Department Department1 { get; set; }
     }
 }

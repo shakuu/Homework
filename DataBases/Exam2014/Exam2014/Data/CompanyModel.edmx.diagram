@@ -15,6 +15,8 @@
         <AssociationConnector Association="CompanyModel.FK_Employees_Projects_Employees" ManuallyRouted="false" />
         <AssociationConnector Association="CompanyModel.FK_Reports_Employees" ManuallyRouted="false" />
         <AssociationConnector Association="CompanyModel.FK_Employees_Projects_Projects" ManuallyRouted="false" />
+        <AssociationConnector Association="CompanyModel.FK_Employees_Employees" />
+        <AssociationConnector Association="CompanyModel.FK_Employees_Departments1" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>
