@@ -3,7 +3,31 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 14
 VisualStudioVersion = 14.0.25420.1
 MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TemplateMethod", "TemplateMethod\TemplateMethod.csproj", "{04F6F9C5-8EAA-4E96-9F1E-9956C5BE21BD}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Strategy", "Strategy\Strategy.csproj", "{6C50D4A4-873F-42BD-A9E0-228C48F1C965}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ChainOfResponsibility", "ChainOfResponsibility\ChainOfResponsibility.csproj", "{DF4CC115-504F-42A5-98F5-1B8A1DB68423}"
+EndProject
 Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{04F6F9C5-8EAA-4E96-9F1E-9956C5BE21BD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{04F6F9C5-8EAA-4E96-9F1E-9956C5BE21BD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{04F6F9C5-8EAA-4E96-9F1E-9956C5BE21BD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{04F6F9C5-8EAA-4E96-9F1E-9956C5BE21BD}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6C50D4A4-873F-42BD-A9E0-228C48F1C965}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6C50D4A4-873F-42BD-A9E0-228C48F1C965}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6C50D4A4-873F-42BD-A9E0-228C48F1C965}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6C50D4A4-873F-42BD-A9E0-228C48F1C965}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DF4CC115-504F-42A5-98F5-1B8A1DB68423}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DF4CC115-504F-42A5-98F5-1B8A1DB68423}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DF4CC115-504F-42A5-98F5-1B8A1DB68423}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DF4CC115-504F-42A5-98F5-1B8A1DB68423}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
