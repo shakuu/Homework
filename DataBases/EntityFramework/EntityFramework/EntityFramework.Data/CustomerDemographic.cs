@@ -11,7 +11,8 @@ namespace EntityFramework.Data
 {
     using System;
     using System.Collections.Generic;
-    
+    using System.ComponentModel.DataAnnotations;
+
     public partial class CustomerDemographic
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
@@ -20,6 +21,7 @@ namespace EntityFramework.Data
             this.Customers = new HashSet<Customer>();
         }
     
+        [Key]
         public string CustomerTypeID { get; set; }
         public string CustomerDesc { get; set; }
     

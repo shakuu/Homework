@@ -11,9 +11,11 @@ namespace EntityFramework.Data
 {
     using System;
     using System.Collections.Generic;
-    
+    using System.ComponentModel.DataAnnotations;
+
     public partial class Order_Detail
     {
+        [Key]
         public int OrderID { get; set; }
         public int ProductID { get; set; }
         public decimal UnitPrice { get; set; }

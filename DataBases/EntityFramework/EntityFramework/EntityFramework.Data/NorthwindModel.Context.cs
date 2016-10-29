@@ -16,9 +16,8 @@ namespace EntityFramework.Data
     public partial class NorthwindEntities : DbContext
     {
         public NorthwindEntities(string connectionString)
-            : base(connectionString)
+            : base($"name={connectionString}")
         {
-
         }
 
         public NorthwindEntities()
