@@ -180,5 +180,49 @@ namespace Data.Seeding.Seeders
 
             context.SaveChanges();
         }
+
+        /// <summary>
+        /// 250 000 reports – add average of 50 reports per employee.
+        /// </summary>
+        /// <param name="reportsCount"></param>
+        public static void SeedReports(int reportsPerEmployee)
+        {
+            var context = StaticSeeder.GetContext();
+            if (context.Reports.Any())
+            {
+                var count = context.Reports.Count();
+                Console.WriteLine($"{count} reports already exist.");
+                return;
+            }
+
+            var random = new Random();
+            var allEmployeeIds = context.Employees.Select(e => e.Id).ToList();
+
+            foreach (var id in allEmployeeIds)
+            {
+                var reportsCount = random.Next(40, 60);
+                for (int i = 0; i < reportsCount; i++)
+                {
+                    var year = random.Next(1990, 2016);
+                    var month = random.Next(1, 11);
+                    var day = random.Next(1, 28);
+
+                    var report = new Report()
+                    {
+                        EmployeeId = id,
+                        Content = $"Report Nr. {i}, Employee Nr. {id}",
+                        TimeSent = new DateTime(year, month, day)
+                    };
+
+                    context.Reports.Add(report);
+                }
+
+                context.SaveChanges();
+                context = StaticSeeder.GetContext();
+            }
+
+            context.SaveChanges();
+        }
     }
 }
+
