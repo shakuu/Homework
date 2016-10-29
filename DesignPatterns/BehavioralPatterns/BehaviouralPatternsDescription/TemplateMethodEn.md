@@ -5,3 +5,5 @@ The base class provides a method with a certain implamantion - the template.
 The inheriting class(es) invoke the existing logic and extend it. 
 
 We've done a lot of these during the OOP course. 
+
+[Diagram](http://www.dofactory.com/net/design-patterns)

@@ -11,3 +11,5 @@ At the same time the consuming class is only aware that the matrix has been fill
 Can be implemented as a method parameter or a type dependency. 
 
 I think this pattern embodies the benefits of the SOLID Principles, Di and OOP in general. 
+
+[Diagram](http://www.dofactory.com/net/strategy-design-pattern)
