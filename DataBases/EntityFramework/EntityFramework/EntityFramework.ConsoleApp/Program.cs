@@ -29,6 +29,8 @@ namespace EntityFramework.ConsoleApp
             Program.FindsAllSalesByRegionAndPeriod("Essex", start, end);
 
             DAO.CreateNorthwindTwin();
+
+            //DAO.ConcurrentChanges();
         }
 
         private static void InsertCustomerWithSql(string id, string companyName)

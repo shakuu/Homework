@@ -17,6 +17,24 @@ namespace EntitiyFramework.Tasks
             return dbContext;
         }
 
+        /// <summary>
+        /// Seccond change is saved.
+        /// </summary>
+        public static void ConcurrentChanges()
+        {
+            var contextA = DAO.GetContext();
+            var contextB = DAO.GetContext();
+
+            var customerA = contextA.Customers.FirstOrDefault();
+            var customerB = contextB.Customers.FirstOrDefault();
+
+            customerA.ContactName = "customer A";
+            customerB.ContactName = "customer B";
+
+            contextA.SaveChanges();
+            contextB.SaveChanges();
+        }
+
         public static Customer GetById(string id)
         {
             var context = DAO.GetContext();
@@ -97,9 +115,7 @@ namespace EntitiyFramework.Tasks
 
         public static void CreateNorthwindTwin()
         {
-            //var northwindConnectionString = "NorthwindEntities";
             var northwindTwinConnectionString = "NorthwindTwin";
-
             var context = new NorthwindEntities(northwindTwinConnectionString);
             context.Database.CreateIfNotExists();
         }
