@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 
 namespace Data.Seeding.Seeders
@@ -48,6 +49,7 @@ namespace Data.Seeding.Seeders
             var departmentsIds = context.Departments.Select(d => d.Id).ToList();
             var departmentsCount = departmentsIds.Count();
 
+            var seededEmployees = new List<Employee>();
             var random = new Random();
             for (int i = 1; i <= employeeCount; i++)
             {
@@ -65,9 +67,27 @@ namespace Data.Seeding.Seeders
                 };
 
                 context.Employees.Add(nextSeedEmployee);
+                seededEmployees.Add(nextSeedEmployee);
             }
 
+            var allEmployeesFromDb = context.Employees.Select(e => e.Id).ToList();
+            var lastAssignedEmployee = allEmployeesFromDb.Count - 1;
 
+            var executivesCount = (int)Math.Ceiling(employeeCount + 0.05);
+            var employeesPerExecutive = employeeCount / executivesCount;
+            for (int managerIndex = 0; managerIndex < executivesCount; managerIndex++)
+            {
+                for (int employeeIndex = lastAssignedEmployee; employeeIndex >= employeeCount - (employeesPerExecutive * (managerIndex + 1)); employeeIndex--)
+                {
+                    seededEmployees[employeeIndex].ManagerId = allEmployeesFromDb[managerIndex];
+                    lastAssignedEmployee--;
+                }
+            }
+
+            for (int i = 0; i < executivesCount; i++)
+            {
+                seededEmployees[i].ManagerId = null;
+            }
 
             context.SaveChanges();
         }
