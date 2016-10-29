@@ -1,0 +1,5 @@
+Connection string for "Company" database: (location)
+Connection string for "Cars" database: (location)
+Relationships for "Company" database: (first-table : second-table - type of relationship)
+Relationships for "Cars" database: (first-table : second-table - type of relationship)
+Query files: (file location in solution)
