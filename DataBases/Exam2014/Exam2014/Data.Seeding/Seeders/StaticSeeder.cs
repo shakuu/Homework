@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 
 namespace Data.Seeding.Seeders
@@ -41,7 +42,7 @@ namespace Data.Seeding.Seeders
             if (context.Employees.Any())
             {
                 var count = context.Employees.Count();
-                System.Console.WriteLine($"{count} employees already in database");
+                System.Console.WriteLine($"{count} employees already exist");
                 return;
             }
 
@@ -65,6 +66,12 @@ namespace Data.Seeding.Seeders
                 };
 
                 context.Employees.Add(nextSeedEmployee);
+
+                if (i % 50 == 0)
+                {
+                    context.SaveChanges();
+                    context = StaticSeeder.GetContext();
+                }
             }
 
             context.SaveChanges();
@@ -73,7 +80,7 @@ namespace Data.Seeding.Seeders
             StaticSeeder.CreateManagers();
         }
 
-        public static void CreateManagers()
+        private static void CreateManagers()
         {
             var context = StaticSeeder.GetContext();
             if (!context.Employees.Any())
@@ -81,7 +88,7 @@ namespace Data.Seeding.Seeders
                 Console.WriteLine("No employees found");
                 return;
             }
-            
+
             var allEmployees = context.Employees.ToList();
             var employeesCount = allEmployees.Count;
             var managersCount = (int)Math.Ceiling(employeesCount * 0.05);
@@ -104,6 +111,71 @@ namespace Data.Seeding.Seeders
                 }
 
                 firstEmployeeIndex += employeesPerManager;
+            }
+
+            context.SaveChanges();
+        }
+
+        /// <summary>
+        /// 1 000 projects – on each project there are working between 2 and 20 employees, 
+        /// inclusive – average of 5. Ending date is always after starting date (you don’t say) 
+        /// and ending date may be in the future.
+        /// </summary>
+        /// <param name="projectsCount"></param>
+        public static void SeedProjects(int projectsCount)
+        {
+            var context = StaticSeeder.GetContext();
+            if (context.Projects.Any())
+            {
+                var count = context.Projects.Count();
+                Console.WriteLine($"{count} projects already exits.");
+                return;
+            }
+
+            var random = new Random();
+            var allEmployeesIds = context.Employees.Select(e => e.Id).ToList();
+            for (int i = 0; i < projectsCount; i++)
+            {
+                var project = new Project()
+                {
+                    Name = $"New Project Nr. {i}"
+                };
+
+                var endYear = random.Next(2012, 2022);
+                var startYear = random.Next(endYear - 10, endYear);
+
+                var startDate = new DateTime(startYear, 1, 1);
+                var endDate = new DateTime(endYear, 1, 1);
+
+                var picked = new List<int>();
+                var employeesCount = random.Next(2, 20);
+                for (int k = 0; k < employeesCount; k++)
+                {
+                    var nextEmployeeId = random.Next(0, allEmployeesIds.Count);
+                    while (picked.Contains(nextEmployeeId))
+                    {
+                        nextEmployeeId = random.Next(0, allEmployeesIds.Count);
+                    }
+
+                    picked.Add(nextEmployeeId);
+                    var nextEmployee = allEmployeesIds[nextEmployeeId];
+
+                    var employeeProject = new Employees_Projects()
+                    {
+                        EmployeeId = nextEmployee,
+                        StartDate = startDate,
+                        EndDate = endDate
+                    };
+
+                    project.Employees_Projects.Add(employeeProject);
+                }
+
+                context.Projects.Add(project);
+                if (i % 50 == 0)
+                {
+                    context.SaveChanges();
+                    context = StaticSeeder.GetContext();
+                }
             }
 
             context.SaveChanges();

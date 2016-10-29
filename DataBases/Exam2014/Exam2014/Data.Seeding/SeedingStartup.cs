@@ -8,6 +8,7 @@ namespace Data.Seeding
         {
             StaticSeeder.SeedDepartments(101);
             StaticSeeder.SeedEmployees(5001);
+            StaticSeeder.SeedProjects(1001);
         }
     }
 }
