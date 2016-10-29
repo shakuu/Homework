@@ -11,7 +11,7 @@ namespace EntityFramework.Data
 {
     using System;
     using System.Collections.Generic;
-    
+
     public partial class Alphabetical_list_of_product
     {
         public int ProductID { get; set; }
