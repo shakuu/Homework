@@ -9,6 +9,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Data.Seeding", "Data.Seedin
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Data.CodeFirst.Models", "Data.CodeFirst\Data.CodeFirst.Models.csproj", "{E9031051-375D-41A5-9102-17D4F08FB7A4}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Data.CodeFirst.DbContexts", "Data.CodeFirst.DbContexts\Data.CodeFirst.DbContexts.csproj", "{1C4067C0-1748-4612-B073-AA876E1C90A0}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Data.CodeFirst.ConsoleClient", "Data.CodeFirst.ConsoleClient\Data.CodeFirst.ConsoleClient.csproj", "{1E16F03C-9A34-4CB1-BE2B-633283024F0B}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -27,6 +31,14 @@ Global
 		{E9031051-375D-41A5-9102-17D4F08FB7A4}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{E9031051-375D-41A5-9102-17D4F08FB7A4}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{E9031051-375D-41A5-9102-17D4F08FB7A4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1C4067C0-1748-4612-B073-AA876E1C90A0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1C4067C0-1748-4612-B073-AA876E1C90A0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1C4067C0-1748-4612-B073-AA876E1C90A0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1C4067C0-1748-4612-B073-AA876E1C90A0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1E16F03C-9A34-4CB1-BE2B-633283024F0B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1E16F03C-9A34-4CB1-BE2B-633283024F0B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1E16F03C-9A34-4CB1-BE2B-633283024F0B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1E16F03C-9A34-4CB1-BE2B-633283024F0B}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
