@@ -22,14 +22,98 @@ namespace Data.CodeFirst.ConsoleClient
             var files = StaticJsonDataParser.GetFilenamesList();
             foreach (var file in files)
             {
-                var content = File.ReadAllText(file.FullName);
-                var parsed = JsonConvert.DeserializeObject<List<Car>>(content);
+                var fileContent = File.ReadAllText(file.FullName);
+                var parsedCars = JsonConvert.DeserializeObject<List<JsonCar>>(fileContent);
 
                 var context = StaticJsonDataParser.GetContext();
-                var parsedCount = parsed.Count;
+                var parsedCount = parsedCars.Count;
                 for (int i = 0; i < parsedCount; i++)
                 {
-                    context.Cars.Add(parsed[i]);
+                    var nextParsedCar = parsedCars[i];
+
+                    if (nextParsedCar.Model.Length > 11)
+                    {
+                        continue;
+                    }
+
+                    if (nextParsedCar.ManufacturerName.Length > 10)
+                    {
+                        continue;
+                    }
+
+                    if (nextParsedCar.Dealer.Name.Length > 50)
+                    {
+                        continue;
+                    }
+
+                    if (nextParsedCar.Dealer.City.Length > 10)
+                    {
+                        continue;
+                    }
+
+                    var existingDealer = context.Dealers
+                        .Where(d => d.Name == nextParsedCar.Dealer.Name && d.City.Name == nextParsedCar.Dealer.City)
+                        .FirstOrDefault();
+
+                    var existingManufacturer = context.Manufacturers
+                        .Where(m => m.Name == nextParsedCar.ManufacturerName)
+                        .FirstOrDefault();
+
+                    var newCar = new Car()
+                    {
+                        Model = nextParsedCar.Model,
+                        Price = nextParsedCar.Price,
+                        TransmissionType = nextParsedCar.TransmissionType,
+                        Year = nextParsedCar.Year
+                    };
+
+                    if (existingManufacturer != null)
+                    {
+                        newCar.Manufacturer = existingManufacturer;
+                    }
+                    else
+                    {
+                        var newManufacturer = new Manufacturer()
+                        {
+                            Name = nextParsedCar.ManufacturerName
+                        };
+
+                        newCar.Manufacturer = newManufacturer;
+                    }
+
+                    if (existingDealer != null)
+                    {
+                        newCar.Dealer = existingDealer;
+                    }
+                    else
+                    {
+                        var existingCity = context.Cities
+                            .Where(c => c.Name == nextParsedCar.Dealer.City)
+                            .FirstOrDefault();
+
+                        var newDealer = new Dealer()
+                        {
+                            Name = nextParsedCar.Dealer.Name
+                        };
+
+                        if (existingCity != null)
+                        {
+                            newDealer.City = existingCity;
+                        }
+                        else
+                        {
+                            var newCity = new City()
+                            {
+                                Name = nextParsedCar.Dealer.City
+                            };
+
+                            newDealer.City = newCity;
+                        }
+
+                        newCar.Dealer = newDealer;
+                    }
+
+                    context.Cars.Add(newCar);
 
                     if (i % 50 == 0)
                     {

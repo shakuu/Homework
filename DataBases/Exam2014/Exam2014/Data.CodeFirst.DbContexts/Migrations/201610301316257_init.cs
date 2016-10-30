@@ -31,8 +31,11 @@ namespace Data.CodeFirst.DbContexts.Migrations
                     {
                         Id = c.Int(nullable: false, identity: true),
                         Name = c.String(nullable: false, maxLength: 50),
+                        Cityid = c.Int(nullable: false),
                     })
-                .PrimaryKey(t => t.Id);
+                .PrimaryKey(t => t.Id)
+                .ForeignKey("dbo.Cities", t => t.Cityid, cascadeDelete: true)
+                .Index(t => t.Cityid);
             
             CreateTable(
                 "dbo.Cities",
@@ -40,12 +43,9 @@ namespace Data.CodeFirst.DbContexts.Migrations
                     {
                         Id = c.Int(nullable: false, identity: true),
                         Name = c.String(nullable: false, maxLength: 10),
-                        Dealer_Id = c.Int(),
                     })
                 .PrimaryKey(t => t.Id)
-                .ForeignKey("dbo.Dealers", t => t.Dealer_Id)
-                .Index(t => t.Name, unique: true)
-                .Index(t => t.Dealer_Id);
+                .Index(t => t.Name, unique: true);
             
             CreateTable(
                 "dbo.Manufacturers",
@@ -63,10 +63,10 @@ namespace Data.CodeFirst.DbContexts.Migrations
         {
             DropForeignKey("dbo.Cars", "ManufacturerId", "dbo.Manufacturers");
             DropForeignKey("dbo.Cars", "DealerId", "dbo.Dealers");
-            DropForeignKey("dbo.Cities", "Dealer_Id", "dbo.Dealers");
+            DropForeignKey("dbo.Dealers", "Cityid", "dbo.Cities");
             DropIndex("dbo.Manufacturers", new[] { "Name" });
-            DropIndex("dbo.Cities", new[] { "Dealer_Id" });
             DropIndex("dbo.Cities", new[] { "Name" });
+            DropIndex("dbo.Dealers", new[] { "Cityid" });
             DropIndex("dbo.Cars", new[] { "DealerId" });
             DropIndex("dbo.Cars", new[] { "ManufacturerId" });
             DropTable("dbo.Manufacturers");

@@ -58,6 +58,8 @@
     <Compile Include="Car.cs" />
     <Compile Include="City.cs" />
     <Compile Include="Dealer.cs" />
+    <Compile Include="JsonCar.cs" />
+    <Compile Include="JsonDealer.cs" />
     <Compile Include="Manufacturer.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="TransmissionType.cs" />

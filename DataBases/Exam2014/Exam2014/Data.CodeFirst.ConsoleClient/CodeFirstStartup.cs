@@ -1,9 +1,10 @@
 ﻿namespace Data.CodeFirst.ConsoleClient
 {
-    public class Program
+    public class CodeFirstStartup
     {
         public static void Main()
         {
+            StaticJsonDataParser.ParseJsonData();
         }
     }
 }
