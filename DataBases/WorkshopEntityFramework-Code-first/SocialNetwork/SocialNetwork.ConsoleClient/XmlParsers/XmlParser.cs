@@ -161,7 +161,7 @@ namespace SocialNetwork.ConsoleClient.XmlParsers
 
             var secondUserXml = root.GetElementsByTagName("SecondUser")[0];
             var secondUser = XmlParser.CreateUser(secondUserXml, context);
-            friendship.UserB = firstUser;
+            friendship.UserB = secondUser;
 
             var messagesNodes = root.GetElementsByTagName("Message");
             foreach (XmlNode message in messagesNodes)

@@ -1,8 +1,4 @@
-﻿using System;
-using System.Data.Entity;
-using System.Linq;
-using System.Xml;
-
+﻿using SocialNetwork.ConsoleClient.Searcher;
 using SocialNetwork.ConsoleClient.XmlParsers;
 
 namespace SocialNetwork.ConsoleClient
@@ -14,6 +10,9 @@ namespace SocialNetwork.ConsoleClient
             // Uncomment to insert data.
             //XmlParser.ParseFriendShipsXml(null);
             //XmlParser.ParsePostsXml(null);
+
+            var service = new SocialNetworkService();
+            DataSearcher.Search(service);
         }
     }
 }
