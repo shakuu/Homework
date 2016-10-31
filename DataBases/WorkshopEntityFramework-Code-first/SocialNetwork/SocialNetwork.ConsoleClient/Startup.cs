@@ -1,4 +1,6 @@
 ﻿using SocialNetwork.ConsoleClient.Searcher;
+using SocialNetwork.ConsoleClient.XmlDeserializers;
+using SocialNetwork.ConsoleClient.XmlDeserializers.Models;
 using SocialNetwork.ConsoleClient.XmlParsers;
 
 namespace SocialNetwork.ConsoleClient
@@ -19,7 +21,12 @@ namespace SocialNetwork.ConsoleClient
             //DataSearcher.Search(service);
 
             //XmlDeserializers.XmlDeserializer.DeserializeTo();
-            XmlDeserializers.XmlDeserializer.DeserializeToFriendShip();
+
+            var converter = new XmlToSqlModelConverter(ContextProvider.CreateSocialNetworkContext);
+            var deserializer = new BasicXmlDeserializer();
+
+            var xmlFriendships = deserializer.DeserializeTo<XmlFriendship>("./XmlFiles/Friendships-Test.xml", "Friendships");
+            converter.ConvertXmlFriendshipToSqlFriendship(xmlFriendships);
         }
     }
 }
