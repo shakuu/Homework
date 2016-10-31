@@ -14,7 +14,7 @@ namespace SocialNetwork.Models
     public class Message
     {
         public int Id { get; set; }
-        
+
         [JsonIgnore]
         public User Author { get; set; }
 
@@ -25,5 +25,9 @@ namespace SocialNetwork.Models
         public DateTime SentOn { get; set; }
 
         public DateTime? SeenOn { get; set; }
+
+        public int FriendshipId { get; set; }
+
+        public virtual Friendship Friendship { get; set; }
     }
 }

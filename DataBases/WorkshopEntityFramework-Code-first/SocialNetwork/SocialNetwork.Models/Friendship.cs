@@ -1,6 +1,8 @@
-﻿using Newtonsoft.Json;
-using System;
+﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations.Schema;
+
+using Newtonsoft.Json;
 
 namespace SocialNetwork.Models
 {
@@ -25,6 +27,7 @@ namespace SocialNetwork.Models
         [JsonIgnore]
         public User UserB { get; set; }
 
+        [Index]
         public bool Approved { get; set; }
 
         public DateTime FriendsSince { get; set; }

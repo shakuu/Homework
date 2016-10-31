@@ -15,8 +15,8 @@ namespace SocialNetwork.ConsoleClient
             //XmlParser.ParsePostsXml(null);
 
             // Uncomment to create JSON files.
-            //var service = new SocialNetworkService();
-            //DataSearcher.Search(service);
+            var service = new SocialNetworkService();
+            DataSearcher.Search(service);
         }
     }
 }

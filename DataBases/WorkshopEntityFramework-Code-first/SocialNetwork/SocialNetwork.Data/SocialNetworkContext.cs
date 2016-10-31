@@ -8,14 +8,13 @@ namespace SocialNetwork.Data
     {
         public SocialNetworkContext(string testDb)
         {
-
         }
 
         public SocialNetworkContext()
             : base("name=SocialNetworkDb")
         {
-
         }
+
         public virtual IDbSet<User> Users { get; set; }
 
         public virtual IDbSet<Post> Posts { get; set; }
