@@ -89,7 +89,7 @@
             //    Console.WriteLine();
             //}
             
-            XmlParser.ParseXml(null);
+            XmlParser.ParseFriendShipsXml(null);
         }
     }
 }

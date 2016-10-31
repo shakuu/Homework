@@ -1,17 +1,17 @@
-﻿using SocialNetwork.Models;
-using System;
+﻿using System;
 using System.Collections.Generic;
-using System.Data.Entity.Validation;
-using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
 using System.Xml;
+
+using SocialNetwork.Data;
+using SocialNetwork.Models;
+using System.Linq;
 
 namespace SocialNetwork.ConsoleClient.XmlParsers
 {
     public static class XmlParser
     {
-        public static void ParseXml(string fileLocation)
+        public static void ParseFriendShipsXml(string fileLocation)
         {
             if (string.IsNullOrEmpty(fileLocation))
             {
@@ -20,6 +20,9 @@ namespace SocialNetwork.ConsoleClient.XmlParsers
 
             using (XmlReader xmlReader = XmlReader.Create(fileLocation))
             {
+                var friendshipCount = 0;
+                var socialNetworkContext = XmlParser.GetContext();
+
                 var xmlBuilder = new StringBuilder();
                 var isFriendship = false;
 
@@ -33,10 +36,20 @@ namespace SocialNetwork.ConsoleClient.XmlParsers
                         var xmlExists = xmlBuilder.Length > 0;
                         if (xmlExists)
                         {
+                            friendshipCount++;
+
                             // Parse XML
-                            var friendship = XmlParser.CreateFriendship(xmlBuilder.ToString());
+                            var friendship = XmlParser.CreateFriendship(xmlBuilder.ToString(), socialNetworkContext);
+                            socialNetworkContext.Friendships.Add(friendship);
+
                             xmlBuilder.Clear();
                             isFriendship = false;
+
+                            if (friendshipCount % 20 == 0)
+                            {
+                                socialNetworkContext.SaveChanges();
+                                socialNetworkContext = XmlParser.GetContext();
+                            }
                         }
                     }
 
@@ -48,7 +61,7 @@ namespace SocialNetwork.ConsoleClient.XmlParsers
             }
         }
 
-        private static Friendship CreateFriendship(string xml)
+        private static Friendship CreateFriendship(string xml, SocialNetworkContext context)
         {
             var doc = new XmlDocument();
             doc.LoadXml(xml);
@@ -66,11 +79,11 @@ namespace SocialNetwork.ConsoleClient.XmlParsers
             friendship.FriendsSince = friendsSince;
 
             var firstUserXml = root.GetElementsByTagName("FirstUser")[0];
-            var firstUser = XmlParser.CreateUser(firstUserXml);
+            var firstUser = XmlParser.CreateUser(firstUserXml, context);
             friendship.UserA = firstUser;
 
             var secondUserXml = root.GetElementsByTagName("SecondUser")[0];
-            var secondUser = XmlParser.CreateUser(secondUserXml);
+            var secondUser = XmlParser.CreateUser(secondUserXml, context);
             friendship.UserB = firstUser;
 
             /*<Message>
@@ -126,11 +139,20 @@ namespace SocialNetwork.ConsoleClient.XmlParsers
         </Image>
       </Images>
     </FirstUser>*/
-        private static User CreateUser(XmlNode xmlUser)
+        private static User CreateUser(XmlNode xmlUser, SocialNetworkContext context)
         {
-            var user = new User();
-
             var username = xmlUser["Username"].InnerText;
+
+            var existingUser = context.Users
+                .Where(u => u.Username == username)
+                .FirstOrDefault();
+
+            if (existingUser != null)
+            {
+                return existingUser;
+            }
+
+            var user = new User();
             user.Username = username;
 
             var regiesteredOn = DateTime.Parse(xmlUser["RegisteredOn"].InnerText);
@@ -171,6 +193,12 @@ namespace SocialNetwork.ConsoleClient.XmlParsers
             }
 
             return user;
+        }
+
+        private static SocialNetworkContext GetContext()
+        {
+            var context = new SocialNetworkContext();
+            return context;
         }
     }
 }
