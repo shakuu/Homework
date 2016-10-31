@@ -77,11 +77,11 @@ namespace Data.CodeFirst.ConsoleClient.QueryFromXml
             var orderByElement = queryElement.GetElementsByTagName("OrderBy");
             var whereElements = queryElement.GetElementsByTagName("WhereClause");
 
-            foreach (var wh in whereElements)
+            foreach (XmlNode whereElement in whereElements)
             {
-                var propertyName = whereElements[0].Attributes["PropertyName"].Value;
-                var type = whereElements[0].Attributes["Type"].Value;
-                var value = whereElements[0].InnerText;
+                var propertyName = whereElement.Attributes["PropertyName"].Value;
+                var type = whereElement.Attributes["Type"].Value;
+                var value = whereElement.InnerText;
                 var variableName = $"@{propertyName.ToLower()}";
 
                 var whereClause = new WhereClause()
@@ -100,7 +100,7 @@ namespace Data.CodeFirst.ConsoleClient.QueryFromXml
                 var element = orderByElement[0].InnerText;
                 queryContainer.orderByElement = element;
             }
-            
+
             return queryContainer;
         }
 

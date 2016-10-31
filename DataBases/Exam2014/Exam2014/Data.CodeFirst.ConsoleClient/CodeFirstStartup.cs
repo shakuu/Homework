@@ -8,6 +8,7 @@ namespace Data.CodeFirst.ConsoleClient
         {
             //StaticJsonDataParser.ParseJsonData();
             XmlQuery.BuildQueryFromXml(null);
+            XmlQuery.BuildQueryContainerFromXml(null);
         }
     }
 }
