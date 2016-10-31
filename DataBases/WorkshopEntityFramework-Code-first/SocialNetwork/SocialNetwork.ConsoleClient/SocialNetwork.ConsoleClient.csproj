@@ -72,6 +72,12 @@
     <Compile Include="Searcher\SocialNetworkService.cs" />
     <Compile Include="Startup.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="XmlDeserializers\Models\XmlFriendship.cs" />
+    <Compile Include="XmlDeserializers\Models\XmlImage.cs" />
+    <Compile Include="XmlDeserializers\Models\XmlMessage.cs" />
+    <Compile Include="XmlDeserializers\Models\XmlPost.cs" />
+    <Compile Include="XmlDeserializers\Models\XmlUser.cs" />
+    <Compile Include="XmlDeserializers\XmlDeserializer.cs" />
     <Compile Include="XmlParsers\XmlParser.cs" />
     <Compile Include="XmlParsers\XmlParserWithExtensionMethod.cs" />
     <Compile Include="XmlReaderExtensionMethods\XmlExtensions.cs" />
