@@ -1,12 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text;
 using System.Xml;
 
 using SocialNetwork.Data;
 using SocialNetwork.Models;
-using System.Linq;
-using SocialNetwork.ConsoleClient.XmlReaderExtensionMethods;
 
 namespace SocialNetwork.ConsoleClient.XmlParsers
 {
