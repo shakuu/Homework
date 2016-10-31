@@ -79,9 +79,17 @@
             //          var root = doc.DocumentElement;
             //          var isApproved = root.Attributes["Approved"].Value;
             //          Console.WriteLine(isApproved);
+            
+            //try
+            //{
 
+            //}
+            //catch (DbEntityValidationException ex)
+            //{
+            //    Console.WriteLine();
+            //}
+            
             XmlParser.ParseXml(null);
-
         }
     }
 }
