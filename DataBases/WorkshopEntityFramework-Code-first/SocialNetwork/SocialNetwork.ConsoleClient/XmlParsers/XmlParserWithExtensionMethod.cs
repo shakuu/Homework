@@ -40,7 +40,7 @@ namespace SocialNetwork.ConsoleClient.XmlParsers
         {
             if (string.IsNullOrEmpty(fileLocation))
             {
-                fileLocation = "./XmlFiles/Posts.xml";
+                fileLocation = "./XmlFiles/Friendships.xml";
             }
 
             using (XmlReader xmlReader = XmlReader.Create(fileLocation))
@@ -53,9 +53,9 @@ namespace SocialNetwork.ConsoleClient.XmlParsers
                     if (xmlReader.Name == "Friendship")
                     {
                         friendshipsCount++;
-                        var friendship = xmlReader.CreateFriendship(socialNetworkContext);
-
                         var isApprovedValue = xmlReader.GetAttribute("Approved");
+
+                        var friendship = xmlReader.CreateFriendship(socialNetworkContext);
                         friendship.Approved = isApprovedValue == "true";
 
                         if (friendshipsCount % 50 == 0)

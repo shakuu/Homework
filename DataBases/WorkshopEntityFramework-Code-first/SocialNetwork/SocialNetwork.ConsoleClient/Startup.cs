@@ -7,7 +7,8 @@ namespace SocialNetwork.ConsoleClient
     {
         public static void Main()
         {
-            XmlParserWithExtensionMethod.ParsePostsToXml(null);
+            //XmlParserWithExtensionMethod.ParsePostsToXml(null);
+            XmlParserWithExtensionMethod.ParseFriendshipsToXml(null);
 
             // Uncomment to insert data.
             //XmlParser.ParseFriendShipsXml(null);

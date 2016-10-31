@@ -125,9 +125,6 @@ namespace SocialNetwork.ConsoleClient.XmlReaderExtensionMethods
             var newFriendship = new Friendship();
 
             var isFriendsSince = false;
-            var isFirstUser = false;
-            var isSecondUser = false;
-            var isMessage = false;
 
             while (reader.Read())
             {
@@ -143,36 +140,164 @@ namespace SocialNetwork.ConsoleClient.XmlReaderExtensionMethods
                 }
                 else if (elementName == "FirstUser")
                 {
-                    isFirstUser = !isFirstUser;
+                    newFriendship.UserA = reader.CreateUser(context);
                 }
                 else if (elementName == "SecondUser")
                 {
-                    isSecondUser = !isSecondUser;
+                    newFriendship.UserB = reader.CreateUser(context);
                 }
                 else if (elementName == "Message")
                 {
-                    isMessage = !isMessage;
+                    //var message = ? 
+                    //newFriendship.Messages.Add(?);
                 }
                 else if (isFriendsSince)
                 {
                     newFriendship.FriendsSince = DateTime.Parse(reader.Value);
                 }
-                else if (isFirstUser)
-                {
-                    //newFriendship.UserA = ? 
-                }
-                else if (isSecondUser)
-                {
-                    //newFriendship.UserB = ?
-                }
-                else if (isMessage)
-                {
-                    //var message = ? 
-                    //newFriendship.Messages.Add(?);
-                }
             }
 
             return newFriendship;
         }
+
+        /*<FirstUser>
+      <Username>Pesho</Username>
+      <FirstName>Pesho</FirstName>
+      <LastName>Peshov</LastName>
+      <RegisteredOn>2010-02-20T09:12:45</RegisteredOn>
+      <Images>
+        <Image>
+          <ImageUrl>http://somesite.com/SexyPicAttempt108</ImageUrl>
+          <FileExtension>jpg</FileExtension>
+        </Image>
+        <Image>
+          <ImageUrl>http://somesite.com/WithMyCar</ImageUrl>
+          <FileExtension>jpg</FileExtension>
+        </Image>
+        <Image>
+          <ImageUrl>http://somesite.com/SelfieInTheBathroom</ImageUrl>
+          <FileExtension>jpg</FileExtension>
+        </Image>
+      </Images>
+    </FirstUser>*/
+        public static User CreateUser(this XmlReader reader, SocialNetworkContext context)
+        {
+            var newUser = new User();
+
+            var isUsername = false;
+            var isFirstName = false;
+            var isLastName = false;
+            var isRegisteredOn = false;
+
+            while (reader.Read())
+            {
+                var elementName = reader.Name;
+
+                if (elementName == "FirstUser")
+                {
+                    break;
+                }
+                else if (elementName == "Username")
+                {
+                    isUsername = !isUsername;
+                }
+                else if (elementName == "FirstName")
+                {
+                    isFirstName = !isFirstName;
+                }
+                else if (elementName == "LastName")
+                {
+                    isLastName = !isLastName;
+                }
+                else if (elementName == "RegisteredOn")
+                {
+                    isRegisteredOn = !isRegisteredOn;
+                }
+                else if (elementName == "Image")
+                {
+                    var image = reader.CreateImage();
+                    newUser.Images.Add(image);
+                }
+                else if (isUsername)
+                {
+                    var username = reader.Value;
+
+                    var localUser = context.Users.Local
+                        .Where(u => u.Username == username)
+                        .FirstOrDefault();
+
+                    if (localUser != null)
+                    {
+                        return localUser;
+                    }
+
+                    var existingUser = context.Users
+                        .Where(u => u.Username == username)
+                        .FirstOrDefault();
+
+                    if (existingUser != null)
+                    {
+                        return existingUser;
+                    }
+
+                    newUser.Username = username;
+                }
+                else if (isFirstName)
+                {
+                    newUser.FirstName = reader.Value;
+                }
+                else if (isLastName)
+                {
+                    newUser.LastName = reader.Value;
+                }
+                else if (isRegisteredOn)
+                {
+                    newUser.RegisteredOn = DateTime.Parse(reader.Value);
+                }
+            }
+
+            return newUser;
+        }
+
+        /*<Image>
+          <ImageUrl>http://somesite.com/SexyPicAttempt108</ImageUrl>
+          <FileExtension>jpg</FileExtension>
+        </Image>*/
+        public static Image CreateImage(this XmlReader reader)
+        {
+            var newImage = new Image();
+
+            var isImageUrl = false;
+            var isFileExtension = false;
+
+            while (reader.Read())
+            {
+                var elementName = reader.Name;
+
+                if (elementName == "Image")
+                {
+                    break;
+                }
+                else if (elementName == "ImageUrl")
+                {
+                    isImageUrl = !isImageUrl;
+                }
+                else if (elementName == "FileExtension")
+                {
+                    isFileExtension = !isFileExtension;
+                }
+                else if (isImageUrl)
+                {
+                    newImage.ImageUrl = reader.Value;
+                }
+                else if (isFileExtension)
+                {
+                    newImage.FileExtension = reader.Value;
+                }
+            }
+
+            return newImage;
+        }
     }
 }
+
