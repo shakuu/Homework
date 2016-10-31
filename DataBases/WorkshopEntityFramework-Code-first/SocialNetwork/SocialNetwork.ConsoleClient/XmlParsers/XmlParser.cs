@@ -15,7 +15,7 @@ namespace SocialNetwork.ConsoleClient.XmlParsers
         {
             if (string.IsNullOrEmpty(fileLocation))
             {
-                fileLocation = "./XmlFiles/Friendships-Test.xml";
+                fileLocation = "./XmlFiles/Friendships.xml";
             }
 
             using (XmlReader xmlReader = XmlReader.Create(fileLocation))
@@ -24,14 +24,14 @@ namespace SocialNetwork.ConsoleClient.XmlParsers
                 var socialNetworkContext = XmlParser.GetContext();
 
                 var xmlBuilder = new StringBuilder();
-                var isFriendship = false;
 
                 while (xmlReader.Read())
                 {
                     if (xmlReader.Name == "Friendship")
                     {
+                        xmlBuilder.AppendLine(xmlReader.ReadOuterXml());
                         Console.WriteLine(xmlBuilder);
-                        isFriendship = true;
+                        Console.WriteLine("--------------------------------------------------------------------");
 
                         var xmlExists = xmlBuilder.Length > 0;
                         if (xmlExists)
@@ -43,7 +43,7 @@ namespace SocialNetwork.ConsoleClient.XmlParsers
                             socialNetworkContext.Friendships.Add(friendship);
 
                             xmlBuilder.Clear();
-                            isFriendship = false;
+                            //isFriendship = false;
 
                             if (friendshipCount % 20 == 0)
                             {
@@ -52,12 +52,9 @@ namespace SocialNetwork.ConsoleClient.XmlParsers
                             }
                         }
                     }
-
-                    if (isFriendship)
-                    {
-                        xmlBuilder.AppendLine(xmlReader.ReadOuterXml());
-                    }
                 }
+
+                socialNetworkContext.SaveChanges();
             }
         }
 
@@ -71,12 +68,19 @@ namespace SocialNetwork.ConsoleClient.XmlParsers
 
             var isApprovedValue = root.GetAttribute("Approved");
             var isApproved = isApprovedValue == "true";
-
-            var friendsSinceValue = root.GetElementsByTagName("FriendsSince")[0].InnerText;
-            var friendsSince = DateTime.Parse(friendsSinceValue);
-
             friendship.Approved = isApproved;
-            friendship.FriendsSince = friendsSince;
+
+            try
+            {
+                var friendsSinceValue = root.GetElementsByTagName("FriendsSince")[0].InnerText;
+                var friendsSince = DateTime.Parse(friendsSinceValue);
+
+                friendship.FriendsSince = friendsSince;
+            }
+            catch (Exception)
+            {
+                friendship.FriendsSince = DateTime.Now;
+            }
 
             var firstUserXml = root.GetElementsByTagName("FirstUser")[0];
             var firstUser = XmlParser.CreateUser(firstUserXml, context);
@@ -150,6 +154,15 @@ namespace SocialNetwork.ConsoleClient.XmlParsers
             if (existingUser != null)
             {
                 return existingUser;
+            }
+
+            var localUser = context.Users.Local
+                .Where(u => u.Username == username)
+                .FirstOrDefault();
+
+            if (localUser != null)
+            {
+                return localUser;
             }
 
             var user = new User();
