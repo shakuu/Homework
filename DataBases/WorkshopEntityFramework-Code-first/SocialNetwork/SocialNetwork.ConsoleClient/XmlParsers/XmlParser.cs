@@ -38,12 +38,9 @@ namespace SocialNetwork.ConsoleClient.XmlParsers
                         {
                             friendshipCount++;
 
-                            // Parse XML
                             var friendship = XmlParser.CreateFriendship(xmlBuilder.ToString(), socialNetworkContext);
                             socialNetworkContext.Friendships.Add(friendship);
-
                             xmlBuilder.Clear();
-                            //isFriendship = false;
 
                             if (friendshipCount % 20 == 0)
                             {
@@ -56,6 +53,82 @@ namespace SocialNetwork.ConsoleClient.XmlParsers
 
                 socialNetworkContext.SaveChanges();
             }
+        }
+
+        public static void ParsePostsXml(string fileLocation)
+        {
+            if (string.IsNullOrEmpty(fileLocation))
+            {
+                fileLocation = "./XmlFiles/Posts.xml";
+            }
+
+            using (XmlReader xmlReader = XmlReader.Create(fileLocation))
+            {
+                var postsCount = 0;
+                var socialNetworkContext = XmlParser.GetContext();
+
+                var xmlBuilder = new StringBuilder();
+
+                while (xmlReader.Read())
+                {
+                    if (xmlReader.Name == "Post")
+                    {
+                        //var user = xmlReader.ReadNextUser();
+                        xmlBuilder.AppendLine(xmlReader.ReadOuterXml());
+                        Console.WriteLine(xmlBuilder);
+                        Console.WriteLine("--------------------------------------------------------------------");
+
+                        var xmlExists = xmlBuilder.Length > 0;
+                        if (xmlExists)
+                        {
+                            postsCount++;
+                            
+                            var post = XmlParser.CreatePost(xmlBuilder.ToString(), socialNetworkContext);
+                            socialNetworkContext.Posts.Add(post);
+                            xmlBuilder.Clear();
+
+                            if (postsCount % 50 == 0)
+                            {
+                                socialNetworkContext.SaveChanges();
+                                socialNetworkContext = XmlParser.GetContext();
+                            }
+                        }
+                    }
+                }
+            }
+        }
+
+        private static Post CreatePost(string xml, SocialNetworkContext context)
+        {
+            var doc = new XmlDocument();
+            doc.LoadXml(xml);
+
+            var root = doc.DocumentElement;
+
+            var post = new Post();
+
+            var content = root["Content"].InnerText;
+            post.Content = content;
+
+            try
+            {
+                var postedOn = DateTime.Parse(root["PostedOn"].InnerText);
+                post.PostedOn = postedOn;
+            }
+            catch (Exception)
+            {
+                post.PostedOn = DateTime.Now;
+            }
+
+            var usernames = root["Users"].InnerText;
+            var splitUsernames = usernames.Split(',').Select(u => u.Trim());
+            var users = context.Users
+                .Where(u => splitUsernames.Contains(u.Username))
+                .ToList();
+
+            post.TaggedUsers = users;
+
+            return post;
         }
 
         private static Friendship CreateFriendship(string xml, SocialNetworkContext context)
@@ -90,12 +163,6 @@ namespace SocialNetwork.ConsoleClient.XmlParsers
             var secondUser = XmlParser.CreateUser(secondUserXml, context);
             friendship.UserB = firstUser;
 
-            /*<Message>
-        <Author>ZtlKYHVN7h8SwMmaJs</Author>
-        <Content>tNyppieXJadpvDTJEe7kTF6ia0h86gkooAn</Content>
-        <SentOn>2011-04-19T15:02:36</SentOn>
-        <SeenOn xsi:nil="true" />
-      </Message>*/
             var messagesNodes = root.GetElementsByTagName("Message");
             foreach (XmlNode message in messagesNodes)
             {
@@ -127,22 +194,6 @@ namespace SocialNetwork.ConsoleClient.XmlParsers
             return friendship;
         }
 
-        /*<FirstUser>
-      <Username>x0spcgDKZBf3vQjfO</Username>
-      <RegisteredOn>2012-08-03T08:13:24</RegisteredOn>
-      <FirstName>fUNd3sToA59PJZaL0xCaZ8QthlOe9rAZW3Ku</FirstName>
-      <LastName>HbnLHS0CKdmg</LastName>
-      <Images>
-        <Image>
-          <ImageUrl>m1g3Fd99UO9ZCHfRo</ImageUrl>
-          <FileExtension>FcPv</FileExtension>
-        </Image>
-        <Image>
-          <ImageUrl>9mmb1VutUhta</ImageUrl>
-          <FileExtension>2I</FileExtension>
-        </Image>
-      </Images>
-    </FirstUser>*/
         private static User CreateUser(XmlNode xmlUser, SocialNetworkContext context)
         {
             var username = xmlUser["Username"].InnerText;
@@ -211,6 +262,12 @@ namespace SocialNetwork.ConsoleClient.XmlParsers
         private static SocialNetworkContext GetContext()
         {
             var context = new SocialNetworkContext();
+            return context;
+        }
+
+        private static SocialNetworkContext GetTestConext()
+        {
+            var context = new SocialNetworkContext("testdb");
             return context;
         }
     }

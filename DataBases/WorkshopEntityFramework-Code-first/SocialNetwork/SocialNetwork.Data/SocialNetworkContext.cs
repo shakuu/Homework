@@ -6,6 +6,11 @@ namespace SocialNetwork.Data
 {
     public class SocialNetworkContext : DbContext
     {
+        public SocialNetworkContext(string testDb)
+        {
+
+        }
+
         public SocialNetworkContext()
             : base("name=SocialNetworkDb")
         {
