@@ -1,7 +1,7 @@
-﻿namespace SocialNetwork.ConsoleClient.Searcher
-{
-    using System.Collections;
+﻿using System.Collections;
 
+namespace SocialNetwork.ConsoleClient.Searcher
+{
     public interface ISocialNetworkService
     {
         /// <summary>
@@ -9,7 +9,7 @@
         /// all users which registration year is greater than or equal to the provided year
         /// </summary>
         IEnumerable GetUsersAfterCertainDate(int year);
-        
+
         /// <summary>
         /// Get all posts in which the user with the provided username is tagged.
         /// Select PostedOn, Content and all usernames of the tagged users in the post.

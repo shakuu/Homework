@@ -1,9 +1,9 @@
-﻿namespace SocialNetwork.ConsoleClient.Searcher
-{
-    using System;
-    using System.Collections;
-    using System.Linq;
+﻿using System;
+using System.Collections;
+using System.Linq;
 
+namespace SocialNetwork.ConsoleClient.Searcher
+{
     public class SocialNetworkService : ISocialNetworkService
     {
         public IEnumerable GetUsersAfterCertainDate(int year)

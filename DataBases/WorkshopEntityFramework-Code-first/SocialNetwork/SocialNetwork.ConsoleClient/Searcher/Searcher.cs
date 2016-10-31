@@ -1,9 +1,9 @@
-﻿namespace SocialNetwork.ConsoleClient.Searcher
-{
-    using System.Collections.Generic;
-    using System.IO;
-    using Newtonsoft.Json;
+﻿using System.Collections.Generic;
+using System.IO;
+using Newtonsoft.Json;
 
+namespace SocialNetwork.ConsoleClient.Searcher
+{
     public class DataSearcher
     {
         public static void Search(ISocialNetworkService searcher)

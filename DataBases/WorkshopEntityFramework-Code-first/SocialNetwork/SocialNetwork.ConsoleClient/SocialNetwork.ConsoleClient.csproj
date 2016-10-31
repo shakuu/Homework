@@ -72,6 +72,7 @@
     <Compile Include="Searcher\SocialNetworkService.cs" />
     <Compile Include="Startup.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="XmlParsers\XmlParser.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
