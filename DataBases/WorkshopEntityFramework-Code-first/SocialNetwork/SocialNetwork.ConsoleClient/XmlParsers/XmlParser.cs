@@ -73,6 +73,40 @@ namespace SocialNetwork.ConsoleClient.XmlParsers
             var secondUser = XmlParser.CreateUser(secondUserXml);
             friendship.UserB = firstUser;
 
+            /*<Message>
+        <Author>ZtlKYHVN7h8SwMmaJs</Author>
+        <Content>tNyppieXJadpvDTJEe7kTF6ia0h86gkooAn</Content>
+        <SentOn>2011-04-19T15:02:36</SentOn>
+        <SeenOn xsi:nil="true" />
+      </Message>*/
+            var messagesNodes = root.GetElementsByTagName("Message");
+            foreach (XmlNode message in messagesNodes)
+            {
+                var authorName = message["Author"].InnerText;
+                var content = message["Content"].InnerText;
+                var sentOn = DateTime.Parse(message["SentOn"].InnerText);
+
+                var author = firstUser.Username == authorName ? firstUser : secondUser;
+
+                var newMessage = new Message()
+                {
+                    Author = author,
+                    Content = content,
+                    SentOn = sentOn
+                };
+
+                try
+                {
+                    newMessage.SeenOn = DateTime.Parse(message["SeenOn"].InnerText);
+                }
+                catch (Exception)
+                {
+                    newMessage.SeenOn = null;
+                }
+
+                friendship.Messages.Add(newMessage);
+            }
+
             return friendship;
         }
 
