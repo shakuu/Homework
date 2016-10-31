@@ -34,6 +34,7 @@ namespace SocialNetwork.ConsoleClient.XmlParsers
                         if (xmlExists)
                         {
                             // Parse XML
+                            var friendship = XmlParser.CreateFriendship(xmlBuilder.ToString());
                             xmlBuilder.Clear();
                             isFriendship = false;
                         }
@@ -47,7 +48,7 @@ namespace SocialNetwork.ConsoleClient.XmlParsers
             }
         }
 
-        private static void CreateFriendship(string xml)
+        private static Friendship CreateFriendship(string xml)
         {
             var doc = new XmlDocument();
             doc.LoadXml(xml);
@@ -71,6 +72,8 @@ namespace SocialNetwork.ConsoleClient.XmlParsers
             var secondUserXml = root.GetElementsByTagName("SecondUser")[0];
             var secondUser = XmlParser.CreateUser(secondUserXml);
             friendship.UserB = firstUser;
+
+            return friendship;
         }
 
         /*<FirstUser>
