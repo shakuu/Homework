@@ -1,5 +1,8 @@
 ﻿using System.Xml;
 
+using Data.CodeFirst.ConsoleClient.QueryFromXml.XmlQueryContainers;
+using Data.CodeFirst.ConsoleClient.QueryFromXml.XmlQueryContainers.Contracts;
+
 namespace Data.CodeFirst.ConsoleClient.QueryFromXml
 {
     public static class XmlQuery
@@ -55,6 +58,50 @@ namespace Data.CodeFirst.ConsoleClient.QueryFromXml
 
             System.Console.WriteLine(query);
             return query;
+        }
+
+        public static IQueryContainer BuildQueryContainerFromXml(string fileLocation)
+        {
+            fileLocation = "../../../Data.Json.Files/Queries.xml";
+
+            var document = new XmlDocument();
+            document.Load(fileLocation);
+
+            var root = document.DocumentElement;
+
+            var queryContainer = new XmlQueryContainer();
+
+            var queryElement = root["Query"];
+            queryContainer.outputFileName = queryElement.GetAttribute("OutputFileName");
+
+            var orderByElement = queryElement.GetElementsByTagName("OrderBy");
+            var whereElements = queryElement.GetElementsByTagName("WhereClause");
+
+            foreach (var wh in whereElements)
+            {
+                var propertyName = whereElements[0].Attributes["PropertyName"].Value;
+                var type = whereElements[0].Attributes["Type"].Value;
+                var value = whereElements[0].InnerText;
+                var variableName = $"@{propertyName.ToLower()}";
+
+                var whereClause = new WhereClause()
+                {
+                    PropertyName = propertyName,
+                    Type = ConvertType(type),
+                    Value = value,
+                    VariableName = variableName
+                };
+
+                queryContainer.AddWhereClause(whereClause);
+            }
+
+            if (orderByElement.Count > 0)
+            {
+                var element = orderByElement[0].InnerText;
+                queryContainer.orderByElement = element;
+            }
+            
+            return queryContainer;
         }
 
         private static string ConvertType(string name)

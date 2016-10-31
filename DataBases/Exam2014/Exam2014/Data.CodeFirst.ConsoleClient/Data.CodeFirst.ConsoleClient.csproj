@@ -59,6 +59,10 @@
     <Compile Include="CodeFirstStartup.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="QueryFromXml\XmlQuery.cs" />
+    <Compile Include="QueryFromXml\XmlQueryContainers\Contracts\IQueryContainer.cs" />
+    <Compile Include="QueryFromXml\XmlQueryContainers\Contracts\IWhereClause.cs" />
+    <Compile Include="QueryFromXml\XmlQueryContainers\WhereClause.cs" />
+    <Compile Include="QueryFromXml\XmlQueryContainers\XmlQueryContainer.cs" />
     <Compile Include="StaticJsonDataParser.cs" />
   </ItemGroup>
   <ItemGroup>
