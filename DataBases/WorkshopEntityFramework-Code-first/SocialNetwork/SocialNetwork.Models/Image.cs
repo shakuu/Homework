@@ -1,5 +1,7 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
+using Newtonsoft.Json;
+
 namespace SocialNetwork.Models
 {
     /*ImageUrl which is required
@@ -16,6 +18,7 @@ namespace SocialNetwork.Models
         [StringLength(4)]
         public string FileExtension { get; set; }
 
+        [JsonIgnore]
         public User User { get; set; }
     }
 }

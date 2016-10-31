@@ -2,6 +2,8 @@
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
+using Newtonsoft.Json;
+
 namespace SocialNetwork.Models
 {
     /*It is associated with Friendship
@@ -13,6 +15,8 @@ namespace SocialNetwork.Models
     {
         public int Id { get; set; }
 
+
+        [JsonIgnore]
         public User Author { get; set; }
 
         [Required]

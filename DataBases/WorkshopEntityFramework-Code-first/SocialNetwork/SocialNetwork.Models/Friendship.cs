@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Newtonsoft.Json;
+using System;
 using System.Collections.Generic;
 
 namespace SocialNetwork.Models
@@ -18,8 +19,10 @@ namespace SocialNetwork.Models
 
         public int Id { get; set; }
 
+        [JsonIgnore]
         public User UserA { get; set; }
 
+        [JsonIgnore]
         public User UserB { get; set; }
 
         public bool Approved { get; set; }

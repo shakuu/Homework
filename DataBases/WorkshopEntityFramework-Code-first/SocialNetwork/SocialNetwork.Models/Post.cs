@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Newtonsoft.Json;
+using System;
 using System.Collections.Generic;
 
 using System.ComponentModel.DataAnnotations;
@@ -27,6 +28,7 @@ namespace SocialNetwork.Models
 
         public DateTime PostedOn { get; set; }
 
+        [JsonIgnore]
         public virtual ICollection<User> TaggedUsers
         {
             get
