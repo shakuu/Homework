@@ -14,8 +14,7 @@ namespace SocialNetwork.Models
     public class Message
     {
         public int Id { get; set; }
-
-
+        
         [JsonIgnore]
         public User Author { get; set; }
 
