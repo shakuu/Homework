@@ -7,12 +7,15 @@ namespace SocialNetwork.ConsoleClient
     {
         public static void Main()
         {
+            XmlParserWithExtensionMethod.ParsePostsToXml(null);
+
             // Uncomment to insert data.
             //XmlParser.ParseFriendShipsXml(null);
             //XmlParser.ParsePostsXml(null);
 
-            var service = new SocialNetworkService();
-            DataSearcher.Search(service);
+            // Uncomment to create JSON files.
+            //var service = new SocialNetworkService();
+            //DataSearcher.Search(service);
         }
     }
 }
