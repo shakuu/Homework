@@ -13,6 +13,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Data.CodeFirst.DbContexts",
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Data.CodeFirst.ConsoleClient", "Data.CodeFirst.ConsoleClient\Data.CodeFirst.ConsoleClient.csproj", "{1E16F03C-9A34-4CB1-BE2B-633283024F0B}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Data.CodeFirst.Repository", "Data.CodeFirst.Repository\Data.CodeFirst.Repository.csproj", "{494926CC-D0B3-415D-B5B0-5546067F0F17}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -39,6 +41,10 @@ Global
 		{1E16F03C-9A34-4CB1-BE2B-633283024F0B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{1E16F03C-9A34-4CB1-BE2B-633283024F0B}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{1E16F03C-9A34-4CB1-BE2B-633283024F0B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{494926CC-D0B3-415D-B5B0-5546067F0F17}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{494926CC-D0B3-415D-B5B0-5546067F0F17}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{494926CC-D0B3-415D-B5B0-5546067F0F17}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{494926CC-D0B3-415D-B5B0-5546067F0F17}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

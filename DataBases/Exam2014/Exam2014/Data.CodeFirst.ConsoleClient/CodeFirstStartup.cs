@@ -1,10 +1,13 @@
-﻿namespace Data.CodeFirst.ConsoleClient
+﻿using Data.CodeFirst.ConsoleClient.QueryFromXml;
+
+namespace Data.CodeFirst.ConsoleClient
 {
     public class CodeFirstStartup
     {
         public static void Main()
         {
-            StaticJsonDataParser.ParseJsonData();
+            //StaticJsonDataParser.ParseJsonData();
+            XmlQuery.BuildQueryFromXml(null);
         }
     }
 }

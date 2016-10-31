@@ -58,6 +58,7 @@
   <ItemGroup>
     <Compile Include="CodeFirstStartup.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="QueryFromXml\XmlQuery.cs" />
     <Compile Include="StaticJsonDataParser.cs" />
   </ItemGroup>
   <ItemGroup>
