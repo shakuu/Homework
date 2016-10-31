@@ -25,6 +25,7 @@ namespace SocialNetwork.ConsoleClient.XmlDeserializers
             foreach (var post in xmlPosts)
             {
                 postsCount++;
+                Console.WriteLine($"Post {postsCount}");
 
                 var newPost = new Post();
                 newPost.Content = post.Content;
@@ -59,6 +60,7 @@ namespace SocialNetwork.ConsoleClient.XmlDeserializers
             foreach (var friendship in xmlFriendships)
             {
                 friendshipCount++;
+                Console.WriteLine($"Friendship {friendshipCount}");
 
                 var newFriendship = new Friendship();
                 newFriendship.Approved = friendship.Approved;
@@ -77,16 +79,16 @@ namespace SocialNetwork.ConsoleClient.XmlDeserializers
                     newFriendship.Messages.Add(convertedMessages);
                 }
 
-                //context.Friendships.Add(newFriendship);
+                context.Friendships.Add(newFriendship);
 
-                //if (friendshipCount % 50 == 0)
-                //{
-                //    context.SaveChanges();
-                //    context = this.contextCreator();
-                //}
+                if (friendshipCount % 50 == 0)
+                {
+                    context.SaveChanges();
+                    context = this.contextCreator();
+                }
             }
 
-            //context.SaveChanges();
+            context.SaveChanges();
         }
 
         public User ConvertXmlUserToSqlUser(XmlUser user, SocialNetworkContext context)
@@ -128,7 +130,7 @@ namespace SocialNetwork.ConsoleClient.XmlDeserializers
         {
             var newImage = new Image();
             newImage.ImageUrl = image.ImageUrl;
-            newImage.FileExtension = image.ImageUrl;
+            newImage.FileExtension = image.FileExtension;
 
             return newImage;
         }
