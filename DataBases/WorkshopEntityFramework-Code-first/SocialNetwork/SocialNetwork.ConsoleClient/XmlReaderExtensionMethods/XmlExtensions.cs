@@ -148,8 +148,8 @@ namespace SocialNetwork.ConsoleClient.XmlReaderExtensionMethods
                 }
                 else if (elementName == "Message")
                 {
-                    //var message = ? 
-                    //newFriendship.Messages.Add(?);
+                    var message = reader.CreateMessage(newFriendship.UserA, newFriendship.UserB);
+                    newFriendship.Messages.Add(message);
                 }
                 else if (isFriendsSince)
                 {
@@ -158,6 +158,67 @@ namespace SocialNetwork.ConsoleClient.XmlReaderExtensionMethods
             }
 
             return newFriendship;
+        }
+
+        /*<Message>
+        <Author>Pesho</Author>
+        <Content>Idealka vzimam domasharkata</Content>
+        <SentOn>2015-10-21T11:04:27</SentOn>
+        <SeenOn>2015-10-21T11:03:50</SeenOn>
+      </Message>*/
+        public static Message CreateMessage(this XmlReader reader, User userA, User userB)
+        {
+            var newMessage = new Message();
+
+            var isAuthor = false;
+            var isContent = false;
+            var isSentOn = false;
+            var isSeenOn = false;
+
+            while (reader.Read())
+            {
+                var elementName = reader.Name;
+
+                if (elementName == "Message")
+                {
+                    break;
+                }
+                else if (elementName == "Author")
+                {
+                    isAuthor = !isAuthor;
+                }
+                else if (elementName == "Content")
+                {
+                    isContent = !isContent;
+                }
+                else if (elementName == "SentOn")
+                {
+                    isSentOn = !isSentOn;
+                }
+                else if (elementName == "SeenOn")
+                {
+                    isSeenOn = !isSeenOn;
+                }
+                else if (isAuthor)
+                {
+                    var authorName = reader.Value;
+                    newMessage.Author = userA.Username == authorName ? userA : userB;
+                }
+                else if (isContent)
+                {
+                    newMessage.Content = reader.Value;
+                }
+                else if (isSentOn)
+                {
+                    newMessage.SentOn = DateTime.Parse(reader.Value);
+                }
+                else if (isSeenOn)
+                {
+                    newMessage.SeenOn = DateTime.Parse(reader.Value);
+                }
+            }
+
+            return newMessage;
         }
 
         /*<FirstUser>
