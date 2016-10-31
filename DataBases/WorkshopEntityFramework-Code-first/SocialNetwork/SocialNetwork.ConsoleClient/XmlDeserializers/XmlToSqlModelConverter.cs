@@ -1,10 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 
 using SocialNetwork.ConsoleClient.XmlDeserializers.Models;
 using SocialNetwork.Data;
 using SocialNetwork.Models;
-using System.Linq;
 
 namespace SocialNetwork.ConsoleClient.XmlDeserializers
 {
@@ -15,6 +15,35 @@ namespace SocialNetwork.ConsoleClient.XmlDeserializers
         public XmlToSqlModelConverter(Func<SocialNetworkContext> contextCreator)
         {
             this.contextCreator = contextCreator;
+        }
+
+        public void ConvertXmlPostToSqlPost(IEnumerable<XmlPost> xmlPosts)
+        {
+            var context = this.contextCreator();
+            var postsCount = 0;
+
+            foreach (var post in xmlPosts)
+            {
+                postsCount++;
+
+                var newPost = new Post();
+                newPost.Content = post.Content;
+                newPost.PostedOn = post.PostedOn;
+
+                var userList = post.Users.Split(',').Select(u => u.Trim());
+
+                var users = context.Users
+                    .Where(u => userList.Contains(u.Username))
+                    .ToList();
+
+                newPost.TaggedUsers = users;
+
+                if (postsCount % 100 == 0)
+                {
+                    context.SaveChanges();
+                    context = this.contextCreator();
+                }
+            }
         }
 
         public void ConvertXmlFriendshipToSqlFriendship(IEnumerable<XmlFriendship> xmlFriendships)
