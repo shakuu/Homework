@@ -19,7 +19,7 @@ namespace SocialNetwork.ConsoleClient
             //XmlParser.ParseFriendShipsXml(null);
             //XmlParser.ParsePostsXml(null);
                                    
-            // Inser data with XmlSerializer
+            // Insert data with XmlSerializer
             var converter = new XmlToSqlModelConverter(ContextProvider.CreateSocialNetworkContext);
             var deserializer = new BasicXmlDeserializer();
 
