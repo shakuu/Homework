@@ -1,4 +1,7 @@
-﻿using Dealership.Engine;
+﻿using System;
+
+using Dealership.Common;
+using Dealership.Engine;
 
 namespace Dealership
 {
@@ -6,7 +9,10 @@ namespace Dealership
     {
         public static void Main()
         {
-            DealershipEngine.Instance.Start();
+            DealershipEngine.GetInstance(
+                new Factories.DealershipFactory(),
+                new GenericIOProvider(Console.Write, Console.ReadLine))
+                .Start();
         }
     }
 }

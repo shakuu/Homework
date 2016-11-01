@@ -44,8 +44,10 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Common\Constants.cs" />
+    <Compile Include="Common\Contracts\IIOProvider.cs" />
     <Compile Include="Common\Enums\VehicleType.cs" />
     <Compile Include="Common\Enums\Role.cs" />
+    <Compile Include="Common\GenericIOProvider.cs" />
     <Compile Include="Common\Validator.cs" />
     <Compile Include="Contracts\ICar.cs" />
     <Compile Include="Contracts\IComment.cs" />

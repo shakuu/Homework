@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
+using Dealership.Common.Contracts;
 using Dealership.Common.Enums;
 using Dealership.Contracts;
 using Dealership.Factories;
@@ -37,32 +38,36 @@ namespace Dealership.Engine
 
         private static IEngine SingleInstance;
 
-        private IDealershipFactory factory;
+        private readonly IDealershipFactory factory;
+        private readonly IIOProvider uiProvider;
+
         private ICollection<IUser> users;
         private IUser loggedUser;
 
-        private DealershipEngine(IDealershipFactory factory, ICollection<IUser> users)
+        private DealershipEngine(IDealershipFactory factory, IIOProvider uiProvider)
         {
             if (factory == null)
             {
                 throw new ArgumentNullException(nameof(factory));
             }
 
-            if (users == null)
+            if (uiProvider == null)
             {
-                throw new ArgumentNullException(nameof(users));
+                throw new ArgumentNullException(nameof(uiProvider));
             }
 
             this.factory = factory;
-            this.users = users;
+            this.uiProvider = uiProvider;
+
+            this.users = new HashSet<IUser>();
             this.loggedUser = null;
         }
 
-        public static IEngine GetInstance(IDealershipFactory factory, ICollection<IUser> users)
+        public static IEngine GetInstance(IDealershipFactory factory, IIOProvider uiProvider)
         {
             if (DealershipEngine.SingleInstance == null)
             {
-                DealershipEngine.SingleInstance = new DealershipEngine(factory, users);
+                DealershipEngine.SingleInstance = new DealershipEngine(factory, uiProvider);
             }
 
             return DealershipEngine.SingleInstance;
@@ -77,33 +82,32 @@ namespace Dealership.Engine
 
         public void Reset()
         {
-            this.factory = new DealershipFactory();
-            this.users = new List<IUser>();
             this.loggedUser = null;
+            this.users = new HashSet<IUser>();
             var commands = new List<ICommand>();
             var commandResult = new List<string>();
             this.PrintReports(commandResult);
         }
 
 
-        private IList<ICommand> ReadCommands()
+        private IEnumerable<ICommand> ReadCommands()
         {
             var commands = new List<ICommand>();
 
-            var currentLine = Console.ReadLine();
+            var currentLine = this.uiProvider.ReadLine();
 
             while (!string.IsNullOrEmpty(currentLine))
             {
                 var currentCommand = new Command(currentLine);
                 commands.Add(currentCommand);
 
-                currentLine = Console.ReadLine();
+                currentLine = this.uiProvider.ReadLine();
             }
 
             return commands;
         }
 
-        private IList<string> ProcessCommands(IList<ICommand> commands)
+        private IEnumerable<string> ProcessCommands(IEnumerable<ICommand> commands)
         {
             var reports = new List<string>();
 
@@ -123,7 +127,7 @@ namespace Dealership.Engine
             return reports;
         }
 
-        private void PrintReports(IList<string> reports)
+        private void PrintReports(IEnumerable<string> reports)
         {
             var output = new StringBuilder();
 
@@ -133,7 +137,7 @@ namespace Dealership.Engine
                 output.AppendLine(new string('#', 20));
             }
 
-            Console.Write(output.ToString());
+            this.uiProvider.Write(output.ToString());
         }
 
         private string ProcessSingleCommand(ICommand command)
