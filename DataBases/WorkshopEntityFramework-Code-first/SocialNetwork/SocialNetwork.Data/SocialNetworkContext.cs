@@ -13,6 +13,7 @@ namespace SocialNetwork.Data
         public SocialNetworkContext()
             : base("name=SocialNetworkDb")
         {
+
         }
 
         public virtual IDbSet<User> Users { get; set; }
