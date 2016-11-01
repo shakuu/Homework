@@ -1,17 +1,16 @@
-﻿using Dealership.Common;
-using Dealership.Common.Enums;
-using Dealership.Contracts;
-using Dealership.Factories;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+
+using Dealership.Common.Enums;
+using Dealership.Contracts;
+using Dealership.Factories;
 
 namespace Dealership.Engine
 {
     public sealed class DealershipEngine : IEngine
     {
-        // Commands constants
         private const string InvalidCommand = "Invalid command!";
 
         private const string UserAlreadyExist = "User {0} already exist. Choose a different username!";
@@ -44,12 +43,22 @@ namespace Dealership.Engine
 
         private DealershipEngine(IDealershipFactory factory, ICollection<IUser> users)
         {
+            if (factory == null)
+            {
+                throw new ArgumentNullException(nameof(factory));
+            }
+
+            if (users == null)
+            {
+                throw new ArgumentNullException(nameof(users));
+            }
+
             this.factory = factory;
             this.users = users;
             this.loggedUser = null;
         }
 
-        public static IEngine GetEngineInstance(IDealershipFactory factory, ICollection<IUser> users)
+        public static IEngine GetInstance(IDealershipFactory factory, ICollection<IUser> users)
         {
             if (DealershipEngine.SingleInstance == null)
             {
