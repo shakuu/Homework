@@ -95,6 +95,8 @@ namespace SocialNetwork.ConsoleClient.XmlParsers
                         }
                     }
                 }
+
+                socialNetworkContext.SaveChanges();
             }
         }
 
