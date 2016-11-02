@@ -1,4 +1,5 @@
 ﻿using Dealership.Contracts;
+using Dealership.Engine;
 
 namespace Dealership.Factories
 {
@@ -13,5 +14,7 @@ namespace Dealership.Factories
         IVehicle CreateMotorcycle(string make, string model, decimal price, string category);
 
         IVehicle CreateTruck(string make, string model, decimal price, int weightCapacity);
+
+        ICommand CreateCommand(string currentLine);
     }
 }

@@ -1,7 +1,9 @@
-﻿using Dealership.Contracts;
-using System;
+﻿using System;
+
+using Dealership.Contracts;
 using Dealership.Models;
 using Dealership.Common.Enums;
+using Dealership.Engine;
 
 namespace Dealership.Factories
 {
@@ -30,6 +32,11 @@ namespace Dealership.Factories
         public IComment CreateComment(string content)
         {
             return new Comment(content);
+        }
+
+        public ICommand CreateCommand(string currentLine)
+        {
+            return new Command(currentLine);
         }
     }
 }

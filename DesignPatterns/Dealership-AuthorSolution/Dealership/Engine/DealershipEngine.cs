@@ -98,7 +98,7 @@ namespace Dealership.Engine
 
             while (!string.IsNullOrEmpty(currentLine))
             {
-                var currentCommand = new Command(currentLine);
+                var currentCommand = this.factory.CreateCommand(currentLine);
                 commands.Add(currentCommand);
 
                 currentLine = this.uiProvider.ReadLine();
