@@ -13,12 +13,7 @@ namespace Dealership.CommandHandlers
         private const string RemovedVehicleDoesNotExist = "Cannot remove comment! The vehicle does not exist!";
         private const string CommentRemovedSuccessfully = "{0} removed comment successfully!";
         private const string RemovedCommentDoesNotExist = "Cannot remove comment! The comment does not exist!";
-
-        public RemoveCommentCommandHandler(ICommandHandler nextHandler)
-            : base(nextHandler)
-        {
-        }
-
+        
         protected override bool CanHandle(ICommand command)
         {
             return command.Name == RemoveCommentCommandHandler.RemoveCommentCommandName;

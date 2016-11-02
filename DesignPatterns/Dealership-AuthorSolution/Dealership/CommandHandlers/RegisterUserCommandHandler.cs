@@ -14,12 +14,7 @@ namespace Dealership.CommandHandlers
         private const string UserAlreadyExist = "User {0} already exist. Choose a different username!";
         private const string UserLoggedInAlready = "User {0} is logged in! Please log out first!";
         private const string UserRegisterеd = "User {0} registered successfully!";
-
-        public RegisterUserCommandHandler(ICommandHandler nextHandler)
-            : base(nextHandler)
-        {
-        }
-
+        
         protected override bool CanHandle(ICommand command)
         {
             return command.Name == RegisterUserCommandHandler.CanHandleCommandName;

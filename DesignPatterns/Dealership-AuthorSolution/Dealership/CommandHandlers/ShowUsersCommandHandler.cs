@@ -11,12 +11,7 @@ namespace Dealership.CommandHandlers
     {
         private const string ShowUsersCommandName = "ShowUsers";
         private const string YouAreNotAnAdmin = "You are not an admin!";
-
-        public ShowUsersCommandHandler(ICommandHandler nextHandler)
-            : base(nextHandler)
-        {
-        }
-
+        
         protected override bool CanHandle(ICommand command)
         {
             return command.Name == ShowUsersCommandHandler.ShowUsersCommandName;

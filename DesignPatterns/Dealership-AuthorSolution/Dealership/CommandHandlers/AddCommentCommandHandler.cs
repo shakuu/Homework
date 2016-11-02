@@ -12,12 +12,7 @@ namespace Dealership.CommandHandlers
         private const string NoSuchUser = "There is no user with username {0}!";
         private const string VehicleDoesNotExist = "The vehicle does not exist!";
         private const string CommentAddedSuccessfully = "{0} added comment successfully!";
-
-        public AddCommentCommandHandler(ICommandHandler nextHandler)
-            : base(nextHandler)
-        {
-        }
-
+        
         protected override bool CanHandle(ICommand command)
         {
             return command.Name == AddCommentCommandHandler.AddCommentCommandName;

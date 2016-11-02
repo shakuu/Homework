@@ -10,12 +10,7 @@ namespace Dealership.CommandHandlers
     {
         private const string ShowVehiclesCommandName = "ShowVehicles";
         private const string NoSuchUser = "There is no user with username {0}!";
-
-        public ShowVehiclesCommandHandler(ICommandHandler nextHandler)
-            : base(nextHandler)
-        {
-        }
-
+        
         protected override bool CanHandle(ICommand command)
         {
             return command.Name == ShowVehiclesCommandHandler.ShowVehiclesCommandName;

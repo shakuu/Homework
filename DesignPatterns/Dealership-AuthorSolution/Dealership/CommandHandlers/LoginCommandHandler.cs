@@ -12,12 +12,7 @@ namespace Dealership.CommandHandlers
         private const string UserLoggedInAlready = "User {0} is logged in! Please log out first!";
         private const string UserLoggedIn = "User {0} successfully logged in!";
         private const string WrongUsernameOrPassword = "Wrong username or password!";
-
-        public LoginCommandHandler(ICommandHandler nextHandler)
-            : base(nextHandler)
-        {
-        }
-
+        
         protected override bool CanHandle(ICommand command)
         {
             return command.Name == LoginCommandHandler.LoginUserCommandName;

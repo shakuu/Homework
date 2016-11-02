@@ -9,9 +9,9 @@ namespace Dealership.CommandHandlers.Base
     {
         private const string InvalidCommand = "Invalid command!";
 
-        private readonly ICommandHandler nextHandler;
+        private ICommandHandler nextHandler;
 
-        public BaseCommandHandler(ICommandHandler nextHandler)
+        public void AddCommandHandler(ICommandHandler nextHandler)
         {
             this.nextHandler = nextHandler;
         }

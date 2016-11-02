@@ -16,12 +16,7 @@ namespace Dealership.CommandHandlers
     {
         private const string AddVehicleCommandName = "AddVehicle";
         private const string VehicleAddedSuccessfully = "{0} added vehicle successfully!";
-
-        public AddVehicleCommandHandler(ICommandHandler nextHandler)
-            : base(nextHandler)
-        {
-        }
-
+        
         protected override bool CanHandle(ICommand command)
         {
             return command.Name == AddVehicleCommandHandler.AddVehicleCommandName;

@@ -8,11 +8,7 @@ namespace Dealership.CommandHandlers
     {
         private const string LogoutCommandName = "Logout";
         private const string UserLoggedOut = "You logged out!";
-
-        public LogoutCommandHandler(ICommandHandler nextHandler) : base(nextHandler)
-        {
-        }
-
+        
         protected override bool CanHandle(ICommand command)
         {
             return command.Name == LogoutCommandHandler.LogoutCommandName;
