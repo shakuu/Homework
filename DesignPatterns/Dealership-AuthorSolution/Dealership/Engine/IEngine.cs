@@ -7,14 +7,16 @@ namespace Dealership.Engine
 {
     public interface IEngine
     {
-        void Start();
-
-        void Reset();
-
         IDealershipFactory Factory { get; }
 
         ICollection<IUser> Users { get; }
 
-        IUser LoggedUser { get; set; }
+        IUser LoggedUser { get; }
+
+        void SetLoggedUser(IUser user);
+
+        void Start();
+
+        void Reset();
     }
 }

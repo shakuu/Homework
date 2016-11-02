@@ -1,10 +1,10 @@
 ﻿using System;
+using System.Linq;
 
 using Dealership.CommandHandlers.Base;
 using Dealership.CommandHandlers.Contracts;
 using Dealership.Engine;
 using Dealership.Common.Enums;
-using System.Linq;
 
 namespace Dealership.CommandHandlers
 {
@@ -41,19 +41,19 @@ namespace Dealership.CommandHandlers
 
             if (engine.LoggedUser != null)
             {
-                return string.Format(UserLoggedInAlready, engine.LoggedUser.Username);
+                return string.Format(RegisterUserCommandHandler.UserLoggedInAlready, engine.LoggedUser.Username);
             }
 
             if (engine.Users.Any(u => u.Username.ToLower() == username.ToLower()))
             {
-                return string.Format(UserAlreadyExist, username);
+                return string.Format(RegisterUserCommandHandler.UserAlreadyExist, username);
             }
 
             var user = engine.Factory.CreateUser(username, firstName, lastName, password, role.ToString());
-            engine.LoggedUser = user;
+            engine.SetLoggedUser(user);
             engine.Users.Add(user);
 
-            return string.Format(UserRegisterеd, username);
+            return string.Format(RegisterUserCommandHandler.UserRegisterеd, username);
         }
     }
 }

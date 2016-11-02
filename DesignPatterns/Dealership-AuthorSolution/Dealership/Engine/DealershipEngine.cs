@@ -85,11 +85,6 @@ namespace Dealership.Engine
             {
                 return this.loggedUser;
             }
-
-            set
-            {
-                this.loggedUser = value;
-            }
         }
 
         public static IEngine GetInstance(IDealershipFactory factory, IIOProvider uiProvider)
@@ -100,6 +95,16 @@ namespace Dealership.Engine
             }
 
             return DealershipEngine.SingleInstance;
+        }
+
+        public void SetLoggedUser(IUser user)
+        {
+            if (user == null)
+            {
+                throw new ArgumentNullException(nameof(user));
+            }
+
+            this.loggedUser = user;
         }
 
         public void Start()
