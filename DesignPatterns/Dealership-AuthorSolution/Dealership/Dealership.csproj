@@ -33,6 +33,10 @@
     <StartupObject />
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Ninject, Version=3.2.0.0, Culture=neutral, PublicKeyToken=c7192dc5380945e7, processorArchitecture=MSIL">
+      <HintPath>..\packages\Ninject.3.2.2.0\lib\net45-full\Ninject.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
@@ -50,7 +54,10 @@
     <Compile Include="CommandHandlers\LoginCommandHandler.cs" />
     <Compile Include="CommandHandlers\LogoutCommandHandler.cs" />
     <Compile Include="CommandHandlers\RegisterUserCommandHandler.cs" />
+    <Compile Include="CommandHandlers\RemoveCommentCommandHandler.cs" />
     <Compile Include="CommandHandlers\RemoveVehicleCommandHandler.cs" />
+    <Compile Include="CommandHandlers\ShowUsersCommandHandler.cs" />
+    <Compile Include="CommandHandlers\ShowVehiclesCommandHandler.cs" />
     <Compile Include="Common\Constants.cs" />
     <Compile Include="Common\Contracts\IIOProvider.cs" />
     <Compile Include="Common\Enums\VehicleType.cs" />
@@ -77,10 +84,13 @@
     <Compile Include="Models\Truck.cs" />
     <Compile Include="Models\User.cs" />
     <Compile Include="Models\Vehicle.cs" />
+    <Compile Include="NinjectBindings\DealershipBindings.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <None Include="packages.config" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
