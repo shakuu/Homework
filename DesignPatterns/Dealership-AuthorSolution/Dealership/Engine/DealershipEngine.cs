@@ -63,6 +63,22 @@ namespace Dealership.Engine
             this.loggedUser = null;
         }
 
+        public ICollection<IUser> Users
+        {
+            get
+            {
+                return this.users;
+            }
+        }
+
+        public bool HasLoggedUser
+        {
+            get
+            {
+                return this.loggedUser != null;
+            }
+        }
+
         public static IEngine GetInstance(IDealershipFactory factory, IIOProvider uiProvider)
         {
             if (DealershipEngine.SingleInstance == null)

@@ -1,7 +1,6 @@
 ﻿using System.Collections.Generic;
 
 using Dealership.Contracts;
-using Dealership.Factories;
 
 namespace Dealership.Engine
 {
@@ -10,5 +9,9 @@ namespace Dealership.Engine
         void Start();
 
         void Reset();
+
+        ICollection<IUser> Users { get; }
+
+        bool HasLoggedUser { get; }
     }
 }

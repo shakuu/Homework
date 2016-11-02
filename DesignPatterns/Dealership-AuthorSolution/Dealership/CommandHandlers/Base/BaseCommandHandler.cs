@@ -1,9 +1,5 @@
-﻿using System.Collections.Generic;
-
-using Dealership.CommandHandlers.Contracts;
-using Dealership.Contracts;
+﻿using Dealership.CommandHandlers.Contracts;
 using Dealership.Engine;
-using Dealership.Factories;
 
 namespace Dealership.CommandHandlers.Base
 {
@@ -11,23 +7,23 @@ namespace Dealership.CommandHandlers.Base
     {
         private const string InvalidCommand = "Invalid command!";
 
-        private ICommandHandler nextHandler;
+        private readonly ICommandHandler nextHandler;
 
         public BaseCommandHandler(ICommandHandler nextHandler)
         {
             this.nextHandler = nextHandler;
         }
 
-        public string HandleCommand(ICommand command, ICollection<IUser> users, IDealershipFactory factory)
+        public string HandleCommand(ICommand command, IEngine engine)
         {
             string result;
             if (this.CanHandle(command))
             {
-                result = this.Handle(command);
+                result = this.Handle(command, engine);
             }
             else if (this.nextHandler != null)
             {
-                result = this.nextHandler.HandleCommand(command, users, factory);
+                result = this.nextHandler.HandleCommand(command, engine);
             }
             else
             {
@@ -39,6 +35,6 @@ namespace Dealership.CommandHandlers.Base
 
         protected abstract bool CanHandle(ICommand command);
 
-        protected abstract string Handle(ICommand command);
+        protected abstract string Handle(ICommand command, IEngine engine);
     }
 }
