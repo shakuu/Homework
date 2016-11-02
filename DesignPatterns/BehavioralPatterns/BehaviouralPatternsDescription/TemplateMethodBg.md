@@ -7,4 +7,4 @@
 Конкретно в една от задачите базовият клас съдържаше няколко празни метода, като логиката на енджина беше да извиква всеки един от тях. 
 Наследниците имплементираха методи, от които имаха нужда ( Creatures in Battle се казваше задачата ако си спомням правилно ).
 
-[Diagram](http://www.dofactory.com/net/design-patterns)
+[Diagram](http://www.dofactory.com/net/template-method-design-pattern)
