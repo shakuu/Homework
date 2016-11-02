@@ -63,6 +63,14 @@ namespace Dealership.Engine
             this.loggedUser = null;
         }
 
+        public IDealershipFactory Factory
+        {
+            get
+            {
+                return this.factory;
+            }
+        }
+
         public ICollection<IUser> Users
         {
             get
@@ -71,11 +79,16 @@ namespace Dealership.Engine
             }
         }
 
-        public bool HasLoggedUser
+        public IUser LoggedUser
         {
             get
             {
-                return this.loggedUser != null;
+                return this.loggedUser;
+            }
+
+            set
+            {
+                this.loggedUser = value;
             }
         }
 
