@@ -10,7 +10,7 @@ namespace Dealership.CommandHandlers
 {
     public class RegisterUserCommandHandler : BaseCommandHandler
     {
-        private const string RegisterUserCommandName = "RegisterUser";
+        private const string CanHandleCommandName = "RegisterUser";
         private const string UserAlreadyExist = "User {0} already exist. Choose a different username!";
         private const string UserLoggedInAlready = "User {0} is logged in! Please log out first!";
         private const string UserRegisterеd = "User {0} registered successfully!";
@@ -22,7 +22,7 @@ namespace Dealership.CommandHandlers
 
         protected override bool CanHandle(ICommand command)
         {
-            return command.Name == RegisterUserCommandHandler.RegisterUserCommandName;
+            return command.Name == RegisterUserCommandHandler.CanHandleCommandName;
         }
 
         protected override string Handle(ICommand command, IEngine engine)
