@@ -1,4 +1,6 @@
-﻿using Dealership.CommandHandlers.Contracts;
+﻿using System;
+
+using Dealership.CommandHandlers.Contracts;
 using Dealership.Engine;
 
 namespace Dealership.CommandHandlers.Base
@@ -31,6 +33,14 @@ namespace Dealership.CommandHandlers.Base
             }
 
             return result;
+        }
+
+        protected void ValidateRange(int? value, int min, int max, string message)
+        {
+            if (value < min || value >= max)
+            {
+                throw new ArgumentException(message);
+            }
         }
 
         protected abstract bool CanHandle(ICommand command);

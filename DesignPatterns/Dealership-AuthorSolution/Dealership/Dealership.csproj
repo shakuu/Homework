@@ -49,6 +49,7 @@
     <Compile Include="CommandHandlers\LoginCommandHandler.cs" />
     <Compile Include="CommandHandlers\LogoutCommandHandler.cs" />
     <Compile Include="CommandHandlers\RegisterUserCommandHandler.cs" />
+    <Compile Include="CommandHandlers\RemoveVehicleCommandHandler.cs" />
     <Compile Include="Common\Constants.cs" />
     <Compile Include="Common\Contracts\IIOProvider.cs" />
     <Compile Include="Common\Enums\VehicleType.cs" />
