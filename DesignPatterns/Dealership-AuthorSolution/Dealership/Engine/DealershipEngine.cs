@@ -34,16 +34,15 @@ namespace Dealership.Engine
 
         private const string CommentDoesNotExist = "The comment does not exist!";
         private const string VehicleDoesNotExist = "The vehicle does not exist!";
-
-        private static IEngine SingleInstance;
-
+        
         private readonly IDealershipFactory factory;
         private readonly IIOProvider uiProvider;
         private readonly ICommandHandler commandHandler;
+
         private ICollection<IUser> users;
         private IUser loggedUser;
 
-        private DealershipEngine(
+        public DealershipEngine(
             IDealershipFactory factory,
             IIOProvider uiProvider,
             ICommandHandler commandHandler)
@@ -94,17 +93,7 @@ namespace Dealership.Engine
                 return this.loggedUser;
             }
         }
-
-        public static IEngine GetInstance(IDealershipFactory factory, IIOProvider uiProvider, ICommandHandler commandHandler)
-        {
-            if (DealershipEngine.SingleInstance == null)
-            {
-                DealershipEngine.SingleInstance = new DealershipEngine(factory, uiProvider, commandHandler);
-            }
-
-            return DealershipEngine.SingleInstance;
-        }
-
+        
         public void SetLoggedUser(IUser user)
         {
             this.loggedUser = user;

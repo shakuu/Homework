@@ -4,10 +4,11 @@ using Dealership.Common.Contracts;
 using Dealership.Common;
 using Dealership.CommandHandlers.Contracts;
 using Dealership.CommandHandlers;
+using Dealership.Engine;
 using Dealership.Factories;
 
+using Ninject;
 using Ninject.Modules;
-using Dealership.Engine;
 
 namespace Dealership.NinjectBindings
 {
@@ -40,6 +41,11 @@ namespace Dealership.NinjectBindings
 
                 return registerUserHandler;
             });
+
+            this.Bind<IEngine>().To<DealershipEngine>().InSingletonScope()
+                .WithConstructorArgument("factory", ctx => ctx.Kernel.Get<IDealershipFactory>())
+                .WithConstructorArgument("uiProvider", ctx => ctx.Kernel.Get<IIOProvider>())
+                .WithConstructorArgument("commandHandler", ctx => ctx.Kernel.Get<ICommandHandler>());
         }
     }
 }
