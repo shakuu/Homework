@@ -7,6 +7,7 @@ using Dealership.CommandHandlers;
 using Dealership.Factories;
 
 using Ninject.Modules;
+using Dealership.Engine;
 
 namespace Dealership.NinjectBindings
 {
