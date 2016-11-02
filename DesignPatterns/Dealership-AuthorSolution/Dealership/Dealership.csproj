@@ -43,6 +43,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="CommandHandlers\AddVehicleCommandHandler.cs" />
     <Compile Include="CommandHandlers\Base\BaseCommandHandler.cs" />
     <Compile Include="CommandHandlers\Contracts\ICommandHandler.cs" />
     <Compile Include="CommandHandlers\LoginCommandHandler.cs" />
