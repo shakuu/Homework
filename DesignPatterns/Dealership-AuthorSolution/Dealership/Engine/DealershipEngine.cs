@@ -99,11 +99,6 @@ namespace Dealership.Engine
 
         public void SetLoggedUser(IUser user)
         {
-            if (user == null)
-            {
-                throw new ArgumentNullException(nameof(user));
-            }
-
             this.loggedUser = user;
         }
 
