@@ -1,18 +1,18 @@
 ﻿using System;
 
-using Dealership.Common.Contracts;
 using Dealership.Common;
+using Dealership.Common.Contracts;
 using Dealership.CommandHandlers.Contracts;
 using Dealership.CommandHandlers;
+using Dealership.Contracts;
 using Dealership.Engine;
 using Dealership.Factories;
+using Dealership.Models;
 
 using Ninject;
 using Ninject.Extensions.Conventions;
 using Ninject.Extensions.Factory;
 using Ninject.Modules;
-using Dealership.Contracts;
-using Dealership.Models;
 
 namespace Dealership.NinjectBindings
 {
@@ -55,7 +55,6 @@ namespace Dealership.NinjectBindings
             this.Bind<IVehicle>().To<Car>().Named(CarName);
             this.Bind<IVehicle>().To<Motorcycle>().Named(MotorcycleName);
             this.Bind<IVehicle>().To<Truck>().Named(TruckName);
-
             this.Bind<IDealershipFactory>().ToFactory().InSingletonScope();
 
             this.Bind<ICommandHandler>().To<RegisterUserCommandHandler>().Named(RegisterUserCommandHandlerName);
