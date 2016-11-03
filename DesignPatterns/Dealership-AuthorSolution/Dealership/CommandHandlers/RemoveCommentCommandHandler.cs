@@ -1,7 +1,6 @@
 ﻿using System.Linq;
 
 using Dealership.CommandHandlers.Base;
-using Dealership.CommandHandlers.Contracts;
 using Dealership.Engine;
 
 namespace Dealership.CommandHandlers

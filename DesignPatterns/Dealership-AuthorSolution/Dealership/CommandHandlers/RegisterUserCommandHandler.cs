@@ -2,9 +2,9 @@
 using System.Linq;
 
 using Dealership.CommandHandlers.Base;
-using Dealership.CommandHandlers.Contracts;
-using Dealership.Engine;
 using Dealership.Common.Enums;
+using Dealership.Engine;
+using Dealership.Factories;
 
 namespace Dealership.CommandHandlers
 {
@@ -14,7 +14,19 @@ namespace Dealership.CommandHandlers
         private const string UserAlreadyExist = "User {0} already exist. Choose a different username!";
         private const string UserLoggedInAlready = "User {0} is logged in! Please log out first!";
         private const string UserRegisterеd = "User {0} registered successfully!";
-        
+
+        private readonly IDealershipFactory factory;
+
+        public RegisterUserCommandHandler(IDealershipFactory factory)
+        {
+            if (factory == null)
+            {
+                throw new ArgumentNullException(nameof(factory));
+            }
+
+            this.factory = factory;
+        }
+
         protected override bool CanHandle(ICommand command)
         {
             return command.Name == RegisterUserCommandHandler.CanHandleCommandName;
@@ -44,7 +56,7 @@ namespace Dealership.CommandHandlers
                 return string.Format(RegisterUserCommandHandler.UserAlreadyExist, username);
             }
 
-            var user = engine.Factory.CreateUser(username, firstName, lastName, password, role.ToString());
+            var user = this.factory.CreateUser(username, firstName, lastName, password, role.ToString());
             engine.SetLoggedUser(user);
             engine.Users.Add(user);
 

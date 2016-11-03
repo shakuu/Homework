@@ -4,6 +4,7 @@ using Dealership.CommandHandlers.Base;
 using Dealership.Common.Enums;
 using Dealership.Contracts;
 using Dealership.Engine;
+using Dealership.Factories;
 
 namespace Dealership.CommandHandlers
 {
@@ -11,6 +12,18 @@ namespace Dealership.CommandHandlers
     {
         private const string AddVehicleCommandName = "AddVehicle";
         private const string VehicleAddedSuccessfully = "{0} added vehicle successfully!";
+
+        private readonly IDealershipFactory factory;
+
+        public AddVehicleCommandHandler(IDealershipFactory factory)
+        {
+            if (factory == null)
+            {
+                throw new ArgumentNullException(nameof(factory));
+            }
+
+            this.factory = factory;
+        }
 
         protected override bool CanHandle(ICommand command)
         {
@@ -31,15 +44,15 @@ namespace Dealership.CommandHandlers
 
             if (typeEnum == VehicleType.Car)
             {
-                vehicle = engine.Factory.GetCar(make, model, price, int.Parse(additionalParam));
+                vehicle = this.factory.GetCar(make, model, price, int.Parse(additionalParam));
             }
             else if (typeEnum == VehicleType.Motorcycle)
             {
-                vehicle = engine.Factory.GetMotorcycle(make, model, price, additionalParam);
+                vehicle = this.factory.GetMotorcycle(make, model, price, additionalParam);
             }
             else if (typeEnum == VehicleType.Truck)
             {
-                vehicle = engine.Factory.GetTruck(make, model, price, int.Parse(additionalParam));
+                vehicle = this.factory.GetTruck(make, model, price, int.Parse(additionalParam));
             }
 
             engine.LoggedUser.AddVehicle(vehicle);

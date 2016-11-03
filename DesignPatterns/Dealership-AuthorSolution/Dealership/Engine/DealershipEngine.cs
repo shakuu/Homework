@@ -69,15 +69,7 @@ namespace Dealership.Engine
             this.users = new HashSet<IUser>();
             this.loggedUser = null;
         }
-
-        public IDealershipFactory Factory
-        {
-            get
-            {
-                return this.factory;
-            }
-        }
-
+        
         public ICollection<IUser> Users
         {
             get

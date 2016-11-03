@@ -1,8 +1,9 @@
-﻿using System.Linq;
+﻿using System;
+using System.Linq;
 
 using Dealership.CommandHandlers.Base;
-using Dealership.CommandHandlers.Contracts;
 using Dealership.Engine;
+using Dealership.Factories;
 
 namespace Dealership.CommandHandlers
 {
@@ -12,7 +13,19 @@ namespace Dealership.CommandHandlers
         private const string NoSuchUser = "There is no user with username {0}!";
         private const string VehicleDoesNotExist = "The vehicle does not exist!";
         private const string CommentAddedSuccessfully = "{0} added comment successfully!";
-        
+
+        private readonly IDealershipFactory factory;
+
+        public AddCommentCommandHandler(IDealershipFactory factory)
+        {
+            if (factory == null)
+            {
+                throw new ArgumentNullException(nameof(factory));
+            }
+
+            this.factory = factory;
+        }
+
         protected override bool CanHandle(ICommand command)
         {
             return command.Name == AddCommentCommandHandler.AddCommentCommandName;
@@ -24,7 +37,7 @@ namespace Dealership.CommandHandlers
             var author = command.Parameters[1];
             var vehicleIndex = int.Parse(command.Parameters[2]) - 1;
 
-            var comment = engine.Factory.CreateComment(content);
+            var comment = this.factory.CreateComment(content);
             comment.Author = engine.LoggedUser.Username;
             var user = engine.Users.FirstOrDefault(u => u.Username == author);
 
