@@ -3,7 +3,7 @@ namespace DatabasePerformance.Data.MySql.Migrations
     using System;
     using System.Data.Entity.Migrations;
     
-    public partial class keys : DbMigration
+    public partial class mySqlInit : DbMigration
     {
         public override void Up()
         {
@@ -11,11 +11,11 @@ namespace DatabasePerformance.Data.MySql.Migrations
                 "dbo.MySqlModels",
                 c => new
                     {
-                        Id = c.Int(nullable: false),
-                        Date = c.DateTime(nullable: false, precision: 0),
+                        Id = c.Int(nullable: false, identity: true),
                         Text = c.String(unicode: false),
+                        Date = c.DateTime(nullable: false, precision: 0),
                     })
-                .PrimaryKey(t => new { t.Id, t.Date });
+                .PrimaryKey(t => t.Id);
             
         }
         

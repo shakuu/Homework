@@ -57,9 +57,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Migrations\201611041146335_keys.cs" />
-    <Compile Include="Migrations\201611041146335_keys.Designer.cs">
-      <DependentUpon>201611041146335_keys.cs</DependentUpon>
+    <Compile Include="Migrations\201611041331417_mySqlInit.cs" />
+    <Compile Include="Migrations\201611041331417_mySqlInit.Designer.cs">
+      <DependentUpon>201611041331417_mySqlInit.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="MySqlPerformanceDbContext.cs" />
@@ -80,8 +80,8 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201611041146335_keys.resx">
-      <DependentUpon>201611041146335_keys.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201611041331417_mySqlInit.resx">
+      <DependentUpon>201611041331417_mySqlInit.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

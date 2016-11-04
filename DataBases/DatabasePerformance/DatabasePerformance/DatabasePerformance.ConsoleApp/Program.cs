@@ -18,6 +18,19 @@ namespace DatabasePerformance.ConsoleApp
             Program.Warmup(context);
             Program.SearchWithoutIndex(context, start, end);
             Program.SearchWithIndex(context, start, end);
+
+            // TASK 4: 
+            // 1. Update-Database in Data.MySql
+            // 2. Run MySqlWorkbench
+            // 3. Remove PK from Id 
+            // 4. Run the following
+            // ALTER TABLE performancedb.mysqlmodels PARTITION BY RANGE (to_days(Date)) (
+            // PARTITION p0 VALUES LESS THAN(to_days('2011-01-01')),
+            // PARTITION p1 VALUES LESS THAN(to_days('2012-01-01')),
+            // PARTITION p2 VALUES LESS THAN(to_days('2013-01-01')),
+            // PARTITION p3 VALUES LESS THAN(to_days('2014-03-01')),
+            // PARTITION p4 VALUES LESS THAN(to_days('2015-06-01')),
+            // PARTITION p5 VALUES LESS THAN MAXVALUE);
         }
 
         private static void Warmup(PerformanceDbContext context)

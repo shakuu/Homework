@@ -7,13 +7,13 @@ namespace DatabasePerformance.Data.MySql.Migrations
     using System.Resources;
     
     [GeneratedCode("EntityFramework.Migrations", "6.1.3-40302")]
-    public sealed partial class keys : IMigrationMetadata
+    public sealed partial class mySqlInit : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(keys));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(mySqlInit));
         
         string IMigrationMetadata.Id
         {
-            get { return "201611041146335_keys"; }
+            get { return "201611041331417_mySqlInit"; }
         }
         
         string IMigrationMetadata.Source

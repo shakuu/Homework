@@ -45,7 +45,7 @@ namespace DatabasePerformance.Data.MySql.Migrations
 
         private DateTime GetRandomDate(Random generator)
         {
-            var year = generator.Next(2000, 2016);
+            var year = generator.Next(1990, 2015);
             var month = generator.Next(1, 12);
             var day = generator.Next(1, 28);
 
