@@ -16,7 +16,7 @@ namespace DatabasePerformance.Data.Migrations
         protected override void Seed(DatabasePerformance.Data.PerformanceDbContext context)
         {
             var modelsWithIndexExists = context.ModelsWithIndex.Any();
-            var modelsWithoutIndexExists = context.ModelWithoutIndex.Any();
+            var modelsWithoutIndexExists = context.ModelsWithoutIndex.Any();
 
             if (!(modelsWithIndexExists && modelsWithoutIndexExists))
             {
@@ -41,7 +41,7 @@ namespace DatabasePerformance.Data.Migrations
                     };
 
                     context.ModelsWithIndex.Add(withIndex);
-                    context.ModelWithoutIndex.Add(withoutIndex);
+                    context.ModelsWithoutIndex.Add(withoutIndex);
 
                     if (i % 100 == 99)
                     {

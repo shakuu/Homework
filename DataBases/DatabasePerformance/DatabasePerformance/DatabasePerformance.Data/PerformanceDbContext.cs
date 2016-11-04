@@ -13,6 +13,6 @@ namespace DatabasePerformance.Data
 
         public virtual IDbSet<ModelWithIndex> ModelsWithIndex { get; set; }
 
-        public virtual IDbSet<ModelWithoutIndex> ModelWithoutIndex { get; set; }
+        public virtual IDbSet<ModelWithoutIndex> ModelsWithoutIndex { get; set; }
     }
 }

@@ -59,6 +59,16 @@
     <None Include="App.config" />
     <None Include="packages.config" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\DatabasePerformance.Data\DatabasePerformance.Data.csproj">
+      <Project>{d2045531-9b2a-4408-a954-8cbe95a62b29}</Project>
+      <Name>DatabasePerformance.Data</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\DatabasePerformance.Models\DatabasePerformance.Models.csproj">
+      <Project>{72d508e2-2286-47f1-89a7-8c28d91d01cd}</Project>
+      <Name>DatabasePerformance.Models</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
