@@ -1,6 +1,6 @@
 ﻿using System.Data.Entity;
 
-using Models;
+using SqlModels;
 using Repositories.Base;
 
 namespace Repositories

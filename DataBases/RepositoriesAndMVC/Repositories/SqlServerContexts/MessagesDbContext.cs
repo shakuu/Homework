@@ -1,7 +1,7 @@
 ﻿using System.Data.Entity;
 
 using Contracts;
-using Models;
+using SqlModels;
 
 namespace SqlServer
 {

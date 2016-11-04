@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 
-namespace Models
+namespace SqlModels
 {
     public class User
     {

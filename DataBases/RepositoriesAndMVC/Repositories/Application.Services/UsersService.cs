@@ -1,6 +1,7 @@
-﻿using Models;
+﻿using SqlModels;
 using Repositories.Contracts;
 using Services.Factories;
+using System.Collections.Generic;
 
 namespace Application.Services
 {
@@ -26,6 +27,12 @@ namespace Application.Services
 
                 unitOfWork.Commit();
             }
+        }
+
+        public IEnumerable<User> GetAll()
+        {
+            var users = this.usersRepository.GetAll();
+            return users;
         }
     }
 }

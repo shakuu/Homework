@@ -1,0 +1,15 @@
+﻿@using SqlModels
+@model IEnumerable<SqlModels.User>
+
+
+@{
+    ViewBag.Title = "Users List";
+}
+
+<h1>Accessing DB through injected service and interfaced factory.</h1>
+<ul class="list-group">
+    @foreach (var item in Model)
+    {
+        <li class="list-group-item">Username: @item.Username, ID: @item.Id</li>
+    }
+</ul>
