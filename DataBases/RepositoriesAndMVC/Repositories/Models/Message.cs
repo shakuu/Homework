@@ -7,13 +7,15 @@ namespace Models
         public int Id { get; set; }
 
         public string Content { get; set; }
-        
+
         public int FromUserId { get; set; }
 
-        public virtual User FromUser { get; set; }
+        public int InboxId { get; set; }
 
-        public int ToUserId { get; set; }
+        public virtual Inbox Inbox { get; set; }
 
-        public virtual User ToUser { get; set; }
+        public int OutboxId { get; set; }
+
+        public virtual Outbox Outbox { get; set; }
     }
 }
