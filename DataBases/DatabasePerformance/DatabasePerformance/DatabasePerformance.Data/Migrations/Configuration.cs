@@ -6,14 +6,14 @@ namespace DatabasePerformance.Data.Migrations
     using System.Data.Entity.Migrations;
     using System.Linq;
 
-    internal sealed class Configuration : DbMigrationsConfiguration<DatabasePerformance.Data.PerformanceDbContext>
+    internal sealed class Configuration : DbMigrationsConfiguration<PerformanceDbContext>
     {
         public Configuration()
         {
             AutomaticMigrationsEnabled = false;
         }
 
-        protected override void Seed(DatabasePerformance.Data.PerformanceDbContext context)
+        protected override void Seed(PerformanceDbContext context)
         {
             var modelsWithIndexExists = context.ModelsWithIndex.Any();
             var modelsWithoutIndexExists = context.ModelsWithoutIndex.Any();
@@ -41,8 +41,15 @@ namespace DatabasePerformance.Data.Migrations
                         Text = text
                     };
 
+                    var withTwoIndexes = new ModelWithTwoIndexes()
+                    {
+                        Date = date,
+                        Text = text
+                    };
+
                     context.ModelsWithIndex.Add(withIndex);
                     context.ModelsWithoutIndex.Add(withoutIndex);
+                    context.ModelsWithTwoIndexes.Add(withTwoIndexes);
 
                     if (i % 100 == 99)
                     {

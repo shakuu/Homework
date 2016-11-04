@@ -51,6 +51,7 @@
   <ItemGroup>
     <Compile Include="ModelWithIndex.cs" />
     <Compile Include="ModelWithoutIndex.cs" />
+    <Compile Include="ModelWIthTwoIndexes.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

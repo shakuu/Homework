@@ -4,14 +4,16 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace DatabasePerformance.Models
 {
-    public class ModelWithoutIndex
+    public class ModelWithTwoIndexes
     {
         public int Id { get; set; }
 
+        [Index]
         [Column(TypeName = "nvarchar")]
         [MaxLength()]
         public string Text { get; set; }
 
+        [Index]
         public DateTime Date { get; set; }
     }
 }

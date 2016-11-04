@@ -8,7 +8,7 @@ namespace DatabasePerformance.Models
     {
         public int Id { get; set; }
 
-        [Column(TypeName = "ntext")]
+        [Column(TypeName = "nvarchar")]
         [MaxLength()]
         public string Text { get; set; }
 

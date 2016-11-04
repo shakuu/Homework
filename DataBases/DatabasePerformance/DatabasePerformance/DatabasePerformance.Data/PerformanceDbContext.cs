@@ -1,6 +1,6 @@
-﻿using DatabasePerformance.Models;
+﻿using System.Data.Entity;
 
-using System.Data.Entity;
+using DatabasePerformance.Models;
 
 namespace DatabasePerformance.Data
 {
@@ -15,5 +15,7 @@ namespace DatabasePerformance.Data
         public virtual IDbSet<ModelWithIndex> ModelsWithIndex { get; set; }
 
         public virtual IDbSet<ModelWithoutIndex> ModelsWithoutIndex { get; set; }
+
+        public virtual IDbSet<ModelWithTwoIndexes> ModelsWithTwoIndexes { get; set; }
     }
 }

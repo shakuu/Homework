@@ -18,6 +18,7 @@ namespace DatabasePerformance.ConsoleApp
             Program.Warmup(context);
             Program.SearchWithoutIndex(context, start, end);
             Program.SearchWithIndex(context, start, end);
+            Program.SearchWithTwoIndexes(context, start, end);
 
             // TASK 4: 
             // 1. Update-Database in Data.MySql
@@ -63,6 +64,17 @@ namespace DatabasePerformance.ConsoleApp
             stopwatch.Stop();
 
             Console.WriteLine($"With Index: {stopwatch.ElapsedMilliseconds}ms");
+        }
+
+        private static void SearchWithTwoIndexes(PerformanceDbContext context, DateTime start, DateTime end)
+        {
+            var stopwatch = new Stopwatch();
+
+            stopwatch.Start();
+            var result = context.ModelsWithTwoIndexes.Where(m => m.Date >= start && m.Date <= end).ToList();
+            stopwatch.Stop();
+
+            Console.WriteLine($"With 2 Indexes: {stopwatch.ElapsedMilliseconds}ms");
         }
     }
 }
