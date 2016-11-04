@@ -11,9 +11,9 @@ namespace WebClient.NinjectModules
 {
     public class MyControllerFactory : IControllerFactory
     {
-        private readonly IControllersFactory factory;
+        private readonly ICustomControllersFactory factory;
 
-        public MyControllerFactory(IControllersFactory factory)
+        public MyControllerFactory(ICustomControllersFactory factory)
         {
             this.factory = factory;
         }

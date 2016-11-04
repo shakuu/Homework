@@ -34,7 +34,7 @@ namespace ConsoleClient.NinjectModules
             this.Bind<IDataServiceFactory>().ToFactory().InSingletonScope();
 
             this.Bind<Controller>().To<HomeController>().Named("Home");
-            this.Bind<IControllersFactory>().ToFactory().InSingletonScope();
+            this.Bind<ICustomControllersFactory>().ToFactory().InSingletonScope();
         }
     }
 }

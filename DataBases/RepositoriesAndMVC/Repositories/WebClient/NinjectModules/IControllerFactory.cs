@@ -6,7 +6,7 @@ using System.Web.Mvc;
 
 namespace WebClient.NinjectModules
 {
-    public interface IControllersFactory
+    public interface ICustomControllersFactory
     {
         Controller GetHome();
     }
