@@ -22,11 +22,12 @@ namespace DatabasePerformance.Data.Migrations
             {
                 var generator = new Random();
 
-                var modelsCount = 10000000;
+                // 10 mil takes forever and ever and ever.
+                var modelsCount = 10000;
                 for (int i = 0; i < modelsCount; i++)
                 {
                     var date = this.GetRandomDate(generator);
-                    var text = this.GetRandomString(generator);
+                    var text = this.GetRandomText(generator);
 
                     var withIndex = new ModelWithIndex()
                     {
@@ -48,6 +49,8 @@ namespace DatabasePerformance.Data.Migrations
                         context.SaveChanges();
                     }
                 }
+
+                context.SaveChanges();
             }
         }
 
@@ -61,7 +64,7 @@ namespace DatabasePerformance.Data.Migrations
             return date;
         }
 
-        private string GetRandomString(Random generator)
+        private string GetRandomText(Random generator)
         {
             var text = "o";
             return text;

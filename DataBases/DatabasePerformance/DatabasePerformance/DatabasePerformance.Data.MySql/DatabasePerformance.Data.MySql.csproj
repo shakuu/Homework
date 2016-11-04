@@ -57,6 +57,10 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Migrations\201611041146335_keys.cs" />
+    <Compile Include="Migrations\201611041146335_keys.Designer.cs">
+      <DependentUpon>201611041146335_keys.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="MySqlPerformanceDbContext.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -74,6 +78,11 @@
       <Project>{72D508E2-2286-47F1-89A7-8C28D91D01CD}</Project>
       <Name>DatabasePerformance.Models</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\201611041146335_keys.resx">
+      <DependentUpon>201611041146335_keys.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

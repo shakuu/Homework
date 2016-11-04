@@ -15,6 +15,6 @@ namespace DatabasePerformance.Data.MySql
 
         }
 
-        public virtual IDbSet<MySqlModel> ModelsWithIndex { get; set; }
+        public virtual IDbSet<MySqlModel> MySqlModels { get; set; }
     }
 }

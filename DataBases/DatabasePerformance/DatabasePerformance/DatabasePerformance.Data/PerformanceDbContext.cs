@@ -1,4 +1,5 @@
 ﻿using DatabasePerformance.Models;
+
 using System.Data.Entity;
 
 namespace DatabasePerformance.Data
