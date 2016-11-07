@@ -44,10 +44,12 @@ namespace ExamPrep.Data.Common.Services
             return this.repository.All();
         }
 
-        public SampleModel CreateSampleModel(string name)
+        public SampleModel CreateSampleModel(string name, DateTime dateJoined, int age)
         {
             var newSampleModelInstance = this.sampleModelFactory.CreateSampleModel();
             newSampleModelInstance.Name = name;
+            newSampleModelInstance.DateJoined = dateJoined;
+            newSampleModelInstance.Age = age;
 
             using (var uow = this.unitOfWorkFactory.GetEfUnitOfWork())
             {
@@ -82,7 +84,7 @@ namespace ExamPrep.Data.Common.Services
             var sampleModel = this.repository.Find(id);
             if (sampleModel == null)
             {
-                sampleModel = this.CreateSampleModel(null);
+                sampleModel = this.sampleModelFactory.CreateSampleModel();
             }
 
             return sampleModel;
