@@ -1,8 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+
 using ExamPrep.Data.Common.SampleModels;
 using ExamPrep.Data.Common.Services.Contracts;
 using ExamPrep.Data.Common.Repositories.Contracts;
@@ -14,8 +12,12 @@ namespace ExamPrep.Data.Common.Services
     {
         private readonly IRepository<SampleModel> repository;
         private readonly IUnitOfWorkFactory unitOfWorkFactory;
+        private readonly ISampleModelFactory sampleModelFactory;
 
-        public SampleService(IRepository<SampleModel> repository, IUnitOfWorkFactory unitOfWorkFactory)
+        public SampleService(
+            IRepository<SampleModel> repository,
+            IUnitOfWorkFactory unitOfWorkFactory,
+            ISampleModelFactory sampleModelFactory)
         {
             if (repository == null)
             {
@@ -27,8 +29,14 @@ namespace ExamPrep.Data.Common.Services
                 throw new ArgumentNullException(nameof(unitOfWorkFactory));
             }
 
+            if (sampleModelFactory == null)
+            {
+                throw new ArgumentNullException(nameof(sampleModelFactory));
+            }
+
             this.repository = repository;
             this.unitOfWorkFactory = unitOfWorkFactory;
+            this.sampleModelFactory = sampleModelFactory;
         }
 
         public IEnumerable<SampleModel> All()
@@ -38,7 +46,16 @@ namespace ExamPrep.Data.Common.Services
 
         public SampleModel CreateSampleModel(string name)
         {
-            throw new NotImplementedException();
+            var newSampleModelInstance = this.sampleModelFactory.CreateSampleModel();
+            newSampleModelInstance.Name = name;
+
+            using (var uow = this.unitOfWorkFactory.GetEfUnitOfWork())
+            {
+                this.repository.Add(newSampleModelInstance);
+                uow.Commit();
+            }
+
+            return newSampleModelInstance;
         }
 
         public void Delete(SampleModel instance)
@@ -62,7 +79,13 @@ namespace ExamPrep.Data.Common.Services
 
         public SampleModel FindOrCreate(object id)
         {
-            throw new NotImplementedException();
+            var sampleModel = this.repository.Find(id);
+            if (sampleModel == null)
+            {
+                sampleModel = this.CreateSampleModel(null);
+            }
+
+            return sampleModel;
         }
 
         public void Update(SampleModel instance)
