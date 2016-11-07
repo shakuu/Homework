@@ -9,6 +9,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ExamPrep.Data", "ExamPrep.D
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ExamPrep.Testing", "ExamPrep.Testing\ExamPrep.Testing.csproj", "{5080D6DB-3F14-4001-8AFB-531C1B9D3AEA}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ExamPrep.Data.Utils", "ExamPrep.Data.Utils\ExamPrep.Data.Utils.csproj", "{51FBB0C1-62BE-4865-8C7D-9A50994D075B}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -27,6 +29,10 @@ Global
 		{5080D6DB-3F14-4001-8AFB-531C1B9D3AEA}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{5080D6DB-3F14-4001-8AFB-531C1B9D3AEA}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{5080D6DB-3F14-4001-8AFB-531C1B9D3AEA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{51FBB0C1-62BE-4865-8C7D-9A50994D075B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{51FBB0C1-62BE-4865-8C7D-9A50994D075B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{51FBB0C1-62BE-4865-8C7D-9A50994D075B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{51FBB0C1-62BE-4865-8C7D-9A50994D075B}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

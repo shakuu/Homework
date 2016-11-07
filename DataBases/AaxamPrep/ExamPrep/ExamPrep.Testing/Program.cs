@@ -3,6 +3,7 @@
 using ExamPrep.Data.Common.Services.Contracts;
 
 using Ninject;
+using ExamPrep.Data.Utils.RandomDataGenerators;
 
 namespace ExamPrep.Testing
 {
@@ -14,11 +15,15 @@ namespace ExamPrep.Testing
             ninject.Load(Assembly.GetExecutingAssembly());
 
             var service = ninject.Get<ISampleService>();
-            var s1 = service.CreateSampleModel("sample");
-            var s2 = service.FindOrCreate(2);
 
-            System.Console.WriteLine(s1.Name);
-            System.Console.WriteLine(s2.Name);
+            var randomData = new RandomDataGenerator();
+            service.CreateSampleModel(randomData.GenerateString(10));
+            service.CreateSampleModel(randomData.GenerateString(10));
+            service.CreateSampleModel(randomData.GenerateString(10));
+            service.CreateSampleModel(randomData.GenerateString(10));
+            service.CreateSampleModel(randomData.GenerateString(10));
+            service.CreateSampleModel(randomData.GenerateString(10));
+            service.CreateSampleModel(randomData.GenerateString(10));
         }
     }
 }

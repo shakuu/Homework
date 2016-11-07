@@ -81,6 +81,10 @@
       <Project>{f0a3dcdd-3a71-4ca0-bae5-c8b709b61109}</Project>
       <Name>ExamPrep.Data.Common</Name>
     </ProjectReference>
+    <ProjectReference Include="..\ExamPrep.Data.Utils\ExamPrep.Data.Utils.csproj">
+      <Project>{51fbb0c1-62be-4865-8c7d-9a50994d075b}</Project>
+      <Name>ExamPrep.Data.Utils</Name>
+    </ProjectReference>
     <ProjectReference Include="..\ExamPrep.Data\ExamPrep.Data.csproj">
       <Project>{6859bf3b-4259-4a4d-9728-8daeb5798396}</Project>
       <Name>ExamPrep.Data</Name>
