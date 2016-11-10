@@ -10,6 +10,6 @@ namespace FastAndFurious.ConsoleApplication.Engine.Contracts
     {
         bool IsCommand(IList<string> commandParameters);
 
-        void ExecuteCommand();
+        void ExecuteCommand(IList<string> commandParameters, IEngineCollections engineCollections);
     }
 }

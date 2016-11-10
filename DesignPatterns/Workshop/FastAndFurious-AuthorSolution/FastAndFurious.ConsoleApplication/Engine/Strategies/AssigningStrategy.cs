@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 
 using FastAndFurious.ConsoleApplication.Engine.Contracts;
 using FastAndFurious.ConsoleApplication.Common.Constants;
@@ -9,6 +10,13 @@ namespace FastAndFurious.ConsoleApplication.Engine.Strategies
 {
     public class AssigningStrategy : Strategy
     {
+        private readonly IEnumerable<ICommand> commands;
+
+        public AssigningStrategy(IEnumerable<ICommand> commands)
+        {
+            this.commands = commands;
+        }
+
         protected override bool CanExecute(IList<string> commandParameters)
         {
             return GlobalConstants.AssigningStrategyCommand == commandParameters[0];
@@ -20,35 +28,16 @@ namespace FastAndFurious.ConsoleApplication.Engine.Strategies
             var objectToAssignId = int.Parse(commandParameters[2]);
             var ownerToAssignToId = int.Parse(commandParameters[5]);
 
-            switch (assignTypeCommand)
+            var matchingCommand = this.commands.FirstOrDefault(c => c.IsCommand(commandParameters));
+            if (matchingCommand != null)
             {
-                case GlobalConstants.TunningCommand:
-                    {
-                        var vehicleToAssignTo = engineCollections.MotorVehicles.GetById(ownerToAssignToId);
-                        var tunningToAssign = engineCollections.TunningParts.GetById(objectToAssignId);
-                        vehicleToAssignTo.AddTunning(tunningToAssign);
-                        break;
-                    }
-                case GlobalConstants.VehicleCommand:
-                    {
-                        var driverToAssignTo = engineCollections.Drivers.GetById(ownerToAssignToId);
-                        var vehicleToAssign = engineCollections.MotorVehicles.GetById(objectToAssignId);
-                        driverToAssignTo.AddVehicle(vehicleToAssign);
-                        break;
-                    }
-                case GlobalConstants.DriverCommand:
-                    {
-                        var raceTrackToAssignTo = engineCollections.RaceTracks.GetById(ownerToAssignToId);
-                        var driverToAssign = engineCollections.Drivers.GetById(objectToAssignId);
-                        raceTrackToAssignTo.AddParticipant(driverToAssign);
-                        break;
-                    }
-                default:
-                    {
-                        throw new NotSupportedException(GlobalConstants.AssigningOperationNotSupportedExceptionMessage);
-                    }
+                matchingCommand.ExecuteCommand(commandParameters, engineCollections);
             }
-
+            else
+            {
+                throw new NotSupportedException(GlobalConstants.AssigningOperationNotSupportedExceptionMessage);
+            }
+            
             engineCollections.IoProvider.WriteLine(
                 String.Format(
                     GlobalConstants.ItemAssignedSuccessfullyMessage,
