@@ -53,17 +53,17 @@ namespace FastAndFurious.ConsoleApplication.Engine
             }
         }
 
-        public string ReadCommand()
+        private string ReadCommand()
         {
             return Console.ReadLine();
         }
 
-        public string[] ParseCommand(string command)
+        private string[] ParseCommand(string command)
         {
             return command.Split(new string[] { " " }, StringSplitOptions.RemoveEmptyEntries);
         }
 
-        public void ExecuteCommand(string[] commandParameters)
+        private void ExecuteCommand(string[] commandParameters)
         {
             // Choose strategy
             var commandType = commandParameters[0];
@@ -92,7 +92,7 @@ namespace FastAndFurious.ConsoleApplication.Engine
             }
         }
 
-        public void ExecuteCreationStrategy(string[] commandParameters)
+        private void ExecuteCreationStrategy(string[] commandParameters)
         {
             var createTypeCommand = commandParameters[1];
             var typeName = commandParameters[2];
@@ -118,7 +118,7 @@ namespace FastAndFurious.ConsoleApplication.Engine
             Console.WriteLine(String.Format("{0} - successfully created!", typeName));
         }
 
-        public void ExecuteAssigningStrategy(string[] commandParameters)
+        private void ExecuteAssigningStrategy(string[] commandParameters)
         {
             var removeTypeCommand = commandParameters[1];
             var objectToAssignId = int.Parse(commandParameters[2]);
@@ -160,7 +160,7 @@ namespace FastAndFurious.ConsoleApplication.Engine
                     ownerToAssignToId));
         }
 
-        public void ExecuteRemovalStrategy(string[] commandParameters)
+        private void ExecuteRemovalStrategy(string[] commandParameters)
         {
             var removeTypeCommand = commandParameters[1];
             var objectToRemoveId = int.Parse(commandParameters[2]);
@@ -196,7 +196,7 @@ namespace FastAndFurious.ConsoleApplication.Engine
             }
         }
 
-        public void ExecuteSelectingStrategy(string[] commandParameters)
+        private void ExecuteSelectingStrategy(string[] commandParameters)
         {
             var driverId = int.Parse(commandParameters[5]);
             var driver = this.drivers.GetById(driverId);
@@ -212,7 +212,7 @@ namespace FastAndFurious.ConsoleApplication.Engine
                     vehicle.GetType().Name));
         }
 
-        public void ExecuteRunningStrategy(string[] commandParameters)
+        private void ExecuteRunningStrategy(string[] commandParameters)
         {
             var trackId = int.Parse(commandParameters[2]);
             var track = this.raceTracks.GetById(trackId);
@@ -220,7 +220,7 @@ namespace FastAndFurious.ConsoleApplication.Engine
             track.RunRace();
         }
 
-        public void ExecuteDisplayingStrategy(string[] commandParameters)
+        private void ExecuteDisplayingStrategy(string[] commandParameters)
         {
             var count = int.Parse(commandParameters[2]);
             var raceTrackId = int.Parse(commandParameters[6]);
@@ -241,7 +241,7 @@ namespace FastAndFurious.ConsoleApplication.Engine
             }
         }
 
-        public void CreateObjectOfTypeAndAssignToCollection<T>(string typeName, ICollection<T> collection)
+        private void CreateObjectOfTypeAndAssignToCollection<T>(string typeName, ICollection<T> collection)
         {
             var typeToInstantiate = Assembly.GetCallingAssembly().GetTypes().FirstOrDefault(x => x.Name == typeName);
             var instanceOfType = (T)Activator.CreateInstance(typeToInstantiate);
