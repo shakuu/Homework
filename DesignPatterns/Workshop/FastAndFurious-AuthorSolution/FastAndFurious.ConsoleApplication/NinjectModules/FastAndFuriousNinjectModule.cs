@@ -8,6 +8,9 @@ using FastAndFurious.ConsoleApplication.Engine.Strategies;
 using Ninject;
 using Ninject.Extensions.Conventions;
 using Ninject.Modules;
+using Ninject.Extensions.Interception.Infrastructure.Language;
+using FastAndFurious.ConsoleApplication.NinjectModules.Interceptors;
+using System;
 
 namespace FastAndFurious.ConsoleApplication.NinjectBindings
 {
@@ -53,7 +56,13 @@ namespace FastAndFurious.ConsoleApplication.NinjectBindings
             .WhenInjectedInto<Engine.Engine>()
             .InSingletonScope();
 
-            this.Bind<IInputOutputProvider>().To<ConsoleInputOutputProvider>()
+            this.Kernel.InterceptReplace<InterceptedInputOutputProvider>(p => p.ReadLine(), invocation => invocation.ReturnValue = Console.ReadLine());
+            this.Kernel.InterceptReplace<InterceptedInputOutputProvider>(p => p.WriteLine(null), invocation =>
+                        {
+                            Console.WriteLine(string.Join(",", invocation.Request.Arguments));
+                        });
+
+            this.Bind<IInputOutputProvider>().To<InterceptedInputOutputProvider>()
                 .WhenInjectedInto<Engine.Engine>();
         }
     }

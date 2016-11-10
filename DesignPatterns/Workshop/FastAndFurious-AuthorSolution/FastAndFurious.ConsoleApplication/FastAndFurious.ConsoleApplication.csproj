@@ -49,6 +49,14 @@
       <HintPath>..\packages\Ninject.Extensions.Factory.3.2.1.0\lib\net45-full\Ninject.Extensions.Factory.dll</HintPath>
       <Private>True</Private>
     </Reference>
+    <Reference Include="Ninject.Extensions.Interception, Version=3.2.0.0, Culture=neutral, PublicKeyToken=c7192dc5380945e7, processorArchitecture=MSIL">
+      <HintPath>..\packages\Ninject.Extensions.Interception.3.2.0.0\lib\net45-full\Ninject.Extensions.Interception.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Ninject.Extensions.Interception.DynamicProxy, Version=3.2.0.0, Culture=neutral, PublicKeyToken=c7192dc5380945e7, processorArchitecture=MSIL">
+      <HintPath>..\packages\Ninject.Extensions.Interception.DynamicProxy.3.2.0.0\lib\net45-full\Ninject.Extensions.Interception.DynamicProxy.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
@@ -98,6 +106,7 @@
     <Compile Include="Engine\Engine.cs" />
     <Compile Include="Engine\Contracts\IEngine.cs" />
     <Compile Include="Engine\InputOutputProvider.cs" />
+    <Compile Include="Engine\InterceptedInputOutputProvider.cs" />
     <Compile Include="Engine\Strategies\AssigningStrategy.cs" />
     <Compile Include="Engine\Strategies\CreationStrategy.cs" />
     <Compile Include="Engine\Strategies\DisplayingStrategy.cs" />
@@ -157,6 +166,7 @@
     <Compile Include="Models\Tunnings\Tires\YokohamaAdvanTiresSet.cs" />
     <Compile Include="Models\Tunnings\Intercoolers\ViperGenieIntercooler.cs" />
     <Compile Include="NinjectModules\FastAndFuriousNinjectModule.cs" />
+    <Compile Include="NinjectModules\Interceptors\ConsoleInterceptor.cs" />
     <Compile Include="Startup.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
