@@ -9,16 +9,16 @@ namespace FastAndFurious.ConsoleApplication.Engine
     {
         private IStrategy nextStrategy;
 
-        public void Execute(IList<string> commandParameters, IEngine engine)
+        public void Execute(IList<string> commandParameters, IEngineCollections engineCollections)
         {
             if (this.CanExecute(commandParameters))
             {
-                this.ExecuteCommand(commandParameters, engine);
+                this.ExecuteCommand(commandParameters, engineCollections);
             }
 
             if (this.nextStrategy != null)
             {
-                this.nextStrategy.Execute(commandParameters, engine);
+                this.nextStrategy.Execute(commandParameters, engineCollections);
             }
 
             throw new InvalidOperationException();
@@ -31,6 +31,6 @@ namespace FastAndFurious.ConsoleApplication.Engine
 
         protected abstract bool CanExecute(IList<string> commandParameters);
 
-        protected abstract bool ExecuteCommand(IList<string> commandParameters, IEngine engine);
+        protected abstract bool ExecuteCommand(IList<string> commandParameters, IEngineCollections engineCollections);
     }
 }

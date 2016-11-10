@@ -4,6 +4,6 @@ namespace FastAndFurious.ConsoleApplication.Engine.Contracts
 {
     public interface IStrategy
     {
-        void Execute(IList<string> commandParameters, IEngine engine);
+        void Execute(IList<string> commandParameters, IEngineCollections engineCollections);
     }
 }

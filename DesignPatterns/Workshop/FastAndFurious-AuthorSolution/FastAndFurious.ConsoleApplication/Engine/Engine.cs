@@ -12,14 +12,14 @@ using FastAndFurious.ConsoleApplication.Contracts;
 
 namespace FastAndFurious.ConsoleApplication.Engine
 {
-    public class Engine : IEngine
+    public class Engine : IEngine, IEngineCollections
     {
         private readonly ICollection<IDriver> drivers;
         private readonly ICollection<IRaceTrack> raceTracks;
         private readonly ICollection<ITunningPart> tunningParts;
         private readonly ICollection<IMotorVehicle> motorVehicles;
 
-        private readonly IInputOutputProvider ioProiver;
+        private readonly IInputOutputProvider ioProvider;
 
         public Engine(IInputOutputProvider ioProiver)
         {
@@ -28,7 +28,7 @@ namespace FastAndFurious.ConsoleApplication.Engine
                 throw new ArgumentNullException(nameof(ioProiver));
             }
 
-            this.ioProiver = ioProiver;
+            this.ioProvider = ioProiver;
 
             this.drivers = new List<IDriver>();
             this.raceTracks = new List<IRaceTrack>();
@@ -68,11 +68,11 @@ namespace FastAndFurious.ConsoleApplication.Engine
             }
         }
 
-        public IInputOutputProvider IoProiver
+        public IInputOutputProvider IoProvider
         {
             get
             {
-                return this.ioProiver;
+                return this.ioProvider;
             }
         }
 
@@ -90,15 +90,15 @@ namespace FastAndFurious.ConsoleApplication.Engine
                 }
                 catch (NotSupportedException e)
                 {
-                    this.ioProiver.WriteLine(e.Message);
+                    this.ioProvider.WriteLine(e.Message);
                 }
                 catch (InvalidOperationException e)
                 {
-                    this.ioProiver.WriteLine(e.Message);
+                    this.ioProvider.WriteLine(e.Message);
                 }
                 catch (TunningDuplicationException e)
                 {
-                    this.ioProiver.WriteLine(e.Message);
+                    this.ioProvider.WriteLine(e.Message);
                 }
 
                 command = this.ReadCommand();
@@ -107,7 +107,7 @@ namespace FastAndFurious.ConsoleApplication.Engine
 
         private string ReadCommand()
         {
-            return this.ioProiver.ReadLine();
+            return this.ioProvider.ReadLine();
         }
 
         private string[] ParseCommand(string command)
@@ -167,7 +167,7 @@ namespace FastAndFurious.ConsoleApplication.Engine
                     throw new NotSupportedException(GlobalConstants.CreationalOperationNotSupportedExceptionMessage);
             }
 
-            this.ioProiver.WriteLine(String.Format("{0} - successfully created!", typeName));
+            this.ioProvider.WriteLine(String.Format("{0} - successfully created!", typeName));
         }
 
         private void ExecuteAssigningStrategy(string[] commandParameters)
@@ -205,7 +205,7 @@ namespace FastAndFurious.ConsoleApplication.Engine
                     }
             }
 
-            this.ioProiver.WriteLine(
+            this.ioProvider.WriteLine(
                 String.Format(
                     GlobalConstants.ItemAssignedSuccessfullyMessage,
                     objectToAssignId,
@@ -256,7 +256,7 @@ namespace FastAndFurious.ConsoleApplication.Engine
             var vehicle = driver.Vehicles.GetById(vehicleId);
             driver.SetActiveVehicle(vehicle);
 
-            this.ioProiver.WriteLine(
+            this.ioProvider.WriteLine(
                 String.Format(
                     GlobalConstants.DriverSelectsNewVehicleMessage,
                     driver.Name,
@@ -268,7 +268,7 @@ namespace FastAndFurious.ConsoleApplication.Engine
         {
             var trackId = int.Parse(commandParameters[2]);
             var track = this.raceTracks.GetById(trackId);
-            this.ioProiver.WriteLine(String.Format(GlobalConstants.PerformingRaceOnTrackMessage, track.TrackName, track.Participants.Count()));
+            this.ioProvider.WriteLine(String.Format(GlobalConstants.PerformingRaceOnTrackMessage, track.TrackName, track.Participants.Count()));
             track.RunRace();
         }
 
@@ -282,14 +282,14 @@ namespace FastAndFurious.ConsoleApplication.Engine
                 .OrderBy(x => x.TotalSeconds)
                 .Take(count);
 
-            this.ioProiver.WriteLine(
+            this.ioProvider.WriteLine(
                 results != null && results.Count() > 0 ?
                 String.Format(GlobalConstants.DisplayBestNTimesEverMessage, count, raceTrack.TrackName) :
                 String.Format(GlobalConstants.NoRacesYetMessage, raceTrack.TrackName));
 
             foreach (var result in results)
             {
-                this.ioProiver.WriteLine(result.ToString());
+                this.ioProvider.WriteLine(result.ToString());
             }
         }
 
