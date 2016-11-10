@@ -100,7 +100,10 @@
     <Compile Include="Engine\InputOutputProvider.cs" />
     <Compile Include="Engine\Strategies\AssigningStrategy.cs" />
     <Compile Include="Engine\Strategies\CreationStrategy.cs" />
+    <Compile Include="Engine\Strategies\DisplayingStrategy.cs" />
     <Compile Include="Engine\Strategies\RemovalStrategy.cs" />
+    <Compile Include="Engine\Strategies\RunningStrategy.cs" />
+    <Compile Include="Engine\Strategies\SelectingStrategy.cs" />
     <Compile Include="Engine\Strategy.cs" />
     <Compile Include="Models\Common\IdentifiableObject.cs" />
     <Compile Include="Models\Drivers\Abstract\Driver.cs" />

@@ -1,0 +1,42 @@
+-create -driver VinBenzin
+-create -vehicle MitsubishiLancerEvolution
+-assign -vehicle 2 to -driver 1
+-create -tunning VortexR35SequentialTurbocharger
+-create -tunning EvolutionXPerformanceIntercooler
+-create -tunning BMShortShifter
+-create -tunning MichelinPilotTiresSet 
+-create -tunning BorlaExhaust
+-create -tunning APREngineControlUnit
+-create -track TokioUndergroundRaceTrack
+-assign -tunning 3 to -vehicle 2
+-assign -tunning 4 to -vehicle 2
+-assign -tunning 5 to -vehicle 2
+-assign -tunning 6 to -vehicle 2
+-assign -tunning 7 to -vehicle 2
+-assign -tunning 8 to -vehicle 2
+-create -driver LetiSpaghetti
+-create -vehicle NissanGTR
+-assign -vehicle 11 to -driver 10
+-create -tunning ZX8ParallelTwinTurbocharger
+-create -tunning ViperGenieIntercooler
+-create -tunning HurstCompetitionManualShifter
+-create -tunning YokohamaAdvanTiresSet
+-create -tunning RemusExhaust
+-create -tunning SCTPerformanceEngineControlUnit
+-assign -tunning 12 to -vehicle 11
+-assign -tunning 13 to -vehicle 11
+-assign -tunning 14 to -vehicle 11
+-assign -tunning 15 to -vehicle 11
+-assign -tunning 16 to -vehicle 11
+-assign -tunning 17 to -vehicle 11
+-create -vehicle SubaruImprezaWRX
+-create -vehicle Nissan350Z
+-assign -vehicle 18 to -driver 10
+-assign -vehicle 19 to -driver 1
+-select -vehicle 11 for -driver 10
+-select -vehicle 2 for -driver 1
+-assign -driver 1 to -track 9
+-assign -driver 10 to -track 9
+-run -track 9
+-display best 2 times from -track 9
+-exit

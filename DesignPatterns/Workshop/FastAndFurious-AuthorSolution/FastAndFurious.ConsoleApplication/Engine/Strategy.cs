@@ -15,13 +15,14 @@ namespace FastAndFurious.ConsoleApplication.Engine
             {
                 this.ExecuteCommand(commandParameters, engineCollections);
             }
-
-            if (this.nextStrategy != null)
+            else if (this.nextStrategy != null)
             {
                 this.nextStrategy.Execute(commandParameters, engineCollections);
             }
-
-            throw new InvalidOperationException();
+            else
+            {
+                throw new InvalidOperationException();
+            }
         }
 
         public void SetNextStrategy(IStrategy strategy)

@@ -1,0 +1,43 @@
+VinBenzin - successfully created!
+MitsubishiLancerEvolution - successfully created!
+Item with ID:2 assigned successfully!
+VortexR35SequentialTurbocharger - successfully created!
+EvolutionXPerformanceIntercooler - successfully created!
+BMShortShifter - successfully created!
+MichelinPilotTiresSet - successfully created!
+BorlaExhaust - successfully created!
+APREngineControlUnit - successfully created!
+TokioUndergroundRaceTrack - successfully created!
+Item with ID:3 assigned successfully!
+Item with ID:4 assigned successfully!
+Item with ID:5 assigned successfully!
+Item with ID:6 assigned successfully!
+Item with ID:7 assigned successfully!
+Item with ID:8 assigned successfully!
+LetiSpaghetti - successfully created!
+NissanGTR - successfully created!
+Item with ID:11 assigned successfully!
+ZX8ParallelTwinTurbocharger - successfully created!
+ViperGenieIntercooler - successfully created!
+HurstCompetitionManualShifter - successfully created!
+YokohamaAdvanTiresSet - successfully created!
+RemusExhaust - successfully created!
+SCTPerformanceEngineControlUnit - successfully created!
+Item with ID:12 assigned successfully!
+Item with ID:13 assigned successfully!
+Item with ID:14 assigned successfully!
+Item with ID:15 assigned successfully!
+Item with ID:16 assigned successfully!
+Item with ID:17 assigned successfully!
+SubaruImprezaWRX - successfully created!
+Nissan350Z - successfully created!
+Item with ID:18 assigned successfully!
+Item with ID:19 assigned successfully!
+Leti Spaghetti now drives her NissanGTR
+Vin Benzin now drives his MitsubishiLancerEvolution
+Item with ID:1 assigned successfully!
+Item with ID:10 assigned successfully!
+Performing drag race on track "Tokio Underground Race Track" with 2 participants.
+Best 2 times ever for track "Tokio Underground Race Track":
+00:00:33.3380000
+00:00:38.8450000

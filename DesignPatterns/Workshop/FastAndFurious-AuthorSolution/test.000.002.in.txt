@@ -1,0 +1,92 @@
+-create -driver DominicRendeto
+-create -driver LetiSpaghetti
+-create -driver Vince
+-create -driver VinBenzin
+-create -driver Mia
+-create -driver Jessi
+-create -vehicle NissanGTR
+-create -vehicle Nissan350Z
+-create -vehicle NissanSkylineR34
+-create -vehicle MitsubishiLancerEvolution
+-create -vehicle MitsubishiEclipse 
+-create -vehicle SubaruImprezaWRX
+-create -vehicle AcuraIntegraTypeR
+-create -tunning VortexR35SequentialTurbocharger
+-create -tunning ZX8ParallelTwinTurbocharger
+-create -tunning EvolutionXPerformanceIntercooler
+-create -tunning ViperGenieIntercooler
+-create -tunning BorlaExhaust
+-create -tunning MagnaflowExhaust
+-create -tunning RemusExhaust
+-create -tunning FalkenAzenisTiresSet
+-create -tunning MichelinPilotTiresSet
+-create -tunning YokohamaAdvanTiresSet
+-create -tunning BMShortShifter
+-create -tunning HurstCompetitionManualShifter
+-create -tunning TWMPerformanceTransmission
+-create -tunning APREngineControlUnit
+-create -tunning DinanEngineControlUnit
+-create -tunning SCTPerformanceEngineControlUnit
+-create -track MonacoRaceTrack
+-create -track StormblazeRaceTrack
+-assign -vehicle 10 to -driver 1
+-assign -vehicle 11 to -driver 1
+-assign -vehicle 9 to -driver 3
+-assign -vehicle 8 to -driver 4
+-assign -vehicle 7 to -driver 5
+-assign -vehicle 12 to -driver 2
+-assign -vehicle 13 to -driver 2
+-assign -tunning 14 to -vehicle 10
+-assign -tunning 16 to -vehicle 10
+-assign -tunning 18 to -vehicle 10
+-assign -tunning 22 to -vehicle 10
+-assign -tunning 24 to -vehicle 10
+-assign -tunning 27 to -vehicle 10
+-assign -tunning 15 to -vehicle 7
+-assign -tunning 17 to -vehicle 7
+-assign -tunning 19 to -vehicle 7
+-assign -tunning 23 to -vehicle 7
+-assign -tunning 25 to -vehicle 7
+-assign -tunning 28 to -vehicle 7
+-assign -tunning 20 to -vehicle 13
+-assign -tunning 21 to -vehicle 13
+-assign -tunning 26 to -vehicle 13
+-assign -tunning 29 to -vehicle 13
+-select -vehicle 10 for -driver 1
+-select -vehicle 12 for -driver 2
+-select -vehicle 9 for -driver 3
+-select -vehicle 8 for -driver 4
+-select -vehicle 7 for -driver 5
+-assign -driver 1 to -track 30
+-assign -driver 2 to -track 30
+-assign -driver 3 to -track 30
+-assign -driver 4 to -track 30
+-assign -driver 5 to -track 30
+-assign -driver 1 to -track 31
+-assign -driver 2 to -track 31
+-assign -driver 3 to -track 31
+-assign -driver 5 to -track 31
+-run -track 30
+-run -track 31
+-display best 3 times from -track 30
+-display best 4 times from -track 31
+-create -tunning HellcatMotor
+-create -tunning CentaurPulseMotor
+-create -tunning IronHorseMotor
+-create -tunning ShockblazePulsejetMotor
+-create -tunning TyphoonPulseMotor
+-create -tunning StingrayMotor
+-assign -tunning 35 to -vehicle 10
+-assign -tunning 32 to -vehicle 11
+-assign -tunning 33 to -vehicle 7
+-assign -tunning 34 to -vehicle 8
+-assign -tunning 36 to -vehicle 9
+-assign -tunning 37 to -vehicle 13
+-assign -driver 1 to -track 30
+-assign -driver 2 to -track 30
+-assign -driver 3 to -track 30
+-assign -driver 4 to -track 30
+-assign -driver 5 to -track 30
+-run -track 30
+-display best 3 times from -track 30
+-exit

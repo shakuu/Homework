@@ -1,0 +1,106 @@
+DominicRendeto - successfully created!
+LetiSpaghetti - successfully created!
+Vince - successfully created!
+VinBenzin - successfully created!
+Mia - successfully created!
+Jessi - successfully created!
+NissanGTR - successfully created!
+Nissan350Z - successfully created!
+NissanSkylineR34 - successfully created!
+MitsubishiLancerEvolution - successfully created!
+MitsubishiEclipse - successfully created!
+SubaruImprezaWRX - successfully created!
+AcuraIntegraTypeR - successfully created!
+VortexR35SequentialTurbocharger - successfully created!
+ZX8ParallelTwinTurbocharger - successfully created!
+EvolutionXPerformanceIntercooler - successfully created!
+ViperGenieIntercooler - successfully created!
+BorlaExhaust - successfully created!
+MagnaflowExhaust - successfully created!
+RemusExhaust - successfully created!
+FalkenAzenisTiresSet - successfully created!
+MichelinPilotTiresSet - successfully created!
+YokohamaAdvanTiresSet - successfully created!
+BMShortShifter - successfully created!
+HurstCompetitionManualShifter - successfully created!
+TWMPerformanceTransmission - successfully created!
+APREngineControlUnit - successfully created!
+DinanEngineControlUnit - successfully created!
+SCTPerformanceEngineControlUnit - successfully created!
+MonacoRaceTrack - successfully created!
+StormblazeRaceTrack - successfully created!
+Item with ID:10 assigned successfully!
+Item with ID:11 assigned successfully!
+Item with ID:9 assigned successfully!
+Item with ID:8 assigned successfully!
+Item with ID:7 assigned successfully!
+Item with ID:12 assigned successfully!
+Item with ID:13 assigned successfully!
+Item with ID:14 assigned successfully!
+Item with ID:16 assigned successfully!
+Item with ID:18 assigned successfully!
+Item with ID:22 assigned successfully!
+Item with ID:24 assigned successfully!
+Item with ID:27 assigned successfully!
+Item with ID:15 assigned successfully!
+Item with ID:17 assigned successfully!
+Item with ID:19 assigned successfully!
+Item with ID:23 assigned successfully!
+Item with ID:25 assigned successfully!
+Item with ID:28 assigned successfully!
+Item with ID:20 assigned successfully!
+Item with ID:21 assigned successfully!
+Item with ID:26 assigned successfully!
+Item with ID:29 assigned successfully!
+Dominic Rendeto now drives his MitsubishiLancerEvolution
+Leti Spaghetti now drives her SubaruImprezaWRX
+Vince now drives his NissanSkylineR34
+Vin Benzin now drives his Nissan350Z
+Mia now drives her NissanGTR
+Item with ID:1 assigned successfully!
+Cannot sign the same participant to a track
+Item with ID:2 assigned successfully!
+Item with ID:3 assigned successfully!
+Item with ID:4 assigned successfully!
+Item with ID:5 assigned successfully!
+Item with ID:1 assigned successfully!
+Item with ID:2 assigned successfully!
+Item with ID:3 assigned successfully!
+Item with ID:5 assigned successfully!
+Performing drag race on track "Monaco Race Track" with 5 participants.
+Performing drag race on track "Stormblaze Race Track" with 4 participants.
+Best 3 times ever for track "Monaco Race Track":
+00:00:13.4700000
+00:00:15.0980000
+00:00:26
+Best 4 times ever for track "Stormblaze Race Track":
+00:00:06.8480000
+00:00:07.5790000
+00:00:13.1790000
+00:00:13.7810000
+HellcatMotor - successfully created!
+CentaurPulseMotor - successfully created!
+IronHorseMotor - successfully created!
+ShockblazePulsejetMotor - successfully created!
+TyphoonPulseMotor - successfully created!
+StingrayMotor - successfully created!
+Item with ID:35 assigned successfully!
+Item with ID:32 assigned successfully!
+Cannot add multiple parts of the same type to a vehicle
+Parameter name: HellcatMotor
+Item with ID:33 assigned successfully!
+Item with ID:34 assigned successfully!
+Item with ID:36 assigned successfully!
+Cannot add multiple parts of the same type to a vehicle
+Parameter name: TyphoonPulseMotor
+Item with ID:37 assigned successfully!
+Item with ID:1 assigned successfully!
+Item with ID:2 assigned successfully!
+Item with ID:3 assigned successfully!
+Item with ID:4 assigned successfully!
+Item with ID:5 assigned successfully!
+Performing drag race on track "Monaco Race Track" with 5 participants.
+Best 3 times ever for track "Monaco Race Track":
+00:00:09.5050000
+00:00:10.9730000
+00:00:12.4810000
