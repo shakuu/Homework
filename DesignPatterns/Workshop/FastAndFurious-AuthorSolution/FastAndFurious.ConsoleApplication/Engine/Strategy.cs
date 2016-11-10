@@ -31,6 +31,6 @@ namespace FastAndFurious.ConsoleApplication.Engine
 
         protected abstract bool CanExecute(IList<string> commandParameters);
 
-        protected abstract bool ExecuteCommand(IList<string> commandParameters, IEngineCollections engineCollections);
+        protected abstract void ExecuteCommand(IList<string> commandParameters, IEngineCollections engineCollections);
     }
 }

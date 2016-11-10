@@ -20,14 +20,21 @@ namespace FastAndFurious.ConsoleApplication.Engine
         private readonly ICollection<IMotorVehicle> motorVehicles;
 
         private readonly IInputOutputProvider ioProvider;
+        private readonly IStrategy commandExecutionStrategy;
 
-        public Engine(IInputOutputProvider ioProiver)
+        public Engine(IStrategy commandExecutionStrategy, IInputOutputProvider ioProiver)
         {
+            if (commandExecutionStrategy == null)
+            {
+                throw new ArgumentNullException(nameof(commandExecutionStrategy));
+            }
+
             if (ioProiver == null)
             {
                 throw new ArgumentNullException(nameof(ioProiver));
             }
 
+            this.commandExecutionStrategy = commandExecutionStrategy;
             this.ioProvider = ioProiver;
 
             this.drivers = new List<IDriver>();
@@ -117,31 +124,33 @@ namespace FastAndFurious.ConsoleApplication.Engine
 
         private void ExecuteCommand(string[] commandParameters)
         {
+            this.commandExecutionStrategy.Execute(commandParameters, this);
+
             // Choose strategy
-            var commandType = commandParameters[0];
-            switch (commandType)
-            {
-                case GlobalConstants.CreationStrategyCommand:
-                    this.ExecuteCreationStrategy(commandParameters);
-                    break;
-                case GlobalConstants.RemovalStrategyCommand:
-                    this.ExecuteRemovalStrategy(commandParameters);
-                    break;
-                case GlobalConstants.AssigningStrategyCommand:
-                    this.ExecuteAssigningStrategy(commandParameters);
-                    break;
-                case GlobalConstants.SelectingStrategyCommand:
-                    this.ExecuteSelectingStrategy(commandParameters);
-                    break;
-                case GlobalConstants.RunningStrategyCommand:
-                    this.ExecuteRunningStrategy(commandParameters);
-                    break;
-                case GlobalConstants.DisplayingStrategyCommand:
-                    this.ExecuteDisplayingStrategy(commandParameters);
-                    break;
-                default:
-                    throw new InvalidOperationException();
-            }
+            //var commandType = commandParameters[0];
+            //switch (commandType)
+            //{
+            //    case GlobalConstants.CreationStrategyCommand:
+            //        this.ExecuteCreationStrategy(commandParameters);
+            //        break;
+            //    case GlobalConstants.RemovalStrategyCommand:
+            //        this.ExecuteRemovalStrategy(commandParameters);
+            //        break;
+            //    case GlobalConstants.AssigningStrategyCommand:
+            //        this.ExecuteAssigningStrategy(commandParameters);
+            //        break;
+            //    case GlobalConstants.SelectingStrategyCommand:
+            //        this.ExecuteSelectingStrategy(commandParameters);
+            //        break;
+            //    case GlobalConstants.RunningStrategyCommand:
+            //        this.ExecuteRunningStrategy(commandParameters);
+            //        break;
+            //    case GlobalConstants.DisplayingStrategyCommand:
+            //        this.ExecuteDisplayingStrategy(commandParameters);
+            //        break;
+            //    default:
+            //        throw new InvalidOperationException();
+            //}
         }
 
         private void ExecuteCreationStrategy(string[] commandParameters)
