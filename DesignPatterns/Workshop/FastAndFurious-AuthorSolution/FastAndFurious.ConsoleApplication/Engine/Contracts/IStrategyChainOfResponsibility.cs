@@ -1,6 +1,6 @@
 ﻿namespace FastAndFurious.ConsoleApplication.Engine.Contracts
 {
-    public interface IStrategyChainOfResponsibility
+    public interface IStrategyChainOfResponsibility : IStrategy
     {
         void SetNextStrategy(IStrategy strategy);
     }

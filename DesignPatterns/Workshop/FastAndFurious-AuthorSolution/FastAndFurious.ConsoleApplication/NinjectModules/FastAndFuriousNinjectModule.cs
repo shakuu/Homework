@@ -29,26 +29,26 @@ namespace FastAndFurious.ConsoleApplication.NinjectBindings
                     .SelectAllClasses()
                     .BindDefaultInterface());
 
-            this.Bind<IStrategy>().To<CreationStrategy>().Named(CreationStrategyName);
-            this.Bind<IStrategy>().To<RemovalStrategy>().Named(RemovalStrategyName);
-            this.Bind<IStrategy>().To<AssigningStrategy>().Named(AssigningStrategyName);
-            this.Bind<IStrategy>().To<SelectingStrategy>().Named(SelectingStrategyName);
-            this.Bind<IStrategy>().To<RunningStrategy>().Named(RunningStrategyName);
-            this.Bind<IStrategy>().To<DisplayingStrategy>().Named(DisplayingStrategyName);
+            this.Bind<IStrategyChainOfResponsibility>().To<CreationStrategy>().Named(CreationStrategyName);
+            this.Bind<IStrategyChainOfResponsibility>().To<RemovalStrategy>().Named(RemovalStrategyName);
+            this.Bind<IStrategyChainOfResponsibility>().To<AssigningStrategy>().Named(AssigningStrategyName);
+            this.Bind<IStrategyChainOfResponsibility>().To<SelectingStrategy>().Named(SelectingStrategyName);
+            this.Bind<IStrategyChainOfResponsibility>().To<RunningStrategy>().Named(RunningStrategyName);
+            this.Bind<IStrategyChainOfResponsibility>().To<DisplayingStrategy>().Named(DisplayingStrategyName);
             this.Bind<IStrategy>().ToMethod(ctx =>
             {
-                var creationStrategy = this.Kernel.Get<IStrategy>(CreationStrategyName);
-                var removalStrategy = this.Kernel.Get<IStrategy>(RemovalStrategyName);
-                var assigningStrategy = this.Kernel.Get<IStrategy>(AssigningStrategyName);
-                var selectingStrategy = this.Kernel.Get<IStrategy>(SelectingStrategyName);
-                var runningStrategy = this.Kernel.Get<IStrategy>(RunningStrategyName);
-                var displayingStrategy = this.Kernel.Get<IStrategy>(DisplayingStrategyName);
+                var creationStrategy = this.Kernel.Get<IStrategyChainOfResponsibility>(CreationStrategyName);
+                var removalStrategy = this.Kernel.Get<IStrategyChainOfResponsibility>(RemovalStrategyName);
+                var assigningStrategy = this.Kernel.Get<IStrategyChainOfResponsibility>(AssigningStrategyName);
+                var selectingStrategy = this.Kernel.Get<IStrategyChainOfResponsibility>(SelectingStrategyName);
+                var runningStrategy = this.Kernel.Get<IStrategyChainOfResponsibility>(RunningStrategyName);
+                var displayingStrategy = this.Kernel.Get<IStrategyChainOfResponsibility>(DisplayingStrategyName);
 
-                ((IStrategyChainOfResponsibility)creationStrategy).SetNextStrategy(removalStrategy);
-                ((IStrategyChainOfResponsibility)removalStrategy).SetNextStrategy(assigningStrategy);
-                ((IStrategyChainOfResponsibility)assigningStrategy).SetNextStrategy(selectingStrategy);
-                ((IStrategyChainOfResponsibility)selectingStrategy).SetNextStrategy(runningStrategy);
-                ((IStrategyChainOfResponsibility)runningStrategy).SetNextStrategy(displayingStrategy);
+                creationStrategy.SetNextStrategy(removalStrategy);
+                removalStrategy.SetNextStrategy(assigningStrategy);
+                assigningStrategy.SetNextStrategy(selectingStrategy);
+                selectingStrategy.SetNextStrategy(runningStrategy);
+                runningStrategy.SetNextStrategy(displayingStrategy);
 
                 return creationStrategy;
             })
