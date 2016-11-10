@@ -1,4 +1,5 @@
-﻿using System.IO;
+﻿using System;
+using System.IO;
 using System.Reflection;
 
 using FastAndFurious.ConsoleApplication.Engine;
@@ -9,8 +10,6 @@ using Ninject;
 using Ninject.Extensions.Conventions;
 using Ninject.Modules;
 using Ninject.Extensions.Interception.Infrastructure.Language;
-using FastAndFurious.ConsoleApplication.NinjectModules.Interceptors;
-using System;
 
 namespace FastAndFurious.ConsoleApplication.NinjectBindings
 {
