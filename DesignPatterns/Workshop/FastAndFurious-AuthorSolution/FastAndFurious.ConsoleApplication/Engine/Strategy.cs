@@ -5,7 +5,7 @@ using FastAndFurious.ConsoleApplication.Engine.Contracts;
 
 namespace FastAndFurious.ConsoleApplication.Engine
 {
-    public abstract class Strategy : IStrategy, IStrategyChainOfResponsibility
+    public abstract class Strategy : IStrategyChainOfResponsibility, IStrategy
     {
         private IStrategy nextStrategy;
 

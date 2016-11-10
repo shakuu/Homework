@@ -98,6 +98,7 @@
     <Compile Include="Contracts\ITurbocharger.cs" />
     <Compile Include="Contracts\IValuable.cs" />
     <Compile Include="Contracts\IWeightable.cs" />
+    <Compile Include="Engine\Contracts\ICommand.cs" />
     <Compile Include="Engine\Contracts\IEngineCollections.cs" />
     <Compile Include="Engine\Contracts\IInputOutputProvider.cs" />
     <Compile Include="Engine\Contracts\IStrategy.cs" />

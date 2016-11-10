@@ -16,11 +16,11 @@ namespace FastAndFurious.ConsoleApplication.Engine.Strategies
 
         protected override void ExecuteCommand(IList<string> commandParameters, IEngineCollections engineCollections)
         {
-            var removeTypeCommand = commandParameters[1];
+            var assignTypeCommand = commandParameters[1];
             var objectToAssignId = int.Parse(commandParameters[2]);
             var ownerToAssignToId = int.Parse(commandParameters[5]);
 
-            switch (removeTypeCommand)
+            switch (assignTypeCommand)
             {
                 case GlobalConstants.TunningCommand:
                     {
