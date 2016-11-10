@@ -3,7 +3,7 @@
 // Check response format.
 
 const loginService = (() => {
-    URLS = {
+    var URLS = {
         GET: 'users',
         LOGIN: 'auth',
         REGISTER: 'user',
