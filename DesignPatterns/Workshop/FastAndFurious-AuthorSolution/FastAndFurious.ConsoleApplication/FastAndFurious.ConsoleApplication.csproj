@@ -90,8 +90,10 @@
     <Compile Include="Contracts\ITurbocharger.cs" />
     <Compile Include="Contracts\IValuable.cs" />
     <Compile Include="Contracts\IWeightable.cs" />
+    <Compile Include="Engine\Contracts\IInputOutputProvider.cs" />
     <Compile Include="Engine\Engine.cs" />
-    <Compile Include="Engine\IEngine.cs" />
+    <Compile Include="Engine\Contracts\IEngine.cs" />
+    <Compile Include="Engine\InputOutputProvider.cs" />
     <Compile Include="Models\Common\IdentifiableObject.cs" />
     <Compile Include="Models\Drivers\Abstract\Driver.cs" />
     <Compile Include="Models\Drivers\DominicRendeto.cs" />

@@ -1,6 +1,6 @@
 ﻿using System.Reflection;
 
-using FastAndFurious.ConsoleApplication.Engine;
+using FastAndFurious.ConsoleApplication.Engine.Contracts;
 
 using Ninject;
 

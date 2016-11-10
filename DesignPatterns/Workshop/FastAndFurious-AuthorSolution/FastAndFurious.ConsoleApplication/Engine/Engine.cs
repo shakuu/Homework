@@ -2,7 +2,9 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
+
 using FastAndFurious.ConsoleApplication.Common.Constants;
+using FastAndFurious.ConsoleApplication.Engine.Contracts;
 using FastAndFurious.ConsoleApplication.Common.Enums;
 using FastAndFurious.ConsoleApplication.Common.Exceptions;
 using FastAndFurious.ConsoleApplication.Common.Extensions;
@@ -17,17 +19,66 @@ namespace FastAndFurious.ConsoleApplication.Engine
         private readonly ICollection<ITunningPart> tunningParts;
         private readonly ICollection<IMotorVehicle> motorVehicles;
 
-        public Engine()
+        private readonly IInputOutputProvider ioProiver;
+
+        public Engine(IInputOutputProvider ioProiver)
         {
+            if (ioProiver == null)
+            {
+                throw new ArgumentNullException(nameof(ioProiver));
+            }
+
+            this.ioProiver = ioProiver;
+
             this.drivers = new List<IDriver>();
             this.raceTracks = new List<IRaceTrack>();
             this.tunningParts = new List<ITunningPart>();
             this.motorVehicles = new List<IMotorVehicle>();
         }
 
+        public ICollection<IDriver> Drivers
+        {
+            get
+            {
+                return this.drivers;
+            }
+        }
+
+        public ICollection<IRaceTrack> RaceTracks
+        {
+            get
+            {
+                return this.raceTracks;
+            }
+        }
+
+        public ICollection<ITunningPart> TunningParts
+        {
+            get
+            {
+                return this.tunningParts;
+            }
+        }
+
+        public ICollection<IMotorVehicle> MotorVehicles
+        {
+            get
+            {
+                return this.motorVehicles;
+            }
+        }
+
+        public IInputOutputProvider IoProiver
+        {
+            get
+            {
+                return this.ioProiver;
+            }
+        }
+
         public void Start()
         {
-            var command = ReadCommand();
+            var command = this.ReadCommand();
             var commandParameters = new string[] { string.Empty };
 
             while (command != GlobalConstants.ExitCommand)
@@ -39,28 +90,29 @@ namespace FastAndFurious.ConsoleApplication.Engine
                 }
                 catch (NotSupportedException e)
                 {
-                    Console.Write(e.Message);
+                    this.ioProiver.WriteLine(e.Message);
                 }
                 catch (InvalidOperationException e)
                 {
-                    Console.WriteLine(e.Message);
+                    this.ioProiver.WriteLine(e.Message);
                 }
                 catch (TunningDuplicationException e)
                 {
-                    Console.WriteLine(e.Message);
+                    this.ioProiver.WriteLine(e.Message);
                 }
-                command = ReadCommand();
+
+                command = this.ReadCommand();
             }
         }
 
         private string ReadCommand()
         {
-            return Console.ReadLine();
+            return this.ioProiver.ReadLine();
         }
 
         private string[] ParseCommand(string command)
         {
-            return command.Split(new string[] { " " }, StringSplitOptions.RemoveEmptyEntries);
+            return command.Split(new[] { " " }, StringSplitOptions.RemoveEmptyEntries);
         }
 
         private void ExecuteCommand(string[] commandParameters)
@@ -115,7 +167,7 @@ namespace FastAndFurious.ConsoleApplication.Engine
                     throw new NotSupportedException(GlobalConstants.CreationalOperationNotSupportedExceptionMessage);
             }
 
-            Console.WriteLine(String.Format("{0} - successfully created!", typeName));
+            this.ioProiver.WriteLine(String.Format("{0} - successfully created!", typeName));
         }
 
         private void ExecuteAssigningStrategy(string[] commandParameters)
@@ -153,7 +205,7 @@ namespace FastAndFurious.ConsoleApplication.Engine
                     }
             }
 
-            Console.WriteLine(
+            this.ioProiver.WriteLine(
                 String.Format(
                     GlobalConstants.ItemAssignedSuccessfullyMessage,
                     objectToAssignId,
@@ -204,7 +256,7 @@ namespace FastAndFurious.ConsoleApplication.Engine
             var vehicle = driver.Vehicles.GetById(vehicleId);
             driver.SetActiveVehicle(vehicle);
 
-            Console.WriteLine(
+            this.ioProiver.WriteLine(
                 String.Format(
                     GlobalConstants.DriverSelectsNewVehicleMessage,
                     driver.Name,
@@ -216,7 +268,7 @@ namespace FastAndFurious.ConsoleApplication.Engine
         {
             var trackId = int.Parse(commandParameters[2]);
             var track = this.raceTracks.GetById(trackId);
-            Console.WriteLine(String.Format(GlobalConstants.PerformingRaceOnTrackMessage, track.TrackName, track.Participants.Count()));
+            this.ioProiver.WriteLine(String.Format(GlobalConstants.PerformingRaceOnTrackMessage, track.TrackName, track.Participants.Count()));
             track.RunRace();
         }
 
@@ -230,14 +282,14 @@ namespace FastAndFurious.ConsoleApplication.Engine
                 .OrderBy(x => x.TotalSeconds)
                 .Take(count);
 
-            Console.WriteLine(
+            this.ioProiver.WriteLine(
                 results != null && results.Count() > 0 ?
                 String.Format(GlobalConstants.DisplayBestNTimesEverMessage, count, raceTrack.TrackName) :
                 String.Format(GlobalConstants.NoRacesYetMessage, raceTrack.TrackName));
 
             foreach (var result in results)
             {
-                Console.WriteLine(result.ToString());
+                this.ioProiver.WriteLine(result.ToString());
             }
         }
 
