@@ -98,6 +98,11 @@
     <Compile Include="Contracts\ITurbocharger.cs" />
     <Compile Include="Contracts\IValuable.cs" />
     <Compile Include="Contracts\IWeightable.cs" />
+    <Compile Include="Engine\AssigningCommand.cs" />
+    <Compile Include="Engine\Commands\DriverCommand.cs" />
+    <Compile Include="Engine\Commands\TuningCommand.cs" />
+    <Compile Include="Engine\Commands\VehicleCommand.cs" />
+    <Compile Include="Engine\Contracts\IAssigningCommand.cs" />
     <Compile Include="Engine\Contracts\ICommand.cs" />
     <Compile Include="Engine\Contracts\IEngineCollections.cs" />
     <Compile Include="Engine\Contracts\IInputOutputProvider.cs" />

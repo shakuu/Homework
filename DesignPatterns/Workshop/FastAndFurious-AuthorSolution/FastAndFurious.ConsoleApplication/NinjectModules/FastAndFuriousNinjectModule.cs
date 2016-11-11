@@ -38,18 +38,6 @@ namespace FastAndFurious.ConsoleApplication.NinjectBindings
             this.Bind<IAssigningCommand>().To<DriverCommand>().Named(DriverCommandName);
             this.Bind<IAssigningCommand>().To<TuningCommand>().Named(TuningCommandName);
             this.Bind<IAssigningCommand>().To<VehicleCommand>().Named(VehicleCommandName);
-            this.Bind<IEnumerable<ICommand>>().ToMethod(ctx =>
-            {
-                var commands = new List<ICommand>();
-
-                commands.Add(this.Kernel.Get<IAssigningCommand>(DriverCommandName));
-                commands.Add(this.Kernel.Get<IAssigningCommand>(TuningCommandName));
-                commands.Add(this.Kernel.Get<IAssigningCommand>(VehicleCommandName));
-
-                return commands;
-            })
-            .WhenInjectedInto<AssigningStrategy>()
-            .InSingletonScope();
 
             this.Bind<IStrategyChainOfResponsibility>().To<CreationStrategy>().Named(CreationStrategyName);
             this.Bind<IStrategyChainOfResponsibility>().To<RemovalStrategy>().Named(RemovalStrategyName);

@@ -1,10 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
 
 using FastAndFurious.ConsoleApplication.Engine.Contracts;
 using FastAndFurious.ConsoleApplication.Common.Constants;
 using FastAndFurious.ConsoleApplication.Common.Extensions;
+using System.Linq;
 
 namespace FastAndFurious.ConsoleApplication.Engine.Strategies
 {
@@ -12,7 +12,7 @@ namespace FastAndFurious.ConsoleApplication.Engine.Strategies
     {
         private readonly IEnumerable<ICommand> commands;
 
-        public AssigningStrategy(IEnumerable<ICommand> commands)
+        public AssigningStrategy(IEnumerable<IAssigningCommand> commands)
         {
             this.commands = commands;
         }
