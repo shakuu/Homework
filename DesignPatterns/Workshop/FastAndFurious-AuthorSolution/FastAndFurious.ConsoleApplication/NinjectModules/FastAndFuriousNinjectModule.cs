@@ -3,15 +3,14 @@ using System.IO;
 using System.Reflection;
 
 using FastAndFurious.ConsoleApplication.Engine;
+using FastAndFurious.ConsoleApplication.Engine.Commands;
 using FastAndFurious.ConsoleApplication.Engine.Contracts;
 using FastAndFurious.ConsoleApplication.Engine.Strategies;
 
 using Ninject;
 using Ninject.Extensions.Conventions;
-using Ninject.Modules;
 using Ninject.Extensions.Interception.Infrastructure.Language;
-using System.Collections.Generic;
-using FastAndFurious.ConsoleApplication.Engine.Commands;
+using Ninject.Modules;
 
 namespace FastAndFurious.ConsoleApplication.NinjectBindings
 {
@@ -38,6 +37,8 @@ namespace FastAndFurious.ConsoleApplication.NinjectBindings
             this.Bind<IAssigningCommand>().To<DriverCommand>().Named(DriverCommandName);
             this.Bind<IAssigningCommand>().To<TuningCommand>().Named(TuningCommandName);
             this.Bind<IAssigningCommand>().To<VehicleCommand>().Named(VehicleCommandName);
+            this.Bind<ICommand>().To<ComposedAssigningCommand>()
+                .WhenInjectedInto<AssigningStrategy>().InSingletonScope();
 
             this.Bind<IStrategyChainOfResponsibility>().To<CreationStrategy>().Named(CreationStrategyName);
             this.Bind<IStrategyChainOfResponsibility>().To<RemovalStrategy>().Named(RemovalStrategyName);
