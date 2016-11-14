@@ -1,1 +1,3 @@
-const mongo = require('Mongo');
+const asd = 3;
+
+console.log(test);
