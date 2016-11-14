@@ -1,3 +1,5 @@
+/* globals credentialManager */
+
 const headersHelper = (() => {
     const HEADERS = {
         X_AUTH_KEY: 'x-auth-key'

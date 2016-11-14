@@ -15,7 +15,7 @@ const credentialManager = (() => {
         const user = JSON.parse(stringifiedUser);
         return user;
     }
-
+    
     function remove() {
         return new Promise((resolve, reject) => {
             if (!isLogged) {
