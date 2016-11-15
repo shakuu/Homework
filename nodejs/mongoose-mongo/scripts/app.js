@@ -34,7 +34,7 @@ const Computer = mongoose.model("Computer", computerSchema);
 
 var pc = new Computer({
   model: 123,
-  vendor: 4567
+  vendor: 'one'
 });
 
 pc.save((err, createdComputer) => {
