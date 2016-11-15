@@ -1,3 +1,6 @@
+/* globals $ */
+/* export homeController */
+
 const homeController = (() => {
     function main(containerId) {
         const content = $(containerId);
