@@ -1,3 +1,3 @@
-const asd = 3;
+/* globals require */
 
-console.log(test);
+const mongodb = require('mongodb').MongoClient;
