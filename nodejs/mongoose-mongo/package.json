@@ -1,7 +1,6 @@
 {
-  "name": "mongoose",
+  "name": "mongoose-testing",
   "version": "1.0.0",
-  "description": "",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
@@ -9,6 +8,9 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "mongodb": "^2.2.11"
-  }
+    "mongodb": "^2.2.11",
+    "mongoose": "^4.6.8"
+  },
+  "devDependencies": {},
+  "description": ""
 }

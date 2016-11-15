@@ -1,0 +1,3 @@
+const ads = {
+  asd: 'asd'
+};
