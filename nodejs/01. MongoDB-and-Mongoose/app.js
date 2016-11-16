@@ -10,7 +10,7 @@ const readJsonFromFile = require('./filesystem/read-json');
 const saveEmployeesToMongo = require('./mongoose/save-employees-to-mongo');
 const writeJsonToFile = require('./filesystem/write-json');
 
-const employees = generateEmployees(999);
+const employees = generateEmployees(9);
 for (let i = 0; i < employees.length; i += 1) {
   writeJsonToFile(i + 1, employees[i]);
 }

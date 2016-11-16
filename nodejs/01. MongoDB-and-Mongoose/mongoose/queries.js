@@ -12,22 +12,19 @@ function executeQueryTask(mongoose) {
     .where('contactDetails.emailAddress').equals(/@progress.com/)
     .where('contactDetails.phoneNumber').equals(/359/)
     // .where('itemsForSale').count(1).gt(0)
-    .exec((err, res) => {
+    .exec((err, savedEmployees) => {
       if (err) {
         console.log(err.message);
       }
 
       mongoose.disconnect();
-
-      res
+      savedEmployees
         .filter(e => e.itemsForSale.length >= 1)
         .sort(e => e.itemsForSale.length)
         .slice(0, 2)
         .forEach(e => {
-          console.log(e);
+          console.log(e.fullName);
         });
-
-        res[1].sellItemToAFriend(res[2], 'asd');
     });
 }
 

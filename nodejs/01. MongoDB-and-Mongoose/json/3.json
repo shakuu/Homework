@@ -1,0 +1,49 @@
+{
+  "firstName": "Thcnhqxmzrddvt",
+  "middleName": "Kqpsyektwey",
+  "lastName": "Fzajahero",
+  "insuranceNumber": "ooyl2ZYbCB",
+  "age": 69,
+  "contactDetails": {
+    "phoneNumber": "359 889 555 666",
+    "emailAddress": "less@random.mail",
+    "roomNumber": 668
+  },
+  "itemsForSale": [
+    {
+      "itemName": "Avouonxdanihe",
+      "itemPrice": 642,
+      "giveAwayStatus": "For Sale"
+    },
+    {
+      "itemName": "Dunnohoyyz",
+      "itemPrice": 426,
+      "giveAwayStatus": "For Sale"
+    },
+    {
+      "itemName": "Hqgqwhxbaw",
+      "itemPrice": 536,
+      "giveAwayStatus": "For Sale"
+    },
+    {
+      "itemName": "Qyehmztgczwoy",
+      "itemPrice": 123,
+      "giveAwayStatus": "For Sale"
+    },
+    {
+      "itemName": "Mmddtenvey",
+      "itemPrice": 428,
+      "giveAwayStatus": "For Sale"
+    },
+    {
+      "itemName": "Pylwqoowx",
+      "itemPrice": 136,
+      "giveAwayStatus": "For Sale"
+    }
+  ],
+  "itemsReceived": [
+    {
+      "name": "Dgoejol"
+    }
+  ]
+}

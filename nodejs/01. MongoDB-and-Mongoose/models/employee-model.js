@@ -98,6 +98,17 @@ function getEmployeeModel(mongoose) {
     }
   };
 
+  employeeSchema.virtual('fullName').get(function () {
+    return `${this.firstName} ${this.middleName} ${this.lastName}`;
+  });
+
+  employeeSchema.virtual('fullName').set(function (fullName) {
+    const names = fullName.split(' ');
+    this.set('firstName', names[0]);
+    this.set('middleName', names[1]);
+    this.set('lastName', names[2]);
+  });
+
   const Employee = mongoose.model("Employee", employeeSchema);
 
   return Employee;
