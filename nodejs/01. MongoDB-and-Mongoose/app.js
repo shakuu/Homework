@@ -4,10 +4,10 @@ const mongoose = require('mongoose');
 
 const convertJsonToEmployee = require('./converter/convert-json-to-employee');
 const generateEmployees = require('./generate-json/generate-employees');
-const readJsonFromFile = require('./filesystem/read-json');
-const writeJsonToFile = require('./filesystem/write-json');
-const saveEmployeesToMongo = require('./mongoose/save-employees-to-mongo');
 const getEmployeeModel = require('./models/employee-model');
+const readJsonFromFile = require('./filesystem/read-json');
+const saveEmployeesToMongo = require('./mongoose/save-employees-to-mongo');
+const writeJsonToFile = require('./filesystem/write-json');
 
 // Attach model to Mongoose object.
 getEmployeeModel(mongoose);
