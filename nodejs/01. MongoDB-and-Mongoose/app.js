@@ -25,6 +25,7 @@ for (const dir of directories) {
   employeesFromJson.push(employee);
 }
 
-saveEmployeesToMongo(mongoose, employeesFromJson);
-
-executeQueryTask(mongoose);
+saveEmployeesToMongo(mongoose, employeesFromJson)
+  .then(() => {
+    executeQueryTask(mongoose);
+  });

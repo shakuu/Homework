@@ -4,8 +4,8 @@ const randomGenerator = require('./random-generator');
 function generateEmployees(count) {
     const employees = [];
     for (let i = 0; i < count; i += 1) {
-        const generatedItemsForSale = generateItemsForSale(2);
-        const generatedItemsReceived = generateItemsReceived(2);
+        const generatedItemsForSale = generateItemsForSale(randomGenerator.getRandomInteger(1, 10));
+        const generatedItemsReceived = generateItemsReceived(randomGenerator.getRandomInteger(1, 10));
 
         const newEmployee = {
             firstName: randomGenerator.getRandomName(),
