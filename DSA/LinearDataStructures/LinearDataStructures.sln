@@ -9,6 +9,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Problem02.ReverseWithStack"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Problem03.SortList", "Problem03.SortList\Problem03.SortList.csproj", "{EBCC1DAE-DE97-440B-A005-253CCA75C8CF}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Problem04.LongestSubsequence", "Problem04.LongestSubsequence\Problem04.LongestSubsequence.csproj", "{62A0BB6D-FACC-483F-A45B-9F527FF0FC8D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Problem05.RemoveNegativeValues", "Problem05.RemoveNegativeValues\Problem05.RemoveNegativeValues.csproj", "{A8804C9A-3D50-46DC-8207-1B307047BC5A}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -27,6 +31,14 @@ Global
 		{EBCC1DAE-DE97-440B-A005-253CCA75C8CF}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{EBCC1DAE-DE97-440B-A005-253CCA75C8CF}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{EBCC1DAE-DE97-440B-A005-253CCA75C8CF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{62A0BB6D-FACC-483F-A45B-9F527FF0FC8D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{62A0BB6D-FACC-483F-A45B-9F527FF0FC8D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{62A0BB6D-FACC-483F-A45B-9F527FF0FC8D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{62A0BB6D-FACC-483F-A45B-9F527FF0FC8D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A8804C9A-3D50-46DC-8207-1B307047BC5A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A8804C9A-3D50-46DC-8207-1B307047BC5A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A8804C9A-3D50-46DC-8207-1B307047BC5A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A8804C9A-3D50-46DC-8207-1B307047BC5A}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
