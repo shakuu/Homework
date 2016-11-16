@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace Problem04.LongestSubsequence
+namespace Problem06.RemoveOddOccurences
 {
     public class Program
     {
@@ -24,28 +24,33 @@ namespace Problem04.LongestSubsequence
                 }
             }
 
-            var currentSequence = new List<int>();
-            var maximumSequence = new List<int>();
-            for (int i = 1; i < inputValues.Count; i++)
+            var occurancesCounters = new Dictionary<int, int>();
+            foreach (var value in inputValues)
             {
-                var currentAndPreviousElementsAreEqual = inputValues[i] == inputValues[i - 1];
-                if (currentAndPreviousElementsAreEqual)
+                var keyExists = occurancesCounters.ContainsKey(value);
+                if (keyExists)
                 {
-                    currentSequence.Add(inputValues[i]);
+                    occurancesCounters[value]++;
                 }
                 else
                 {
-                    if (maximumSequence.Count < currentSequence.Count)
-                    {
-                        maximumSequence = new List<int>(currentSequence);
-                    }
-
-                    currentSequence = new List<int>();
-                    currentSequence.Add(inputValues[i]);
+                    occurancesCounters.Add(value, 1);
                 }
             }
 
-            Console.WriteLine(string.Join(", ", maximumSequence));
+            var result = new List<int>();
+            foreach (var item in occurancesCounters)
+            {
+                if (item.Key % 2 == 0)
+                {
+                    for (int i = 0; i < item.Value; i++)
+                    {
+                        result.Add(item.Key);
+                    }
+                }
+            }
+
+            Console.WriteLine(string.Join(", ", result));
         }
     }
 }

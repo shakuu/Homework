@@ -13,6 +13,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Problem04.LongestSubsequenc
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Problem05.RemoveNegativeValues", "Problem05.RemoveNegativeValues\Problem05.RemoveNegativeValues.csproj", "{A8804C9A-3D50-46DC-8207-1B307047BC5A}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Problem06.RemoveOddOccurences", "Problem06.RemoveOddOccurences\Problem06.RemoveOddOccurences.csproj", "{0FE64B86-2D08-4EEC-977F-DAD1DC0550B2}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -39,6 +41,10 @@ Global
 		{A8804C9A-3D50-46DC-8207-1B307047BC5A}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A8804C9A-3D50-46DC-8207-1B307047BC5A}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{A8804C9A-3D50-46DC-8207-1B307047BC5A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0FE64B86-2D08-4EEC-977F-DAD1DC0550B2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0FE64B86-2D08-4EEC-977F-DAD1DC0550B2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0FE64B86-2D08-4EEC-977F-DAD1DC0550B2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0FE64B86-2D08-4EEC-977F-DAD1DC0550B2}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
