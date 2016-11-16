@@ -84,6 +84,20 @@ function getEmployeeModel(mongoose) {
     return dateNowWithOneMonthAdded;
   }
 
+  employeeSchema.methods.sellItemToAFriend = function (friend, itemForSaleId) {
+    for (let i = 0; i < this.itemsForSale.length; i += 1) {
+      const isMatch = this.itemsForSale[i]._id === itemForSaleId;
+      if (isMatch) {
+        const matchingItem = this.itemsForSale.splice(i, 1);
+        friend.itemsReceived.push({
+          name: matchingItem.name
+        });
+
+        break;
+      }
+    }
+  };
+
   const Employee = mongoose.model("Employee", employeeSchema);
 
   return Employee;

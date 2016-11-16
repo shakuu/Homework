@@ -26,6 +26,8 @@ function executeQueryTask(mongoose) {
         .forEach(e => {
           console.log(e);
         });
+
+        res[1].sellItemToAFriend(res[2], 'asd');
     });
 }
 
