@@ -1,30 +1,18 @@
 /* globals require console*/
+const mongoose = require('mongoose');
 
-// const mongoose = require('mongoose');
-
-// const protocol = 'mongodb:/';
-// const location = 'localhost:27017';
-// const database = 'computers';
-// const connectionString = `${protocol}/${location}/${database}`;
-
-// mongoose.connect(connectionString);
-
-// const getEomployeeModel = require('./models/employee-model');
-// const Employee = getEomployeeModel(mongoose);
-
-// const employee = new Employee();
-// employee.save((err, res)=>{
-//   if(err){
-//     console.log(err.message);
-//   }
-// });
-
+const convertJsonToEmployee = require('./converter/convert-json-to-employee');
 const generateEmployees = require('./generate-json/generate-employees');
+const readJsonFromFile = require('./filesystem/read-json');
 const writeJsonToFile = require('./filesystem/write-json');
+const saveEmployeesToMongo = require('./mongoose/save-employees-to-mongo');
 
 const employees = generateEmployees(3);
 for (const emp of employees) {
   writeJsonToFile(emp.firstName + emp.lastName, emp);
 }
 
-console.log(employees);
+const json = readJsonFromFile('FirstName.json');
+const emp = convertJsonToEmployee(json, mongoose);
+
+saveEmployeesToMongo(mongoose, [emp]);

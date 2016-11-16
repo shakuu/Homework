@@ -1,5 +1,7 @@
 /* globals require module*/
-function GetEmployeeModel(mongoose) {
+// const mongoose = require('mongoose');
+
+function getEmployeeModel(mongoose) {
   const contactDetailsSchema = mongoose.Schema({
     phoneNumber: {
       type: String,
@@ -90,4 +92,4 @@ function GetEmployeeModel(mongoose) {
   return Employee;
 }
 
-module.exports = GetEmployeeModel;
+module.exports = getEmployeeModel;
