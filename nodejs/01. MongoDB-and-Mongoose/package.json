@@ -1,0 +1,15 @@
+{
+  "name": "mongodb-workshop",
+  "version": "1.0.0",
+  "description": "You are given a few simple tasks in order to exercise the skills learned through the first lectures from the **Node.js** course. The main goal is to improve your knowledge on using `async operations` and `modules` responsible for `data access` like working with the `file system` or querying a `database`, all that in a Node.js environment.   You can use any external resources. For example:",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "mongodb": "^2.2.11",
+    "mongoose": "^4.6.8"
+  }
+}
