@@ -1,3 +1,0 @@
-const ads = {
-  asd: 'asd'
-};
