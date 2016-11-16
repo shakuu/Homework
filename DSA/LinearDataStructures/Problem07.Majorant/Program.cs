@@ -1,8 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Problem07.Majorant
 {
@@ -39,6 +36,29 @@ namespace Problem07.Majorant
                 {
                     occurancesCounters.Add(value, 1);
                 }
+            }
+
+
+            int? maxKey = null;
+            var maxKeyCount = 0;
+            var inputCount = inputValues.Count;
+            foreach (var item in occurancesCounters)
+            {
+                var isEligibleMajorant = ((inputCount / 2) + 1) <= item.Value;
+                if (isEligibleMajorant && maxKeyCount < item.Value)
+                {
+                    maxKey = item.Key;
+                    maxKeyCount = item.Value;
+                }
+            }
+
+            if (maxKey != null)
+            {
+                Console.WriteLine($"Majorant is: {maxKey}, occurances: {maxKeyCount}.");
+            }
+            else
+            {
+                Console.WriteLine("Majorant does not exists.");
             }
         }
     }
