@@ -1,6 +1,4 @@
-/* globals require module*/
-// const mongoose = require('mongoose');
-
+/* globals  module*/
 function getEmployeeModel(mongoose) {
   const contactDetailsSchema = mongoose.Schema({
     phoneNumber: {
@@ -9,8 +7,7 @@ function getEmployeeModel(mongoose) {
     },
     emailAddress: {
       required: true,
-      type: String,
-      match: /^[-a-z0-9~!$%^&*_=+}{\'?]+(\.[-a-z0-9~!$%^&*_=+}{\'?]+)*@([a-z0-9_][-a-z0-9_]*(\.[-a-z0-9_]+[a-z][a-z])|([0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}))(:[0-9]{1,5})?$/i
+      type: String
     },
     roomNumber: {
       required: true,
@@ -74,7 +71,7 @@ function getEmployeeModel(mongoose) {
       min: 0,
       max: 120
     },
-    contactDetais: {
+    contactDetails: {
       type: contactDetailsSchema
     },
     itemsForSale: [itemForSaleSchema],

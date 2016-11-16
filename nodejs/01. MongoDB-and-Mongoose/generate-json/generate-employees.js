@@ -1,4 +1,6 @@
-/* globals module */
+/* globals module require */
+const randomGenerator = require('./random-generator');
+
 function generateEmployees(count) {
     const employees = [];
     for (let i = 0; i < count; i += 1) {
@@ -6,15 +8,15 @@ function generateEmployees(count) {
         const generatedItemsReceived = generateItemsReceived(2);
 
         const newEmployee = {
-            firstName: 'FirstName',
-            middleName: 'LastName',
-            lastName: 'MiddleName',
-            insuranceNumber: '09123123123',
-            age: 15,
+            firstName: randomGenerator.getRandomName(),
+            middleName: randomGenerator.getRandomName(),
+            lastName: randomGenerator.getRandomName(),
+            insuranceNumber: randomGenerator.getRandomInsuranceNumber(),
+            age: randomGenerator.getRandomInteger(0, 120),
             contactDetails: {
-                phoneNumber: '333 333 333 ',
-                emailAddress: 'some@email.address',
-                roomNumber: 101
+                phoneNumber: randomGenerator.getRandomPhoneNumber(),
+                emailAddress: randomGenerator.getRandomEmailAddress(),
+                roomNumber: randomGenerator.getRandomInteger(100, 999)
             },
             itemsForSale: generatedItemsForSale,
             itemsReceived: generatedItemsReceived
@@ -32,8 +34,8 @@ function generateItemsForSale(count) {
 
     for (let i = 0; i < count; i += 1) {
         const newItemForSale = {
-            itemName: 'ItemName',
-            itemPrice: 100,
+            itemName: randomGenerator.getRandomName(),
+            itemPrice: randomGenerator.getRandomInteger(10, 1000),
             giveAwayStatus: giveAwayOptions[1]
         };
 
@@ -48,7 +50,7 @@ function generateItemsReceived(count) {
 
     for (let i = 0; i < count; i += 1) {
         const newItem = {
-            name: 'Received'
+            name: randomGenerator.getRandomName()
         };
 
         generatedItems.push(newItem);

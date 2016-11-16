@@ -8,11 +8,11 @@ function convertJsonToEmployee(json, mongoose) {
     lastName: json.lastName,
     insuranceNumber: json.insuranceNumber,
     age: json.age,
-    contactDetais: json.contactDetais,
+    contactDetails: json.contactDetails,
     itemsForSale: json.itemsForSale,
     itemsReceived: json.itemsReceived
   });
-
+  
   return newEmployee;
 }
 

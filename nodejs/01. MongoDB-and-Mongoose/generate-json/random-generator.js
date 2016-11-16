@@ -2,16 +2,15 @@
 const getRandomName = (() => {
   const lowerCaseLetters = 'abcdefghijklmnopqrstuvwxyz';
   const upperCaseLetters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
-  const digits = '0123456789';
 
   function generateName() {
     let name = '';
     const nameLength = getRandomInteger(5, 15);
 
     const alphabetLength = lowerCaseLetters.length;
-    name += upperCaseLetters[getRandomInteger(0, alphabetLength - 1)];
+    name += upperCaseLetters.substr(getRandomInteger(0, alphabetLength - 1), 1);
     for (let i = 1; i < nameLength; i += 1) {
-      name += lowerCaseLetters[getRandomInteger(0, alphabetLength - 1)];
+      name += lowerCaseLetters.substr(getRandomInteger(0, alphabetLength - 1), 1);
     }
 
     return name;
@@ -20,6 +19,24 @@ const getRandomName = (() => {
   return generateName;
 })();
 
+const getRandomEmailAddress = (() => {
+  const emails = [
+    'random@email.add',
+    'less@random.mail',
+    'email@address.co',
+    'someone@progress.com'
+  ];
+
+  function generateEmail() {
+    const emailsLength = emails.length;
+    const randomIndex = getRandomInteger(0, emailsLength - 1);
+    const email = emails[randomIndex];
+
+    return email;
+  }
+
+  return generateEmail;
+})();
 
 const getRandomPhoneNumber = (() => {
   const phoneNumbers = [
@@ -36,16 +53,42 @@ const getRandomPhoneNumber = (() => {
     return phoneNumber;
   }
 
-  return getRandomPhoneNumber;
+  return generatePhoneNumber;
 })();
 
-function getRandomInteger(min, max) {
-  return Math.floor(Math.random() * (max - min + 1)) + min;
-}
+const getRandomInsuranceNumber = (() => {
+  const allowedCharacters = '0123456789-abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
+  const charactersCount = allowedCharacters.length;
+  const insuranceNumberLength = 10;
 
-const randomGenerators = {
+  function generateInsuranceNumber() {
+    let insuranceNumber = '';
+    for (let i = 0; i < insuranceNumberLength; i += 1) {
+      const nextCharacterIndex = getRandomInteger(0, charactersCount - 1);
+      insuranceNumber += allowedCharacters.substr(nextCharacterIndex, 1);
+    }
+
+    return insuranceNumber;
+  }
+
+  return generateInsuranceNumber;
+})();
+
+const getRandomInteger = (() => {
+  function generateInt(min, max) {
+    return Math.floor(Math.random() * (max - min + 1)) + min;
+  }
+
+  return generateInt;
+})();
+
+
+const randomGenerator = {
   getRandomName,
-  getRandomPhoneNumber
+  getRandomPhoneNumber,
+  getRandomEmailAddress,
+  getRandomInsuranceNumber,
+  getRandomInteger
 };
 
-module.exports = randomGenerators;
+module.exports = randomGenerator;
