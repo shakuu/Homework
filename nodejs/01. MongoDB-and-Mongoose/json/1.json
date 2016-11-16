@@ -1,0 +1,32 @@
+{
+  "firstName": "FirstName",
+  "middleName": "LastName",
+  "lastName": "MiddleName",
+  "insuranceNumber": "09123123123",
+  "age": 15,
+  "contactDetails": {
+    "phoneNumber": "333 333 333 ",
+    "emailAddress": "some@email.address",
+    "roomNumber": 101
+  },
+  "itemsForSale": [
+    {
+      "itemName": "ItemName",
+      "itemPrice": 100,
+      "giveAwayStatus": "For Sale"
+    },
+    {
+      "itemName": "ItemName",
+      "itemPrice": 100,
+      "giveAwayStatus": "For Sale"
+    }
+  ],
+  "itemsReceived": [
+    {
+      "name": "Received"
+    },
+    {
+      "name": "Received"
+    }
+  ]
+}

@@ -1,8 +1,6 @@
 /* globals require module*/
-const getEmployeeModel = require('../models/employee-model');
-
 function convertJsonToEmployee(json, mongoose) {
-  const Employee = getEmployeeModel(mongoose);
+  const Employee = mongoose.model('Employee');
 
   const newEmployee = new Employee({
     firstName: json.firstName,

@@ -1,7 +1,7 @@
 /* globals module console*/
 const protocol = 'mongodb:/';
 const location = 'localhost:27017';
-const database = 'computers';
+const database = 'employees';
 const connectionString = `${protocol}/${location}/${database}`;
 
 function saveEmployeesToMongo(mongoose, employees) {
