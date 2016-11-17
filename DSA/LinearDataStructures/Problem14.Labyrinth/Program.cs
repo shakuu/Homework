@@ -79,9 +79,9 @@ namespace Problem14.Labyrinth
         private static bool ShouldBeVisited(int row, int col, int stepCount)
         {
             var currentCellValue = int.Parse(Program.labyrinth[row, col]);
-            var shouldUpdate = (currentCellValue == 0 || stepCount < currentCellValue);
+            var shouldUpdateCellValue = (currentCellValue == 0 || stepCount < currentCellValue);
 
-            return !Program.visitedCells[row, col] || shouldUpdate;
+            return !Program.visitedCells[row, col] || shouldUpdateCellValue;
         }
 
         private static bool IsInBounds(int row, int col)
