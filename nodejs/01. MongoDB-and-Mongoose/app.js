@@ -24,7 +24,7 @@ for (const dir of directories) {
   const employee = convertJsonToEmployee(json, mongoose);
   employeesFromJson.push(employee);
 }
-
+//
 saveEmployeesToMongo(mongoose, employeesFromJson)
   .then(() => {
     executeQueryTask(mongoose);
