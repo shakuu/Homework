@@ -12,9 +12,7 @@ namespace Dealership.CommandHandlers
     {
         private const string AddVehicleCommandName = "AddVehicle";
         private const string VehicleAddedSuccessfully = "{0} added vehicle successfully!";
-
-        private readonly ICommandFactory factory;
-
+        
         public AddVehicleCommandHandler(IUserService userService)
             : base(userService)
         {

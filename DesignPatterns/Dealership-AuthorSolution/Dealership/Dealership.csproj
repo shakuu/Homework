@@ -83,8 +83,7 @@
     <Compile Include="Engine\DealershipEngine.cs" />
     <Compile Include="Engine\ICommand.cs" />
     <Compile Include="Engine\IEngine.cs" />
-    <Compile Include="Factories\DealershipFactory.cs" />
-    <Compile Include="Factories\IDealershipFactory.cs" />
+    <Compile Include="Factories\ICommandFactory.cs" />
     <Compile Include="NinjectBindings\DealershipBindings.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
@@ -93,6 +92,14 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\Dealership.Data.Common\Dealership.Data.Common.csproj">
+      <Project>{87A88886-350F-46C6-94C3-2E178A55A58F}</Project>
+      <Name>Dealership.Data.Common</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Dealership.Data.Contracts\Dealership.Data.Contracts.csproj">
+      <Project>{0D1F1964-D268-472E-8B50-F06CDD3BD8A6}</Project>
+      <Name>Dealership.Data.Contracts</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Dealership.Data\Dealership.Data.csproj">
       <Project>{2C672116-990D-4FF5-8DF9-EAC6A32193F5}</Project>
       <Name>Dealership.Data</Name>

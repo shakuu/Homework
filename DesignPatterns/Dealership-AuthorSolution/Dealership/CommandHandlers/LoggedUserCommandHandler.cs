@@ -7,7 +7,7 @@ namespace Dealership.CommandHandlers
     public class LoggedUserCommandHandler : BaseCommandHandler
     {
         private const string UserNotLogged = "You are not logged! Please login first!";
-        
+
         public LoggedUserCommandHandler(IUserService userService)
             : base(userService)
         {
@@ -15,7 +15,7 @@ namespace Dealership.CommandHandlers
 
         protected override bool CanHandle(ICommand command)
         {
-            return command.Name != "RegisterUser" && command.Name != "Login" && !base.UserService.HasLoggedUser;
+            return command.Name != "RegisterUser" && command.Name != "Login" && base.UserService.LoggedUser != null;
         }
 
         protected override string Handle(ICommand command)

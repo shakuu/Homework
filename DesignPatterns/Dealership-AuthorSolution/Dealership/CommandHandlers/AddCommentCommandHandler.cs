@@ -1,10 +1,6 @@
-﻿using System;
-using System.Linq;
-
-using Dealership.CommandHandlers.Base;
+﻿using Dealership.CommandHandlers.Base;
 using Dealership.Data.Services.Contracts;
 using Dealership.Engine;
-using Dealership.Factories;
 
 namespace Dealership.CommandHandlers
 {
@@ -14,8 +10,6 @@ namespace Dealership.CommandHandlers
         private const string NoSuchUser = "There is no user with username {0}!";
         private const string VehicleDoesNotExist = "The vehicle does not exist!";
         private const string CommentAddedSuccessfully = "{0} added comment successfully!";
-
-        private readonly ICommandFactory factory;
 
         public AddCommentCommandHandler(IUserService userService)
             : base(userService)
