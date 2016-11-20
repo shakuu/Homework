@@ -11,6 +11,11 @@ namespace Dealership.CommandHandlers.Base
 
         private ICommandHandler nextHandler;
 
+        public BaseCommandHandler()
+        {
+
+        }
+
         public void AddCommandHandler(ICommandHandler nextHandler)
         {
             this.nextHandler = nextHandler;

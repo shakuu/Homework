@@ -27,6 +27,7 @@ namespace Dealership.NinjectBindings
         private const string RemoveCommentCommandHandlerName = "RemoveCommentCommandHandler";
         private const string ShowUsersCommandHandlerName = "ShowUsersCommandHandler";
         private const string ShowVehiclesCommandHandlerName = "ShowVehiclesCommandHandler";
+        private const string LoggedUserCommandHandlerName = "LoggedUserCommandHandler";
 
         private const string CarName = "Car";
         private const string MotorcycleName = "Motorcycle";
@@ -57,6 +58,7 @@ namespace Dealership.NinjectBindings
             this.Bind<IVehicle>().To<Truck>().Named(TruckName);
             this.Bind<IDealershipFactory>().ToFactory().InSingletonScope();
 
+            this.Bind<ICommandHandler>().To<LoggedUserCommandHandler>().Named(LoggedUserCommandHandlerName);
             this.Bind<ICommandHandler>().To<RegisterUserCommandHandler>().Named(RegisterUserCommandHandlerName);
             this.Bind<ICommandHandler>().To<LoginCommandHandler>().Named(LoginCommandHandlerName);
             this.Bind<ICommandHandler>().To<LogoutCommandHandler>().Named(LogoutCommandHandlerName);
@@ -69,6 +71,7 @@ namespace Dealership.NinjectBindings
 
             this.Bind<ICommandHandler>().ToMethod(ctx =>
             {
+                var loggedUserHandler = ctx.Kernel.Get<ICommandHandler>(LoggedUserCommandHandlerName);
                 var registerUserHandler = ctx.Kernel.Get<ICommandHandler>(RegisterUserCommandHandlerName);
                 var loginHandler = ctx.Kernel.Get<ICommandHandler>(LoginCommandHandlerName);
                 var logoutHandler = ctx.Kernel.Get<ICommandHandler>(LogoutCommandHandlerName);
@@ -79,6 +82,7 @@ namespace Dealership.NinjectBindings
                 var showUsersHandler = ctx.Kernel.Get<ICommandHandler>(ShowUsersCommandHandlerName);
                 var showVehiclesHandler = ctx.Kernel.Get<ICommandHandler>(ShowVehiclesCommandHandlerName);
 
+                loggedUserHandler.AddCommandHandler(registerUserHandler);
                 registerUserHandler.AddCommandHandler(loginHandler);
                 loginHandler.AddCommandHandler(logoutHandler);
                 logoutHandler.AddCommandHandler(addVehicleHandler);

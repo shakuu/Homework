@@ -13,7 +13,5 @@ namespace Dealership.Engine
         void SetLoggedUser(IUser user);
 
         void Start();
-
-        void Reset();
     }
 }

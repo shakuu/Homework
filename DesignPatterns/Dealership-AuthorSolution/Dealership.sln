@@ -1,9 +1,11 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 14
-VisualStudioVersion = 14.0.24720.0
+VisualStudioVersion = 14.0.25420.1
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Dealership", "Dealership\Dealership.csproj", "{4DB3664E-CDAE-446D-8163-683F6344C24B}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Dealership.Data", "Dealership.Data\Dealership.Data.csproj", "{2C672116-990D-4FF5-8DF9-EAC6A32193F5}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,6 +17,10 @@ Global
 		{4DB3664E-CDAE-446D-8163-683F6344C24B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{4DB3664E-CDAE-446D-8163-683F6344C24B}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{4DB3664E-CDAE-446D-8163-683F6344C24B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2C672116-990D-4FF5-8DF9-EAC6A32193F5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2C672116-990D-4FF5-8DF9-EAC6A32193F5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2C672116-990D-4FF5-8DF9-EAC6A32193F5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2C672116-990D-4FF5-8DF9-EAC6A32193F5}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

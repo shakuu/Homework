@@ -97,17 +97,7 @@ namespace Dealership.Engine
             var commandResult = this.ProcessCommands(commands);
             this.PrintReports(commandResult);
         }
-
-        public void Reset()
-        {
-            this.loggedUser = null;
-            this.users = new HashSet<IUser>();
-            var commands = new List<ICommand>();
-            var commandResult = new List<string>();
-            this.PrintReports(commandResult);
-        }
-
-
+        
         private IEnumerable<ICommand> ReadCommands()
         {
             var commands = new List<ICommand>();
