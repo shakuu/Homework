@@ -15,7 +15,7 @@ namespace Dealership.CommandHandlers
         private const string VehicleDoesNotExist = "The vehicle does not exist!";
         private const string CommentAddedSuccessfully = "{0} added comment successfully!";
 
-        private readonly IDealershipFactory factory;
+        private readonly ICommandFactory factory;
 
         public AddCommentCommandHandler(IUserService userService)
             : base(userService)
@@ -33,7 +33,7 @@ namespace Dealership.CommandHandlers
             var author = command.Parameters[1];
             var vehicleIndex = int.Parse(command.Parameters[2]) - 1;
 
-            base.UserService.AddCommentToUser(content, vehicleIndex);
+            base.UserService.AddUserComment(content, vehicleIndex);
 
             return string.Format(AddCommentCommandHandler.CommentAddedSuccessfully, base.UserService.LoggedUser.Username);
         }

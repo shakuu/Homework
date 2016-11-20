@@ -2,7 +2,6 @@
 
 using Dealership.CommandHandlers.Base;
 using Dealership.Data.Common.Enums;
-using Dealership.Contracts;
 using Dealership.Data.Services.Contracts;
 using Dealership.Engine;
 using Dealership.Factories;
@@ -14,7 +13,7 @@ namespace Dealership.CommandHandlers
         private const string AddVehicleCommandName = "AddVehicle";
         private const string VehicleAddedSuccessfully = "{0} added vehicle successfully!";
 
-        private readonly IDealershipFactory factory;
+        private readonly ICommandFactory factory;
 
         public AddVehicleCommandHandler(IUserService userService)
             : base(userService)
@@ -36,7 +35,7 @@ namespace Dealership.CommandHandlers
 
             var typeEnum = (VehicleType)Enum.Parse(typeof(VehicleType), type, true);
             
-            base.UserService.AddVehicleToUser(make, model, price, additionalParam, typeEnum);
+            base.UserService.AddUserVehicle(make, model, price, additionalParam, typeEnum);
 
             return string.Format(VehicleAddedSuccessfully, base.UserService.LoggedUser.Username);
         }

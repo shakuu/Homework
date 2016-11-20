@@ -2,7 +2,7 @@
 using System.Linq;
 
 using Dealership.CommandHandlers.Base;
-using Dealership.Common.Enums;
+using Dealership.Data.Common.Enums;
 using Dealership.Data.Services.Contracts;
 using Dealership.Engine;
 
