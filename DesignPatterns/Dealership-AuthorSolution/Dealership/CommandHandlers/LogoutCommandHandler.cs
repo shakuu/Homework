@@ -1,4 +1,5 @@
 ﻿using Dealership.CommandHandlers.Base;
+using Dealership.Data.Services.Contracts;
 using Dealership.Engine;
 
 namespace Dealership.CommandHandlers
@@ -7,15 +8,20 @@ namespace Dealership.CommandHandlers
     {
         private const string LogoutCommandName = "Logout";
         private const string UserLoggedOut = "You logged out!";
-        
+
+        public LogoutCommandHandler(IUserService userService)
+            : base(userService)
+        {
+        }
+
         protected override bool CanHandle(ICommand command)
         {
             return command.Name == LogoutCommandHandler.LogoutCommandName;
         }
 
-        protected override string Handle(ICommand command, IEngine engine)
+        protected override string Handle(ICommand command)
         {
-            engine.SetLoggedUser(null);
+            base.UserService.SetLoggedUser(null);
             return LogoutCommandHandler.UserLoggedOut;
         }
     }

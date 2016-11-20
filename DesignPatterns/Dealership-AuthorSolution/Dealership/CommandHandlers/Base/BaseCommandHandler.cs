@@ -2,6 +2,7 @@
 
 using Dealership.CommandHandlers.Contracts;
 using Dealership.Engine;
+using Dealership.Data.Services.Contracts;
 
 namespace Dealership.CommandHandlers.Base
 {
@@ -9,11 +10,21 @@ namespace Dealership.CommandHandlers.Base
     {
         private const string InvalidCommand = "Invalid command!";
 
+        private readonly IUserService userService;
+
         private ICommandHandler nextHandler;
 
-        public BaseCommandHandler()
+        public BaseCommandHandler(IUserService userService)
         {
+            this.userService = userService;
+        }
 
+        protected IUserService UserService
+        {
+            get
+            {
+                return this.userService;
+            }
         }
 
         public void AddCommandHandler(ICommandHandler nextHandler)
@@ -21,16 +32,16 @@ namespace Dealership.CommandHandlers.Base
             this.nextHandler = nextHandler;
         }
 
-        public string HandleCommand(ICommand command, IEngine engine)
+        public string HandleCommand(ICommand command)
         {
             string result;
             if (this.CanHandle(command))
             {
-                result = this.Handle(command, engine);
+                result = this.Handle(command);
             }
             else if (this.nextHandler != null)
             {
-                result = this.nextHandler.HandleCommand(command, engine);
+                result = this.nextHandler.HandleCommand(command);
             }
             else
             {
@@ -50,6 +61,6 @@ namespace Dealership.CommandHandlers.Base
 
         protected abstract bool CanHandle(ICommand command);
 
-        protected abstract string Handle(ICommand command, IEngine engine);
+        protected abstract string Handle(ICommand command);
     }
 }

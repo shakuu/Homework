@@ -15,16 +15,9 @@ namespace Dealership.CommandHandlers
         private const string UserLoggedInAlready = "User {0} is logged in! Please log out first!";
         private const string UserRegisterеd = "User {0} registered successfully!";
 
-        private readonly IUserService userService;
-
         public RegisterUserCommandHandler(IUserService userService)
+            : base(userService)
         {
-            if (userService == null)
-            {
-                throw new ArgumentNullException(nameof(userService));
-            }
-
-            this.userService = userService;
         }
 
         protected override bool CanHandle(ICommand command)
@@ -32,7 +25,7 @@ namespace Dealership.CommandHandlers
             return command.Name == RegisterUserCommandHandler.CanHandleCommandName;
         }
 
-        protected override string Handle(ICommand command, IEngine engine)
+        protected override string Handle(ICommand command)
         {
             var username = command.Parameters[0];
             var firstName = command.Parameters[1];
@@ -46,18 +39,19 @@ namespace Dealership.CommandHandlers
                 role = (Role)Enum.Parse(typeof(Role), command.Parameters[4]);
             }
 
-            if (engine.LoggedUser != null)
+            if (base.UserService.LoggedUser != null)
             {
-                return string.Format(RegisterUserCommandHandler.UserLoggedInAlready, engine.LoggedUser.Username);
+                return string.Format(RegisterUserCommandHandler.UserLoggedInAlready, base.UserService.LoggedUser.Username);
             }
 
-            if (engine.Users.Any(u => u.Username.ToLower() == username.ToLower()))
+            var foundUser = base.UserService.FindByName(username);
+            if (foundUser != null)
             {
                 return string.Format(RegisterUserCommandHandler.UserAlreadyExist, username);
             }
 
-            var user = this.userService.CreateUser(username, firstName, lastName, password, role.ToString());
-            this.userService.SetLoggedUser(user);
+            var user = base.UserService.CreateUser(username, firstName, lastName, password, role.ToString());
+            base.UserService.SetLoggedUser(user);
 
             return string.Format(RegisterUserCommandHandler.UserRegisterеd, username);
         }

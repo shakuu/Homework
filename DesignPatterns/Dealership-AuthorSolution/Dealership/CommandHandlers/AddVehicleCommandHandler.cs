@@ -1,8 +1,9 @@
 ﻿using System;
 
 using Dealership.CommandHandlers.Base;
-using Dealership.Common.Enums;
+using Dealership.Data.Common.Enums;
 using Dealership.Contracts;
+using Dealership.Data.Services.Contracts;
 using Dealership.Engine;
 using Dealership.Factories;
 
@@ -15,14 +16,9 @@ namespace Dealership.CommandHandlers
 
         private readonly IDealershipFactory factory;
 
-        public AddVehicleCommandHandler(IDealershipFactory factory)
+        public AddVehicleCommandHandler(IUserService userService)
+            : base(userService)
         {
-            if (factory == null)
-            {
-                throw new ArgumentNullException(nameof(factory));
-            }
-
-            this.factory = factory;
         }
 
         protected override bool CanHandle(ICommand command)
@@ -30,7 +26,7 @@ namespace Dealership.CommandHandlers
             return command.Name == AddVehicleCommandHandler.AddVehicleCommandName;
         }
 
-        protected override string Handle(ICommand command, IEngine engine)
+        protected override string Handle(ICommand command)
         {
             var type = command.Parameters[0];
             var make = command.Parameters[1];
@@ -39,25 +35,10 @@ namespace Dealership.CommandHandlers
             var additionalParam = command.Parameters[4];
 
             var typeEnum = (VehicleType)Enum.Parse(typeof(VehicleType), type, true);
+            
+            base.UserService.AddVehicleToUser(make, model, price, additionalParam, typeEnum);
 
-            IVehicle vehicle = null;
-
-            if (typeEnum == VehicleType.Car)
-            {
-                vehicle = this.factory.GetCar(make, model, price, int.Parse(additionalParam));
-            }
-            else if (typeEnum == VehicleType.Motorcycle)
-            {
-                vehicle = this.factory.GetMotorcycle(make, model, price, additionalParam);
-            }
-            else if (typeEnum == VehicleType.Truck)
-            {
-                vehicle = this.factory.GetTruck(make, model, price, int.Parse(additionalParam));
-            }
-
-            engine.LoggedUser.AddVehicle(vehicle);
-
-            return string.Format(VehicleAddedSuccessfully, engine.LoggedUser.Username);
+            return string.Format(VehicleAddedSuccessfully, base.UserService.LoggedUser.Username);
         }
     }
 }

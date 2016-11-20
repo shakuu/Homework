@@ -1,6 +1,5 @@
-﻿using System.Linq;
-
-using Dealership.CommandHandlers.Base;
+﻿using Dealership.CommandHandlers.Base;
+using Dealership.Data.Services.Contracts;
 using Dealership.Engine;
 
 namespace Dealership.CommandHandlers
@@ -12,19 +11,24 @@ namespace Dealership.CommandHandlers
         private const string RemovedVehicleDoesNotExist = "Cannot remove comment! The vehicle does not exist!";
         private const string CommentRemovedSuccessfully = "{0} removed comment successfully!";
         private const string RemovedCommentDoesNotExist = "Cannot remove comment! The comment does not exist!";
-        
+
+        public RemoveCommentCommandHandler(IUserService userService)
+            : base(userService)
+        {
+        }
+
         protected override bool CanHandle(ICommand command)
         {
             return command.Name == RemoveCommentCommandHandler.RemoveCommentCommandName;
         }
 
-        protected override string Handle(ICommand command, IEngine engine)
+        protected override string Handle(ICommand command)
         {
             var vehicleIndex = int.Parse(command.Parameters[0]) - 1;
             var commentIndex = int.Parse(command.Parameters[1]) - 1;
             var username = command.Parameters[2];
 
-            var user = engine.Users.FirstOrDefault(u => u.Username == username);
+            var user = base.UserService.FindByName(username);
 
             if (user == null)
             {
@@ -34,12 +38,9 @@ namespace Dealership.CommandHandlers
             ValidateRange(vehicleIndex, 0, user.Vehicles.Count, RemovedVehicleDoesNotExist);
             ValidateRange(commentIndex, 0, user.Vehicles[vehicleIndex].Comments.Count, RemovedCommentDoesNotExist);
 
-            var vehicle = user.Vehicles[vehicleIndex];
-            var comment = user.Vehicles[vehicleIndex].Comments[commentIndex];
+            base.UserService.RemoveUserComment(vehicleIndex, commentIndex);
 
-            engine.LoggedUser.RemoveComment(comment, vehicle);
-
-            return string.Format(CommentRemovedSuccessfully, engine.LoggedUser.Username);
+            return string.Format(CommentRemovedSuccessfully, base.UserService.LoggedUser.Username);
         }
     }
 }

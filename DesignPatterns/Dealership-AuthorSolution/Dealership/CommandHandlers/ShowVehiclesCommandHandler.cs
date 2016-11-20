@@ -1,6 +1,5 @@
-﻿using System.Linq;
-
-using Dealership.CommandHandlers.Base;
+﻿using Dealership.CommandHandlers.Base;
+using Dealership.Data.Services.Contracts;
 using Dealership.Engine;
 
 namespace Dealership.CommandHandlers
@@ -9,17 +8,22 @@ namespace Dealership.CommandHandlers
     {
         private const string ShowVehiclesCommandName = "ShowVehicles";
         private const string NoSuchUser = "There is no user with username {0}!";
-        
+
+        public ShowVehiclesCommandHandler(IUserService userService) 
+            : base(userService)
+        {
+        }
+
         protected override bool CanHandle(ICommand command)
         {
             return command.Name == ShowVehiclesCommandHandler.ShowVehiclesCommandName;
         }
 
-        protected override string Handle(ICommand command, IEngine engine)
+        protected override string Handle(ICommand command)
         {
             var username = command.Parameters[0];
 
-            var user = engine.Users.FirstOrDefault(u => u.Username.ToLower() == username.ToLower());
+            var user = base.UserService.FindByName(username);
 
             if (user == null)
             {

@@ -6,6 +6,6 @@ namespace Dealership.CommandHandlers.Contracts
     {
         void AddCommandHandler(ICommandHandler loginHandler);
 
-        string HandleCommand(ICommand command, IEngine engine);
+        string HandleCommand(ICommand command);
     }
 }
