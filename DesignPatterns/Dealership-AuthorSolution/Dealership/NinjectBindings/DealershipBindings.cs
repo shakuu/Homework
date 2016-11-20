@@ -49,11 +49,6 @@ namespace Dealership.NinjectBindings
 
             this.Bind<IIOProvider>().To<GenericIOProvider>();
 
-            //this.Bind<IVehicle>().To<Car>().Named(CarName);
-            //this.Bind<IVehicle>().To<Motorcycle>().Named(MotorcycleName);
-            //this.Bind<IVehicle>().To<Truck>().Named(TruckName);
-            //this.Bind<IDealershipFactory>().ToFactory().InSingletonScope();
-
             this.Bind<ICommandHandler>().To<LoggedUserCommandHandler>().Named(LoggedUserCommandHandlerName);
             this.Bind<ICommandHandler>().To<RegisterUserCommandHandler>().Named(RegisterUserCommandHandlerName);
             this.Bind<ICommandHandler>().To<LoginCommandHandler>().Named(LoginCommandHandlerName);
