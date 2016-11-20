@@ -1,5 +1,4 @@
-﻿
-using Dealership.Data.Contracts;
+﻿using Dealership.Data.Contracts;
 
 namespace Dealership.Data.Factories
 {
