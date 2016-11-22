@@ -15,8 +15,6 @@ namespace _01NestedLoops
 
         private static void LoopWrite(int[] range, int current, int count)
         {
-            var initial = range[count - current];
-
             for (int i = 0; i < count; i++)
             {
                 if (current > 1)
