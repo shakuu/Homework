@@ -9,6 +9,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "02CombinationsDuplicates", 
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "03CombinationsUnique", "03CombinationsUnique\03CombinationsUnique.csproj", "{BC508F1A-0CDF-478D-B951-1B5786069927}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "04Permutations", "04Permutations\04Permutations.csproj", "{5DF31244-D424-43DE-A677-485E79CBB0B3}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -27,6 +29,10 @@ Global
 		{BC508F1A-0CDF-478D-B951-1B5786069927}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{BC508F1A-0CDF-478D-B951-1B5786069927}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{BC508F1A-0CDF-478D-B951-1B5786069927}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5DF31244-D424-43DE-A677-485E79CBB0B3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5DF31244-D424-43DE-A677-485E79CBB0B3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5DF31244-D424-43DE-A677-485E79CBB0B3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5DF31244-D424-43DE-A677-485E79CBB0B3}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
