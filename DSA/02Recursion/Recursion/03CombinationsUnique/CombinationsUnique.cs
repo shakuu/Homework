@@ -29,7 +29,7 @@ namespace _03CombinationsUnique
                 }
 
                 CombinationsUnique.IncrementWithoutDuplicates(range, range.Length - current);
-                if (!CombinationsUnique.ShouldContinue(range, range.Length - current, count))
+                if (!CombinationsUnique.ValueIsInRange(range, range.Length - current, count))
                 {
                     break;
                 }
@@ -58,7 +58,7 @@ namespace _03CombinationsUnique
             while (isDuplicate);
         }
 
-        private static bool ShouldContinue(int[] range, int index, int maxValue)
+        private static bool ValueIsInRange(int[] range, int index, int maxValue)
         {
             return range[index] <= maxValue;
         }
