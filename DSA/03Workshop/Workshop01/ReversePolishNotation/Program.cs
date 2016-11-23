@@ -1,8 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace ReversePolishNotation
 {
@@ -12,7 +10,6 @@ namespace ReversePolishNotation
         {
             var input = Console.ReadLine().Split(new[] { " " }, StringSplitOptions.RemoveEmptyEntries).ToList();
             var stack = new Stack<int>();
-            var result = 0;
 
             for (int i = 0; i < input.Count; i++)
             {
