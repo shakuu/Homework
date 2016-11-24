@@ -26,7 +26,6 @@ module.exports = function (Superhero) {
   }
 
   function findByName(name) {
-
     return new Promise((resolve, reject) => {
       Superhero.find({ name }, (err, superhero) => {
         if (err) {

@@ -38,18 +38,16 @@ const citySchema = new mongoose.Schema({
   country: countrySchema
 });
 
-let superheroSchema;
-
 const fractionSchema = new mongoose.Schema({
   planets: [planetSchema],
-  superheroes: [superheroSchema],
+  superheroes: [String],
   alignment: {
     type: String,
     enum: ['good', 'evil', 'neutral']
   }
 });
 
-superheroSchema = new mongoose.Schema({
+const superheroSchema = new mongoose.Schema({
   name: {
     type: String,
     match: /[.]{3,60}/
@@ -71,7 +69,7 @@ superheroSchema = new mongoose.Schema({
     match: /.+/
   },
   image: {
-    type: String,
+    type: String
   },
   fractions: [fractionSchema],
   powers: [powerSchema]
