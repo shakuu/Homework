@@ -1,5 +1,5 @@
 {
-  "name": "superherors-ws",
+  "name": "superheroes-ws",
   "version": "1.0.0",
   "description": "You are given a few simple tasks in order to exercise the skills learned through the lectures from the **Web applications with Node.js** course. The main goal is to improve your knowledge on using [Express](http://expressjs.com), [Pug](http://pugjs.com) and [MongoDB](http://mongodb.org), all that in a Node.js environment.",
   "main": "index.js",
@@ -9,6 +9,7 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "bower": "^1.8.0",
     "express": "^4.14.0",
     "mongoose": "^4.7.0",
     "pug": "^2.0.0-beta6"

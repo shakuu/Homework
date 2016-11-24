@@ -1,7 +1,11 @@
 const app = require('./config/express-config')();
 
-require('./routes')(app);
+const config = require('./config/constants');
+const models = require('./models')(); 
+const data = require('./data')(config, models);
 
-app.listen(3001, () => {
-  console.log(`App running on port: ${3001}`);
+require('./routes')(app, data);
+
+app.listen(config.port, () => {
+  console.log(`App running on port: ${config.port}`);
 });
