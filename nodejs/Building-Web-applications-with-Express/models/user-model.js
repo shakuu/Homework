@@ -1,6 +1,6 @@
 const mongoose = require('mongoose');
 
-//Each user has username, display name and image (or just a link to such)
+// Each user has username, display name and image (or just a link to such)
 const userSchema = new mongoose.Schema({
   username: {
     type: String,
@@ -15,6 +15,6 @@ const userSchema = new mongoose.Schema({
   }
 });
 
-mongoose.model("User", userSchema);
+mongoose.model('User', userSchema);
 
 module.exports = mongoose.model('User');
