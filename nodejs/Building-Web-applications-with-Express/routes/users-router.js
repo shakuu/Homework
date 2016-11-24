@@ -6,5 +6,5 @@ module.exports = function (app, data) {
   const usersRouter = new express.Router();
   usersRouter.get('/', usersController.index);
 
-  app.use('users', usersRouter);
+  app.use('/users', usersRouter);
 };

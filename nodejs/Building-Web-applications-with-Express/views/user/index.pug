@@ -1,9 +1,7 @@
-<!DOCTYPE html>
-html(lang="en")
-head
-  meta(charset="UTF-8")
-  title Document
-body
-  ul
-    each superhero in result
-      li.superhero= superhero
+extends ../_shared/_layout
+
+block page-title
+  | Users
+
+block content
+  h1 Users Home

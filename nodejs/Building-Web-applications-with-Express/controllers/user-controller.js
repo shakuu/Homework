@@ -4,10 +4,16 @@ module.exports = function (userData) {
       .then((users) => {
         res
           .status(200)
-          .render('./user/index', { result: users });
+          .render('./user/index', {
+            result: users
+          });
       })
       .catch((err) => {
-        console.log(err);
+        res
+          .status(404)
+          .render('./user/index', {
+            result: []
+          });
       });
   }
 
