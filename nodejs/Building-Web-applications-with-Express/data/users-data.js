@@ -55,10 +55,48 @@ module.exports = function (User) {
     });
   }
 
+  function updateImage(user, imageUrl) {
+    return new Promise((resolve, reject) => {
+      User.update({
+        _id: user._id
+      }, {
+        $set: {
+          image: imageUrl
+        }
+      }, (err, updatedUser) => {
+        if (err) {
+          return reject(err);
+        }
+
+        return resolve(updatedUser);
+      });
+    });
+  }
+
+  function updateDisplayName(user, displayName) {
+    return new Promise((resolve, reject) => {
+      User.update({
+        _id: user._id
+      }, {
+        $set: {
+          displayName: displayName
+        }
+      }, (err, updatedUser) => {
+        if (err) {
+          return reject(err);
+        }
+
+        return resolve(updatedUser);
+      });
+    });
+  }
+
   return {
     create,
     findByUsername,
     findById,
-    all
+    all,
+    updateImage,
+    updateDisplayName
   };
 };

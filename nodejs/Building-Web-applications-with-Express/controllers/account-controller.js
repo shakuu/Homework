@@ -5,27 +5,25 @@ module.exports = function (userData) {
     if (req.isAuthenticated()) {
       res
         .status(200)
-        .redirect('/');
+        .redirect('/account/profile');
     }
 
     res
       .status(200)
       .render('./account/index', {
-        result: '/account'
+        result: '/account/login'
       });
   }
 
   function login(req, res) {
-    res
-      .status(200)
-      .redirect('/');
+    res.redirect('/account/profile');
   }
 
   function registerForm(req, res) {
     if (req.isAuthenticated()) {
       res
         .status(200)
-        .redirect('.');
+        .redirect('/account/profile');
     }
 
     res
@@ -42,7 +40,7 @@ module.exports = function (userData) {
       .then(() => {
         res
           .status(201)
-          .redirect('/');
+          .redirect('/account');
       })
       .catch(() => {
         res
@@ -54,7 +52,49 @@ module.exports = function (userData) {
     req.logout();
     res
       .status(200)
-      .redirect('/account');
+      .redirect('/account/login');
+  }
+
+  function profile(req, res) {
+    if (!req.isAuthenticated()) {
+      return res
+        .status(401)
+        .redirect('/account/login');
+    }
+
+    return res
+      .status(200)
+      .render('./account/profile', {
+        result: req.user
+      });
+  }
+
+  function updateImage(req, res) {
+    userData.updateImage(req.user, req.body.image)
+      .then(() => {
+        res
+          .status(200)
+          .redirect('/account/profile');
+      })
+      .catch((err) => {
+        res
+          .status(400)
+          .send(err);
+      });
+  }
+
+  function updateDisplayName(req, res) {
+    userData.updateDisplayName(req.user, req.body.displayName)
+      .then(() => {
+        res
+          .status(200)
+          .redirect('/account/profile');
+      })
+      .catch((err) => {
+        res
+          .status(400)
+          .send(err);
+      });
   }
 
   return {
@@ -62,6 +102,9 @@ module.exports = function (userData) {
     login,
     register,
     registerForm,
-    logout
+    logout,
+    profile,
+    updateImage,
+    updateDisplayName
   };
 };

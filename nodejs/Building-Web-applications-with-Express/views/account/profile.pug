@@ -1,0 +1,16 @@
+extends ../_shared/_layout
+
+block content
+  h1 Welcome back #{result.username}
+
+  section
+    h2 Your display name is #{result.displayName}
+    form(action="/account/displayName" method="POST")
+      input(type="text" name="displayName" placeholder="update your display name")
+      button(type="submit") Submit change
+
+    h2 Your image url is #{result.image}
+    img(src= result.image width="200px")
+    form(action="/account/image" method="POST")
+      input(type="text" name="image" placeholder="update your image url")
+      button(type="submit") Submit change

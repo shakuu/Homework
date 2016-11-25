@@ -6,4 +6,6 @@ module.exports = function (app, data) {
   applyUsersRouter(app, data);
   applyHomeRouter(app);
   applyAccountRouter(app, data.userData);
+
+  app.get('*', (req, res) => res.redirect('/'));
 };
