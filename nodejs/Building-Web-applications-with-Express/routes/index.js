@@ -1,3 +1,5 @@
+'use strict';
+
 const applyUsersRouter = require('./users-router');
 const applyHomeRouter = require('./home-router');
 const applyAccountRouter = require('./account-router');

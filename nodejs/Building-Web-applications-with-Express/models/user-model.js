@@ -23,7 +23,15 @@ const userSchema = new mongoose.Schema({
   },
   image: {
     type: String
-  }
+  },
+  favoriteHeroes: [{
+    name: String,
+    _id: String
+  }],
+  favoriteFractions: [{
+    name: String,
+    _id: String
+  }]
 });
 
 userSchema.method('verifyPassword', function (password) {

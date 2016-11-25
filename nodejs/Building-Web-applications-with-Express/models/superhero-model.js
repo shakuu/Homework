@@ -71,8 +71,8 @@ const superheroSchema = new mongoose.Schema({
   image: {
     type: String
   },
-  fractions: [fractionSchema],
-  powers: [powerSchema]
+  fractions: [{}],
+  powers: [{}]
 });
 
 mongoose.model('Superhero', superheroSchema);
