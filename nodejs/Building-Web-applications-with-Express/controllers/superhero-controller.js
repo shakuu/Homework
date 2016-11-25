@@ -11,7 +11,16 @@ module.exports = function (superheroData) {
       });
   }
 
+  function createSuperheroForm(req, res) {
+    if (!req.isAuthenticated()) {
+      return res.redirect('/account/login');
+    }
+
+    return res.render('/superheroes/create');
+  }
+
   return {
-    createSuperhero
+    createSuperhero,
+    createSuperheroForm
   };
 };
