@@ -23,7 +23,18 @@ module.exports = function (userData) {
   }
 
   function register(req, res) {
+    const inputUser = req.body;
 
+    userData.create(inputUser)
+      .then(() => {
+        res
+          .status(201)
+          .redirect('/');
+      })
+      .catch(() => {
+        res
+          .status(400);
+      });
   }
 
   function logout(req, res) {

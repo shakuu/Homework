@@ -17,7 +17,9 @@ module.exports = function () {
   }));
 
   app.use(expressSession({
-    secret: 'super duper secret'
+    secret: 'super duper secret',
+    resave: true,
+    saveUninitialized: true
   }));
 
   app.use(express.static('public'));

@@ -1,12 +1,8 @@
 /* globals Promise */
 
 module.exports = function (User) {
-  function create(username, displayName, image) {
-    const user = new User({
-      username: username,
-      displayName: displayName,
-      image: image
-    });
+  function create(inputUser) {
+    const user = User.getUser(inputUser);
 
     return new Promise((resolve, reject) => {
       user.save((err) => {

@@ -30,6 +30,16 @@ userSchema.method('verifyPassword', (password) => {
   return password === this.password;
 });
 
-mongoose.model('User', userSchema);
+let User;
+userSchema.static('getUser', (user) => {
+  return new User({
+    username: user.username,
+    password: user.password,
+    image: user.image,
+    displayName: user.displayName
+  });
+});
 
+mongoose.model('User', userSchema);
+User = mongoose.model('User');
 module.exports = mongoose.model('User');
