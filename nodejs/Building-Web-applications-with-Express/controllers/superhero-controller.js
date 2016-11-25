@@ -2,7 +2,18 @@
 
 module.exports = function (superheroesData) {
   function index(req, res) {
+    const pageNumber = req.query.page || 0;
+    const pageSize = req.query.size || 5;
 
+    superheroesData.allWithPagination(pageNumber, pageSize)
+      .then((superheroes) => {
+        res.render('./superheroes/index', {
+          result: superheroes
+        });
+      })
+      .catch((err) => {
+        res.send(err);
+      });
   }
 
   function createSuperhero(req, res) {

@@ -1,0 +1,13 @@
+extends ../_shared/_layout
+
+block content
+    ul.list-group#superheroes
+      each superhero in result
+        li.list-group-item
+          div.panel.panel-default
+            div.panel-heading
+              h2 superhero.name
+              h3 superhero.secretIdentity
+            div.panel-body
+              img(src= superhero.image width="100px")
+              p superhero.story        

@@ -1,7 +1,7 @@
 /* globals Promise module */
 
 module.exports = function (Superhero) {
-  function create(options) {
+  function createSuperhero(options) {
     const superhero = Superhero.getSuperhero(options);
     return new Promise((resolve, reject) => {
       superhero.save((err) => {
@@ -40,9 +40,25 @@ module.exports = function (Superhero) {
     });
   }
 
+  function allWithPagination(pageNumber = 0, pageSize = 5) {
+    return new Promise((resolve, reject) => {
+      Superhero.find()
+        .skip(pageNumber * pageSize)
+        .limit(pageSize)
+        .exec((err, superheroes) => {
+          if (err) {
+            return reject(err);
+          }
+
+          return resolve(superheroes);
+        });
+    });
+  }
+
   return {
-    create,
+    createSuperhero,
     findByName,
-    all
+    all,
+    allWithPagination
   };
 };
