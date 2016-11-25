@@ -74,6 +74,7 @@ superheroSchema.static('getSuperhero', (superhero) => {
     name: superhero.name,
     secretIdentity: superhero.secretIdentity,
     city: superhero.city,
+    image: superhero.image,
     alignment: superhero.alignment,
     story: superhero.story,
     fractions: superhero.fractions,

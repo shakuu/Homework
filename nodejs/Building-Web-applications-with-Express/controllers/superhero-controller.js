@@ -1,10 +1,14 @@
 'use strict';
 
 module.exports = function (superheroesData) {
+  function index(req, res) {
+
+  }
+
   function createSuperhero(req, res) {
-    superheroesData.create(req.body)
+    superheroesData.createSuperhero(req.body)
       .then(() => {
-        res.redirect('/');
+        res.redirect('/superheroes');
       })
       .catch((err) => {
         res.send(err);
