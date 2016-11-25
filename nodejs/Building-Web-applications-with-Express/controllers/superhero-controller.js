@@ -1,13 +1,13 @@
 'use strict';
 
-module.exports = function (superheroData) {
+module.exports = function (superheroesData) {
   function createSuperhero(req, res) {
-    superheroData.createSuperhero(req.body)
+    superheroesData.create(req.body)
       .then(() => {
-        res.status(201);
+        res.redirect('/');
       })
       .catch((err) => {
-        res.status(400);
+        res.send(err);
       });
   }
 
@@ -16,7 +16,7 @@ module.exports = function (superheroData) {
       return res.redirect('/account/login');
     }
 
-    return res.render('/superheroes/create');
+    return res.render('./superheroes/create');
   }
 
   return {

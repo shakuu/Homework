@@ -9,7 +9,7 @@ module.exports = function (app, data) {
   applyUsersRouter(app, data);
   applyHomeRouter(app);
   applyAccountRouter(app, data.userData);
-  applySuperheroRouter(app, data.superheroData);
+  applySuperheroRouter(app, data.superheroesData);
 
   app.get('*', (req, res) => res.redirect('/'));
 };

@@ -1,7 +1,6 @@
 /* globals Promise module */
 
 module.exports = function (Superhero) {
-
   function create(options) {
     const superhero = Superhero.getSuperhero(options);
     return new Promise((resolve, reject) => {

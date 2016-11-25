@@ -49,36 +49,27 @@ const fractionSchema = new mongoose.Schema({
 
 const superheroSchema = new mongoose.Schema({
   name: {
-    type: String,
-    match: /[.]{3,60}/
+    type: String
   },
   secretIdentity: {
     type: String,
-    match: /[.]{3,20}/,
     unique: true
   },
-  city: {
-    type: citySchema
-  },
+  city: String,
   alignment: {
     type: String,
     enum: ['good', 'evil', 'neutral']
   },
   story: {
-    type: String,
-    match: /.+/
-  },
-  image: {
     type: String
   },
+  image: String,
   fractions: [{}],
   powers: [{}]
 });
 
-mongoose.model('Superhero', superheroSchema);
-
 let Superhero;
-superheroSchema.method('getSuperhero', (superhero) => {
+superheroSchema.static('getSuperhero', (superhero) => {
   return new Superhero({
     name: superhero.name,
     secretIdentity: superhero.secretIdentity,
@@ -89,6 +80,8 @@ superheroSchema.method('getSuperhero', (superhero) => {
     powers: superhero.powers
   });
 });
+
+mongoose.model('Superhero', superheroSchema);
 
 Superhero = mongoose.model('Superhero');
 module.exports = mongoose.model('Superhero');
