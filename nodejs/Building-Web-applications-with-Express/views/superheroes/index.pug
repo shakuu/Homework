@@ -6,8 +6,9 @@ block content
         li.list-group-item
           div.panel.panel-default
             div.panel-heading
-              h2 superhero.name
-              h3 superhero.secretIdentity
+              a(href= "/superheroes/" + superhero._id)
+                h2= superhero.name
             div.panel-body
+              h3= superhero.secretIdentity           
               img(src= superhero.image width="100px")
-              p superhero.story        
+              p= superhero.story        

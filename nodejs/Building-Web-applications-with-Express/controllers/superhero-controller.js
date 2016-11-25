@@ -35,6 +35,7 @@ module.exports = function (superheroesData) {
   }
 
   return {
+    index,
     createSuperhero,
     createSuperheroForm
   };
