@@ -36,9 +36,9 @@ module.exports = function (app, userData) {
       });
   });
 
-  passport.initialize();
-  passport.use(strategy);
 
-  app.use(passport);
+  app.use(passport.initialize());
   app.use(passport.session());
+
+  passport.use(strategy);
 };

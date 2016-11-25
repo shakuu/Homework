@@ -2,6 +2,12 @@
 
 module.exports = function (userData) {
   function index(req, res) {
+    if (req.isAuthenticated()) {
+      res
+        .status(200)
+        .redirect('/');
+    }
+
     res
       .status(200)
       .render('./account/index', {
@@ -11,10 +17,17 @@ module.exports = function (userData) {
 
   function login(req, res) {
     res
-      .send(req.body);
+      .status(200)
+      .redirect('/');
   }
 
   function registerForm(req, res) {
+    if (req.isAuthenticated()) {
+      res
+        .status(200)
+        .redirect('.');
+    }
+
     res
       .status(200)
       .render('./account/index', {
@@ -38,8 +51,10 @@ module.exports = function (userData) {
   }
 
   function logout(req, res) {
+    req.logout();
     res
-      .send(req.body);
+      .status(200)
+      .redirect('/account');
   }
 
   return {

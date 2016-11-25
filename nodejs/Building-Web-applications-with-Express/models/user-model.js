@@ -26,8 +26,10 @@ const userSchema = new mongoose.Schema({
   }
 });
 
-userSchema.method('verifyPassword', (password) => {
-  return password === this.password;
+userSchema.method('verifyPassword', function (password) {
+  const userPassword = this.password;
+  const areEqual = password === userPassword;
+  return areEqual;
 });
 
 let User;
