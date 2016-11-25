@@ -7,7 +7,9 @@ module.exports = function (app, userData) {
   accountRouter
     .get('/', accountController.index)
     .post('/', accountController.login)
-    .put('/', accountController.register);
+    .get('/register', accountController.registerForm)
+    .post('/register', accountController.register)      
+    .get('/logout', accountController.logout);
 
-  app.use('/account/', accountRouter);
+  app.use('/account', accountRouter);
 };
