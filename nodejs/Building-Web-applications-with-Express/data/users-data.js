@@ -21,7 +21,23 @@ module.exports = function (User) {
 
   function findByUsername(username) {
     return new Promise((resolve, reject) => {
-      User.find({ username }, (err, user) => {
+      User.find({
+        username
+      }, (err, user) => {
+        if (err) {
+          return reject(err);
+        }
+
+        return resolve(user);
+      });
+    });
+  }
+
+  function findById(id) {
+    return new Promise((resolve, reject) => {
+      User.find({
+        _id: id
+      }, (err, user) => {
         if (err) {
           return reject(err);
         }
@@ -46,6 +62,7 @@ module.exports = function (User) {
   return {
     create,
     findByUsername,
+    findById,
     all
   };
 };

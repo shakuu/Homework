@@ -15,6 +15,10 @@ const userSchema = new mongoose.Schema({
   }
 });
 
+userSchema.method('verifyPassword', (password) => {
+  return true;
+});
+
 mongoose.model('User', userSchema);
 
 module.exports = mongoose.model('User');
