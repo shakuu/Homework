@@ -3,17 +3,7 @@
 module.exports = function (Superhero) {
 
   function create(options) {
-    const superhero = new Superhero({
-      name: options.name,
-      secretIdentity: options.secretIdentity,
-      city: options.city,
-      alignment: options.alignment,
-      story: options.story,
-      image: options.image,
-      fractions: options.fractions,
-      powers: options.powers
-    });
-
+    const superhero = Superhero.getSuperhero(options);
     return new Promise((resolve, reject) => {
       superhero.save((err) => {
         if (err) {
@@ -27,7 +17,9 @@ module.exports = function (Superhero) {
 
   function findByName(name) {
     return new Promise((resolve, reject) => {
-      Superhero.find({ name }, (err, superhero) => {
+      Superhero.findOne({
+        name
+      }, (err, superhero) => {
         if (err) {
           return reject(err);
         }

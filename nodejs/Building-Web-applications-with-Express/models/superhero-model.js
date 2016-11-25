@@ -77,4 +77,18 @@ const superheroSchema = new mongoose.Schema({
 
 mongoose.model('Superhero', superheroSchema);
 
+let Superhero;
+superheroSchema.method('getSuperhero', (superhero) => {
+  return new Superhero({
+    name: superhero.name,
+    secretIdentity: superhero.secretIdentity,
+    city: superhero.city,
+    alignment: superhero.alignment,
+    story: superhero.story,
+    fractions: superhero.fractions,
+    powers: superhero.powers
+  });
+});
+
+Superhero = mongoose.model('Superhero');
 module.exports = mongoose.model('Superhero');
