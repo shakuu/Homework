@@ -19,7 +19,7 @@ module.exports = function (app, userData) {
     .post('/image', accountController.updateImage)
     .post('/displayName', accountController.updateDisplayName)
     .get('/remove/hero/:superheroName', accountController.removeFavoriteSuperhero)
-    .get('/remove/hero/:fractionName', accountController.removeFavoriteFraction)
+    .get('/remove/fraction/:fractionName', accountController.removeFavoriteFraction)
     .get('/', (req, res) => res.redirect('/account/profile'));
 
   app.use('/account', accountRouter);
