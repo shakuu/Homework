@@ -9,6 +9,7 @@ module.exports = function (superheroesData, fractionsData) {
       .then(([superheroes, pageCount]) => {
         const pagination = {
           active: +pageCount > 1,
+          pageSize: size,
           previous: {
             active: +page > 0,
             value: +page - 1

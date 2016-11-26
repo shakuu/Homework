@@ -46,7 +46,7 @@ module.exports = function (Fraction) {
   }
 
   function allWithPagination(page = 0, size = 5) {
-    return new Promise((resolve, reject) => {
+    const promiseData = new Promise((resolve, reject) => {
       Fraction
         .find()
         .skip(page * size)
@@ -59,6 +59,22 @@ module.exports = function (Fraction) {
           return resolve(fractions);
         });
     });
+
+    const promisePageCount = new Promise((resolve, reject) => {
+      Fraction.count((err, count) => {
+        if (err) {
+          return reject(err);
+        }
+
+        const pageCount = Math.ceil(count / size);
+        return resolve(pageCount);
+      });
+    });
+
+    return Promise.all([
+      promiseData,
+      promisePageCount
+    ]);
   }
 
   function updateFractionPlanets(fraction) {

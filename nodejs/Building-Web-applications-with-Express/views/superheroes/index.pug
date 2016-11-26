@@ -6,11 +6,11 @@ block content
         ul.pagination
           if result.pagination.previous.active
             li
-              a(href= "/superheroes?page=" + result.pagination.previous.value aria-label="Previous")
+              a(href= "/superheroes?page=" + result.pagination.previous.value + "&size=" + result.pagination.pageSize aria-label="Previous")
                 span(aria-hidden="true") &laquo;
           if result.pagination.next.active
             li
-              a(href= "/superheroes?page=" + result.pagination.next.value aria-label="Next")
+              a(href= "/superheroes?page=" + result.pagination.next.value + "&size=" + result.pagination.pageSize aria-label="Next")
                 span(aria-hidden="true") &raquo;
     ul.list-group#superheroes
       if result.isAuthenticated

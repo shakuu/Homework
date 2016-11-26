@@ -3,14 +3,29 @@
 module.exports = function (fractionsData) {
   function index(req, res) {
     const page = +req.query.page || 0;
-    const size = +req.query.size || 5;
+    const size = +req.query.size || 3;
 
     fractionsData.allWithPagination(page, size)
-      .then((fractions) => {
+      .then(([fractions, pageCount]) => {
+        const pagination = {
+          active: +pageCount > 1,
+          pageSize: size,
+          previous: {
+            active: +page > 0,
+            value: +page - 1
+          },
+          next: {
+            active: +page < +pageCount - 1,
+            value: +page + 1
+          }
+        };
+
+        const isAuthenticated = req.isAuthenticated();
         res.render('./fractions/index', {
           result: {
             fractions,
-            isAuthenticated: req.isAuthenticated()
+            isAuthenticated,
+            pagination
           }
         });
       })

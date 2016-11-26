@@ -1,6 +1,17 @@
 extends ../_shared/_layout
 
 block content
+  if result.pagination.active
+      nav(aria-label="navigation")
+        ul.pagination
+          if result.pagination.previous.active
+            li
+              a(href= "/fractions?page=" + result.pagination.previous.value + "&size=" + result.pagination.pageSize aria-label="Previous")
+                span(aria-hidden="true") &laquo;
+          if result.pagination.next.active
+            li
+              a(href= "/fractions?page=" + result.pagination.next.value + "&size=" + result.pagination.pageSize aria-label="Next")
+                span(aria-hidden="true") &raquo;
   ul.list-group#fractions-list
     if result.isAuthenticated
       li.list-group-item 
