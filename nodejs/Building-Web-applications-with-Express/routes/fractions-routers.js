@@ -1,13 +1,14 @@
 'use strict';
 
-module.exports = function (app, fractionsData) {
+module.exports = function (app, fractionsData, userData) {
   const express = require('express');
-  const fractionsConroller = require('../controllers/fractions-controller')(fractionsData);
+  const fractionsConroller = require('../controllers/fractions-controller')(fractionsData, userData);
 
   const fractionsRouter = new express.Router();
   fractionsRouter
+    .get('/add/:fractionId', fractionsConroller.addFractionToFavorites)
     .get('/', fractionsConroller.index)
-    .post('/', fractionsConroller.createFraction)    
+    .post('/', fractionsConroller.createFraction)
     .get('*', (req, res) => res.redirect('/fractions'));
 
   app.use('/fractions', fractionsRouter);

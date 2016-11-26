@@ -1,6 +1,6 @@
 'use strict';
 
-module.exports = function (superheroesData, fractionsData) {
+module.exports = function (superheroesData, fractionsData, userData) {
   function index(req, res) {
     const page = +req.query.page || 0;
     const size = +req.query.size || 3;
@@ -92,9 +92,37 @@ module.exports = function (superheroesData, fractionsData) {
       });
   }
 
+  function addSuperheroToFavorites(req, res) {
+    if (!req.isAuthenticated()) {
+      return res.redirect('/account/login');
+    }
+
+    const exists = req.user.favoriteHeroes.some(s => s._id === req.params.superheroId);
+    if (exists) {
+      return res.redirect('/account');
+    }
+
+    return superheroesData.findById(req.params.superheroId)
+      .then((superhero) => {
+        req.user.favoriteHeroes.push({
+          name: superhero.name,
+          _id: superhero._id
+        });
+
+        return userData.updateUser(req.user);
+      })
+      .then(() => {
+        res.redirect('/account');
+      })
+      .catch((err) => {
+        res.send(err);
+      });
+  }
+
   return {
     index,
     createSuperhero,
+    addSuperheroToFavorites,
     details
   };
 };

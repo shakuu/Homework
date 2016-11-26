@@ -28,4 +28,7 @@ block content
               each planet in fraction.planets
                 li.list-group-item
                   p= planet
+            if result.isAuthenticated
+              div.panel-footer
+                a.btn.btn-success(href= "/fractions/add/" + fraction._id) Add to favorites       
         

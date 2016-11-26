@@ -1,6 +1,6 @@
 'use strict';
 
-module.exports = function (fractionsData) {
+module.exports = function (fractionsData, userData) {
   function index(req, res) {
     const page = +req.query.page || 0;
     const size = +req.query.size || 3;
@@ -50,8 +50,36 @@ module.exports = function (fractionsData) {
       });
   }
 
+  function addFractionToFavorites(req, res) {
+    if (!req.isAuthenticated()) {
+      return res.redirect('/account/login');
+    }
+
+    const exists = req.user.favoriteFractions.some(f => f._id === req.params.fractionId);
+    if (exists) {
+      return res.redirect('/account');
+    }
+
+    return fractionsData.findById(req.params.fractionId)
+      .then((fraction) => {
+        req.user.favoriteFractions.push({
+          name: fraction.name,
+          _id: fraction._id
+        });
+
+        return userData.updateUser(req.user);
+      })
+      .then(() => {
+        res.redirect('/account');
+      })
+      .catch((err) => {
+        res.send(err);
+      });
+  }
+
   return {
     index,
-    createFraction
+    createFraction,
+    addFractionToFavorites
   };
 };

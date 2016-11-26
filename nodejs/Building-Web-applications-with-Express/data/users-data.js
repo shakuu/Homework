@@ -91,11 +91,24 @@ module.exports = function (User) {
     });
   }
 
+  function updateUser(user) {
+    return new Promise((resolve, reject) => {
+      user.save((err) => {
+        if (err) {
+          return reject(err);
+        }
+
+        return resolve(user);
+      });
+    });
+  }
+
   return {
     create,
     findByUsername,
     findById,
     all,
+    updateUser,
     updateImage,
     updateDisplayName
   };
