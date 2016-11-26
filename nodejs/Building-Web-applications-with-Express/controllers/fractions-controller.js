@@ -5,7 +5,7 @@ module.exports = function (fractionsData) {
     const page = +req.query.page || 0;
     const size = +req.query.size || 5;
 
-    fractionsData.allWithPagination(page = 0, size = 5)
+    fractionsData.allWithPagination()
       .then((fractions) => {
         res.render('./fractions/index', {
           result: {
@@ -21,8 +21,10 @@ module.exports = function (fractionsData) {
 
   function createFraction(req, res) {
     const fraction = req.body;
-    const planets = fraction.planets.split(/[ ,]+/);
-    fraction.planets = planets;
+    if (fraction.planets) {
+      const planets = fraction.planets.split(/[ ,]+/);
+      fraction.planets = planets;
+    }
 
     fractionsData.createFraction(fraction)
       .then((createdFraction) => {

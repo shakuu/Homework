@@ -1,6 +1,6 @@
 'use strict';
 
-module.exports = function (superheroesData) {
+module.exports = function (superheroesData, fractionsData) {
   function index(req, res) {
     const pageNumber = +req.query.page || 0;
     const pageSize = +req.query.size || 5;
@@ -21,7 +21,39 @@ module.exports = function (superheroesData) {
   }
 
   function createSuperhero(req, res) {
-    superheroesData.createSuperhero(req.body)
+    const superhero = req.body;
+    if (superhero.powers) {
+      const powers = superhero.powers.split(/[ ,]+/);
+      superhero.powers = powers;
+    }
+
+    if (superhero.fractions) {
+      const fractions = superhero.fractions.split(/[ ,]+/);
+      superhero.fractions = fractions;
+    }
+
+    superheroesData.createSuperhero(superhero)
+      .then((createdSuperhero) => {
+        if (createdSuperhero.fractions && createdSuperhero.fractions.length > 0) {
+          createdSuperhero.fractions.forEach(f => {
+            return fractionsData.findByName(f)
+              .then((fraction) => {
+                if (fraction) {
+                  fraction.planets.push(createdSuperhero.planet);
+                  return fractionsData.updateFractionPlanets(fraction);
+                }
+
+                return fractionsData.createFraction({
+                  name: f,
+                  alignment: createdSuperhero.alignment
+                });
+              })
+              .catch((err) => {
+                console.log(err);
+              });
+          });
+        }
+      })
       .then(() => {
         res.redirect('/superheroes');
       })

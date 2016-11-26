@@ -64,8 +64,8 @@ const superheroSchema = new mongoose.Schema({
     type: String
   },
   image: String,
-  fractions: [{}],
-  powers: [{}]
+  fractions: [String],
+  powers: [String]
 });
 
 let Superhero;

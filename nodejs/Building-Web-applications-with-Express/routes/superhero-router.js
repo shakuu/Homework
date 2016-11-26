@@ -1,8 +1,8 @@
 'use strict';
 
-module.exports = function (app, superheroesData) {
+module.exports = function (app, superheroesData, fractionsData) {
   const express = require('express');
-  const superheroController = require('../controllers/superhero-controller')(superheroesData);
+  const superheroController = require('../controllers/superhero-controller')(superheroesData, fractionsData);
 
   const superheroRouter = new express.Router();
   superheroRouter

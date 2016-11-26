@@ -17,6 +17,20 @@ module.exports = function (Fraction) {
     });
   }
 
+  function findByName(name) {
+    return new Promise((resolve, reject) => {
+      Fraction.findOne({
+        name
+      }, (err, fraction) => {
+        if (err) {
+          return reject(err);
+        }
+
+        return resolve(fraction);
+      });
+    });
+  }
+
   function findById(id) {
     return new Promise((resolve, reject) => {
       Fraction.findOne({
@@ -31,7 +45,7 @@ module.exports = function (Fraction) {
     });
   }
 
-  function allWithPagination(page, size) {
+  function allWithPagination(page = 0, size = 5) {
     return new Promise((resolve, reject) => {
       Fraction
         .find()
@@ -47,9 +61,37 @@ module.exports = function (Fraction) {
     });
   }
 
+  function updateFractionPlanets(fraction) {
+    return new Promise((resolve, reject) => {
+      fraction.save((err) => {
+        if (err) {
+          return reject(err);
+        }
+
+        return resolve(fraction);
+      });
+
+      // Fraction.update({
+      //   _id: fraction._id
+      // }, {
+      //   $set: {
+      //     planets: fraction.planets
+      //   }
+      // }, (err, updatedFraction) => {
+      //   if (err) {
+      //     return reject(err);
+      //   }
+
+      //   return resolve(updatedFraction);
+      // });
+    });
+  }
+
   return {
     createFraction,
+    findByName,
     findById,
-    allWithPagination
+    allWithPagination,
+    updateFractionPlanets
   };
 };
