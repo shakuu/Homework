@@ -28,6 +28,20 @@ module.exports = function (Superhero) {
     });
   }
 
+  function findById(id) {
+    return new Promise((resolve, reject) => {
+      Superhero.findOne({
+        _id: id
+      }, (err, superhero) => {
+        if (err) {
+          return reject(err);
+        }
+
+        return resolve(superhero);
+      });
+    });
+  }
+
   function all() {
     return new Promise((resolve, reject) => {
       Superhero.find((err, superheroes) => {
@@ -58,6 +72,7 @@ module.exports = function (Superhero) {
   return {
     createSuperhero,
     findByName,
+    findById,
     all,
     allWithPagination
   };

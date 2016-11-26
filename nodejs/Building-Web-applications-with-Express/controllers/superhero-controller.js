@@ -7,8 +7,12 @@ module.exports = function (superheroesData) {
 
     superheroesData.allWithPagination(pageNumber, pageSize)
       .then((superheroes) => {
+        const isAuthenticated = req.isAuthenticated();
         res.render('./superheroes/index', {
-          result: superheroes
+          result: {
+            superheroes,
+            isAuthenticated
+          }
         });
       })
       .catch((err) => {
@@ -34,9 +38,26 @@ module.exports = function (superheroesData) {
     return res.render('./superheroes/create');
   }
 
+  function details(req, res) {
+    if (!req.isAuthenticated()) {
+      return res.redirect('/account/login');
+    }
+
+    return superheroesData.findById(req.params.superheroId)
+      .then((superhero) => {
+        res.render('./superheroes/details', {
+          result: superhero
+        });
+      })
+      .catch((err) => {
+        res.send(err);
+      });
+  }
+
   return {
     index,
     createSuperhero,
-    createSuperheroForm
+    createSuperheroForm,
+    details
   };
 };

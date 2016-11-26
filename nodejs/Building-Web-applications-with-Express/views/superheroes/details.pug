@@ -1,0 +1,13 @@
+extends ../_shared/_layout
+
+block content
+  div.panel.panel-default
+    div.panel-heading
+      a(href= "/superheroes/" + result._id)
+        h2= result.name
+    div.panel-body
+      h3= result.secretIdentity           
+      img(src= result.image width="300px")
+      p= result.story 
+    div.panel-footer
+      a.btn.btn-success(href= "/superheroes/add?id=" + result._id) Add to favorites
