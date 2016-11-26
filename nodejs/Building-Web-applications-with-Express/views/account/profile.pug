@@ -20,9 +20,11 @@ block content
         each hero in result.favoriteHeroes
           li.list-group-item
             p= hero.name
+            a.btn.btn-danger(href="/account/remove/hero/" + hero.name) remove
     
     div.well Favorite Fractions
       ul.list-group
         each fraction in result.favoriteFractions
           li.list-group-item
             p= fraction.name
+            a.btn.btn-danger(href="/account/remove/fraction/" + fraction.name) remove

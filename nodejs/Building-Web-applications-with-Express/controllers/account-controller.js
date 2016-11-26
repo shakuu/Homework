@@ -97,6 +97,42 @@ module.exports = function (userData) {
       });
   }
 
+  function removeFavoriteSuperhero(req, res) {
+    if (!req.isAuthenticated()) {
+      return res.redirect('/account/login');
+    }
+
+    const user = req.user;
+    const superheroName = req.params.superheroName;
+    user.favoriteHeroes = user.favoriteHeroes.filter(h => h.name !== superheroName);
+
+    return userData.updateUser(user)
+      .then(() => {
+        res.redirect('/account');
+      })
+      .catch((err) => {
+        res.send(err);
+      });
+  }
+
+  function removeFavoriteFraction(req, res) {
+    if (!req.isAuthenticated()) {
+      return res.redirect('/account/login');
+    }
+
+    const user = req.user;
+    const fractionName = req.params.fractionName;
+    user.favoriteFractions = user.favoriteFractions.filter(f => f.name !== fractionName);
+    
+    return userData.updateUser(user)
+      .then(() => {
+        res.redirect('/account');
+      })
+      .catch((err) => {
+        res.send(err);
+      });
+  }
+
   return {
     index,
     login,
@@ -105,6 +141,8 @@ module.exports = function (userData) {
     logout,
     profile,
     updateImage,
-    updateDisplayName
+    updateDisplayName,
+    removeFavoriteSuperhero,
+    removeFavoriteFraction
   };
 };

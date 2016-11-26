@@ -8,7 +8,6 @@ module.exports = function (app, userData) {
 
   const accountController = require('../controllers/account-controller')(userData);
   accountRouter
-    .get('/', (req, res) => res.redirect('/account/profile'))
     .get('/profile', accountController.profile)
     .get('/login', accountController.index)
     .post('/login', passport.authenticate('local', {
@@ -18,7 +17,10 @@ module.exports = function (app, userData) {
     .post('/register', accountController.register)
     .get('/logout', accountController.logout)
     .post('/image', accountController.updateImage)
-    .post('/displayName', accountController.updateDisplayName);
+    .post('/displayName', accountController.updateDisplayName)
+    .get('/remove/hero/:superheroName', accountController.removeFavoriteSuperhero)
+    .get('/remove/hero/:fractionName', accountController.removeFavoriteFraction)
+    .get('/', (req, res) => res.redirect('/account/profile'));
 
   app.use('/account', accountRouter);
 };
