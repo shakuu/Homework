@@ -9,7 +9,8 @@ module.exports = function (app, superheroesData, fractionsData, userData) {
     .get('/add/:superheroId', superheroController.addSuperheroToFavorites)
     .get('/:superheroId', superheroController.details)
     .get('/', superheroController.index)
-    .post('/', superheroController.createSuperhero);
+    .post('/', superheroController.createSuperhero)
+    .post('/addpower/:superheroId', superheroController.addPowerToSuperhero);
 
   app.use('/superheroes', superheroRouter);
 };

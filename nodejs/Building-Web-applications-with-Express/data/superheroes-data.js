@@ -86,11 +86,24 @@ module.exports = function (Superhero) {
     ]);
   }
 
+  function updateSuperhero(superhero) {
+    return new Promise((resolve, reject) => {
+      superhero.save((err) => {
+        if (err) {
+          return reject(err);
+        }
+
+        return resolve(superhero);
+      });
+    });
+  }
+
   return {
     createSuperhero,
     findByName,
     findById,
     all,
-    allWithPagination
+    allWithPagination,
+    updateSuperhero
   };
 };

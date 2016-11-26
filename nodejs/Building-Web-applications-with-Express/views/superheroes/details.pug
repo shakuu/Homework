@@ -5,9 +5,23 @@ block content
     div.panel-heading
       a(href= "/superheroes/" + result._id)
         h2= result.name
+
     div.panel-body
       h3= result.secretIdentity           
       img(src= result.image width="300px")
       p= result.story 
+
+      div.well
+        heading 
+          p Powers
+
+        ul.list-group
+          each power in result.powers
+            li.list-group-item= power
+        
+        form(method="POST" action="/superheroes/addpower/" + result._id)
+          input(type="text" name="power" placeholder="add power")
+          button(type="submit") Add power to hero
+
     div.panel-footer
       a.btn.btn-success(href= "/superheroes/add?id=" + result._id) Add to favorites

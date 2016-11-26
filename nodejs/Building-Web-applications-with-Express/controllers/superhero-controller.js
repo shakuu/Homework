@@ -49,8 +49,8 @@ module.exports = function (superheroesData, fractionsData, userData) {
     superheroesData.createSuperhero(superhero)
       .then((createdSuperhero) => {
         if (createdSuperhero.fractions && createdSuperhero.fractions.length > 0) {
-          createdSuperhero.fractions.forEach(f => {
-            return fractionsData.findByName(f)
+          createdSuperhero.fractions.forEach(fractionName => {
+            return fractionsData.findByName(fractionName)
               .then((fraction) => {
                 if (fraction) {
                   fraction.planets.push(createdSuperhero.planet);
@@ -58,7 +58,7 @@ module.exports = function (superheroesData, fractionsData, userData) {
                 }
 
                 return fractionsData.createFraction({
-                  name: f,
+                  name: fractionName,
                   alignment: createdSuperhero.alignment
                 });
               })
@@ -119,10 +119,33 @@ module.exports = function (superheroesData, fractionsData, userData) {
       });
   }
 
+  function addPowerToSuperhero(req, res) {
+    const newPowerName = req.body.power;
+    const superheroId = req.params.superheroId;
+
+    superheroesData.findById(superheroId)
+      .then((superhero) => {
+        const powerExists = superhero.powers.forEach(p => p === newPowerName);
+        if (powerExists) {
+          return res.redirect(`/superheroes/${superheroId}`);
+        }
+
+        superhero.powers.push(newPowerName);
+        return superheroesData.updateSuperhero(superhero);
+      })
+      .then(() => {
+        return res.redirect(`/superheroes/${superheroId}`);
+      })
+      .catch((err) => {
+        res.send(err);
+      });
+  }
+
   return {
     index,
     createSuperhero,
     addSuperheroToFavorites,
-    details
+    details,
+    addPowerToSuperhero
   };
 };
