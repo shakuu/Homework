@@ -7,6 +7,10 @@ module.exports = function (fractionsData, userData) {
 
     fractionsData.allWithPagination(page, size)
       .then(([fractions, pageCount]) => {
+        if (pageCount < page) {
+          return res.redirect(`/fractions?page=${pageCount - 1}&size=${size}`);
+        }
+
         const pagination = {
           active: +pageCount > 1,
           pageSize: size,
@@ -21,7 +25,7 @@ module.exports = function (fractionsData, userData) {
         };
 
         const isAuthenticated = req.isAuthenticated();
-        res.render('./fractions/index', {
+        return res.render('./fractions/index', {
           result: {
             fractions,
             isAuthenticated,

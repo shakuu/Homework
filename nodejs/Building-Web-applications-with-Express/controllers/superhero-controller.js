@@ -7,6 +7,10 @@ module.exports = function (superheroesData, fractionsData, userData) {
 
     superheroesData.allWithPagination(page, size)
       .then(([superheroes, pageCount]) => {
+        if (pageCount < page) {
+          return res.redirect(`/superheroes?page=${pageCount - 1}&size=${size}`);
+        }
+
         const pagination = {
           active: +pageCount > 1,
           pageSize: size,
@@ -21,7 +25,7 @@ module.exports = function (superheroesData, fractionsData, userData) {
         };
 
         const isAuthenticated = req.isAuthenticated();
-        res.render('./superheroes/index', {
+        return res.render('./superheroes/index', {
           result: {
             superheroes,
             isAuthenticated,
@@ -30,7 +34,7 @@ module.exports = function (superheroesData, fractionsData, userData) {
         });
       })
       .catch((err) => {
-        res.send(err);
+        res.send(err.message);
       });
   }
 
