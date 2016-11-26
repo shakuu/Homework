@@ -2,8 +2,8 @@
 
 module.exports = function (superheroesData) {
   function index(req, res) {
-    const pageNumber = req.query.page || 0;
-    const pageSize = req.query.size || 5;
+    const pageNumber = +req.query.page || 0;
+    const pageSize = +req.query.size || 5;
 
     superheroesData.allWithPagination(pageNumber, pageSize)
       .then((superheroes) => {

@@ -6,11 +6,9 @@ module.exports = function (app, superheroesData) {
 
   const superheroRouter = new express.Router();
   superheroRouter
-    .get('/create', superheroController.createSuperheroForm)
-    .post('/create', superheroController.createSuperhero)
     .get('/:superheroId', superheroController.details)
-    .get('/', superheroController.index);
-
+    .get('/', superheroController.index)
+    .post('/', superheroController.createSuperhero);    
 
   app.use('/superheroes', superheroRouter);
 };

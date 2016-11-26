@@ -2,6 +2,9 @@ extends ../_shared/_layout
 
 block content
     ul.list-group#superheroes
+      if result.isAuthenticated
+        li.list-item-group
+          include create
       each superhero in result.superheroes
         li.list-group-item
           div.panel.panel-default
