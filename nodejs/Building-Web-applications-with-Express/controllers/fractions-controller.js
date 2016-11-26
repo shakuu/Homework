@@ -5,7 +5,7 @@ module.exports = function (fractionsData) {
     const page = +req.query.page || 0;
     const size = +req.query.size || 5;
 
-    fractionsData.allWithPagination()
+    fractionsData.allWithPagination(page, size)
       .then((fractions) => {
         res.render('./fractions/index', {
           result: {

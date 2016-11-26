@@ -2,10 +2,10 @@
 
 module.exports = function (superheroesData, fractionsData) {
   function index(req, res) {
-    const pageNumber = +req.query.page || 0;
-    const pageSize = +req.query.size || 5;
+    const page = +req.query.page || 0;
+    const size = +req.query.size || 5;
 
-    superheroesData.allWithPagination(pageNumber, pageSize)
+    superheroesData.allWithPagination(page, size)
       .then((superheroes) => {
         const isAuthenticated = req.isAuthenticated();
         res.render('./superheroes/index', {
