@@ -3,15 +3,28 @@
 module.exports = function (superheroesData, fractionsData) {
   function index(req, res) {
     const page = +req.query.page || 0;
-    const size = +req.query.size || 5;
+    const size = +req.query.size || 3;
 
     superheroesData.allWithPagination(page, size)
-      .then((superheroes) => {
+      .then(([superheroes, pageCount]) => {
+        const pagination = {
+          active: +pageCount > 1,
+          previous: {
+            active: +page > 0,
+            value: +page - 1
+          },
+          next: {
+            active: +page < +pageCount - 1,
+            value: +page + 1
+          }
+        };
+
         const isAuthenticated = req.isAuthenticated();
         res.render('./superheroes/index', {
           result: {
             superheroes,
-            isAuthenticated
+            isAuthenticated,
+            pagination
           }
         });
       })

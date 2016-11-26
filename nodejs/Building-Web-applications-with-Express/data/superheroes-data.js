@@ -56,7 +56,7 @@ module.exports = function (Superhero) {
   }
 
   function allWithPagination(pageNumber = 0, pageSize = 5) {
-    return new Promise((resolve, reject) => {
+    const getPage = new Promise((resolve, reject) => {
       Superhero.find()
         .skip(pageNumber * pageSize)
         .limit(pageSize)
@@ -68,6 +68,22 @@ module.exports = function (Superhero) {
           return resolve(superheroes);
         });
     });
+
+    const getCount = new Promise((resolve, reject) => {
+      Superhero.count((err, size) => {
+        if (err) {
+          return reject(err);
+        }
+
+        const pageCount = Math.ceil(size / pageSize);
+        return resolve(pageCount);
+      });
+    });
+
+    return Promise.all([
+      getPage,
+      getCount
+    ]);
   }
 
   return {

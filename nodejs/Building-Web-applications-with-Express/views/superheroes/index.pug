@@ -1,6 +1,17 @@
 extends ../_shared/_layout
 
 block content
+    if result.pagination.active
+      nav(aria-label="navigation")
+        ul.pagination
+          if result.pagination.previous.active
+            li
+              a(href= "/superheroes?page=" + result.pagination.previous.value aria-label="Previous")
+                span(aria-hidden="true") &laquo;
+          if result.pagination.next.active
+            li
+              a(href= "/superheroes?page=" + result.pagination.next.value aria-label="Next")
+                span(aria-hidden="true") &raquo;
     ul.list-group#superheroes
       if result.isAuthenticated
         li.list-item-group
@@ -18,3 +29,4 @@ block content
             if result.isAuthenticated
               div.panel-footer
                 a.btn.btn-success(href= "/superheroes/add?id=" + superhero._id) Add to favorites       
+
