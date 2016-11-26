@@ -1,0 +1,20 @@
+extends ../_shared/_layout
+
+block content
+  ul.list-group#fractions-list
+    if result.isAuthenticated
+      li.list-group-item 
+        | Insert create form here
+    each fraction in result.fractions
+      li.list-group-item
+        div.panel.panel-default
+          div.panel-heading
+            a(href= "/fractions/" + fraction._id)
+              h2= fraction.name
+              h3= fraction.alignment
+          div.panel-body
+            ul.list-group#planets-list
+              each planet in fraction.planets
+                li.list-group-item
+                  p= planet
+        
