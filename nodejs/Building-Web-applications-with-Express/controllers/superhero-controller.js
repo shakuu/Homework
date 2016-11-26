@@ -30,14 +30,6 @@ module.exports = function (superheroesData) {
       });
   }
 
-  function createSuperheroForm(req, res) {
-    if (!req.isAuthenticated()) {
-      return res.redirect('/account/login');
-    }
-
-    return res.render('./superheroes/create');
-  }
-
   function details(req, res) {
     if (!req.isAuthenticated()) {
       return res.redirect('/account/login');
@@ -57,7 +49,6 @@ module.exports = function (superheroesData) {
   return {
     index,
     createSuperhero,
-    createSuperheroForm,
     details
   };
 };
