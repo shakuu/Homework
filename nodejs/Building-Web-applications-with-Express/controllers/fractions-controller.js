@@ -19,7 +19,22 @@ module.exports = function (fractionsData) {
       });
   }
 
+  function createFraction(req, res) {
+    const fraction = req.body;
+    const planets = fraction.planets.split(/[ ,]+/);
+    fraction.planets = planets;
+
+    fractionsData.createFraction(fraction)
+      .then((createdFraction) => {
+        res.send(createdFraction);
+      })
+      .catch((err) => {
+        res.send(err);
+      });
+  }
+
   return {
-    index
+    index,
+    createFraction
   };
 };

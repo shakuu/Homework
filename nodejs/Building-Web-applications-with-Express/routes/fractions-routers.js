@@ -7,6 +7,7 @@ module.exports = function (app, fractionsData) {
   const fractionsRouter = new express.Router();
   fractionsRouter
     .get('/', fractionsConroller.index)
+    .post('/', fractionsConroller.index)    
     .get('*', (req, res) => res.redirect('/fractions'));
 
   app.use('/fractions', fractionsRouter);

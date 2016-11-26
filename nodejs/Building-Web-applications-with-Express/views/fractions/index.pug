@@ -4,7 +4,7 @@ block content
   ul.list-group#fractions-list
     if result.isAuthenticated
       li.list-group-item 
-        | Insert create form here
+        include create
     each fraction in result.fractions
       li.list-group-item
         div.panel.panel-default

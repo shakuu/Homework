@@ -13,7 +13,7 @@ const fractionSchema = new mongoose.Schema({
 
 let Fraction;
 fractionSchema.static('getFraction', (fraction) => {
-  return new Fraction({
+   return new Fraction({
     name: fraction.name,
     alignment: fraction.alignment,
     planets: fraction.planets
