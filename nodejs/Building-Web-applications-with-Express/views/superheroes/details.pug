@@ -17,7 +17,9 @@ block content
 
         ul.list-group
           each power in result.powers
-            li.list-group-item= power
+            li.list-group-item
+              p= power            
+              a.btn.btn-danger(href="/superheroes/" + result._id + "/removepower/" + power) remove  
         
         form(method="POST" action="/superheroes/addpower/" + result._id)
           input(type="text" name="power" placeholder="add power")

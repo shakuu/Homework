@@ -7,6 +7,7 @@ module.exports = function (app, superheroesData, fractionsData, userData) {
   const superheroRouter = new express.Router();
   superheroRouter
     .get('/add/:superheroId', superheroController.addSuperheroToFavorites)
+    .get('/:superheroId/removepower/:powerName', superheroController.removePowerFromSuperhero)
     .get('/:superheroId', superheroController.details)
     .get('/', superheroController.index)
     .post('/', superheroController.createSuperhero)

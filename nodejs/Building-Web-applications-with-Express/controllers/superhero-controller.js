@@ -120,10 +120,18 @@ module.exports = function (superheroesData, fractionsData, userData) {
   }
 
   function addPowerToSuperhero(req, res) {
+    if (!req.isAuthenticated()) {
+      return res.redirect('/account/login');
+    }
+
     const newPowerName = req.body.power;
     const superheroId = req.params.superheroId;
 
-    superheroesData.findById(superheroId)
+    if (!newPowerName) {
+      return res.redirect(`/superheroes/${superheroId}`);
+    }
+
+    return superheroesData.findById(superheroId)
       .then((superhero) => {
         const powerExists = superhero.powers.forEach(p => p === newPowerName);
         if (powerExists) {
@@ -141,11 +149,38 @@ module.exports = function (superheroesData, fractionsData, userData) {
       });
   }
 
+  function removePowerFromSuperhero(req, res) {
+    if (!req.isAuthenticated()) {
+      return res.redirect('/account/login');
+    }
+
+    const powerName = req.params.powerName;
+    const superheroId = req.params.superheroId;
+
+    return superheroesData.findById(superheroId)
+      .then((superhero) => {
+        const powerExists = superhero.powers.some(p => p === powerName);
+        if (!powerExists) {
+          return res.redirect(`/superheroes/${superheroId}`);
+        }
+
+        superhero.powers = superhero.powers.filter(p => p !== powerName);
+        return superheroesData.updateSuperhero(superhero);
+      })
+      .then(() => {
+        return res.redirect(`/superheroes/${superheroId}`);
+      })
+      .catch((err) => {
+        res.send(err.message);
+      });
+  }
+
   return {
     index,
     createSuperhero,
     addSuperheroToFavorites,
     details,
-    addPowerToSuperhero
+    addPowerToSuperhero,
+    removePowerFromSuperhero
   };
 };
