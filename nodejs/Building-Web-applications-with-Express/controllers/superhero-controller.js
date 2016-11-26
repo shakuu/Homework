@@ -23,12 +23,12 @@ module.exports = function (superheroesData, fractionsData) {
   function createSuperhero(req, res) {
     const superhero = req.body;
     if (superhero.powers) {
-      const powers = superhero.powers.split(/[ ,]+/);
+      const powers = superhero.powers.split(/[,]+/).map(p => p.trim());
       superhero.powers = powers;
     }
 
     if (superhero.fractions) {
-      const fractions = superhero.fractions.split(/[ ,]+/);
+      const fractions = superhero.fractions.split(/[,]+/).map(f => f.trim());
       superhero.fractions = fractions;
     }
 

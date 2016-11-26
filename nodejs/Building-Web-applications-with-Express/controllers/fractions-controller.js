@@ -22,7 +22,7 @@ module.exports = function (fractionsData) {
   function createFraction(req, res) {
     const fraction = req.body;
     if (fraction.planets) {
-      const planets = fraction.planets.split(/[ ,]+/);
+      const planets = fraction.planets.split(/[,]+/).map(p => p.trim());
       fraction.planets = planets;
     }
 
