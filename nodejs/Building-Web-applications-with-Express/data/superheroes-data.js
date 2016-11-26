@@ -1,4 +1,5 @@
 /* globals Promise module */
+'use strict';
 
 module.exports = function (Superhero) {
   function createSuperhero(options) {
