@@ -2,7 +2,11 @@ module.exports = function () {
   function index(req, res) {
     res
       .status(200)
-      .render('./home/index');
+      .render('./home/index', {
+        result: {
+          isAuthenticated: req.isAuthenticated()
+        }
+      });
   }
 
   return {

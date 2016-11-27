@@ -1,9 +1,10 @@
 extends ../_shared/_layout
 
 block content
-  form(method="POST" action= result)
+  form(method="POST" action= result.action)
     input(type="text" name="username" placeholder="username")
     input(type="text" name="password" placeholder="password") 
-    input(type="displayName" name="displayName" placeholder="displayName") 
+    if result.isRegister
+      input(type="displayName" name="displayName" placeholder="displayName") 
     button(type="submit" value="Submit") Submit
      

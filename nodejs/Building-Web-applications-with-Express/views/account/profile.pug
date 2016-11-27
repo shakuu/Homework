@@ -1,16 +1,16 @@
 extends ../_shared/_layout
 
 block content
-  h1 Welcome back #{result.username}
+  h1 Welcome back #{result.user.username}
 
   section
-    h2 Your display name is #{result.displayName}
+    h2 Your display name is #{result.user.displayName}
     form(action="/account/displayName" method="POST")
       input(type="text" name="displayName" placeholder="update your display name")
       button(type="submit") Submit change
 
-    h2 Your image url is #{result.image}
-    img(src= result.image width="200px")
+    h2 Your image url is #{result.user.image}
+    img(src= result.user.image width="200px")
     form(action="/account/image" method="POST")
       input(type="text" name="image" placeholder="update your image url")
       button(type="submit") Submit change
@@ -19,7 +19,7 @@ block content
       heading 
         p Favorite Heroes
       ul.list-group
-        each hero in result.favoriteHeroes
+        each hero in result.user.favoriteHeroes
           li.list-group-item
             a(href="/superheroes/" + hero._id)
               p= hero.name
@@ -29,7 +29,7 @@ block content
       heading 
         p Favorite Fractions
       ul.list-group
-        each fraction in result.favoriteFractions
+        each fraction in result.user.favoriteFractions
           li.list-group-item
             p= fraction.name
             a.btn.btn-danger(href="/account/remove/fraction/" + fraction.name) remove

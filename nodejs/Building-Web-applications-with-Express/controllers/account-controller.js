@@ -11,7 +11,11 @@ module.exports = function (userData) {
     res
       .status(200)
       .render('./account/index', {
-        result: '/account/login'
+        result: {
+          action: '/account/login',
+          isRegister: false,
+          isAuthenticated: req.isAuthenticated()
+        }
       });
   }
 
@@ -29,7 +33,11 @@ module.exports = function (userData) {
     res
       .status(200)
       .render('./account/index', {
-        result: '/account/register'
+        result: {
+          action: '/account/register',
+          isRegister: true,
+          isAuthenticated: req.isAuthenticated()
+        }
       });
   }
 
@@ -65,7 +73,10 @@ module.exports = function (userData) {
     return res
       .status(200)
       .render('./account/profile', {
-        result: req.user
+        result: {
+          user: req.user,
+          isAuthenticated: req.isAuthenticated()
+        }
       });
   }
 
@@ -123,7 +134,7 @@ module.exports = function (userData) {
     const user = req.user;
     const fractionName = req.params.fractionName;
     user.favoriteFractions = user.favoriteFractions.filter(f => f.name !== fractionName);
-    
+
     return userData.updateUser(user)
       .then(() => {
         res.redirect('/account');
