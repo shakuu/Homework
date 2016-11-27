@@ -59,6 +59,30 @@ module.exports = function (superheroesData, fractionsData, userData, planetsData
 
     return superheroesData.createSuperhero(superhero)
       .then((createdSuperhero) => {
+        return Promise.all([
+          new Promise(resolve => resolve(createdSuperhero)),
+          planetsData.findByName(createdSuperhero.planet)
+        ]);
+      })
+      .then(([createdSuperhero, planet]) => {
+        if (planet) {
+          return [createdSuperhero];
+        }
+
+        const newPlanet = {
+          name: createdSuperhero.planet,
+          countries: [{
+            name: createdSuperhero.country,
+            cities: [createdSuperhero.city]
+          }]
+        };
+
+        return Promise.all([
+          new Promise(resolve => resolve(createdSuperhero)),
+          planetsData.createPlanet(newPlanet)
+        ]);
+      })
+      .then(([createdSuperhero]) => {
         if (createdSuperhero.fractions && createdSuperhero.fractions.length > 0) {
           return Promise.all([
             new Promise(resolve => resolve(createdSuperhero)),

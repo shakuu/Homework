@@ -32,8 +32,23 @@ module.exports = function (Planet) {
     });
   }
 
+  function findByName(name) {
+    return new Promise((resolve, reject) => {
+      Planet.findOne({
+        name
+      }, (err, planet) => {
+        if (err) {
+          return reject(err);
+        }
+
+        return resolve(planet);
+      });
+    });
+  }
+
   return {
     createPlanet,
-    allWithPagination
+    allWithPagination,
+    findByName
   };
 };
