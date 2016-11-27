@@ -1,3 +1,5 @@
+/* globals Promise */
+
 'use strict';
 
 module.exports = function (superheroesData, fractionsData, userData) {
@@ -39,7 +41,12 @@ module.exports = function (superheroesData, fractionsData, userData) {
   }
 
   function createSuperhero(req, res) {
+    if (!req.isAuthenticated()) {
+      return res.redirect('/account/login');
+    }
+
     const superhero = req.body;
+
     if (superhero.powers) {
       const powers = superhero.powers.split(/[,]+/).map(p => p.trim());
       superhero.powers = powers;
@@ -50,33 +57,47 @@ module.exports = function (superheroesData, fractionsData, userData) {
       superhero.fractions = fractions;
     }
 
-    superheroesData.createSuperhero(superhero)
+    return superheroesData.createSuperhero(superhero)
       .then((createdSuperhero) => {
         if (createdSuperhero.fractions && createdSuperhero.fractions.length > 0) {
-          createdSuperhero.fractions.forEach(fractionName => {
-            return fractionsData.findByName(fractionName)
-              .then((fraction) => {
-                if (fraction) {
-                  fraction.planets.push(createdSuperhero.planet);
-                  return fractionsData.updateFractionPlanets(fraction);
-                }
-
-                return fractionsData.createFraction({
-                  name: fractionName,
-                  alignment: createdSuperhero.alignment
-                });
-              })
-              .catch((err) => {
-                console.log(err);
-              });
-          });
+          return Promise.all([
+            new Promise(resolve => resolve(createdSuperhero)),
+            ...createdSuperhero.fractions.map(fractionName => {
+              return fractionsData.findByName(fractionName);
+            })
+          ]);
         }
+
+        return res.redirect('/superheroes');
+      })
+      .then(([createdSuperhero, ...fractions]) => {
+        const planetName = createdSuperhero.planet;
+
+        return Promise.all(
+          fractions.map((fraction, i) => {
+            if (fraction) {
+              const exists = fraction.planets.some(p => p === planetName);
+              if (!exists) {
+                fraction.planets.push(planetName);
+                return fractionsData.updateFractionPlanets(fraction);
+              }
+
+              return Promise.resolve();
+            }
+
+            return fractionsData.createFraction({
+              name: createdSuperhero.fractions[i],
+              alignment: createdSuperhero.alignment,
+              planets: [planetName]
+            });
+          })
+        );
       })
       .then(() => {
         res.redirect('/superheroes');
       })
       .catch((err) => {
-        res.send(err);
+        res.send(err.message);
       });
   }
 

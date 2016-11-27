@@ -56,6 +56,8 @@ const superheroSchema = new mongoose.Schema({
     unique: true
   },
   city: String,
+  country: String,
+  planet: String,
   alignment: {
     type: String,
     enum: ['good', 'evil', 'neutral']
@@ -74,6 +76,8 @@ superheroSchema.static('getSuperhero', (superhero) => {
     name: superhero.name,
     secretIdentity: superhero.secretIdentity,
     city: superhero.city,
+    country: superhero.country,
+    planet: superhero.planet,    
     image: superhero.image,
     alignment: superhero.alignment,
     story: superhero.story,
