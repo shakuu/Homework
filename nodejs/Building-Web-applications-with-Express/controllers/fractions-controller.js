@@ -38,6 +38,26 @@ module.exports = function (fractionsData, userData) {
       });
   }
 
+  function details(req, res) {
+    const isAuthenticated = req.isAuthenticated();
+    if (!isAuthenticated) {
+      res.redirect('/account/login');
+    }
+
+    fractionsData.findById(req.params.fractionId)
+      .then((fraction) => {
+        res.render('./fractions/details', {
+          result: {
+            fraction,
+            isAuthenticated
+          }
+        });
+      })
+      .catch((err) => {
+        res.send(err.message);
+      });
+  }
+
   function createFraction(req, res) {
     const fraction = req.body;
     if (fraction.planets) {
@@ -83,6 +103,7 @@ module.exports = function (fractionsData, userData) {
 
   return {
     index,
+    details,
     createFraction,
     addFractionToFavorites
   };

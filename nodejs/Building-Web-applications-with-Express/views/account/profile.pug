@@ -31,5 +31,6 @@ block content
       ul.list-group
         each fraction in result.user.favoriteFractions
           li.list-group-item
-            p= fraction.name
+            a(href= "/fractions/" + fraction._id)
+              p= fraction.name
             a.btn.btn-danger(href="/account/remove/fraction/" + fraction.name) remove
