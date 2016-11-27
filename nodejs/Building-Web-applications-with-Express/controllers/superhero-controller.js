@@ -2,7 +2,7 @@
 
 'use strict';
 
-module.exports = function (superheroesData, fractionsData, userData) {
+module.exports = function (superheroesData, fractionsData, userData, planetsData) {
   function index(req, res) {
     const page = +req.query.page || 0;
     const size = +req.query.size || 3;

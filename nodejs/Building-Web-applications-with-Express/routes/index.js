@@ -10,7 +10,7 @@ module.exports = function (app, data) {
   applyUsersRouter(app, data);
   applyHomeRouter(app);
   applyAccountRouter(app, data.userData);
-  applySuperheroRouter(app, data.superheroesData, data.fractionsData, data.userData);
+  applySuperheroRouter(app, data.superheroesData, data.fractionsData, data.userData, data.planetsData);
   applyFractionsRouter(app, data.fractionsData, data.userData);
 
   app.get('*', (req, res) => res.redirect('/'));
