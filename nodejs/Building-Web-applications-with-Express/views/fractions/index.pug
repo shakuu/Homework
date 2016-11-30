@@ -12,6 +12,7 @@ block content
             li
               a(href= "/fractions?page=" + result.pagination.next.value + "&size=" + result.pagination.pageSize aria-label="Next")
                 span(aria-hidden="true") &raquo;
+                
   ul.list-group#fractions-list
     if result.isAuthenticated
       li.list-group-item 
