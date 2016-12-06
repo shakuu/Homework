@@ -41,15 +41,15 @@ namespace ExchangeRates2
                 for (int col = row + 2; col < daysCount + 1; col++)
                 {
                     results[row, col] = results[row, 0] * currencyTwoRates[col - 1];
-                }
 
-                if (results[row + 1, 0] < results[row, daysCount])
-                {
-                    results[row + 1, 0] = results[row, daysCount];
+                    if (maxAmount < results[row, col])
+                    {
+                        maxAmount = results[row, col];
+                    }
                 }
             }
 
-            Console.WriteLine("{0:F2}", initialAmount);
+            Console.WriteLine("{0:F2}", maxAmount);
         }
     }
 }
