@@ -12,13 +12,13 @@ namespace ExchangeRates2
         private static List<double> currencyTwoRates = new List<double>();
         private static int daysCount;
 
+        private static double initialAmount;
         private static double maxAmount;
-        private static double currentAmount;
 
         public static void Main()
         {
-            maxAmount = double.Parse(Console.ReadLine());
-            currentAmount = maxAmount;
+            initialAmount = double.Parse(Console.ReadLine());
+            maxAmount = -1;
 
             daysCount = int.Parse(Console.ReadLine());
             for (int i = 0; i < daysCount; i++)
@@ -29,8 +29,27 @@ namespace ExchangeRates2
                 currencyOneRates.Add(rates[0]);
                 currencyTwoRates.Add(rates[1]);
             }
-            
-            Console.WriteLine("{0:F2}", maxAmount);
+
+            var results = new double[daysCount, daysCount + 1];
+            for (int row = 0; row < daysCount; row++)
+            {
+                results[row, 0] = initialAmount * currencyOneRates[row];
+            }
+
+            for (int row = 0; row < daysCount - 1; row++)
+            {
+                for (int col = row + 2; col < daysCount + 1; col++)
+                {
+                    results[row, col] = results[row, 0] * currencyTwoRates[col - 1];
+                }
+
+                if (results[row + 1, 0] < results[row, daysCount])
+                {
+                    results[row + 1, 0] = results[row, daysCount];
+                }
+            }
+
+            Console.WriteLine("{0:F2}", initialAmount);
         }
     }
 }
