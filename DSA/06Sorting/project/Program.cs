@@ -1,11 +1,7 @@
-﻿namespace SortingHomework
-{
-    using System;
-    using System.Collections.Generic;
-    using System.Linq;
-    using System.Text;
-    using System.Threading.Tasks;
+﻿using System;
 
+namespace SortingHomework
+{
     internal class Program
     {
         internal static void Main(string[] args)
@@ -15,16 +11,16 @@
             collection.PrintAllItemsOnConsole();
             Console.WriteLine();
 
-            //Console.WriteLine("SelectionSorter result:");
-            //collection.Sort(new SelectionSorter<int>());
-            //collection.PrintAllItemsOnConsole();
-            //Console.WriteLine();
+            Console.WriteLine("SelectionSorter result:");
+            collection.Sort(new SelectionSorter<int>());
+            collection.PrintAllItemsOnConsole();
+            Console.WriteLine();
 
-            //collection = new SortableCollection<int>(new[] { 22, 11, 101, 33, 0, 101 });
-            //Console.WriteLine("Quicksorter result:");
-            //collection.Sort(new Quicksorter<int>());
-            //collection.PrintAllItemsOnConsole();
-            //Console.WriteLine();
+            collection = new SortableCollection<int>(new[] { 22, 11, 101, 33, 0, 101 });
+            Console.WriteLine("Quicksorter result:");
+            collection.Sort(new Quicksorter<int>());
+            collection.PrintAllItemsOnConsole();
+            Console.WriteLine();
 
             collection = new SortableCollection<int>(new[] { 22, 11, 101, 33, 0, 101 });
             Console.WriteLine("MergeSorter result:");
@@ -40,14 +36,14 @@
             Console.WriteLine(collection.BinarySearch(101));
             Console.WriteLine();
 
-            //Console.WriteLine("Shuffle:");
-            //collection.Shuffle();
-            //collection.PrintAllItemsOnConsole();
-            //Console.WriteLine();
+            Console.WriteLine("Shuffle:");
+            collection.Shuffle();
+            collection.PrintAllItemsOnConsole();
+            Console.WriteLine();
 
-            //Console.WriteLine("Shuffle again:");
-            //collection.Shuffle();
-            //collection.PrintAllItemsOnConsole();
+            Console.WriteLine("Shuffle again:");
+            collection.Shuffle();
+            collection.PrintAllItemsOnConsole();
         }
     }
 }
