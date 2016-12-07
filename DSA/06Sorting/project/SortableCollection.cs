@@ -46,7 +46,7 @@ namespace SortingHomework
         public bool BinarySearch(T item)
         {
             var left = 0;
-            var right = this.items.Count;
+            var right = this.items.Count - 1;
 
             while (left <= right)
             {
