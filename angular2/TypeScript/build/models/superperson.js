@@ -5,20 +5,22 @@ var __extends = (this && this.__extends) || function (d, b) {
     d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
 };
 var creature_1 = require("./base/creature");
-var Superhero = (function (_super) {
-    __extends(Superhero, _super);
-    function Superhero(name, damage, damageType, healthPoints, immunities, helpfulPowers, destructivePowers) {
+// There's nothing differentiating a super hero from a super villain,
+// therefore there's no need for a separate type.
+var Superperson = (function (_super) {
+    __extends(Superperson, _super);
+    function Superperson(name, damage, damageType, healthPoints, immunities, helpfulPowers, destructivePowers) {
         var _this = _super.call(this, name, damage, damageType, healthPoints, immunities) || this;
         _this.helpfulPowers = helpfulPowers;
         _this.destructivePowers = destructivePowers;
         return _this;
     }
-    Superhero.prototype.addPet = function (pet, petName) {
+    Superperson.prototype.addPet = function (pet, petName) {
         this.petName = petName;
         this.petCreature = pet;
         pet.ownerCreature = this;
     };
-    return Superhero;
+    return Superperson;
 }(creature_1.Creature));
-exports.Superhero = Superhero;
-//# sourceMappingURL=superhero.js.map
+exports.Superperson = Superperson;
+//# sourceMappingURL=superperson.js.map
