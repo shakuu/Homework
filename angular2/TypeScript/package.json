@@ -1,0 +1,13 @@
+{
+  "name": "superheroes-battles",
+  "version": "1.0.0",
+  "description": "Implement an application for managing Superheroes Universe using TypeScript",
+  "main": "./build/app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node ./build/app.js"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {}
+}
