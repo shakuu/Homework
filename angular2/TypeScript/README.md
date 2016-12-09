@@ -27,3 +27,7 @@ The Superheroes Universe has 4 types of creatures: superheroes, super villains, 
 - Create an engine where the creatures can fight each other
   - If a creature's health becomes 0 or lower, it dies and should be removed from the engine
     - Unless a creature has a `resurrection power` and use it on the dead creature
+
+- Acquire target - priority
+- Attack
+- Last creature standing WINS!
