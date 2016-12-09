@@ -13,7 +13,6 @@ export class Superperson extends Creature implements Owner, Powers {
     petCreature: Pet;
     helpfulPowers: Power[];
     destructivePowers: Power[];
-    alignmentType: AlignmentType;
 
     constructor(name: string, damage: number, damageType: DamageType, healthPoints: number, immunities: DamageType[], helpfulPowers: Power[], destructivePowers: Power[]) {
         super(name, damage, damageType, healthPoints, immunities);

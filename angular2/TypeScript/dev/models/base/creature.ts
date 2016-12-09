@@ -1,6 +1,6 @@
+import { AlignmentType } from '../enums/alignment-type';
 import { DealDamage } from '../contracts/deal-damage';
 import { TakeDamage } from '../contracts/take-damage';
-
 import { DamageType } from '../enums/damage-type';
 
 export abstract class Creature implements DealDamage, TakeDamage {
@@ -9,6 +9,7 @@ export abstract class Creature implements DealDamage, TakeDamage {
     healthPoints: number;
     immunities: DamageType[];
     name: string;
+    alignmentType: AlignmentType;
 
     constructor(name: string, damage: number, damageType: DamageType, healthPoints: number, immunities: DamageType[]) {
         this.name = name;
@@ -24,5 +25,36 @@ export abstract class Creature implements DealDamage, TakeDamage {
 
     takeDamage(attacker: DealDamage): void {
 
+    }
+
+    acquireTarget(availableCreatures: TakeDamage[]): TakeDamage {
+        let foundCreature = this.findTargetOfType(availableCreatures, (c) => c.alignmentType !== this.alignmentType);
+        if (foundCreature !== null) {
+            return foundCreature;
+        }
+
+        foundCreature = this.findTargetOfType(availableCreatures, (c) => c.alignmentType === AlignmentType.Neutral);
+        if (foundCreature !== null) {
+            return foundCreature;
+        }
+
+        foundCreature = this.findTargetOfType(availableCreatures, (c) => c.alignmentType === this.alignmentType);
+        if (foundCreature !== null) {
+            return foundCreature;
+        }
+
+        return undefined;
+    }
+
+    findTargetOfType(availableCreatures: TakeDamage[], predicate: (c: TakeDamage) => {}): TakeDamage {
+        let foundCreature: TakeDamage = null;
+        for (const creature of availableCreatures) {
+            if (predicate(creature)) {
+                foundCreature = creature;
+                break;
+            }
+        }
+
+        return foundCreature;
     }
 }

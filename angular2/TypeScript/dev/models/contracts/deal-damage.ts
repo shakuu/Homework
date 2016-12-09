@@ -5,4 +5,5 @@ export interface DealDamage {
     damage: number,
     damageType: DamageType
     dealDamage(target: TakeDamage): void
+    acquireTarget(availableCreatures: TakeDamage[]): TakeDamage
 }
