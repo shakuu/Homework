@@ -5,6 +5,8 @@ VisualStudioVersion = 14.0.25420.1
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OddNumber", "OddNumber\OddNumber.csproj", "{231D7307-82FA-4D94-88ED-2D9461C7E3FB}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Diameter", "Diameter\Diameter.csproj", "{C6460154-D6EA-4546-B05D-0A0303B019B5}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +17,10 @@ Global
 		{231D7307-82FA-4D94-88ED-2D9461C7E3FB}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{231D7307-82FA-4D94-88ED-2D9461C7E3FB}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{231D7307-82FA-4D94-88ED-2D9461C7E3FB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C6460154-D6EA-4546-B05D-0A0303B019B5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C6460154-D6EA-4546-B05D-0A0303B019B5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C6460154-D6EA-4546-B05D-0A0303B019B5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C6460154-D6EA-4546-B05D-0A0303B019B5}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

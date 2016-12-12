@@ -16,8 +16,6 @@ namespace OddNumber
             }
 
             Console.WriteLine(number);
-
-
         }
     }
 }
