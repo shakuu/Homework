@@ -6,17 +6,17 @@ namespace Diameter
 {
     public class Program
     {
-        private static SortedDictionary<int, int>[] nodes;
+        private static Dictionary<int, int>[] nodes;
         private static double longestRoute;
 
         public static void Main()
         {
             var nodesCount = int.Parse(Console.ReadLine());
 
-            nodes = new SortedDictionary<int, int>[nodesCount];
+            nodes = new Dictionary<int, int>[nodesCount];
             for (var i = 0; i < nodesCount; i++)
             {
-                nodes[i] = new SortedDictionary<int, int>();
+                nodes[i] = new Dictionary<int, int>();
             }
 
             for (var i = 0; i < nodesCount - 1; i++)
@@ -52,11 +52,12 @@ namespace Diameter
 
                 var distances = new int[nodesCount];
                 var visited = new bool[nodesCount];
+                var currentMaxDistance = 0;
 
                 distances[nodeIndex] = 0;
                 visited[nodeIndex] = true;
 
-                var queue = new Queue<SortedDictionary<int, int>>();
+                var queue = new Queue<Dictionary<int, int>>();
                 queue.Enqueue(node);
 
                 var indexesQueue = new Queue<int>();
@@ -88,6 +89,11 @@ namespace Diameter
                             distances[nextIndex] = potentialDistance;
                         }
 
+                        if (currentMaxDistance < potentialDistance)
+                        {
+                            currentMaxDistance = potentialDistance;
+                        }
+
                         queue.Enqueue(connectingNode);
                         indexesQueue.Enqueue(nextIndex);
 
@@ -95,10 +101,9 @@ namespace Diameter
                     }
                 }
 
-                var maxDistance = distances.Max();
-                if (longestRoute < maxDistance)
+                if (longestRoute < currentMaxDistance)
                 {
-                    longestRoute = maxDistance;
+                    longestRoute = currentMaxDistance;
                 }
             }
 
