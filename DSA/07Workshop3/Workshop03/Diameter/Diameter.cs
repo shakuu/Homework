@@ -58,12 +58,7 @@ namespace Diameter
             {
                 var currentNode = queue.Dequeue();
                 var currentIndex = indexesQueue.Dequeue();
-
-                if (double.IsNegativeInfinity(distances[currentIndex]))
-                {
-                    break;
-                }
-
+                
                 foreach (var connection in currentNode)
                 {
                     var nextIndex = connection.Value;
@@ -119,12 +114,7 @@ namespace Diameter
             {
                 var currentNode = queue.Dequeue();
                 var currentIndex = indexesQueue.Dequeue();
-
-                if (double.IsNegativeInfinity(distances[currentIndex]))
-                {
-                    break;
-                }
-
+                
                 foreach (var connection in currentNode)
                 {
                     var nextIndex = connection.Value;
