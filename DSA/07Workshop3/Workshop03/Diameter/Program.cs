@@ -7,7 +7,7 @@ namespace Diameter
     public class Program
     {
         private static SortedDictionary<int, int>[] nodes;
-        private static double intestRoute;
+        private static double longestRoute;
 
         public static void Main()
         {
@@ -50,57 +50,59 @@ namespace Diameter
             {
                 var node = nodes[nodeIndex];
 
-                var distances = new Dictionary<SortedDictionary<int, int>, double>();
-                var visited = new Dictionary<SortedDictionary<int, int>, bool>();
-                foreach (var nodeToAdd in nodes)
-                {
-                    distances[nodeToAdd] = 0;
-                    visited[nodeToAdd] = false;
-                }
+                var distances = new int[nodesCount];
+                var visited = new bool[nodesCount];
 
-                distances[node] = 0;
-                visited[node] = true;
+                distances[nodeIndex] = 0;
+                visited[nodeIndex] = true;
 
                 var queue = new Queue<SortedDictionary<int, int>>();
                 queue.Enqueue(node);
 
+                var indexesQueue = new Queue<int>();
+                indexesQueue.Enqueue(nodeIndex);
+
                 while (queue.Count != 0)
                 {
                     var currentNode = queue.Dequeue();
+                    var currentIndex = indexesQueue.Dequeue();
 
-                    if (double.IsNegativeInfinity(distances[currentNode]))
+                    if (double.IsNegativeInfinity(distances[currentIndex]))
                     {
                         break;
                     }
 
                     foreach (var connection in currentNode)
                     {
+                        var nextIndex = connection.Value;
+
                         var connectingNode = nodes[connection.Value];
-                        if (visited[connectingNode])
+                        if (visited[nextIndex])
                         {
                             continue;
                         }
 
-                        var potentialDistance = distances[currentNode] + connection.Key;
-                        if (potentialDistance > distances[connectingNode])
+                        var potentialDistance = distances[currentIndex] + connection.Key;
+                        if (potentialDistance > distances[nextIndex])
                         {
-                            distances[nodes[connection.Value]] = potentialDistance;
+                            distances[nextIndex] = potentialDistance;
                         }
 
                         queue.Enqueue(connectingNode);
+                        indexesQueue.Enqueue(nextIndex);
 
-                        visited[connectingNode] = true;
+                        visited[currentIndex] = true;
                     }
                 }
 
-                var maxDistance = distances.Max(d => d.Value);
-                if (intestRoute < maxDistance)
+                var maxDistance = distances.Max();
+                if (longestRoute < maxDistance)
                 {
-                    intestRoute = maxDistance;
+                    longestRoute = maxDistance;
                 }
             }
 
-            Console.WriteLine(intestRoute);
+            Console.WriteLine(longestRoute);
         }
     }
 }
