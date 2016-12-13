@@ -46,66 +46,67 @@ namespace Diameter
                 }
             }
 
-            foreach (var nodeIndex in indexList)
+            //foreach (var nodeIndex in indexList)
+            //{
+            var nodeIndex = indexList.FirstOrDefault();
+            var node = nodes[nodeIndex];
+
+            var distances = new int[nodesCount];
+            var visited = new bool[nodesCount];
+            var currentMaxDistance = 0;
+
+            distances[nodeIndex] = 0;
+            visited[nodeIndex] = true;
+
+            var queue = new Queue<Dictionary<int, int>>();
+            queue.Enqueue(node);
+
+            var indexesQueue = new Queue<int>();
+            indexesQueue.Enqueue(nodeIndex);
+
+            while (queue.Count != 0)
             {
-                var node = nodes[nodeIndex];
+                var currentNode = queue.Dequeue();
+                var currentIndex = indexesQueue.Dequeue();
 
-                var distances = new int[nodesCount];
-                var visited = new bool[nodesCount];
-                var currentMaxDistance = 0;
-
-                distances[nodeIndex] = 0;
-                visited[nodeIndex] = true;
-
-                var queue = new Queue<Dictionary<int, int>>();
-                queue.Enqueue(node);
-
-                var indexesQueue = new Queue<int>();
-                indexesQueue.Enqueue(nodeIndex);
-
-                while (queue.Count != 0)
+                if (double.IsNegativeInfinity(distances[currentIndex]))
                 {
-                    var currentNode = queue.Dequeue();
-                    var currentIndex = indexesQueue.Dequeue();
-
-                    if (double.IsNegativeInfinity(distances[currentIndex]))
-                    {
-                        break;
-                    }
-
-                    foreach (var connection in currentNode)
-                    {
-                        var nextIndex = connection.Value;
-
-                        var connectingNode = nodes[connection.Value];
-                        if (visited[nextIndex])
-                        {
-                            continue;
-                        }
-
-                        var potentialDistance = distances[currentIndex] + connection.Key;
-                        if (potentialDistance > distances[nextIndex])
-                        {
-                            distances[nextIndex] = potentialDistance;
-                        }
-
-                        if (currentMaxDistance < potentialDistance)
-                        {
-                            currentMaxDistance = potentialDistance;
-                        }
-
-                        queue.Enqueue(connectingNode);
-                        indexesQueue.Enqueue(nextIndex);
-
-                        visited[currentIndex] = true;
-                    }
+                    break;
                 }
 
-                if (longestRoute < currentMaxDistance)
+                foreach (var connection in currentNode)
                 {
-                    longestRoute = currentMaxDistance;
+                    var nextIndex = connection.Value;
+
+                    var connectingNode = nodes[connection.Value];
+                    if (visited[nextIndex])
+                    {
+                        continue;
+                    }
+
+                    var potentialDistance = distances[currentIndex] + connection.Key;
+                    if (potentialDistance > distances[nextIndex])
+                    {
+                        distances[nextIndex] = potentialDistance;
+                    }
+
+                    if (currentMaxDistance < potentialDistance)
+                    {
+                        currentMaxDistance = potentialDistance;
+                    }
+
+                    queue.Enqueue(connectingNode);
+                    indexesQueue.Enqueue(nextIndex);
+
+                    visited[currentIndex] = true;
                 }
             }
+
+            if (longestRoute < currentMaxDistance)
+            {
+                longestRoute = currentMaxDistance;
+            }
+            //}
 
             Console.WriteLine(longestRoute);
         }
