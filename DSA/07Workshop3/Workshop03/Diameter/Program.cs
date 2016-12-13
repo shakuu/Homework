@@ -2,26 +2,21 @@
 using System.Collections.Generic;
 using System.Linq;
 
-using Wintellect.PowerCollections;
-
 namespace Diameter
 {
     public class Program
     {
-        private static OrderedDictionary<int, int>[] nodes;
-        private static double longestRoute;
+        private static SortedDictionary<int, int>[] nodes;
+        private static double intestRoute;
 
         public static void Main()
         {
             var nodesCount = int.Parse(Console.ReadLine());
 
-            var maximumInputDistance = -1;
-            var maximumInputDistanceNodeIndex = -1;
-
-            nodes = new OrderedDictionary<int, int>[nodesCount];
+            nodes = new SortedDictionary<int, int>[nodesCount];
             for (var i = 0; i < nodesCount; i++)
             {
-                nodes[i] = new OrderedDictionary<int, int>();
+                nodes[i] = new SortedDictionary<int, int>();
             }
 
             for (var i = 0; i < nodesCount - 1; i++)
@@ -31,40 +26,45 @@ namespace Diameter
                     .Select(int.Parse)
                     .ToArray();
 
-                //if (nodes[nextConnection[0]] == null)
-                //{
-                //    nodes[nextConnection[0]] = new OrderedDictionary<int, int>();
-                //}
+                if (nodes[nextConnection[0]].ContainsKey(nextConnection[2]) == false)
+                {
+                    nodes[nextConnection[0]].Add(nextConnection[2], nextConnection[1]);
+                }
 
-                //if (nodes[nextConnection[1]] == null)
-                //{
-                //    nodes[nextConnection[1]] = new OrderedDictionary<int, int>();
-                //}
-
-                //if (maximumInputDistance < nextConnection[2])
-                //{
-                //    maximumInputDistance = nextConnection[2];
-                //    maximumInputDistanceNodeIndex = nextConnection[0];
-                //}
-
-                nodes[nextConnection[0]].Add(nextConnection[2], nextConnection[1]);
-                nodes[nextConnection[1]].Add(nextConnection[2], nextConnection[0]);
+                if (nodes[nextConnection[1]].ContainsKey(nextConnection[2]) == false)
+                {
+                    nodes[nextConnection[1]].Add(nextConnection[2], nextConnection[0]);
+                }
             }
 
-            for (var nodeIndex = 0; nodeIndex < nodesCount; nodeIndex++)
+            var indexList = new List<int>();
+            for (var i = 0; i < nodesCount; i++)
+            {
+                if (nodes[i].Count == 1)
+                {
+                    indexList.Add(i);
+                }
+            }
+
+            foreach (var nodeIndex in indexList)
             {
                 var node = nodes[nodeIndex];
 
-                var distances = new Dictionary<OrderedDictionary<int, int>, double>();
-                distances[node] = 0;
+                var distances = new Dictionary<SortedDictionary<int, int>, double>();
+                var visited = new Dictionary<SortedDictionary<int, int>, bool>();
+                foreach (var nodeToAdd in nodes)
+                {
+                    distances[nodeToAdd] = 0;
+                    visited[nodeToAdd] = false;
+                }
 
-                var visited = new Dictionary<OrderedDictionary<int, int>, bool>();
+                distances[node] = 0;
                 visited[node] = true;
 
-                var queue = new Queue<OrderedDictionary<int, int>>();
+                var queue = new Queue<SortedDictionary<int, int>>();
                 queue.Enqueue(node);
 
-                while (queue.Count > 0)
+                while (queue.Count != 0)
                 {
                     var currentNode = queue.Dequeue();
 
@@ -73,43 +73,34 @@ namespace Diameter
                         break;
                     }
 
-                    foreach (var connection in currentNode.Reversed())
+                    foreach (var connection in currentNode)
                     {
-                        if (!visited.ContainsKey(nodes[connection.Value]))
-                        {
-                            visited[nodes[connection.Value]] = false;
-                        }
-
-                        if (visited[nodes[connection.Value]])
+                        var connectingNode = nodes[connection.Value];
+                        if (visited[connectingNode])
                         {
                             continue;
                         }
 
                         var potentialDistance = distances[currentNode] + connection.Key;
-                        if (!distances.ContainsKey(nodes[connection.Value]))
-                        {
-                            distances[nodes[connection.Value]] = 0;
-                        }
-
-                        if (potentialDistance > distances[nodes[connection.Value]])
+                        if (potentialDistance > distances[connectingNode])
                         {
                             distances[nodes[connection.Value]] = potentialDistance;
                         }
 
-                        queue.Enqueue(nodes[connection.Value]);
+                        queue.Enqueue(connectingNode);
 
-                        visited[nodes[connection.Value]] = true;
+                        visited[connectingNode] = true;
                     }
                 }
 
                 var maxDistance = distances.Max(d => d.Value);
-                if (longestRoute < maxDistance)
+                if (intestRoute < maxDistance)
                 {
-                    longestRoute = maxDistance;
+                    intestRoute = maxDistance;
                 }
             }
 
-            Console.WriteLine(longestRoute);
+            Console.WriteLine(intestRoute);
         }
     }
 }

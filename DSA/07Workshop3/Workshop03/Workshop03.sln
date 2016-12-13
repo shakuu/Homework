@@ -7,6 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OddNumber", "OddNumber\OddN
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Diameter", "Diameter\Diameter.csproj", "{C6460154-D6EA-4546-B05D-0A0303B019B5}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Diamater2", "Diamater2\Diamater2.csproj", "{DE23949B-B9AC-4D51-A452-2170EE24777F}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,10 @@ Global
 		{C6460154-D6EA-4546-B05D-0A0303B019B5}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{C6460154-D6EA-4546-B05D-0A0303B019B5}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{C6460154-D6EA-4546-B05D-0A0303B019B5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DE23949B-B9AC-4D51-A452-2170EE24777F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DE23949B-B9AC-4D51-A452-2170EE24777F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DE23949B-B9AC-4D51-A452-2170EE24777F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DE23949B-B9AC-4D51-A452-2170EE24777F}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
