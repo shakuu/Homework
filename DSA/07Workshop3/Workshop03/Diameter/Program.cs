@@ -15,7 +15,15 @@ namespace Diameter
         {
             var nodesCount = int.Parse(Console.ReadLine());
 
+            var maximumInputDistance = -1;
+            var maximumInputDistanceNodeIndex = -1;
+
             nodes = new OrderedDictionary<int, int>[nodesCount];
+            for (var i = 0; i < nodesCount; i++)
+            {
+                nodes[i] = new OrderedDictionary<int, int>();
+            }
+
             for (var i = 0; i < nodesCount - 1; i++)
             {
                 var nextConnection = Console.ReadLine()
@@ -23,15 +31,21 @@ namespace Diameter
                     .Select(int.Parse)
                     .ToArray();
 
-                if (nodes[nextConnection[0]] == null)
-                {
-                    nodes[nextConnection[0]] = new OrderedDictionary<int, int>();
-                }
+                //if (nodes[nextConnection[0]] == null)
+                //{
+                //    nodes[nextConnection[0]] = new OrderedDictionary<int, int>();
+                //}
 
-                if (nodes[nextConnection[1]] == null)
-                {
-                    nodes[nextConnection[1]] = new OrderedDictionary<int, int>();
-                }
+                //if (nodes[nextConnection[1]] == null)
+                //{
+                //    nodes[nextConnection[1]] = new OrderedDictionary<int, int>();
+                //}
+
+                //if (maximumInputDistance < nextConnection[2])
+                //{
+                //    maximumInputDistance = nextConnection[2];
+                //    maximumInputDistanceNodeIndex = nextConnection[0];
+                //}
 
                 nodes[nextConnection[0]].Add(nextConnection[2], nextConnection[1]);
                 nodes[nextConnection[1]].Add(nextConnection[2], nextConnection[0]);

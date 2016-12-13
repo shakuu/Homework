@@ -1,7 +1,7 @@
-import { AlignmentType } from '../enums/alignment-type';
-import { DealDamage } from '../contracts/deal-damage';
-import { TakeDamage } from '../contracts/take-damage';
-import { DamageType } from '../enums/damage-type';
+import { AlignmentType } from "../enums/alignment-type";
+import { DealDamage } from "../contracts/deal-damage";
+import { TakeDamage } from "../contracts/take-damage";
+import { DamageType } from "../enums/damage-type";
 
 export abstract class Creature implements DealDamage, TakeDamage {
     damage: number;
@@ -20,15 +20,15 @@ export abstract class Creature implements DealDamage, TakeDamage {
     }
 
     dealDamage(target: TakeDamage): void {
-
+        const a = 5;
     }
 
     takeDamage(attacker: DealDamage): void {
-
+        const a = 5;
     }
 
     acquireTarget(availableCreatures: TakeDamage[]): TakeDamage {
-        let foundCreature = this.findTargetOfType(availableCreatures, (c) => c.alignmentType !== this.alignmentType);
+        let foundCreature: TakeDamage = this.findTargetOfType(availableCreatures, (c) => c.alignmentType !== this.alignmentType);
         if (foundCreature !== null) {
             return foundCreature;
         }

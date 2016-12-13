@@ -6,5 +6,5 @@ export interface TakeDamage {
     healthPoints: number;
     immunities: DamageType[];
     alignmentType: AlignmentType;
-    takeDamage(attacker: DealDamage): void
+    takeDamage(attacker: DealDamage): void;
 }
