@@ -37,19 +37,6 @@ namespace Diameter
                 nodes[nextConnection[1]].Add(nextConnection[2], nextConnection[0]);
             }
 
-            //        set all nodes DIST = INFINITY;
-            //        set current node the source and distance = 0;
-            //        Q->all nodes from graph, ordered by distance;
-            //        while (Q is not empty)
-            //          a = dequeue the smallest element(first in PriorityQueue);
-            //          if (distance of a == INFINITY) break
-
-            //          foreach neighbour v of a
-            //              potDistance = distance of a +distance of(a - v)
-            //              if (potDistance < distance of v)
-            //                  distance of v = potDistance;
-            //                  reorder Q;
-
             for (var nodeIndex = 0; nodeIndex < nodesCount; nodeIndex++)
             {
                 var node = nodes[nodeIndex];
@@ -72,7 +59,7 @@ namespace Diameter
                         break;
                     }
 
-                    foreach (var connection in currentNode)
+                    foreach (var connection in currentNode.Reversed())
                     {
                         if (!visited.ContainsKey(nodes[connection.Value]))
                         {
