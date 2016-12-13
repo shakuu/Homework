@@ -8,12 +8,8 @@ namespace Diameter
 {
     public class Program
     {
-        private static int[,] table;
-        private static bool[,] visited;
-        private static new OrderedDictionary<int, int>[] nodes;
-
-        private static long currentRoute;
-        private static long longestRoute;
+        private static OrderedDictionary<int, int>[] nodes;
+        private static double longestRoute;
 
         public static void Main()
         {
@@ -53,14 +49,66 @@ namespace Diameter
             //              if (potDistance < distance of v)
             //                  distance of v = potDistance;
             //                  reorder Q;
-            var distances = new long[nodesCount];
-            var queue = new Queue<OrderedDictionary<int, int>>();
-            for (int i = 1; i < nodesCount; i++)
+
+            for (var nodeIndex = 0; nodeIndex < nodesCount; nodeIndex++)
             {
-                 
+                var node = nodes[nodeIndex];
+
+                var distances = new Dictionary<OrderedDictionary<int, int>, double>();
+                distances[node] = 0;
+
+                var visited = new Dictionary<OrderedDictionary<int, int>, bool>();
+                visited[node] = true;
+
+                var queue = new Queue<OrderedDictionary<int, int>>();
+                queue.Enqueue(node);
+
+                while (queue.Count > 0)
+                {
+                    var currentNode = queue.Dequeue();
+
+                    if (double.IsNegativeInfinity(distances[currentNode]))
+                    {
+                        break;
+                    }
+
+                    foreach (var connection in currentNode)
+                    {
+                        if (!visited.ContainsKey(nodes[connection.Value]))
+                        {
+                            visited[nodes[connection.Value]] = false;
+                        }
+
+                        if (visited[nodes[connection.Value]])
+                        {
+                            continue;
+                        }
+
+                        var potentialDistance = distances[currentNode] + connection.Key;
+                        if (!distances.ContainsKey(nodes[connection.Value]))
+                        {
+                            distances[nodes[connection.Value]] = 0;
+                        }
+
+                        if (potentialDistance > distances[nodes[connection.Value]])
+                        {
+                            distances[nodes[connection.Value]] = potentialDistance;
+                        }
+
+                        queue.Enqueue(nodes[connection.Value]);
+
+                        visited[nodes[connection.Value]] = true;
+                    }
+                }
+
+                var maxDistance = distances.Max(d => d.Value);
+                if (longestRoute < maxDistance)
+                {
+                    longestRoute = maxDistance;
+                }
             }
 
-
+            Console.WriteLine(longestRoute);
         }
     }
 }
