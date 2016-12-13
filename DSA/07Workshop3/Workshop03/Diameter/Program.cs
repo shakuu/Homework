@@ -4,6 +4,7 @@ using System.Linq;
 
 namespace Diameter
 {
+    // Longest distance after run 1 is the starting point for the longest distance overall.
     public class Program
     {
         private static Dictionary<int, int>[] nodes;
