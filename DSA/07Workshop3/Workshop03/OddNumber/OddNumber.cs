@@ -2,7 +2,7 @@
 
 namespace OddNumber
 {
-    public class Program
+    public class OddNumber
     {
         public static void Main()
         {

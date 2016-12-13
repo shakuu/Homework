@@ -4,11 +4,11 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{231D7307-82FA-4D94-88ED-2D9461C7E3FB}</ProjectGuid>
+    <ProjectGuid>{64B24DFE-2F2B-4C41-A537-C51A812A357A}</ProjectGuid>
     <OutputType>Exe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>OddNumber</RootNamespace>
-    <AssemblyName>OddNumber</AssemblyName>
+    <RootNamespace>Reconstruction</RootNamespace>
+    <AssemblyName>Reconstruction</AssemblyName>
     <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
@@ -43,7 +43,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="OddNumber.cs" />
+    <Compile Include="Reconstruction.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

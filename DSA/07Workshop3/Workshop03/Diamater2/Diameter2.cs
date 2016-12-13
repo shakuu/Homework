@@ -7,7 +7,7 @@ using Wintellect.PowerCollections;
 
 namespace Diamater2
 {
-    public class Program
+    public class Diameter2
     {
         private static OrderedDictionary<int, int>[] nodes;
 
