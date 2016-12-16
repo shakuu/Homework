@@ -1,3 +1,4 @@
+import { Input } from '@angular/core';
 import { Movie } from './../models/movie.model';
 import { Component } from '@angular/core';
 
@@ -6,8 +7,9 @@ import { Component } from '@angular/core';
     templateUrl: './movie-short.component.html'
 })
 export class MovieShortComponent {
+    @Input()
     movie: Movie;
-    
+
     constructor() {
 
     }

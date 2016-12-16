@@ -11,6 +11,10 @@ export class MoviesListComponent {
     movies: Movie[];
 
     constructor(private moviesService: MoviesService) {
-        
+        const that = this;
+        this.moviesService.findAll()
+            .then((movies) => {
+                that.movies = movies;
+            });
     }
 }
