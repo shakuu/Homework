@@ -1,12 +1,14 @@
-<td>
-    <img [src]="movie.Poster" [alt]="movie.Title">
-</td>
-<td>
-    {{movie.Title}}
-</td>
-<td>
-    {{movie.Year}}
-</td>
-<td>
-    {{movie.imdbRating}}
-</td>
+<div class="col-xs-3">
+    <p>
+        <img [src]="movie.Poster" [alt]="movie.Title" width="100px">
+    </p>
+</div>
+<div class="col-xs-3">
+    <p>{{movie.Title}}</p>
+</div>
+<div class="col-xs-3">
+    <p>{{movie.Year}}</p>
+</div>
+<div class="col-xs-3">
+    <p>{{movie.imdbRating}}</p>
+</div>

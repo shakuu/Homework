@@ -1,3 +1,7 @@
+import { FilterMoviesPipe } from './core/pipes/filter-movies.pipe';
+import { FilterMoviesListComponent } from './core/movie/filter-movies-list.component';
+import { FormsModule } from '@angular/forms';
+import { SortMoviesPipe } from './core/pipes/sort-movies.pipe';
 import { MovieShortComponent } from './core/movie/movie-short.component';
 import { MoviesListComponent } from './core/movie/movies-list.component';
 import { HttpModule } from '@angular/http';
@@ -10,12 +14,16 @@ import { AppComponent } from './app.component';
 @NgModule({
     imports: [
         BrowserModule,
-        HttpModule
+        HttpModule,
+        FormsModule
     ],
     declarations: [
         AppComponent,
         MoviesListComponent,
-        MovieShortComponent
+        MovieShortComponent,
+        FilterMoviesListComponent,
+        SortMoviesPipe,
+        FilterMoviesPipe
     ],
     bootstrap: [
         AppComponent

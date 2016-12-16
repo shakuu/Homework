@@ -1,5 +1,5 @@
 export interface Movie {
-    Yitle: string;
+    Title: string;
     Year: string;
     Rated: string;
     Released: string;
