@@ -1,5 +1,3 @@
-import { Movie } from './core/models/movie.model';
-import { MoviesService } from './core/services/movies.service';
 import { Component } from '@angular/core';
 
 @Component({
