@@ -6,6 +6,10 @@
     <filter-movies-list-component (onFilterTextChange)="onFilterTextChange($event)"></filter-movies-list-component>
 </div>
 
+<div class="well">
+    <sort-order-movies-component (onUpdateOrder)="onUpdateOrder($event)" (onUpdateSortBy)="onUpdateSortBy($event)"></sort-order-movies-component>
+</div>
+
 <section class="container">
     <ul class="list-group text-center">
         <li class="row list-group-item">

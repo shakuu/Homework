@@ -17,7 +17,7 @@ export class MoviesListComponent {
     constructor(private moviesService: MoviesService, private _changeDetectionRef: ChangeDetectorRef) {
         this.pageTitle = 'TOP 10 IMDB MOVIES';
         this.sortByPropertyName = 'imdbRating';
-        this.sortOrder = 'ascending';
+        this.sortOrder = 'descending';
 
         const that = this;
         this.moviesService.findAll()
@@ -28,5 +28,28 @@ export class MoviesListComponent {
 
     onFilterTextChange(newValue: string) {
         this.filterByText = newValue;
+    }
+
+    onUpdateSortBy(newValue: string) {
+        let updatedValue: string;
+        switch (newValue) {
+            case 'Title':
+                updatedValue = 'Title';
+                break;
+            case 'Year':
+                updatedValue = 'Year';
+                break;
+            case 'IMDB Rating':
+                updatedValue = 'imdbRating';
+                break;
+            default:
+                updatedValue = '';
+        }
+
+        this.sortByPropertyName = updatedValue;
+    }
+
+    onUpdateOrder(newValue: string) {
+        this.sortOrder = newValue.toLowerCase();
     }
 }

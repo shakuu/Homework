@@ -1,3 +1,4 @@
+import { SortOrderMoviesComponent } from './core/movie/sort-order-movies.component';
 import { FilterMoviesPipe } from './core/pipes/filter-movies.pipe';
 import { FilterMoviesListComponent } from './core/movie/filter-movies-list.component';
 import { FormsModule } from '@angular/forms';
@@ -22,6 +23,7 @@ import { AppComponent } from './app.component';
         MoviesListComponent,
         MovieShortComponent,
         FilterMoviesListComponent,
+        SortOrderMoviesComponent,
         SortMoviesPipe,
         FilterMoviesPipe
     ],
