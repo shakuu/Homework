@@ -3,7 +3,6 @@ import { Movie } from './../models/movie.model';
 import { Http } from '@angular/http';
 
 @Injectable()
-
 export class MoviesService {
     url: string = '/data/movies.json';
     movies: Movie[];

@@ -14,17 +14,17 @@ import { SortOrderMoviesComponent } from './core/movie/sort-order-movies.compone
 @NgModule({
     imports: [
         BrowserModule,
-        HttpModule,
-        FormsModule
+        FormsModule,
+        HttpModule
     ],
     declarations: [
         AppComponent,
-        MoviesListComponent,
-        MovieShortComponent,
         FilterMoviesListComponent,
-        SortOrderMoviesComponent,
+        FilterMoviesPipe,
+        MovieShortComponent,
+        MoviesListComponent,
         SortMoviesPipe,
-        FilterMoviesPipe
+        SortOrderMoviesComponent
     ],
     bootstrap: [
         AppComponent
