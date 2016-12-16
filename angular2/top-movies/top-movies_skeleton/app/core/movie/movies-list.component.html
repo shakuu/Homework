@@ -2,13 +2,17 @@
     <h1>{{pageTitle}}</h1>
 </header>
 
-<div class="well text-center">
-    <filter-movies-list-component (onFilterTextChange)="onFilterTextChange($event)"></filter-movies-list-component>
-</div>
+<section class="container">
+    <div class="well text-center">
+        <filter-movies-list-component (onFilterTextChange)="onFilterTextChange($event)"></filter-movies-list-component>
+    </div>
+</section>
 
-<div class="well">
-    <sort-order-movies-component (onUpdateOrder)="onUpdateOrder($event)" (onUpdateSortBy)="onUpdateSortBy($event)"></sort-order-movies-component>
-</div>
+<section class="container">
+    <div class="well">
+        <sort-order-movies-component (onUpdateOrder)="onUpdateOrder($event)" (onUpdateSortBy)="onUpdateSortBy($event)"></sort-order-movies-component>
+    </div>
+</section>
 
 <section class="container">
     <ul class="list-group text-center">
