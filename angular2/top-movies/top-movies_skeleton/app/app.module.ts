@@ -1,16 +1,10 @@
+import { MoviesModule } from './core/movie/movies.module';
 import { NavigationComponent } from './core/navigation.component';
 import { AppComponent } from './app.component';
 import { BrowserModule } from '@angular/platform-browser';
-import { FilterMoviesListComponent } from './core/movie/filter-movies-list.component';
-import { FilterMoviesPipe } from './core/pipes/filter-movies.pipe';
 import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
-import { MovieShortComponent } from './core/movie/movie-short.component';
-import { MoviesListComponent } from './core/movie/movies-list.component';
-import { MoviesService } from './core/services/movies.service';
 import { NgModule } from '@angular/core';
-import { SortMoviesPipe } from './core/pipes/sort-movies.pipe';
-import { SortOrderMoviesComponent } from './core/movie/sort-order-movies.component';
 import { RouterModule } from '@angular/router';
 
 @NgModule({
@@ -18,25 +12,18 @@ import { RouterModule } from '@angular/router';
         BrowserModule,
         FormsModule,
         HttpModule,
+        MoviesModule,
         RouterModule.forRoot([
-            { path: 'movies', component: MoviesListComponent }
+            { path: '', redirectTo: '/', pathMatch: 'full' },
+            { path: '**', redirectTo: '/', pathMatch: 'full' }
         ])
     ],
     declarations: [
         AppComponent,
-        FilterMoviesListComponent,
-        FilterMoviesPipe,
-        MovieShortComponent,
-        MoviesListComponent,
-        NavigationComponent,
-        SortMoviesPipe,
-        SortOrderMoviesComponent
+        NavigationComponent
     ],
     bootstrap: [
         AppComponent
-    ],
-    providers: [
-        MoviesService
     ]
 })
 export class AppModule { }
