@@ -1,3 +1,4 @@
+import { NavigationComponent } from './core/navigation.component';
 import { AppComponent } from './app.component';
 import { BrowserModule } from '@angular/platform-browser';
 import { FilterMoviesListComponent } from './core/movie/filter-movies-list.component';
@@ -10,12 +11,16 @@ import { MoviesService } from './core/services/movies.service';
 import { NgModule } from '@angular/core';
 import { SortMoviesPipe } from './core/pipes/sort-movies.pipe';
 import { SortOrderMoviesComponent } from './core/movie/sort-order-movies.component';
+import { RouterModule } from '@angular/router';
 
 @NgModule({
     imports: [
         BrowserModule,
         FormsModule,
-        HttpModule
+        HttpModule,
+        RouterModule.forRoot([
+            { path: 'movies', component: MoviesListComponent }
+        ])
     ],
     declarations: [
         AppComponent,
@@ -23,6 +28,7 @@ import { SortOrderMoviesComponent } from './core/movie/sort-order-movies.compone
         FilterMoviesPipe,
         MovieShortComponent,
         MoviesListComponent,
+        NavigationComponent,
         SortMoviesPipe,
         SortOrderMoviesComponent
     ],

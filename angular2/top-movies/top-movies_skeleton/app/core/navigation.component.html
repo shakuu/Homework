@@ -1,0 +1,10 @@
+<nav class="navbar navbar-inverse" role="navigation">
+    <!-- Collect the nav links, forms, and other content for toggling -->
+    <div class="collapse navbar-collapse navbar-ex1-collapse">
+        <ul class="nav navbar-nav">
+            <li [class.active]="selectedItemName === 'Home'" (click)="markSelectedItem('Home')"><a routerLink="/">Home</a></li>
+            <li [class.active]="selectedItemName === 'Movies'" (click)="markSelectedItem('Movies')"><a routerLink="/movies">Movies</a></li>
+        </ul>
+    </div>
+    <!-- /.navbar-collapse -->
+</nav>
