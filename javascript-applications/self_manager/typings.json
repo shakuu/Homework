@@ -1,0 +1,7 @@
+{
+  "globalDependencies": {
+    "crypto-js": "registry:dt/crypto-js#3.1.4+20160708041433",
+    "jquery": "registry:dt/jquery#1.10.0+20160929162922",
+    "sinon": "registry:dt/sinon#1.16.0+20160924120326"
+  }
+}

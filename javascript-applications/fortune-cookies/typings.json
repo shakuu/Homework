@@ -1,0 +1,6 @@
+{
+  "globalDependencies": {
+    "jquery": "registry:dt/jquery#1.10.0+20160908203239",
+    "sinon": "registry:dt/sinon#1.16.0+20160924120326"
+  }
+}

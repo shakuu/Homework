@@ -1,0 +1,6 @@
+{
+  "globalDependencies": {
+    "jquery": "registry:dt/jquery#1.10.0+20160908203239",
+    "toastr": "registry:dt/toastr#2.1.1+20160510010435"
+  }
+}
