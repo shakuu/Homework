@@ -1,5 +1,6 @@
 ﻿namespace ImplementTrie
 {
+    // https://gist.github.com/efruchter/c699a75420363c95b1ad
     public class Trie
     {
         private TrieNode head;
