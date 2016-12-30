@@ -5,6 +5,7 @@ import { HttpModule } from '@angular/http';
 import { MoviesModule } from './core/movie/movies.module';
 import { NavigationComponent } from './core/navigation.component';
 import { NgModule } from '@angular/core';
+import { OmdbApiMoivesModule } from './core/omdb-api-movies/omdb-api-movies.module';
 import { RouterModule } from '@angular/router';
 
 @NgModule({
@@ -13,6 +14,7 @@ import { RouterModule } from '@angular/router';
         FormsModule,
         HttpModule,
         MoviesModule,
+        OmdbApiMoivesModule,
         RouterModule.forRoot([
             { path: '', redirectTo: '/', pathMatch: 'full' },
             { path: '**', redirectTo: '/', pathMatch: 'full' }

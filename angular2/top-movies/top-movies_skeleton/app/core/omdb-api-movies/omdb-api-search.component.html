@@ -1,0 +1,37 @@
+<section id="search">
+  <form #searchForm="ngForm" (ngSubmit)="onSubmit()">
+    <div class="form-group">
+      <input type="text" name="searchTitle" [(ngModel)]="this.searchTitle" class="form-control">
+    </div>
+    <div class="form-group">
+      <button class="form-control btn btn-success" type="submit">Search</button>
+    </div>
+  </form>
+</section>
+<section id="content">
+  <div id="no-search" *ngIf="!this.searchResult || this.searchResult.Response === 'False'">
+    <p>No results to display.</p>
+  </div>
+  <section *ngIf="this.searchResult && this.searchResult.Search.length > 0" class="container">
+    <ul class="list-group text-center">
+      <li class="row list-group-item">
+        <div class="col-xs-3">
+          <p>Image</p>
+        </div>
+        <div class="col-xs-3">
+          <p>Title</p>
+        </div>
+        <div class="col-xs-3">
+          <p>Year</p>
+        </div>
+      </li>
+      <li class="row list-group-item" mvdb-movie-short *ngFor="let movie of this.searchResult.Search" [movie]="movie"></li>
+    </ul>
+  </section>
+  <section *ngIf="this.hasPagination" id="pagination">
+    <div class="row">
+      <button (click)="onPreviousPage()" class="btn btn-default">Previous Page</button>
+      <button (click)="onNextPage()" class="btn btn-default">Next Page</button>
+    </div>
+  </section>
+</section>

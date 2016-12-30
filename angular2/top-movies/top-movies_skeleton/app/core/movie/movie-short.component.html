@@ -9,6 +9,6 @@
 <div class="col-xs-3">
     <p>{{movie.Year}}</p>
 </div>
-<div class="col-xs-3">
+<div *ngIf="movie.imdbRating" class="col-xs-3">
     <p>{{movie.imdbRating}}</p>
 </div>

@@ -28,6 +28,9 @@ import { SortOrderMoviesComponent } from './sort-order-movies.component';
     ],
     providers: [
         MoviesService
+    ],
+    exports: [
+        MovieShortComponent
     ]
 })
 export class MoviesModule {
