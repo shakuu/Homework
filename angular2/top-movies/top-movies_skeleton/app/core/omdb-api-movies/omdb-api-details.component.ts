@@ -1,6 +1,7 @@
 import { OmdbApiService } from './../services/omdb-api.service';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Params } from '@angular/router';
+import 'rxjs/add/operator/map';
 
 @Component({
   selector: 'app-omdb-api-details',
@@ -16,10 +17,14 @@ export class OmdbApiDetailsComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    this.movie = this.route.params
+    this.route.params
       .switchMap((params: Params) => {
         const imdbId = params['id'];
         return this.omdbService.searchByImdbId(imdbId);
+      })
+      .map(r => r.json())
+      .subscribe((response) => {
+        this.movie = response;
       });
   }
 }

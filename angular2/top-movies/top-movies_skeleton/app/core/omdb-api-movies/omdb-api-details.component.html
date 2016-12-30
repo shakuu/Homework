@@ -1,0 +1,8 @@
+<section *ngIf="this.movie">
+  <h1>{{this.movie.Title}}</h1>
+  <p>{{this.movie.Plot}}</p>
+</section>
+
+<section *ngIf="!this.movie">
+  <p>Oops no movie found!</p>
+</section>

@@ -18,7 +18,8 @@ import { RouterModule } from '@angular/router';
     ])
   ],
   declarations: [
-    OmdbApiSearchComponent
+    OmdbApiSearchComponent,
+    OmdbApiDetailsComponent
   ],
   providers: [
     OmdbApiService
