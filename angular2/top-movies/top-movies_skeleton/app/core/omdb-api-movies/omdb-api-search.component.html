@@ -24,6 +24,9 @@
         <div class="col-xs-3">
           <p>Year</p>
         </div>
+        <div class="col-xs-3">
+          <p>Details</p>
+        </div>
       </li>
       <li class="row list-group-item" mvdb-movie-short *ngFor="let movie of this.searchResult.Search" [movie]="movie"></li>
     </ul>

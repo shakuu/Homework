@@ -47,7 +47,6 @@ export class OmdbApiSearchComponent {
       .subscribe((response) => {
         this.searchResult = response;
         this.hasPagination = +this.searchResult.totalResults > 10;
-        console.log(this.searchResult);
       }, (err) => {
         console.log(err);
       }, () => {

@@ -12,3 +12,6 @@
 <div *ngIf="movie.imdbRating" class="col-xs-3">
     <p>{{movie.imdbRating}}</p>
 </div>
+<div *ngIf="movie.imdbID" class="col-xs-3">
+    <a routerLink="/omdb/{{movie.imdbID}}"><p>details</p></a>
+</div>

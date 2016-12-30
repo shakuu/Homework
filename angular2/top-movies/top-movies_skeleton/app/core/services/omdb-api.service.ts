@@ -5,10 +5,15 @@ import { Observable } from 'rxjs';
 @Injectable()
 export class OmdbApiService {
 
-  constructor(private ngHttpService: Http) { }
+  constructor(private ngHttpService: Http,) { }
 
   public searchByTitle(title: string, page: number): Observable<Response> {
     const url = this.getSearchUrl(title, page);
+    return this.ngHttpService.get(url);
+  }
+
+  public searchByImdbId(id: string): Observable<Response> {
+    const url = this.getDetailsByIdUrl(id);
     return this.ngHttpService.get(url);
   }
 
@@ -18,5 +23,9 @@ export class OmdbApiService {
 
   private getDetailsUrl(title: string): string {
     return `http://www.omdbapi.com/?t=${title}&y=&plot=full&r=json`;
+  }
+
+  private getDetailsByIdUrl(id: string): string {
+    return `http://www.omdbapi.com/?i=${id}&plot=full&r=json`;
   }
 }
