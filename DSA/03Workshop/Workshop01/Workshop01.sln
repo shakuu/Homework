@@ -11,6 +11,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ReversePolishNotation", "Re
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Passwords2", "Passwords2\Passwords2.csproj", "{10F0B933-D0D5-428A-BE52-21AB3435DC28}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Passwords3", "Passwords3\Passwords3.csproj", "{DBE6BDE1-61CD-4228-9892-EE36499C0242}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -33,6 +35,10 @@ Global
 		{10F0B933-D0D5-428A-BE52-21AB3435DC28}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{10F0B933-D0D5-428A-BE52-21AB3435DC28}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{10F0B933-D0D5-428A-BE52-21AB3435DC28}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DBE6BDE1-61CD-4228-9892-EE36499C0242}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DBE6BDE1-61CD-4228-9892-EE36499C0242}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DBE6BDE1-61CD-4228-9892-EE36499C0242}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DBE6BDE1-61CD-4228-9892-EE36499C0242}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
