@@ -10,7 +10,7 @@ namespace FindNumber
             var input = Console.ReadLine().Split(' ').ToArray();
             var stringsCount = int.Parse(input[0]);
             var targetString = int.Parse(input[1]);
-            
+
             var myHeap = new BinaryHeap(targetString + 1);
 
             var strings = Console.ReadLine().Split(' ').ToArray();
@@ -20,7 +20,7 @@ namespace FindNumber
 
                 if (myHeap.Count > targetString)
                 {
-                    if (nextString.CompareTo(myHeap.Max) <= 0)
+                    if (nextString.CompareTo(myHeap.Max) < 0)
                     {
                         myHeap.Replace(nextString);
                     }
@@ -81,7 +81,7 @@ namespace FindNumber
             while (parentIndex >= 1)
             {
                 var parentNode = this.heap[parentIndex];
-                if (this.heap[currentIndex].CompareTo(parentNode) >= 0)
+                if (this.heap[currentIndex].CompareTo(parentNode) > 0)
                 {
                     this.heap = this.Swap(this.heap, currentIndex, parentIndex);
                     currentIndex = parentIndex;
@@ -92,6 +92,18 @@ namespace FindNumber
                     break;
                 }
             }
+        }
+
+        // SLOW/ Incorrect
+        public void ReplaceWithPop(string element)
+        {
+            for (int i = 2; i <= this.currentSize; i++)
+            {
+                this.heap[i - 1] = this.heap[i];
+            }
+
+            this.heap[this.currentSize] = element;
+            this.BubbleDown(1);
         }
 
         public void Replace(string element)
@@ -127,20 +139,20 @@ namespace FindNumber
                 }
 
                 var leftNodeValue = "";
-                if (leftChildIndex >= 0)
+                if (leftChildIndex <= this.currentSize)
                 {
                     leftNodeValue = this.heap[leftChildIndex];
                 }
 
                 var rightNodeValue = "";
-                if (rightChildINdex >= 0)
+                if (rightChildINdex <= this.currentSize)
                 {
                     rightNodeValue = this.heap[rightChildINdex];
                 }
 
-                if (leftNodeValue.CompareTo(rightNodeValue) >= 0)
+                if (leftNodeValue.CompareTo(rightNodeValue) > 0)
                 {
-                    if (node.CompareTo(leftNodeValue) <= 0)
+                    if (node.CompareTo(leftNodeValue) < 0)
                     {
                         this.heap = this.Swap(this.heap, index, leftChildIndex);
                         index = leftChildIndex;
@@ -168,33 +180,18 @@ namespace FindNumber
         private int GetLeftChildIndex(int index)
         {
             var childIndex = index * 2;
-            if (childIndex > this.targetSize)
-            {
-                childIndex = -1;
-            }
-
             return childIndex;
         }
 
         private int GetRightChildIndex(int index)
         {
             var childIndex = index * 2 + 1;
-            if (childIndex > this.targetSize)
-            {
-                childIndex = -1;
-            }
-
             return childIndex;
         }
 
         private int GetParentIndex(int index)
         {
             var parentIndex = index / 2;
-            if (parentIndex < 1)
-            {
-                parentIndex = -1;
-            }
-
             return parentIndex;
         }
 
