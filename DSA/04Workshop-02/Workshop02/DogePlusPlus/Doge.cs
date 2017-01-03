@@ -6,6 +6,7 @@ namespace DogePlusPlus
     public class Doge
     {
         private const int Enemy = -1;
+        private const int Dog = 1;
 
         public static void Main()
         {
@@ -20,32 +21,33 @@ namespace DogePlusPlus
             foreach (var enemyCoordinates in enemiesCoordinates)
             {
                 var coords = enemyCoordinates.Split(' ');
-                var row = int.Parse(coords[0]);
-                var col = int.Parse(coords[1]);
+                var enemyRow = int.Parse(coords[0]);
+                var enemyCol = int.Parse(coords[1]);
 
-                labyrinth[row, col] = Doge.Enemy;
+                labyrinth[enemyRow, enemyCol] = Doge.Enemy;
             }
 
-            labyrinth[0, 0] = 1;
+            labyrinth[0, 0] = Doge.Dog;
             for (int row = 0; row < labyrinthRows; row++)
             {
                 for (int col = 0; col < labyrinthCols; col++)
                 {
-                    if (labyrinth[row, col] < 0)
+                    var cellValue = labyrinth[row, col];
+                    if (cellValue == Doge.Enemy)
                     {
                         continue;
                     }
 
                     var rightCellValue = labyrinth[row, col + 1];
-                    if (rightCellValue >= 0)
+                    if (rightCellValue != Doge.Enemy)
                     {
-                        labyrinth[row, col + 1] += labyrinth[row, col];
+                        labyrinth[row, col + 1] += cellValue;
                     }
 
                     var bottomCellValue = labyrinth[row + 1, col];
-                    if (bottomCellValue >= 0)
+                    if (bottomCellValue != Doge.Enemy)
                     {
-                        labyrinth[row + 1, col] += labyrinth[row, col];
+                        labyrinth[row + 1, col] += cellValue;
                     }
                 }
             }
