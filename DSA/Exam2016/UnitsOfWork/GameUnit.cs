@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace UnitsOfWork
 {
-    public class GameUnit
+    public class GameUnit : IComparable<GameUnit>
     {
         private int? hash;
 
@@ -60,6 +60,18 @@ namespace UnitsOfWork
         {
             var toString = string.Format("{0}[{1}]({2})", this.Name, this.Type, this.Attack);
             return toString;
+        }
+
+        public int CompareTo(GameUnit other)
+        {
+            if (this.Attack != other.Attack)
+            {
+                return other.Attack - this.Attack;
+            }
+            else
+            {
+                return other.Name.CompareTo(this.Name);
+            }
         }
     }
 }

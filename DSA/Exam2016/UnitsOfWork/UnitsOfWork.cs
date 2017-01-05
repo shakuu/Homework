@@ -11,7 +11,14 @@ namespace UnitsOfWork
     {
         public int Compare(GameUnit x, GameUnit y)
         {
-            return y.Attack - x.Attack;
+            if (x.Attack != y.Attack)
+            {
+                return y.Attack - x.Attack;
+            }
+            else
+            {
+                return -x.Name.CompareTo(y.Name);
+            }
         }
     }
 
@@ -32,12 +39,14 @@ namespace UnitsOfWork
         private const string PowerCommand = "power";
 
         private static Dictionary<string, GameUnit> unitsDictionaryByUniqueName;
-        private static SortedDictionary<int, HashSet<GameUnit>> unitsDictionaryByAttack;
+        private static Dictionary<string, SortedSet<GameUnit>> unitsDictionaryByUnitType;
+        private static SortedSet<GameUnit> unitsByAttack;
 
         public static void Main()
         {
             unitsDictionaryByUniqueName = new Dictionary<string, GameUnit>();
-            unitsDictionaryByAttack = new SortedDictionary<int, HashSet<GameUnit>>(new IntReverseComparer());
+            unitsDictionaryByUnitType = new Dictionary<string, SortedSet<GameUnit>>();
+            unitsByAttack = new SortedSet<GameUnit>();
 
             var engineIsRunning = true;
             while (engineIsRunning)
@@ -54,6 +63,12 @@ namespace UnitsOfWork
                         break;
                     case UnitsOfWork.RemoveCommand:
                         UnitsOfWork.HandleRemoveCommand(nextCommandWords);
+                        break;
+                    case UnitsOfWork.FindCommand:
+                        UnitsOfWork.HandleFindCommand(nextCommandWords);
+                        break;
+                    case UnitsOfWork.PowerCommand:
+                        UnitsOfWork.HandlePowerCommand(nextCommandWords);
                         break;
                     default:
                         break;
@@ -76,13 +91,15 @@ namespace UnitsOfWork
 
                 UnitsOfWork.unitsDictionaryByUniqueName.Add(newUnit.Name, newUnit);
 
-                if (!UnitsOfWork.unitsDictionaryByAttack.ContainsKey(commandWordsAttackValue))
+                if (!UnitsOfWork.unitsDictionaryByUnitType.ContainsKey(commandWords[2]))
                 {
-                    UnitsOfWork.unitsDictionaryByAttack.Add(commandWordsAttackValue, new HashSet<GameUnit>());
+                    UnitsOfWork.unitsDictionaryByUnitType.Add(commandWords[2], new SortedSet<GameUnit>());
                 }
 
                 // Save names only ? 
-                unitsDictionaryByAttack[commandWordsAttackValue].Add(newUnit);
+                UnitsOfWork.unitsDictionaryByUnitType[commandWords[2]].Add(newUnit);
+
+                UnitsOfWork.unitsByAttack.Add(newUnit);
 
                 // SUCCESS: TheMightyThor added!
                 Console.WriteLine("SUCCESS: {0} added", newUnit.Name);
@@ -100,11 +117,86 @@ namespace UnitsOfWork
             {
                 var unit = UnitsOfWork.unitsDictionaryByUniqueName[commandWords[1]];
 
-                UnitsOfWork.unitsDictionaryByAttack[unit.Attack].RemoveWhere(x => x.Name == unit.Name);
+                UnitsOfWork.unitsDictionaryByUnitType[unit.Type].RemoveWhere(x => x.Name == unit.Name);
+                UnitsOfWork.unitsByAttack.RemoveWhere(x => x.Name == unit.Name);
                 UnitsOfWork.unitsDictionaryByUniqueName.Remove(commandWords[1]);
 
                 Console.WriteLine("SUCCESS: {0} removed!", unit.Name);
             }
+        }
+
+        // find UNIT_TYPE – finds the top 10 units, first ordered by attack in descending order and then by their name in ascending order
+        // Print the results in the following format 
+        // "RESULT: UNIT, UNIT, UNIT" where UNIT should be printed in the format 
+        // "UNIT_NAME[UNIT_TYPE](UNIT_ATTACK)". If no units are found just print 
+        // "RESULT: " (ending with one space)
+        private static void HandleFindCommand(string[] commandWords)
+        {
+            var result = new StringBuilder();
+            result.Append("RESULT: ");
+
+            var typeExists = UnitsOfWork.unitsDictionaryByUnitType.ContainsKey(commandWords[1]);
+            if (!typeExists)
+            {
+                Console.WriteLine(result);
+            }
+            else
+            {
+                var units = UnitsOfWork.unitsDictionaryByUnitType[commandWords[1]];
+                var availableUnitsCount = units.Count;
+                var unitsCount = 0;
+
+                foreach (var unit in units)
+                {
+                    result.Append(unit.ToString());
+                    unitsCount++;
+
+                    if (unitsCount == 10 || unitsCount == availableUnitsCount)
+                    {
+                        break;
+                    }
+                    else
+                    {
+                        result.Append(", ");
+                    }
+                }
+
+                if (result[result.Length - 1] == ' ')
+                {
+                    result[result.Length - 2] = ' ';
+                }
+
+                Console.WriteLine(result.ToString().Trim());
+            }
+        }
+
+        private static void HandlePowerCommand(string[] commandWords)
+        {
+            var unitsToPrintCount = int.Parse(commandWords[1]);
+
+            var result = new StringBuilder();
+            result.Append("RESULT: ");
+
+            var unitsCount = 0;
+            foreach (var unit in UnitsOfWork.unitsByAttack)
+            {
+                if (unitsCount < unitsToPrintCount)
+                {
+                    if (unitsCount != 0)
+                    {
+                        result.Append(", ");
+                    }
+
+                    result.Append(unit.ToString());
+                    unitsCount++;
+                }
+                else
+                {
+                    break;
+                }
+            }
+
+            Console.WriteLine(result);
         }
     }
 }
