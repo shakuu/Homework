@@ -75,12 +75,12 @@ namespace OfficeSpace
 
         private static ICollection<int> FindTasksWithoutDependencies(ICollection<int>[] dependencies, IList<bool> completed)
         {
-            var tasksWithoutDependencies = new HashSet<int>();
+            var tasksWithoutDependencies = new LinkedList<int>();
             for (int i = 1; i < dependencies.Length; i++)
             {
                 if (dependencies[i].Count == 0 && !completed[i])
                 {
-                    tasksWithoutDependencies.Add(i);
+                    tasksWithoutDependencies.AddLast(i);
                 }
             }
 
