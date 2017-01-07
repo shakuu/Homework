@@ -7,6 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UnitsOfWork", "UnitsOfWork\
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OfficeSpace", "OfficeSpace\OfficeSpace.csproj", "{A34609DB-8E1F-4FEF-AF4E-22946BFCB16F}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Balls", "Balls\Balls.csproj", "{8DB8470B-0284-49EB-AB7D-09A2A649E8D4}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,10 @@ Global
 		{A34609DB-8E1F-4FEF-AF4E-22946BFCB16F}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A34609DB-8E1F-4FEF-AF4E-22946BFCB16F}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{A34609DB-8E1F-4FEF-AF4E-22946BFCB16F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8DB8470B-0284-49EB-AB7D-09A2A649E8D4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8DB8470B-0284-49EB-AB7D-09A2A649E8D4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8DB8470B-0284-49EB-AB7D-09A2A649E8D4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8DB8470B-0284-49EB-AB7D-09A2A649E8D4}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
