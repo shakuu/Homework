@@ -55,8 +55,12 @@ namespace PositiveStrings
                     }
                     else if (isAfterTemplate)
                     {
+                        nextNumber = int.Parse(nextNumberString.ToString());
+
                         isAfterTemplate = false;
                         isBeforeTemplate = true;
+
+                        // TODO: Replace question marks here.
                     }
 
                     isSeparator = true;
@@ -84,6 +88,11 @@ namespace PositiveStrings
                         nextNumberString.Append(nextChar);
                     }
                 }
+            }
+
+            if (isTemplate)
+            {
+                // TODO: Replace question marks here. ( in case the entire template is only question marks )
             }
         }
     }
