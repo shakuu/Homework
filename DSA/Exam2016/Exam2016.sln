@@ -11,6 +11,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Balls", "Balls\Balls.csproj
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PositiveStrings", "PositiveStrings\PositiveStrings.csproj", "{66C456F9-6FEA-4358-BE9E-BC7491187C5C}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PositiveStrings2", "PositiveStrings2\PositiveStrings2.csproj", "{3870A56C-ECD4-4076-8E63-D63151967E45}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -33,6 +35,10 @@ Global
 		{66C456F9-6FEA-4358-BE9E-BC7491187C5C}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{66C456F9-6FEA-4358-BE9E-BC7491187C5C}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{66C456F9-6FEA-4358-BE9E-BC7491187C5C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3870A56C-ECD4-4076-8E63-D63151967E45}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3870A56C-ECD4-4076-8E63-D63151967E45}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3870A56C-ECD4-4076-8E63-D63151967E45}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3870A56C-ECD4-4076-8E63-D63151967E45}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -72,20 +72,24 @@ namespace PositiveStrings
                         if (isSeparator)
                         {
                             previousNumberString.Clear();
+                            previousNumber = -1;
                             isSeparator = false;
                         }
 
                         previousNumberString.Append(nextChar);
+                        previousNumber = int.Parse(previousNumberString.ToString());
                     }
                     else if (isAfterTemplate)
                     {
                         if (isSeparator)
                         {
                             nextNumberString.Clear();
+                            nextNumber = -1;
                             isSeparator = false;
                         }
 
                         nextNumberString.Append(nextChar);
+                        nextNumber = int.Parse(nextNumberString.ToString());
                     }
                 }
             }
