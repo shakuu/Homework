@@ -13,6 +13,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PositiveStrings", "Positive
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PositiveStrings2", "PositiveStrings2\PositiveStrings2.csproj", "{3870A56C-ECD4-4076-8E63-D63151967E45}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Kruskal", "Kruskal\Kruskal.csproj", "{6C3247CA-621B-4B0D-9D70-E8778A14A6EB}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -39,6 +41,10 @@ Global
 		{3870A56C-ECD4-4076-8E63-D63151967E45}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{3870A56C-ECD4-4076-8E63-D63151967E45}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{3870A56C-ECD4-4076-8E63-D63151967E45}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6C3247CA-621B-4B0D-9D70-E8778A14A6EB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6C3247CA-621B-4B0D-9D70-E8778A14A6EB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6C3247CA-621B-4B0D-9D70-E8778A14A6EB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6C3247CA-621B-4B0D-9D70-E8778A14A6EB}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
