@@ -11,6 +11,7 @@ namespace ConferenceGraph
             var inputNM = Console.ReadLine().Split(' ').ToArray();
             var devsCount = int.Parse(inputNM[0]);
 
+            // Memory limit 92/ 100.
             var devs = Enumerable.Range(0, devsCount).Select(x => new HashSet<int>()).ToArray();
             var linksCount = int.Parse(inputNM[1]);
             for (int i = 0; i < linksCount; i++)
