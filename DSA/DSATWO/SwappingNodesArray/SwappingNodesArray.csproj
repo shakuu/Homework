@@ -4,11 +4,11 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{6C3247CA-621B-4B0D-9D70-E8778A14A6EB}</ProjectGuid>
+    <ProjectGuid>{6FD16704-13D7-4AA2-9455-F81A0C9F3EB1}</ProjectGuid>
     <OutputType>Exe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Kruskal</RootNamespace>
-    <AssemblyName>Kruskal</AssemblyName>
+    <RootNamespace>SwappingNodesArray</RootNamespace>
+    <AssemblyName>SwappingNodesArray</AssemblyName>
     <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
@@ -43,7 +43,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Kruskal.cs" />
+    <Compile Include="SwappingNodes.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
