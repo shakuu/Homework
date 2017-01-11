@@ -15,6 +15,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SwappingNodesArray", "Swapp
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ConferenceGraph", "ConferenceGraph\ConferenceGraph.csproj", "{909BFB66-9364-44D1-839B-8399F53CCEFA}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SwappingNodesNoClass", "SwappingNodesNoClass\SwappingNodesNoClass.csproj", "{D1E71EA3-4473-4CF3-8ABB-815E0C5554A0}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -45,6 +47,10 @@ Global
 		{909BFB66-9364-44D1-839B-8399F53CCEFA}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{909BFB66-9364-44D1-839B-8399F53CCEFA}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{909BFB66-9364-44D1-839B-8399F53CCEFA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D1E71EA3-4473-4CF3-8ABB-815E0C5554A0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D1E71EA3-4473-4CF3-8ABB-815E0C5554A0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D1E71EA3-4473-4CF3-8ABB-815E0C5554A0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D1E71EA3-4473-4CF3-8ABB-815E0C5554A0}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
