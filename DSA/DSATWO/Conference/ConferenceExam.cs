@@ -17,7 +17,6 @@ namespace Conference
             var companies = new List<int>();
             companies.Add(-1);
 
-            var nextCompanyIndex = 1;
             var devs = new int[devCount];
             for (int i = 0; i < inputLinesCount; i++)
             {
@@ -30,10 +29,10 @@ namespace Conference
 
                 if (empACompanyIndex == 0 && empBCompanyIndex == 0)
                 {
-                    companies.Add(2);
+                    var nextCompanyIndex = companies.Count;
                     devs[empA] = nextCompanyIndex;
                     devs[empB] = nextCompanyIndex;
-                    nextCompanyIndex++;
+                    companies.Add(2);
                 }
                 else if (empACompanyIndex != 0 && empBCompanyIndex != 0)
                 {
@@ -48,15 +47,19 @@ namespace Conference
 
                     companies[empACompanyIndex] = -1;
                 }
-                else if (empACompanyIndex == 0)
+                else if (empACompanyIndex == 0 && empBCompanyIndex != 0)
                 {
-                    devs[empA] = devs[empB];
-                    companies[devs[empB]]++;
+                    devs[empA] = empBCompanyIndex;
+                    companies[empBCompanyIndex]++;
                 }
-                else if (empBCompanyIndex == 0)
+                else if (empBCompanyIndex == 0 && empACompanyIndex != 0)
                 {
-                    devs[empB] = devs[empA];
-                    companies[devs[empA]]++;
+                    devs[empB] = empACompanyIndex;
+                    companies[empACompanyIndex]++;
+                }
+                else
+                {
+                    throw new ArgumentException();
                 }
             }
 
@@ -70,15 +73,15 @@ namespace Conference
 
             var result = 0;
             var multiplier = devCount;
-            for (int firstIndex = 0; firstIndex < companies.Count - 1; firstIndex++)
+            for (int nextCompanyIndex = 0; nextCompanyIndex < companies.Count; nextCompanyIndex++)
             {
-                if (companies[firstIndex] < 0)
+                if (companies[nextCompanyIndex] <= 0)
                 {
                     continue;
                 }
 
-                multiplier -= companies[firstIndex];
-                result += companies[firstIndex] * multiplier;
+                multiplier -= companies[nextCompanyIndex];
+                result += companies[nextCompanyIndex] * multiplier;
             }
 
             //var result = 0;

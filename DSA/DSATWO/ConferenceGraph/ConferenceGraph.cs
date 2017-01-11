@@ -69,10 +69,10 @@ namespace ConferenceGraph
 
             var result = 0;
             var multiplier = devsCount;
-            for (int nextDev = 0; nextDev < companies.Count - 1; nextDev++)
+            for (int nextCompanyIndex = 0; nextCompanyIndex < companies.Count - 1; nextCompanyIndex++)
             {
-                multiplier -= companies[nextDev];
-                result += companies[nextDev] * multiplier;
+                multiplier -= companies[nextCompanyIndex];
+                result += companies[nextCompanyIndex] * multiplier;
             }
 
             Console.WriteLine(result);
