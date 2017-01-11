@@ -13,6 +13,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Pizza", "Pizza\Pizza.csproj
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SwappingNodesArray", "SwappingNodesArray\SwappingNodesArray.csproj", "{6FD16704-13D7-4AA2-9455-F81A0C9F3EB1}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ConferenceGraph", "ConferenceGraph\ConferenceGraph.csproj", "{909BFB66-9364-44D1-839B-8399F53CCEFA}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -39,6 +41,10 @@ Global
 		{6FD16704-13D7-4AA2-9455-F81A0C9F3EB1}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{6FD16704-13D7-4AA2-9455-F81A0C9F3EB1}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{6FD16704-13D7-4AA2-9455-F81A0C9F3EB1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{909BFB66-9364-44D1-839B-8399F53CCEFA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{909BFB66-9364-44D1-839B-8399F53CCEFA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{909BFB66-9364-44D1-839B-8399F53CCEFA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{909BFB66-9364-44D1-839B-8399F53CCEFA}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

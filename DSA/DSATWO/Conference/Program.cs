@@ -68,40 +68,74 @@ namespace Conference
                 }
             }
 
-            companies.Sort();
-
-            var toBreak = false;
-            var initial = devCount;
             var result = 0;
-            for (int i = 1; i < companies.Count; i++)
+            var multiplier = devCount;
+            for (int firstIndex = 0; firstIndex < companies.Count - 1; firstIndex++)
             {
-                var currentValue = companies[i];
-                if (currentValue < 0)
+                if (companies[firstIndex] < 0)
                 {
                     continue;
                 }
 
-                while (currentValue > 0)
-                {
-                    initial -= currentValue;
-                    if (initial < 0)
-                    {
-                        initial += currentValue;
-                        result += initial;
-
-                        toBreak = true;
-                        break;
-                    }
-
-                    result += initial;
-                    currentValue--;
-                }
-
-                if (toBreak)
-                {
-                    break;
-                }
+                multiplier -= companies[firstIndex];
+                result += companies[firstIndex] * multiplier;
             }
+
+            //var result = 0;
+            //for (int firstIndex = 0; firstIndex < companies.Count; firstIndex++)
+            //{
+            //    if (companies[firstIndex] < 0)
+            //    {
+            //        continue;
+            //    }
+
+            //    for (int secondIndex = firstIndex + 1; secondIndex < companies.Count; secondIndex++)
+            //    {
+            //        if (companies[secondIndex] < 0)
+            //        {
+            //            continue;
+            //        }
+
+            //        var nextValue = companies[firstIndex] * companies[secondIndex];
+            //        result += nextValue;
+            //    }
+            //}
+
+
+            //companies.Sort();
+
+            //var toBreak = false;
+            //var initial = devCount;
+            //var result = 0;
+            //for (int i = 1; i < companies.Count; i++)
+            //{
+            //    var currentValue = companies[i];
+            //    if (currentValue < 0)
+            //    {
+            //        continue;
+            //    }
+
+            //    while (currentValue > 0)
+            //    {
+            //        initial -= currentValue;
+            //        if (initial < 0)
+            //        {
+            //            initial += currentValue;
+            //            result += initial;
+
+            //            toBreak = true;
+            //            break;
+            //        }
+
+            //        result += initial;
+            //        currentValue--;
+            //    }
+
+            //    if (toBreak)
+            //    {
+            //        break;
+            //    }
+            //}
 
             Console.WriteLine(result);
         }
