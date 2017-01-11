@@ -21,40 +21,42 @@ namespace Conference
             for (int i = 0; i < inputLinesCount; i++)
             {
                 var nextCommand = Console.ReadLine().Split(' ');
-                var empA = int.Parse(nextCommand[0]);
-                var empB = int.Parse(nextCommand[1]);
+                var empAIndex = int.Parse(nextCommand[0]);
+                var empBIndex = int.Parse(nextCommand[1]);
 
-                var empACompanyIndex = devs[empA];
-                var empBCompanyIndex = devs[empB];
+                var empACompanyIndex = devs[empAIndex];
+                var empBCompanyIndex = devs[empBIndex];
 
                 if (empACompanyIndex == 0 && empBCompanyIndex == 0)
                 {
                     var nextCompanyIndex = companies.Count;
-                    devs[empA] = nextCompanyIndex;
-                    devs[empB] = nextCompanyIndex;
+                    devs[empAIndex] = nextCompanyIndex;
+                    devs[empBIndex] = nextCompanyIndex;
                     companies.Add(2);
                 }
                 else if (empACompanyIndex != 0 && empBCompanyIndex != 0)
                 {
+                    var reassignedEmployeesCounter = 0;
                     for (int k = 0; k < devs.Length; k++)
                     {
                         if (devs[k] == empACompanyIndex)
                         {
                             devs[k] = empBCompanyIndex;
-                            companies[empBCompanyIndex]++;
+                            reassignedEmployeesCounter++;
                         }
                     }
 
-                    companies[empACompanyIndex] = -1;
+                    companies[empBCompanyIndex] += reassignedEmployeesCounter;
+                    companies[empACompanyIndex] -= reassignedEmployeesCounter;
                 }
                 else if (empACompanyIndex == 0 && empBCompanyIndex != 0)
                 {
-                    devs[empA] = empBCompanyIndex;
+                    devs[empAIndex] = empBCompanyIndex;
                     companies[empBCompanyIndex]++;
                 }
                 else if (empBCompanyIndex == 0 && empACompanyIndex != 0)
                 {
-                    devs[empB] = empACompanyIndex;
+                    devs[empBIndex] = empACompanyIndex;
                     companies[empACompanyIndex]++;
                 }
                 else
@@ -71,9 +73,10 @@ namespace Conference
                 }
             }
 
-            var result = 0;
+            // long == 100
+            long result = 0;
             var multiplier = devCount;
-            for (int nextCompanyIndex = 0; nextCompanyIndex < companies.Count; nextCompanyIndex++)
+            for (int nextCompanyIndex = 1; nextCompanyIndex < companies.Count; nextCompanyIndex++)
             {
                 if (companies[nextCompanyIndex] <= 0)
                 {
