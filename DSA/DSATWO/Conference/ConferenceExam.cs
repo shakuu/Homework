@@ -76,13 +76,14 @@ namespace Conference
             var multiplier = devCount;
             for (int nextCompanyIndex = 1; nextCompanyIndex < companies.Count; nextCompanyIndex++)
             {
-                if (companies[nextCompanyIndex] <= 0)
+                var employeeCount = companies[nextCompanyIndex];
+                if (employeeCount <= 0)
                 {
                     continue;
                 }
 
-                multiplier -= companies[nextCompanyIndex];
-                result += companies[nextCompanyIndex] * multiplier;
+                multiplier -= employeeCount;
+                result += employeeCount * multiplier;
             }
 
             //var result = 0;
