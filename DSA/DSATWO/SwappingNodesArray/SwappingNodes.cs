@@ -29,7 +29,7 @@ namespace SwappingNodesArray
             }
             else if (pivotNode.Next == null)
             {
-                this.HandlePivotLasNode(pivotNode);
+                this.HandlePivotLastNode(pivotNode);
             }
             else
             {
@@ -82,7 +82,7 @@ namespace SwappingNodesArray
             this.firstNode.Previous = null;
         }
 
-        private void HandlePivotLasNode(LinkedNode pivotNode)
+        private void HandlePivotLastNode(LinkedNode pivotNode)
         {
             pivotNode.Next = this.firstNode;
             this.firstNode.Previous = pivotNode;
