@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Conference
 {
-    class Program
+    class ConferenceExam
     {
         static void Main(string[] args)
         {
