@@ -1,14 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Conference
 {
-    class ConferenceExam
+    public class ConferenceExam
     {
-        static void Main(string[] args)
+        public static void Main()
         {
             var input = Console.ReadLine().Split(' ').ToArray();
             var devCount = int.Parse(input[0]);
