@@ -197,10 +197,10 @@ namespace PlayerRanking
                 StoredPlayersByType.Add(commandWords[2], new SortedSet<Player>(new PlayerComparer()));
             }
 
-            //if (StoredPlayersByType[commandWords[2]].Contains(newPlayer))
-            //{
-            //    return;
-            //}
+            if (StoredPlayersByType[commandWords[2]].Contains(newPlayer))
+            {
+                return;
+            }
 
             StoredPlayersByType[commandWords[2]].Add(newPlayer);
 
