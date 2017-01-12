@@ -97,7 +97,7 @@ namespace PlayerRanking
 
     public class PlayerRanking
     {
-        private static SortedDictionary<string, SortedSet<Player>> StoredPlayersByType = new SortedDictionary<string, SortedSet<Player>>();
+        private static Dictionary<string, SortedSet<Player>> StoredPlayersByType = new Dictionary<string, SortedSet<Player>>();
         //private static List<Player> PlayersByPosition = new List<Player>();
 
         private static BigList<Player> PlayersByPosition = new BigList<Player>();
@@ -191,16 +191,16 @@ namespace PlayerRanking
             var positionValue = int.Parse(commandWords[4]);
             var newPlayer = new Player(commandWords[1], commandWords[2], int.Parse(commandWords[3]), positionValue);
 
-            var nameExists = PlayerRanking.StoredPlayersByType.ContainsKey(commandWords[2]);
-            if (!nameExists)
+            var typeExists = PlayerRanking.StoredPlayersByType.ContainsKey(commandWords[2]);
+            if (!typeExists)
             {
                 StoredPlayersByType.Add(commandWords[2], new SortedSet<Player>(new PlayerComparer()));
             }
 
-            if (StoredPlayersByType[commandWords[2]].Contains(newPlayer))
-            {
-                return;
-            }
+            //if (StoredPlayersByType[commandWords[2]].Contains(newPlayer))
+            //{
+            //    return;
+            //}
 
             StoredPlayersByType[commandWords[2]].Add(newPlayer);
 
