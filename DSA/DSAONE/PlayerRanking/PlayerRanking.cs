@@ -75,7 +75,8 @@ namespace PlayerRanking
     {
         public int Compare(Player x, Player y)
         {
-            var nameCompare = x.Name.ToLower().CompareTo(y.Name.ToLower());
+            // toLower -> 60 / 100
+            var nameCompare = x.Name.CompareTo(y.Name);
             if (nameCompare != 0)
             {
                 return nameCompare;
