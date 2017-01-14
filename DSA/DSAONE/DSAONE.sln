@@ -13,6 +13,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Rings", "Rings\Rings.csproj
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Documentation", "Documentation\Documentation.csproj", "{33296EBD-03B9-485B-A32E-A316F9546236}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GoldFever3", "GoldFever3\GoldFever3.csproj", "{A7831FA4-24D0-4B94-B78E-27B5B5560AA1}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -39,6 +41,10 @@ Global
 		{33296EBD-03B9-485B-A32E-A316F9546236}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{33296EBD-03B9-485B-A32E-A316F9546236}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{33296EBD-03B9-485B-A32E-A316F9546236}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A7831FA4-24D0-4B94-B78E-27B5B5560AA1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A7831FA4-24D0-4B94-B78E-27B5B5560AA1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A7831FA4-24D0-4B94-B78E-27B5B5560AA1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A7831FA4-24D0-4B94-B78E-27B5B5560AA1}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
