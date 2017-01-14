@@ -15,6 +15,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Documentation", "Documentat
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GoldFever3", "GoldFever3\GoldFever3.csproj", "{A7831FA4-24D0-4B94-B78E-27B5B5560AA1}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GoldFever4", "GoldFever4\GoldFever4.csproj", "{D26D29A7-68C8-4F79-A905-EF2B78411CF2}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GoldFever5", "GoldFever5\GoldFever5.csproj", "{3823D94E-3AA7-49FE-A6F5-DAF81CE2CCCE}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -45,6 +49,14 @@ Global
 		{A7831FA4-24D0-4B94-B78E-27B5B5560AA1}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A7831FA4-24D0-4B94-B78E-27B5B5560AA1}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{A7831FA4-24D0-4B94-B78E-27B5B5560AA1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D26D29A7-68C8-4F79-A905-EF2B78411CF2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D26D29A7-68C8-4F79-A905-EF2B78411CF2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D26D29A7-68C8-4F79-A905-EF2B78411CF2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D26D29A7-68C8-4F79-A905-EF2B78411CF2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3823D94E-3AA7-49FE-A6F5-DAF81CE2CCCE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3823D94E-3AA7-49FE-A6F5-DAF81CE2CCCE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3823D94E-3AA7-49FE-A6F5-DAF81CE2CCCE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3823D94E-3AA7-49FE-A6F5-DAF81CE2CCCE}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
