@@ -4,120 +4,87 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace GoldFever3
+namespace GoldFever3Again
 {
-    public class ResultPair
+    public class GoldFever3Again
     {
-        public ResultPair(long profit, int ounces)
-        {
-            this.Profit = profit;
-            this.Ounces = ounces;
-        }
+        private static int daysCount;
+        private static int[] quotes;
+        private static long bestOutcome;
 
-        public long Profit { get; set; }
-
-        public int Ounces { get; set; }
-
-        public override int GetHashCode()
-        {
-            var hash = 199;
-
-            unchecked
-            {
-                hash = hash * 257 + this.Profit.GetHashCode();
-                hash = hash * 257 + this.Ounces.GetHashCode();
-            }
-
-            return hash;
-        }
-
-        public override bool Equals(object obj)
-        {
-            var otherResultPair = obj as ResultPair;
-            if (otherResultPair == null)
-            {
-                return false;
-            }
-
-            var profitIsEqual = this.Profit == otherResultPair.Profit;
-            var ouncesAreEqual = this.Ounces == otherResultPair.Ounces;
-
-            return profitIsEqual && ouncesAreEqual;
-        }
-    }
-
-    public class GoldFever3
-    {
         public static void Main()
         {
-            var daysCount = int.Parse(Console.ReadLine());
-            var quotes = Console.ReadLine().Split(' ').Select(int.Parse).ToArray();
+            daysCount = int.Parse(Console.ReadLine());
+            quotes = Console.ReadLine().Split(' ').Select(int.Parse).ToArray();
 
-            // item1 = profit, item2 = ounces
-            long bestProfit = 0;
+            //GenerateOutcome(0, 0, 0);
+            //GenerateOutcome(0, -quotes[0], 1);
 
-            var results = new HashSet<ResultPair>();
-            results.Add(new ResultPair(0, 0));
-            results.Add(new ResultPair(-quotes[0], 1));
+            var profitStack = new Stack<long>();
+            profitStack.Push(0);
+            profitStack.Push(-quotes[0]);
 
-            for (int quoteIndex = 1; quoteIndex < quotes.Length; quoteIndex++)
+            var ouncesStack = new Stack<int>();
+            ouncesStack.Push(0);
+            ouncesStack.Push(1);
+
+            var quotesStack = new Stack<int>();
+            quotesStack.Push(0);
+            quotesStack.Push(0);
+
+            var nextQuoteIndex = 0;
+            while (profitStack.Count > 0)
             {
-                var nextQuote = quotes[quoteIndex];
+                var profit = profitStack.Pop();
+                var ounces = ouncesStack.Pop();
+                var quoteIndex = quotesStack.Pop();
 
-                var nextResultsSet = new HashSet<ResultPair>();
-                foreach (var result in results)
+                if (bestOutcome < profit)
                 {
-                    nextResultsSet.Add(new ResultPair(result.Profit - nextQuote, result.Ounces + 1));
-                    nextResultsSet.Add(result);
-                    nextResultsSet.Add(new ResultPair(result.Ounces * nextQuote + result.Profit, 0));
+                    bestOutcome = profit;
                 }
 
-                results = nextResultsSet;
-            }
-
-            foreach (var result in results)
-            {
-                if (bestProfit < result.Profit)
+                nextQuoteIndex = quoteIndex + 1;
+                if (daysCount <= nextQuoteIndex)
                 {
-                    bestProfit = result.Profit;
+                    continue;
                 }
+
+                var nextQuote = GoldFever3Again.quotes[nextQuoteIndex];
+
+                profitStack.Push(profit);
+                ouncesStack.Push(ounces);
+                quotesStack.Push(nextQuoteIndex);
+
+                profitStack.Push(profit - nextQuote);
+                ouncesStack.Push(ounces + 1);
+                quotesStack.Push(nextQuoteIndex);
+
+                profitStack.Push(ounces * nextQuote + profit);
+                ouncesStack.Push(0);
+                quotesStack.Push(nextQuoteIndex);
             }
 
-            //var tupleQueue = new Queue<Tuple<long, long>>();
-            //tupleQueue.Enqueue(new Tuple<long, long>(0, 0));
-            //tupleQueue.Enqueue(new Tuple<long, long>(-quotes[0], 1));
+            Console.WriteLine(bestOutcome);
+        }
 
-            //for (int quoteIndex = 1; quoteIndex < quotes.Length; quoteIndex++)
-            //{
-            //    var nextQuote = quotes[quoteIndex];
+        private static void GenerateOutcome(int currentQuoteIndex, long profit, int ounces)
+        {
+            if (bestOutcome < profit)
+            {
+                bestOutcome = profit;
+            }
 
-            //    var resultingQueue = new Queue<Tuple<long, long>>();
-            //    while (tupleQueue.Count > 0)
-            //    {
-            //        var nextTuple = tupleQueue.Dequeue();
-            //        if (bestProfit < nextTuple.Item1)
-            //        {
-            //            bestProfit = nextTuple.Item1;
-            //        }
+            var nextQuoteIndex = currentQuoteIndex + 1;
+            if (daysCount <= nextQuoteIndex)
+            {
+                return;
+            }
 
-            //        resultingQueue.Enqueue(new Tuple<long, long>(nextTuple.Item1 - nextQuote, nextTuple.Item2 + 1));
-            //        resultingQueue.Enqueue(nextTuple);
-            //        resultingQueue.Enqueue(new Tuple<long, long>(nextTuple.Item2 * nextQuote + nextTuple.Item1, 0));
-            //    }
-
-            //    tupleQueue = resultingQueue;
-            //}
-
-            //while (tupleQueue.Count > 0)
-            //{
-            //    var nextTuple = tupleQueue.Dequeue();
-            //    if (bestProfit < nextTuple.Item1)
-            //    {
-            //        bestProfit = nextTuple.Item1;
-            //    }
-            //}
-
-            Console.WriteLine(bestProfit);
+            var nextQuote = GoldFever3Again.quotes[nextQuoteIndex];
+            GoldFever3Again.GenerateOutcome(nextQuoteIndex, profit, ounces);
+            GoldFever3Again.GenerateOutcome(nextQuoteIndex, profit - nextQuote, ounces + 1);
+            GoldFever3Again.GenerateOutcome(nextQuoteIndex, ounces * nextQuote + profit, 0);
         }
     }
 }
