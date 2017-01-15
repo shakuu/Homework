@@ -11,6 +11,7 @@ namespace GoldFever3Again
         private static int daysCount;
         private static int[] quotes;
         private static long bestOutcome;
+        private static int bestOutcomeOunces;
 
         public static void Main()
         {
@@ -42,6 +43,7 @@ namespace GoldFever3Again
                 if (bestOutcome < profit)
                 {
                     bestOutcome = profit;
+                    bestOutcomeOunces = ounces;
                 }
 
                 nextQuoteIndex = quoteIndex + 1;
@@ -52,10 +54,10 @@ namespace GoldFever3Again
 
                 var nextQuote = GoldFever3Again.quotes[nextQuoteIndex];
 
-                profitStack.Push(profit);
-                ouncesStack.Push(ounces);
-                quotesStack.Push(nextQuoteIndex);
-
+                //profitStack.Push(profit);
+                //ouncesStack.Push(ounces);
+                //quotesStack.Push(nextQuoteIndex);
+                
                 profitStack.Push(profit - nextQuote);
                 ouncesStack.Push(ounces + 1);
                 quotesStack.Push(nextQuoteIndex);

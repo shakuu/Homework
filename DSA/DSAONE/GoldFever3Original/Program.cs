@@ -64,40 +64,15 @@ namespace GoldFever3
             {
                 var nextQuote = quotes[quoteIndex];
 
-                var currentBestOunces = new ResultPair(long.MinValue, -1);
-                var currentBestProfit = new ResultPair(long.MinValue, 1);
                 var nextResultsSet = new HashSet<ResultPair>();
                 foreach (var result in results)
                 {
-                    var currentPairs = new LinkedList<ResultPair>();
-                    var buyPair = new ResultPair(result.Profit - nextQuote, result.Ounces + 1);
-                    var sellPair = new ResultPair(result.Ounces * nextQuote + result.Profit, 0);
-
-                    currentPairs.AddLast(buyPair);
-                    currentPairs.AddLast(sellPair);
-                    currentPairs.AddLast(result);
-
-                    foreach (var pair in currentPairs)
-                    {
-                        if (currentBestOunces.Ounces < pair.Ounces)
-                        {
-                            currentBestOunces = pair;
-                        }
-
-                        //var bestProfitCoefficient = (double)(currentBestProfit.Profit) / (double)currentBestProfit.Ounces;
-                        //var pairCoefficient = (double)(pair.Profit) / (double)pair.Ounces;
-                        if (currentBestProfit.Profit < pair.Profit)
-                        {
-                            currentBestProfit = pair;
-                        }
-                    }
-                    //nextResultsSet.Add(new ResultPair(result.Profit - nextQuote, result.Ounces + 1));
-                    //nextResultsSet.Add(result);
-                    //nextResultsSet.Add(new ResultPair(result.Ounces * nextQuote + result.Profit, 0));
+                    nextResultsSet.Add(new ResultPair(result.Profit - nextQuote, result.Ounces + 1));
+                    nextResultsSet.Add(result);
+                    nextResultsSet.Add(new ResultPair(result.Ounces * nextQuote + result.Profit, 0));
                 }
 
-                // best ounces + best profit only
-                results = new HashSet<ResultPair>() { currentBestOunces, currentBestProfit };
+                results = nextResultsSet;
             }
 
             foreach (var result in results)
