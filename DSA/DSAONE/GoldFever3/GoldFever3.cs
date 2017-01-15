@@ -66,6 +66,8 @@ namespace GoldFever3
 
                 var currentBestOunces = new ResultPair(long.MinValue, -1);
                 var currentBestProfit = new ResultPair(long.MinValue, 1);
+                var currentBestCoefficient = new ResultPair(long.MinValue, 1);
+
                 var nextResultsSet = new HashSet<ResultPair>();
                 foreach (var result in results)
                 {
@@ -86,6 +88,11 @@ namespace GoldFever3
 
                         //var bestProfitCoefficient = (double)(currentBestProfit.Profit) / (double)currentBestProfit.Ounces;
                         //var pairCoefficient = (double)(pair.Profit) / (double)pair.Ounces;
+                        //if (bestProfitCoefficient < pairCoefficient)
+                        //{
+                        //    currentBestCoefficient = pair;
+                        //}
+
                         if (currentBestProfit.Profit < pair.Profit)
                         {
                             currentBestProfit = pair;
@@ -97,7 +104,7 @@ namespace GoldFever3
                 }
 
                 // best ounces + best profit only
-                results = new HashSet<ResultPair>() { currentBestOunces, currentBestProfit };
+                results = new HashSet<ResultPair>() { currentBestOunces, currentBestProfit, currentBestCoefficient };
             }
 
             foreach (var result in results)
