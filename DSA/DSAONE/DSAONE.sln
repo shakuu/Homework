@@ -21,6 +21,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GoldFever5", "GoldFever5\Go
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GoldFever3Again", "GoldFever3Again\GoldFever3Again.csproj", "{58EE4537-15E4-43E6-B3B1-23E108EEA3BC}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GoldFever3Original", "GoldFever3Original\GoldFever3Original.csproj", "{5A6E504D-E6D4-4FAE-92DB-9FF1BE2D08EE}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -63,6 +65,10 @@ Global
 		{58EE4537-15E4-43E6-B3B1-23E108EEA3BC}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{58EE4537-15E4-43E6-B3B1-23E108EEA3BC}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{58EE4537-15E4-43E6-B3B1-23E108EEA3BC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5A6E504D-E6D4-4FAE-92DB-9FF1BE2D08EE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5A6E504D-E6D4-4FAE-92DB-9FF1BE2D08EE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5A6E504D-E6D4-4FAE-92DB-9FF1BE2D08EE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5A6E504D-E6D4-4FAE-92DB-9FF1BE2D08EE}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
