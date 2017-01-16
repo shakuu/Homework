@@ -9,17 +9,17 @@ namespace Documentation2
     public class Documentation2
     {
         private const int Mask = 32;
-        private const int AlphabetLength = 26;
+        //private const int AlphabetLength = 26;
 
-        private static Dictionary<int, int> alphabetIndexes;
+        //private static Dictionary<int, int> alphabetIndexes;
 
         public static void Main()
         {
-            alphabetIndexes = new Dictionary<int, int>();
-            for (int charCode = 'a'; charCode <= 'z'; charCode++)
-            {
-                alphabetIndexes.Add(charCode, charCode - 'a');
-            }
+            //alphabetIndexes = new Dictionary<int, int>();
+            //for (int charCode = 'a'; charCode <= 'z'; charCode++)
+            //{
+            //    alphabetIndexes.Add(charCode, charCode - 'a');
+            //}
 
             var inputString = Console.ReadLine().ToCharArray();
             var inputLength = inputString.Length;
@@ -58,7 +58,7 @@ namespace Documentation2
                     break;
                 }
 
-                cost += GetCost(leftChar, rightChar);
+                cost += GetCostNoDictionary(leftChar, rightChar);
 
                 leftCrawlIndex++;
                 rightCrawlIndex--;
@@ -67,32 +67,43 @@ namespace Documentation2
             Console.WriteLine(cost);
         }
 
-        private static int GetCost(char a, char b)
+        private static int GetCostNoDictionary(char a, char b)
         {
             var lowerA = a | Mask;
             var lowerB = b | Mask;
 
-            var indexA = alphabetIndexes[lowerA];
-            var indexB = alphabetIndexes[lowerB];
+            var difference = Math.Abs(lowerA- lowerB);
+            var difference2 = 26 - difference;
 
-            if (indexA == indexB)
-            {
-                return 0;
-            }
-            else if (indexA < indexB)
-            {
-                var optionA = indexB - indexA;
-                var optionB = indexA + AlphabetLength - indexB;
-
-                return optionA >= optionB ? optionB : optionA;
-            }
-            else
-            {
-                var optionA = indexA - indexB;
-                var optionB = indexB + AlphabetLength - indexA;
-
-                return optionA >= optionB ? optionB : optionA;
-            }
+            return difference >= difference2 ? difference2 : difference;
         }
+
+        //private static int GetCost(char a, char b)
+        //{
+        //    var lowerA = a | Mask;
+        //    var lowerB = b | Mask;
+
+        //    var indexA = alphabetIndexes[lowerA];
+        //    var indexB = alphabetIndexes[lowerB];
+
+        //    if (indexA == indexB)
+        //    {
+        //        return 0;
+        //    }
+        //    else if (indexA < indexB)
+        //    {
+        //        var optionA = indexB - indexA;
+        //        var optionB = indexA + AlphabetLength - indexB;
+
+        //        return optionA >= optionB ? optionB : optionA;
+        //    }
+        //    else
+        //    {
+        //        var optionA = indexA - indexB;
+        //        var optionB = indexB + AlphabetLength - indexA;
+
+        //        return optionA >= optionB ? optionB : optionA;
+        //    }
+        //}
     }
 }
