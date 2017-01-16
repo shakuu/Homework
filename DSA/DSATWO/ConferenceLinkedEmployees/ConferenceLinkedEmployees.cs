@@ -68,34 +68,34 @@ namespace ConferenceLinkedEmployees
             }
 
             var emplyeesCounts = new List<int>();
-            for (int employeeIndex = 0; employeeIndex < totalEmployeeCount; employeeIndex++)
-            {
-                var currentEmployee = employees[employeeIndex];
-                if (currentEmployee.IsCount)
-                {
-                    continue;
-                }
+            //for (int employeeIndex = 0; employeeIndex < totalEmployeeCount; employeeIndex++)
+            //{
+            //    var currentEmployee = employees[employeeIndex];
+            //    if (currentEmployee.IsCount)
+            //    {
+            //        continue;
+            //    }
 
-                var employeeCount = 1;
+            //    var employeeCount = 1;
 
-                var previousEmployee = currentEmployee.PreviousEmployee;
-                while (previousEmployee != null)
-                {
-                    employeeCount++;
-                    previousEmployee.IsCount = true;
-                    previousEmployee = previousEmployee.PreviousEmployee;
-                }
+            //    var previousEmployee = currentEmployee.PreviousEmployee;
+            //    while (previousEmployee != null)
+            //    {
+            //        employeeCount++;
+            //        previousEmployee.IsCount = true;
+            //        previousEmployee = previousEmployee.PreviousEmployee;
+            //    }
 
-                var nextEmployee = currentEmployee.NextEmployee;
-                while (nextEmployee != null)
-                {
-                    employeeCount++;
-                    nextEmployee.IsCount = true;
-                    nextEmployee = nextEmployee.NextEmployee;
-                }
+            //    var nextEmployee = currentEmployee.NextEmployee;
+            //    while (nextEmployee != null)
+            //    {
+            //        employeeCount++;
+            //        nextEmployee.IsCount = true;
+            //        nextEmployee = nextEmployee.NextEmployee;
+            //    }
 
-                emplyeesCounts.Add(employeeCount);
-            }
+            //    emplyeesCounts.Add(employeeCount);
+            //}
 
             long result = 0;
             var remainingEmployees = totalEmployeeCount;
