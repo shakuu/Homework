@@ -18,6 +18,8 @@ namespace Conference
 
         public static void Main()
         {
+            var companyDependencies = new Dictionary<Company, HashSet<int>>();
+
             var input = Console.ReadLine().Split(' ').ToArray();
             var devCount = int.Parse(input[0]);
             var inputLinesCount = int.Parse(input[1]);
@@ -53,6 +55,26 @@ namespace Conference
 
                     companyB.EmployeeCount += companyA.EmployeeCount;
                     companies[empACompanyIndex] = companyB;
+
+                    var companyIndexExists = companyDependencies.ContainsKey(companyB);
+                    if (!companyIndexExists)
+                    {
+                        companyDependencies.Add(companyB, new HashSet<int>());
+                    }
+
+                    companyDependencies[companyB].Add(empACompanyIndex);
+                    companyDependencies[companyB].Add(empBCompanyIndex);
+
+                    if (companyDependencies.ContainsKey(companyA))
+                    {
+                        foreach (var index in companyDependencies[companyA])
+                        {
+                            companies[index] = companyB;
+                            companyDependencies[companyB].Add(index);
+                        }
+                        
+                        companyDependencies.Remove(companyA);
+                    }
                 }
                 else if (empACompanyIndex == 0 && empBCompanyIndex != 0)
                 {
