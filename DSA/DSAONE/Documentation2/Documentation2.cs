@@ -9,7 +9,7 @@ namespace Documentation2
     public class Documentation2
     {
         private const int Mask = 32;
-        //private const int AlphabetLength = 26;
+        private const int AlphabetLength = 26;
 
         //private static Dictionary<int, int> alphabetIndexes;
 
@@ -69,11 +69,11 @@ namespace Documentation2
 
         private static int GetCostNoDictionary(char a, char b)
         {
-            var lowerA = a | Mask;
-            var lowerB = b | Mask;
+            var lowerA = a | Documentation2.Mask;
+            var lowerB = b | Documentation2.Mask;
 
-            var difference = Math.Abs(lowerA- lowerB);
-            var difference2 = 26 - difference;
+            var difference = Math.Abs(lowerA - lowerB);
+            var difference2 = Documentation2.AlphabetLength - difference;
 
             return difference >= difference2 ? difference2 : difference;
         }
