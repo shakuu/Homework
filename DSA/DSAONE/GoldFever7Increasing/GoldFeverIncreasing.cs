@@ -22,10 +22,14 @@ namespace GoldFever7Increasing
             {
                 var nextQuote = quotes[nextQuoteIndex];
 
-                if (previousQuote <= nextQuote)
+                if (previousQuote < nextQuote)
                 {
                     currentOunces++;
                     currentCost += previousQuote;
+                }
+                else if (previousQuote == nextQuote)
+                {
+                    // do nothing ? 
                 }
                 else
                 {
