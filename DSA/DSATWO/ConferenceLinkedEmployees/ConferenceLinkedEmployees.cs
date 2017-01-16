@@ -6,22 +6,23 @@ using System.Threading.Tasks;
 
 namespace ConferenceLinkedEmployees
 {
-    public class Company
-    {
-        public LinkedEmployee FirstEmployee { get; set; }
-
-        public LinkedEmployee LastEmployee { get; set; }
-
-        public int EmployeesCount { get; set; }
-    }
-
     public class LinkedEmployee
     {
-        public bool HasCompany { get; set; }
+        public bool IsCount { get; set; }
+
+        public bool HasCompany
+        {
+            get
+            {
+                return this.NextEmployee != null || this.PreviousEmployee != null;
+            }
+        }
 
         public LinkedEmployee NextEmployee { get; set; }
 
         public LinkedEmployee PreviousEmployee { get; set; }
+
+        public HashSet<LinkedEmployee> Merged { get; set; }
     }
 
     public class ConferenceLinkedEmployees
@@ -29,10 +30,10 @@ namespace ConferenceLinkedEmployees
         public static void Main()
         {
             var input = Console.ReadLine().Split(' ').ToArray();
-            var employeeCount = int.Parse(input[0]);
+            var totalEmployeeCount = int.Parse(input[0]);
             var inputLinesCount = int.Parse(input[1]);
 
-            var employees = new LinkedEmployee[employeeCount];
+            var employees = Enumerable.Range(0, totalEmployeeCount).Select(x => new LinkedEmployee()).ToArray();
             for (int inputLineIndex = 0; inputLineIndex < inputLinesCount; inputLineIndex++)
             {
                 var nextCommand = Console.ReadLine().Split(' ');
@@ -44,44 +45,72 @@ namespace ConferenceLinkedEmployees
 
                 if (!employeeA.HasCompany && !employeeB.HasCompany)
                 {
-                    employeeA.HasCompany = true;
-                    employeeB.HasCompany = true;
-
                     employeeA.NextEmployee = employeeB;
                     employeeB.PreviousEmployee = employeeA;
                 }
                 else if (employeeA.HasCompany && employeeB.HasCompany)
                 {
-                    var lastEmployeeAColeague = employeeA;
-                    while (lastEmployeeAColeague != null)
-                    {
-                        lastEmployeeAColeague = lastEmployeeAColeague.NextEmployee;
-                    }
-
-                    var firstEmployeeBColeague = employeeB;
-                    while (firstEmployeeBColeague != null)
-                    {
-                        firstEmployeeBColeague = firstEmployeeBColeague.PreviousEmployee;
-                    }
-
-                    lastEmployeeAColeague.NextEmployee = firstEmployeeBColeague;
-                    firstEmployeeBColeague.PreviousEmployee = lastEmployeeAColeague;
+                    employeeA.Merged.Add(employeeB);
+                    employeeB.Merged.Add(employeeA);
                 }
                 else if (employeeA.HasCompany)
                 {
                     var employeeANext = employeeA.NextEmployee;
                     employeeA.NextEmployee = employeeB;
                     employeeB.NextEmployee = employeeANext;
-                    employeeB.HasCompany = true;
                 }
                 else if (employeeB.HasCompany)
                 {
                     var employeeBNext = employeeB.NextEmployee;
                     employeeB.NextEmployee = employeeA;
                     employeeA.NextEmployee = employeeBNext;
-                    employeeA.HasCompany = true;
                 }
             }
+
+            var emplyeesCounts = new List<int>();
+            for (int employeeIndex = 0; employeeIndex < totalEmployeeCount; employeeIndex++)
+            {
+                var currentEmployee = employees[employeeIndex];
+                if (currentEmployee.IsCount)
+                {
+                    continue;
+                }
+
+                var employeeCount = 1;
+
+                var previousEmployee = currentEmployee.PreviousEmployee;
+                while (previousEmployee != null)
+                {
+                    employeeCount++;
+                    previousEmployee.IsCount = true;
+                    previousEmployee = previousEmployee.PreviousEmployee;
+                }
+
+                var nextEmployee = currentEmployee.NextEmployee;
+                while (nextEmployee != null)
+                {
+                    employeeCount++;
+                    nextEmployee.IsCount = true;
+                    nextEmployee = nextEmployee.NextEmployee;
+                }
+
+                emplyeesCounts.Add(employeeCount);
+            }
+
+            long result = 0;
+            var remainingEmployees = totalEmployeeCount;
+            foreach (var employeeCount in emplyeesCounts)
+            {
+                remainingEmployees -= employeeCount;
+                result += employeeCount * remainingEmployees;
+            }
+
+            while (remainingEmployees > 0)
+            {
+                result += --remainingEmployees;
+            }
+
+            Console.WriteLine(result);
         }
     }
 }
