@@ -1,9 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Numerics;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Rings
 {
@@ -53,7 +49,10 @@ namespace Rings
                 return 1;
             }
 
-            return n * CalcFactorial(n - 1);
+            var factorial = n * CalcFactorial(n - 1);
+            factorials[n] = factorial;
+
+            return factorial;
         }
     }
 }

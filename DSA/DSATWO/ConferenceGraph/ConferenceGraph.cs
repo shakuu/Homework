@@ -26,7 +26,7 @@ namespace ConferenceGraph
 
             var companies = new List<int>();
             var visited = new bool[devsCount];
-            for (int i = 0; i < visited.Length; i++)
+            for (int i = 0; i < devsCount; i++)
             {
                 if (visited[i])
                 {

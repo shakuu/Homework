@@ -6,14 +6,24 @@ namespace Conference
 {
     public class ConferenceExam
     {
+        public class Company
+        {
+            public Company(int employeeCount)
+            {
+                this.EmployeeCount = employeeCount;
+            }
+
+            public int EmployeeCount { get; set; }
+        }
+
         public static void Main()
         {
             var input = Console.ReadLine().Split(' ').ToArray();
             var devCount = int.Parse(input[0]);
             var inputLinesCount = int.Parse(input[1]);
 
-            var companies = new List<int>();
-            companies.Add(-1);
+            var companies = new List<Company>();
+            companies.Add(new Company(-1));
 
             var devs = new int[devCount];
             for (int i = 0; i < inputLinesCount; i++)
@@ -30,32 +40,29 @@ namespace Conference
                     var nextCompanyIndex = companies.Count;
                     devs[empAIndex] = nextCompanyIndex;
                     devs[empBIndex] = nextCompanyIndex;
-                    companies.Add(2);
+                    companies.Add(new Company(2));
                 }
                 else if (empACompanyIndex != 0 && empBCompanyIndex != 0)
                 {
-                    var reassignedEmployeesCounter = 0;
-                    for (int k = 0; k < devs.Length; k++)
+                    var companyB = companies[empBCompanyIndex];
+                    var companyA = companies[empACompanyIndex];
+                    if (companyA == companyB)
                     {
-                        if (devs[k] == empACompanyIndex)
-                        {
-                            devs[k] = empBCompanyIndex;
-                            reassignedEmployeesCounter++;
-                        }
+                        continue;
                     }
 
-                    companies[empBCompanyIndex] += reassignedEmployeesCounter;
-                    companies[empACompanyIndex] -= reassignedEmployeesCounter;
+                    companyB.EmployeeCount += companyA.EmployeeCount;
+                    companies[empACompanyIndex] = companyB;
                 }
                 else if (empACompanyIndex == 0 && empBCompanyIndex != 0)
                 {
                     devs[empAIndex] = empBCompanyIndex;
-                    companies[empBCompanyIndex]++;
+                    companies[empBCompanyIndex].EmployeeCount++;
                 }
                 else if (empBCompanyIndex == 0 && empACompanyIndex != 0)
                 {
                     devs[empBIndex] = empACompanyIndex;
-                    companies[empACompanyIndex]++;
+                    companies[empACompanyIndex].EmployeeCount++;
                 }
                 else
                 {
@@ -71,19 +78,24 @@ namespace Conference
             //    }
             //}
 
-            // long == 100
-            long result = 0;
-            var remainingEmployees = devCount;
-            for (int nextCompanyIndex = 1; nextCompanyIndex < companies.Count; nextCompanyIndex++)
+            var eligibleCompanies = new HashSet<Company>();
+            foreach (var company in companies)
             {
-                var employeeCount = companies[nextCompanyIndex];
-                if (employeeCount <= 0)
+                if (company.EmployeeCount <= 0)
                 {
                     continue;
                 }
 
-                remainingEmployees -= employeeCount;
-                result += employeeCount * remainingEmployees;
+                eligibleCompanies.Add(company);
+            }
+
+            // long == 100
+            long result = 0;
+            var remainingEmployees = devCount;
+            foreach (var company in eligibleCompanies)
+            {
+                remainingEmployees -= company.EmployeeCount;
+                result += company.EmployeeCount * remainingEmployees;
             }
 
             while (remainingEmployees > 0)
