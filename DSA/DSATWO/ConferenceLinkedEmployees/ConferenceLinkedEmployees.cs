@@ -8,6 +8,11 @@ namespace ConferenceLinkedEmployees
 {
     public class LinkedEmployee
     {
+        public LinkedEmployee()
+        {
+            this.Merged = new HashSet<LinkedEmployee>();
+        }
+
         public bool IsCount { get; set; }
 
         public bool HasCompany
@@ -68,34 +73,72 @@ namespace ConferenceLinkedEmployees
             }
 
             var emplyeesCounts = new List<int>();
-            //for (int employeeIndex = 0; employeeIndex < totalEmployeeCount; employeeIndex++)
-            //{
-            //    var currentEmployee = employees[employeeIndex];
-            //    if (currentEmployee.IsCount)
-            //    {
-            //        continue;
-            //    }
+            for (int employeeIndex = 0; employeeIndex < totalEmployeeCount; employeeIndex++)
+            {
+                var currentEmployee = employees[employeeIndex];
+                if (currentEmployee.IsCount)
+                {
+                    continue;
+                }
 
-            //    var employeeCount = 1;
+                var currentEmployeeCount = 1;
 
-            //    var previousEmployee = currentEmployee.PreviousEmployee;
-            //    while (previousEmployee != null)
-            //    {
-            //        employeeCount++;
-            //        previousEmployee.IsCount = true;
-            //        previousEmployee = previousEmployee.PreviousEmployee;
-            //    }
+                var employeeStack = new Stack<LinkedEmployee>();
+                employeeStack.Push(currentEmployee);
 
-            //    var nextEmployee = currentEmployee.NextEmployee;
-            //    while (nextEmployee != null)
-            //    {
-            //        employeeCount++;
-            //        nextEmployee.IsCount = true;
-            //        nextEmployee = nextEmployee.NextEmployee;
-            //    }
+                while (employeeStack.Count > 0)
+                {
+                    var nextEmployeeToEvaluate = employeeStack.Pop();
+                    if (nextEmployeeToEvaluate.IsCount)
+                    {
+                        continue;
+                    }
 
-            //    emplyeesCounts.Add(employeeCount);
-            //}
+                    nextEmployeeToEvaluate.IsCount = true;
+                    foreach (var employee in nextEmployeeToEvaluate.Merged)
+                    {
+                        employeeStack.Push(employee);
+                    }
+
+                    var previousEmployee = nextEmployeeToEvaluate.PreviousEmployee;
+                    while (previousEmployee != null)
+                    {
+                        if (previousEmployee.IsCount)
+                        {
+                            continue;
+                        }
+
+                        currentEmployeeCount++;
+                        previousEmployee.IsCount = true;
+                        foreach (var employee in previousEmployee.Merged)
+                        {
+                            employeeStack.Push(employee);
+                        }
+
+                        previousEmployee = previousEmployee.PreviousEmployee;
+                    }
+
+                    var nextEmployee = nextEmployeeToEvaluate.NextEmployee;
+                    while (nextEmployee != null)
+                    {
+                        if (nextEmployee.IsCount)
+                        {
+                            continue;
+                        }
+
+                        currentEmployeeCount++;
+                        nextEmployee.IsCount = true;
+                        foreach (var employee in nextEmployee.Merged)
+                        {
+                            employeeStack.Push(employee);
+                        }
+
+                        nextEmployee = nextEmployee.NextEmployee;
+                    }
+                }
+
+                emplyeesCounts.Add(currentEmployeeCount);
+            }
 
             long result = 0;
             var remainingEmployees = totalEmployeeCount;
