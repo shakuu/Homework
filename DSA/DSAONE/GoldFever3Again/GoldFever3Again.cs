@@ -57,14 +57,18 @@ namespace GoldFever3Again
                 //profitStack.Push(profit);
                 //ouncesStack.Push(ounces);
                 //quotesStack.Push(nextQuoteIndex);
-                
+
                 profitStack.Push(profit - nextQuote);
                 ouncesStack.Push(ounces + 1);
                 quotesStack.Push(nextQuoteIndex);
 
-                profitStack.Push(ounces * nextQuote + profit);
-                ouncesStack.Push(0);
-                quotesStack.Push(nextQuoteIndex);
+                var sellProfit = (ounces * nextQuote) + profit;
+                if (sellProfit >= 0)
+                {
+                    profitStack.Push(sellProfit);
+                    ouncesStack.Push(0);
+                    quotesStack.Push(nextQuoteIndex);
+                }
             }
 
             Console.WriteLine(bestOutcome);

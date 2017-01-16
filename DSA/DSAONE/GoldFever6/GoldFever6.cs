@@ -82,41 +82,7 @@ namespace GoldFever6
                     bestProfit = result.Profit;
                 }
             }
-
-            //var tupleQueue = new Queue<Tuple<long, long>>();
-            //tupleQueue.Enqueue(new Tuple<long, long>(0, 0));
-            //tupleQueue.Enqueue(new Tuple<long, long>(-quotes[0], 1));
-
-            //for (int quoteIndex = 1; quoteIndex < quotes.Length; quoteIndex++)
-            //{
-            //    var nextQuote = quotes[quoteIndex];
-
-            //    var resultingQueue = new Queue<Tuple<long, long>>();
-            //    while (tupleQueue.Count > 0)
-            //    {
-            //        var nextTuple = tupleQueue.Dequeue();
-            //        if (bestProfit < nextTuple.Item1)
-            //        {
-            //            bestProfit = nextTuple.Item1;
-            //        }
-
-            //        resultingQueue.Enqueue(new Tuple<long, long>(nextTuple.Item1 - nextQuote, nextTuple.Item2 + 1));
-            //        resultingQueue.Enqueue(nextTuple);
-            //        resultingQueue.Enqueue(new Tuple<long, long>(nextTuple.Item2 * nextQuote + nextTuple.Item1, 0));
-            //    }
-
-            //    tupleQueue = resultingQueue;
-            //}
-
-            //while (tupleQueue.Count > 0)
-            //{
-            //    var nextTuple = tupleQueue.Dequeue();
-            //    if (bestProfit < nextTuple.Item1)
-            //    {
-            //        bestProfit = nextTuple.Item1;
-            //    }
-            //}
-
+            
             Console.WriteLine(bestProfit);
         }
     }
