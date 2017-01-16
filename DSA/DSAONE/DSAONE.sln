@@ -31,6 +31,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GoldFever7Increasing", "Gol
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GoldFeverAuthors", "GoldFeverAuthors\GoldFeverAuthors.csproj", "{4FF64EBF-2E32-4B48-A6A6-783E180309E9}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Documentation2", "Documentation2\Documentation2.csproj", "{DB5D2DC8-C0EE-4716-88D6-7205AEF5C6CE}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -93,6 +95,10 @@ Global
 		{4FF64EBF-2E32-4B48-A6A6-783E180309E9}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{4FF64EBF-2E32-4B48-A6A6-783E180309E9}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{4FF64EBF-2E32-4B48-A6A6-783E180309E9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DB5D2DC8-C0EE-4716-88D6-7205AEF5C6CE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DB5D2DC8-C0EE-4716-88D6-7205AEF5C6CE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DB5D2DC8-C0EE-4716-88D6-7205AEF5C6CE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DB5D2DC8-C0EE-4716-88D6-7205AEF5C6CE}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
