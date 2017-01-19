@@ -2,6 +2,7 @@
 using Ninject.Activation;
 using Ninject.Extensions.Factory;
 using Ninject.Modules;
+using Ninject.Parameters;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -57,17 +58,19 @@ namespace WebFormsTest.App_Start
 
             // Unknown possible parameters for each separate IPresenter
             // Binding the view so Ninject can resolve each of them separately.
-            var bindingExists = this.Kernel.GetBindings(viewTypeInterface).Any();
-            if (bindingExists)
-            {
-                this.Rebind(viewTypeInterface).ToMethod(context => viewInstance);
-            }
-            else
-            {
-                this.Bind(viewTypeInterface).ToMethod(context => viewInstance);
-            }
+            //var bindingExists = this.Kernel.GetBindings(viewTypeInterface).Any();
+            //if (bindingExists)
+            //{
+            //    this.Rebind(viewTypeInterface).ToMethod(context => viewInstance);
+            //}
+            //else
+            //{
+            //    this.Bind(viewTypeInterface).ToMethod(context => viewInstance);
+            //}
 
-            return (IPresenter)ctx.Kernel.Get(requestedType);
+            var viewInstanceParameter = new ConstructorArgument("view", viewInstance);
+
+            return (IPresenter)ctx.Kernel.Get(requestedType, viewInstanceParameter);
         }
     }
 }

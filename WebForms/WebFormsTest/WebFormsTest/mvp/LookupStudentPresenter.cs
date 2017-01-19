@@ -15,7 +15,7 @@ namespace WebFormsTest.mvp
         //}
 
         public LookupStudentPresenter(ILookupStudentView view, IStudentRepository studentRepository) : base(view)
-        {
+        {       
             _studentRepository = studentRepository;
             View.Finding += Finding;
             view.GetAll += GetAllStudents;
