@@ -32,6 +32,7 @@
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Web" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -45,10 +46,14 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="EventsArgs\CalculatorEventArgs.cs" />
+    <Compile Include="EventsArgs\ImageEventArgs.cs" />
     <Compile Include="Models\CalculatorViewModel.cs" />
+    <Compile Include="Models\ImageViewModel.cs" />
     <Compile Include="Presenters\CalculatorPresenter.cs" />
+    <Compile Include="Presenters\ImagePresenter.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Views\ICalculaterView.cs" />
+    <Compile Include="Views\IImageViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
