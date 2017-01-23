@@ -12,6 +12,7 @@ namespace WebFormsIntroduction.WebFormsClient.App_Start
     using Ninject.Web.Common;
 
     using WebFormsMvp.Binder;
+    using Bindings;
 
     public static class NinjectWebCommon
     {
@@ -63,6 +64,8 @@ namespace WebFormsIntroduction.WebFormsClient.App_Start
         /// <param name="kernel">The kernel.</param>
         private static void RegisterServices(IKernel kernel)
         {
+            kernel.Load(new MvpNinjectModule());
+
             PresenterBinder.Factory = kernel.Get<IPresenterFactory>();
 
             kernel.Bind<IKernel>().ToMethod(ctx => kernel);
