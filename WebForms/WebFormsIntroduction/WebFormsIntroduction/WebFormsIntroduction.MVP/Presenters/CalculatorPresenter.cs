@@ -1,8 +1,9 @@
 ﻿using System;
 
-using WebFormsIntroduction.MVP.Views;
-
 using WebFormsMvp;
+
+using WebFormsIntroduction.MVP.EventsArgs;
+using WebFormsIntroduction.MVP.Views;
 
 namespace WebFormsIntroduction.MVP.Presenters
 {
@@ -18,10 +19,20 @@ namespace WebFormsIntroduction.MVP.Presenters
             this.view.Sum += this.OnSum;
         }
 
-        private void OnSum(object sender, EventArgs args)
+        private void OnSum(object sender, CalculatorEventArgs args)
         {
-            var sum = this.view.Model.ValueA + this.view.Model.ValueB;
-            this.view.Model.Result = sum.ToString();
+            try
+            {
+                var valueA = decimal.Parse(args.ValueA);
+                var valueB = decimal.Parse(args.ValueB);
+                var sum = valueA + valueB;
+
+                this.view.Model.Result = sum.ToString();
+            }
+            catch (Exception)
+            {
+                this.view.Model.Result = "Naughty!";
+            }
         }
     }
 }

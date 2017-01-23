@@ -7,6 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebFormsIntroduction.WebFor
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebFormsIntroduction.MVP", "WebFormsIntroduction.MVP\WebFormsIntroduction.MVP.csproj", "{B48737F4-731F-41DE-B7BB-DB4F2181362B}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebFormsIntroduction.MVCClient", "WebFormsIntroduction.MVCClient\WebFormsIntroduction.MVCClient.csproj", "{D0D50980-3383-487E-AB6F-BC836EFFB8B0}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,10 @@ Global
 		{B48737F4-731F-41DE-B7BB-DB4F2181362B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{B48737F4-731F-41DE-B7BB-DB4F2181362B}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{B48737F4-731F-41DE-B7BB-DB4F2181362B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D0D50980-3383-487E-AB6F-BC836EFFB8B0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D0D50980-3383-487E-AB6F-BC836EFFB8B0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D0D50980-3383-487E-AB6F-BC836EFFB8B0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D0D50980-3383-487E-AB6F-BC836EFFB8B0}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
