@@ -1,0 +1,28 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 14
+VisualStudioVersion = 14.0.25420.1
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebFormsIntroduction.WebFormsClient", "WebFormsIntroduction.WebFormsClient\WebFormsIntroduction.WebFormsClient.csproj", "{632465AF-961D-4873-B242-86118CE03AAF}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebFormsIntroduction.MVP", "WebFormsIntroduction.MVP\WebFormsIntroduction.MVP.csproj", "{B48737F4-731F-41DE-B7BB-DB4F2181362B}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{632465AF-961D-4873-B242-86118CE03AAF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{632465AF-961D-4873-B242-86118CE03AAF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{632465AF-961D-4873-B242-86118CE03AAF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{632465AF-961D-4873-B242-86118CE03AAF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B48737F4-731F-41DE-B7BB-DB4F2181362B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B48737F4-731F-41DE-B7BB-DB4F2181362B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B48737F4-731F-41DE-B7BB-DB4F2181362B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B48737F4-731F-41DE-B7BB-DB4F2181362B}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
