@@ -1,14 +1,11 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-using System.Web.UI;
-using System.Web.UI.WebControls;
+
+using WebFormsMvp;
+using WebFormsMvp.Web;
+
 using WebFormsIntroduction.MVP.Models;
 using WebFormsIntroduction.MVP.Presenters;
 using WebFormsIntroduction.MVP.Views;
-using WebFormsMvp;
-using WebFormsMvp.Web;
 
 namespace WebFormsIntroduction.WebFormsClient.ViewControls
 {
