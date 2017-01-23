@@ -12,20 +12,5 @@
 <div class="form-group">
     <asp:Button OnClick="OnButtonEscapeClick" runat="server" Text="Escape Text" />
 </div>
-<br />
-<strong>Label (unescaped):
-</strong>
-<br />
-<asp:Label ID="LabelEnteredText" runat="server" />
-<hr />
-<br />
-<strong>HTML escaped literal:
-</strong>
-<br />
-<asp:Literal ID="LiteralEnteredText" runat="server" Mode="Encode" />
-<hr />
-<br />
-<strong>&lt;%: some text %&gt;:</strong><br />
-<%: this.Model.EscapedText %>
 
-<textarea><%: Model.EscapedText %></textarea>
+<asp:Label ID="LabelEnteredText" runat="server" />

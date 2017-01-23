@@ -15,8 +15,7 @@ namespace WebFormsControls.WebFormsClient.UserControls.Escaping
         {
             var text = Server.HtmlEncode(this.TextToEscape.Text);
             this.EscapeText(this, new EscapingEventArgs(text));
-
-            this.LiteralEnteredText.Text = this.Model.EscapedText;
+            
             this.LabelEnteredText.Text = this.Model.EscapedText;
         }
     }
