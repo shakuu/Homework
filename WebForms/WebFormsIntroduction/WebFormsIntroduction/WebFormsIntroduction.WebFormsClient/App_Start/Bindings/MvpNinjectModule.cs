@@ -26,7 +26,7 @@ namespace WebFormsIntroduction.WebFormsClient.App_Start.Bindings
 
             this.Bind<IPresenter>()
                 .ToMethod(this.CreatePresenterFactoryMethod)
-                .NamedLikeFactoryMethod((ICustomPresenterFactory factory) => factory.CreatePresenter(null, null));
+                .NamedLikeFactoryMethod((ICustomPresenterFactory factory) => factory.GetPresenter(null, null));
         }
 
         private IPresenter CreatePresenterFactoryMethod(IContext context)

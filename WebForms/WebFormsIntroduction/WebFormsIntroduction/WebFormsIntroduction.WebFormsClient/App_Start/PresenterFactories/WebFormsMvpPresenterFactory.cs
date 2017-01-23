@@ -16,7 +16,7 @@ namespace WebFormsIntroduction.WebFormsClient.App_Start.PresenterFactories
 
         public IPresenter Create(Type presenterType, Type viewType, IView viewInstance)
         {
-            return this.factory.CreatePresenter(presenterType, viewInstance);
+            return this.factory.GetPresenter(presenterType, viewInstance);
         }
 
         public void Release(IPresenter presenter)

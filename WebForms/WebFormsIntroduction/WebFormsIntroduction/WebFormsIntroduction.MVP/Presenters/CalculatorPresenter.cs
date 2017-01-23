@@ -20,7 +20,8 @@ namespace WebFormsIntroduction.MVP.Presenters
 
         private void OnSum(object sender, EventArgs args)
         {
-            this.view.Model.Result = this.view.Model.ValueA + this.view.Model.ValueB;
+            var sum = this.view.Model.ValueA + this.view.Model.ValueB;
+            this.view.Model.Result = sum.ToString();
         }
     }
 }

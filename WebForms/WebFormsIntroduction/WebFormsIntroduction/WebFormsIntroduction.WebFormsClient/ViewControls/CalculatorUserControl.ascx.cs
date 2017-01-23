@@ -5,11 +5,14 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 using WebFormsIntroduction.MVP.Models;
+using WebFormsIntroduction.MVP.Presenters;
 using WebFormsIntroduction.MVP.Views;
+using WebFormsMvp;
 using WebFormsMvp.Web;
 
 namespace WebFormsIntroduction.WebFormsClient.ViewControls
 {
+    [PresenterBinding(typeof(CalculatorPresenter))]
     public partial class CalculatorUserControl : MvpUserControl<CalculatorViewModel>, ICalculaterView
     {
         public event EventHandler Sum;
@@ -21,10 +24,17 @@ namespace WebFormsIntroduction.WebFormsClient.ViewControls
 
         protected void Sum_Click(object sender, EventArgs e)
         {
-            this.Model.ValueA = decimal.Parse(this.ValueA.Text);
-            this.Model.ValueB = decimal.Parse(this.ValueB.Text);
+            try
+            {
+                this.Model.ValueA = decimal.Parse(this.ValueA.Text);
+                this.Model.ValueB = decimal.Parse(this.ValueB.Text);
 
-            this.Sum(this, null);
+                this.Sum(this, null);
+            }
+            catch (Exception)
+            {
+                this.Model.Result = "Naughty!";
+            }
         }
     }
 }

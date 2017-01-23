@@ -6,6 +6,6 @@
 
         public decimal ValueB { get; set; }
 
-        public decimal Result { get; set; }
+        public string Result { get; set; }
     }
 }

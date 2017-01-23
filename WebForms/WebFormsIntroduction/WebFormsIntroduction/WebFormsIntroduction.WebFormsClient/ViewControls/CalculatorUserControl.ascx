@@ -3,7 +3,17 @@
     CodeBehind="CalculatorUserControl.ascx.cs"
     Inherits="WebFormsIntroduction.WebFormsClient.ViewControls.CalculatorUserControl" %>
 
-<asp:TextBox ID="ValueA" runat="server"></asp:TextBox>
-<asp:TextBox ID="ValueB" runat="server"></asp:TextBox>
-<asp:Label runat="server">Result: <%# Model.Result %></asp:Label>
-<asp:Button Text="Sum" OnClick="Sum_Click" runat="server" />
+<div class="form-group">
+    <asp:TextBox CssClass="form-control" ID="ValueA" runat="server"></asp:TextBox>
+</div>
+<div class="form-group">
+    <asp:TextBox CssClass="form-control" ID="ValueB" runat="server"></asp:TextBox>
+</div>
+<div class="form-group">
+    <strong>
+        <asp:Label CssClass="from-control" runat="server">Result: <%# Model.Result %></asp:Label>
+    </strong>
+</div>
+<div class="form-group">
+    <asp:Button CssClass="btn btn-primary" Text="Sum" OnClick="Sum_Click" runat="server" />
+</div>
