@@ -11,8 +11,8 @@ namespace WebFormsControls.WebFormsClient.UserControls.RandomNumber
     public partial class GenerateRandomNumber : MvpUserControl<RandomViewModel>, IRandomView
     {
         public event EventHandler<RandomEventArgs> Generate;
-
-        private void OnButtonGenerateClick(object sender, EventArgs e)
+        
+        protected void OnButtonGenerateClick(object sender, EventArgs e)
         {
             var minimumValue = this.MinimumValue.Text;
             var maximumValue = this.MaximumValue.Text;

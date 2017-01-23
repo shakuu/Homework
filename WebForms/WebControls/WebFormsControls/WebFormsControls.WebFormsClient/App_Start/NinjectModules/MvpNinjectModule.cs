@@ -17,8 +17,12 @@ namespace WebFormsControls.WebFormsClient.App_Start.NinjectModules
     {
         public override void Load()
         {
+            this.Bind<Random>().ToSelf().InSingletonScope();
+
             this.Bind<IPresenterFactory>().To<WebFormsMvpPresenterFactory>().InSingletonScope();
             this.Bind<ICustomPresenterFactory>().ToFactory().InSingletonScope();
+            this.Bind<IPresenter>().ToMethod(this.GetPresenterFactoryMethod)
+                .NamedLikeFactoryMethod((ICustomPresenterFactory factory) => factory.GetPresenter(null, null));
         }
 
         private IPresenter GetPresenterFactoryMethod(IContext context)
@@ -26,8 +30,11 @@ namespace WebFormsControls.WebFormsClient.App_Start.NinjectModules
             var parameters = context.Parameters.ToList();
 
             var presenterType = (Type)parameters[0].GetValue(context, null);
+            var viewInstance = (IView)parameters[1].GetValue(context, null);
 
-            return (IPresenter)context.Kernel.Get(presenterType, parameters[1]);
+            var ctorViewInstanceParameter = new Ninject.Parameters.ConstructorArgument("view", viewInstance);
+
+            return (IPresenter)context.Kernel.Get(presenterType, ctorViewInstanceParameter);
         }
     }
 }
