@@ -1,21 +1,23 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-using System.Web.UI;
-using System.Web.UI.WebControls;
+
 using WebFormsControls.EscapingTextboxes;
+using WebFormsMvp;
 using WebFormsMvp.Web;
 
 namespace WebFormsControls.WebFormsClient.UserControls.Escaping
 {
+    [PresenterBinding(typeof(EscapingPresenter))]
     public partial class EscapingUserControl : MvpUserControl<EscapingViewModel>, IEscapingView
     {
         public event EventHandler<EscapingEventArgs> EscapeText;
 
         protected void OnButtonEscapeClick(object sender, EventArgs e)
         {
-            this.EscapeText(this, new EscapingEventArgs(this.TextToEscape.Text));
+            var text = Server.HtmlEncode(this.TextToEscape.Text);
+            this.EscapeText(this, new EscapingEventArgs(text));
+
+            this.LiteralEnteredText.Text = this.Model.EscapedText;
+            this.LabelEnteredText.Text = this.Model.EscapedText;
         }
     }
 }

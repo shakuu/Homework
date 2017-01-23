@@ -20,5 +20,23 @@ namespace WebFormsControls.WebFormsClient.UserControls.Escaping {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox TextToEscape;
+        
+        /// <summary>
+        /// LabelEnteredText control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label LabelEnteredText;
+        
+        /// <summary>
+        /// LiteralEnteredText control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Literal LiteralEnteredText;
     }
 }
