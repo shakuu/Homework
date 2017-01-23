@@ -14,7 +14,9 @@
     </div>
 
     <div class="jumbotron">
-        <asp:Panel ID="PrintPanel" runat="server"></asp:Panel>
+        <asp:BulletedList DisplayMode="Text" BulletStyle="NotSet" ID="PrintList" runat="server">
+            <asp:ListItem></asp:ListItem>
+        </asp:BulletedList>
     </div>
 
 </asp:Content>
