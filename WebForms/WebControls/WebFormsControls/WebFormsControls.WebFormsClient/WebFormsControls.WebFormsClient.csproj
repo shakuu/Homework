@@ -460,6 +460,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="UserControls\Escaping\" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\WebFormsControls.Random\WebFormsControls.Random.csproj">
