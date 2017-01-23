@@ -272,6 +272,7 @@
     <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
     <Content Include="Site.Master" />
+    <Content Include="UserControls\Escaping\EscapingUserControl.ascx" />
     <Content Include="UserControls\RandomNumber\GenerateRandomNumber.ascx" />
     <Content Include="ViewSwitcher.ascx" />
     <Content Include="Web.config" />
@@ -443,6 +444,13 @@
       <DependentUpon>Site.Mobile.Master</DependentUpon>
     </Compile>
     <Compile Include="Startup.cs" />
+    <Compile Include="UserControls\Escaping\EscapingUserControl.ascx.cs">
+      <DependentUpon>EscapingUserControl.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="UserControls\Escaping\EscapingUserControl.ascx.designer.cs">
+      <DependentUpon>EscapingUserControl.ascx</DependentUpon>
+    </Compile>
     <Compile Include="UserControls\RandomNumber\GenerateRandomNumber.ascx.cs">
       <DependentUpon>GenerateRandomNumber.ascx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -460,9 +468,12 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="UserControls\Escaping\" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\WebFormsControls.EscapingTextboxes\WebFormsControls.EscapingTextboxes.csproj">
+      <Project>{FC27EDE9-067A-4580-9B50-EED3CC3E94EC}</Project>
+      <Name>WebFormsControls.EscapingTextboxes</Name>
+    </ProjectReference>
     <ProjectReference Include="..\WebFormsControls.Random\WebFormsControls.Random.csproj">
       <Project>{F81ACF7C-EDB4-49EA-9737-BADEB58C96BC}</Project>
       <Name>WebFormsControls.Random</Name>
