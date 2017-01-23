@@ -11,7 +11,7 @@ using WebFormsIntroduction.MVP.Views;
 namespace WebFormsIntroduction.WebFormsClient.ViewControls
 {
     [PresenterBinding(typeof(CalculatorPresenter))]
-    public partial class CalculatorUserControl : MvpUserControl<CalculatorViewModel>, ICalculaterView
+    public partial class CalculatorUserControl : MvpUserControl<CalculatorViewModel>, ICalculatorView
     {
         public event EventHandler<CalculatorEventArgs> Sum;
         

@@ -7,11 +7,11 @@ using WebFormsIntroduction.MVP.Views;
 
 namespace WebFormsIntroduction.MVP.Presenters
 {
-    public class CalculatorPresenter : Presenter<ICalculaterView>
+    public class CalculatorPresenter : Presenter<ICalculatorView>
     {
-        private ICalculaterView view;
+        private ICalculatorView view;
 
-        public CalculatorPresenter(ICalculaterView view)
+        public CalculatorPresenter(ICalculatorView view)
             : base(view)
         {
             this.view = view;
