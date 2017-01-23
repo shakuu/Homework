@@ -15,7 +15,7 @@
 
     <div class="jumbotron">
         <asp:BulletedList DisplayMode="Text" BulletStyle="NotSet" ID="PrintList" runat="server">
-            <asp:ListItem></asp:ListItem>
+            
         </asp:BulletedList>
     </div>
 
