@@ -4,6 +4,6 @@ namespace WebFormsControls.TicTacToe.TicTacToeServices.Contracts
 {
     public interface ITicTacToeService
     {
-        IList<IList<string>> EvaluateGameBoard(IList<IList<string>> currentGameBoard);
+        TicTacToeViewModel EvaluateGameBoard(IList<IList<string>> currentGameBoard);
     }
 }

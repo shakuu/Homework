@@ -44,6 +44,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Factories\ITicTacToeViewModelFactory.cs" />
     <Compile Include="ITicTacToeView.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="TicTacToeEventArgs.cs" />
@@ -51,6 +52,7 @@
     <Compile Include="TicTacToeServices\Contracts\ITicTacToeService.cs" />
     <Compile Include="TicTacToeServices\Contracts\ITicTacToeStrategy.cs" />
     <Compile Include="TicTacToeServices\Strategies\SimpletonTicTacToeStrategy.cs" />
+    <Compile Include="TicTacToeServices\TicTacToeService.cs" />
     <Compile Include="TicTacToeViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
