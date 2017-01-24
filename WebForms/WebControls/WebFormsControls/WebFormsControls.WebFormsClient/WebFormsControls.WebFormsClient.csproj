@@ -507,6 +507,10 @@
       <Project>{F81ACF7C-EDB4-49EA-9737-BADEB58C96BC}</Project>
       <Name>WebFormsControls.Random</Name>
     </ProjectReference>
+    <ProjectReference Include="..\WebFormsControls.TicTacToe\WebFormsControls.TicTacToe.csproj">
+      <Project>{0FF2E489-789D-4AF6-AF2A-24DB76F6F1AE}</Project>
+      <Name>WebFormsControls.TicTacToe</Name>
+    </ProjectReference>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

@@ -50,6 +50,7 @@
     <Compile Include="TicTacToePresenter.cs" />
     <Compile Include="TicTacToeServices\Contracts\ITicTacToeService.cs" />
     <Compile Include="TicTacToeServices\Contracts\ITicTacToeStrategy.cs" />
+    <Compile Include="TicTacToeServices\Strategies\SimpletonTicTacToeStrategy.cs" />
     <Compile Include="TicTacToeViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
