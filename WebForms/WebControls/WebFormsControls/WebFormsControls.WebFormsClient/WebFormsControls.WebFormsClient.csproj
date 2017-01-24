@@ -226,6 +226,7 @@
     <Content Include="Account\ResetPasswordConfirmation.aspx" />
     <Content Include="Account\TwoFactorAuthenticationSignIn.aspx" />
     <Content Include="Account\VerifyPhoneNumber.aspx" />
+    <Content Include="Calculator.aspx" />
     <Content Include="Contact.aspx" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
@@ -273,6 +274,7 @@
     <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
     <Content Include="Site.Master" />
+    <Content Include="UserControls\Calculator\CalculatorUserControl.ascx" />
     <Content Include="UserControls\Escaping\EscapingUserControl.ascx" />
     <Content Include="UserControls\RandomNumber\GenerateRandomNumber.ascx" />
     <Content Include="ViewSwitcher.ascx" />
@@ -407,10 +409,18 @@
     <Compile Include="App_Start\Factories\WebFormsMvpPresenterFactory.cs" />
     <Compile Include="App_Start\IdentityConfig.cs" />
     <Compile Include="App_Start\NinjectModules\MvpNinjectModule.cs" />
+    <Compile Include="App_Start\NinjectModules\ServicesNinjectModule.cs" />
     <Compile Include="App_Start\NinjectWeb.cs" />
     <Compile Include="App_Start\NinjectWebCommon.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
+    <Compile Include="Calculator.aspx.cs">
+      <DependentUpon>Calculator.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Calculator.aspx.designer.cs">
+      <DependentUpon>Calculator.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Contact.aspx.cs">
       <DependentUpon>Contact.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -452,6 +462,13 @@
       <DependentUpon>Site.Mobile.Master</DependentUpon>
     </Compile>
     <Compile Include="Startup.cs" />
+    <Compile Include="UserControls\Calculator\CalculatorUserControl.ascx.cs">
+      <DependentUpon>CalculatorUserControl.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="UserControls\Calculator\CalculatorUserControl.ascx.designer.cs">
+      <DependentUpon>CalculatorUserControl.ascx</DependentUpon>
+    </Compile>
     <Compile Include="UserControls\Escaping\EscapingUserControl.ascx.cs">
       <DependentUpon>EscapingUserControl.ascx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -478,6 +495,10 @@
     <Folder Include="App_Data\" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\WebFormsControls.Calculator\WebFormsControls.Calculator.csproj">
+      <Project>{8BD008D5-F681-4E9E-8FE7-29ABC577F447}</Project>
+      <Name>WebFormsControls.Calculator</Name>
+    </ProjectReference>
     <ProjectReference Include="..\WebFormsControls.EscapingTextboxes\WebFormsControls.EscapingTextboxes.csproj">
       <Project>{FC27EDE9-067A-4580-9B50-EED3CC3E94EC}</Project>
       <Name>WebFormsControls.EscapingTextboxes</Name>

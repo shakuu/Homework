@@ -1,19 +1,29 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+
 using WebFormsControls.Calculator.CalculatorServices.Contracts;
 
 namespace WebFormsControls.Calculator.CalculatorServices
 {
     public class CalculatorService : ICalculatorService
     {
-        private string previousValue = string.Empty;
-        private string currentValue = string.Empty;
-        private string displayValue = string.Empty;
+        private string previousValue;
+        private string currentValue;
+        private string displayValue;
 
-        private string queuedOperation = string.Empty;
+        private string enqueuedOperation;
+
+        public void RestoreState(string currentValue, string previousValue, string enqueuedOperation)
+        {
+            this.currentValue = currentValue;
+            this.previousValue = previousValue;
+            this.enqueuedOperation = enqueuedOperation;
+        }
+
+        public string PreviousValue { get { return this.previousValue; } }
+
+        public string CurrentValue { get { return this.currentValue; } }
+
+        public string EnqueuedOperation { get { return this.enqueuedOperation; } }
 
         public string HandleInput(string input)
         {
@@ -32,6 +42,11 @@ namespace WebFormsControls.Calculator.CalculatorServices
 
         private string HandleDigit(string currentValue, char digit)
         {
+            if (string.IsNullOrEmpty(this.currentValue))
+            {
+                this.currentValue = string.Empty;
+            }
+
             this.currentValue = currentValue + digit;
             return this.currentValue;
         }
@@ -42,35 +57,35 @@ namespace WebFormsControls.Calculator.CalculatorServices
             {
                 this.previousValue = string.Empty;
                 this.currentValue = string.Empty;
-                this.queuedOperation = string.Empty;
+                this.enqueuedOperation = string.Empty;
                 return "0";
             }
 
-            if (currentValue == string.Empty && operation == '-')
+            if (string.IsNullOrEmpty(currentValue) && operation == '-')
             {
                 this.previousValue = "0";
-                this.queuedOperation = operation.ToString();
+                this.enqueuedOperation = operation.ToString();
                 return "0";
             }
 
-            if (previousValue == string.Empty)
+            if (string.IsNullOrEmpty(previousValue))
             {
                 this.previousValue = this.currentValue;
                 this.currentValue = string.Empty;
-                this.queuedOperation = operation.ToString();
+                this.enqueuedOperation = operation.ToString();
                 return this.previousValue;
             }
 
-            if (operation == 's' && this.currentValue != string.Empty)
+            if (operation == 's' && !string.IsNullOrEmpty(this.currentValue))
             {
                 var value = double.Parse(this.currentValue);
                 var sqrt = Math.Sqrt(value);
                 return sqrt.ToString();
             }
 
-            if (this.queuedOperation == string.Empty && this.previousValue == string.Empty)
+            if (string.IsNullOrEmpty(this.enqueuedOperation) && string.IsNullOrEmpty(this.previousValue))
             {
-                this.queuedOperation = operation.ToString();
+                this.enqueuedOperation = operation.ToString();
                 this.previousValue = this.currentValue;
                 return previousValue;
             }
@@ -88,7 +103,7 @@ namespace WebFormsControls.Calculator.CalculatorServices
             }
 
             decimal result = 0;
-            switch (queuedOperation[0])
+            switch (enqueuedOperation[0])
             {
                 case '+':
                     result = prev + next;
@@ -109,7 +124,7 @@ namespace WebFormsControls.Calculator.CalculatorServices
 
             this.previousValue = result.ToString();
             this.currentValue = string.Empty;
-            this.queuedOperation = operation.ToString();
+            this.enqueuedOperation = operation.ToString();
 
             return result.ToString();
         }

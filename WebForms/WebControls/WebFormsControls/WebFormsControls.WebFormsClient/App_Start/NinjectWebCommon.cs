@@ -63,6 +63,7 @@ namespace WebFormsControls.WebFormsClient.App_Start
         /// <param name="kernel">The kernel.</param>
         private static void RegisterServices(IKernel kernel)
         {
+            kernel.Load(new ServicesNinjectModule());
             kernel.Load(new MvpNinjectModule());
 
             PresenterBinder.Factory = kernel.Get<IPresenterFactory>();

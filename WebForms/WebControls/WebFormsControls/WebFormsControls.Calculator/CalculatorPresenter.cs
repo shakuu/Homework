@@ -20,7 +20,11 @@ namespace WebFormsControls.Calculator
 
         private void OnUserInput(object sender, CalculatorEventArgs args)
         {
-            this.view.Model.DisplayValue = "1";
+            this.calculatorService.RestoreState(args.CurrentValue, args.PreviousValue, args.EnqueuedOperation);
+            this.view.Model.DisplayValue = this.calculatorService.HandleInput(args.Input);
+            this.view.Model.CurrentValue = this.calculatorService.CurrentValue;
+            this.view.Model.PreviousValue = this.calculatorService.PreviousValue;
+            this.view.Model.EnqueuedOperation = this.calculatorService.EnqueuedOperation;
         }
     }
 }
