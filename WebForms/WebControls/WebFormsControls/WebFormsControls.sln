@@ -11,6 +11,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebFormsControls.EscapingTe
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebFormsControls.Calculator", "WebFormsControls.Calculator\WebFormsControls.Calculator.csproj", "{8BD008D5-F681-4E9E-8FE7-29ABC577F447}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebFormsControls.ConsoleClient", "WebFormsControls.ConsoleClient\WebFormsControls.ConsoleClient.csproj", "{F79491E3-0BA5-475C-A867-6B11E901AEAB}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -33,6 +35,10 @@ Global
 		{8BD008D5-F681-4E9E-8FE7-29ABC577F447}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{8BD008D5-F681-4E9E-8FE7-29ABC577F447}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{8BD008D5-F681-4E9E-8FE7-29ABC577F447}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F79491E3-0BA5-475C-A867-6B11E901AEAB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F79491E3-0BA5-475C-A867-6B11E901AEAB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F79491E3-0BA5-475C-A867-6B11E901AEAB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F79491E3-0BA5-475C-A867-6B11E901AEAB}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
