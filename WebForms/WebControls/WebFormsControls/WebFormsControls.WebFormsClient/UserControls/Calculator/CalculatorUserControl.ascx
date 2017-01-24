@@ -9,7 +9,8 @@
         <section class="container col-xs-2"></section>
         <section class="container col-xs-8">
             <div class="row form-group">
-                <input class="text-right form-control col-xs-12" type="text" value="<%# this.Model.DisplayValue %>" disabled="disabled" />
+                <div class="col-xs-3"></div>
+                <input class="text-right form-control" type="text" value="<%# this.Model.DisplayValue %>" disabled="disabled" />
             </div>
             <div class="row form-group">
                 <asp:Button class="btn btn-default col-xs-3" ID="ButtonOne" runat="server" OnClick="OnButtonClick" Text="1" />
