@@ -49,6 +49,7 @@
     <Compile Include="TicTacToeEventArgs.cs" />
     <Compile Include="TicTacToePresenter.cs" />
     <Compile Include="TicTacToeServices\Contracts\ITicTacToeService.cs" />
+    <Compile Include="TicTacToeServices\Contracts\ITicTacToeStrategy.cs" />
     <Compile Include="TicTacToeViewModel.cs" />
   </ItemGroup>
   <ItemGroup>

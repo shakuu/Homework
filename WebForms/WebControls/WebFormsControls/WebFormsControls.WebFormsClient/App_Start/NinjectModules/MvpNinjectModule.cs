@@ -5,6 +5,7 @@ using Ninject;
 using Ninject.Activation;
 using Ninject.Extensions.Factory;
 using Ninject.Modules;
+using Ninject.Parameters;
 
 using WebFormsControls.WebFormsClient.App_Start.Factories;
 
@@ -35,7 +36,7 @@ namespace WebFormsControls.WebFormsClient.App_Start.NinjectModules
             var presenterType = (Type)parameters[0].GetValue(context, null);
             var viewInstance = (IView)parameters[1].GetValue(context, null);
 
-            var ctorViewInstanceParameter = new Ninject.Parameters.ConstructorArgument("view", viewInstance);
+            var ctorViewInstanceParameter = new ConstructorArgument("view", viewInstance);
 
             return (IPresenter)context.Kernel.Get(presenterType, ctorViewInstanceParameter);
         }
