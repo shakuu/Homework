@@ -22,21 +22,18 @@ namespace WebFormsControls.Calculator.CalculatorServices
             var isDigit = char.IsDigit(firstChar);
             if (isDigit)
             {
-                var result = this.HandleDigit(currentValue, firstChar);
-                this.currentValue = result;
+                return this.HandleDigit(currentValue, firstChar);
             }
             else
             {
-                this.HandleOperation(this.currentValue, this.previousValue, firstChar);
+                return this.HandleOperation(this.currentValue, this.previousValue, firstChar);
             }
-
-            return currentValue;
         }
 
         private string HandleDigit(string currentValue, char digit)
         {
-            var result = currentValue + digit;
-            return result;
+            this.currentValue = currentValue + digit;
+            return this.currentValue;
         }
 
         private string HandleOperation(string currentValue, string previousValue, char operation)
@@ -46,21 +43,22 @@ namespace WebFormsControls.Calculator.CalculatorServices
                 this.previousValue = string.Empty;
                 this.currentValue = string.Empty;
                 this.queuedOperation = string.Empty;
-                return string.Empty;
+                return "0";
             }
 
-            if (previousValue == string.Empty && operation == '-')
+            if (currentValue == string.Empty && operation == '-')
             {
                 this.previousValue = "0";
                 this.queuedOperation = operation.ToString();
-                return string.Empty;
+                return "0";
             }
 
             if (previousValue == string.Empty)
             {
                 this.previousValue = this.currentValue;
+                this.currentValue = string.Empty;
                 this.queuedOperation = operation.ToString();
-                return string.Empty;
+                return this.previousValue;
             }
 
             if (operation == 's' && this.currentValue != string.Empty)
@@ -86,7 +84,7 @@ namespace WebFormsControls.Calculator.CalculatorServices
             }
             catch (Exception)
             {
-                return string.Empty;
+                return "0";
             }
 
             decimal result = 0;
