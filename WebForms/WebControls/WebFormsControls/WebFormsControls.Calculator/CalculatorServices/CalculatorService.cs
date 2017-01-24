@@ -8,7 +8,6 @@ namespace WebFormsControls.Calculator.CalculatorServices
     {
         private string previousValue;
         private string currentValue;
-        private string displayValue;
 
         private string enqueuedOperation;
 
@@ -53,6 +52,8 @@ namespace WebFormsControls.Calculator.CalculatorServices
 
         private string HandleOperation(string currentValue, string previousValue, char operation)
         {
+            operation = char.ToLower(operation);
+
             if (operation == 'c')
             {
                 this.previousValue = string.Empty;
@@ -111,7 +112,7 @@ namespace WebFormsControls.Calculator.CalculatorServices
                 case '-':
                     result = prev - next;
                     break;
-                case '*':
+                case 'x':
                     result = prev * next;
                     break;
                 case '/':
