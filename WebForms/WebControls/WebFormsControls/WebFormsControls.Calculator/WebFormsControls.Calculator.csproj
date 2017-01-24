@@ -46,6 +46,8 @@
   <ItemGroup>
     <Compile Include="CalculatorEventArgs.cs" />
     <Compile Include="CalculatorPresenter.cs" />
+    <Compile Include="CalculatorServices\CalculatorService.cs" />
+    <Compile Include="CalculatorServices\Contracts\ICalculatorService.cs" />
     <Compile Include="CalculatorViewModel.cs" />
     <Compile Include="ICalculatorView.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
