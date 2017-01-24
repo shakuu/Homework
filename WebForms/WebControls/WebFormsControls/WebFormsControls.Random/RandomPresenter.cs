@@ -4,7 +4,7 @@ using WebFormsMvp;
 
 namespace WebFormsControls.RandomNumber
 {
-    public class RandomPresenter : Presenter<IRandomView>
+    public class RandomPresenter : Presenter<IRandomView>, IRandomPresenter
     {
         private readonly IRandomView view;
         private readonly Random random;

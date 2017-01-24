@@ -10,6 +10,7 @@ using WebFormsControls.WebFormsClient.App_Start.Factories;
 
 using WebFormsMvp;
 using WebFormsMvp.Binder;
+using WebFormsControls.RandomNumber;
 
 namespace WebFormsControls.WebFormsClient.App_Start.NinjectModules
 {
@@ -17,6 +18,8 @@ namespace WebFormsControls.WebFormsClient.App_Start.NinjectModules
     {
         public override void Load()
         {
+            this.Bind<IRandomPresenter>().To<RandomPresenter>();
+
             this.Bind<Random>().ToSelf().InSingletonScope();
 
             this.Bind<IPresenterFactory>().To<WebFormsMvpPresenterFactory>().InSingletonScope();
