@@ -11,6 +11,7 @@ namespace WebFormsControls.Calculator.CalculatorServices
     {
         private string previousValue = string.Empty;
         private string currentValue = string.Empty;
+        private string displayValue = string.Empty;
 
         private string queuedOperation = string.Empty;
 
@@ -69,6 +70,13 @@ namespace WebFormsControls.Calculator.CalculatorServices
                 return sqrt.ToString();
             }
 
+            if (this.queuedOperation == string.Empty && this.previousValue == string.Empty)
+            {
+                this.queuedOperation = operation.ToString();
+                this.previousValue = this.currentValue;
+                return previousValue;
+            }
+
             decimal prev;
             decimal next;
             try
@@ -82,7 +90,7 @@ namespace WebFormsControls.Calculator.CalculatorServices
             }
 
             decimal result = 0;
-            switch (operation)
+            switch (queuedOperation[0])
             {
                 case '+':
                     result = prev + next;
@@ -100,6 +108,10 @@ namespace WebFormsControls.Calculator.CalculatorServices
                     result = 0;
                     break;
             }
+
+            this.previousValue = result.ToString();
+            this.currentValue = string.Empty;
+            this.queuedOperation = operation.ToString();
 
             return result.ToString();
         }
