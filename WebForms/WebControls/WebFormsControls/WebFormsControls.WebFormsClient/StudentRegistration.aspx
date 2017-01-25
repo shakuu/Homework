@@ -32,5 +32,9 @@
         </asp:ListBox>
         <asp:Button Text="Submit" runat="server" OnClick="OnSubmit" />
     </div>
+    <div class="jumbotron">
+        <asp:Label ID="RegisterTitle" Visible="false" Text="Registered Student:" runat="server"></asp:Label>
+        <asp:Label ID="RegisteredName" Visible="false" runat="server"></asp:Label>
+    </div>
 </asp:Content>
 

@@ -1,22 +1,14 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-using System.Web.UI;
-using System.Web.UI.WebControls;
 
 namespace WebFormsControls.WebFormsClient
 {
     public partial class StudentRegistration : System.Web.UI.Page
     {
-        protected void Page_Load(object sender, EventArgs e)
-        {
-
-        }
-
         protected void OnSubmit(object sender, EventArgs e)
         {
-
+            this.RegisterTitle.Visible = true;
+            this.RegisteredName.Visible = true;
+            this.RegisteredName.Text = this.FirstName.Text + " " + this.LastName.Text;
         }
     }
 }
