@@ -4,7 +4,7 @@ using WebFormsMvp;
 
 namespace WebFormsControls.TicTacToe
 {
-    public class TicTacToePresenter : Presenter<ITicTacToeView>
+    public class TicTacToePresenter : Presenter<ITicTacToeView>, ITicTacToePresenter
     {
         private readonly ITicTacToeView view;
         private readonly ITicTacToeService gameService;
@@ -22,7 +22,10 @@ namespace WebFormsControls.TicTacToe
         {
             var currentGameBoard = args.CurrentGameBoard;
 
-            this.gameService.EvaluateGameBoard(currentGameBoard);
+            var nextState = this.gameService.EvaluateGameBoard(currentGameBoard);
+
+            this.view.Model = nextState;
         }
     }
 }
+ 

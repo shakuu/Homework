@@ -29,6 +29,14 @@ namespace WebFormsControls.TicTacToe.TicTacToeServices
                 return result;
             }
 
+            if (this.IsFull(currentGameBoard))
+            {
+                result.Message = "Game Over!";
+                result.GameBoard = currentGameBoard;
+
+                return result;
+            }
+
             var nextGameBoard = this.gameStrategy.GetNextMove(currentGameBoard);
 
             if (this.IsWin(nextGameBoard))
@@ -43,6 +51,29 @@ namespace WebFormsControls.TicTacToe.TicTacToeServices
             result.GameBoard = nextGameBoard;
 
             return result;
+        }
+
+        private bool IsFull(IList<IList<string>> gameBoard)
+        {
+            var isFull = true;
+            for (int row = 0; row < gameBoard.Count; row++)
+            {
+                for (int col = 0; col < gameBoard[row].Count; col++)
+                {
+                    if (gameBoard[row][col] != "X" && gameBoard[row][col] != "O")
+                    {
+                        isFull = false;
+                        break;
+                    }
+                }
+
+                if (!isFull)
+                {
+                    break;
+                }
+            }
+
+            return isFull;
         }
 
         private bool IsLoss(IList<IList<string>> gameBoard)
