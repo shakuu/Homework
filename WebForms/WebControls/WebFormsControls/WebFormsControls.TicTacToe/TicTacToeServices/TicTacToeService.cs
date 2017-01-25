@@ -75,34 +75,6 @@ namespace WebFormsControls.TicTacToe.TicTacToeServices
             return false;
         }
 
-        private bool IsRow(IList<IList<string>> gameBoard, Func<string, bool> isMatchingTokenPredicate)
-        {
-            bool IsRow = false;
-            for (int row = 0; row < 3; row++)
-            {
-                IsRow = false;
-                for (int col = 0; col < 3; col++)
-                {
-                    if (isMatchingTokenPredicate(gameBoard[row][col]))
-                    {
-                        IsRow = true;
-                    }
-                    else
-                    {
-                        IsRow = false;
-                        break;
-                    }
-                }
-
-                if (IsRow)
-                {
-                    break;
-                }
-            }
-
-            return IsRow;
-        }
-
         private bool IsRowOrColumn(IList<IList<string>> gameBoard, Func<string, bool> isMatchingTokenPredicate)
         {
             var isRow = false;
