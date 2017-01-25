@@ -16,7 +16,7 @@ namespace WebFormsControls.TicTacToe.TicTacToeServices.Strategies
                 var row = SimpletonTicTacToeStrategy.Random.Next(0, 3);
                 var col = SimpletonTicTacToeStrategy.Random.Next(0, 3);
 
-                if (currentGameBoard[row][col] != "O")
+                if (currentGameBoard[row][col] != "O" && currentGameBoard[row][col] != "X")
                 {
                     currentGameBoard[row][col] = "X";
                     break;
