@@ -6,6 +6,9 @@ namespace WebFormsControls.TicTacToe
 {
     public class TicTacToePresenter : Presenter<ITicTacToeView>, ITicTacToePresenter
     {
+        private const string GameBoardEmptyCell = "-";
+        private const string GameBoardPlayerMarker = "O";
+
         private readonly ITicTacToeView view;
         private readonly ITicTacToeService gameService;
 
@@ -21,10 +24,22 @@ namespace WebFormsControls.TicTacToe
         private void OnPlayerTurn(object sender, TicTacToeEventArgs args)
         {
             var currentGameBoard = args.CurrentGameBoard;
+            var playerInputRow = int.Parse(args.PlayerTurnRow);
+            var playerInputCol = int.Parse(args.PlayerTurnCol);
+            var playerInputContent = args.PlayerInputContent;
 
-            var nextState = this.gameService.EvaluateGameBoard(currentGameBoard);
+            if (playerInputContent == TicTacToePresenter.GameBoardEmptyCell)
+            {
+                currentGameBoard[playerInputRow][playerInputCol] = TicTacToePresenter.GameBoardPlayerMarker;
+            }
+            else
+            {
+                return;
+            }
 
-            this.view.Model = nextState;
+            var nextModelState = this.gameService.EvaluateGameBoard(currentGameBoard);
+
+            this.view.Model = nextModelState;
         }
     }
 }
