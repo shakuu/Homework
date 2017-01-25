@@ -108,66 +108,54 @@ namespace WebFormsControls.TicTacToe.TicTacToeServices
 
         private bool IsRowOrColumn(IList<IList<string>> gameBoard, Func<string, bool> isMatchingTokenPredicate)
         {
-            var isRow = false;
-            var isColumn = false;
+            var rowCount = 0;
+            var columnCount = 0;
             for (int col = 0; col < 3; col++)
             {
-                isRow = false;
-                isColumn = false;
+                rowCount = 0;
+                columnCount = 0;
                 for (int row = 0; row < 3; row++)
                 {
                     if (isMatchingTokenPredicate(gameBoard[row][col]))
                     {
-                        isColumn = true;
-                    }
-                    else
-                    {
-                        isColumn = false;
+                        columnCount++;
                     }
 
                     if (isMatchingTokenPredicate(gameBoard[col][row]))
                     {
-                        isRow = true;
-                    }
-                    else
-                    {
-                        isRow = false;
+                        rowCount++;
                     }
                 }
 
-                if (isColumn || isRow)
+                if (columnCount == 3 || rowCount == 3)
                 {
                     break;
                 }
             }
 
-            return isColumn || isRow;
+            return columnCount == 3 || rowCount == 3;
         }
 
         private bool IsDiagonal(IList<IList<string>> gameBoard, Func<string, bool> isMatchingTokenPredicate)
         {
-            var isDiagonalRight = false;
-            var isDiagonalLeft = false;
+            var diagonalLeftCount = 0;
+            var diagonalRightCount = 0;
+
             for (int i = 0; i < 3; i++)
             {
                 if (isMatchingTokenPredicate(gameBoard[i][i]))
                 {
-                    isDiagonalRight = true;
-                }
-                else
-                {
-                    isDiagonalRight = false;
+                    diagonalRightCount++;
                 }
 
                 if (isMatchingTokenPredicate(gameBoard[2 - i][i]))
                 {
-                    isDiagonalLeft = true;
-                }
-                else
-                {
-                    isDiagonalLeft = false;
+                    diagonalLeftCount++;
                 }
             }
+
+            var isDiagonalRight = diagonalRightCount == 3;
+            var isDiagonalLeft = diagonalLeftCount == 3;
 
             return isDiagonalRight || isDiagonalLeft;
         }

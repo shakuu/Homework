@@ -29,7 +29,7 @@ namespace WebFormsControls.WebFormsClient.UserControls.TicTacToe
                 return;
             }
 
-            this.Model.GameBoard = this.RestoreGameBoardFromSession();
+            //this.Model.GameBoard = this.RestoreGameBoardFromSession();
 
             var senderId = senderButton.ID;
             var userInputRow = senderId[1].ToString();
