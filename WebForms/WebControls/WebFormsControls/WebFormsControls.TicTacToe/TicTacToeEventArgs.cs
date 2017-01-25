@@ -9,6 +9,8 @@ namespace WebFormsControls.TicTacToe
 
         public string PlayerTurnCol { get; set; }
 
+        public string PlayerInputContent { get; set; }
+
         public IList<IList<string>> CurrentGameBoard { get; set; }
     }
 }

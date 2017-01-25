@@ -19,7 +19,7 @@ namespace WebFormsControls.TicTacToe.TicTacToeServices
 
         public TicTacToeViewModel EvaluateGameBoard(IList<IList<string>> currentGameBoard)
         {
-            var result = this.modelFactory.GetTicTacToeViewModel();
+            var result = this.modelFactory.CreateTicTacToeViewModel();
 
             if (this.IsLoss(currentGameBoard))
             {

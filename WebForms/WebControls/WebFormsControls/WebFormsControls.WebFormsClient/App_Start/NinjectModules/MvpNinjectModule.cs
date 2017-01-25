@@ -11,11 +11,13 @@ using WebFormsControls.WebFormsClient.App_Start.Factories;
 
 using WebFormsMvp;
 using WebFormsMvp.Binder;
+
 using WebFormsControls.RandomNumber;
+
 using WebFormsControls.TicTacToe;
 using WebFormsControls.TicTacToe.TicTacToeServices.Contracts;
 using WebFormsControls.TicTacToe.TicTacToeServices;
-using WebFormsControls.TicTacToe.TicTacToeServices.Strategies;
+using WebFormsControls.TicTacToe.Factories;
 
 namespace WebFormsControls.WebFormsClient.App_Start.NinjectModules
 {
@@ -26,7 +28,8 @@ namespace WebFormsControls.WebFormsClient.App_Start.NinjectModules
             this.Bind<IRandomPresenter>().To<RandomPresenter>();
             this.Bind<ITicTacToePresenter>().To<TicTacToePresenter>();
             this.Bind<ITicTacToeService>().To<TicTacToeService>();
-            this.Bind<ITicTacToeStrategy>().To<SimpletonTicTacToeStrategy>();
+
+            this.Bind<ITicTacToeViewModelFactory>().ToFactory();
 
             this.Bind<Random>().ToSelf().InSingletonScope();
 

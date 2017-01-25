@@ -8,6 +8,6 @@ namespace WebFormsControls.TicTacToe.Factories
 {
     public interface ITicTacToeViewModelFactory
     {
-        TicTacToeViewModel GetTicTacToeViewModel();
+        TicTacToeViewModel CreateTicTacToeViewModel();
     }
 }
