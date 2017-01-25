@@ -274,6 +274,7 @@
     <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
     <Content Include="Site.Master" />
+    <Content Include="TicTacToe.aspx" />
     <Content Include="UserControls\Calculator\CalculatorUserControl.ascx" />
     <Content Include="UserControls\Escaping\EscapingUserControl.ascx" />
     <Content Include="UserControls\RandomNumber\GenerateRandomNumber.ascx" />
@@ -463,6 +464,13 @@
       <DependentUpon>Site.Mobile.Master</DependentUpon>
     </Compile>
     <Compile Include="Startup.cs" />
+    <Compile Include="TicTacToe.aspx.cs">
+      <DependentUpon>TicTacToe.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="TicTacToe.aspx.designer.cs">
+      <DependentUpon>TicTacToe.aspx</DependentUpon>
+    </Compile>
     <Compile Include="UserControls\Calculator\CalculatorUserControl.ascx.cs">
       <DependentUpon>CalculatorUserControl.ascx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
