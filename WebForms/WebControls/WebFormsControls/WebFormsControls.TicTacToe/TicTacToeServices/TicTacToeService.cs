@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+
 using WebFormsControls.TicTacToe.Factories;
 using WebFormsControls.TicTacToe.TicTacToeServices.Contracts;
 
@@ -18,41 +19,55 @@ namespace WebFormsControls.TicTacToe.TicTacToeServices
 
         public TicTacToeViewModel EvaluateGameBoard(IList<IList<string>> currentGameBoard)
         {
-            var nextGameBoard = this.gameStrategy.GetNextMove(currentGameBoard);
-            return null;
-        }
+            var result = this.modelFactory.GetTicTacToeViewModel();
 
-        private string GetMessage(IList<IList<string>> gameBoard)
-        {
-            var isWin = this.IsWin(gameBoard);
-            if (isWin)
+            if (this.IsLoss(currentGameBoard))
             {
-                return "gg";
+                result.Message = "lucky";
+                result.GameBoard = currentGameBoard;
+
+                return result;
             }
-            else
+
+            var nextGameBoard = this.gameStrategy.GetNextMove(currentGameBoard);
+
+            if (this.IsWin(nextGameBoard))
             {
-                return "Your turn";
+                result.Message = "gg";
+                result.GameBoard = nextGameBoard;
+
+                return result;
             }
+
+            result.Message = "Your turn";
+            result.GameBoard = nextGameBoard;
+
+            return result;
         }
 
         private bool IsLoss(IList<IList<string>> gameBoard)
         {
+            if (this.IsDiagonal(gameBoard, this.IsPlayerTokenMatch))
+            {
+                return true;
+            }
+
+            if (this.IsRowOrColumn(gameBoard, this.IsPlayerTokenMatch))
+            {
+                return true;
+            }
+
             return false;
         }
 
         private bool IsWin(IList<IList<string>> gameBoard)
         {
-            if (this.IsDiagonal(gameBoard))
+            if (this.IsDiagonal(gameBoard, this.IsBotTokenMatch))
             {
                 return true;
             }
 
-            if (this.IsColumn(gameBoard))
-            {
-                return true;
-            }
-
-            if (this.IsRow(gameBoard))
+            if (this.IsRowOrColumn(gameBoard, this.IsBotTokenMatch))
             {
                 return true;
             }
@@ -60,69 +75,79 @@ namespace WebFormsControls.TicTacToe.TicTacToeServices
             return false;
         }
 
-        private bool IsRow(IList<IList<string>> gameBoard)
+        private bool IsRow(IList<IList<string>> gameBoard, Func<string, bool> isMatchingTokenPredicate)
         {
-            bool isColumn = false;
+            bool IsRow = false;
             for (int row = 0; row < 3; row++)
             {
-                isColumn = false;
+                IsRow = false;
                 for (int col = 0; col < 3; col++)
                 {
-                    if (this.IsMatch(gameBoard[row][col]))
+                    if (isMatchingTokenPredicate(gameBoard[row][col]))
                     {
-                        isColumn = true;
+                        IsRow = true;
                     }
                     else
                     {
-                        isColumn = false;
+                        IsRow = false;
                         break;
                     }
                 }
 
-                if (isColumn)
+                if (IsRow)
                 {
                     break;
                 }
             }
 
-            return isColumn;
+            return IsRow;
         }
 
-        private bool IsColumn(IList<IList<string>> gameBoard)
+        private bool IsRowOrColumn(IList<IList<string>> gameBoard, Func<string, bool> isMatchingTokenPredicate)
         {
-            bool isColumn = false;
+            var isRow = false;
+            var isColumn = false;
             for (int col = 0; col < 3; col++)
             {
+                isRow = false;
                 isColumn = false;
                 for (int row = 0; row < 3; row++)
                 {
-                    if (this.IsMatch(gameBoard[row][col]))
+                    if (isMatchingTokenPredicate(gameBoard[row][col]))
                     {
                         isColumn = true;
                     }
                     else
                     {
                         isColumn = false;
-                        break;
+                    }
+
+                    if (isMatchingTokenPredicate(gameBoard[col][row]))
+                    {
+                        isRow = true;
+                    }
+                    else
+                    {
+                        isRow = false;
                     }
                 }
 
-                if (isColumn)
+                if (isColumn || isRow)
                 {
                     break;
                 }
             }
 
-            return isColumn;
+            return isColumn || isRow;
         }
 
-        private bool IsDiagonal(IList<IList<string>> gameBoard)
+        private bool IsDiagonal(IList<IList<string>> gameBoard, Func<string, bool> isMatchingTokenPredicate)
         {
             var isDiagonalRight = false;
             var isDiagonalLeft = false;
             for (int i = 0; i < 3; i++)
             {
-                if (this.IsMatch(gameBoard[i][i]))
+                if (isMatchingTokenPredicate(gameBoard[i][i]))
                 {
                     isDiagonalRight = true;
                 }
@@ -131,7 +156,7 @@ namespace WebFormsControls.TicTacToe.TicTacToeServices
                     isDiagonalRight = false;
                 }
 
-                if (this.IsMatch(gameBoard[2 - i][i]))
+                if (isMatchingTokenPredicate(gameBoard[2 - i][i]))
                 {
                     isDiagonalLeft = true;
                 }
@@ -144,9 +169,14 @@ namespace WebFormsControls.TicTacToe.TicTacToeServices
             return isDiagonalRight || isDiagonalLeft;
         }
 
-        private bool IsMatch(string value)
+        private bool IsBotTokenMatch(string value)
         {
             return value == "X";
+        }
+
+        private bool IsPlayerTokenMatch(string value)
+        {
+            return value == "O";
         }
     }
 }
