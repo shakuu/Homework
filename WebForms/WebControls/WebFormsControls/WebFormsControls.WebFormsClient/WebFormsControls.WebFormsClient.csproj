@@ -274,6 +274,7 @@
     <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
     <Content Include="Site.Master" />
+    <Content Include="StudentRegistration.aspx" />
     <Content Include="TicTacToe.aspx" />
     <Content Include="UserControls\Calculator\CalculatorUserControl.ascx" />
     <Content Include="UserControls\Escaping\EscapingUserControl.ascx" />
@@ -464,6 +465,13 @@
       <DependentUpon>Site.Mobile.Master</DependentUpon>
     </Compile>
     <Compile Include="Startup.cs" />
+    <Compile Include="StudentRegistration.aspx.cs">
+      <DependentUpon>StudentRegistration.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="StudentRegistration.aspx.designer.cs">
+      <DependentUpon>StudentRegistration.aspx</DependentUpon>
+    </Compile>
     <Compile Include="TicTacToe.aspx.cs">
       <DependentUpon>TicTacToe.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>

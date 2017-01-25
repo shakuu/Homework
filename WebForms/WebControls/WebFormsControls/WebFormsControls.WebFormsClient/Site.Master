@@ -52,7 +52,8 @@
                     <ul class="nav navbar-nav">
                         <li><a runat="server" href="~/">Random</a></li>
                         <li><a runat="server" href="~/Escaping">Escaping</a></li>
-                        <li><a runat="server" href="~/TicTacToe">TicTacToe</a></li>
+                        <li><a runat="server" href="~/StudentRegistration">StudentRegistration</a></li>
+                        <li><a runat="server" href="~/TicTacToe">Tic Tac Toe</a></li>
                         <li><a runat="server" href="~/Calculator">Calculator</a></li>
                     </ul>
                     <asp:LoginView runat="server" ViewStateMode="Disabled">
