@@ -21,3 +21,4 @@
 </div>
 
 <strong>Message: <%# this.Model.Message %></strong>
+<asp:Button runat="server" Text="New Game" OnClick="OnNewGame" />

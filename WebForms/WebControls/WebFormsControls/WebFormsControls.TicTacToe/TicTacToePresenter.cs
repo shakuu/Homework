@@ -1,4 +1,6 @@
-﻿using WebFormsControls.TicTacToe.TicTacToeServices.Contracts;
+﻿using System;
+
+using WebFormsControls.TicTacToe.TicTacToeServices.Contracts;
 
 using WebFormsMvp;
 
@@ -17,8 +19,15 @@ namespace WebFormsControls.TicTacToe
         {
             this.view = view;
             this.view.PlayerTurn += this.OnPlayerTurn;
+            this.view.NewGame += this.OnNewGame;
 
             this.gameService = gameService;
+        }
+
+        private void OnNewGame(object sender, EventArgs args)
+        {
+            var newModelState = this.gameService.ResetGame();
+            this.view.Model = newModelState;
         }
 
         private void OnPlayerTurn(object sender, TicTacToeEventArgs args)

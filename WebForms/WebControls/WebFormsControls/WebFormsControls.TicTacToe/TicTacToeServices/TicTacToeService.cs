@@ -17,6 +17,15 @@ namespace WebFormsControls.TicTacToe.TicTacToeServices
             this.modelFactory = modelFactory;
         }
 
+        public TicTacToeViewModel ResetGame()
+        {
+            var result = this.modelFactory.CreateTicTacToeViewModel();
+            result.IsGameOver = false;
+            result.Message = "Let's roll";
+
+            return result;
+        }
+
         public TicTacToeViewModel EvaluateGameBoard(IList<IList<string>> currentGameBoard)
         {
             var result = this.modelFactory.CreateTicTacToeViewModel();
@@ -25,6 +34,7 @@ namespace WebFormsControls.TicTacToe.TicTacToeServices
             {
                 result.Message = "lucky";
                 result.GameBoard = currentGameBoard;
+                result.IsGameOver = true;
 
                 return result;
             }
@@ -33,6 +43,7 @@ namespace WebFormsControls.TicTacToe.TicTacToeServices
             {
                 result.Message = "Game Over!";
                 result.GameBoard = currentGameBoard;
+                result.IsGameOver = true;
 
                 return result;
             }
@@ -43,12 +54,14 @@ namespace WebFormsControls.TicTacToe.TicTacToeServices
             {
                 result.Message = "gg";
                 result.GameBoard = nextGameBoard;
+                result.IsGameOver = true;
 
                 return result;
             }
 
             result.Message = "Your turn";
             result.GameBoard = nextGameBoard;
+            result.IsGameOver = false;
 
             return result;
         }

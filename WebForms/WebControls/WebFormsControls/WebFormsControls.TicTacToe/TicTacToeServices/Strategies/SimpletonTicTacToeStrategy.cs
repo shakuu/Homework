@@ -13,8 +13,8 @@ namespace WebFormsControls.TicTacToe.TicTacToeServices.Strategies
         {
             while (true)
             {
-                var row = SimpletonTicTacToeStrategy.Random.Next(0, 4);
-                var col = SimpletonTicTacToeStrategy.Random.Next(0, 4);
+                var row = SimpletonTicTacToeStrategy.Random.Next(0, 3);
+                var col = SimpletonTicTacToeStrategy.Random.Next(0, 3);
 
                 if (currentGameBoard[row][col] != "O")
                 {

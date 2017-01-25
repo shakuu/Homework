@@ -20,5 +20,7 @@ namespace WebFormsControls.TicTacToe
         public IList<IList<string>> GameBoard { get; set; }
 
         public string Message { get; set; }
+
+        public bool IsGameOver { get; set; }
     }
 }

@@ -12,24 +12,37 @@ namespace WebFormsControls.WebFormsClient.UserControls.TicTacToe
     public partial class TicTacToeUserControl : MvpUserControl<TicTacToeViewModel>, ITicTacToeView
     {
         private const string SessionStateFieldName = "TicTacToe";
+        private const string SessionStateGameOverName = "GameOver";
 
         public event EventHandler<TicTacToeEventArgs> PlayerTurn;
+        public event EventHandler NewGame;
 
         protected void Page_Load(object sender, EventArgs e)
         {
             this.Model.GameBoard = this.RestoreGameBoardFromSession();
-            this.Model.Message = "Welcome!";
+            this.Model.IsGameOver = this.RestoreIsGameOverFromSession();
+            if (this.Model.IsGameOver)
+            {
+                this.Model.Message = "Game Over!";
+            }
+            else
+            {
+                this.Model.Message = "Welcome!";
+            }
         }
 
         protected void OnUserInput(object sender, EventArgs e)
         {
+            if (this.Model.IsGameOver)
+            {
+                return;
+            }
+
             var senderButton = sender as Button;
             if (sender == null)
             {
                 return;
             }
-
-            //this.Model.GameBoard = this.RestoreGameBoardFromSession();
 
             var senderId = senderButton.ID;
             var userInputRow = senderId[1].ToString();
@@ -39,7 +52,21 @@ namespace WebFormsControls.WebFormsClient.UserControls.TicTacToe
             var args = new TicTacToeEventArgs(userInputRow, userInputCol, userInputContent, this.Model.GameBoard);
             this.PlayerTurn(this, args);
 
-            Session[TicTacToeUserControl.SessionStateFieldName] = this.Model.GameBoard;
+            this.SaveGameStateToSession(this.Model.GameBoard, this.Model.IsGameOver);
+        }
+
+        protected void OnNewGame(object sender, EventArgs e)
+        {
+            this.NewGame(this, null);
+
+            this.SaveGameStateToSession(this.Model.GameBoard, this.Model.IsGameOver);
+        }
+
+        private void SaveGameStateToSession(IList<IList<string>> gameBoard, bool isGameOver)
+        {
+
+            Session[TicTacToeUserControl.SessionStateFieldName] = gameBoard;
+            Session[TicTacToeUserControl.SessionStateGameOverName] = isGameOver;
         }
 
         private IList<IList<string>> RestoreGameBoardFromSession()
@@ -52,6 +79,19 @@ namespace WebFormsControls.WebFormsClient.UserControls.TicTacToe
             else
             {
                 return this.Model.GameBoard;
+            }
+        }
+
+        private bool RestoreIsGameOverFromSession()
+        {
+            var sessionValue = Session[TicTacToeUserControl.SessionStateGameOverName];
+            if (sessionValue == null)
+            {
+                return false;
+            }
+            else
+            {
+                return (bool)sessionValue;
             }
         }
     }
