@@ -277,6 +277,7 @@
     <Content Include="UserControls\Calculator\CalculatorUserControl.ascx" />
     <Content Include="UserControls\Escaping\EscapingUserControl.ascx" />
     <Content Include="UserControls\RandomNumber\GenerateRandomNumber.ascx" />
+    <Content Include="UserControls\TicTacToe\TicTacToeUserControl.ascx" />
     <Content Include="ViewSwitcher.ascx" />
     <Content Include="Web.config" />
     <Content Include="Bundle.config" />
@@ -482,6 +483,13 @@
     </Compile>
     <Compile Include="UserControls\RandomNumber\GenerateRandomNumber.ascx.designer.cs">
       <DependentUpon>GenerateRandomNumber.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="UserControls\TicTacToe\TicTacToeUserControl.ascx.cs">
+      <DependentUpon>TicTacToeUserControl.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="UserControls\TicTacToe\TicTacToeUserControl.ascx.designer.cs">
+      <DependentUpon>TicTacToeUserControl.ascx</DependentUpon>
     </Compile>
     <Compile Include="ViewSwitcher.ascx.cs">
       <DependentUpon>ViewSwitcher.ascx</DependentUpon>

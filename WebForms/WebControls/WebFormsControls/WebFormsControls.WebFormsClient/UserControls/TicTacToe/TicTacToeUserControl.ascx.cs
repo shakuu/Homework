@@ -1,17 +1,15 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-using System.Web.UI;
-using System.Web.UI.WebControls;
+
+using WebFormsControls.TicTacToe;
+
+using WebFormsMvp;
+using WebFormsMvp.Web;
 
 namespace WebFormsControls.WebFormsClient.UserControls.TicTacToe
 {
-    public partial class TicTacToeUserControl : System.Web.UI.UserControl
+    [PresenterBinding(typeof(ITicTacToePresenter))]
+    public partial class TicTacToeUserControl : MvpUserControl<TicTacToeViewModel>, ITicTacToeView
     {
-        protected void Page_Load(object sender, EventArgs e)
-        {
-
-        }
+        public event EventHandler<TicTacToeEventArgs> PlayerTurn;
     }
 }
