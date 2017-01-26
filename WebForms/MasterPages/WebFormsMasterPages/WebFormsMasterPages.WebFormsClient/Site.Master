@@ -41,9 +41,10 @@
         <div class="container">
             <div class="row">
                 <div class="col-xs-3">
-                    <ul class="nav navbar-nav navbar-right">
-                        <li><a runat="server" href="~/Account/Register">Register</a></li>
-                        <li><a runat="server" href="~/Account/Login">Log in</a></li>
+                    <ul class="list-group">
+                        <li class="list-group-item"><a runat="server" href="~/PersonalInfo">Personal Info</a></li>
+                        <li class="list-group-item"><a runat="server" href="~/AdditionalInfo">Additional Info</a></li>
+                        <li class="list-group-item"><a runat="server" href="~/Friends">Friends</a></li>
                     </ul>
                 </div>
                 <div class="col-xs-9">
