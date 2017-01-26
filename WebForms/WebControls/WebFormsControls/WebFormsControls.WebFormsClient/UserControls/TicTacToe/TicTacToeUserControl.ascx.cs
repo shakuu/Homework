@@ -21,6 +21,7 @@ namespace WebFormsControls.WebFormsClient.UserControls.TicTacToe
         {
             this.Model.GameBoard = this.RestoreGameBoardFromSession();
             this.Model.IsGameOver = this.RestoreIsGameOverFromSession();
+
             if (this.Model.IsGameOver)
             {
                 this.Model.Message = "Game Over!";

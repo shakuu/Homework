@@ -5,6 +5,8 @@ VisualStudioVersion = 14.0.25420.1
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebFormsMasterPages.WebFormsClient", "WebFormsMasterPages.WebFormsClient\WebFormsMasterPages.WebFormsClient.csproj", "{05ADE2A3-D984-4FAA-9E94-354A7995822A}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebFormsMasterPages.NesterMasters", "WebFormsMasterPages.NesterMasters\WebFormsMasterPages.NesterMasters.csproj", "{CC07CF7A-5E76-43FE-987B-F25BF5B50DDF}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +17,10 @@ Global
 		{05ADE2A3-D984-4FAA-9E94-354A7995822A}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{05ADE2A3-D984-4FAA-9E94-354A7995822A}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{05ADE2A3-D984-4FAA-9E94-354A7995822A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CC07CF7A-5E76-43FE-987B-F25BF5B50DDF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CC07CF7A-5E76-43FE-987B-F25BF5B50DDF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CC07CF7A-5E76-43FE-987B-F25BF5B50DDF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CC07CF7A-5E76-43FE-987B-F25BF5B50DDF}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

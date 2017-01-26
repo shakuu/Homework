@@ -1,0 +1,13 @@
+﻿<%@ Master
+    Language="C#"
+    MasterPageFile="~/Site.Master"
+    AutoEventWireup="true"
+    CodeBehind="Nested.master.cs"
+    Inherits="WebFormsMasterPages.NesterMasters.Nested" %>
+
+<asp:Content ContentPlaceHolderID="MainContent" runat="server">
+    <h1>Nested Master page</h1>
+    <div class="jumbotron">
+        <asp:ContentPlaceHolder ID="NestedContent" runat="server"></asp:ContentPlaceHolder>
+    </div>
+</asp:Content>
