@@ -22,8 +22,13 @@ namespace WebFormsDataBinding.WebClient.UserControls
             if (!this.IsPostBack)
             {
                 var initialStateEventArgs = this.GetInitialStateEventArgs();
-                this.InitialState(this, initialStateEventArgs);
+                this.InitialState?.Invoke(this, initialStateEventArgs);
             }
+        }
+
+        protected void OnChangeSelection(object sender, EventArgs args)
+        {
+            this.ChangeSelection?.Invoke(null, null);
         }
 
         private InitialStateEventArgs GetInitialStateEventArgs()
