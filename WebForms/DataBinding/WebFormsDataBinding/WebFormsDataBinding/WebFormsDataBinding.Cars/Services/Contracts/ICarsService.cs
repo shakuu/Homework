@@ -6,7 +6,7 @@ namespace WebFormsDataBinding.Cars.Services.Contracts
 {
     public interface ICarsService
     {
-        IEnumerable<Car> FindCars(string make, IEnumerable<string> Options);
+        IEnumerable<Car> FindCars(string make, IEnumerable<string> options);
 
         IEnumerable<string> AllAvailableMakes();
 

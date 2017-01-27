@@ -51,6 +51,7 @@
     <Compile Include="Presenters\CarsPresenter.cs" />
     <Compile Include="Presenters\Contracts\ICarsPresenter.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Services\CarsService.cs" />
     <Compile Include="Services\Contracts\ICarsService.cs" />
     <Compile Include="ViewModels\CarsViewModel.cs" />
     <Compile Include="Views\ICarsView.cs" />
