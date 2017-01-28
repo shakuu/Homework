@@ -10,7 +10,7 @@
 namespace WebFormsDataBinding.WebClient {
     
     
-    public partial class EmployeesListView {
+    public partial class EmployeesPartTwo {
         
         /// <summary>
         /// EmployeesListView control.

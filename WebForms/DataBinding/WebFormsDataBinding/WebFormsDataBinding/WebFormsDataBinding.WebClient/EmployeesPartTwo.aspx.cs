@@ -10,13 +10,13 @@ using WebFormsMvp.Web;
 namespace WebFormsDataBinding.WebClient
 {
     [PresenterBinding(typeof(IEmployeesPresenter))]
-    public partial class EmployeesListView : MvpPage<EmployeesViewModel>, IEmployeesView
+    public partial class EmployeesPartTwo : MvpPage<EmployeesViewModel>, IEmployeesView
     {
         public event EventHandler DisplayAllEmployees;
 
         protected void Page_Load(object sender, EventArgs e)
         {
-            this.DisplayAllEmployees?.Invoke(null, null);
+            this.DisplayAllEmployees(null, null);
 
             this.EmployeesListView.DataSource = this.Model.AllEmployees;
             this.EmployeesListView.DataBind();
