@@ -1,5 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
+using System.Linq;
 
 using WebFormsDataBinding.ActualCars.Models.Contracts;
 using WebFormsDataBinding.ActualCars.Models.Factories;
@@ -13,8 +13,18 @@ namespace WebFormsDataBinding.ActualCars.Services
 
         private readonly ICollection<ICarModel> existingCars;
 
+        private IEnumerable<string> availableMakes;
+
+        private IDictionary<string, ICollection<string>> modelsByMake;
+
+        private IEnumerable<string> availableOptions;
+
         public CarsInformationService()
         {
+            this.availableMakes = this.CreateAvailableMakes();
+            this.modelsByMake = this.CreateModelsByMake();
+            this.availableOptions = this.CreateAvailableOptions();
+
             this.existingCars = new HashSet<ICarModel>();
         }
 
@@ -33,17 +43,59 @@ namespace WebFormsDataBinding.ActualCars.Services
 
         public IEnumerable<string> FindAvailableMakes()
         {
-            throw new NotImplementedException();
+            return this.availableMakes;
         }
 
         public IEnumerable<string> FindAvaialbleModels(string make = null)
         {
-            throw new NotImplementedException();
+            if (make == null)
+            {
+                make = this.availableMakes.First();
+            }
+
+            return this.modelsByMake[make];
         }
 
         public IEnumerable<string> FindAvailableOptions()
         {
-            throw new NotImplementedException();
+            return this.availableOptions;
+        }
+
+        private IEnumerable<string> CreateAvailableMakes()
+        {
+            var availableMakes = new[]
+            {
+                "Audi",
+                "BMW",
+                "Ford",
+                "VW"
+            };
+
+            return availableMakes;
+        }
+
+        private IDictionary<string, ICollection<string>> CreateModelsByMake()
+        {
+            var modelsByMake = new Dictionary<string, ICollection<string>>();
+
+            modelsByMake.Add("Audi", new HashSet<string>() { "A1", "A2", "A3", "A4", "A5", "A6", "A7", "A8" });
+            modelsByMake.Add("BMW", new HashSet<string>() { "M1", "M3", "M4", "M5", "M6" });
+            modelsByMake.Add("Ford", new HashSet<string>() { "Fiesta", "Focus", "Mondeo", "Edge" });
+            modelsByMake.Add("VW", new HashSet<string>() { "Polo", "Golf", "Rabbit", "Tiguan", "Touareg" });
+
+            return modelsByMake;
+        }
+
+        private IEnumerable<string> CreateAvailableOptions()
+        {
+            var availableOptions = new[]
+            {
+                "Autonomous Driving",
+                "Massaging Seats",
+                "Armour"
+            };
+
+            return availableOptions;
         }
     }
 }
