@@ -53,6 +53,7 @@
                         <li><a runat="server" href="~/">It's complicated</a></li>
                         <li><a runat="server" href="~/ActualCars">Task 1. Cars</a></li>
                         <li><a runat="server" href="~/Employees">Task 2. Employees</a></li>
+                        <li><a runat="server" href="~/EmployeesListView">Task 2.2 Employees ListView</a></li>
                     </ul>
                     <asp:LoginView runat="server" ViewStateMode="Disabled">
                         <AnonymousTemplate>
