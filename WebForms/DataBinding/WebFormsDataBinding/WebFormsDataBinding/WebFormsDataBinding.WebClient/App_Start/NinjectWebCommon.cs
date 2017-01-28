@@ -64,6 +64,7 @@ namespace WebFormsDataBinding.WebClient.App_Start
         private static void RegisterServices(IKernel kernel)
         {
             kernel.Load(new MvpNinjectModule());
+            kernel.Load(new ActualCarsNinjectModule());
 
             PresenterBinder.Factory = kernel.Get<IPresenterFactory>();
         }
