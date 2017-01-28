@@ -255,6 +255,7 @@
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\Site.css" />
+    <Content Include="Employees.aspx" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
     <Content Include="fonts\glyphicons-halflings-regular.ttf" />
@@ -299,6 +300,7 @@
     <Content Include="Site.Master" />
     <Content Include="UserControls\ActualCarsUserControl.ascx" />
     <Content Include="UserControls\CarsUserControl.ascx" />
+    <Content Include="UserControls\EmployeesUserControl.ascx" />
     <Content Include="ViewSwitcher.ascx" />
     <Content Include="Web.config" />
     <Content Include="Bundle.config" />
@@ -459,6 +461,13 @@
     <Compile Include="Default.aspx.designer.cs">
       <DependentUpon>Default.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Employees.aspx.cs">
+      <DependentUpon>Employees.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Employees.aspx.designer.cs">
+      <DependentUpon>Employees.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -492,6 +501,13 @@
     </Compile>
     <Compile Include="UserControls\CarsUserControl.ascx.designer.cs">
       <DependentUpon>CarsUserControl.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="UserControls\EmployeesUserControl.ascx.cs">
+      <DependentUpon>EmployeesUserControl.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="UserControls\EmployeesUserControl.ascx.designer.cs">
+      <DependentUpon>EmployeesUserControl.ascx</DependentUpon>
     </Compile>
     <Compile Include="ViewSwitcher.ascx.cs">
       <DependentUpon>ViewSwitcher.ascx</DependentUpon>

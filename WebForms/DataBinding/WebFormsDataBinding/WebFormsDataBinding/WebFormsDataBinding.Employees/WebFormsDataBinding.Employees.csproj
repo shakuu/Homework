@@ -119,6 +119,8 @@
     <Compile Include="Region.cs">
       <DependentUpon>Northwind.tt</DependentUpon>
     </Compile>
+    <Compile Include="Services\Contracts\IEmployeesService.cs" />
+    <Compile Include="Services\EmployeesService.cs" />
     <Compile Include="Shipper.cs">
       <DependentUpon>Northwind.tt</DependentUpon>
     </Compile>

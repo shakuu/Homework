@@ -1,18 +1,29 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+
+using WebFormsDataBinding.Employees.Services.Contracts;
 using WebFormsDataBinding.Employees.Views;
+
 using WebFormsMvp;
 
 namespace WebFormsDataBinding.Employees.Presenters
 {
     public class EmployeesPresenter : Presenter<IEmployeesView>
     {
-        public EmployeesPresenter(IEmployeesView view)
+        private readonly IEmployeesView view;
+        private readonly IEmployeesService employeesService;
+
+        public EmployeesPresenter(IEmployeesView view, IEmployeesService employeesService)
             : base(view)
         {
+            this.view = view;
+            this.view.DisplayAllEmployees += this.OnDisplayAllEmployees;
+
+            this.employeesService = employeesService;
+        }
+
+        private void OnDisplayAllEmployees(object sender, EventArgs args)
+        {
+            this.view.Model.AllEmployees = this.employeesService.FindAllEmployeeNames();
         }
     }
 }
