@@ -14,5 +14,5 @@
 
 <div class="jumbotron">
     <asp:DetailsView ID="CreatedCarDetailsView" runat="server"></asp:DetailsView>
-    <asp:ListView ID="CreatedCarOptionsListView" runat="server"></asp:ListView>
+    <asp:GridView ID="CreatedCarOptionsGridView" runat="server"></asp:GridView>
 </div>

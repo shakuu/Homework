@@ -67,8 +67,8 @@ namespace WebFormsDataBinding.WebClient.UserControls
             this.CreatedCarDetailsView.DataSource = this.Model.CreatedCar;
             this.CreatedCarDetailsView.DataBind();
 
-            this.CreatedCarOptionsListView.DataSource = this.Model.CreatedCar.First().Options;
-            this.CreatedCarOptionsListView.DataBind();
+            this.CreatedCarOptionsGridView.DataSource = this.Model.CreatedCar.First().Options;
+            this.CreatedCarOptionsGridView.DataBind();
         }
     }
 }
