@@ -6,7 +6,7 @@ namespace WebFormsDataBinding.ActualCars.ViewModels
 {
     public class CreateCarFormViewModel
     {
-        public ICarModel CreatedCar { get; set; }
+        public IEnumerable<ICarModel> CreatedCar { get; set; }
 
         public IEnumerable<string> AvailableMakes { get; set; }
 

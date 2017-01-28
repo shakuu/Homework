@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 
 using WebFormsDataBinding.ActualCars.Models.Contracts;
@@ -18,7 +19,7 @@ namespace WebFormsDataBinding.ActualCars.Services
         private IDictionary<string, ICollection<string>> modelsByMake;
 
         private IEnumerable<string> availableOptions;
-        
+
         public CarsInformationService(ICreateCarFormModelsFactory carsFactory)
         {
             this.carsFactory = carsFactory;
@@ -30,12 +31,12 @@ namespace WebFormsDataBinding.ActualCars.Services
             this.existingCars = new HashSet<ICarModel>();
         }
 
-        public ICarModel FindOrCreateCar(string make, string model, ICollection<string> options)
+        public IEnumerable<ICarModel> FindOrCreateCar(string make, string model, ICollection<string> options)
         {
             var car = this.carsFactory.CreateCarModel(make, model, options);
             this.existingCars.Add(car);
 
-            return car;
+            return new Collection<ICarModel>() { car };
         }
 
         public IEnumerable<string> FindAvailableMakes()
