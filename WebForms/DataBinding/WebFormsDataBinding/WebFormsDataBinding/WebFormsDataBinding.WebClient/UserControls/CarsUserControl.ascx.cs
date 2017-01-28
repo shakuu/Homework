@@ -1,7 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Web.UI.WebControls;
 
 using WebFormsDataBinding.Cars.EventsArgs;
+using WebFormsDataBinding.Cars.Models;
 using WebFormsDataBinding.Cars.Presenters.Contracts;
 using WebFormsDataBinding.Cars.ViewModels;
 using WebFormsDataBinding.Cars.Views;
@@ -28,7 +30,31 @@ namespace WebFormsDataBinding.WebClient.UserControls
 
         protected void OnChangeSelection(object sender, EventArgs args)
         {
-            this.ChangeSelection?.Invoke(null, null);
+            var changeSelectionEventArgs = this.GetChangeSelectionEventArgs();
+            this.ChangeSelection?.Invoke(this, changeSelectionEventArgs);
+        }
+
+        private ChangeSelectionEventArgs GetChangeSelectionEventArgs()
+        {
+            var make = this.Makes.SelectedItem.Text;
+            var options = new List<string>();
+            foreach (ListItem item in this.Options.Items)
+            {
+                if (item.Selected)
+                {
+                    options.Add(item.Text);
+                }
+            }
+
+            Action<IEnumerable<Car>> assignMatchingCarsDataSource = (IEnumerable<Car> matchingCars) =>
+            {
+                this.MatchingCars.DataSource = matchingCars;
+                this.MatchingCars.DataBind();
+            };
+
+            var changeSelectionEventArgs = new ChangeSelectionEventArgs(make, options, assignMatchingCarsDataSource);
+
+            return changeSelectionEventArgs;
         }
 
         private InitialStateEventArgs GetInitialStateEventArgs()

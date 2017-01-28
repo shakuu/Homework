@@ -5,9 +5,9 @@
     Inherits="WebFormsDataBinding.WebClient.UserControls.CarsUserControl" %>
 
 <div class="jumbotron">
-    <asp:DropDownList ID="Makes" runat="server"></asp:DropDownList>
-    <asp:DropDownList ID="Models" runat="server"></asp:DropDownList>
-    <asp:CheckBoxList ID="Options" runat="server"></asp:CheckBoxList>
+    <asp:DropDownList ID="Makes" runat="server" AutoPostBack="true" OnSelectedIndexChanged="OnChangeSelection"></asp:DropDownList>
+    <asp:DropDownList ID="Models" runat="server" AutoPostBack="true" OnSelectedIndexChanged="OnChangeSelection"></asp:DropDownList>
+    <asp:CheckBoxList ID="Options" runat="server" AutoPostBack="true" OnSelectedIndexChanged="OnChangeSelection"></asp:CheckBoxList>
 </div>
 
 <div class="jumbotron">

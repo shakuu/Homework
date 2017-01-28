@@ -11,7 +11,7 @@
 <asp:Content ID="BodyContent" ContentPlaceHolderID="MainContent" runat="server">
 
     <div class="jumbotron">
-        <h1>Cars</h1>
+        <h1>Complicated Cars</h1>
     </div>
 
     <uc:complicatedcars runat="server" />

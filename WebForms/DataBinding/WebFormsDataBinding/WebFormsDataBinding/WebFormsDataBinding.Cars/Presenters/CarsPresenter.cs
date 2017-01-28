@@ -24,7 +24,7 @@ namespace WebFormsDataBinding.Cars.Presenters
 
         private void OnChangeSelection(object sender, ChangeSelectionEventArgs args)
         {
-            this.view.Model.MatchingCars = this.carsService.FindCars(args.SelectedMake, args.SelectedOptions);
+            args.AssignMatchingCarsDataSource(this.carsService.FindCars(args.SelectedMake, args.SelectedOptions));
         }
 
         private void OnInitialState(object sender, InitialStateEventArgs args)
