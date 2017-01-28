@@ -11,5 +11,7 @@ namespace WebFormsDataBinding.ActualCars.Views
         event EventHandler<MakeSelectionChangedEventArgs> MakeSelectionChanged;
 
         event EventHandler<CreateCarFormSubmitEventArgs> CreateCarFormSubmit;
+
+        event EventHandler InitialState;
     }
 }
