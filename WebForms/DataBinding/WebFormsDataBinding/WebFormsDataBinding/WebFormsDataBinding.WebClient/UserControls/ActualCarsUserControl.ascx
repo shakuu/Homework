@@ -9,7 +9,7 @@
     <asp:DropDownList ID="Makes" runat="server" AutoPostBack="true" OnSelectedIndexChanged="OnMakeSelectionChanged"></asp:DropDownList>
     <asp:DropDownList ID="Models" runat="server"></asp:DropDownList>
     <asp:CheckBoxList ID="Options" runat="server"></asp:CheckBoxList>
-    <asp:Button CssClass="btn btn-success" runat="server" />
+    <asp:Button CssClass="btn btn-success" runat="server" OnClick="OnCreateCarFormSubmit" />
 </div>
 
 <div class="jumbotron">
