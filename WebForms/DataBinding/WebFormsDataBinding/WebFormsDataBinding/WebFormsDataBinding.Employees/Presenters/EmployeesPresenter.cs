@@ -1,5 +1,6 @@
 ﻿using System;
 
+using WebFormsDataBinding.Employees.Presenters.Contracts;
 using WebFormsDataBinding.Employees.Services.Contracts;
 using WebFormsDataBinding.Employees.Views;
 
@@ -7,7 +8,7 @@ using WebFormsMvp;
 
 namespace WebFormsDataBinding.Employees.Presenters
 {
-    public class EmployeesPresenter : Presenter<IEmployeesView>
+    public class EmployeesPresenter : Presenter<IEmployeesView>, IEmployeesPresenter
     {
         private readonly IEmployeesView view;
         private readonly IEmployeesService employeesService;

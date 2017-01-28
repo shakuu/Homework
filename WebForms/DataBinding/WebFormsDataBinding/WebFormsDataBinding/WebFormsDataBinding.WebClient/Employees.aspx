@@ -6,6 +6,8 @@
     CodeBehind="Employees.aspx.cs"
     Inherits="WebFormsDataBinding.WebClient.Employees" %>
 
-<asp:Content ContentPlaceHolderID="MainContent" runat="server">
+<%@ Register Src="~/UserControls/EmployeesUserControl.ascx" TagPrefix="uc" TagName="employees" %>
 
+<asp:Content ContentPlaceHolderID="MainContent" runat="server">
+    <uc:employees runat="server" />
 </asp:Content>
