@@ -1,4 +1,5 @@
 ﻿using WebFormsDataBinding.Cars.EventsArgs;
+using WebFormsDataBinding.Cars.Presenters.Contracts;
 using WebFormsDataBinding.Cars.Services.Contracts;
 using WebFormsDataBinding.Cars.Views;
 
@@ -6,7 +7,7 @@ using WebFormsMvp;
 
 namespace WebFormsDataBinding.Cars.Presenters
 {
-    public class CarsPresenter : Presenter<ICarsView>
+    public class CarsPresenter : Presenter<ICarsView>, ICarsPresenter
     {
         private ICarsView view;
         private ICarsService carsService;
