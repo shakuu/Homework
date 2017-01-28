@@ -10,7 +10,7 @@ namespace WebFormsDataBinding.WebClient.App_Start.NinjectModules
     {
         public override void Load()
         {
-            this.Kernel.Bind(x => x.FromAssembliesMatching("WebFormsDataBinding.ActualCars").SelectAllClasses().BindDefaultInterface());
+            this.Kernel.Bind(x => x.FromAssemblyContaining<ICreateCarFormModelsFactory>().SelectAllClasses().BindDefaultInterface());
 
             this.Bind<ICreateCarFormModelsFactory>().ToFactory().InSingletonScope();
         }

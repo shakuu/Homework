@@ -18,19 +18,16 @@ namespace WebFormsDataBinding.ActualCars.Services
         private IDictionary<string, ICollection<string>> modelsByMake;
 
         private IEnumerable<string> availableOptions;
-
-        public CarsInformationService()
+        
+        public CarsInformationService(ICreateCarFormModelsFactory carsFactory)
         {
+            this.carsFactory = carsFactory;
+
             this.availableMakes = this.CreateAvailableMakes();
             this.modelsByMake = this.CreateModelsByMake();
             this.availableOptions = this.CreateAvailableOptions();
 
             this.existingCars = new HashSet<ICarModel>();
-        }
-
-        public CarsInformationService(ICreateCarFormModelsFactory carsFactory)
-        {
-            this.carsFactory = carsFactory;
         }
 
         public ICarModel FindOrCreateCar(string make, string model, ICollection<string> options)
