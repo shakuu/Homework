@@ -13,39 +13,39 @@ namespace WebFormsDataBinding.WebClient.UserControls {
     public partial class ActualCarsUserControl {
         
         /// <summary>
-        /// Makes control.
+        /// MakesDropDownList control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList Makes;
+        protected global::System.Web.UI.WebControls.DropDownList MakesDropDownList;
         
         /// <summary>
-        /// Models control.
+        /// ModelsDropDownList control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList Models;
+        protected global::System.Web.UI.WebControls.DropDownList ModelsDropDownList;
         
         /// <summary>
-        /// Options control.
+        /// OptionsCheckBoxList control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.CheckBoxList Options;
+        protected global::System.Web.UI.WebControls.CheckBoxList OptionsCheckBoxList;
         
         /// <summary>
-        /// CreatedCar control.
+        /// CreatedCarDetailsView control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DetailsView CreatedCar;
+        protected global::System.Web.UI.WebControls.DetailsView CreatedCarDetailsView;
     }
 }

@@ -6,12 +6,12 @@
 
 
 <div class="jumbotron">
-    <asp:DropDownList ID="Makes" runat="server" AutoPostBack="true" OnSelectedIndexChanged="OnMakeSelectionChanged"></asp:DropDownList>
-    <asp:DropDownList ID="Models" runat="server"></asp:DropDownList>
-    <asp:CheckBoxList ID="Options" runat="server"></asp:CheckBoxList>
+    <asp:DropDownList ID="MakesDropDownList" runat="server" AutoPostBack="true" OnSelectedIndexChanged="OnMakeSelectionChanged"></asp:DropDownList>
+    <asp:DropDownList ID="ModelsDropDownList" runat="server"></asp:DropDownList>
+    <asp:CheckBoxList ID="OptionsCheckBoxList" runat="server"></asp:CheckBoxList>
     <asp:Button CssClass="btn btn-success" runat="server" OnClick="OnCreateCarFormSubmit" />
 </div>
 
 <div class="jumbotron">
-    <asp:DetailsView ID="CreatedCar" runat="server"></asp:DetailsView>
+    <asp:DetailsView ID="CreatedCarDetailsView" runat="server"></asp:DetailsView>
 </div>

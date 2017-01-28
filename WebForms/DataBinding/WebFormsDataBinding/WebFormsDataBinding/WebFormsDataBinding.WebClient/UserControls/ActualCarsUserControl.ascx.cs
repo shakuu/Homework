@@ -25,34 +25,34 @@ namespace WebFormsDataBinding.WebClient.UserControls
             {
                 this.InitialState?.Invoke(null, null);
 
-                this.Makes.DataSource = this.Model.AvailableMakes;
-                this.Makes.DataBind();
+                this.MakesDropDownList.DataSource = this.Model.AvailableMakes;
+                this.MakesDropDownList.DataBind();
 
-                this.Models.DataSource = this.Model.AvailableModels;
-                this.Models.DataBind();
+                this.ModelsDropDownList.DataSource = this.Model.AvailableModels;
+                this.ModelsDropDownList.DataBind();
 
-                this.Options.DataSource = this.Model.AvailableOptions;
-                this.Options.DataBind();
+                this.OptionsCheckBoxList.DataSource = this.Model.AvailableOptions;
+                this.OptionsCheckBoxList.DataBind();
             }
         }
 
         protected void OnMakeSelectionChanged(object sender, EventArgs args)
         {
-            var selectedMake = this.Makes.SelectedItem.Text;
+            var selectedMake = this.MakesDropDownList.SelectedItem.Text;
             var makeSelectionChangedEventArgs = new MakeSelectionChangedEventArgs(selectedMake);
             this.MakeSelectionChanged?.Invoke(null, makeSelectionChangedEventArgs);
 
-            this.Models.DataSource = this.Model.AvailableModels;
-            this.Models.DataBind();
+            this.ModelsDropDownList.DataSource = this.Model.AvailableModels;
+            this.ModelsDropDownList.DataBind();
         }
 
         protected void OnCreateCarFormSubmit(object sender, EventArgs args)
         {
-            var selectedMake = this.Makes.SelectedItem.Text;
-            var selectedModel = this.Models.SelectedItem.Text;
+            var selectedMake = this.MakesDropDownList.SelectedItem.Text;
+            var selectedModel = this.ModelsDropDownList.SelectedItem.Text;
 
             var selectedOptions = new LinkedList<string>();
-            foreach (ListItem item in this.Options.Items)
+            foreach (ListItem item in this.OptionsCheckBoxList.Items)
             {
                 if (item.Selected)
                 {
@@ -63,8 +63,8 @@ namespace WebFormsDataBinding.WebClient.UserControls
             var createCarFormSubmitEventArgs = new CreateCarFormSubmitEventArgs(selectedMake, selectedModel, selectedOptions);
             this.CreateCarFormSubmit?.Invoke(null, createCarFormSubmitEventArgs);
 
-            this.CreatedCar.DataSource = this.Model.CreatedCar;
-            this.CreatedCar.DataBind();
+            this.CreatedCarDetailsView.DataSource = this.Model.CreatedCar;
+            this.CreatedCarDetailsView.DataBind();
         }
     }
 }
