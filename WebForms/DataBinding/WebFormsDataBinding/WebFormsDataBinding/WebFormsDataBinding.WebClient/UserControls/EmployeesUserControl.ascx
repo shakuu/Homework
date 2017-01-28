@@ -4,10 +4,12 @@
     CodeBehind="EmployeesUserControl.ascx.cs"
     Inherits="WebFormsDataBinding.WebClient.UserControls.EmployeesUserControl" %>
 
-<asp:GridView ID="EmployeesGridView" runat="server" AutoGenerateColumns="false">
-    <Columns>
-        <asp:BoundField DataField="FullName" HeaderText="Full Name" />
-        <asp:HyperLinkField Text="Edit" DataNavigateUrlFields="Id"
-            DataNavigateUrlFormatString="~/EmployeeDetails?id={0}" />
-    </Columns>
-</asp:GridView>
+<div class="jumbotron">
+    <asp:GridView ID="EmployeesGridView" runat="server" AutoGenerateColumns="false">
+        <Columns>
+            <asp:BoundField DataField="FullName" HeaderText="Full Name" />
+            <asp:HyperLinkField Text="Details" DataNavigateUrlFields="Id"
+                DataNavigateUrlFormatString="~/EmployeeDetails?id={0}" />
+        </Columns>
+    </asp:GridView>
+</div>
