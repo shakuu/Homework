@@ -12,6 +12,7 @@ namespace WebFormsDataBinding.WebClient.App_Start
     using Ninject.Web.Common;
     using NinjectModules;
     using WebFormsMvp.Binder;
+    using AutoMapper;
 
     public static class NinjectWebCommon
     {
@@ -65,7 +66,7 @@ namespace WebFormsDataBinding.WebClient.App_Start
         {
             kernel.Load(new MvpNinjectModule());
             kernel.Load(new ActualCarsNinjectModule());
-
+            
             PresenterBinder.Factory = kernel.Get<IPresenterFactory>();
         }
     }
