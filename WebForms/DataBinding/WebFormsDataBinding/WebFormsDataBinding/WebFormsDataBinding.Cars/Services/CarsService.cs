@@ -121,7 +121,7 @@ namespace WebFormsDataBinding.Cars.Services
             foreach (var kvp in this.modelsByMake)
             {
                 var make = kvp.Key;
-                this.carsByMake.Add(make, new List<Car>());
+                cars.Add(make, new List<Car>());
 
                 foreach (var model in kvp.Value)
                 {
