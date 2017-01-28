@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Web.UI.WebControls;
 
 using WebFormsDataBinding.ActualCars.EventsArgs;
@@ -65,6 +66,9 @@ namespace WebFormsDataBinding.WebClient.UserControls
 
             this.CreatedCarDetailsView.DataSource = this.Model.CreatedCar;
             this.CreatedCarDetailsView.DataBind();
+
+            this.CreatedCarOptionsListView.DataSource = this.Model.CreatedCar.First().Options;
+            this.CreatedCarOptionsListView.DataBind();
         }
     }
 }
