@@ -7,7 +7,7 @@
     Inherits="WebFormsDataBinding.WebClient.EmployeeDetails" %>
 
 <asp:Content ContentPlaceHolderID="MainContent" runat="server">
-    <a class="btn btn-default" href="Employees.aspx"></a>
+    <a class="btn btn-default" href="/Employees"><p>Back</p></a>
 
     <div class="jumbotron">
         <asp:DetailsView ID="EmployeeDetailsView" runat="server"></asp:DetailsView>
