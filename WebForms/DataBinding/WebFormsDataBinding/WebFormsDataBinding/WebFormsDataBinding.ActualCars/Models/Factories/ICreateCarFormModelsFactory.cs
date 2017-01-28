@@ -6,6 +6,6 @@ namespace WebFormsDataBinding.ActualCars.Models.Factories
 {
     public interface ICreateCarFormModelsFactory
     {
-        ICarModel CreateCarModel(string make, string model, IEnumerable<string> options);
+        ICarModel CreateCarModel(string make, string model, ICollection<string> options);
     }
 }

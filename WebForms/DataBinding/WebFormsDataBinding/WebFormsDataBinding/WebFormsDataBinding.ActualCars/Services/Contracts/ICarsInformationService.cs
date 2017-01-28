@@ -6,7 +6,7 @@ namespace WebFormsDataBinding.ActualCars.Services.Contracts
 {
     public interface ICarsInformationService
     {
-        ICarModel FindOrCreateCar(string make, string model, IEnumerable<string> options);
+        ICarModel FindOrCreateCar(string make, string model, ICollection<string> options);
 
         IEnumerable<string> FindAvailableMakes();
 

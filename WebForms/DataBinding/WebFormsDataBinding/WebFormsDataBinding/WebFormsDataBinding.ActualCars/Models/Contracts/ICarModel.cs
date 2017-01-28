@@ -8,6 +8,6 @@ namespace WebFormsDataBinding.ActualCars.Models.Contracts
 
         string Model { get; set; }
 
-        IEnumerable<string> Options { get; set; }
+        ICollection<string> Options { get; set; }
     }
 }
