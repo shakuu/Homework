@@ -87,7 +87,7 @@
     <Compile Include="Employee.cs">
       <DependentUpon>Northwind.tt</DependentUpon>
     </Compile>
-    <Compile Include="EventsArgs\DisplayEmplyeeWithIdEventArgs.cs" />
+    <Compile Include="EventsArgs\DisplayEmployeeDetailsEventArgs.cs" />
     <Compile Include="Models\EmployeeNames.cs" />
     <Compile Include="Northwind.Context.cs">
       <AutoGen>True</AutoGen>
@@ -110,7 +110,9 @@
     <Compile Include="Order_Detail.cs">
       <DependentUpon>Northwind.tt</DependentUpon>
     </Compile>
+    <Compile Include="Presenters\Contracts\IEmployeeDetailsPresenter.cs" />
     <Compile Include="Presenters\Contracts\IEmployeesPresenter.cs" />
+    <Compile Include="Presenters\EmployeeDetailsPresenter.cs" />
     <Compile Include="Presenters\EmployeesPresenter.cs" />
     <Compile Include="Product.cs">
       <DependentUpon>Northwind.tt</DependentUpon>
@@ -134,6 +136,8 @@
       <DependentUpon>Northwind.tt</DependentUpon>
     </Compile>
     <Compile Include="ViewModels\EmployeesViewModel.cs" />
+    <Compile Include="ViewModels\EmployeeDetailsViewModel.cs" />
+    <Compile Include="Views\IEmployeeDetailsView.cs" />
     <Compile Include="Views\IEmployeesView.cs" />
   </ItemGroup>
   <ItemGroup>
