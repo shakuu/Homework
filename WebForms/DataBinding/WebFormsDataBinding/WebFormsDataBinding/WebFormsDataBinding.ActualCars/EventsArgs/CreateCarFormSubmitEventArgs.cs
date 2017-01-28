@@ -5,7 +5,7 @@ namespace WebFormsDataBinding.ActualCars.EventsArgs
 {
     public class CreateCarFormSubmitEventArgs : EventArgs
     {
-        public CreateCarFormSubmitEventArgs(string selectedMake, string selectedModel, IEnumerable<string> selectedOptions)
+        public CreateCarFormSubmitEventArgs(string selectedMake, string selectedModel, ICollection<string> selectedOptions)
         {
             this.SelectedMake = selectedMake;
             this.SelectedModel = selectedModel;
@@ -16,6 +16,6 @@ namespace WebFormsDataBinding.ActualCars.EventsArgs
 
         public string SelectedModel { get; set; }
 
-        public IEnumerable<string> SelectedOptions { get; set; }
+        public ICollection<string> SelectedOptions { get; set; }
     }
 }
