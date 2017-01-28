@@ -272,6 +272,7 @@
     <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
     <Content Include="Site.Master" />
+    <Content Include="UserControls\ActualCarsUserControl.ascx" />
     <Content Include="UserControls\CarsUserControl.ascx" />
     <Content Include="ViewSwitcher.ascx" />
     <Content Include="Web.config" />
@@ -443,6 +444,13 @@
       <DependentUpon>Site.Mobile.Master</DependentUpon>
     </Compile>
     <Compile Include="Startup.cs" />
+    <Compile Include="UserControls\ActualCarsUserControl.ascx.cs">
+      <DependentUpon>ActualCarsUserControl.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="UserControls\ActualCarsUserControl.ascx.designer.cs">
+      <DependentUpon>ActualCarsUserControl.ascx</DependentUpon>
+    </Compile>
     <Compile Include="UserControls\CarsUserControl.ascx.cs">
       <DependentUpon>CarsUserControl.ascx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -462,6 +470,10 @@
     <Folder Include="App_Data\" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\WebFormsDataBinding.ActualCars\WebFormsDataBinding.ActualCars.csproj">
+      <Project>{B7030143-4D1A-4BC8-8CD3-6266B5E0D57E}</Project>
+      <Name>WebFormsDataBinding.ActualCars</Name>
+    </ProjectReference>
     <ProjectReference Include="..\WebFormsDataBinding.Cars\WebFormsDataBinding.Cars.csproj">
       <Project>{206AB963-74CA-422F-8930-E2A15CCCD65F}</Project>
       <Name>WebFormsDataBinding.Cars</Name>
