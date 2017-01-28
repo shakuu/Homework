@@ -13,7 +13,7 @@ namespace WebFormsDataBinding.Cars.Services
         private static Random random;
 
         private IEnumerable<string> allMakes = new[]
- {
+        {
             "BMW",
             "AUDI",
             "FORD",
