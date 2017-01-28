@@ -7,6 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebFormsDataBinding.WebClie
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebFormsDataBinding.Cars", "WebFormsDataBinding.Cars\WebFormsDataBinding.Cars.csproj", "{206AB963-74CA-422F-8930-E2A15CCCD65F}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebFormsDataBinding.ActualCars", "WebFormsDataBinding.ActualCars\WebFormsDataBinding.ActualCars.csproj", "{B7030143-4D1A-4BC8-8CD3-6266B5E0D57E}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,10 @@ Global
 		{206AB963-74CA-422F-8930-E2A15CCCD65F}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{206AB963-74CA-422F-8930-E2A15CCCD65F}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{206AB963-74CA-422F-8930-E2A15CCCD65F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B7030143-4D1A-4BC8-8CD3-6266B5E0D57E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B7030143-4D1A-4BC8-8CD3-6266B5E0D57E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B7030143-4D1A-4BC8-8CD3-6266B5E0D57E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B7030143-4D1A-4BC8-8CD3-6266B5E0D57E}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
