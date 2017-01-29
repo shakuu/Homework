@@ -17,6 +17,12 @@ namespace WebFormsDataBinding.WebClient
 
         protected void Page_Load(object sender, EventArgs e)
         {
+            if (this.Request.UrlReferrer != null)
+            {
+                var previousLocation = this.Request.UrlReferrer.AbsoluteUri;
+                this.ButtonBack.HRef = previousLocation;
+            }
+
             var requestedEmployeeId = this.Request.Params["id"];
 
             var displayEmployeeDetailsEventArgs = new DisplayEmployeeDetailsEventArgs(requestedEmployeeId);

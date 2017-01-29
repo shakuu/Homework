@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Data.Entity.Core;
 using System.Linq;
 
 using AutoMapper;
@@ -19,12 +20,26 @@ namespace WebFormsDataBinding.Employees.Services
 
         public IEnumerable<EmployeeNames> FindAllEmployeeNames()
         {
-            return this.dbContext.Employees.ProjectToList<EmployeeNames>();
+            try
+            {
+                return this.dbContext.Employees.ProjectToList<EmployeeNames>();
+            }
+            catch (EntityException)
+            {
+                return new EmployeeNames[] { };
+            }
         }
 
         public IEnumerable<Employee> FindEmployeeById(int id)
         {
-            return this.dbContext.Employees.Where(emp => emp.EmployeeID == id).ToList();
+            try
+            {
+                return this.dbContext.Employees.Where(emp => emp.EmployeeID == id).ToList();
+            }
+            catch (EntityException)
+            {
+                return new Employee[] { };
+            }
         }
     }
 }
