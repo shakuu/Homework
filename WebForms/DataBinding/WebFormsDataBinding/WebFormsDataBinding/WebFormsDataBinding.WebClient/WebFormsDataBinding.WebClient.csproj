@@ -258,6 +258,7 @@
     <Content Include="Content\Site.css" />
     <Content Include="EmployeeDetails.aspx" />
     <Content Include="Employees.aspx" />
+    <Content Include="EmployeesJS.aspx" />
     <Content Include="EmployeesPartThree.aspx" />
     <Content Include="EmployeesPartTwo.aspx" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
@@ -479,6 +480,13 @@
     </Compile>
     <Compile Include="Employees.aspx.designer.cs">
       <DependentUpon>Employees.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="EmployeesJS.aspx.cs">
+      <DependentUpon>EmployeesJS.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="EmployeesJS.aspx.designer.cs">
+      <DependentUpon>EmployeesJS.aspx</DependentUpon>
     </Compile>
     <Compile Include="EmployeesPartThree.aspx.cs">
       <DependentUpon>EmployeesPartThree.aspx</DependentUpon>
