@@ -1,17 +1,25 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-using System.Web.UI;
-using System.Web.UI.WebControls;
+
+using WebFormsDataBinding.Employees.Presenters.Contracts;
+using WebFormsDataBinding.Employees.ViewModels;
+using WebFormsDataBinding.Employees.Views;
+
+using WebFormsMvp;
+using WebFormsMvp.Web;
 
 namespace WebFormsDataBinding.WebClient
 {
-    public partial class EmployeesJS : System.Web.UI.Page
+    [PresenterBinding(typeof(IEmployeesPresenter))]
+    public partial class EmployeesJS : MvpPage<EmployeesViewModel>, IEmployeesView
     {
+        public event EventHandler DisplayAllEmployees;
+
         protected void Page_Load(object sender, EventArgs e)
         {
-            Page.ClientScript.RegisterClientScriptInclude("Popup", ResolveUrl("~/Scripts/Employees/popup.js"));
+            this.DisplayAllEmployees(null, null);
+
+            this.EmployeesGridView.DataSource = this.Model.AllEmployees;
+            this.EmployeesGridView.DataBind();
         }
     }
 }
