@@ -17,9 +17,24 @@ namespace WebFormsDataBinding.WebClient.Controllers
 
         public IHttpActionResult GetEmployee(int id)
         {
-            var employee = this.EmployeesService.FindEmployeeById(id);
+            var employee = this.EmployeesService.FindEmployeeById(id).FirstOrDefault();
 
-            return Ok(employee.First());
+            if (employee != null)
+            {
+                var response = new
+                {
+                    Title = employee.Title,
+                    FirstName = employee.FirstName,
+                    LastName = employee.LastName,
+                    City = employee.City,
+                };
+
+                return Ok(response);
+            }
+            else
+            {
+                return NotFound();
+            }
         }
 
         [Inject]

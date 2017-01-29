@@ -12,7 +12,16 @@
             return;
         }
 
+        $.getJSON("/api/employees/" + index)
+            .done(function (data) {
+                const popup = document.createElement("div");
 
-        console.log(index);
+                const fullName = document.createElement("div");
+                fullName.innerHTML += data.FirstName + " " + data.LastName;
+
+                popup.appendChild(fullName);
+
+                document.getElementById("employees-container").appendChild(popup);
+            });
     });
 })();

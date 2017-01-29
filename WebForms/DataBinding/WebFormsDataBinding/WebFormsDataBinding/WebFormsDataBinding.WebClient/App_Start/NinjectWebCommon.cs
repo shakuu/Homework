@@ -17,6 +17,8 @@ namespace WebFormsDataBinding.WebClient.App_Start
 
     public static class NinjectWebCommon
     {
+        public static IKernel NinjectKernel;
+
         private static readonly Bootstrapper bootstrapper = new Bootstrapper();
 
         /// <summary>
@@ -50,6 +52,9 @@ namespace WebFormsDataBinding.WebClient.App_Start
                 kernel.Bind<IHttpModule>().To<HttpApplicationInitializationHttpModule>();
 
                 RegisterServices(kernel);
+
+                NinjectWebCommon.NinjectKernel = kernel;
+
                 return kernel;
             }
             catch
