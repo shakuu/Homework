@@ -301,6 +301,7 @@
     <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
     <Content Include="Site.Master" />
+    <Content Include="Trees.aspx" />
     <Content Include="UserControls\ActualCarsUserControl.ascx" />
     <Content Include="UserControls\CarsUserControl.ascx" />
     <Content Include="UserControls\EmployeesUserControl.ascx" />
@@ -512,6 +513,13 @@
       <DependentUpon>Site.Mobile.Master</DependentUpon>
     </Compile>
     <Compile Include="Startup.cs" />
+    <Compile Include="Trees.aspx.cs">
+      <DependentUpon>Trees.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Trees.aspx.designer.cs">
+      <DependentUpon>Trees.aspx</DependentUpon>
+    </Compile>
     <Compile Include="UserControls\ActualCarsUserControl.ascx.cs">
       <DependentUpon>ActualCarsUserControl.ascx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
