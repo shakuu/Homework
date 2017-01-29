@@ -11,7 +11,7 @@ namespace WebFormsDataBinding.WebClient
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-
+            Page.ClientScript.RegisterClientScriptInclude("Popup", ResolveUrl("~/Scripts/Employees/popup.js"));
         }
     }
 }
