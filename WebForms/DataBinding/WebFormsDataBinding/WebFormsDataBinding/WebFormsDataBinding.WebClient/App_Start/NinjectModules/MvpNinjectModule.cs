@@ -7,14 +7,10 @@ using Ninject.Extensions.Factory;
 using Ninject.Modules;
 using Ninject.Parameters;
 
+using WebFormsMvp;
 using WebFormsMvp.Binder;
 
 using WebFormsDataBinding.WebClient.App_Start.Factories;
-using WebFormsMvp;
-using WebFormsDataBinding.Cars.Services.Contracts;
-using WebFormsDataBinding.Cars.Services;
-using WebFormsDataBinding.Cars.Presenters.Contracts;
-using WebFormsDataBinding.Cars.Presenters;
 
 namespace WebFormsDataBinding.WebClient.App_Start.NinjectModules
 {
@@ -22,9 +18,6 @@ namespace WebFormsDataBinding.WebClient.App_Start.NinjectModules
     {
         public override void Load()
         {
-            this.Bind<ICarsService>().To<CarsService>().InSingletonScope();
-            this.Bind<ICarsPresenter>().To<CarsPresenter>();
-
             this.Bind<IPresenterFactory>().To<WebFormsMvpPresenterFactory>().InSingletonScope();
 
             this.Bind<ICustomPresenterFactory>().ToFactory().InSingletonScope();
