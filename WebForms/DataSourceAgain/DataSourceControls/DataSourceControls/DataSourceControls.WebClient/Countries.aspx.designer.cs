@@ -13,6 +13,15 @@ namespace DataSourceControls.WebClient {
     public partial class Countries {
         
         /// <summary>
+        /// DataKey control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl DataKey;
+        
+        /// <summary>
         /// ContinentsDataSource control.
         /// </summary>
         /// <remarks>
@@ -47,5 +56,23 @@ namespace DataSourceControls.WebClient {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.GridView CountriesGridView;
+        
+        /// <summary>
+        /// TownsDataSource control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.EntityDataSource TownsDataSource;
+        
+        /// <summary>
+        /// TownsListView control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.ListView TownsListView;
     }
 }
