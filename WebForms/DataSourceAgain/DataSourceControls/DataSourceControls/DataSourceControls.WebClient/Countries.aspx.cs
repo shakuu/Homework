@@ -11,11 +11,11 @@ namespace DataSourceControls.WebClient
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            if (!this.IsPostBack)
-            {
-                this.ContinentsListBox.SelectedIndex = 0;
-                this.CountriesGridView.SelectedIndex = 0;
-            }
+            //if (!this.IsPostBack)
+            //{
+            //    this.ContinentsListBox.SelectedIndex = 0;
+            //    this.CountriesGridView.SelectedIndex = 0;
+            //}
         }
     }
 }
