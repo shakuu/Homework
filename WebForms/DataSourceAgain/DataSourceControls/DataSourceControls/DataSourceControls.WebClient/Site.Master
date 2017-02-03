@@ -27,6 +27,7 @@
                     <ul class="nav navbar-nav">
                         <li><a href="/countries">Countries</a></li>
                         <li><a href="/addcountries">Add Countries</a></li>
+                        <li><a href="/todos">Todos</a></li>
                     </ul>
                     <!-- /.navbar-collapse -->
                 </div>
