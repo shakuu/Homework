@@ -11,5 +11,23 @@ namespace DataSourceControls.WebClient {
     
     
     public partial class Todos {
+        
+        /// <summary>
+        /// TodosDataSource control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.EntityDataSource TodosDataSource;
+        
+        /// <summary>
+        /// TodosListView control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.ListView TodosListView;
     }
 }

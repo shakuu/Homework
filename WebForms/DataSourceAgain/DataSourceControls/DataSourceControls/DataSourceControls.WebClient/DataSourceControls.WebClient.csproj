@@ -188,6 +188,10 @@
       <Project>{be88a096-b385-4c4d-9ec3-b650eae3c126}</Project>
       <Name>DataSourceControls.Continents</Name>
     </ProjectReference>
+    <ProjectReference Include="..\DataSourceControls.MoreTodosManager\DataSourceControls.MoreTodosManager.csproj">
+      <Project>{bc93824d-1006-49c0-a019-9d6058a6b0bf}</Project>
+      <Name>DataSourceControls.MoreTodosManager</Name>
+    </ProjectReference>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

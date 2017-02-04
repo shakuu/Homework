@@ -18,6 +18,6 @@ namespace DataSourceControls.MoreTodosManager
         public string Body { get; set; }
         public int CategoryType { get; set; }
         public string Title { get; set; }
-        public System.DateTime LastChange { get; set; }
+        public Nullable<System.DateTime> LastChange { get; set; }
     }
 }
