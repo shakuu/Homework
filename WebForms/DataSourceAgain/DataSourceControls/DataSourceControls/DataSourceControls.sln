@@ -9,6 +9,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DataSourceControls.Continen
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DataSourceControls.TodosManager", "DataSourceControls.TodosManager\DataSourceControls.TodosManager.csproj", "{9AC4FF8C-D6CB-47DF-A4D7-4922737D5A43}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DataSourceControls.MoreTodosManager", "DataSourceControls.MoreTodosManager\DataSourceControls.MoreTodosManager.csproj", "{BC93824D-1006-49C0-A019-9D6058A6B0BF}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -27,6 +29,10 @@ Global
 		{9AC4FF8C-D6CB-47DF-A4D7-4922737D5A43}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{9AC4FF8C-D6CB-47DF-A4D7-4922737D5A43}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{9AC4FF8C-D6CB-47DF-A4D7-4922737D5A43}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BC93824D-1006-49C0-A019-9D6058A6B0BF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BC93824D-1006-49C0-A019-9D6058A6B0BF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BC93824D-1006-49C0-A019-9D6058A6B0BF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BC93824D-1006-49C0-A019-9D6058A6B0BF}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
