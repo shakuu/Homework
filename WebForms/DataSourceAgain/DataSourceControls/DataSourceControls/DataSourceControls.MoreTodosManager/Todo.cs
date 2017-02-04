@@ -11,18 +11,13 @@ namespace DataSourceControls.MoreTodosManager
 {
     using System;
     using System.Collections.Generic;
-
+    
     public partial class Todo
     {
-        public Todo()
-        {
-            this.Id = Guid.NewGuid();
-        }
-
         public System.Guid Id { get; set; }
         public string Body { get; set; }
         public int CategoryType { get; set; }
         public string Title { get; set; }
-        public Nullable<System.DateTime> LastChange { get; set; }
+        public System.DateTime LastChange { get; set; }
     }
 }

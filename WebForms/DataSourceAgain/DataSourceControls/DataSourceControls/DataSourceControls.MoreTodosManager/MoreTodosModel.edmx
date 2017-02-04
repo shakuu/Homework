@@ -13,7 +13,7 @@
           <Property Name="Body" Type="ntext" Nullable="false" />
           <Property Name="CategoryType" Type="int" Nullable="false" />
           <Property Name="Title" Type="nvarchar" MaxLength="50" Nullable="false" />
-          <Property Name="LastChange" Type="date" />
+          <Property Name="LastChange" Type="datetime" Nullable="false" />
         </EntityType>
         <EntityContainer Name="MoreTodosDbModelStoreContainer">
           <EntitySet Name="Todos" EntityType="Self.Todos" Schema="dbo" store:Type="Tables" />
@@ -30,7 +30,7 @@
           <Property Name="Body" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="CategoryType" Type="Int32" Nullable="false" />
           <Property Name="Title" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="LastChange" Type="DateTime" Precision="0" />
+          <Property Name="LastChange" Type="DateTime" Precision="3" Nullable="false" />
         </EntityType>
         <EntityContainer Name="MoreTodosDbEntities" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="Todos" EntityType="Self.Todo" />

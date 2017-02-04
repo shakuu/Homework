@@ -70,6 +70,7 @@
     <Compile Include="Todo.cs">
       <DependentUpon>MoreTodosModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="TodoCtor.cs" />
   </ItemGroup>
   <ItemGroup>
     <EntityDeploy Include="MoreTodosModel.edmx">
