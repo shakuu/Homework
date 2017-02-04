@@ -146,6 +146,7 @@
     <Content Include="Scripts\jquery-1.9.1.js" />
     <Content Include="Scripts\jquery-1.9.1.min.js" />
     <Content Include="Todos.aspx" />
+    <Content Include="TweetAggregator.aspx" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
@@ -181,6 +182,13 @@
     </Compile>
     <Compile Include="Todos.aspx.designer.cs">
       <DependentUpon>Todos.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="TweetAggregator.aspx.cs">
+      <DependentUpon>TweetAggregator.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="TweetAggregator.aspx.designer.cs">
+      <DependentUpon>TweetAggregator.aspx</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>
