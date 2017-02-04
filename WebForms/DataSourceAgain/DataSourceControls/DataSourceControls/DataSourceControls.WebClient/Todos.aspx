@@ -29,7 +29,8 @@
             DataSourceID="TodosDataSource"
             ItemType="DataSourceControls.MoreTodosManager.Todo"
             DataKeyNames="Id"
-            InsertItemPosition="LastItem">
+            InsertItemPosition="LastItem"
+            OnDataBound="Todos_DataBound">
             <AlternatingItemTemplate>
                 <li style="background-color: #FFFFFF; color: #284775;">Id:
                     <asp:Label ID="IdLabel" runat="server" Text='<%# Eval("Id") %>' />
@@ -74,7 +75,8 @@
                 No data was returned.
             </EmptyDataTemplate>
             <InsertItemTemplate>
-                <li style="">Id:
+                <li style="">
+                    Id:
                     <asp:TextBox ID="IdTextBox" runat="server" Text='<%# Bind("Id") %>' />
                     <br />
                     Body:
