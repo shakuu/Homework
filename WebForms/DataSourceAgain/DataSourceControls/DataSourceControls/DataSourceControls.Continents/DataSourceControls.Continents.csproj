@@ -83,6 +83,7 @@
     <Compile Include="Town.cs">
       <DependentUpon>CountriesModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="TownCtor.cs" />
   </ItemGroup>
   <ItemGroup>
     <EntityDeploy Include="CountriesModel.edmx">

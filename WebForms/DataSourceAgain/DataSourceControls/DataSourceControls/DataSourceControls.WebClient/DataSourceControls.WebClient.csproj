@@ -110,6 +110,7 @@
     <Reference Include="System.EnterpriseServices" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="AddCountriesAgain.aspx" />
     <Content Include="packages.config" />
     <Content Include="ApplicationInsights.config">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
@@ -156,6 +157,13 @@
     </Compile>
     <Compile Include="AddCountries.aspx.designer.cs">
       <DependentUpon>AddCountries.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="AddCountriesAgain.aspx.cs">
+      <DependentUpon>AddCountriesAgain.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="AddCountriesAgain.aspx.designer.cs">
+      <DependentUpon>AddCountriesAgain.aspx</DependentUpon>
     </Compile>
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Countries.aspx.cs">
