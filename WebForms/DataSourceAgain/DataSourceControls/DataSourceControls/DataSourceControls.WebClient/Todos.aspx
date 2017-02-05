@@ -76,9 +76,9 @@
             </EmptyDataTemplate>
             <InsertItemTemplate>
                 <li style="">
-                    Id:
+                    <%--Id:
                     <asp:TextBox ID="IdTextBox" runat="server" Text='<%# Bind("Id") %>' />
-                    <br />
+                    <br />--%>
                     Body:
                     <asp:TextBox ID="BodyTextBox" runat="server" Text='<%# Bind("Body") %>' />
                     <br />
@@ -88,9 +88,9 @@
                     Title:
                     <asp:TextBox ID="TitleTextBox" runat="server" Text='<%# Bind("Title") %>' />
                     <br />
-                    LastChange:
+                    <%--LastChange:
                     <asp:TextBox ID="LastChangeTextBox" runat="server" Text='<%# Bind("LastChange") %>' />
-                    <br />
+                    <br />--%>
                     <asp:Button ID="InsertButton" runat="server" CommandName="Insert" Text="Insert" />
                     <asp:Button ID="CancelButton" runat="server" CommandName="Cancel" Text="Clear" />
                 </li>

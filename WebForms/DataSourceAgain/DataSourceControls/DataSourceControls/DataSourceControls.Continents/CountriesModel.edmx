@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="CountriesDbModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="CountriesDbModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="Continents">
           <Key>
             <PropertyRef Name="Id" />
@@ -21,6 +21,15 @@
           <Property Name="LanguageId" Type="uniqueidentifier" />
           <Property Name="Population" Type="int" Nullable="false" />
           <Property Name="ContinentId" Type="uniqueidentifier" />
+          <Property Name="CountryFlagId" Type="uniqueidentifier" />
+        </EntityType>
+        <EntityType Name="CountryFlags">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="Image" Type="image" Nullable="false" />
+          <Property Name="ImageBase64" Type="nvarchar(max)" Nullable="false" />
         </EntityType>
         <EntityType Name="Languages">
           <Key>
@@ -47,6 +56,18 @@
             </Principal>
             <Dependent Role="Countries">
               <PropertyRef Name="ContinentId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Countries_CountryFlags">
+          <End Role="CountryFlags" Type="Self.CountryFlags" Multiplicity="0..1" />
+          <End Role="Countries" Type="Self.Countries" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CountryFlags">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Countries">
+              <PropertyRef Name="CountryFlagId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -77,10 +98,15 @@
         <EntityContainer Name="CountriesDbModelStoreContainer">
           <EntitySet Name="Continents" EntityType="Self.Continents" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Countries" EntityType="Self.Countries" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="CountryFlags" EntityType="Self.CountryFlags" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Languages" EntityType="Self.Languages" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Towns" EntityType="Self.Towns" Schema="dbo" store:Type="Tables" />
           <AssociationSet Name="FK_Countries_Continents" Association="Self.FK_Countries_Continents">
             <End Role="Continents" EntitySet="Continents" />
+            <End Role="Countries" EntitySet="Countries" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Countries_CountryFlags" Association="Self.FK_Countries_CountryFlags">
+            <End Role="CountryFlags" EntitySet="CountryFlags" />
             <End Role="Countries" EntitySet="Countries" />
           </AssociationSet>
           <AssociationSet Name="FK_Countries_Languages" Association="Self.FK_Countries_Languages">
@@ -92,8 +118,7 @@
             <End Role="Towns" EntitySet="Towns" />
           </AssociationSet>
         </EntityContainer>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="CountriesDbModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -117,6 +142,8 @@
           <NavigationProperty Name="Continent" Relationship="Self.FK_Countries_Continents" FromRole="Countries" ToRole="Continents" />
           <NavigationProperty Name="Language" Relationship="Self.FK_Countries_Languages" FromRole="Countries" ToRole="Languages" />
           <NavigationProperty Name="Towns" Relationship="Self.FK_Towns_Countries" FromRole="Countries" ToRole="Towns" />
+          <Property Name="CountryFlagId" Type="Guid" />
+          <NavigationProperty Name="CountryFlag" Relationship="CountriesDbModel.FK_Countries_CountryFlags" FromRole="Country" ToRole="CountryFlag" />
         </EntityType>
         <EntityType Name="Language">
           <Key>
@@ -189,7 +216,33 @@
             <End Role="Countries" EntitySet="Countries" />
             <End Role="Towns" EntitySet="Towns" />
           </AssociationSet>
+          <EntitySet Name="CountryFlags" EntityType="CountriesDbModel.CountryFlag" />
+          <AssociationSet Name="FK_Countries_CountryFlags" Association="CountriesDbModel.FK_Countries_CountryFlags">
+            <End Role="CountryFlag" EntitySet="CountryFlags" />
+            <End Role="Country" EntitySet="Countries" />
+          </AssociationSet>
         </EntityContainer>
+        <EntityType Name="CountryFlag">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Guid" Nullable="false" />
+          <Property Name="Image" Type="Binary" Nullable="false" MaxLength="Max" FixedLength="false" />
+          <NavigationProperty Name="Countries" Relationship="CountriesDbModel.FK_Countries_CountryFlags" FromRole="CountryFlag" ToRole="Country" />
+          <Property Name="ImageBase64" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <Association Name="FK_Countries_CountryFlags">
+          <End Type="CountriesDbModel.CountryFlag" Role="CountryFlag" Multiplicity="0..1" />
+          <End Type="CountriesDbModel.Country" Role="Country" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CountryFlag">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Country">
+              <PropertyRef Name="CountryFlagId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -207,6 +260,7 @@
           <EntitySetMapping Name="Countries">
             <EntityTypeMapping TypeName="CountriesDbModel.Country">
               <MappingFragment StoreEntitySet="Countries">
+                <ScalarProperty Name="CountryFlagId" ColumnName="CountryFlagId" />
                 <ScalarProperty Name="Id" ColumnName="Id" />
                 <ScalarProperty Name="Name" ColumnName="Name" />
                 <ScalarProperty Name="LanguageId" ColumnName="LanguageId" />
@@ -230,6 +284,15 @@
                 <ScalarProperty Name="Name" ColumnName="Name" />
                 <ScalarProperty Name="Population" ColumnName="Population" />
                 <ScalarProperty Name="CountryId" ColumnName="CountryId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CountryFlags">
+            <EntityTypeMapping TypeName="CountriesDbModel.CountryFlag">
+              <MappingFragment StoreEntitySet="CountryFlags">
+                <ScalarProperty Name="ImageBase64" ColumnName="ImageBase64" />
+                <ScalarProperty Name="Image" ColumnName="Image" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

@@ -43,6 +43,19 @@
     </div>
 
     <div class="well">
+        <h1>Add Flag</h1>
+        <asp:FileUpload ID="FlagFileUpload" runat="server" />
+        <br />
+        <span>Country:
+            <asp:DropDownList
+                ID="AddFlagCountriesDropDownList" runat="server"
+                DataTextField="Name" DataValueField="Id">
+            </asp:DropDownList></span>
+        <br />
+        <asp:Button Text="Add Flag" runat="server" OnClick="OnAddFlag" />
+    </div>
+
+    <div class="well">
         <h1>Add Town</h1>
         <span>Name:
             <asp:TextBox ID="AddTownName" runat="server"></asp:TextBox></span>
@@ -74,7 +87,7 @@
             DefaultContainerName="CountriesDbEntities"
             ConnectionString="name=CountriesDbEntities"
             EntitySetName="Countries"
-            Include="Language"
+            Include="Language, CountryFlag"
             EnableFlattening="false"
             Where="it.ContinentId=@ContinentId">
             <WhereParameters>
@@ -129,6 +142,11 @@
                     ItemType="DataSourceControls.Continents.Country">
                     <Columns>
                         <asp:CommandField ShowSelectButton="true" />
+                        <asp:TemplateField HeaderText="Flag">
+                            <ItemTemplate>
+                                <img src="data:image/png;base64,<%#: Item.CountryFlag?.ImageBase64 %>" alt="country flag" width="50" />
+                            </ItemTemplate>
+                        </asp:TemplateField>
                         <asp:TemplateField HeaderText="Name">
                             <ItemTemplate>
                                 <span><%#: Item.Name %></span>

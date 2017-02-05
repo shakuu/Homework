@@ -105,6 +105,21 @@ namespace DataSourceControls.WebClient
             this.ClearTextboxes();
         }
 
+        protected void OnAddFlag(object sender, EventArgs e)
+        {
+            var flag = new CountryFlag();
+            flag.Image = this.FlagFileUpload.FileBytes;
+            flag.ImageBase64 = Convert.ToBase64String(flag.Image);
+
+            this.countries = Session["countries"] as IList<Country>;
+            var country = this.countries.FirstOrDefault(c => c.Id == Guid.Parse(this.AddFlagCountriesDropDownList.SelectedItem.Value));
+            country.CountryFlag = flag;
+
+            db.SaveChanges();
+
+            this.ClearTextboxes();
+        }
+
         private void ClearTextboxes()
         {
             this.AddCountryName.Text = "";
@@ -133,6 +148,9 @@ namespace DataSourceControls.WebClient
 
             this.AddTownCountriesDropDownList.DataSource = this.countries;
             this.AddTownCountriesDropDownList.DataBind();
+
+            this.AddFlagCountriesDropDownList.DataSource = this.countries;
+            this.AddFlagCountriesDropDownList.DataBind();
         }
     }
 }

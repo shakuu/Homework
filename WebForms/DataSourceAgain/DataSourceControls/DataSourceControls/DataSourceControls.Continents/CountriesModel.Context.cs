@@ -29,5 +29,6 @@ namespace DataSourceControls.Continents
         public virtual DbSet<Country> Countries { get; set; }
         public virtual DbSet<Language> Languages { get; set; }
         public virtual DbSet<Town> Towns { get; set; }
+        public virtual DbSet<CountryFlag> CountryFlags { get; set; }
     }
 }

@@ -72,6 +72,10 @@
     <Compile Include="Country.cs">
       <DependentUpon>CountriesModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="CountryFlag.cs">
+      <DependentUpon>CountriesModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="CountryFlagCtor.cs" />
     <Compile Include="Language.cs">
       <DependentUpon>CountriesModel.tt</DependentUpon>
     </Compile>

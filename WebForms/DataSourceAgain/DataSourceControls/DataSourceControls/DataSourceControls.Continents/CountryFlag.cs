@@ -11,26 +11,21 @@ namespace DataSourceControls.Continents
 {
     using System;
     using System.Collections.Generic;
-    
-    public partial class Country
+
+    public partial class CountryFlag
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public Country()
+        public CountryFlag()
+            : this(null)
         {
-            this.Towns = new HashSet<Town>();
+            this.Countries = new HashSet<Country>();
         }
-    
+
         public System.Guid Id { get; set; }
-        public string Name { get; set; }
-        public Nullable<System.Guid> LanguageId { get; set; }
-        public int Population { get; set; }
-        public Nullable<System.Guid> ContinentId { get; set; }
-        public Nullable<System.Guid> CountryFlagId { get; set; }
-    
-        public virtual Continent Continent { get; set; }
-        public virtual Language Language { get; set; }
+        public byte[] Image { get; set; }
+        public string ImageBase64 { get; set; }
+
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Town> Towns { get; set; }
-        public virtual CountryFlag CountryFlag { get; set; }
+        public virtual ICollection<Country> Countries { get; set; }
     }
 }
