@@ -1,10 +1,7 @@
-﻿using Ionic.Zip;
-using System;
-using System.Collections.Generic;
+﻿using System;
 using System.IO;
-using System.Web;
-using System.Web.UI;
-using System.Web.UI.WebControls;
+
+using Ionic.Zip;
 
 namespace FileUpload.WebClient
 {
@@ -14,17 +11,35 @@ namespace FileUpload.WebClient
         {
             if (this.ZipFileUpload.HasFile)
             {
+                var db = new UploadedFilesDbContext();
+                var filesCount = 0;
+
                 var zip = ZipFile.Read(this.ZipFileUpload.FileContent);
                 foreach (var entry in zip.Entries)
                 {
-                    var test = entry;
+                    var extension = Path.GetExtension(entry.FileName);
+                    if (extension != ".txt")
+                    {
+                        continue;
+                    }
+
                     using (var stream = new MemoryStream())
                     {
                         entry.Extract(stream);
                         var data = stream.GetBuffer();
 
+                        var file = new UploadedFile();
+                        file.Data = data;
+                        file.FileName = entry.FileName;
+
+                        db.UploadedFiles.Add(file);
+                        filesCount++;
                     }
                 }
+
+                db.SaveChangesAsync();
+
+                this.FilesCount.InnerText = filesCount.ToString();
             }
         }
     }

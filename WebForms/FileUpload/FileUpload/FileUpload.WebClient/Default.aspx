@@ -19,6 +19,7 @@
 
         <div class="well">
             <h1>File Upload</h1>
+            <h3 id="FilesCount" runat="server"></h3>
         </div>
         <section id="file-upload">
 
