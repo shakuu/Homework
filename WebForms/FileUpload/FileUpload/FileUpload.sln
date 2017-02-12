@@ -1,0 +1,22 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 14
+VisualStudioVersion = 14.0.25420.1
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FileUpload.WebClient", "FileUpload.WebClient\FileUpload.WebClient.csproj", "{9C29B719-2C10-4E5B-A2D5-58032DA4EC0B}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{9C29B719-2C10-4E5B-A2D5-58032DA4EC0B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9C29B719-2C10-4E5B-A2D5-58032DA4EC0B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9C29B719-2C10-4E5B-A2D5-58032DA4EC0B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9C29B719-2C10-4E5B-A2D5-58032DA4EC0B}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
