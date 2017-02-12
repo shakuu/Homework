@@ -1,7 +1,9 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.IO;
 
 using Ionic.Zip;
+using System.Text;
 
 namespace FileUpload.WebClient
 {
@@ -12,7 +14,7 @@ namespace FileUpload.WebClient
             if (this.ZipFileUpload.HasFile)
             {
                 var db = new UploadedFilesDbContext();
-                var filesCount = 0;
+                var filesList = new List<UploadedFile>();
 
                 var zip = ZipFile.Read(this.ZipFileUpload.FileContent);
                 foreach (var entry in zip.Entries)
@@ -31,15 +33,18 @@ namespace FileUpload.WebClient
                         var file = new UploadedFile();
                         file.Data = data;
                         file.FileName = entry.FileName;
+                        file.Content = Encoding.UTF8.GetString(data);
 
                         db.UploadedFiles.Add(file);
-                        filesCount++;
+                        filesList.Add(file);
                     }
                 }
 
                 db.SaveChangesAsync();
 
-                this.FilesCount.InnerText = filesCount.ToString();
+                this.FilesCount.InnerText = string.Format("Uploaded {0} files.", filesList.Count.ToString());
+                this.UploadedFiles.DataSource = filesList;
+                this.UploadedFiles.DataBind();
             }
         }
     }

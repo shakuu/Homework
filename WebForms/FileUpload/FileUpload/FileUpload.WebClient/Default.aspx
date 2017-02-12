@@ -25,7 +25,7 @@
 
             <asp:UpdateProgress AssociatedUpdatePanelID="FileUploadUpdatePanel" runat="server" DynamicLayout="false">
                 <ProgressTemplate>
-                    Uploading File...
+                    Uploading Files...
                 </ProgressTemplate>
             </asp:UpdateProgress>
 
@@ -40,6 +40,14 @@
                         ValidationExpression="^.+(.zip|.ZIP)$"
                         ControlToValidate="ZipFileUpload">
                     </asp:RegularExpressionValidator>
+                    <asp:Repeater ID="UploadedFiles" runat="server" ItemType="FileUpload.WebClient.UploadedFile">
+                        <ItemTemplate>
+                            <div class="file">
+                                <h3><%#: Item.FileName %></h3>
+                                <p><%#: Item.Content %></p>
+                            </div>
+                        </ItemTemplate>
+                    </asp:Repeater>
                 </ContentTemplate>
                 <Triggers>
                     <asp:PostBackTrigger ControlID="UploadButton" />
