@@ -1,9 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.IO;
+using System.Text;
 
 using Ionic.Zip;
-using System.Text;
 
 namespace FileUpload.WebClient
 {

@@ -19,7 +19,6 @@
 
         <div class="well">
             <h1>File Upload</h1>
-            <h3 id="FilesCount" runat="server"></h3>
         </div>
         <section id="file-upload">
 
@@ -40,12 +39,14 @@
                         ValidationExpression="^.+(.zip|.ZIP)$"
                         ControlToValidate="ZipFileUpload">
                     </asp:RegularExpressionValidator>
-                    <asp:Repeater ID="UploadedFiles" runat="server" ItemType="FileUpload.WebClient.UploadedFile">
+                    <h3 id="FilesCount" runat="server"></h3>
+                    <asp:Repeater ID="UploadedFiles" runat="server">
                         <ItemTemplate>
                             <div class="file">
-                                <h3><%#: Item.FileName %></h3>
-                                <p><%#: Item.Content %></p>
+                                <h3><%#: Eval("FileName") %></h3>
+                                <p><%#: Eval("Content") %></p>
                             </div>
+                            <hr />
                         </ItemTemplate>
                     </asp:Repeater>
                 </ContentTemplate>
