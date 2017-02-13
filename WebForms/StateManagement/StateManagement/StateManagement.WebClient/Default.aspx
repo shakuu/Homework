@@ -20,9 +20,10 @@
             <h3>Task 2</h3>
             <asp:UpdatePanel runat="server">
                 <ContentTemplate>
-                    <asp:Label ID="TaskTwoOutput" runat="server"></asp:Label>
+                    <asp:Label ID="TaskTwoOutput" runat="server"><%= string.Join(", ", (Session["TaskTwoList"] as List<string>)?? new List<string>()) %></asp:Label>
+                    <br />
                     <asp:TextBox ID="TaskTwoContent" runat="server"></asp:TextBox>
-                    <asp:Button runat="server" Text="Submit text" />
+                    <asp:Button runat="server" Text="Submit text" OnClick="OnSubmitText" />
                 </ContentTemplate>
             </asp:UpdatePanel>
         </div>

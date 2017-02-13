@@ -15,11 +15,11 @@ namespace StateManagement.WebClient
         {
         }
 
-        private void OnSubmitText(object sender, EventArgs e)
+        public void OnSubmitText(object sender, EventArgs e)
         {
             var currentList = this.Session[Default.TaskTwoListSessionObject] as List<string> ?? new List<string>();
             currentList.Add(this.TaskTwoContent.Text);
-            this.TaskTwoOutput.Text = string.Join(", ", currentList);
+            this.TaskTwoContent.Text = string.Empty;
             this.Session[Default.TaskTwoListSessionObject] = currentList;
         }
     }
