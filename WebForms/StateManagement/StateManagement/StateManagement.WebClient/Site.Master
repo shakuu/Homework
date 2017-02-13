@@ -25,6 +25,7 @@
                     <li><a runat="server" href="~/default.aspx">Task 1 + 2</a></li>
                     <li><a runat="server" href="~/hellocookie.aspx">Hello Cookies</a></li>
                     <li><a runat="server" href="~/deleteviewstate.aspx">Delete Viewstate</a></li>
+                    <li><a runat="server" href="~/requestscounter.aspx">Requests Counter</a></li>
                 </ul>
             </div>
         </nav>
