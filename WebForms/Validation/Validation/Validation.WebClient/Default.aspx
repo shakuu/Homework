@@ -49,7 +49,7 @@
                     <div class="input-field col s6">
                         <asp:TextBox ID="FirstName" CssClass="validate" runat="server"></asp:TextBox>
                         <label for="FirstName">First Name</label>
-                        <asp:RequiredFieldValidator runat="server" ControlToValidate="FirstName" ErrorMessage="First Name is Required."></asp:RequiredFieldValidator>
+                        <asp:RequiredFieldValidator runat="server" ControlToValidate="FirstName" ErrorMessage="First Name is Required." ValidationGroup="Personal" Display="None"></asp:RequiredFieldValidator>
                     </div>
                 </div>
 
@@ -57,7 +57,7 @@
                     <div class="input-field col s6">
                         <asp:TextBox ID="LastName" CssClass="validate" runat="server"></asp:TextBox>
                         <label for="LastName">Last Name</label>
-                        <asp:RequiredFieldValidator runat="server" ControlToValidate="LastName" ErrorMessage="Last Name is Required."></asp:RequiredFieldValidator>
+                        <asp:RequiredFieldValidator runat="server" ControlToValidate="LastName" ErrorMessage="Last Name is Required." ValidationGroup="Personal" Display="None"></asp:RequiredFieldValidator>
                     </div>
                 </div>
 
@@ -65,10 +65,12 @@
                     <div class="input-field col s6">
                         <asp:TextBox ID="Age" TextMode="Number" CssClass="validate" runat="server"></asp:TextBox>
                         <label for="Age">Age</label>
-                        <asp:RequiredFieldValidator runat="server" ControlToValidate="Age" ErrorMessage="Age is Required."></asp:RequiredFieldValidator>
-                        <asp:RangeValidator runat="server" ControlToValidate="Age" MinimumValue="18" MaximumValue="81" ErrorMessage="Valid age is between 18 and 81."></asp:RangeValidator>
+                        <asp:RequiredFieldValidator runat="server" ControlToValidate="Age" ErrorMessage="Age is Required." ValidationGroup="Personal" Display="None"></asp:RequiredFieldValidator>
+                        <asp:RangeValidator runat="server" ControlToValidate="Age" MinimumValue="18" MaximumValue="81" ErrorMessage="Valid age is between 18 and 81." ValidationGroup="Personal" Display="None"></asp:RangeValidator>
                     </div>
                 </div>
+
+                <asp:ValidationSummary runat="server" ValidationGroup="Personal" />
 
                 <div class="row">
                     <div class="input-field col s6">
