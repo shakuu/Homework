@@ -1,0 +1,20 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="Site.master.cs" Inherits="SiteMaps.WebClient.Site" %>
+
+<!DOCTYPE html>
+
+<html>
+<head runat="server">
+    <title></title>
+</head>
+<body>
+    <form id="form" runat="server">
+        <div>
+            <asp:ContentPlaceHolder ID="ContentPlaceHolder" runat="server">
+            </asp:ContentPlaceHolder>
+        </div>
+        <asp:Menu ID="Menu1" runat="server" DataSourceID="SiteMapDataSource">
+        </asp:Menu>
+        <asp:SiteMapDataSource ID="SiteMapDataSource" runat="server" />
+    </form>
+</body>
+</html>
