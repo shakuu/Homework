@@ -13,6 +13,9 @@
             </asp:ContentPlaceHolder>
         </div>
         <asp:Menu ID="Menu1" runat="server" DataSourceID="SiteMapDataSource">
+            <DynamicItemTemplate>
+<%# Eval("Text") %>
+            </DynamicItemTemplate>
         </asp:Menu>
         <asp:SiteMapDataSource ID="SiteMapDataSource" runat="server" />
     </form>
