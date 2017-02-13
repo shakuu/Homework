@@ -28,9 +28,17 @@
 
                 <div class="row">
                     <div class="input-field col s6">
-                        <asp:TextBox ID="Email" TextMode="Email" CssClass="validate" runat="server"></asp:TextBox>
-                        <label for="Email">Email</label>
-                        <asp:RequiredFieldValidator runat="server" ControlToValidate="Email" ErrorMessage="Email is Required."></asp:RequiredFieldValidator>
+                        <asp:TextBox ID="Password" TextMode="Password" CssClass="validate" runat="server"></asp:TextBox>
+                        <label for="Password">Password</label>
+                        <asp:RequiredFieldValidator runat="server" ControlToValidate="Password" ErrorMessage="Password is Required."></asp:RequiredFieldValidator>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="input-field col s6">
+                        <asp:TextBox ID="RepeatPassword" TextMode="Password" CssClass="validate" runat="server"></asp:TextBox>
+                        <label for="RepeatPassword">Repeat Password</label>
+                        <asp:RequiredFieldValidator runat="server" ControlToValidate="RepeatPassword" ErrorMessage="Passwords must match."></asp:RequiredFieldValidator>
                     </div>
                 </div>
 
@@ -49,29 +57,21 @@
                         <asp:RequiredFieldValidator runat="server" ControlToValidate="LastName" ErrorMessage="Last Name is Required."></asp:RequiredFieldValidator>
                     </div>
                 </div>
-
-                <div class="row">
-                    <div class="input-field col s6">
-                        <asp:TextBox ID="Password" TextMode="Password" CssClass="validate" runat="server"></asp:TextBox>
-                        <label for="Password">Password</label>
-                        <asp:RequiredFieldValidator runat="server" ControlToValidate="Password" ErrorMessage="Password is Required."></asp:RequiredFieldValidator>
-                    </div>
-                </div>
-
-                <div class="row">
-                    <div class="input-field col s6">
-                        <asp:TextBox ID="RepeatPassword" TextMode="Password" CssClass="validate" runat="server"></asp:TextBox>
-                        <label for="RepeatPassword">Repeat Password</label>
-                        <asp:RequiredFieldValidator runat="server" ControlToValidate="RepeatPassword" ErrorMessage="Passwords must match."></asp:RequiredFieldValidator>
-                    </div>
-                </div>
-
+                                
                 <div class="row">
                     <div class="input-field col s6">
                         <asp:TextBox ID="Age" TextMode="Number" CssClass="validate" runat="server"></asp:TextBox>
                         <label for="Age">Age</label>
                         <asp:RequiredFieldValidator runat="server" ControlToValidate="Age" ErrorMessage="Age is Required."></asp:RequiredFieldValidator>
                         <asp:RangeValidator runat="server" ControlToValidate="Age" MinimumValue="18" MaximumValue="81" ErrorMessage="Valid age is between 18 and 81."></asp:RangeValidator>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="input-field col s6">
+                        <asp:TextBox ID="Email" TextMode="Email" CssClass="validate" runat="server"></asp:TextBox>
+                        <label for="Email">Email</label>
+                        <asp:RequiredFieldValidator runat="server" ControlToValidate="Email" ErrorMessage="Email is Required."></asp:RequiredFieldValidator>
                     </div>
                 </div>
 
@@ -94,7 +94,6 @@
                 <div class="row">
                     <p>
                         <asp:CheckBox ID="Agree" runat="server" />
-                        <%--<input type="checkbox" id="test5" />--%>
                         <label for="Agree">I Agree</label>
                     </p>
                 </div>
