@@ -23,14 +23,14 @@
                         <asp:TextBox ID="Username" CssClass="validate" runat="server"></asp:TextBox>
                         <label for="Username">Username</label>
                     </div>
-                    <asp:RequiredFieldValidator runat="server" ControlToValidate="Username" ErrorMessage="Username is Required." ValidationGroup="Logon"></asp:RequiredFieldValidator>
+                    <asp:RequiredFieldValidator runat="server" ControlToValidate="Username" ErrorMessage="Username is Required." ValidationGroup="Logon" Display="None"></asp:RequiredFieldValidator>
                 </div>
 
                 <div class="row">
                     <div class="input-field col s6">
                         <asp:TextBox ID="Password" TextMode="Password" CssClass="validate" runat="server"></asp:TextBox>
                         <label for="Password">Password</label>
-                        <asp:RequiredFieldValidator runat="server" ControlToValidate="Password" ErrorMessage="Password is Required." ValidationGroup="Logon"></asp:RequiredFieldValidator>
+                        <asp:RequiredFieldValidator runat="server" ControlToValidate="Password" ErrorMessage="Password is Required." ValidationGroup="Logon" Display="None"></asp:RequiredFieldValidator>
                     </div>
                 </div>
 
@@ -38,8 +38,8 @@
                     <div class="input-field col s6">
                         <asp:TextBox ID="RepeatPassword" TextMode="Password" CssClass="validate" runat="server"></asp:TextBox>
                         <label for="RepeatPassword">Repeat Password</label>
-                        <asp:RequiredFieldValidator runat="server" ControlToValidate="RepeatPassword" ErrorMessage="Passwords must match." ValidationGroup="Logon"></asp:RequiredFieldValidator>
-                        <asp:CompareValidator ControlToValidate="RepeatPassword" ControlToCompare="Password" runat="server" ValidationGroup="Logon"></asp:CompareValidator>
+                        <asp:RequiredFieldValidator runat="server" ControlToValidate="RepeatPassword" ErrorMessage="Matching passowrd is Required." ValidationGroup="Logon" Display="None"></asp:RequiredFieldValidator>
+                        <asp:CompareValidator ControlToValidate="RepeatPassword" ControlToCompare="Password" runat="server" ValidationGroup="Logon" ErrorMessage="Passwords must match." Display="None"></asp:CompareValidator>
                     </div>
                 </div>
 
