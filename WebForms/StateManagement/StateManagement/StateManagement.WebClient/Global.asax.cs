@@ -1,11 +1,8 @@
-﻿using StateManagement.WebClient.Migrations;
-using System;
-using System.Collections.Generic;
+﻿using System;
 using System.Data.Entity;
 using System.Linq;
-using System.Web;
-using System.Web.Security;
-using System.Web.SessionState;
+
+using StateManagement.WebClient.Migrations;
 
 namespace StateManagement.WebClient
 {
@@ -51,6 +48,12 @@ namespace StateManagement.WebClient
 
             var currentCountDb = (int)this.Application[Global.RequestsCountFromDb];
             this.Application[Global.RequestsCountFromDb] = currentCountDb + 1;
+
+            var db = new ApplicationsDbContext();
+            var app = db.ApplicationModels.FirstOrDefault(application => application.Name == Global.AppName);
+            app.RequestsCount = (int)this.Application[Global.RequestsCountFromDb];
+
+            db.SaveChangesAsync();
         }
 
         protected void Application_AuthenticateRequest(object sender, EventArgs e)
@@ -60,11 +63,6 @@ namespace StateManagement.WebClient
 
         protected void Application_Error(object sender, EventArgs e)
         {
-            var db = new ApplicationsDbContext();
-            var app = db.ApplicationModels.FirstOrDefault(application => application.Name == Global.AppName);
-            app.RequestsCount = (int)this.Application[Global.RequestsCountFromDb];
-
-            db.SaveChanges();
         }
 
         protected void Session_End(object sender, EventArgs e)
@@ -74,11 +72,6 @@ namespace StateManagement.WebClient
 
         protected void Application_End(object sender, EventArgs e)
         {
-            var db = new ApplicationsDbContext();
-            var app = db.ApplicationModels.FirstOrDefault(application => application.Name == Global.AppName);
-            app.RequestsCount = (int)this.Application[Global.RequestsCountFromDb];
-
-            db.SaveChanges();
         }
     }
 }
