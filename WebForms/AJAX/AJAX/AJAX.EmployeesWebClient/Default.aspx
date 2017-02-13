@@ -19,22 +19,29 @@
         </asp:EntityDataSource>
 
         <div>
-            <asp:UpdateProgress runat="server" AssociatedUpdatePanelID="EmployeesUpdatePanel">
-                <ProgressTemplate>
-                    <h1 style="color = red;">LOADING DATA...</h1>
-                </ProgressTemplate>
-            </asp:UpdateProgress>
 
             <asp:UpdatePanel ID="EmployeesUpdatePanel" runat="server">
                 <ContentTemplate>
                     <asp:GridView
                         ID="EmployeesGridView" runat="server"
                         DataSourceID="EmployeesEntityDataSource"
-                        AutoGenerateColumns="true"
-                        AutoGenerateSelectButton="true"
+                        AutoGenerateColumns="false"
+                        AutoGenerateSelectButton="false"
                         DataKeyNames="EmployeeID"
                         OnSelectedIndexChanged="OnEmployeeSelect">
+                        <Columns>
+                            <asp:CommandField ShowSelectButton="true" />
+                            <asp:BoundField HeaderText="Title" DataField="Title" />
+                            <asp:BoundField HeaderText="First Name" DataField="FirstName" />
+                            <asp:BoundField HeaderText="Last Name" DataField="LastName" />
+                        </Columns>
                     </asp:GridView>
+
+                    <asp:UpdateProgress runat="server" AssociatedUpdatePanelID="EmployeesUpdatePanel">
+                        <ProgressTemplate>
+                            <h1 style="color: red;">LOADING DATA...</h1>
+                        </ProgressTemplate>
+                    </asp:UpdateProgress>
 
                     <asp:GridView ID="EmployeeOrdersGridView" runat="server">
                     </asp:GridView>
