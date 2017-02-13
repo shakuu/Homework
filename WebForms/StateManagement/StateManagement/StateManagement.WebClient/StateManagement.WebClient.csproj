@@ -98,6 +98,7 @@
     <Content Include="content\materialize\css\materialize.min.css" />
     <Content Include="content\materialize\font\material-design-icons\LICENSE.txt" />
     <Content Include="content\materialize\font\material-design-icons\Material-Design-Icons.svg" />
+    <Content Include="DeleteViewstate.aspx" />
     <Content Include="HelloCookie.aspx" />
     <Content Include="HelloCookieLogin.aspx" />
     <Content Include="packages.config" />
@@ -149,6 +150,7 @@
     <Content Include="content\materialize\fonts\roboto\Roboto-Bold.ttf" />
     <Content Include="content\materialize\fonts\roboto\Roboto-Bold.eot" />
     <None Include="Scripts\jquery-2.1.1.intellisense.js" />
+    <Content Include="Scripts\delete-viewstate.js" />
     <Content Include="Scripts\jquery-2.1.1.js" />
     <Content Include="Scripts\jquery-2.1.1.min.js" />
     <Content Include="Scripts\materialize\materialize.js" />
@@ -173,6 +175,13 @@
     </Compile>
     <Compile Include="Default.aspx.designer.cs">
       <DependentUpon>Default.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="DeleteViewstate.aspx.cs">
+      <DependentUpon>DeleteViewstate.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="DeleteViewstate.aspx.designer.cs">
+      <DependentUpon>DeleteViewstate.aspx</DependentUpon>
     </Compile>
     <Compile Include="HelloCookie.aspx.cs">
       <DependentUpon>HelloCookie.aspx</DependentUpon>
