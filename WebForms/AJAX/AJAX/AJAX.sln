@@ -7,6 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AJAX.Data", "AJAX.Data\AJAX
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AJAX.EmployeesWebClient", "AJAX.EmployeesWebClient\AJAX.EmployeesWebClient.csproj", "{2396667A-D0A8-42B2-B58D-249890686954}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AJAX.MessagesWebClient", "AJAX.MessagesWebClient\AJAX.MessagesWebClient.csproj", "{A43B622A-3DC0-405C-8F00-3DFE8248CEF0}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,10 @@ Global
 		{2396667A-D0A8-42B2-B58D-249890686954}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{2396667A-D0A8-42B2-B58D-249890686954}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{2396667A-D0A8-42B2-B58D-249890686954}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A43B622A-3DC0-405C-8F00-3DFE8248CEF0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A43B622A-3DC0-405C-8F00-3DFE8248CEF0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A43B622A-3DC0-405C-8F00-3DFE8248CEF0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A43B622A-3DC0-405C-8F00-3DFE8248CEF0}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
