@@ -10,24 +10,15 @@
 namespace StateManagement.WebClient {
     
     
-    public partial class Default {
+    public partial class HelloCookie {
         
         /// <summary>
-        /// TaskTwoOutput control.
+        /// CookieContent control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label TaskTwoOutput;
-        
-        /// <summary>
-        /// TaskTwoContent control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TaskTwoContent;
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl CookieContent;
     }
 }
