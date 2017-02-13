@@ -43,7 +43,9 @@
                     </div>
                 </div>
 
-                <asp:ValidationSummary runat="server" ValidationGroup="Logon" />
+                <div class="row">
+                    <asp:ValidationSummary runat="server" ValidationGroup="Logon" DisplayMode="BulletList" BorderColor="Salmon" BorderStyle="Solid" BorderWidth="5px" />
+                </div>
 
                 <div class="row">
                     <div class="input-field col s6">
@@ -70,13 +72,15 @@
                     </div>
                 </div>
 
-                <asp:ValidationSummary runat="server" ValidationGroup="Personal" />
+                <div class="row">
+                    <asp:ValidationSummary runat="server" ValidationGroup="Personal" DisplayMode="BulletList" BorderColor="Salmon" BorderStyle="Solid" BorderWidth="5px" />
+                </div>
 
                 <div class="row">
                     <div class="input-field col s6">
                         <asp:TextBox ID="Email" TextMode="Email" CssClass="validate" runat="server"></asp:TextBox>
                         <label for="Email">Email</label>
-                        <asp:RequiredFieldValidator runat="server" ControlToValidate="Email" ErrorMessage="Email is Required."></asp:RequiredFieldValidator>
+                        <asp:RequiredFieldValidator runat="server" ControlToValidate="Email" ErrorMessage="Email is Required." ValidationGroup="Address" Display="None"></asp:RequiredFieldValidator>
                     </div>
                 </div>
 
@@ -84,7 +88,7 @@
                     <div class="input-field col s6">
                         <asp:TextBox ID="Phone" CssClass="validate" runat="server"></asp:TextBox>
                         <label for="Phone">Phone</label>
-                        <asp:RequiredFieldValidator runat="server" ControlToValidate="Phone" ErrorMessage="Phone is Required."></asp:RequiredFieldValidator>
+                        <asp:RequiredFieldValidator runat="server" ControlToValidate="Phone" ErrorMessage="Phone is Required." ValidationGroup="Address" Display="None"></asp:RequiredFieldValidator>
                     </div>
                 </div>
 
@@ -92,8 +96,12 @@
                     <div class="input-field col s6">
                         <asp:TextBox ID="Address" CssClass="validate" runat="server"></asp:TextBox>
                         <label for="Address">Address</label>
-                        <asp:RequiredFieldValidator runat="server" ControlToValidate="Address" ErrorMessage="Address is Required"></asp:RequiredFieldValidator>
+                        <asp:RequiredFieldValidator runat="server" ControlToValidate="Address" ErrorMessage="Address is Required" ValidationGroup="Address" Display="None"></asp:RequiredFieldValidator>
                     </div>
+                </div>
+
+                <div class="row">
+                    <asp:ValidationSummary runat="server" ValidationGroup="Address" DisplayMode="BulletList" BorderColor="Salmon" BorderStyle="Solid" BorderWidth="5px" />
                 </div>
 
                 <div class="row">
@@ -106,9 +114,6 @@
                     <button class="btn waves-effect waves-light" type="submit" name="action">
                         Submit
                     </button>
-                </div>
-                <div class="row">
-                    <asp:ValidationSummary runat="server" />
                 </div>
             </div>
         </div>
