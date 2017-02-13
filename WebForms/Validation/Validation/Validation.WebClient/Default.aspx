@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="Default.aspx.cs" Inherits="Validation.WebClient.Default" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="Default.aspx.cs" Inherits="Validation.WebClient.Default" UnobtrusiveValidationMode="None" %>
 
 <!DOCTYPE html>
 
@@ -20,31 +20,91 @@
             <div class="col s12">
                 <div class="row">
                     <div class="input-field col s6">
-                        <input placeholder="Placeholder" id="first_name" type="text" class="validate" />
-                        <label for="first_name">First Name</label>
+                        <asp:TextBox ID="Username" CssClass="validate" runat="server"></asp:TextBox>
+                        <label for="Username">Username</label>
                     </div>
+                    <asp:RequiredFieldValidator runat="server" ControlToValidate="Username" ErrorMessage="Username is Required."></asp:RequiredFieldValidator>
+                </div>
+
+                <div class="row">
                     <div class="input-field col s6">
-                        <input id="last_name" type="text" class="validate" />
-                        <label for="last_name">Last Name</label>
+                        <asp:TextBox ID="Email" TextMode="Email" CssClass="validate" runat="server"></asp:TextBox>
+                        <label for="Email">Email</label>
+                        <asp:RequiredFieldValidator runat="server" ControlToValidate="Email" ErrorMessage="Email is Required."></asp:RequiredFieldValidator>
                     </div>
                 </div>
+
                 <div class="row">
-                    <div class="input-field col s12">
-                        <input disabled value="I am not editable" id="disabled" type="text" class="validate" />
-                        <label for="disabled">Disabled</label>
+                    <div class="input-field col s6">
+                        <asp:TextBox ID="FirstName" CssClass="validate" runat="server"></asp:TextBox>
+                        <label for="FirstName">First Name</label>
+                        <asp:RequiredFieldValidator runat="server" ControlToValidate="FirstName" ErrorMessage="First Name is Required."></asp:RequiredFieldValidator>
                     </div>
                 </div>
+
                 <div class="row">
-                    <div class="input-field col s12">
-                        <input id="password" type="password" class="validate" />
-                        <label for="password">Password</label>
+                    <div class="input-field col s6">
+                        <asp:TextBox ID="LastName" CssClass="validate" runat="server"></asp:TextBox>
+                        <label for="LastName">Last Name</label>
+                        <asp:RequiredFieldValidator runat="server" ControlToValidate="LastName" ErrorMessage="Last Name is Required."></asp:RequiredFieldValidator>
                     </div>
                 </div>
+
                 <div class="row">
-                    <div class="input-field col s12">
-                        <input id="email" type="email" class="validate" />
-                        <label for="email">Email</label>
+                    <div class="input-field col s6">
+                        <asp:TextBox ID="Password" TextMode="Password" CssClass="validate" runat="server"></asp:TextBox>
+                        <label for="Password">Password</label>
+                        <asp:RequiredFieldValidator runat="server" ControlToValidate="Password" ErrorMessage="Password is Required."></asp:RequiredFieldValidator>
                     </div>
+                </div>
+
+                <div class="row">
+                    <div class="input-field col s6">
+                        <asp:TextBox ID="RepeatPassword" TextMode="Password" CssClass="validate" runat="server"></asp:TextBox>
+                        <label for="RepeatPassword">Repeat Password</label>
+                        <asp:RequiredFieldValidator runat="server" ControlToValidate="RepeatPassword" ErrorMessage="Passwords must match."></asp:RequiredFieldValidator>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="input-field col s6">
+                        <asp:TextBox ID="Age" TextMode="Number" CssClass="validate" runat="server"></asp:TextBox>
+                        <label for="Age">Age</label>
+                        <asp:RequiredFieldValidator runat="server" ControlToValidate="Age" ErrorMessage="Age is Required."></asp:RequiredFieldValidator>
+                        <asp:RangeValidator runat="server" ControlToValidate="Age" MinimumValue="18" MaximumValue="81" ErrorMessage="Valid age is between 18 and 81."></asp:RangeValidator>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="input-field col s6">
+                        <asp:TextBox ID="Phone" CssClass="validate" runat="server"></asp:TextBox>
+                        <label for="Phone">Phone</label>
+                        <asp:RequiredFieldValidator runat="server" ControlToValidate="Phone" ErrorMessage="Phone is Required."></asp:RequiredFieldValidator>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="input-field col s6">
+                        <asp:TextBox ID="Address" CssClass="validate" runat="server"></asp:TextBox>
+                        <label for="Address">Address</label>
+                        <asp:RequiredFieldValidator runat="server" ControlToValidate="Address" ErrorMessage="Address is Required"></asp:RequiredFieldValidator>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <p>
+                        <asp:CheckBox ID="Agree" runat="server" />
+                        <%--<input type="checkbox" id="test5" />--%>
+                        <label for="Agree">I Agree</label>
+                    </p>
+                </div>
+                <div class="row">
+                    <button class="btn waves-effect waves-light" type="submit" name="action">
+                        Submit
+                    </button>
+                </div>
+                <div class="row">
+                    <asp:ValidationSummary runat="server" />
                 </div>
             </div>
         </div>
