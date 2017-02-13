@@ -22,15 +22,6 @@ namespace AJAX.MessagesWebClient {
         protected global::System.Web.UI.HtmlControls.HtmlForm form1;
         
         /// <summary>
-        /// MessagesRepeater control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Repeater MessagesRepeater;
-        
-        /// <summary>
         /// AddMessageTextBox control.
         /// </summary>
         /// <remarks>
@@ -38,5 +29,14 @@ namespace AJAX.MessagesWebClient {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox AddMessageTextBox;
+        
+        /// <summary>
+        /// MessagesRepeater control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Repeater MessagesRepeater;
     }
 }

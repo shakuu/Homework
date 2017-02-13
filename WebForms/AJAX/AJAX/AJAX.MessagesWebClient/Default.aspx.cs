@@ -19,6 +19,7 @@ namespace AJAX.MessagesWebClient
         {
             var newMessage = new Message();
             newMessage.Content = this.AddMessageTextBox.Text;
+            this.AddMessageTextBox.Text = string.Empty;
 
             var db = new MessagesDbContext();
             db.Messages.Add(newMessage);

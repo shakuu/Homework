@@ -13,10 +13,13 @@
         <div>
             <asp:UpdatePanel runat="server">
                 <ContentTemplate>
+                    <asp:TextBox ID="AddMessageTextBox" runat="server"></asp:TextBox>
+                    <asp:Button OnClick="OnNewMessage" runat="server" Text="Post" />
                     <asp:Repeater ID="MessagesRepeater" runat="server"
                         ItemType="AJAX.MessagesWebClient.Message">
                         <HeaderTemplate>
                             <h1>Messages</h1>
+                            <hr />
                         </HeaderTemplate>
                         <ItemTemplate>
                             <div>
@@ -25,8 +28,6 @@
                             </div>
                         </ItemTemplate>
                     </asp:Repeater>
-                    <asp:TextBox ID="AddMessageTextBox" runat="server"></asp:TextBox>
-                    <asp:Button OnClick="OnNewMessage" runat="server" />
                 </ContentTemplate>
             </asp:UpdatePanel>
         </div>
