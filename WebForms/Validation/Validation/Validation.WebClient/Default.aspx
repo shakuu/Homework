@@ -120,7 +120,7 @@
 
                 <div class="row">
                     <div class="input-field col s6">
-                        <asp:RadioButtonList OnSelectedIndexChanged="OnGenderSelectionChanged" runat="server">
+                        <asp:RadioButtonList ID="GenderSelect" OnSelectedIndexChanged="OnGenderSelectionChanged" runat="server">
                             <asp:ListItem Text="Male"></asp:ListItem>
                             <asp:ListItem Text="Female"></asp:ListItem>
                         </asp:RadioButtonList>

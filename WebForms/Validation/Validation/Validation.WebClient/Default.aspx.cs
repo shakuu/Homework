@@ -1,9 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-using System.Web.UI;
-using System.Web.UI.WebControls;
 
 namespace Validation.WebClient
 {
@@ -11,7 +6,17 @@ namespace Validation.WebClient
     {
         public void OnGenderSelectionChanged(object sender, EventArgs e)
         {
-
+            var selectedIndex = this.GenderSelect.SelectedIndex;
+            if (selectedIndex == 0)
+            {
+                this.Cars.Visible = true;
+                this.Coffee.Visible = false;
+            }
+            else
+            {
+                this.Coffee.Visible = true;
+                this.Cars.Visible = false;
+            }
         }
     }
 }
