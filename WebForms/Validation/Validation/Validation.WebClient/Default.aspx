@@ -1,6 +1,8 @@
 ﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="Default.aspx.cs" Inherits="Validation.WebClient.Default" UnobtrusiveValidationMode="None" %>
 
-<%@ Register Assembly="AjaxControlToolkit" Namespace="AjaxControlToolkit" TagPrefix="act" %>
+<%@ Register Assembly="AjaxControlToolkit"
+    Namespace="AjaxControlToolkit"
+    TagPrefix="ajaxtoolkit" %>
 
 <!DOCTYPE html>
 
@@ -98,12 +100,9 @@
                         <asp:RequiredFieldValidator runat="server" ControlToValidate="Phone" ErrorMessage="Phone is Required." ValidationGroup="Address" Display="None"></asp:RequiredFieldValidator>
                         <asp:RegularExpressionValidator
                             runat="server" Display="None" ValidationGroup="Address"
-                            ErrorMessage="Email address is incorrect!" ControlToValidate="Phone"
+                            ErrorMessage="Phone format: ###-###-##-##" ControlToValidate="Phone"
                             ValidationExpression="^[0-9]{3}-[0-9]{3}-[0-9]{2}-[0-9]{2}$">
                         </asp:RegularExpressionValidator>
-                        <act:MaskedEditExtender TargetControlID="Phone" Mask="000-000-00-00"
-                            MessageValidatorTip="true" MaskType="Number" InputDirection="LeftToRight" AcceptNegative="None" DisplayMoney="None"
-                            ErrorTooltipEnabled="True" runat="server" />
                     </div>
                 </div>
 
