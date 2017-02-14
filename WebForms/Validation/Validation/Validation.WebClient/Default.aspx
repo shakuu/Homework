@@ -119,11 +119,31 @@
                 </div>
 
                 <div class="row">
+                    <div class="input-field col s6">
+                        <asp:RadioButtonList OnSelectedIndexChanged="OnGenderSelectionChanged" runat="server">
+                            <asp:ListItem Text="Male"></asp:ListItem>
+                            <asp:ListItem Text="Female"></asp:ListItem>
+                        </asp:RadioButtonList>
+                    </div>
+                    <div class="input-field col s6">
+                        <asp:RadioButtonList ID="Cars" Visible="false" runat="server">
+                            <asp:ListItem Text="BWM"></asp:ListItem>
+                            <asp:ListItem Text="Audi"></asp:ListItem>
+                        </asp:RadioButtonList>
+                        <asp:RadioButtonList ID="Coffee" Visible="false" runat="server">
+                            <asp:ListItem Text="Black"></asp:ListItem>
+                            <asp:ListItem Text="Frappuccino"></asp:ListItem>
+                        </asp:RadioButtonList>
+                    </div>
+                </div>
+
+                <div class="row">
                     <p>
                         <asp:CheckBox ID="Agree" runat="server" />
                         <label for="Agree">I Agree</label>
                     </p>
                 </div>
+
                 <div class="row">
                     <button class="btn waves-effect waves-light" type="submit" name="action">
                         Submit

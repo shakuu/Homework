@@ -9,8 +9,9 @@ namespace Validation.WebClient
 {
     public partial class Default : System.Web.UI.Page
     {
-        protected void Page_Load(object sender, EventArgs e)
+        public void OnGenderSelectionChanged(object sender, EventArgs e)
         {
+
         }
     }
 }
