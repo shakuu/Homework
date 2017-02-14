@@ -119,22 +119,29 @@
                 </div>
 
                 <div class="row">
-                    <div class="input-field col s6">
-                        <asp:RadioButtonList ID="GenderSelect" OnSelectedIndexChanged="OnGenderSelectionChanged" runat="server">
-                            <asp:ListItem Text="Male"></asp:ListItem>
-                            <asp:ListItem Text="Female"></asp:ListItem>
-                        </asp:RadioButtonList>
-                    </div>
-                    <div class="input-field col s6">
-                        <asp:RadioButtonList ID="Cars" Visible="false" runat="server">
-                            <asp:ListItem Text="BWM"></asp:ListItem>
-                            <asp:ListItem Text="Audi"></asp:ListItem>
-                        </asp:RadioButtonList>
-                        <asp:RadioButtonList ID="Coffee" Visible="false" runat="server">
-                            <asp:ListItem Text="Black"></asp:ListItem>
-                            <asp:ListItem Text="Frappuccino"></asp:ListItem>
-                        </asp:RadioButtonList>
-                    </div>
+                    <asp:UpdatePanel runat="server" ChildrenAsTriggers="true" UpdateMode="Always" >
+                        <ContentTemplate>
+                            <div class="input-field col s6">
+                                <asp:RadioButtonList ID="GenderSelect" AutoPostBack="true" OnSelectedIndexChanged="OnGenderSelectionChanged" runat="server">
+                                    <asp:ListItem Text="Male"></asp:ListItem>
+                                    <asp:ListItem Text="Female"></asp:ListItem>
+                                </asp:RadioButtonList>
+                            </div>
+                            <div class="input-field col s6">
+                                <asp:RadioButtonList ID="Cars" Visible="false" runat="server">
+                                    <asp:ListItem Text="BWM"></asp:ListItem>
+                                    <asp:ListItem Text="Audi"></asp:ListItem>
+                                </asp:RadioButtonList>
+                                <asp:RadioButtonList ID="Coffee" Visible="false" runat="server">
+                                    <asp:ListItem Text="Black"></asp:ListItem>
+                                    <asp:ListItem Text="Frappuccino"></asp:ListItem>
+                                </asp:RadioButtonList>
+                            </div>
+                        </ContentTemplate>
+                        <Triggers>
+                            <asp:PostBackTrigger ControlID="GenderSelect" />
+                        </Triggers>
+                    </asp:UpdatePanel>
                 </div>
 
                 <div class="row">
