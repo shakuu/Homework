@@ -24,7 +24,7 @@ namespace SignalRTest.ConsoleClient
         private static async Task CreateConnection()
         {
             var connection = new HubConnection(Program.Url);
-            connection.TraceWriter = Console.Out;
+            //connection.TraceWriter = Console.Out;
 
             var proxy = connection.CreateHubProxy("ChatHub");
 
