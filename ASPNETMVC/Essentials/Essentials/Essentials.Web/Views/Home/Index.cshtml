@@ -1,0 +1,35 @@
+﻿@{
+    ViewBag.Title = "Home Page";
+}
+
+@using Essentials.Web.Models
+@model HomeViewModel
+
+
+@using (Html.BeginForm())
+{
+    <div class="well">
+        <div class="row">
+            <div class="well">
+                @Html.TextBoxFor(m => m.Quantity, new { Class = "form-control" })
+            </div>
+            <div class="well">
+                @Html.EnumDropDownListFor(m => m.UnitType, new { Class = "form-control" })
+            </div>
+
+            <button type="submit" class="btn btn-primary">Submit</button>
+        </div>
+
+        <div class="well">
+            @Html.TextBoxFor(m => m.BitCalculatorResultsContainer.Bytes);
+            @Html.TextBoxFor(m => m.BitCalculatorResultsContainer.KiloBytes);
+            @Html.TextBoxFor(m => m.BitCalculatorResultsContainer.MegaBytes);
+            @Html.TextBoxFor(m => m.BitCalculatorResultsContainer.GigaBytes);
+            @Html.TextBoxFor(m => m.BitCalculatorResultsContainer.TeraBytes);
+            @Html.TextBoxFor(m => m.BitCalculatorResultsContainer.PetaBytes);
+            @Html.TextBoxFor(m => m.BitCalculatorResultsContainer.ExaBytes);
+            @Html.TextBoxFor(m => m.BitCalculatorResultsContainer.ZettaBytes);
+            @Html.TextBoxFor(m => m.BitCalculatorResultsContainer.YottaBytes);
+        </div>
+    </div>
+}
