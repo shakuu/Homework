@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Numerics;
 
 namespace Essentials.BitCalculator
@@ -7,9 +8,15 @@ namespace Essentials.BitCalculator
     {
         private readonly IBitCalculatorResultsContainerEditableFactory bitCalculatorResultsContainerEditableFactory;
 
+        private readonly IDictionary<int, BigInteger> positivePowerMemorization;
+        private readonly IDictionary<int, double> negativePowerMemorization;
+
         public BitCalculator(IBitCalculatorResultsContainerEditableFactory bitCalculatorResultsContainerEditableFactory)
         {
             this.bitCalculatorResultsContainerEditableFactory = bitCalculatorResultsContainerEditableFactory;
+
+            this.positivePowerMemorization = new Dictionary<int, BigInteger>();
+            this.negativePowerMemorization = new Dictionary<int, double>();
         }
 
         public IBitCalculatorResultsContainer Calculate(int amount, UnitType unitType)
@@ -35,11 +42,21 @@ namespace Essentials.BitCalculator
 
             if (power >= 0)
             {
-                return (amount * BigInteger.Pow(2, power)).ToString();
+                if (!this.positivePowerMemorization.ContainsKey(power))
+                {
+                    this.positivePowerMemorization.Add(power, BigInteger.Pow(2, power));
+                }
+
+                return (amount * this.positivePowerMemorization[power]).ToString();
             }
             else
             {
-                return ((double)amount / Math.Pow(2, -power)).ToString();
+                if (!this.negativePowerMemorization.ContainsKey(power))
+                {
+                    this.negativePowerMemorization.Add(power, Math.Pow(2, -power));
+                }
+
+                return ((double)amount / this.negativePowerMemorization[power]).ToString();
             }
         }
     }
