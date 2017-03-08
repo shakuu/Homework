@@ -6,7 +6,6 @@ namespace AJAX.MoviesData
 {
     public class Movie
     {
-        // Title, Director, Year, Leading Male Role, Leading Female Role and their Age, Studio, Studio Address
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public Guid Id { get; set; }

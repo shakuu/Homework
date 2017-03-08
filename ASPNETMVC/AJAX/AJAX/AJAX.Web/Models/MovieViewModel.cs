@@ -1,6 +1,4 @@
-﻿using AJAX.MoviesData;
-
-namespace AJAX.Web.Models
+﻿namespace AJAX.Web.Models
 {
     public class MovieViewModel
     {
