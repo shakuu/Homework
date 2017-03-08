@@ -11,25 +11,45 @@
     <div class="well">
         <div class="row">
             <div class="well">
+                @Html.LabelFor(m => m.Quantity)
                 @Html.TextBoxFor(m => m.Quantity, new { Class = "form-control" })
             </div>
             <div class="well">
+                @Html.LabelFor(m => m.UnitType)
                 @Html.EnumDropDownListFor(m => m.UnitType, new { Class = "form-control" })
             </div>
 
             <button type="submit" class="btn btn-primary">Submit</button>
         </div>
 
-        <div class="well">
-            @Html.TextBoxFor(m => m.BitCalculatorResultsContainer.Bytes)
-            @Html.TextBoxFor(m => m.BitCalculatorResultsContainer.KiloBytes)
-            @Html.TextBoxFor(m => m.BitCalculatorResultsContainer.MegaBytes)
-            @Html.TextBoxFor(m => m.BitCalculatorResultsContainer.GigaBytes)
-            @Html.TextBoxFor(m => m.BitCalculatorResultsContainer.TeraBytes)
-            @Html.TextBoxFor(m => m.BitCalculatorResultsContainer.PetaBytes)
-            @Html.TextBoxFor(m => m.BitCalculatorResultsContainer.ExaBytes)
-            @Html.TextBoxFor(m => m.BitCalculatorResultsContainer.ZettaBytes)
-            @Html.TextBoxFor(m => m.BitCalculatorResultsContainer.YottaBytes)
-        </div>
+        <ul class="list-group">
+            <li class="list-group-item">
+                <span>Bytes: </span>  @Model.BitCalculatorResultsContainer.Bytes
+            </li>
+            <li class="list-group-item">
+                <span>KiloBytes: </span>  @Model.BitCalculatorResultsContainer.KiloBytes
+            </li>
+            <li class="list-group-item">
+                <span>MegaBytes: </span>  @Model.BitCalculatorResultsContainer.MegaBytes
+            </li>
+            <li class="list-group-item">
+                <span>GigaBytes: </span>  @Model.BitCalculatorResultsContainer.GigaBytes
+            </li>
+            <li class="list-group-item">
+                <span>TeraBytes: </span>  @Model.BitCalculatorResultsContainer.TeraBytes
+            </li>
+            <li class="list-group-item">
+                <span>PetaBytes: </span>  @Model.BitCalculatorResultsContainer.PetaBytes
+            </li>
+            <li class="list-group-item">
+                <span>ExaBytes: </span>  @Model.BitCalculatorResultsContainer.ExaBytes
+            </li>
+            <li class="list-group-item">
+                <span>ZettaBytes: </span>  @Model.BitCalculatorResultsContainer.ZettaBytes
+            </li>
+            <li class="list-group-item">
+                <span>YottaBytes: </span>   @Model.BitCalculatorResultsContainer.YottaBytes
+            </li>
+        </ul>
     </div>
 }
