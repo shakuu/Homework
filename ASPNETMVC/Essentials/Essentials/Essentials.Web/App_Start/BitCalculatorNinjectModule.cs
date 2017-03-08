@@ -21,7 +21,8 @@ namespace Essentials.Web.App_Start
             binding
                 .FromAssembliesMatching("*.BitCalculator.*")
                 .SelectAllClasses()
-                .BindDefaultInterface();
+                .BindDefaultInterface()
+                .ConfigureFor<BitCalculator.BitCalculator>(c => c.InSingletonScope());
         }
 
         private void BindFactories(IFromSyntax binding)

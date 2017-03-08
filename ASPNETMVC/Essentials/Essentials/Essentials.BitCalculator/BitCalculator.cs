@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Concurrent;
 using System.Collections.Generic;
 using System.Numerics;
 
@@ -15,8 +16,8 @@ namespace Essentials.BitCalculator
         {
             this.bitCalculatorResultsContainerEditableFactory = bitCalculatorResultsContainerEditableFactory;
 
-            this.positivePowerMemorization = new Dictionary<int, BigInteger>();
-            this.negativePowerMemorization = new Dictionary<int, double>();
+            this.positivePowerMemorization = new ConcurrentDictionary<int, BigInteger>();
+            this.negativePowerMemorization = new ConcurrentDictionary<int, double>();
         }
 
         public IBitCalculatorResultsContainer Calculate(int amount, UnitType unitType)
