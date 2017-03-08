@@ -21,11 +21,15 @@ namespace Essentials.Web.Controllers
         }
 
         [HttpPost]
-        public ActionResult Index(HomeViewModel model)
+        public ActionResult Index(HomeViewModelInput model)
         {
-            model.BitCalculatorResultsContainer = this.bitCalculator.Calculate(model.Quantity, model.UnitType);
+            var output = new HomeViewModel();
 
-            return View(model);
+            output.Quantity = model.Quantity;
+            output.UnitType = model.UnitType;
+            output.BitCalculatorResultsContainer = this.bitCalculator.Calculate(model.Quantity, model.UnitType);
+
+            return View(output);
         }
 
         public ActionResult About()

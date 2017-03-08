@@ -2,7 +2,7 @@
 {
     public enum UnitType
     {
-        Byte = 1,
+        Byte = 0,
         KiloByte = 10,
         MegaByte = 20,
         GigaByte = 30,

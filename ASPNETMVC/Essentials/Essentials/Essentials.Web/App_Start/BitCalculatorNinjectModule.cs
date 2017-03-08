@@ -2,6 +2,8 @@
 using Ninject.Extensions.Conventions;
 using Ninject.Extensions.Conventions.Syntax;
 
+using Essentials.BitCalculator;
+
 namespace Essentials.Web.App_Start
 {
     public class BitCalculatorNinjectModule : NinjectModule
@@ -10,6 +12,8 @@ namespace Essentials.Web.App_Start
         {
             this.Bind(this.BindAllClasses);
             this.Bind(this.BindFactories);
+
+            this.Bind<IBitCalculatorResultsContainerEditable>().To<BitCalculatorResultsContainer>();
         }
 
         private void BindAllClasses(IFromSyntax binding)
