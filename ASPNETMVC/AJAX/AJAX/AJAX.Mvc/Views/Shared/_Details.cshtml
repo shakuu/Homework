@@ -1,0 +1,44 @@
+﻿
+@using AJAX.MoviesData
+@model Movie
+
+<div class="row">
+    @Html.LabelFor(m => m.Title)
+    @Html.DisplayFor(m => m.Title)
+</div>
+
+<div class="row">
+    @Html.LabelFor(m => m.Director)
+    @Html.DisplayFor(m => m.Director)
+</div>
+
+<div class="row">
+    @Html.LabelFor(m => m.Studio)
+    @Html.DisplayFor(m => m.Studio)
+</div>
+
+<div class="row">
+    @Html.DisplayForModel()
+</div>
+
+@using (Ajax.BeginForm("Edit", new { id = Model.Id }, new AjaxOptions()
+{
+    UpdateTargetId = "movies-container",
+    InsertionMode = InsertionMode.Replace,
+    HttpMethod = "POST"
+}, new { id = "edit" }))
+{
+    <button type="submit" class="btn btn-primary" OnClick="OnEdit()">Edit</button>
+}
+
+@using (Ajax.BeginForm("Delete", new { id = Model.Id }, new AjaxOptions()
+{
+    UpdateTargetId= "movies-container",
+    InsertionMode = InsertionMode.Replace,
+    HttpMethod = "POST"
+
+}, new { id = "edit" }))
+{
+    <button type="submit" class="btn btn-danger" OnClick="OnDelete()">Delete</button>
+}
+

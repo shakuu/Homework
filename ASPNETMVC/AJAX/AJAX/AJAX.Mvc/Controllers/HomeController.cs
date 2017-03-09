@@ -2,7 +2,6 @@
 using System.Web.Mvc;
 
 using AJAX.MoviesData;
-using AJAX.Mvc.Models;
 
 namespace AJAX.Mvc.Controllers
 {
@@ -18,21 +17,21 @@ namespace AJAX.Mvc.Controllers
         [HttpGet]
         public ActionResult Index()
         {
-            return View(new MovieViewModel());
+            return View(new Movie());
         }
 
         [HttpPost]
         public ActionResult Create(Movie movie)
         {
-            this.movieService.Create(movie);
+            var newMovie = this.movieService.Create(movie);
 
-            return this.RedirectToAction("Details", new { id = movie.Id });
+            return this.PartialView("_Details", (movie));
         }
 
         [HttpGet]
         public ActionResult Details(Guid? id)
         {
-            return Content("working");
+            return this.PartialView("_Details", this.movieService.Find(id.Value));
         }
 
         [HttpGet]
@@ -42,15 +41,25 @@ namespace AJAX.Mvc.Controllers
         }
 
         [HttpPost]
+        public ActionResult Edit(Guid? id)
+        {
+            return this.PartialView("_UpdateForm", this.movieService.Find(id.Value));
+        }
+
+        [HttpPost]
         public ActionResult Update(Movie movie)
         {
-            return this.Redirect("Details");
+            this.movieService.Update(movie);
+
+            return this.PartialView("_Details", movie);
         }
 
         [HttpPost]
         public ActionResult Delete(Guid? id)
         {
-            return this.Redirect("Index");
+            this.movieService.Delete(id.Value);
+
+            return this.PartialView("_CreateForm", new Movie());
         }
 
         public ActionResult About()

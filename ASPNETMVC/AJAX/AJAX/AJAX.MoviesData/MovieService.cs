@@ -42,9 +42,12 @@ namespace AJAX.MoviesData
             return movie;
         }
 
-        public Movie Delete(Movie movie)
+        public Movie Delete(Guid id)
         {
-            this.moviesDbContext.Movies.Remove(movie);
+            var movie = this.Find(id);
+            var entry = this.moviesDbContext.Entry(movie);
+            entry.State = EntityState.Deleted;
+
             this.moviesDbContext.SaveChanges();
 
             return movie;

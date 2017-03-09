@@ -1,0 +1,69 @@
+﻿
+@{
+    ViewBag.Title = "_UpdateForm";
+}
+
+@using AJAX.MoviesData
+@model Movie
+
+<h2>_UpdateForm</h2>
+
+@using (Ajax.BeginForm("Update", null, new AjaxOptions()
+{
+    UpdateTargetId = "movies-container",
+    InsertionMode = InsertionMode.Replace,
+    HttpMethod = "POST"
+}, new { }))
+{
+
+    @Html.HiddenFor(m => m.Id)
+
+    <div class="row">
+        @Html.LabelFor(m => m.Title)
+        @Html.TextBoxFor(m => m.Title)
+    </div>
+
+    <div class="row">
+        @Html.LabelFor(m => m.Director)
+        @Html.TextBoxFor(m => m.Director)
+    </div>
+
+    <div class="row">
+        @Html.LabelFor(m => m.Year)
+        @Html.TextBoxFor(m => m.Year)
+    </div>
+
+    <div class="row">
+        @Html.LabelFor(m => m.LeadingMaleRole)
+        @Html.TextBoxFor(m => m.LeadingMaleRole)
+    </div>
+
+    <div class="row">
+        @Html.LabelFor(m => m.LeadingMaleRoleAge)
+        @Html.TextBoxFor(m => m.LeadingMaleRoleAge)
+    </div>
+
+    <div class="row">
+        @Html.LabelFor(m => m.LeadingFemaleRole)
+        @Html.TextBoxFor(m => m.LeadingFemaleRole)
+    </div>
+
+    <div class="row">
+        @Html.LabelFor(m => m.LeadingFemaleRoleAge)
+        @Html.TextBoxFor(m => m.LeadingFemaleRoleAge)
+    </div>
+
+    <div class="row">
+        @Html.LabelFor(m => m.Studio)
+        @Html.TextBoxFor(m => m.Studio)
+    </div>
+
+    <div class="row">
+        @Html.LabelFor(m => m.StudioAddress)
+        @Html.TextBoxFor(m => m.StudioAddress)
+    </div>
+
+    <div class="row">
+        <button type="submit" class="btn btn-primary">Submit</button>
+    </div>
+}

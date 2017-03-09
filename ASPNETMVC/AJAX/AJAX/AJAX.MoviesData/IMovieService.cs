@@ -13,6 +13,6 @@ namespace AJAX.MoviesData
 
         Movie Update(Movie movie);
 
-        Movie Delete(Movie movie);
+        Movie Delete(Guid id);
     }
 }
