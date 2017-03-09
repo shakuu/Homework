@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Data.Entity;
 using System.Linq;
 
@@ -11,6 +12,11 @@ namespace AJAX.MoviesData
         public MovieService(IMoviesDbContext moviesDbContext)
         {
             this.moviesDbContext = moviesDbContext;
+        }
+
+        public Movie Find(Guid id)
+        {
+            return this.moviesDbContext.Movies.FirstOrDefault(m => m.Id == id);
         }
 
         public Movie Create(Movie movie)

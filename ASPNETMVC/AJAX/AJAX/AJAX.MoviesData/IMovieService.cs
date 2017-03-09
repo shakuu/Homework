@@ -1,9 +1,12 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 
 namespace AJAX.MoviesData
 {
     public interface IMovieService
     {
+        Movie Find(Guid id);
+
         Movie Create(Movie movie);
 
         IEnumerable<Movie> Read();

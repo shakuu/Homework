@@ -1,0 +1,23 @@
+﻿
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@using AJAX.MoviesData
+@model Movie
+
+<div class="row">
+    @Html.LabelFor(m => m.Title)
+    @Html.DisplayFor(m => m.Title)
+</div>
+
+<div class="row">
+    @Html.LabelFor(m => m.Director)
+    @Html.DisplayFor(m => m.Director)
+</div>
+
+<div class="row">
+    @Html.LabelFor(m => m.Studio)
+    @Html.DisplayFor(m => m.Studio)
+</div>
