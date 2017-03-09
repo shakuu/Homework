@@ -20,7 +20,7 @@ namespace AJAX.Web.App_Start
                 .FromAssembliesMatching("*.MoviesData.*")
                 .SelectAllClasses()
                 .BindDefaultInterface()
-                .ConfigureFor<IMoviesDbContext>(c => c.InRequestScope());
+                .ConfigureFor<MoviesDbContext>(c => c.InRequestScope());
         }
     }
 }
