@@ -2,7 +2,7 @@
 
 namespace AJAX.MoviesData
 {
-    public class MoviesDbContext : DbContext
+    public class MoviesDbContext : DbContext, IMoviesDbContext
     {
         public MoviesDbContext()
             : base("name=MoviesMvcHomeworkDb")

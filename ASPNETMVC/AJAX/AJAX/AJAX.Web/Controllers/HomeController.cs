@@ -1,6 +1,7 @@
 ﻿using System.Web.Mvc;
 
 using AJAX.MoviesData;
+using AJAX.Web.Models;
 
 namespace AJAX.Web.Controllers
 {
@@ -16,7 +17,7 @@ namespace AJAX.Web.Controllers
         [HttpGet]
         public ActionResult Index()
         {
-            return View();
+            return View(new MovieViewModel());
         }
 
         [HttpPost]
