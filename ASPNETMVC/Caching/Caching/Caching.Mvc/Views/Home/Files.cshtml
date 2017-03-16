@@ -1,0 +1,12 @@
+﻿
+@{
+    ViewBag.Title = "Files";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@model IEnumerable<string>
+<h2>Files</h2>
+
+@foreach (var file in Model)
+{
+    <p>@file</p>
+}

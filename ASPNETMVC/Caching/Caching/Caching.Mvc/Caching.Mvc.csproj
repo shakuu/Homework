@@ -186,6 +186,7 @@
     <Content Include="Views\Home\Contact.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Home\_CachedPartial.cshtml" />
+    <Content Include="Views\Home\Files.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
